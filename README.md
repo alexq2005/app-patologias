@@ -1,97 +1,186 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Patologias de Enfermeria
 
-# Getting Started
+Aplicacion movil de referencia clinica para profesionales y estudiantes de enfermeria. Contiene 151 patologias organizadas por 12 sistemas corporales, con informacion detallada de diagnosticos NANDA-NIC-NOC, cuidados de enfermeria, farmacologia y protocolos de emergencia.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Capturas
 
-## Step 1: Start Metro
+| Home | Sistemas | Detalle |
+|------|----------|---------|
+| Gradiente violeta con accesos rapidos | Grid con fotos reales por sistema | 15 secciones clinicas + NANDA |
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Caracteristicas
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **151 patologias** con informacion clinica completa
+- **12 sistemas corporales** con imagenes medicas
+- **Quiz interactivo** con 8 tipos de preguntas
+- **Escalas clinicas** con calculadora interactiva
+- **Valores de laboratorio** con rangos e implicaciones
+- **Protocolos de emergencia** paso a paso
+- **NANDA-NIC-NOC** browser con filtrado
+- **Favoritos y notas** personales
+- **Modo oscuro** con toggle
+- **Funciona offline** — toda la data es local
+- **Premium** con trial de 15 dias + suscripcion Google Play
 
-```sh
-# Using npm
-npm start
+## Stack Tecnologico
 
-# OR using Yarn
-yarn start
+| Tecnologia | Version | Uso |
+|-----------|---------|-----|
+| React Native | 0.84.1 | Framework mobile |
+| TypeScript | 5.8 | Tipado estatico |
+| React Navigation | 7.x | Navegacion (Stack + Tabs) |
+| AsyncStorage | 2.x | Persistencia local |
+| LinearGradient | - | Gradientes UI |
+| Vector Icons | - | Material Community Icons |
+| Safe Area Context | - | Safe areas iOS/Android |
+
+## Estructura del Proyecto
+
+```
+src/
+├── assets/images/
+│   ├── conditions/     # 13 fotos clinicas (ECG, rayos X, etc.)
+│   └── systems/        # 12 fotos por sistema corporal
+├── components/         # 9 componentes reutilizables
+│   ├── BodySystemCard.tsx
+│   ├── CollapsibleSection.tsx
+│   ├── ContentContainer.tsx
+│   ├── EmergencyBadge.tsx
+│   ├── ErrorBoundary.tsx
+│   ├── PathologyCard.tsx
+│   ├── PremiumGate.tsx
+│   ├── SearchBar.tsx
+│   └── Skeleton.tsx
+├── context/            # 5 Context providers
+│   ├── FavoritesContext.tsx
+│   ├── NotesContext.tsx
+│   ├── PremiumContext.tsx
+│   ├── TabBarContext.tsx
+│   └── ThemeContext.tsx
+├── data/               # JSONs estaticos (~2.5 MB total)
+│   ├── pathologies.json      # 151 patologias
+│   ├── body_systems.json     # 12 sistemas
+│   ├── clinical_scales.json  # Escalas clinicas
+│   ├── emergency_protocols.json
+│   └── lab_values.json
+├── hooks/              # 8 custom hooks
+│   ├── useFavorites.ts
+│   ├── useNotes.ts
+│   ├── useOnboarding.ts
+│   ├── usePathologyData.ts
+│   ├── usePathologySearch.ts
+│   ├── useQuiz.ts
+│   ├── useRecentPathologies.ts
+│   └── useSearchHistory.ts
+├── navigation/
+│   └── AppNavigator.tsx      # 5 tabs + 18 stack screens
+├── screens/            # 20 pantallas
+│   ├── HomeScreen.tsx
+│   ├── SystemsScreen.tsx
+│   ├── SystemPathologiesScreen.tsx
+│   ├── PathologyDetailScreen.tsx
+│   ├── SearchScreen.tsx
+│   ├── QuizScreen.tsx
+│   ├── QuizSessionScreen.tsx
+│   ├── ScalesScreen.tsx
+│   ├── ScaleDetailScreen.tsx
+│   ├── LabValuesScreen.tsx
+│   ├── EmergencyProtocolsScreen.tsx
+│   ├── ProtocolDetailScreen.tsx
+│   ├── NandaScreen.tsx
+│   ├── ToolsScreen.tsx
+│   ├── DashboardScreen.tsx
+│   ├── AllFavoritesScreen.tsx
+│   ├── AllNotesScreen.tsx
+│   ├── PremiumScreen.tsx
+│   ├── SettingsScreen.tsx
+│   ├── OnboardingScreen.tsx
+│   ├── AboutScreen.tsx
+│   ├── PrivacyPolicyScreen.tsx
+│   └── TermsScreen.tsx
+├── types/
+│   └── index.ts
+└── utils/              # 11 utilidades
+    ├── activation.ts         # Codigo de activacion (SHA-256)
+    ├── animations.ts
+    ├── colors.ts
+    ├── conditionImages.ts
+    ├── icons.ts
+    ├── neumorphism.ts
+    ├── responsive.ts
+    ├── search.ts
+    ├── spacing.ts
+    ├── systemImages.ts
+    └── typography.ts
 ```
 
-## Step 2: Build and run your app
+## Configuracion Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- **Namespace**: `com.patologiasenfermeria`
+- **Min SDK**: 24 (Android 7.0)
+- **Target SDK**: 36 (Android 16)
+- **Flavors**: `free` (con applicationIdSuffix `.free`) y `premium`
+- **Signing**: Release keystore configurado en `gradle.properties`
 
-### Android
+## Desarrollo
 
-```sh
-# Using npm
-npm run android
+### Requisitos
+- Node.js 18+
+- JDK 21 (usar Android Studio JBR — **NO Java 25**)
+- Android SDK 36
+- Android NDK (via SDK Manager)
 
-# OR using Yarn
-yarn android
+### Setup
+```bash
+npm install
 ```
 
-### iOS
+### Build (emulador)
+```bash
+# IMPORTANTE: usar JDK 21, no Java 25
+export JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+# Pre-bundle JS (necesario por bug de Metro en Windows)
+npx react-native bundle --platform android --dev true \
+  --entry-file index.js \
+  --bundle-output android/app/src/main/assets/index.android.bundle \
+  --assets-dest android/app/src/main/res/
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+# Build APK
+cd android && ./gradlew app:assembleFreeDebug
 ```
 
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
+### Instalar en emulador
+```bash
+adb install -g android/app/build/outputs/apk/free/debug/app-free-debug.apk
+adb shell am start -n com.patologiasenfermeria.free/com.patologiasenfermeria.MainActivity
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+### Build release
+```bash
+cd android && ./gradlew app:assembleFreeRelease
+# APK en: android/app/build/outputs/apk/free/release/
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Modelo de Monetizacion
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Trial
+- 15 dias de prueba gratuita con acceso completo
+- Despues del trial, contenido premium bloqueado (3 patologias/sistema gratis)
 
-## Step 3: Modify your app
+### Suscripcion
+- Mensual via Google Play (`patologias_premium_monthly`)
+- Configurar en Google Play Console > Monetizacion > Suscripciones
 
-Now that you have successfully run the app, let's make changes!
+### Activacion por codigo
+- Easter egg: Settings > Version > tap 5 veces > ingresar codigo
+- Desbloqueo permanente sin suscripcion
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Contacto
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+- **Email**: alexq2005@gmail.com
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Licencia
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Todos los derechos reservados. Software propietario.
