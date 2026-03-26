@@ -2,25 +2,19 @@
 
 Aplicacion movil de referencia clinica para profesionales y estudiantes de enfermeria. Contiene 151 patologias organizadas por 12 sistemas corporales, con informacion detallada de diagnosticos NANDA-NIC-NOC, cuidados de enfermeria, farmacologia y protocolos de emergencia.
 
-## Capturas
-
-| Home | Sistemas | Detalle |
-|------|----------|---------|
-| Gradiente violeta con accesos rapidos | Grid con fotos reales por sistema | 15 secciones clinicas + NANDA |
-
 ## Caracteristicas
 
 - **151 patologias** con informacion clinica completa
-- **12 sistemas corporales** con imagenes medicas
+- **12 sistemas corporales** con fotos medicas reales
+- **17 escalas clinicas** interactivas con calculadora (Glasgow, NEWS2, Norton, etc.)
 - **Quiz interactivo** con 8 tipos de preguntas
-- **Escalas clinicas** con calculadora interactiva
-- **Valores de laboratorio** con rangos e implicaciones
+- **Valores de laboratorio** con rangos e implicaciones de enfermeria
 - **Protocolos de emergencia** paso a paso
 - **NANDA-NIC-NOC** browser con filtrado
-- **Favoritos y notas** personales
-- **Modo oscuro** con toggle
-- **Funciona offline** — toda la data es local
-- **Premium** con trial de 15 dias + suscripcion Google Play
+- **Favoritos y notas** personales ilimitadas
+- **Modo oscuro/claro** con toggle o automatico
+- **Funciona offline** — toda la data es local, ideal para hospitales
+- **Freemium**: 15 dias de prueba + suscripcion Google Play
 
 ## Stack Tecnologico
 
@@ -40,78 +34,22 @@ Aplicacion movil de referencia clinica para profesionales y estudiantes de enfer
 src/
 ├── assets/images/
 │   ├── conditions/     # 13 fotos clinicas (ECG, rayos X, etc.)
-│   └── systems/        # 12 fotos por sistema corporal
+│   ├── systems/        # 12 fotos por sistema corporal
+│   └── scales/         # 9 fotos para escalas clinicas
 ├── components/         # 9 componentes reutilizables
-│   ├── BodySystemCard.tsx
-│   ├── CollapsibleSection.tsx
-│   ├── ContentContainer.tsx
-│   ├── EmergencyBadge.tsx
-│   ├── ErrorBoundary.tsx
-│   ├── PathologyCard.tsx
-│   ├── PremiumGate.tsx
-│   ├── SearchBar.tsx
-│   └── Skeleton.tsx
-├── context/            # 5 Context providers
-│   ├── FavoritesContext.tsx
-│   ├── NotesContext.tsx
-│   ├── PremiumContext.tsx
-│   ├── TabBarContext.tsx
-│   └── ThemeContext.tsx
+├── context/            # 5 Context providers (Theme, Premium, Favorites, Notes, TabBar)
 ├── data/               # JSONs estaticos (~2.5 MB total)
 │   ├── pathologies.json      # 151 patologias
 │   ├── body_systems.json     # 12 sistemas
-│   ├── clinical_scales.json  # Escalas clinicas
+│   ├── clinical_scales.json  # 17 escalas
 │   ├── emergency_protocols.json
 │   └── lab_values.json
 ├── hooks/              # 8 custom hooks
-│   ├── useFavorites.ts
-│   ├── useNotes.ts
-│   ├── useOnboarding.ts
-│   ├── usePathologyData.ts
-│   ├── usePathologySearch.ts
-│   ├── useQuiz.ts
-│   ├── useRecentPathologies.ts
-│   └── useSearchHistory.ts
 ├── navigation/
 │   └── AppNavigator.tsx      # 5 tabs + 18 stack screens
 ├── screens/            # 20 pantallas
-│   ├── HomeScreen.tsx
-│   ├── SystemsScreen.tsx
-│   ├── SystemPathologiesScreen.tsx
-│   ├── PathologyDetailScreen.tsx
-│   ├── SearchScreen.tsx
-│   ├── QuizScreen.tsx
-│   ├── QuizSessionScreen.tsx
-│   ├── ScalesScreen.tsx
-│   ├── ScaleDetailScreen.tsx
-│   ├── LabValuesScreen.tsx
-│   ├── EmergencyProtocolsScreen.tsx
-│   ├── ProtocolDetailScreen.tsx
-│   ├── NandaScreen.tsx
-│   ├── ToolsScreen.tsx
-│   ├── DashboardScreen.tsx
-│   ├── AllFavoritesScreen.tsx
-│   ├── AllNotesScreen.tsx
-│   ├── PremiumScreen.tsx
-│   ├── SettingsScreen.tsx
-│   ├── OnboardingScreen.tsx
-│   ├── AboutScreen.tsx
-│   ├── PrivacyPolicyScreen.tsx
-│   └── TermsScreen.tsx
 ├── types/
-│   └── index.ts
-└── utils/              # 11 utilidades
-    ├── activation.ts         # Codigo de activacion (SHA-256)
-    ├── animations.ts
-    ├── colors.ts
-    ├── conditionImages.ts
-    ├── icons.ts
-    ├── neumorphism.ts
-    ├── responsive.ts
-    ├── search.ts
-    ├── spacing.ts
-    ├── systemImages.ts
-    └── typography.ts
+└── utils/              # 12 utilidades
 ```
 
 ## Configuracion Android
@@ -119,16 +57,15 @@ src/
 - **Namespace**: `com.patologiasenfermeria`
 - **Min SDK**: 24 (Android 7.0)
 - **Target SDK**: 36 (Android 16)
-- **Flavors**: `free` (con applicationIdSuffix `.free`) y `premium`
+- **Flavors**: `free` (trial + suscripcion) y `premium` (todo desbloqueado)
 - **Signing**: Release keystore configurado en `gradle.properties`
 
 ## Desarrollo
 
 ### Requisitos
 - Node.js 18+
-- JDK 21 (usar Android Studio JBR — **NO Java 25**)
-- Android SDK 36
-- Android NDK (via SDK Manager)
+- **JDK 21** (Android Studio JBR) — NO Java 25
+- Android SDK 36 + NDK
 
 ### Setup
 ```bash
@@ -137,7 +74,6 @@ npm install
 
 ### Build (emulador)
 ```bash
-# IMPORTANTE: usar JDK 21, no Java 25
 export JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
 
@@ -147,35 +83,51 @@ npx react-native bundle --platform android --dev true \
   --bundle-output android/app/src/main/assets/index.android.bundle \
   --assets-dest android/app/src/main/res/
 
-# Build APK
 cd android && ./gradlew app:assembleFreeDebug
-```
-
-### Instalar en emulador
-```bash
-adb install -g android/app/build/outputs/apk/free/debug/app-free-debug.apk
-adb shell am start -n com.patologiasenfermeria.free/com.patologiasenfermeria.MainActivity
 ```
 
 ### Build release
 ```bash
-cd android && ./gradlew app:assembleFreeRelease
-# APK en: android/app/build/outputs/apk/free/release/
+# Bundle release (--dev false)
+npx react-native bundle --platform android --dev false \
+  --entry-file index.js \
+  --bundle-output android/app/src/main/assets/index.android.bundle \
+  --assets-dest android/app/src/main/res/
+
+# APKs
+cd android && ./gradlew app:assembleFreeRelease app:assemblePremiumRelease
+
+# AAB para Play Store
+cd android && ./gradlew app:bundleFreeRelease
 ```
+
+### Builds generados
+| Tipo | Tamaño | Ruta |
+|------|--------|------|
+| Free Debug APK | ~64 MB | `android/app/build/outputs/apk/free/debug/` |
+| Free Release APK | 64 MB | `android/app/build/outputs/apk/free/release/` |
+| Premium Release APK | 64 MB | `android/app/build/outputs/apk/premium/release/` |
+| Free Release AAB | 45 MB | `android/app/build/outputs/bundle/freeRelease/` |
 
 ## Modelo de Monetizacion
 
-### Trial
-- 15 dias de prueba gratuita con acceso completo
-- Despues del trial, contenido premium bloqueado (3 patologias/sistema gratis)
+| Concepto | Detalle |
+|----------|---------|
+| Trial | 15 dias de prueba con acceso completo |
+| Free despues del trial | 3 patologias/sistema (33 total), 5 favoritos, 5 notas |
+| Suscripcion | Mensual via Google Play (`patologias_premium_monthly`) |
+| Activacion por codigo | Easter egg: Settings > Version > tap 5 veces |
 
-### Suscripcion
-- Mensual via Google Play (`patologias_premium_monthly`)
-- Configurar en Google Play Console > Monetizacion > Suscripciones
+## Documentos para Play Store
 
-### Activacion por codigo
-- Easter egg: Settings > Version > tap 5 veces > ingresar codigo
-- Desbloqueo permanente sin suscripcion
+Todos los documentos estan en `playstore/`:
+- `ficha_play_store.md` — Textos de la ficha
+- `privacy_policy.html` — Politica de privacidad (subir a hosting)
+- `clasificacion_contenido_IARC.md` — Respuestas para clasificacion
+- `icon_512x512.svg` — Icono (exportar a PNG)
+- `feature_graphic_1024x500.svg` — Grafico promocional (exportar a PNG)
+- `INSTRUCCIONES_PUBLICACION.md` — Guia paso a paso
+- `PLAN_ACTUALIZACIONES.md` — Roadmap de 12 meses
 
 ## Contacto
 

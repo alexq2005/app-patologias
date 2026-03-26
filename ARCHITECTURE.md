@@ -59,7 +59,11 @@ JSON estaticos (offline)
 ## Premium Gating
 
 ```
-isPremium = IS_FREE_BUILD || isCodeActivated || isSubscribed || isTrialActive
+isPremium = IS_PREMIUM_BUILD || isCodeActivated || isSubscribed || isTrialActive
+
+IS_PREMIUM_BUILD = !(BuildConfigModule.IS_FREE)
+  - Flavor free:    IS_FREE=true  → IS_PREMIUM_BUILD=false → trial/subscription required
+  - Flavor premium: IS_FREE=false → IS_PREMIUM_BUILD=true  → always unlocked
 
 Gating por sistema:
 - Primeras 3 patologias de cada sistema: GRATIS
