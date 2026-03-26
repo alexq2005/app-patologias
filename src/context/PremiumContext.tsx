@@ -3,7 +3,8 @@ import { NativeModules, Alert, Linking } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { isActivated as checkActivation, validateActivationCode, saveActivation } from '../utils/activation';
 
-const IS_FREE_BUILD: boolean = NativeModules.BuildConfigModule?.IS_FREE ?? false;
+// IS_FREE=true means free/restricted flavor, IS_FREE=false means premium/full flavor
+const IS_PREMIUM_BUILD: boolean = !(NativeModules.BuildConfigModule?.IS_FREE ?? true);
 
 const TRIAL_START_KEY = '@patologias_trial_start';
 const SUBSCRIPTION_KEY = '@patologias_subscription';
@@ -71,7 +72,7 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
 
   const isTrialActive = trialDaysLeft > 0;
   const trialExpired = !isTrialActive && !isSubscribed && !isCodeActivated;
-  const isPremium = IS_FREE_BUILD || isCodeActivated || isSubscribed || isTrialActive;
+  const isPremium = IS_PREMIUM_BUILD || isCodeActivated || isSubscribed || isTrialActive;
 
   // ── Actions ───────────────────────────────
   const activateSubscription = useCallback(() => {
@@ -118,7 +119,7 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <PremiumContext.Provider value={{
-      isPremium, isFreeBuild: IS_FREE_BUILD, isCodeActivated,
+      isPremium, isFreeBuild: !IS_PREMIUM_BUILD, isCodeActivated,
       isTrialActive, trialDaysLeft, trialStartDate, trialExpired,
       isSubscribed, purchasing,
       activateSubscription, restoreSubscription, purchaseSubscription,
