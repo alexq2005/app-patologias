@@ -76,7 +76,7 @@ const SECTIONS = [
   {
     title: '3. Uso permitido',
     content:
-      'Esta aplicacion esta disenada para:\n' +
+      'Esta aplicacion esta diseñada para:\n' +
       '• Estudio academico de enfermeria y ciencias de la salud\n' +
       '• Referencia rapida para profesionales de enfermeria capacitados\n' +
       '• Preparacion para examenes y evaluaciones clinicas\n' +
@@ -112,7 +112,7 @@ const SECTIONS = [
     title: '7. Limitacion de responsabilidad',
     content:
       'En la maxima medida permitida por la ley aplicable, el desarrollador no sera responsable ' +
-      'por danos directos, indirectos, incidentales o consecuentes que resulten del uso o ' +
+      'por daños directos, indirectos, incidentales o consecuentes que resulten del uso o ' +
       'incapacidad de uso de la aplicacion, incluyendo decisiones clinicas tomadas en base ' +
       'al contenido de la misma.',
   },

@@ -103,8 +103,8 @@ const SECTIONS = [
   {
     title: '7. Menores de edad',
     content:
-      'Esta aplicacion esta disenada para estudiantes y profesionales de enfermeria. ' +
-      'No esta orientada a menores de 13 anos. Si eres menor de esa edad, ' +
+      'Esta aplicacion esta diseñada para estudiantes y profesionales de enfermeria. ' +
+      'No esta orientada a menores de 13 años. Si eres menor de esa edad, ' +
       'te solicitamos que uses la aplicacion bajo supervision de un adulto.',
   },
   {
