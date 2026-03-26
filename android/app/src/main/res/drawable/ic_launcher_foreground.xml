@@ -4,25 +4,40 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Heart with pulse line — nursing/medical theme -->
-    <!-- Background circle -->
+
+    <!-- Outer soft circle (glow effect) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M54,54m-32,0a32,32 0,1 1,64 0a32,32 0,1 1,-64 0" />
-    <!-- Heart shape -->
+        android:fillAlpha="0.12"
+        android:pathData="M54,54m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0" />
+
+    <!-- Main white circle -->
     <path
-        android:fillColor="#6C5CE7"
-        android:pathData="M54,72 C54,72 36,60 36,48 C36,42 40.5,37.5 46,37.5 C49.5,37.5 52.5,39.5 54,42.5 C55.5,39.5 58.5,37.5 62,37.5 C67.5,37.5 72,42 72,48 C72,60 54,72 54,72Z" />
-    <!-- Pulse/ECG line across heart -->
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M54,54m-30,0a30,30 0,1 1,60 0a30,30 0,1 1,-60 0" />
+
+    <!-- Heart shape (purple) -->
+    <path
+        android:fillColor="#6D28D9"
+        android:pathData="M54,74 C54,74 33,59 33,45 C33,38.5 38,33.5 44,33.5 C48,33.5 51.5,36 54,39 C56.5,36 60,33.5 64,33.5 C70,33.5 75,38.5 75,45 C75,59 54,74 54,74Z" />
+
+    <!-- ECG pulse line across heart -->
     <path
         android:fillColor="@android:color/transparent"
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.5"
+        android:strokeWidth="2.8"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M38,54 L46,54 L49,46 L52,58 L55,48 L58,56 L61,54 L70,54" />
-    <!-- Small cross/plus at top right -->
+        android:pathData="M36,52 L44,52 L47,44 L50,58 L54,47 L57,55 L60,50 L63,52 L72,52" />
+
+    <!-- Medical cross (top right, subtle) -->
     <path
-        android:fillColor="#A29BFE"
-        android:pathData="M68,34 L72,34 L72,30 L74,30 L74,34 L78,34 L78,36 L74,36 L74,40 L72,40 L72,36 L68,36Z" />
+        android:fillColor="#6D28D9"
+        android:fillAlpha="0.7"
+        android:pathData="M70,30 C70,27.8 71.8,26 74,26 C76.2,26 78,27.8 78,30 C78,32.2 76.2,34 74,34 C71.8,34 70,32.2 70,30Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M73.2,28 L74.8,28 L74.8,29.2 L76,29.2 L76,30.8 L74.8,30.8 L74.8,32 L73.2,32 L73.2,30.8 L72,30.8 L72,29.2 L73.2,29.2Z" />
+
 </vector>

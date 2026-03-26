@@ -63,7 +63,7 @@ La app no contiene violencia, sexualidad, lenguaje inapropiado ni contenido que 
 Google puede solicitar una declaracion adicional para apps medicas:
 
 > "Patologias de Enfermeria es una aplicacion de referencia educativa dirigida a
-> profesionales y estudiantes de enfermeria. No esta disenada para reemplazar
+> profesionales y estudiantes de enfermeria. No esta diseñada para reemplazar
 > el juicio clinico profesional ni para realizar diagnosticos medicos. El contenido
 > es informativo y basado en guias de practica clinica internacionales. Los usuarios
 > deben consultar siempre con profesionales de salud calificados para decisiones
