@@ -8,7 +8,7 @@ const ACTIVATION_KEY = '@patologias_activated';
  *   node -e 'console.log(require("crypto").createHash("sha256").update("NEW_CODE").digest("hex"))'
  * and replace this constant.
  */
-const ACTIVATION_HASH = '435ba2f383ebc916170ea3ea73e394f6d67b002f0c25fb663455d44093eec43c';
+const ACTIVATION_HASH = '0b3f21d2a00778d92d8619cfb6199b8f2124ae31cb3cb6d823ffa99230e911d4';
 
 // ─── Pure-JS SHA-256 ─────────────────────────────────────────────────────────
 
