@@ -20,6 +20,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 import { useTheme } from '../context/ThemeContext';
+import { useTabBar } from '../context/TabBarContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { neuCard } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
@@ -70,6 +71,7 @@ export function ToolsScreen() {
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
+  const { handleScroll } = useTabBar();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { opacity, translateY } = useFadeIn(380, 60);
 
@@ -99,6 +101,8 @@ export function ToolsScreen() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + rs.space(80) }]}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
       >
         <View style={styles.grid}>
           {TOOLS.map(tool => (

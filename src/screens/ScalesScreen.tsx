@@ -24,6 +24,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { useTheme } from '../context/ThemeContext';
+import { useTabBar } from '../context/TabBarContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { SearchBar } from '../components/SearchBar';
@@ -130,6 +131,7 @@ export function ScalesScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
   const { scales } = usePathologyData();
+  const { handleScroll } = useTabBar();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
 
   const [query, setQuery] = useState('');
@@ -329,6 +331,8 @@ export function ScalesScreen() {
           keyboardDismissMode="on-drag"
           initialNumToRender={12}
           removeClippedSubviews={false}
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
         />
       </View>
     </PremiumGate>
