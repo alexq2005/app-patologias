@@ -1,0 +1,1323 @@
+[
+  {
+    "id": "scale_glasgow",
+    "nombre": "Escala de Coma de Glasgow",
+    "abreviatura": "GCS",
+    "descripcion": "Escala neurológica que valora el nivel de conciencia mediante tres parámetros: apertura ocular, respuesta verbal y respuesta motora.",
+    "tipo": "components",
+    "categoria": "neurologia",
+    "componentes": [
+      {
+        "nombre": "Apertura ocular",
+        "opciones": [
+          { "label": "Ninguna", "value": 1 },
+          { "label": "Al dolor", "value": 2 },
+          { "label": "A la voz", "value": 3 },
+          { "label": "Espontánea", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Respuesta verbal",
+        "opciones": [
+          { "label": "Ninguna", "value": 1 },
+          { "label": "Sonidos incomprensibles", "value": 2 },
+          { "label": "Palabras inapropiadas", "value": 3 },
+          { "label": "Confusa", "value": 4 },
+          { "label": "Orientada", "value": 5 }
+        ]
+      },
+      {
+        "nombre": "Respuesta motora",
+        "opciones": [
+          { "label": "Ninguna", "value": 1 },
+          { "label": "Extensión anormal (descerebración)", "value": 2 },
+          { "label": "Flexión anormal (decorticación)", "value": 3 },
+          { "label": "Retirada al dolor", "value": 4 },
+          { "label": "Localiza el dolor", "value": 5 },
+          { "label": "Obedece órdenes", "value": 6 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [3, 8],
+        "label": "Traumatismo craneoencefálico grave",
+        "color": "#DC2626",
+        "descripcion": "Coma profundo. Requiere intubación, ventilación mecánica y manejo en UCI. Evaluar necesidad de TAC urgente e intervención neuroquirúrgica."
+      },
+      {
+        "rango": [9, 12],
+        "label": "Traumatismo craneoencefálico moderado",
+        "color": "#EA580C",
+        "descripcion": "Alteración significativa del nivel de conciencia. Requiere monitorización estrecha, TAC cerebral y valoración neuroquirúrgica."
+      },
+      {
+        "rango": [13, 15],
+        "label": "Traumatismo craneoencefálico leve",
+        "color": "#16A34A",
+        "descripcion": "Nivel de conciencia conservado o levemente alterado. Observación clínica y seguimiento neurológico periódico."
+      }
+    ],
+    "rangoTotal": [3, 15],
+    "contextoClinico": "Utilizada en urgencias, UCI y servicios de neurología para evaluar el nivel de conciencia en pacientes con traumatismo craneoencefálico, ictus u otras lesiones neurológicas. Se debe reevaluar periódicamente para detectar cambios en el estado neurológico.",
+    "referencia": "Teasdale G, Jennett B. Assessment of coma and impaired consciousness: a practical scale. Lancet. 1974;2(7872):81-84."
+  },
+  {
+    "id": "scale_apgar",
+    "nombre": "Test de APGAR",
+    "abreviatura": "APGAR",
+    "descripcion": "Evaluación rápida del estado clínico del recién nacido al minuto y a los 5 minutos de vida, valorando cinco parámetros vitales.",
+    "tipo": "components",
+    "categoria": "neonatologia",
+    "componentes": [
+      {
+        "nombre": "Apariencia (color de piel)",
+        "opciones": [
+          { "label": "Cianosis generalizada o palidez", "value": 0 },
+          { "label": "Acrocianosis (cuerpo rosado, extremidades azules)", "value": 1 },
+          { "label": "Completamente rosado", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Pulso (frecuencia cardíaca)",
+        "opciones": [
+          { "label": "Ausente", "value": 0 },
+          { "label": "Menor de 100 lpm", "value": 1 },
+          { "label": "Mayor o igual a 100 lpm", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Gesticulación (irritabilidad refleja)",
+        "opciones": [
+          { "label": "Sin respuesta", "value": 0 },
+          { "label": "Mueca o llanto débil ante estímulo", "value": 1 },
+          { "label": "Llanto vigoroso, tos o estornudo", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Actividad (tono muscular)",
+        "opciones": [
+          { "label": "Flácido, sin tono", "value": 0 },
+          { "label": "Cierta flexión de extremidades", "value": 1 },
+          { "label": "Movimientos activos, buena flexión", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Respiración (esfuerzo respiratorio)",
+        "opciones": [
+          { "label": "Ausente", "value": 0 },
+          { "label": "Llanto débil, irregular o jadeo", "value": 1 },
+          { "label": "Llanto fuerte y vigoroso", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 3],
+        "label": "Depresión severa",
+        "color": "#DC2626",
+        "descripcion": "Requiere reanimación neonatal inmediata. Iniciar ventilación con presión positiva, valorar intubación y compresiones torácicas según protocolo NRP."
+      },
+      {
+        "rango": [4, 6],
+        "label": "Depresión moderada",
+        "color": "#EA580C",
+        "descripcion": "Requiere intervención activa: estimulación táctil, aspiración de secreciones, oxígeno suplementario y valorar ventilación con presión positiva."
+      },
+      {
+        "rango": [7, 10],
+        "label": "Normal",
+        "color": "#16A34A",
+        "descripcion": "Recién nacido en buenas condiciones. Continuar con cuidados rutinarios: secado, contacto piel con piel y lactancia materna precoz."
+      }
+    ],
+    "rangoTotal": [0, 10],
+    "contextoClinico": "Se aplica a todo recién nacido al minuto y a los 5 minutos de vida en la sala de partos. Si la puntuación a los 5 minutos es menor de 7, se repite cada 5 minutos hasta los 20 minutos.",
+    "referencia": "Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953;32(4):260-267."
+  },
+  {
+    "id": "scale_norton",
+    "nombre": "Escala de Norton",
+    "abreviatura": "Norton",
+    "descripcion": "Escala que evalúa el riesgo de desarrollar úlceras por presión (UPP) mediante cinco parámetros clínicos del paciente.",
+    "tipo": "components",
+    "categoria": "riesgo_ulceras",
+    "componentes": [
+      {
+        "nombre": "Estado físico general",
+        "opciones": [
+          { "label": "Muy malo", "value": 1 },
+          { "label": "Malo (pobre)", "value": 2 },
+          { "label": "Regular (mediano)", "value": 3 },
+          { "label": "Bueno", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Estado mental",
+        "opciones": [
+          { "label": "Estuporoso / comatoso", "value": 1 },
+          { "label": "Confuso", "value": 2 },
+          { "label": "Apático", "value": 3 },
+          { "label": "Alerta / orientado", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Actividad",
+        "opciones": [
+          { "label": "Encamado", "value": 1 },
+          { "label": "Sentado (silla de ruedas)", "value": 2 },
+          { "label": "Camina con ayuda", "value": 3 },
+          { "label": "Ambulante (independiente)", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Movilidad",
+        "opciones": [
+          { "label": "Inmóvil", "value": 1 },
+          { "label": "Muy limitada", "value": 2 },
+          { "label": "Ligeramente limitada", "value": 3 },
+          { "label": "Completa", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Incontinencia",
+        "opciones": [
+          { "label": "Urinaria y fecal", "value": 1 },
+          { "label": "Urinaria habitual", "value": 2 },
+          { "label": "Ocasional", "value": 3 },
+          { "label": "Ninguna (continente)", "value": 4 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [5, 9],
+        "label": "Riesgo muy alto",
+        "color": "#DC2626",
+        "descripcion": "Requiere medidas intensivas de prevención: colchón antiescaras, cambios posturales cada 2 horas, protección de prominencias óseas, nutrición hiperproteica y vigilancia continua de la piel."
+      },
+      {
+        "rango": [10, 12],
+        "label": "Riesgo alto",
+        "color": "#EA580C",
+        "descripcion": "Implementar protocolo de prevención completo: superficies especiales de manejo de presión (SEMP), cambios posturales frecuentes, hidratación cutánea y control nutricional."
+      },
+      {
+        "rango": [13, 14],
+        "label": "Riesgo medio",
+        "color": "#F59E0B",
+        "descripcion": "Medidas preventivas básicas: cambios posturales regulares, hidratación de la piel, vigilancia de zonas de riesgo y educación al paciente/familia."
+      },
+      {
+        "rango": [15, 20],
+        "label": "Riesgo mínimo / sin riesgo",
+        "color": "#16A34A",
+        "descripcion": "Bajo riesgo de úlceras por presión. Mantener medidas higiénicas habituales y reevaluar si cambia la situación clínica del paciente."
+      }
+    ],
+    "rangoTotal": [5, 20],
+    "contextoClinico": "Aplicar al ingreso hospitalario y reevaluar periódicamente en pacientes encamados, con movilidad reducida o en unidades de larga estancia. Es más sencilla que la escala de Braden pero menos específica.",
+    "referencia": "Norton D, McLaren R, Exton-Smith AN. An Investigation of Geriatric Nursing Problems in Hospital. London: Churchill Livingstone; 1962."
+  },
+  {
+    "id": "scale_braden",
+    "nombre": "Escala de Braden",
+    "abreviatura": "Braden",
+    "descripcion": "Escala de valoración del riesgo de úlceras por presión que evalúa seis subescalas. A menor puntuación, mayor riesgo.",
+    "tipo": "components",
+    "categoria": "riesgo_ulceras",
+    "componentes": [
+      {
+        "nombre": "Percepción sensorial",
+        "opciones": [
+          { "label": "Completamente limitada: no responde a estímulos dolorosos", "value": 1 },
+          { "label": "Muy limitada: solo responde a estímulos dolorosos", "value": 2 },
+          { "label": "Ligeramente limitada: responde a órdenes verbales pero no siempre comunica molestias", "value": 3 },
+          { "label": "Sin limitaciones: responde y comunica adecuadamente", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Humedad (exposición de la piel)",
+        "opciones": [
+          { "label": "Constantemente húmeda: la piel permanece húmeda casi siempre", "value": 1 },
+          { "label": "Muy húmeda: la piel está frecuentemente húmeda", "value": 2 },
+          { "label": "Ocasionalmente húmeda: la piel está húmeda a veces", "value": 3 },
+          { "label": "Raramente húmeda: la piel está seca habitualmente", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Actividad",
+        "opciones": [
+          { "label": "Encamado: confinado en cama", "value": 1 },
+          { "label": "En silla: capacidad de deambulación muy limitada", "value": 2 },
+          { "label": "Deambula ocasionalmente: con o sin ayuda, distancias cortas", "value": 3 },
+          { "label": "Deambula frecuentemente: fuera de la habitación al menos 2 veces/día", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Movilidad",
+        "opciones": [
+          { "label": "Completamente inmóvil: no realiza ningún cambio de posición", "value": 1 },
+          { "label": "Muy limitada: realiza cambios de posición mínimos ocasionalmente", "value": 2 },
+          { "label": "Ligeramente limitada: realiza cambios frecuentes aunque pequeños", "value": 3 },
+          { "label": "Sin limitaciones: realiza cambios mayores y frecuentes", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Nutrición",
+        "opciones": [
+          { "label": "Muy pobre: nunca come una comida completa, ingesta proteica inadecuada", "value": 1 },
+          { "label": "Probablemente inadecuada: rara vez come una comida completa", "value": 2 },
+          { "label": "Adecuada: come más de la mitad de las comidas, ingesta proteica adecuada", "value": 3 },
+          { "label": "Excelente: come la mayoría de las comidas, nunca rechaza alimentos", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Fricción y cizallamiento",
+        "opciones": [
+          { "label": "Problema: requiere asistencia máxima para moverse, deslizamiento frecuente", "value": 1 },
+          { "label": "Problema potencial: se mueve con dificultad, necesita ayuda mínima", "value": 2 },
+          { "label": "Sin problema aparente: se mueve de forma independiente, buen control muscular", "value": 3 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [6, 9],
+        "label": "Riesgo muy alto",
+        "color": "#DC2626",
+        "descripcion": "Máxima prioridad preventiva. Superficie especial de apoyo dinámica, cambios posturales cada 2 horas, protección de prominencias óseas, suplementación nutricional y cuidados intensivos de la piel."
+      },
+      {
+        "rango": [10, 12],
+        "label": "Riesgo alto",
+        "color": "#EA580C",
+        "descripcion": "Protocolo de prevención intensivo: colchón antiescaras, cambios posturales cada 2-3 horas, ácidos grasos hiperoxigenados en zonas de riesgo y valoración nutricional."
+      },
+      {
+        "rango": [13, 14],
+        "label": "Riesgo moderado",
+        "color": "#F59E0B",
+        "descripcion": "Medidas preventivas activas: cambios posturales regulares, hidratación cutánea, vigilancia de zonas de presión y educación al paciente/cuidador."
+      },
+      {
+        "rango": [15, 18],
+        "label": "Riesgo bajo",
+        "color": "#16A34A",
+        "descripcion": "Medidas preventivas básicas: cuidados habituales de la piel, movilización activa y reevaluación periódica."
+      },
+      {
+        "rango": [19, 23],
+        "label": "Sin riesgo significativo",
+        "color": "#16A34A",
+        "descripcion": "No precisa medidas especiales de prevención. Reevaluar si cambia la situación clínica del paciente."
+      }
+    ],
+    "rangoTotal": [6, 23],
+    "contextoClinico": "Escala de referencia para la prevención de úlceras por presión. Aplicar al ingreso y reevaluar cada 24-72 horas en pacientes hospitalizados, o semanalmente en residencias y atención domiciliaria.",
+    "referencia": "Bergstrom N, Braden BJ, Laguzza A, Holman V. The Braden Scale for predicting pressure sore risk. Nurs Res. 1987;36(4):205-210."
+  },
+  {
+    "id": "scale_news2",
+    "nombre": "National Early Warning Score 2",
+    "abreviatura": "NEWS2",
+    "descripcion": "Sistema de puntuación de alerta temprana que evalúa seis parámetros fisiológicos para identificar precozmente el deterioro clínico del paciente adulto.",
+    "tipo": "components",
+    "categoria": "sepsis",
+    "componentes": [
+      {
+        "nombre": "Frecuencia respiratoria (rpm)",
+        "opciones": [
+          { "label": "12-20 rpm", "value": 0 },
+          { "label": "9-11 rpm", "value": 1 },
+          { "label": "21-24 rpm", "value": 2 },
+          { "label": "≤8 o ≥25 rpm", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Saturación de oxígeno (SpO₂)",
+        "opciones": [
+          { "label": "≥96%", "value": 0 },
+          { "label": "94-95%", "value": 1 },
+          { "label": "92-93%", "value": 2 },
+          { "label": "≤91%", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Presión arterial sistólica (mmHg)",
+        "opciones": [
+          { "label": "111-219 mmHg", "value": 0 },
+          { "label": "101-110 mmHg", "value": 1 },
+          { "label": "91-100 mmHg", "value": 2 },
+          { "label": "≤90 o ≥220 mmHg", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Frecuencia cardíaca (lpm)",
+        "opciones": [
+          { "label": "51-90 lpm", "value": 0 },
+          { "label": "41-50 o 91-110 lpm", "value": 1 },
+          { "label": "111-130 lpm", "value": 2 },
+          { "label": "≤40 o ≥131 lpm", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Nivel de conciencia (ACVPU)",
+        "opciones": [
+          { "label": "Alerta (A)", "value": 0 },
+          { "label": "Confusión de nueva aparición (C)", "value": 3 },
+          { "label": "Responde a voz (V)", "value": 3 },
+          { "label": "Responde a dolor (P)", "value": 3 },
+          { "label": "No responde (U)", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Temperatura (°C)",
+        "opciones": [
+          { "label": "36.1-38.0 °C", "value": 0 },
+          { "label": "35.1-36.0 °C o 38.1-39.0 °C", "value": 1 },
+          { "label": "≥39.1 °C", "value": 2 },
+          { "label": "≤35.0 °C", "value": 3 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 4],
+        "label": "Riesgo clínico bajo",
+        "color": "#16A34A",
+        "descripcion": "Monitorización rutinaria. Reevaluar cada 4-6 horas como mínimo. Si puntuación individual de 3 en un parámetro, aumentar frecuencia de monitorización."
+      },
+      {
+        "rango": [5, 6],
+        "label": "Riesgo clínico medio",
+        "color": "#F59E0B",
+        "descripcion": "Respuesta clínica urgente. Avisar al equipo médico con competencia en atención aguda. Monitorización cada hora como mínimo."
+      },
+      {
+        "rango": [7, 18],
+        "label": "Riesgo clínico alto",
+        "color": "#DC2626",
+        "descripcion": "Respuesta clínica emergente. Activar equipo de respuesta rápida o equipo de cuidados críticos. Monitorización continua y considerar traslado a UCI."
+      }
+    ],
+    "rangoTotal": [0, 18],
+    "contextoClinico": "Herramienta estandarizada para la detección precoz del deterioro clínico en pacientes adultos hospitalizados. Se utiliza en plantas de hospitalización, urgencias y servicios de emergencia prehospitalaria.",
+    "referencia": "Royal College of Physicians. National Early Warning Score (NEWS) 2: Standardising the assessment of acute-illness severity in the NHS. London: RCP; 2017."
+  },
+  {
+    "id": "scale_aldrete",
+    "nombre": "Escala de Aldrete modificada",
+    "abreviatura": "Aldrete",
+    "descripcion": "Escala de valoración postanestésica que determina si un paciente puede ser dado de alta de la Unidad de Recuperación Postanestésica (URPA).",
+    "tipo": "components",
+    "categoria": "postanestesia",
+    "componentes": [
+      {
+        "nombre": "Actividad muscular",
+        "opciones": [
+          { "label": "Incapaz de mover extremidades", "value": 0 },
+          { "label": "Mueve 2 extremidades voluntariamente", "value": 1 },
+          { "label": "Mueve 4 extremidades voluntariamente", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Respiración",
+        "opciones": [
+          { "label": "Apnea", "value": 0 },
+          { "label": "Disnea, respiración limitada o taquipnea", "value": 1 },
+          { "label": "Capaz de respirar profundamente y toser libremente", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Circulación (PA sistólica)",
+        "opciones": [
+          { "label": "PA sistólica ±50 mmHg del valor preanestésico", "value": 0 },
+          { "label": "PA sistólica ±20-49 mmHg del valor preanestésico", "value": 1 },
+          { "label": "PA sistólica ±20 mmHg del valor preanestésico", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Conciencia",
+        "opciones": [
+          { "label": "No responde", "value": 0 },
+          { "label": "Se despierta al llamarlo", "value": 1 },
+          { "label": "Completamente despierto y orientado", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Saturación de oxígeno (SpO₂)",
+        "opciones": [
+          { "label": "SpO₂ <90% con O₂ suplementario", "value": 0 },
+          { "label": "SpO₂ 90-91% con O₂ suplementario", "value": 1 },
+          { "label": "SpO₂ ≥92% con aire ambiente", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 5],
+        "label": "No apto para alta de URPA",
+        "color": "#DC2626",
+        "descripcion": "El paciente requiere vigilancia continua en la URPA. Mantener monitorización hemodinámica y respiratoria estricta. Reevaluar cada 15 minutos."
+      },
+      {
+        "rango": [6, 7],
+        "label": "Vigilancia estrecha",
+        "color": "#F59E0B",
+        "descripcion": "El paciente aún no cumple criterios óptimos de alta. Continuar vigilancia en URPA y reevaluar cada 15-30 minutos hasta alcanzar puntuación ≥8."
+      },
+      {
+        "rango": [8, 10],
+        "label": "Apto para alta de URPA",
+        "color": "#16A34A",
+        "descripcion": "El paciente cumple criterios de alta de la Unidad de Recuperación Postanestésica. Puede ser trasladado a planta con indicaciones postoperatorias."
+      }
+    ],
+    "rangoTotal": [0, 10],
+    "contextoClinico": "Se aplica en la Unidad de Recuperación Postanestésica (URPA) para evaluar la recuperación del paciente tras anestesia general o regional. Se valora al ingreso en URPA y cada 15 minutos hasta el alta.",
+    "referencia": "Aldrete JA. The post-anesthesia recovery score revisited. J Clin Anesth. 1995;7(1):89-91."
+  },
+  {
+    "id": "scale_nihss",
+    "nombre": "Escala NIHSS simplificada",
+    "abreviatura": "NIHSS",
+    "descripcion": "Versión simplificada de la escala del National Institutes of Health Stroke Scale para la valoración rápida de la gravedad del ictus.",
+    "tipo": "components",
+    "categoria": "neurologia",
+    "componentes": [
+      {
+        "nombre": "Nivel de conciencia",
+        "opciones": [
+          { "label": "Alerta, responde correctamente", "value": 0 },
+          { "label": "Somnoliento, responde con estimulación menor", "value": 1 },
+          { "label": "Estuporoso, requiere estimulación repetida", "value": 2 },
+          { "label": "Coma, no responde o solo reflejos", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Mirada conjugada",
+        "opciones": [
+          { "label": "Normal", "value": 0 },
+          { "label": "Paresia parcial de la mirada", "value": 1 },
+          { "label": "Desviación forzada de la mirada", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Campo visual",
+        "opciones": [
+          { "label": "Sin déficit campimétrico", "value": 0 },
+          { "label": "Hemianopsia parcial", "value": 1 },
+          { "label": "Hemianopsia completa", "value": 2 },
+          { "label": "Ceguera bilateral", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Paresia facial",
+        "opciones": [
+          { "label": "Movimiento normal y simétrico", "value": 0 },
+          { "label": "Paresia menor (asimetría al sonreír)", "value": 1 },
+          { "label": "Paresia parcial (parálisis facial inferior)", "value": 2 },
+          { "label": "Parálisis completa (sin movimiento facial)", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Motor miembros superiores",
+        "opciones": [
+          { "label": "Sin claudicación (mantiene 10 seg)", "value": 0 },
+          { "label": "Claudicación (cae antes de 10 seg sin llegar a cama)", "value": 1 },
+          { "label": "Esfuerzo contra gravedad pero no mantiene", "value": 2 },
+          { "label": "Sin esfuerzo contra gravedad, cae", "value": 3 },
+          { "label": "Sin movimiento", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Motor miembros inferiores",
+        "opciones": [
+          { "label": "Sin claudicación (mantiene 5 seg)", "value": 0 },
+          { "label": "Claudicación (cae antes de 5 seg sin llegar a cama)", "value": 1 },
+          { "label": "Esfuerzo contra gravedad pero no mantiene", "value": 2 },
+          { "label": "Sin esfuerzo contra gravedad, cae", "value": 3 },
+          { "label": "Sin movimiento", "value": 4 }
+        ]
+      },
+      {
+        "nombre": "Lenguaje",
+        "opciones": [
+          { "label": "Normal, sin afasia", "value": 0 },
+          { "label": "Afasia leve a moderada (se comunica con dificultad)", "value": 1 },
+          { "label": "Afasia severa (expresión fragmentaria)", "value": 2 },
+          { "label": "Afasia global o mutismo", "value": 3 }
+        ]
+      },
+      {
+        "nombre": "Disartria",
+        "opciones": [
+          { "label": "Articulación normal", "value": 0 },
+          { "label": "Disartria leve a moderada (se entiende con dificultad)", "value": 1 },
+          { "label": "Disartria severa o anartria (ininteligible o mudo)", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 4],
+        "label": "Ictus menor",
+        "color": "#16A34A",
+        "descripcion": "Déficit neurológico leve. Valorar tratamiento según protocolo de ictus minor. Monitorización neurológica y prevención secundaria."
+      },
+      {
+        "rango": [5, 15],
+        "label": "Ictus moderado",
+        "color": "#F59E0B",
+        "descripcion": "Déficit neurológico moderado. Candidato a tratamiento de reperfusión (fibrinólisis IV o trombectomía mecánica) si está dentro de ventana terapéutica. Ingreso en Unidad de Ictus."
+      },
+      {
+        "rango": [16, 20],
+        "label": "Ictus moderado-grave",
+        "color": "#EA580C",
+        "descripcion": "Déficit neurológico importante. Considerar trombectomía mecánica. Manejo en Unidad de Ictus o UCI. Alto riesgo de complicaciones."
+      },
+      {
+        "rango": [21, 24],
+        "label": "Ictus grave",
+        "color": "#DC2626",
+        "descripcion": "Déficit neurológico severo con pronóstico grave. Manejo intensivo, control de complicaciones y decisiones sobre limitación del esfuerzo terapéutico."
+      }
+    ],
+    "rangoTotal": [0, 24],
+    "contextoClinico": "Se aplica en urgencias ante sospecha de ictus para cuantificar la gravedad del déficit neurológico y guiar las decisiones de tratamiento de reperfusión. Se reevalúa a las 24 horas y al alta.",
+    "referencia": "Brott T, Adams HP Jr, Olinger CP, et al. Measurements of acute cerebral infarction: a clinical examination scale. Stroke. 1989;20(7):864-870."
+  },
+  {
+    "id": "scale_rass",
+    "nombre": "Escala de Agitación-Sedación de Richmond",
+    "abreviatura": "RASS",
+    "descripcion": "Escala de 10 puntos que valora el nivel de sedación y agitación del paciente crítico, desde sedación profunda hasta agitación extrema.",
+    "tipo": "selector",
+    "categoria": "sedacion",
+    "componentes": [
+      {
+        "nombre": "Nivel de sedación-agitación",
+        "opciones": [
+          { "label": "No despertable: sin respuesta a la voz ni a la estimulación física", "value": -5 },
+          { "label": "Sedación profunda: sin respuesta a la voz, movimiento o apertura ocular a la estimulación física", "value": -4 },
+          { "label": "Sedación moderada: movimiento o apertura ocular a la voz, sin contacto visual", "value": -3 },
+          { "label": "Sedación ligera: se despierta brevemente a la voz, contacto visual <10 seg", "value": -2 },
+          { "label": "Somnoliento: no completamente alerta, pero despierta con la voz, contacto visual >10 seg", "value": -1 },
+          { "label": "Alerta y tranquilo", "value": 0 },
+          { "label": "Inquieto: ansioso o aprensivo, sin movimientos agresivos o vigorosos", "value": 1 },
+          { "label": "Agitado: movimientos frecuentes sin propósito, lucha con el ventilador", "value": 2 },
+          { "label": "Muy agitado: se retira tubos o catéteres, agresivo", "value": 3 },
+          { "label": "Combativo: violento, peligro inmediato para el personal", "value": 4 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [-5, -5],
+        "label": "No despertable",
+        "color": "#DC2626",
+        "descripcion": "Sedación excesiva. Valorar reducir o suspender sedantes. Evaluar causas orgánicas de la no respuesta. Monitorización neurológica."
+      },
+      {
+        "rango": [-4, -4],
+        "label": "Sedación profunda",
+        "color": "#DC2626",
+        "descripcion": "Solo indicada en situaciones específicas (SDRA severo, estatus epiléptico). Valorar necesidad de mantener este nivel o reducir sedación."
+      },
+      {
+        "rango": [-3, -3],
+        "label": "Sedación moderada",
+        "color": "#EA580C",
+        "descripcion": "Nivel que puede ser adecuado en las primeras horas de ventilación mecánica o en procedimientos invasivos. Evaluar transición a sedación más ligera."
+      },
+      {
+        "rango": [-2, -1],
+        "label": "Sedación ligera",
+        "color": "#F59E0B",
+        "descripcion": "Nivel objetivo habitual de sedación en UCI. El paciente puede colaborar y se facilita el destete de la ventilación mecánica."
+      },
+      {
+        "rango": [0, 0],
+        "label": "Alerta y tranquilo",
+        "color": "#16A34A",
+        "descripcion": "Estado óptimo. El paciente está despierto, tranquilo y cooperador. Es el objetivo ideal de sedación en la mayoría de pacientes."
+      },
+      {
+        "rango": [1, 1],
+        "label": "Inquieto",
+        "color": "#F59E0B",
+        "descripcion": "Inquietud leve. Identificar y tratar posibles causas (dolor, ansiedad, delirium, falta de sueño). Valorar medidas no farmacológicas."
+      },
+      {
+        "rango": [2, 2],
+        "label": "Agitado",
+        "color": "#EA580C",
+        "descripcion": "Agitación moderada. Buscar causas reversibles (dolor, hipoxia, retención urinaria, abstinencia). Considerar tratamiento farmacológico si no hay causa tratable."
+      },
+      {
+        "rango": [3, 4],
+        "label": "Muy agitado / Combativo",
+        "color": "#DC2626",
+        "descripcion": "Agitación severa con riesgo para el paciente y personal. Requiere intervención farmacológica inmediata y medidas de seguridad. Descartar causas orgánicas urgentes."
+      }
+    ],
+    "rangoTotal": [-5, 4],
+    "contextoClinico": "Escala de referencia en UCI para monitorizar el nivel de sedación-agitación del paciente crítico. Se evalúa junto con la escala CAM-ICU para el diagnóstico de delirium. Objetivo habitual: RASS entre -2 y 0.",
+    "referencia": "Sessler CN, Gosnell MS, Grap MJ, et al. The Richmond Agitation-Sedation Scale: validity and reliability in adult intensive care unit patients. Am J Respir Crit Care Med. 2002;166(10):1338-1344."
+  },
+  {
+    "id": "scale_eva",
+    "nombre": "Escala Visual Analógica del Dolor",
+    "abreviatura": "EVA",
+    "descripcion": "Escala unidimensional que permite al paciente cuantificar la intensidad de su dolor en una línea de 0 (sin dolor) a 10 (peor dolor imaginable).",
+    "tipo": "selector",
+    "categoria": "dolor",
+    "componentes": [
+      {
+        "nombre": "Intensidad del dolor",
+        "opciones": [
+          { "label": "Sin dolor", "value": 0 },
+          { "label": "Dolor muy leve, apenas perceptible", "value": 1 },
+          { "label": "Dolor leve, molestia menor", "value": 2 },
+          { "label": "Dolor leve, tolerable y no interfiere con actividades", "value": 3 },
+          { "label": "Dolor moderado, interfiere con algunas actividades", "value": 4 },
+          { "label": "Dolor moderado, interfiere con muchas actividades", "value": 5 },
+          { "label": "Dolor moderado-severo, interfiere con la vida diaria", "value": 6 },
+          { "label": "Dolor severo, dificulta la concentración", "value": 7 },
+          { "label": "Dolor muy severo, afecta severamente las actividades", "value": 8 },
+          { "label": "Dolor insoportable, requiere atención inmediata", "value": 9 },
+          { "label": "Peor dolor imaginable, completamente incapacitante", "value": 10 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 0],
+        "label": "Sin dolor",
+        "color": "#16A34A",
+        "descripcion": "El paciente no refiere dolor. Mantener reevaluación periódica."
+      },
+      {
+        "rango": [1, 3],
+        "label": "Dolor leve",
+        "color": "#16A34A",
+        "descripcion": "Dolor tolerable que generalmente no requiere analgesia o puede tratarse con analgésicos no opioides (paracetamol, AINEs). Primer escalón de la OMS."
+      },
+      {
+        "rango": [4, 6],
+        "label": "Dolor moderado",
+        "color": "#F59E0B",
+        "descripcion": "Requiere tratamiento analgésico activo. Segundo escalón de la OMS: analgésicos no opioides ± opioides débiles (tramadol, codeína). Reevaluar en 30-60 minutos."
+      },
+      {
+        "rango": [7, 10],
+        "label": "Dolor severo",
+        "color": "#DC2626",
+        "descripcion": "Dolor intenso que requiere intervención urgente. Tercer escalón de la OMS: opioides potentes (morfina, fentanilo). Reevaluar en 15-30 minutos tras administración."
+      }
+    ],
+    "rangoTotal": [0, 10],
+    "contextoClinico": "Quinta constante vital. Se aplica en toda valoración de enfermería y seguimiento del paciente con dolor. Reevaluar tras cada intervención analgésica para verificar eficacia del tratamiento.",
+    "referencia": "Huskisson EC. Measurement of pain. Lancet. 1974;2(7889):1127-1131."
+  },
+  {
+    "id": "scale_mallampati",
+    "nombre": "Clasificación de Mallampati",
+    "abreviatura": "Mallampati",
+    "descripcion": "Clasificación de la vía aérea que predice la dificultad de intubación orotraqueal según la visualización de las estructuras faríngeas con la boca abierta.",
+    "tipo": "selector",
+    "categoria": "via_aerea",
+    "componentes": [
+      {
+        "nombre": "Clase de Mallampati",
+        "opciones": [
+          { "label": "Clase I: paladar blando, úvula, fauces y pilares visibles completamente", "value": 1 },
+          { "label": "Clase II: paladar blando, úvula y fauces visibles", "value": 2 },
+          { "label": "Clase III: solo paladar blando y base de úvula visibles", "value": 3 },
+          { "label": "Clase IV: solo paladar duro visible, paladar blando no visible", "value": 4 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [1, 1],
+        "label": "Clase I - Intubación fácil",
+        "color": "#16A34A",
+        "descripcion": "Visualización completa de las estructuras. Se prevé intubación sin dificultad con laringoscopia directa. Cormack-Lehane grado I esperado."
+      },
+      {
+        "rango": [2, 2],
+        "label": "Clase II - Intubación probable sin dificultad",
+        "color": "#16A34A",
+        "descripcion": "Buena visualización de estructuras. Intubación probablemente exitosa con laringoscopia directa convencional."
+      },
+      {
+        "rango": [3, 3],
+        "label": "Clase III - Intubación posiblemente difícil",
+        "color": "#F59E0B",
+        "descripcion": "Visualización limitada. Mayor probabilidad de intubación difícil. Tener preparado dispositivo supraglótico y videolaringoscopio como alternativa."
+      },
+      {
+        "rango": [4, 4],
+        "label": "Clase IV - Intubación previsiblemente difícil",
+        "color": "#DC2626",
+        "descripcion": "No se visualizan estructuras faríngeas. Alto riesgo de intubación difícil. Planificar vía aérea difícil: fibroscopio, videolaringoscopio, considerar intubación con paciente despierto."
+      }
+    ],
+    "rangoTotal": [1, 4],
+    "contextoClinico": "Se valora en la consulta preanestésica y antes de cualquier procedimiento que requiera intubación orotraqueal. Debe combinarse con otros predictores de vía aérea difícil (distancia tiromentoniana, apertura oral, movilidad cervical).",
+    "referencia": "Mallampati SR, Gatt SP, Gugino LD, et al. A clinical sign to predict difficult tracheal intubation: a prospective study. Can Anaesth Soc J. 1985;32(4):429-434."
+  },
+  {
+    "id": "scale_asa",
+    "nombre": "Clasificación ASA del Estado Físico",
+    "abreviatura": "ASA",
+    "descripcion": "Sistema de clasificación de la American Society of Anesthesiologists que evalúa el estado físico del paciente antes de la cirugía para estimar el riesgo anestésico.",
+    "tipo": "selector",
+    "categoria": "asa",
+    "componentes": [
+      {
+        "nombre": "Estado físico ASA",
+        "opciones": [
+          { "label": "ASA I: Paciente sano, sin patología previa", "value": 1 },
+          { "label": "ASA II: Enfermedad sistémica leve, sin limitación funcional (p. ej., HTA controlada, DM controlada, obesidad leve, tabaquismo)", "value": 2 },
+          { "label": "ASA III: Enfermedad sistémica grave con limitación funcional (p. ej., DM con complicaciones, ICC compensada, EPOC moderada, obesidad mórbida)", "value": 3 },
+          { "label": "ASA IV: Enfermedad sistémica grave que amenaza la vida (p. ej., ICC descompensada, insuficiencia renal en diálisis, sepsis, IAM reciente)", "value": 4 },
+          { "label": "ASA V: Paciente moribundo que no se espera que sobreviva sin la intervención (p. ej., aneurisma aórtico roto, TCE con herniación, fallo multiorgánico)", "value": 5 },
+          { "label": "ASA VI: Paciente con muerte cerebral declarada, donante de órganos", "value": 6 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [1, 1],
+        "label": "ASA I - Paciente sano",
+        "color": "#16A34A",
+        "descripcion": "Sin comorbilidades. Riesgo anestésico mínimo. No fumador, no o mínimo consumo de alcohol."
+      },
+      {
+        "rango": [2, 2],
+        "label": "ASA II - Enfermedad sistémica leve",
+        "color": "#16A34A",
+        "descripcion": "Enfermedad leve sin limitación funcional significativa. Incluye fumador activo, bebedor social, embarazo, obesidad (30<IMC<40), HTA o DM bien controladas."
+      },
+      {
+        "rango": [3, 3],
+        "label": "ASA III - Enfermedad sistémica grave",
+        "color": "#F59E0B",
+        "descripcion": "Limitación funcional sustantiva. Riesgo anestésico moderado. Puede requerir optimización preoperatoria y planificación anestésica específica."
+      },
+      {
+        "rango": [4, 4],
+        "label": "ASA IV - Amenaza vital constante",
+        "color": "#EA580C",
+        "descripcion": "Alto riesgo anestésico y quirúrgico. Requiere valoración exhaustiva y optimización preoperatoria. Discusión riesgo-beneficio con paciente y familia."
+      },
+      {
+        "rango": [5, 5],
+        "label": "ASA V - Paciente moribundo",
+        "color": "#DC2626",
+        "descripcion": "No se espera supervivencia sin cirugía. Riesgo extremo. La cirugía es el último recurso terapéutico."
+      },
+      {
+        "rango": [6, 6],
+        "label": "ASA VI - Muerte cerebral",
+        "color": "#DC2626",
+        "descripcion": "Paciente con muerte cerebral declarada cuya cirugía es para la extracción de órganos para donación."
+      }
+    ],
+    "rangoTotal": [1, 6],
+    "contextoClinico": "Se asigna en la consulta preanestésica a todo paciente que va a ser sometido a un procedimiento anestésico. Se añade el sufijo 'E' si la cirugía es de emergencia (p. ej., ASA III-E).",
+    "referencia": "American Society of Anesthesiologists. ASA Physical Status Classification System. Last approved October 2019."
+  },
+  {
+    "id": "scale_wells",
+    "nombre": "Escala de Wells para TVP/TEP",
+    "abreviatura": "Wells",
+    "descripcion": "Modelo de predicción clínica que estima la probabilidad pretest de trombosis venosa profunda (TVP) o tromboembolismo pulmonar (TEP) mediante criterios clínicos ponderados.",
+    "tipo": "checklist",
+    "categoria": "trombosis",
+    "componentes": [
+      {
+        "nombre": "Cáncer activo (tratamiento en curso, en los últimos 6 meses o paliativo)",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Parálisis, paresia o inmovilización reciente de MMII",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Encamamiento >3 días o cirugía mayor en las últimas 12 semanas",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Dolor localizado a lo largo del sistema venoso profundo",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Edema en toda la pierna",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Hinchazón de pantorrilla >3 cm respecto a la contralateral",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Edema con fóvea (mayor en la pierna sintomática)",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Venas superficiales colaterales (no varicosas)",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "TVP previa documentada",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Diagnóstico alternativo tan o más probable que TVP",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí (resta puntos)", "value": -2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [-2, 0],
+        "label": "Baja probabilidad",
+        "color": "#16A34A",
+        "descripcion": "Probabilidad de TVP ~5%. Solicitar dímero D: si es negativo, se descarta TVP. Si es positivo, realizar ecografía Doppler venosa."
+      },
+      {
+        "rango": [1, 2],
+        "label": "Probabilidad moderada",
+        "color": "#F59E0B",
+        "descripcion": "Probabilidad de TVP ~17%. Solicitar dímero D y ecografía Doppler venosa. Si dímero D negativo con baja sospecha, se puede descartar."
+      },
+      {
+        "rango": [3, 9],
+        "label": "Alta probabilidad",
+        "color": "#DC2626",
+        "descripcion": "Probabilidad de TVP ~53%. Realizar ecografía Doppler venosa de forma urgente. Considerar inicio de anticoagulación empírica mientras se confirma diagnóstico."
+      }
+    ],
+    "rangoTotal": [-2, 9],
+    "contextoClinico": "Se aplica en urgencias ante sospecha clínica de trombosis venosa profunda para estratificar el riesgo y guiar las pruebas diagnósticas. Debe combinarse con dímero D y ecografía Doppler según el resultado.",
+    "referencia": "Wells PS, Anderson DR, Bormanis J, et al. Value of assessment of pretest probability of deep-vein thrombosis in clinical management. Lancet. 1997;350(9094):1795-1798."
+  },
+  {
+    "id": "scale_qsofa",
+    "nombre": "Quick SOFA",
+    "abreviatura": "qSOFA",
+    "descripcion": "Herramienta de cribado rápido para identificar pacientes con sospecha de infección que tienen alto riesgo de mala evolución (sepsis) fuera de la UCI.",
+    "tipo": "checklist",
+    "categoria": "sepsis",
+    "componentes": [
+      {
+        "nombre": "Frecuencia respiratoria ≥22 rpm",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Presión arterial sistólica ≤100 mmHg",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      },
+      {
+        "nombre": "Alteración del nivel de conciencia (GCS <15)",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 1 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 1],
+        "label": "Bajo riesgo",
+        "color": "#16A34A",
+        "descripcion": "Bajo riesgo de mala evolución. No descarta sepsis. Continuar vigilancia clínica y reevaluar si hay deterioro. Completar estudio si hay sospecha clínica de infección."
+      },
+      {
+        "rango": [2, 3],
+        "label": "Alto riesgo de sepsis",
+        "color": "#DC2626",
+        "descripcion": "Alto riesgo de mortalidad hospitalaria. Activar protocolo de sepsis: hemocultivos, lactato sérico, antibioterapia empírica precoz y fluidoterapia agresiva en la primera hora. Valorar ingreso en UCI."
+      }
+    ],
+    "rangoTotal": [0, 3],
+    "contextoClinico": "Herramienta de cribado a pie de cama para identificar rápidamente pacientes con sospecha de infección y riesgo de sepsis fuera de la UCI. No es diagnóstica, sino una señal de alarma para iniciar evaluación y tratamiento urgente.",
+    "referencia": "Singer M, Deutschman CS, Seymour CW, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810."
+  },
+  {
+    "id": "scale_morse",
+    "nombre": "Escala de Caídas de Morse",
+    "abreviatura": "MFS",
+    "descripcion": "Escala de valoración del riesgo de caídas en pacientes hospitalizados. Evalúa seis factores de riesgo para identificar pacientes que requieren medidas preventivas.",
+    "tipo": "components",
+    "categoria": "caidas",
+    "componentes": [
+      {
+        "nombre": "Antecedente de caídas (últimos 3 meses)",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 25 }
+        ]
+      },
+      {
+        "nombre": "Diagnóstico secundario",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 15 }
+        ]
+      },
+      {
+        "nombre": "Ayuda para deambulación",
+        "opciones": [
+          { "label": "Ninguna / reposo en cama / ayuda de enfermería", "value": 0 },
+          { "label": "Muletas / bastón / andador", "value": 15 },
+          { "label": "Se apoya en muebles", "value": 30 }
+        ]
+      },
+      {
+        "nombre": "Terapia intravenosa / dispositivo IV",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 20 }
+        ]
+      },
+      {
+        "nombre": "Marcha",
+        "opciones": [
+          { "label": "Normal / reposo en cama / silla de ruedas", "value": 0 },
+          { "label": "Débil", "value": 10 },
+          { "label": "Alterada / tambaleante", "value": 20 }
+        ]
+      },
+      {
+        "nombre": "Estado mental",
+        "opciones": [
+          { "label": "Consciente de sus limitaciones", "value": 0 },
+          { "label": "Sobrevalora sus capacidades / olvida limitaciones", "value": 15 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 24],
+        "label": "Riesgo bajo",
+        "color": "#16A34A",
+        "descripcion": "Medidas estándar de seguridad: cama en posición baja, frenos activados, luz nocturna, timbre al alcance."
+      },
+      {
+        "rango": [25, 44],
+        "label": "Riesgo moderado",
+        "color": "#F59E0B",
+        "descripcion": "Implementar protocolo de prevención: identificación visual (pulsera/cartel), acompañamiento en deambulación, revisión de medicación, calzado antideslizante."
+      },
+      {
+        "rango": [45, 125],
+        "label": "Riesgo alto",
+        "color": "#DC2626",
+        "descripcion": "Todas las medidas anteriores más: valoración frecuente, posible sensor de movimiento, fisioterapia, revisión de fármacos de riesgo (sedantes, hipotensores, diuréticos). Considerar contención si agitación."
+      }
+    ],
+    "rangoTotal": [0, 125],
+    "contextoClinico": "Escala más utilizada internacionalmente para valorar el riesgo de caídas en pacientes hospitalizados. Debe reevaluarse al ingreso, en cada turno y ante cambios en el estado del paciente. Las caídas son un indicador de calidad asistencial.",
+    "referencia": "Morse JM, Morse RM, Tylko SJ. Development of a scale to identify the fall-prone patient. Canadian Journal on Aging. 1989;8(4):366-377."
+  },
+  {
+    "id": "scale_barthel",
+    "nombre": "Índice de Barthel",
+    "abreviatura": "IB",
+    "descripcion": "Escala de valoración funcional que mide la capacidad para realizar actividades básicas de la vida diaria (ABVD). Evalúa el grado de independencia del paciente.",
+    "tipo": "components",
+    "categoria": "funcional",
+    "componentes": [
+      {
+        "nombre": "Alimentación",
+        "opciones": [
+          { "label": "Incapaz", "value": 0 },
+          { "label": "Necesita ayuda (cortar, extender mantequilla)", "value": 5 },
+          { "label": "Independiente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Baño",
+        "opciones": [
+          { "label": "Dependiente", "value": 0 },
+          { "label": "Independiente", "value": 5 }
+        ]
+      },
+      {
+        "nombre": "Aseo personal",
+        "opciones": [
+          { "label": "Necesita ayuda", "value": 0 },
+          { "label": "Independiente (cara, pelo, dientes, afeitado)", "value": 5 }
+        ]
+      },
+      {
+        "nombre": "Vestirse",
+        "opciones": [
+          { "label": "Dependiente", "value": 0 },
+          { "label": "Necesita ayuda (al menos la mitad)", "value": 5 },
+          { "label": "Independiente (incluye botones, cremalleras)", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Control de heces",
+        "opciones": [
+          { "label": "Incontinente", "value": 0 },
+          { "label": "Accidente ocasional", "value": 5 },
+          { "label": "Continente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Control de orina",
+        "opciones": [
+          { "label": "Incontinente o sondado", "value": 0 },
+          { "label": "Accidente ocasional", "value": 5 },
+          { "label": "Continente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Uso del retrete",
+        "opciones": [
+          { "label": "Dependiente", "value": 0 },
+          { "label": "Necesita alguna ayuda", "value": 5 },
+          { "label": "Independiente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Traslado cama-sillón",
+        "opciones": [
+          { "label": "Incapaz / no se mantiene sentado", "value": 0 },
+          { "label": "Gran ayuda (persona fuerte o dos)", "value": 5 },
+          { "label": "Mínima ayuda (supervisión o pequeña ayuda)", "value": 10 },
+          { "label": "Independiente", "value": 15 }
+        ]
+      },
+      {
+        "nombre": "Deambulación",
+        "opciones": [
+          { "label": "Inmóvil o <50 metros", "value": 0 },
+          { "label": "Independiente en silla de ruedas >50 m", "value": 5 },
+          { "label": "Camina con ayuda (persona) >50 m", "value": 10 },
+          { "label": "Independiente >50 m (puede usar bastón)", "value": 15 }
+        ]
+      },
+      {
+        "nombre": "Subir escaleras",
+        "opciones": [
+          { "label": "Incapaz", "value": 0 },
+          { "label": "Necesita ayuda (física o verbal)", "value": 5 },
+          { "label": "Independiente", "value": 10 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 20],
+        "label": "Dependencia total",
+        "color": "#DC2626",
+        "descripcion": "Paciente totalmente dependiente para ABVD. Requiere cuidados integrales de enfermería, valorar institucionalización o recursos sociosanitarios. Plan de cuidados individualizado."
+      },
+      {
+        "rango": [21, 60],
+        "label": "Dependencia severa",
+        "color": "#EA580C",
+        "descripcion": "Necesita ayuda importante en la mayoría de actividades. Rehabilitación activa, prevención de úlceras por presión, movilización precoz. Valorar cuidador principal."
+      },
+      {
+        "rango": [61, 90],
+        "label": "Dependencia moderada",
+        "color": "#F59E0B",
+        "descripcion": "Requiere asistencia en algunas actividades. Programa de rehabilitación para mejorar independencia. Fomentar autonomía progresiva."
+      },
+      {
+        "rango": [91, 99],
+        "label": "Dependencia escasa",
+        "color": "#3B82F6",
+        "descripcion": "Prácticamente independiente. Supervisión mínima, refuerzo de actividades con pequeña dificultad."
+      },
+      {
+        "rango": [100, 100],
+        "label": "Independiente",
+        "color": "#16A34A",
+        "descripcion": "Independiente para todas las ABVD. No implica vivir solo; significa autonomía funcional."
+      }
+    ],
+    "rangoTotal": [0, 100],
+    "contextoClinico": "Escala de referencia para valoración funcional en geriatría, rehabilitación y atención domiciliaria. Se evalúa al ingreso, periódicamente y al alta. Un descenso >20 puntos indica deterioro funcional significativo. Ampliamente usada como criterio de resultado en rehabilitación.",
+    "referencia": "Mahoney FI, Barthel DW. Functional evaluation: the Barthel Index. Maryland State Medical Journal. 1965;14:61-65."
+  },
+  {
+    "id": "scale_flacc",
+    "nombre": "Escala FLACC",
+    "abreviatura": "FLACC",
+    "descripcion": "Escala de valoración del dolor en pacientes pediátricos (2 meses-7 años) o no comunicativos, basada en la observación de cinco parámetros conductuales.",
+    "tipo": "components",
+    "categoria": "dolor_pediatrico",
+    "componentes": [
+      {
+        "nombre": "Face (Cara)",
+        "opciones": [
+          { "label": "Sin expresión particular, sonrisa", "value": 0 },
+          { "label": "Mueca o ceño fruncido ocasional, retraído", "value": 1 },
+          { "label": "Temblor frecuente del mentón, mandíbula apretada", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Legs (Piernas)",
+        "opciones": [
+          { "label": "Posición normal o relajada", "value": 0 },
+          { "label": "Inquietas, agitadas, tensas", "value": 1 },
+          { "label": "Pataleo o piernas encogidas", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Activity (Actividad)",
+        "opciones": [
+          { "label": "Acostado tranquilo, posición normal, se mueve con facilidad", "value": 0 },
+          { "label": "Se retuerce, se balancea, tenso", "value": 1 },
+          { "label": "Arqueado, rígido o con sacudidas", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Cry (Llanto)",
+        "opciones": [
+          { "label": "No llora (despierto o dormido)", "value": 0 },
+          { "label": "Gemidos o lloriqueos, queja ocasional", "value": 1 },
+          { "label": "Llanto constante, gritos o sollozos frecuentes", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Consolability (Consolabilidad)",
+        "opciones": [
+          { "label": "Contento, relajado", "value": 0 },
+          { "label": "Se tranquiliza con contacto, abrazo, voz; distraíble", "value": 1 },
+          { "label": "Difícil de consolar", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 0],
+        "label": "Sin dolor",
+        "color": "#16A34A",
+        "descripcion": "No se observan signos de dolor. Continuar vigilancia y reevaluar si hay cambios en procedimientos o estado clínico."
+      },
+      {
+        "rango": [1, 3],
+        "label": "Dolor leve – disconfort",
+        "color": "#3B82F6",
+        "descripcion": "Considerar medidas no farmacológicas: contención, succión no nutritiva, contacto piel con piel, distracción."
+      },
+      {
+        "rango": [4, 6],
+        "label": "Dolor moderado",
+        "color": "#F59E0B",
+        "descripcion": "Iniciar analgesia según prescripción (paracetamol, ibuprofeno). Reevaluar en 30-60 minutos tras intervención. Combinar con medidas no farmacológicas."
+      },
+      {
+        "rango": [7, 10],
+        "label": "Dolor severo",
+        "color": "#DC2626",
+        "descripcion": "Analgesia urgente requerida. Considerar opioides si dolor no controlado. Alertar al equipo médico. Reevaluar frecuentemente cada 15-30 minutos."
+      }
+    ],
+    "rangoTotal": [0, 10],
+    "contextoClinico": "Escala estándar de dolor para niños de 2 meses a 7 años y pacientes no comunicativos (intubados, con alteración cognitiva). Se valora observando al paciente durante 1-5 minutos. Reevaluar antes y después de intervenciones analgésicas. FLACC = Face, Legs, Activity, Cry, Consolability.",
+    "referencia": "Merkel SI, Voepel-Lewis T, Shayevitz JR, Malviya S. The FLACC: a behavioral scale for scoring postoperative pain in young children. Pediatric Nursing. 1997;23(3):293-297."
+  },
+  {
+    "id": "scale_must",
+    "nombre": "MUST – Screening Nutricional",
+    "abreviatura": "MUST",
+    "descripcion": "Herramienta de cribado nutricional universal (Malnutrition Universal Screening Tool) para identificar pacientes adultos con riesgo de desnutrición o desnutrición establecida.",
+    "tipo": "components",
+    "categoria": "nutricion",
+    "componentes": [
+      {
+        "nombre": "IMC (Índice de Masa Corporal)",
+        "opciones": [
+          { "label": ">20 kg/m² (>30 si obeso)", "value": 0 },
+          { "label": "18.5–20 kg/m²", "value": 1 },
+          { "label": "<18.5 kg/m²", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Pérdida de peso involuntaria (últimos 3-6 meses)",
+        "opciones": [
+          { "label": "<5%", "value": 0 },
+          { "label": "5–10%", "value": 1 },
+          { "label": ">10%", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Efecto de enfermedad aguda",
+        "opciones": [
+          { "label": "No hay enfermedad aguda que afecte ingesta >5 días", "value": 0 },
+          { "label": "Ingesta nula o casi nula >5 días (o riesgo de no ingesta)", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 0],
+        "label": "Riesgo bajo",
+        "color": "#16A34A",
+        "descripcion": "Cuidados rutinarios. Reevaluar semanalmente en hospitalizados, mensualmente en residencias, anualmente en comunidad. Continuar con dieta normal."
+      },
+      {
+        "rango": [1, 1],
+        "label": "Riesgo medio",
+        "color": "#F59E0B",
+        "descripcion": "Observar: documentar ingesta alimentaria durante 3 días. Si la ingesta es adecuada, continuar observando. Si es inadecuada, iniciar plan nutricional. Reevaluar semanalmente."
+      },
+      {
+        "rango": [2, 6],
+        "label": "Riesgo alto",
+        "color": "#DC2626",
+        "descripcion": "Tratar: derivar a nutricionista/dietista. Iniciar suplementos nutricionales orales. Considerar alimentación enteral si no tolera vía oral. Monitorizar ingesta y peso. Reevaluar plan semanalmente."
+      }
+    ],
+    "rangoTotal": [0, 6],
+    "contextoClinico": "Herramienta de cribado recomendada por ESPEN y NICE para todos los pacientes al ingreso hospitalario. Rápida de aplicar (3-5 min). Se debe complementar con valoración nutricional completa en pacientes con riesgo medio-alto. La desnutrición hospitalaria afecta al 20-40% de los pacientes ingresados.",
+    "referencia": "Stratton RJ, Hackston A, Longmore D, et al. Malnutrition in hospital outpatients and inpatients: prevalence, concurrent validity and ease of use of the 'malnutrition universal screening tool' (MUST) for adults. British Journal of Nutrition. 2004;92(5):799-808."
+  }
+]
