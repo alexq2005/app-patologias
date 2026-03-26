@@ -78,8 +78,9 @@ export function PremiumScreen({ navigation }: Props) {
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const {
-    isPremium, isCodeActivated, isTrialActive, trialDaysLeft,
-    isSubscribed, activateWithCode, restoreSubscription,
+    isPremium, isCodeActivated, isTrialActive, trialDaysLeft, trialExpired,
+    isSubscribed, purchasing,
+    activateWithCode, restoreSubscription, purchaseSubscription,
   } = usePremium();
 
   const styles = createStyles(colors, rs);
@@ -99,8 +100,14 @@ export function PremiumScreen({ navigation }: Props) {
     if (ok) setCode('');
   }, [code, activateWithCode]);
 
-  const handleRestore = useCallback(() => {
-    restoreSubscription();
+  const [restoring, setRestoring] = useState(false);
+  const handleRestore = useCallback(async () => {
+    setRestoring(true);
+    const restored = await restoreSubscription();
+    setRestoring(false);
+    if (!restored) {
+      setActivationResult(null);
+    }
   }, [restoreSubscription]);
 
   // ── Trial / status banner ─────────────────────────────────────
@@ -224,6 +231,59 @@ export function PremiumScreen({ navigation }: Props) {
             </View>
           ))}
         </View>
+
+        {/* Subscribe button */}
+        {!isCodeActivated && !isSubscribed && (
+          <View style={{ gap: rs.space(SPACING.sm) }}>
+            <TouchableOpacity
+              onPress={purchaseSubscription}
+              disabled={purchasing}
+              activeOpacity={0.85}
+            >
+              <LinearGradient
+                colors={[colors.gradientStart, colors.gradientEnd]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={{
+                  borderRadius: RADIUS.lg,
+                  paddingVertical: rs.space(18),
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  elevation: 4,
+                }}
+              >
+                {purchasing ? (
+                  <ActivityIndicator size="small" color="#fff" />
+                ) : (
+                  <>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(8) }}>
+                      <MaterialCommunityIcons name="crown" size={rs.font(22)} color="#FFD700" />
+                      <Text style={{ fontSize: rs.font(18), fontWeight: '800', color: '#fff' }}>
+                        Suscribirse a Premium
+                      </Text>
+                    </View>
+                    <Text style={{ fontSize: rs.font(13), color: 'rgba(255,255,255,0.8)', marginTop: rs.space(4) }}>
+                      Suscripcion mensual via Google Play
+                      {isTrialActive ? ` · ${trialDaysLeft} dias de prueba restantes` : ''}
+                    </Text>
+                  </>
+                )}
+              </LinearGradient>
+            </TouchableOpacity>
+
+            {trialExpired && (
+              <View style={{
+                flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+                gap: rs.space(6), paddingVertical: rs.space(8),
+              }}>
+                <MaterialCommunityIcons name="alert-circle" size={rs.font(14)} color={colors.error} />
+                <Text style={{ fontSize: rs.font(12), color: colors.error, fontWeight: '600' }}>
+                  Tu periodo de prueba de 15 dias ha finalizado. Suscribite para continuar.
+                </Text>
+              </View>
+            )}
+          </View>
+        )}
 
         {/* Activation code */}
         {!isCodeActivated && !isSubscribed && (
