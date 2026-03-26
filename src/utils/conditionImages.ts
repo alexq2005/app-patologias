@@ -16,30 +16,45 @@ type ConditionType =
   | 'microscope' | 'virus' | 'pregnancy' | 'surgery' | 'iv_drip'
   | 'pills' | 'stethoscope' | 'bandage' | 'cancer_cells';
 
+// Images available on disk — missing ones remap to closest match
+const IMG_BLOOD_PRESSURE = require('../assets/images/conditions/blood_pressure.jpg');
+const IMG_HEART_MONITOR  = require('../assets/images/conditions/heart_monitor.jpg');
+const IMG_ECG            = require('../assets/images/conditions/ecg.jpg');
+const IMG_CHEST_XRAY     = require('../assets/images/conditions/chest_xray.jpg');
+const IMG_BRAIN_CT       = require('../assets/images/conditions/brain_ct.jpg');
+const IMG_GLUCOSE        = require('../assets/images/conditions/glucose.jpg');
+const IMG_KIDNEY         = require('../assets/images/conditions/kidney.jpg');
+const IMG_BONES_XRAY     = require('../assets/images/conditions/bones_xray.jpg');
+const IMG_VIRUS          = require('../assets/images/conditions/virus.jpg');
+const IMG_PREGNANCY      = require('../assets/images/conditions/heart_monitor.jpg');
+const IMG_SURGERY        = require('../assets/images/conditions/surgery.jpg');
+const IMG_IV_DRIP        = require('../assets/images/conditions/iv_drip.jpg');
+const IMG_BANDAGE        = require('../assets/images/conditions/bandage.jpg');
+
 const CONDITION_IMAGES: Record<ConditionType, ImageSourcePropType> = {
-  blood_pressure: require('../assets/images/conditions/blood_pressure.jpg'),
-  heart_monitor:  require('../assets/images/conditions/heart_monitor.jpg'),
-  ecg:            require('../assets/images/conditions/ecg.jpg'),
-  chest_xray:     require('../assets/images/conditions/chest_xray.jpg'),
-  inhaler:        require('../assets/images/conditions/inhaler.jpg'),
-  brain_ct:       require('../assets/images/conditions/brain_ct.jpg'),
-  neuron:         require('../assets/images/conditions/neuron.jpg'),
-  glucose:        require('../assets/images/conditions/glucose.jpg'),
-  liver:          require('../assets/images/conditions/liver.jpg'),
-  stomach:        require('../assets/images/conditions/stomach.jpg'),
-  kidney:         require('../assets/images/conditions/kidney.jpg'),
-  bones_xray:     require('../assets/images/conditions/bones_xray.jpg'),
-  joints:         require('../assets/images/conditions/joints.jpg'),
-  blood_test:     require('../assets/images/conditions/blood_test.jpg'),
-  microscope:     require('../assets/images/conditions/microscope.jpg'),
-  virus:          require('../assets/images/conditions/virus.jpg'),
-  pregnancy:      require('../assets/images/conditions/pregnancy.jpg'),
-  surgery:        require('../assets/images/conditions/surgery.jpg'),
-  iv_drip:        require('../assets/images/conditions/iv_drip.jpg'),
-  pills:          require('../assets/images/conditions/pills.jpg'),
-  stethoscope:    require('../assets/images/conditions/stethoscope.jpg'),
-  bandage:        require('../assets/images/conditions/bandage.jpg'),
-  cancer_cells:   require('../assets/images/conditions/cancer_cells.jpg'),
+  blood_pressure: IMG_BLOOD_PRESSURE,
+  heart_monitor:  IMG_HEART_MONITOR,
+  ecg:            IMG_ECG,
+  chest_xray:     IMG_CHEST_XRAY,
+  inhaler:        IMG_CHEST_XRAY,     // remap: no inhaler image
+  brain_ct:       IMG_BRAIN_CT,
+  neuron:         IMG_BRAIN_CT,        // remap: no neuron image
+  glucose:        IMG_GLUCOSE,
+  liver:          IMG_KIDNEY,          // remap: no liver image
+  stomach:        IMG_KIDNEY,          // remap: no stomach image
+  kidney:         IMG_KIDNEY,
+  bones_xray:     IMG_BONES_XRAY,
+  joints:         IMG_BONES_XRAY,     // remap: no joints image
+  blood_test:     IMG_HEART_MONITOR,  // remap: no blood_test image
+  microscope:     IMG_VIRUS,          // remap: no microscope image
+  virus:          IMG_VIRUS,
+  pregnancy:      IMG_PREGNANCY,
+  surgery:        IMG_SURGERY,
+  iv_drip:        IMG_IV_DRIP,
+  pills:          IMG_IV_DRIP,        // remap: no pills image
+  stethoscope:    IMG_HEART_MONITOR,  // remap: no stethoscope image
+  bandage:        IMG_BANDAGE,
+  cancer_cells:   IMG_VIRUS,          // remap: no cancer_cells image
 };
 
 // ── Pathology → Condition mapping ───────────────────────────

@@ -118,7 +118,7 @@ const SECTIONS = [
     title: '9. Contacto',
     content:
       'Si tienes preguntas sobre esta Politica de Privacidad o sobre el manejo de tus datos, ' +
-      'puedes contactarnos en: soporte@patologiasenfermeria.app',
+      'puedes contactarnos en: alexq2005@gmail.com',
   },
 ];
 
