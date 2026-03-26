@@ -1,0 +1,2505 @@
+[
+  {
+    "id": "proto_acls",
+    "nombre": "ACLS - Paro Cardíaco",
+    "abreviatura": "ACLS",
+    "descripcion": "Protocolo de soporte vital cardiovascular avanzado para el manejo del paro cardiorrespiratorio en adultos, incluyendo ritmos desfibrilables (FV/TV sin pulso) y no desfibrilables (asistolia/AESP).",
+    "categoria": "cardiaco",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Ausencia de pulso carotídeo",
+      "Ausencia de respiración o respiración agónica",
+      "Pérdida súbita de conciencia",
+      "Cianosis generalizada",
+      "Midriasis bilateral arreactiva"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "Confirmar paro cardíaco e iniciar RCP de alta calidad",
+        "detalles": "Verificar ausencia de pulso (máx. 10 seg). Iniciar compresiones torácicas 100-120/min, profundidad 5-6 cm. Relación 30:2 sin vía aérea avanzada. Minimizar interrupciones (<10 seg).",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "1-2 min",
+        "accion": "Conectar monitor/desfibrilador y analizar ritmo",
+        "detalles": "Colocar parches de desfibrilación en posición anterolateral. Analizar ritmo sin interrumpir compresiones más de 10 segundos.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Ritmo desfibrilable (FV/TV sin pulso)?",
+          "si": "Proceder a desfibrilación inmediata (paso 3)",
+          "no": "Continuar RCP, administrar epinefrina inmediatamente (paso 4) y reevaluar cada 2 min"
+        }
+      },
+      {
+        "orden": 3,
+        "tiempo": "2-3 min",
+        "accion": "Desfibrilación (si ritmo desfibrilable)",
+        "detalles": "Descarga bifásica 120-200 J (según fabricante) o monofásica 360 J. Reanudar RCP inmediatamente después de la descarga durante 2 minutos sin verificar pulso.",
+        "critico": true
+      },
+      {
+        "orden": 4,
+        "tiempo": "3-5 min",
+        "accion": "Administrar Epinefrina",
+        "detalles": "En ritmo no desfibrilable: administrar lo antes posible. En ritmo desfibrilable: administrar después de la 2ª descarga. Repetir cada 3-5 minutos.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Epinefrina",
+            "dosis": "1 mg IV/IO cada 3-5 min",
+            "via": "IV/IO"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "5-7 min",
+        "accion": "Asegurar vía aérea avanzada",
+        "detalles": "Intubación endotraqueal o dispositivo supraglótico. Una vez colocada: ventilaciones continuas cada 6 seg (10/min) sin sincronizar con compresiones. Verificar capnografía (ETCO2).",
+        "critico": false
+      },
+      {
+        "orden": 6,
+        "tiempo": "5-10 min",
+        "accion": "Administrar Amiodarona (si FV/TV refractaria)",
+        "detalles": "Considerar después de la 3ª descarga si persiste FV/TV sin pulso. Si no hay amiodarona disponible, usar lidocaína como alternativa.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Amiodarona",
+            "dosis": "300 mg IV/IO en bolo (1ª dosis); 150 mg IV/IO (2ª dosis)",
+            "via": "IV/IO"
+          },
+          {
+            "nombre": "Lidocaína (alternativa)",
+            "dosis": "1-1.5 mg/kg IV/IO (1ª dosis); 0.5-0.75 mg/kg IV/IO (2ª dosis)",
+            "via": "IV/IO"
+          }
+        ]
+      },
+      {
+        "orden": 7,
+        "tiempo": "Cada 2 min",
+        "accion": "Reevaluar ritmo y buscar causas reversibles (5H y 5T)",
+        "detalles": "5H: Hipovolemia, Hipoxia, Hidrogenión (acidosis), Hipo/Hiperpotasemia, Hipotermia. 5T: Neumotórax a Tensión, Taponamiento cardíaco, Tóxicos, Trombosis pulmonar, Trombosis coronaria.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Se identificó causa reversible?",
+          "si": "Tratar causa específica de forma simultánea con RCP",
+          "no": "Continuar ciclos de RCP y reevaluar cada 2 minutos"
+        }
+      },
+      {
+        "orden": 8,
+        "tiempo": "Continuo",
+        "accion": "Cuidados post-paro cardíaco (si hay RCE)",
+        "detalles": "Retorno de circulación espontánea (RCE): mantener PAS >90 mmHg, SpO2 94-99%, normocapnia, ECG 12 derivaciones, considerar manejo dirigido de temperatura (32-36°C por 24h), angiografía coronaria si sospecha de SCA.",
+        "critico": false,
+        "farmacos": [
+          {
+            "nombre": "Norepinefrina",
+            "dosis": "0.1-0.5 mcg/kg/min en infusión continua",
+            "via": "IV"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Epinefrina",
+        "dosis": "1 mg IV/IO cada 3-5 min",
+        "via": "IV/IO",
+        "indicacion": "Vasopresor de primera línea en paro cardíaco para todos los ritmos"
+      },
+      {
+        "nombre": "Amiodarona",
+        "dosis": "300 mg IV/IO (1ª dosis); 150 mg IV/IO (2ª dosis)",
+        "via": "IV/IO",
+        "indicacion": "Antiarrítmico en FV/TV sin pulso refractaria a desfibrilación"
+      },
+      {
+        "nombre": "Lidocaína",
+        "dosis": "1-1.5 mg/kg IV/IO (1ª dosis); 0.5-0.75 mg/kg IV/IO (2ª dosis)",
+        "via": "IV/IO",
+        "indicacion": "Alternativa a amiodarona en FV/TV refractaria"
+      },
+      {
+        "nombre": "Norepinefrina",
+        "dosis": "0.1-0.5 mcg/kg/min en infusión continua",
+        "via": "IV",
+        "indicacion": "Soporte hemodinámico post-RCE si hipotensión persistente"
+      }
+    ],
+    "notasEnfermeria": [
+      "Garantizar compresiones de alta calidad: profundidad 5-6 cm, frecuencia 100-120/min, permitir retroceso completo del tórax y minimizar interrupciones.",
+      "Registrar todos los tiempos: inicio de RCP, cada dosis de medicamento, cada descarga, y hora de RCE o cese de esfuerzos.",
+      "Monitorizar capnografía continua (ETCO2): valores <10 mmHg indican RCP de baja calidad; aumento súbito >40 mmHg sugiere RCE.",
+      "Preparar infusión de epinefrina o norepinefrina anticipadamente para soporte post-RCE.",
+      "Rotar al personal que realiza compresiones cada 2 minutos para evitar fatiga y mantener la calidad."
+    ]
+  },
+  {
+    "id": "proto_anafilaxia",
+    "nombre": "Anafilaxia",
+    "descripcion": "Protocolo de manejo de la reacción anafiláctica severa, una emergencia médica potencialmente mortal mediada por hipersensibilidad tipo I que requiere intervención inmediata con epinefrina.",
+    "categoria": "otro",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Edema de vía aérea (estridor, voz ronca, disfagia)",
+      "Hipotensión o shock distributivo",
+      "Broncoespasmo severo con sibilancias difusas",
+      "Urticaria generalizada con compromiso respiratorio o hemodinámico",
+      "Exposición reciente a alérgeno conocido con deterioro rápido"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "Retirar alérgeno y administrar Epinefrina IM",
+        "detalles": "Administrar epinefrina IM en cara anterolateral del muslo. Es el fármaco de primera línea; NO debe retrasarse. Puede repetirse cada 5-15 minutos si no hay mejoría.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Epinefrina",
+            "dosis": "0.3-0.5 mg IM (solución 1:1000 = 1 mg/mL). Pediátrico: 0.01 mg/kg IM (máx. 0.3 mg)",
+            "via": "IM"
+          }
+        ]
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-2 min",
+        "accion": "Posicionar paciente y asegurar vía aérea",
+        "detalles": "Posición de Trendelenburg si hay hipotensión. Posición semisentada si hay distrés respiratorio. Administrar O2 al 100% con mascarilla de alto flujo (15 L/min). Preparar equipo de intubación.",
+        "critico": true
+      },
+      {
+        "orden": 3,
+        "tiempo": "1-3 min",
+        "accion": "Establecer acceso IV y administrar líquidos",
+        "detalles": "Dos accesos venosos de gran calibre (14-16G). Bolo rápido de cristaloides. Puede requerir 1-2 litros adicionales en la primera hora si hay hipotensión refractaria.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Solución Salina Normal (SSN 0.9%)",
+            "dosis": "500-1000 mL IV en bolo rápido (adultos); 20 mL/kg IV (pediátrico)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "3-5 min",
+        "accion": "Administrar broncodilatador si broncoespasmo",
+        "detalles": "Nebulizar salbutamol si hay sibilancias o broncoespasmo. Puede administrarse de forma continua en casos severos.",
+        "farmacos": [
+          {
+            "nombre": "Salbutamol",
+            "dosis": "2.5-5 mg nebulizado cada 20 min o nebulización continua",
+            "via": "Nebulización"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "5-10 min",
+        "accion": "Administrar corticosteroide IV",
+        "detalles": "Previene la fase tardía de la anafilaxia (puede ocurrir 4-8 horas después). No sustituye a la epinefrina.",
+        "farmacos": [
+          {
+            "nombre": "Hidrocortisona",
+            "dosis": "200 mg IV (adultos); 4 mg/kg IV (pediátrico, máx. 200 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Metilprednisolona (alternativa)",
+            "dosis": "1-2 mg/kg IV (máx. 125 mg)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 6,
+        "tiempo": "5-10 min",
+        "accion": "Administrar antihistamínicos",
+        "detalles": "Anti-H1 y anti-H2 como adyuvantes. NO reemplazan a la epinefrina como primera línea.",
+        "farmacos": [
+          {
+            "nombre": "Difenhidramina",
+            "dosis": "25-50 mg IV lento (adultos); 1 mg/kg IV (pediátrico, máx. 50 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Ranitidina",
+            "dosis": "50 mg IV en 100 mL de SSN a pasar en 15-20 min",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 7,
+        "tiempo": "15-20 min",
+        "accion": "Reevaluar respuesta y considerar infusión de epinefrina",
+        "detalles": "Si hipotensión refractaria tras 2-3 dosis IM de epinefrina, iniciar infusión IV continua. Monitorizar ECG continuo.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Epinefrina (infusión)",
+            "dosis": "1-10 mcg/min IV en infusión continua (titular según respuesta)",
+            "via": "IV"
+          }
+        ],
+        "decision": {
+          "pregunta": "¿El paciente responde a las dosis IM de epinefrina?",
+          "si": "Mantener observación mínima de 6-8 horas por riesgo de reacción bifásica",
+          "no": "Iniciar infusión continua de epinefrina IV y considerar ingreso en UCI"
+        }
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Epinefrina IM",
+        "dosis": "0.3-0.5 mg IM cada 5-15 min según necesidad",
+        "via": "IM",
+        "indicacion": "Primera línea en anafilaxia; vasoconstrictor y broncodilatador"
+      },
+      {
+        "nombre": "Epinefrina IV (infusión)",
+        "dosis": "1-10 mcg/min IV en infusión continua",
+        "via": "IV",
+        "indicacion": "Anafilaxia refractaria a dosis IM"
+      },
+      {
+        "nombre": "Salbutamol",
+        "dosis": "2.5-5 mg nebulizado cada 20 min",
+        "via": "Nebulización",
+        "indicacion": "Broncoespasmo asociado a anafilaxia"
+      },
+      {
+        "nombre": "Hidrocortisona",
+        "dosis": "200 mg IV",
+        "via": "IV",
+        "indicacion": "Prevención de fase tardía de anafilaxia"
+      },
+      {
+        "nombre": "Difenhidramina",
+        "dosis": "25-50 mg IV",
+        "via": "IV",
+        "indicacion": "Antihistamínico H1 adyuvante para síntomas cutáneos"
+      },
+      {
+        "nombre": "Ranitidina",
+        "dosis": "50 mg IV",
+        "via": "IV",
+        "indicacion": "Antihistamínico H2 adyuvante"
+      },
+      {
+        "nombre": "SSN 0.9%",
+        "dosis": "500-1000 mL IV en bolo rápido",
+        "via": "IV",
+        "indicacion": "Reposición de volumen en shock anafiláctico"
+      }
+    ],
+    "notasEnfermeria": [
+      "La epinefrina IM es el tratamiento de primera línea; NUNCA debe retrasarse su administración en espera de otros fármacos.",
+      "Monitorizar al paciente un mínimo de 6-8 horas por riesgo de reacción bifásica (recurrencia de síntomas sin nueva exposición).",
+      "Registrar el alérgeno sospechoso, la hora de exposición y la evolución temporal de los síntomas.",
+      "Educar al paciente sobre el uso de autoinyector de epinefrina al alta y la necesidad de portar identificación de alergias.",
+      "Vigilar signos de edema de glotis: estridor, disfonía, disfagia, babeo; preparar equipo de vía aérea quirúrgica."
+    ]
+  },
+  {
+    "id": "proto_crisis_hipertensiva",
+    "nombre": "Crisis Hipertensiva",
+    "descripcion": "Protocolo para el manejo de la emergencia hipertensiva (PA >180/120 mmHg con daño a órgano blanco) y la urgencia hipertensiva. El objetivo es la reducción controlada de la PA para evitar isquemia.",
+    "categoria": "cardiaco",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "PA >180/120 mmHg con cefalea intensa, alteración visual o confusión",
+      "Dolor torácico o disnea (sospecha de disección aórtica o EAP)",
+      "Déficit neurológico focal (sospecha de ACV)",
+      "Hematuria, oliguria o elevación de creatinina",
+      "Fondo de ojo con hemorragias, exudados o papiledema"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-5 min",
+        "accion": "Evaluación inicial y clasificación",
+        "detalles": "Confirmar PA en ambos brazos con manguito adecuado. Determinar si es emergencia hipertensiva (daño a órgano blanco) o urgencia hipertensiva (sin daño a órgano). ECG, analítica (creatinina, electrolitos, troponina), radiografía de tórax.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Hay evidencia de daño a órgano blanco?",
+          "si": "Es EMERGENCIA hipertensiva → reducción IV controlada en UCI (paso 3)",
+          "no": "Es URGENCIA hipertensiva → reducción oral gradual en 24-48h (paso 2)"
+        }
+      },
+      {
+        "orden": 2,
+        "tiempo": "5-30 min",
+        "accion": "Manejo de urgencia hipertensiva (sin daño a órgano)",
+        "detalles": "Reducir PA gradualmente en 24-48 horas con antihipertensivos orales. Ambiente tranquilo, reposo. Objetivo: reducir PA un 20-25% en las primeras horas.",
+        "farmacos": [
+          {
+            "nombre": "Captopril",
+            "dosis": "25 mg VO sublingual, puede repetirse en 30 min",
+            "via": "VO/SL"
+          },
+          {
+            "nombre": "Amlodipino",
+            "dosis": "5-10 mg VO",
+            "via": "VO"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Iniciar terapia IV para emergencia hipertensiva",
+        "detalles": "Meta: reducir PA no más del 25% en la primera hora, luego a 160/100 mmHg en 2-6 horas. Reducción excesiva puede causar isquemia cerebral o coronaria. Seleccionar fármaco según etiología.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Labetalol",
+            "dosis": "20 mg IV en 2 min, luego 20-80 mg IV cada 10 min (máx. 300 mg) o infusión 0.5-2 mg/min",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Alternativas según etiología y respuesta",
+        "detalles": "Si no hay respuesta a labetalol, considerar alternativas. Nicardipina en infusión es preferible si se requiere titulación precisa. Nitroprusiato en emergencia refractaria (precaución: toxicidad por cianuro).",
+        "farmacos": [
+          {
+            "nombre": "Nicardipina",
+            "dosis": "5 mg/h IV en infusión, titular cada 5-15 min en incrementos de 2.5 mg/h (máx. 15 mg/h)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Nitroprusiato de sodio",
+            "dosis": "0.25-10 mcg/kg/min IV en infusión continua (proteger de la luz)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "30-60 min",
+        "accion": "Monitoreo continuo y ajuste de tratamiento",
+        "detalles": "PA cada 5-15 minutos durante infusión. Monitoreo neurológico frecuente. Evaluar diuresis horaria. Ajustar infusión para mantener PA en rango objetivo.",
+        "critico": true
+      },
+      {
+        "orden": 6,
+        "tiempo": "2-6 horas",
+        "accion": "Transición a terapia oral",
+        "detalles": "Una vez estabilizada la PA IV, iniciar antihipertensivos orales con superposición antes de suspender infusión. No reducir PA a valores normales en las primeras 24-48h.",
+        "farmacos": [
+          {
+            "nombre": "Labetalol oral",
+            "dosis": "200-400 mg VO cada 8-12h",
+            "via": "VO"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Labetalol IV",
+        "dosis": "20 mg IV en bolo, luego 20-80 mg IV cada 10 min o infusión 0.5-2 mg/min",
+        "via": "IV",
+        "indicacion": "Primera línea en emergencia hipertensiva (excepto contraindicaciones de betabloqueantes)"
+      },
+      {
+        "nombre": "Nicardipina",
+        "dosis": "5-15 mg/h IV en infusión continua",
+        "via": "IV",
+        "indicacion": "Alternativa a labetalol; preferida en ACV y si hay contraindicación de betabloqueantes"
+      },
+      {
+        "nombre": "Nitroprusiato de sodio",
+        "dosis": "0.25-10 mcg/kg/min IV en infusión",
+        "via": "IV",
+        "indicacion": "Crisis refractaria a otros agentes; uso máximo 48-72h por toxicidad de cianuro"
+      },
+      {
+        "nombre": "Captopril",
+        "dosis": "25 mg VO/SL",
+        "via": "VO/SL",
+        "indicacion": "Urgencia hipertensiva sin daño a órgano blanco"
+      },
+      {
+        "nombre": "Amlodipino",
+        "dosis": "5-10 mg VO",
+        "via": "VO",
+        "indicacion": "Urgencia hipertensiva, reducción gradual oral"
+      }
+    ],
+    "notasEnfermeria": [
+      "NO reducir la PA de forma abrupta; la reducción excesiva puede causar isquemia cerebral, coronaria o renal.",
+      "Monitorizar PA con línea arterial o PANI cada 5-15 min durante infusión IV de antihipertensivos.",
+      "Vigilar signos de hipoperfusión: confusión, dolor torácico, oliguria, deterioro neurológico.",
+      "El nitroprusiato debe protegerse de la luz con cubierta opaca y no usar por más de 48-72 horas.",
+      "Registrar balance hídrico estricto y diuresis horaria durante el manejo agudo."
+    ]
+  },
+  {
+    "id": "proto_iam_stemi",
+    "nombre": "IAM con Elevación del ST (STEMI)",
+    "abreviatura": "STEMI",
+    "descripcion": "Protocolo de manejo del infarto agudo de miocardio con elevación del segmento ST. El objetivo primario es la reperfusión lo más rápida posible (puerta-balón <90 min o puerta-aguja <30 min).",
+    "categoria": "cardiaco",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Dolor torácico opresivo >20 min que no cede con nitroglicerina",
+      "Elevación del ST ≥1 mm en ≥2 derivaciones contiguas o BRIHH nuevo",
+      "Diaforesis, náuseas, disnea con dolor precordial",
+      "Hipotensión o signos de shock cardiogénico",
+      "Arritmias ventriculares (TV/FV) en contexto de dolor torácico"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-5 min",
+        "accion": "ECG 12 derivaciones e identificación de STEMI",
+        "detalles": "ECG en los primeros 10 minutos del contacto. Identificar elevación del ST, territorio afectado. Activar código infarto/equipo de hemodinámica. Monitorización continua.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-5 min",
+        "accion": "MONA: Morfina, Oxígeno, Nitroglicerina, Aspirina",
+        "detalles": "Aspirina masticada inmediatamente (si no hay alergia). O2 solo si SpO2 <90%. Nitroglicerina si PAS >90 mmHg y no hay IAM de VD. Morfina si dolor persiste tras nitroglicerina.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Aspirina (AAS)",
+            "dosis": "300 mg VO masticada (carga)",
+            "via": "VO"
+          },
+          {
+            "nombre": "Nitroglicerina",
+            "dosis": "0.4 mg SL cada 5 min (máx. 3 dosis); si persiste dolor: 5-200 mcg/min IV",
+            "via": "SL/IV"
+          },
+          {
+            "nombre": "Morfina",
+            "dosis": "2-4 mg IV cada 5-15 min según dolor (si NTG no alivia)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Oxígeno",
+            "dosis": "2-4 L/min por cánula nasal (solo si SpO2 <90%)",
+            "via": "Inhalatoria"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-10 min",
+        "accion": "Anticoagulación y segundo antiagregante",
+        "detalles": "Iniciar heparina. Agregar segundo antiagregante plaquetario (clopidogrel, ticagrelor o prasugrel según disponibilidad y riesgo hemorrágico).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Heparina no fraccionada",
+            "dosis": "60 UI/kg IV en bolo (máx. 4000 UI), luego 12 UI/kg/h (máx. 1000 UI/h). Ajustar según TTPa",
+            "via": "IV"
+          },
+          {
+            "nombre": "Clopidogrel",
+            "dosis": "300-600 mg VO (carga)",
+            "via": "VO"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "10-30 min",
+        "accion": "Estrategia de reperfusión",
+        "detalles": "ICP primaria es preferida si está disponible en <120 min. Si ICP no disponible en tiempo, considerar fibrinolisis en <30 min del diagnóstico.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Angioplastia primaria disponible en <120 minutos?",
+          "si": "Trasladar a hemodinámica para ICP primaria (puerta-balón <90 min)",
+          "no": "Administrar fibrinolítico si <12h de inicio de síntomas y sin contraindicaciones (paso 5)"
+        }
+      },
+      {
+        "orden": 5,
+        "tiempo": "Según decisión",
+        "accion": "Fibrinolisis (si ICP no disponible)",
+        "detalles": "Administrar dentro de los primeros 30 min del diagnóstico. Contraindicaciones absolutas: sangrado activo, ACV hemorrágico previo, cirugía mayor <3 semanas. Evaluar criterios de reperfusión a los 60-90 min.",
+        "farmacos": [
+          {
+            "nombre": "Tenecteplasa (TNK)",
+            "dosis": "Según peso: <60 kg: 30 mg; 60-69 kg: 35 mg; 70-79 kg: 40 mg; 80-89 kg: 45 mg; ≥90 kg: 50 mg IV en bolo",
+            "via": "IV"
+          },
+          {
+            "nombre": "Alteplasa (alternativa)",
+            "dosis": "15 mg IV bolo, luego 0.75 mg/kg en 30 min (máx 50 mg), luego 0.5 mg/kg en 60 min (máx 35 mg). Total máx: 100 mg",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 6,
+        "tiempo": "Continuo",
+        "accion": "Manejo complementario y monitorización",
+        "detalles": "Betabloqueante oral en las primeras 24h si no hay contraindicación (IC, bradicardia, hipotensión). IECA/ARA-II en las primeras 24h si función sistólica reducida. Estatina de alta potencia.",
+        "farmacos": [
+          {
+            "nombre": "Atorvastatina",
+            "dosis": "80 mg VO",
+            "via": "VO"
+          },
+          {
+            "nombre": "Metoprolol",
+            "dosis": "25-50 mg VO cada 6-12h (si FC >60, PAS >100, sin IC)",
+            "via": "VO"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Aspirina",
+        "dosis": "300 mg VO masticada",
+        "via": "VO",
+        "indicacion": "Antiagregante plaquetario de primera línea en SCA"
+      },
+      {
+        "nombre": "Clopidogrel",
+        "dosis": "300-600 mg VO (carga)",
+        "via": "VO",
+        "indicacion": "Segundo antiagregante plaquetario en doble antiagregación"
+      },
+      {
+        "nombre": "Heparina no fraccionada",
+        "dosis": "60 UI/kg bolo IV, luego 12 UI/kg/h",
+        "via": "IV",
+        "indicacion": "Anticoagulación en SCA para prevenir extensión del trombo"
+      },
+      {
+        "nombre": "Nitroglicerina",
+        "dosis": "0.4 mg SL o 5-200 mcg/min IV",
+        "via": "SL/IV",
+        "indicacion": "Vasodilatador coronario para alivio del dolor isquémico"
+      },
+      {
+        "nombre": "Morfina",
+        "dosis": "2-4 mg IV cada 5-15 min",
+        "via": "IV",
+        "indicacion": "Analgesia cuando nitroglicerina no alivia el dolor"
+      },
+      {
+        "nombre": "Tenecteplasa",
+        "dosis": "30-50 mg IV según peso corporal",
+        "via": "IV",
+        "indicacion": "Fibrinolítico cuando ICP no disponible en <120 min"
+      },
+      {
+        "nombre": "Atorvastatina",
+        "dosis": "80 mg VO",
+        "via": "VO",
+        "indicacion": "Estatina de alta intensidad para estabilización de placa"
+      },
+      {
+        "nombre": "Metoprolol",
+        "dosis": "25-50 mg VO cada 6-12h",
+        "via": "VO",
+        "indicacion": "Betabloqueante para reducir demanda miocárdica de O2"
+      }
+    ],
+    "notasEnfermeria": [
+      "El tiempo es miocardio: cada minuto de retraso en la reperfusión aumenta la mortalidad. Objetivo puerta-ECG <10 min.",
+      "NO administrar nitroglicerina si PAS <90 mmHg, FC <50 o >100, o sospecha de IAM de ventrículo derecho (derivaciones derechas V3R-V4R).",
+      "Mantener dos accesos venosos permeables de gran calibre; nunca administrar fibrinolítico por la misma vía de heparina.",
+      "Vigilar signos de reperfusión post-fibrinolisis: alivio del dolor, resolución del ST >50%, arritmias de reperfusión (RIVA).",
+      "Monitorización continua de ECG, PA y SpO2. Tener desfibrilador listo por riesgo de arritmias ventriculares."
+    ]
+  },
+  {
+    "id": "proto_acv_agudo",
+    "nombre": "ACV Agudo - Ictus Isquémico",
+    "abreviatura": "ACV",
+    "descripcion": "Protocolo de manejo del accidente cerebrovascular isquémico agudo. La ventana terapéutica para trombólisis IV con alteplasa es de 4.5 horas desde el inicio de los síntomas. La trombectomía mecánica puede extenderse hasta 24 horas en pacientes seleccionados.",
+    "categoria": "neurologico",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Déficit neurológico focal de inicio súbito (hemiparesia, afasia, hemianopsia)",
+      "Desviación de la comisura labial y debilidad de extremidades",
+      "Alteración del habla (disartria o afasia) de inicio brusco",
+      "Pérdida de equilibrio o coordinación con otros déficits neurológicos",
+      "Cefalea intensa súbita con rigidez de nuca (descartar hemorragia)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-10 min",
+        "accion": "Activar código ictus y evaluación inicial",
+        "detalles": "Establecer hora de inicio de síntomas (o última vez visto normal). Escala NIHSS. Glucemia capilar inmediata (descartar hipoglucemia). Asegurar vía aérea, O2 si SpO2 <94%. Dos accesos IV.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "10-25 min",
+        "accion": "TC craneal urgente sin contraste",
+        "detalles": "Descartar hemorragia intracraneal antes de trombólisis. Angiotomografía si disponible para evaluar oclusión de gran vaso. No retrasar la TC.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿La TC muestra hemorragia intracraneal?",
+          "si": "Descartar trombólisis; consultar neurocirugía. Manejar como ACV hemorrágico.",
+          "no": "Continuar evaluación para trombólisis IV si está dentro de ventana terapéutica (paso 3)"
+        }
+      },
+      {
+        "orden": 3,
+        "tiempo": "25-45 min",
+        "accion": "Evaluar criterios de trombólisis IV",
+        "detalles": "Ventana: <4.5 horas desde inicio de síntomas. Contraindicaciones: sangrado activo, plaquetas <100,000, INR >1.7, cirugía mayor <14 días, ACV o TCE <3 meses, PA no controlable. Obtener consentimiento.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Cumple criterios para trombólisis IV (<4.5h, sin contraindicaciones)?",
+          "si": "Administrar alteplasa IV (paso 4). Objetivo puerta-aguja <60 min.",
+          "no": "Evaluar trombectomía mecánica si oclusión de gran vaso (<24h en pacientes seleccionados)"
+        }
+      },
+      {
+        "orden": 4,
+        "tiempo": "45-60 min",
+        "accion": "Administrar Alteplasa IV",
+        "detalles": "Dosis total: 0.9 mg/kg (máx. 90 mg). 10% en bolo IV en 1 minuto, 90% restante en infusión IV en 60 minutos. No administrar anticoagulantes ni antiagregantes en las siguientes 24 horas.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Alteplasa (rt-PA)",
+            "dosis": "0.9 mg/kg IV (máx. 90 mg): 10% en bolo en 1 min, 90% en infusión en 60 min",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Durante y post-infusión",
+        "accion": "Control estricto de PA durante y después de trombólisis",
+        "detalles": "Mantener PA <185/110 mmHg antes y durante trombólisis; <180/105 mmHg en las 24h siguientes. Usar labetalol o nicardipina IV si es necesario.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Labetalol",
+            "dosis": "10-20 mg IV en 1-2 min, puede repetirse cada 10-20 min (máx. 300 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Nicardipina",
+            "dosis": "5 mg/h IV, titular cada 5-15 min, incrementos de 2.5 mg/h (máx. 15 mg/h)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 6,
+        "tiempo": "Post-trombólisis",
+        "accion": "Monitorización neurológica intensiva",
+        "detalles": "NIHSS cada 15 min durante la infusión, cada 30 min por 6h, luego cada hora por 18h. Vigilar signos de hemorragia intracraneal: cefalea intensa, vómitos, deterioro del nivel de conciencia, aumento de PA. TC de control a las 24h.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Deterioro neurológico durante o después de la infusión?",
+          "si": "Detener infusión de alteplasa, TC craneal urgente, solicitar hemograma, fibrinógeno y pruebas cruzadas",
+          "no": "Continuar monitorización. TC de control a las 24h antes de iniciar antiagregación."
+        }
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Alteplasa (rt-PA)",
+        "dosis": "0.9 mg/kg IV (máx. 90 mg): 10% bolo + 90% en 60 min",
+        "via": "IV",
+        "indicacion": "Trombólisis en ACV isquémico dentro de ventana de 4.5 horas"
+      },
+      {
+        "nombre": "Labetalol",
+        "dosis": "10-20 mg IV cada 10-20 min (máx. 300 mg)",
+        "via": "IV",
+        "indicacion": "Control de PA peri-trombólisis"
+      },
+      {
+        "nombre": "Nicardipina",
+        "dosis": "5-15 mg/h IV en infusión",
+        "via": "IV",
+        "indicacion": "Control de PA cuando se requiere titulación precisa"
+      }
+    ],
+    "notasEnfermeria": [
+      "Tiempo es cerebro: el objetivo es puerta-aguja <60 minutos. Cada minuto de retraso se pierden ~1.9 millones de neuronas.",
+      "NO administrar antiagregantes ni anticoagulantes en las 24 horas posteriores a la trombólisis IV.",
+      "Realizar escala NIHSS de forma seriada y documentar cualquier cambio neurológico inmediatamente.",
+      "Mantener al paciente en ayuno hasta evaluación de deglución (riesgo de disfagia y broncoaspiración).",
+      "Evitar punciones arteriales, sondaje vesical y procedimientos invasivos durante al menos 24h post-trombólisis."
+    ]
+  },
+  {
+    "id": "proto_status_epileptico",
+    "nombre": "Status Epiléptico",
+    "descripcion": "Protocolo de manejo del estado epiléptico, definido como crisis convulsiva continua de >5 minutos o dos o más crisis sin recuperación de conciencia entre ellas. Es una emergencia neurológica con alta morbimortalidad.",
+    "categoria": "neurologico",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Crisis convulsiva tónico-clónica generalizada que dura >5 minutos",
+      "Crisis recurrentes sin recuperación de conciencia entre episodios",
+      "Cianosis durante crisis prolongada",
+      "Fiebre alta asociada a convulsiones (descartar meningoencefalitis)",
+      "Antecedente de epilepsia con incumplimiento terapéutico reciente"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-5 min",
+        "accion": "Estabilización inicial y primera línea de tratamiento",
+        "detalles": "Proteger vía aérea (posición lateral, aspirar secreciones, NO introducir objetos en la boca). O2 al 100%. Monitorizar SpO2, ECG, PA. Glucemia capilar inmediata. Acceso IV.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Diazepam",
+            "dosis": "10 mg IV lento (2 mg/min) o 20 mg rectal. Pediátrico: 0.2-0.5 mg/kg IV (máx. 10 mg)",
+            "via": "IV/Rectal"
+          },
+          {
+            "nombre": "Midazolam (si no hay acceso IV)",
+            "dosis": "10 mg IM o 10 mg intranasal/bucal. Pediátrico: 0.2 mg/kg IM (máx. 10 mg)",
+            "via": "IM/Intranasal"
+          }
+        ],
+        "decision": {
+          "pregunta": "¿Se tiene acceso venoso?",
+          "si": "Administrar diazepam 10 mg IV lento. Puede repetir una vez en 5 min si persiste crisis.",
+          "no": "Administrar midazolam 10 mg IM o intranasal mientras se obtiene acceso IV."
+        }
+      },
+      {
+        "orden": 2,
+        "tiempo": "5-10 min",
+        "accion": "Tratar hipoglucemia si está presente",
+        "detalles": "Si glucemia <60 mg/dL, administrar dextrosa IV. En pacientes alcohólicos o desnutridos, administrar tiamina ANTES de la dextrosa.",
+        "farmacos": [
+          {
+            "nombre": "Dextrosa 50%",
+            "dosis": "50 mL IV (25 g de glucosa). Pediátrico: Dextrosa 25% 2-4 mL/kg IV",
+            "via": "IV"
+          },
+          {
+            "nombre": "Tiamina",
+            "dosis": "100 mg IV (administrar antes de dextrosa en sospecha de déficit)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "10-20 min",
+        "accion": "Segunda línea: antiepiléptico de carga",
+        "detalles": "Si las crisis persisten tras benzodiazepinas, iniciar un antiepiléptico de segunda línea. Levetiracetam es preferido por menor sedación y menos interacciones. Fenitoína es alternativa clásica (no usar en mioclónicas).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Levetiracetam",
+            "dosis": "60 mg/kg IV (máx. 4500 mg) en 15 min",
+            "via": "IV"
+          },
+          {
+            "nombre": "Fenitoína",
+            "dosis": "20 mg/kg IV a velocidad máxima de 50 mg/min (o fosfenitoína 20 mg EF/kg a 150 mg EF/min). Monitorizar ECG.",
+            "via": "IV"
+          },
+          {
+            "nombre": "Ácido valproico (alternativa)",
+            "dosis": "40 mg/kg IV en 10 min (máx. 3000 mg)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "20-40 min",
+        "accion": "Status epiléptico refractario",
+        "detalles": "Si persiste tras benzodiazepinas + antiepiléptico de segunda línea. Considerar intubación y soporte en UCI. Iniciar anestésicos en infusión continua con monitoreo EEG.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Midazolam (infusión)",
+            "dosis": "0.2 mg/kg IV bolo, luego 0.1-2 mg/kg/h en infusión continua",
+            "via": "IV"
+          },
+          {
+            "nombre": "Propofol",
+            "dosis": "1-2 mg/kg IV bolo, luego 2-10 mg/kg/h en infusión continua (vigilar síndrome de infusión de propofol)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Estudios complementarios y búsqueda etiológica",
+        "detalles": "Analítica completa: electrolitos, calcio, magnesio, niveles de antiepilépticos, tóxicos. TC craneal urgente. Punción lumbar si sospecha de infección del SNC. EEG continuo en UCI.",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Diazepam",
+        "dosis": "10 mg IV lento (puede repetir x1) o 20 mg rectal",
+        "via": "IV/Rectal",
+        "indicacion": "Primera línea para abortar crisis convulsiva"
+      },
+      {
+        "nombre": "Midazolam",
+        "dosis": "10 mg IM/intranasal (si no hay acceso IV)",
+        "via": "IM/Intranasal",
+        "indicacion": "Alternativa a diazepam cuando no hay acceso venoso"
+      },
+      {
+        "nombre": "Levetiracetam",
+        "dosis": "60 mg/kg IV (máx. 4500 mg) en 15 min",
+        "via": "IV",
+        "indicacion": "Segunda línea; carga antiepiléptica con menos interacciones"
+      },
+      {
+        "nombre": "Fenitoína",
+        "dosis": "20 mg/kg IV a máx. 50 mg/min",
+        "via": "IV",
+        "indicacion": "Segunda línea clásica; requiere monitoreo cardíaco por riesgo de arritmias"
+      },
+      {
+        "nombre": "Ácido valproico",
+        "dosis": "40 mg/kg IV en 10 min (máx. 3000 mg)",
+        "via": "IV",
+        "indicacion": "Alternativa de segunda línea, útil en crisis generalizadas y mioclónicas"
+      },
+      {
+        "nombre": "Propofol",
+        "dosis": "1-2 mg/kg IV bolo, luego 2-10 mg/kg/h",
+        "via": "IV",
+        "indicacion": "Status refractario en UCI con intubación"
+      }
+    ],
+    "notasEnfermeria": [
+      "NO introducir objetos en la boca durante la crisis; proteger al paciente de lesiones retirando objetos cercanos.",
+      "La fenitoína debe administrarse SOLO en solución salina (incompatible con dextrosa); vigilar flebitis y extravasación (puede causar necrosis tisular).",
+      "Monitorizar ECG continuamente durante la infusión de fenitoína por riesgo de arritmias y bradicardia.",
+      "Documentar duración exacta de cada crisis, tipo de movimientos y nivel de conciencia entre episodios.",
+      "Preparar equipo de intubación si las crisis persisten >20 minutos o hay compromiso de vía aérea."
+    ]
+  },
+  {
+    "id": "proto_hipoglucemia",
+    "nombre": "Hipoglucemia Severa",
+    "descripcion": "Protocolo de manejo de la hipoglucemia severa (glucemia <54 mg/dL o síntomas neuroglucopénicos), una emergencia metabólica frecuente en pacientes diabéticos tratados con insulina o sulfonilureas.",
+    "categoria": "metabolico",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "Glucemia <54 mg/dL con alteración del nivel de conciencia",
+      "Convulsiones asociadas a hipoglucemia",
+      "Paciente diabético con diaforesis, temblor y confusión",
+      "Incapacidad para ingerir glucosa por vía oral",
+      "Uso reciente de insulina o sulfonilureas con ingesta alimentaria inadecuada"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "Confirmar hipoglucemia y evaluar estado de conciencia",
+        "detalles": "Glucemia capilar inmediata. Evaluar nivel de conciencia y capacidad de deglución. Asegurar vía aérea si hay alteración de conciencia.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿El paciente está consciente y puede deglutir?",
+          "si": "Administrar 15-20 g de glucosa oral (jugo, tabletas de glucosa). Reevaluar en 15 min.",
+          "no": "Administrar dextrosa IV o glucagón IM (pasos 2-3)"
+        }
+      },
+      {
+        "orden": 2,
+        "tiempo": "1-3 min",
+        "accion": "Administrar Dextrosa IV (si hay acceso venoso)",
+        "detalles": "Dextrosa 50% por vía IV es el tratamiento de elección en paciente con alteración de conciencia. Puede repetirse si no hay respuesta en 5 minutos.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Dextrosa 50%",
+            "dosis": "25-50 mL IV (12.5-25 g de glucosa) en bolo. Pediátrico: Dextrosa 10% 5 mL/kg IV",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "1-3 min",
+        "accion": "Administrar Glucagón (si no hay acceso IV)",
+        "detalles": "Glucagón IM/SC cuando no se puede obtener acceso venoso. Inicio de acción: 10-15 minutos. Menos efectivo en pacientes con depleción de glucógeno hepático (alcoholismo, insuficiencia hepática).",
+        "farmacos": [
+          {
+            "nombre": "Glucagón",
+            "dosis": "1 mg IM/SC (adultos). Pediátrico <25 kg: 0.5 mg IM/SC",
+            "via": "IM/SC"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15 min",
+        "accion": "Reevaluar glucemia y respuesta clínica",
+        "detalles": "Control de glucemia capilar a los 15 minutos. Si glucemia sigue <70 mg/dL, repetir tratamiento. Una vez glucemia >70 mg/dL, administrar snack con carbohidratos complejos y proteínas.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Glucemia >70 mg/dL tras tratamiento?",
+          "si": "Dar snack con carbohidratos complejos. Investigar causa de hipoglucemia.",
+          "no": "Repetir dextrosa 50% IV. Si persiste, iniciar infusión de dextrosa 10% y evaluar causa."
+        }
+      },
+      {
+        "orden": 5,
+        "tiempo": "30-60 min",
+        "accion": "Prevenir recurrencia e investigar causa",
+        "detalles": "Si hipoglucemia por sulfonilureas: alto riesgo de recurrencia prolongada (hasta 72h); considerar infusión de dextrosa 10% y observación prolongada. Ajustar dosis de insulina/hipoglucemiantes. Si hipoglucemia por insulina de acción prolongada, monitorizar ≥24h.",
+        "farmacos": [
+          {
+            "nombre": "Dextrosa 10%",
+            "dosis": "100-200 mL/h IV en infusión continua (ajustar según glucemias cada 1-2h)",
+            "via": "IV"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Dextrosa 50%",
+        "dosis": "25-50 mL IV en bolo (12.5-25 g de glucosa)",
+        "via": "IV",
+        "indicacion": "Primera línea en hipoglucemia severa con alteración de conciencia y acceso IV"
+      },
+      {
+        "nombre": "Glucagón",
+        "dosis": "1 mg IM/SC",
+        "via": "IM/SC",
+        "indicacion": "Hipoglucemia severa sin acceso venoso disponible"
+      },
+      {
+        "nombre": "Dextrosa 10%",
+        "dosis": "100-200 mL/h IV en infusión continua",
+        "via": "IV",
+        "indicacion": "Prevención de recurrencia de hipoglucemia, especialmente por sulfonilureas"
+      }
+    ],
+    "notasEnfermeria": [
+      "La dextrosa 50% es vesicante: verificar permeabilidad del acceso IV antes de administrar. Si hay extravasación, suspender inmediatamente.",
+      "En hipoglucemia por sulfonilureas (glibenclamida, glimepirida), el paciente requiere observación prolongada (24-72h) por riesgo de recurrencia.",
+      "Monitorizar glucemia capilar cada 15-30 min durante la fase aguda, luego cada 1-2 horas durante la observación.",
+      "Documentar la causa probable de la hipoglucemia: omisión de comida, error en dosis de insulina, ejercicio excesivo, interacción farmacológica.",
+      "Educar al paciente y familiares sobre reconocimiento de síntomas y uso de glucagón antes del alta."
+    ]
+  },
+  {
+    "id": "proto_hiperpotasemia",
+    "nombre": "Hiperpotasemia",
+    "descripcion": "Protocolo de manejo de la hiperpotasemia severa (K+ >6.5 mEq/L o con cambios electrocardiográficos). La hiperpotasemia es una emergencia metabólica que puede causar arritmias letales. El tratamiento sigue tres principios: estabilización de membrana cardíaca, redistribución intracelular de potasio y eliminación corporal.",
+    "categoria": "metabolico",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "K+ >6.5 mEq/L o cualquier nivel con cambios en ECG",
+      "Cambios ECG: ondas T picudas, PR prolongado, QRS ancho, ondas sinusoidales",
+      "Debilidad muscular progresiva o parálisis flácida",
+      "Paciente con insuficiencia renal y oliguria/anuria",
+      "Bradicardia o arritmias ventriculares en contexto de falla renal"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-2 min",
+        "accion": "ECG inmediato y estabilización de membrana cardíaca",
+        "detalles": "Realizar ECG de 12 derivaciones. Si hay cambios electrocardiográficos (ondas T picudas, ensanchamiento QRS, bradiarritmias), administrar calcio IV inmediatamente para estabilizar la membrana miocárdica. El calcio NO reduce el potasio.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Gluconato de calcio 10%",
+            "dosis": "10-20 mL (1-2 ampollas) IV lento en 2-3 min. Puede repetir en 5 min si persisten cambios ECG",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 2,
+        "tiempo": "2-10 min",
+        "accion": "Redistribución del potasio al espacio intracelular",
+        "detalles": "La insulina con glucosa es el método más efectivo para la redistribución. El salbutamol nebulizado tiene efecto aditivo. Reducción esperada: 0.5-1.5 mEq/L en 30-60 minutos.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Insulina regular + Dextrosa",
+            "dosis": "Insulina regular 10 UI IV + Dextrosa 50% 50 mL IV (25 g). Monitorizar glucemia cada 30 min por 4-6h",
+            "via": "IV"
+          },
+          {
+            "nombre": "Salbutamol",
+            "dosis": "10-20 mg nebulizado en 10 min (4-8 veces la dosis broncodilatadora habitual)",
+            "via": "Nebulización"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Corregir acidosis metabólica si está presente",
+        "detalles": "El bicarbonato de sodio solo es efectivo si hay acidosis metabólica concomitante (pH <7.2). No es primera línea como monoterapia para hiperpotasemia. Desplaza potasio al espacio intracelular al corregir el pH.",
+        "farmacos": [
+          {
+            "nombre": "Bicarbonato de sodio",
+            "dosis": "50 mEq IV en 5 min (si pH <7.2). No mezclar con calcio en la misma vía.",
+            "via": "IV"
+          }
+        ],
+        "decision": {
+          "pregunta": "¿Hay acidosis metabólica (pH <7.2)?",
+          "si": "Administrar bicarbonato de sodio 50 mEq IV",
+          "no": "Omitir bicarbonato; continuar con medidas de eliminación (paso 4)"
+        }
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Eliminación corporal de potasio",
+        "detalles": "Furosemida si hay función renal residual. Sulfonato de poliestireno sódico (Kayexalate) como resina de intercambio catiónico (inicio de acción lento: 1-4 horas). Si insuficiencia renal severa o refractariedad: hemodiálisis urgente.",
+        "farmacos": [
+          {
+            "nombre": "Furosemida",
+            "dosis": "40-80 mg IV (mayor dosis si insuficiencia renal)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Sulfonato de poliestireno sódico (Kayexalate)",
+            "dosis": "15-30 g VO con sorbitol al 20% o 30-50 g en enema de retención",
+            "via": "VO/Rectal"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "30-60 min",
+        "accion": "Reevaluación y considerar hemodiálisis",
+        "detalles": "Control de K+ sérico cada 1-2 horas. ECG de control. Si K+ refractario a tratamiento médico, oliguria/anuria, o cambios ECG persistentes: hemodiálisis urgente.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿K+ sigue >6.5 mEq/L o persisten cambios ECG tras tratamiento?",
+          "si": "Solicitar hemodiálisis urgente. Repetir calcio IV si hay arritmias.",
+          "no": "Continuar monitoreo. Tratar causa subyacente. Control de K+ cada 2-4h."
+        }
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Gluconato de calcio 10%",
+        "dosis": "10-20 mL IV en 2-3 min",
+        "via": "IV",
+        "indicacion": "Cardioprotección; estabiliza la membrana miocárdica (no reduce K+)"
+      },
+      {
+        "nombre": "Insulina regular + Dextrosa 50%",
+        "dosis": "10 UI insulina + 25 g dextrosa IV",
+        "via": "IV",
+        "indicacion": "Redistribución intracelular de K+ (reduce 0.5-1.5 mEq/L en 30-60 min)"
+      },
+      {
+        "nombre": "Salbutamol (dosis alta)",
+        "dosis": "10-20 mg nebulizado en 10 min",
+        "via": "Nebulización",
+        "indicacion": "Redistribución intracelular de K+ (efecto aditivo con insulina)"
+      },
+      {
+        "nombre": "Bicarbonato de sodio",
+        "dosis": "50 mEq IV",
+        "via": "IV",
+        "indicacion": "Solo si acidosis metabólica concomitante (pH <7.2)"
+      },
+      {
+        "nombre": "Furosemida",
+        "dosis": "40-80 mg IV",
+        "via": "IV",
+        "indicacion": "Eliminación renal de K+ (requiere función renal residual)"
+      },
+      {
+        "nombre": "Kayexalate",
+        "dosis": "15-30 g VO o 30-50 g rectal",
+        "via": "VO/Rectal",
+        "indicacion": "Resina de intercambio catiónico para eliminación gastrointestinal de K+"
+      }
+    ],
+    "notasEnfermeria": [
+      "El gluconato de calcio IV debe administrarse lentamente (2-3 min); la infusión rápida puede causar bradicardia severa o asistolia.",
+      "NUNCA mezclar calcio y bicarbonato de sodio en la misma vía IV (precipitación de carbonato de calcio).",
+      "Monitorizar glucemia cada 30 min durante 4-6h tras la infusión de insulina + dextrosa por riesgo de hipoglucemia tardía.",
+      "El Kayexalate está contraindicado en íleo paralítico o post-operatorio intestinal por riesgo de necrosis colónica.",
+      "Monitorización ECG continua; cualquier cambio en el ritmo cardíaco debe reportarse inmediatamente."
+    ]
+  },
+  {
+    "id": "proto_sepsis",
+    "nombre": "Sepsis - Hour-1 Bundle",
+    "abreviatura": "SEP-1",
+    "descripcion": "Protocolo del paquete de la primera hora (Hour-1 Bundle) de la Surviving Sepsis Campaign para el manejo de la sepsis y el shock séptico. Todos los elementos deben iniciarse dentro de la primera hora del reconocimiento de la sepsis.",
+    "categoria": "sepsis",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Sospecha de infección con ≥2 criterios SIRS o qSOFA ≥2",
+      "Hipotensión persistente (PAS <90 mmHg o PAM <65 mmHg) tras cristaloides",
+      "Lactato sérico >2 mmol/L",
+      "Alteración aguda del estado mental en contexto de infección",
+      "Disfunción orgánica nueva: oliguria, coagulopatía, hiperbilirrubinemia, hipoxemia"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-15 min",
+        "accion": "Medir lactato sérico",
+        "detalles": "Lactato sérico inmediato. Si lactato >2 mmol/L, repetir en 2-4 horas para evaluar aclaramiento. Lactato >4 mmol/L indica alto riesgo de mortalidad y necesidad de resucitación agresiva.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-15 min",
+        "accion": "Obtener hemocultivos antes de antibióticos",
+        "detalles": "Al menos 2 sets de hemocultivos (aerobio + anaerobio) de sitios diferentes ANTES de iniciar antibióticos. No retrasar antibióticos >45 min por cultivos. Obtener también cultivos del foco sospechado.",
+        "critico": true
+      },
+      {
+        "orden": 3,
+        "tiempo": "0-60 min",
+        "accion": "Iniciar antibióticos de amplio espectro IV",
+        "detalles": "Antibióticos empíricos de amplio espectro dentro de la PRIMERA HORA. Cada hora de retraso en antibióticos aumenta la mortalidad un 7.6%. Cubrir patógenos más probables según foco sospechado. Desescalar cuando estén disponibles los cultivos.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Meropenem",
+            "dosis": "1 g IV cada 8h (o Piperacilina/Tazobactam 4.5 g IV cada 6h)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Vancomicina",
+            "dosis": "25-30 mg/kg IV (dosis de carga) si sospecha de SAMR",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "0-60 min",
+        "accion": "Resucitación con cristaloides",
+        "detalles": "Administrar 30 mL/kg de cristaloides IV si hay hipotensión o lactato ≥4 mmol/L. Iniciar en la primera hora. Evaluar respuesta a volumen frecuentemente. Usar SSN 0.9% o Ringer Lactato.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "SSN 0.9% o Ringer Lactato",
+            "dosis": "30 mL/kg IV en la primera hora (para 70 kg = ~2100 mL). Reevaluar tolerancia a volumen.",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "60 min",
+        "accion": "Iniciar vasopresores si hipotensión persistente",
+        "detalles": "Si PAM <65 mmHg a pesar de resucitación con cristaloides, iniciar norepinefrina como vasopresor de primera línea. Objetivo PAM ≥65 mmHg. Preferir acceso venoso central, pero puede iniciarse por vía periférica temporalmente.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Norepinefrina",
+            "dosis": "0.1-0.5 mcg/kg/min IV en infusión continua. Titular hasta PAM ≥65 mmHg (máx. 2-3 mcg/kg/min)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Vasopresina (adyuvante)",
+            "dosis": "0.03-0.04 UI/min IV en infusión continua (agregar si norepinefrina >0.25 mcg/kg/min)",
+            "via": "IV"
+          }
+        ],
+        "decision": {
+          "pregunta": "¿PAM ≥65 mmHg con norepinefrina sola?",
+          "si": "Mantener infusión y monitorizar. Reevaluar lactato cada 2-4h.",
+          "no": "Agregar vasopresina 0.03 UI/min. Si persiste refractario, considerar hidrocortisona 200 mg/día IV."
+        }
+      },
+      {
+        "orden": 6,
+        "tiempo": "2-6 horas",
+        "accion": "Reevaluación del estado hemodinámico y perfusión",
+        "detalles": "Reevaluar respuesta a líquidos (elevación pasiva de piernas, variación de presión de pulso, ecocardiografía). Repetir lactato si inicial >2 mmol/L. Monitorizar diuresis (objetivo ≥0.5 mL/kg/h). Si shock refractario: considerar hidrocortisona.",
+        "farmacos": [
+          {
+            "nombre": "Hidrocortisona",
+            "dosis": "200 mg/día IV (50 mg IV cada 6h) en shock refractario a vasopresores",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 7,
+        "tiempo": "Continuo",
+        "accion": "Control de foco infeccioso",
+        "detalles": "Identificar y controlar el foco infeccioso lo antes posible: drenaje de abscesos, desbridamiento de tejidos necróticos, retiro de dispositivos infectados, cirugía si es necesario. El control de foco es tan importante como los antibióticos.",
+        "critico": true
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Meropenem",
+        "dosis": "1 g IV cada 8h",
+        "via": "IV",
+        "indicacion": "Antibiótico de amplio espectro empírico en sepsis"
+      },
+      {
+        "nombre": "Piperacilina/Tazobactam",
+        "dosis": "4.5 g IV cada 6h",
+        "via": "IV",
+        "indicacion": "Alternativa a carbapenémicos como cobertura de amplio espectro"
+      },
+      {
+        "nombre": "Vancomicina",
+        "dosis": "25-30 mg/kg IV (carga)",
+        "via": "IV",
+        "indicacion": "Cobertura contra SAMR si hay factores de riesgo"
+      },
+      {
+        "nombre": "SSN 0.9% / Ringer Lactato",
+        "dosis": "30 mL/kg IV en la primera hora",
+        "via": "IV",
+        "indicacion": "Resucitación con cristaloides en sepsis con hipoperfusión"
+      },
+      {
+        "nombre": "Norepinefrina",
+        "dosis": "0.1-2 mcg/kg/min IV en infusión",
+        "via": "IV",
+        "indicacion": "Vasopresor de primera línea en shock séptico"
+      },
+      {
+        "nombre": "Vasopresina",
+        "dosis": "0.03-0.04 UI/min IV",
+        "via": "IV",
+        "indicacion": "Vasopresor adyuvante si norepinefrina >0.25 mcg/kg/min"
+      },
+      {
+        "nombre": "Hidrocortisona",
+        "dosis": "200 mg/día IV (50 mg cada 6h)",
+        "via": "IV",
+        "indicacion": "Shock séptico refractario a vasopresores"
+      }
+    ],
+    "notasEnfermeria": [
+      "El paquete de la primera hora (Hour-1 Bundle) debe completarse en los primeros 60 minutos desde la identificación de la sepsis.",
+      "Hemocultivos SIEMPRE antes de antibióticos, pero NO retrasar antibióticos por más de 45 minutos esperando cultivos.",
+      "La norepinefrina puede iniciarse por vía periférica transitoriamente mientras se obtiene acceso central; vigilar extravasación.",
+      "Monitorizar diuresis horaria con sonda vesical; objetivo ≥0.5 mL/kg/h como indicador de perfusión renal.",
+      "Registrar balance hídrico estricto; la sobrecarga de líquidos puede ser perjudicial tras la resucitación inicial."
+    ]
+  },
+  {
+    "id": "proto_eap",
+    "nombre": "EAP - Edema Agudo de Pulmón",
+    "abreviatura": "EAP",
+    "descripcion": "Protocolo de manejo del edema agudo de pulmón cardiogénico, una emergencia cardiovascular causada por aumento de la presión capilar pulmonar secundaria a falla ventricular izquierda aguda.",
+    "categoria": "cardiaco",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Disnea súbita severa con ortopnea y crepitantes bilaterales",
+      "Esputo rosado espumoso",
+      "Desaturación rápida (SpO2 <90%) con signos de trabajo respiratorio",
+      "Hipotensión con signos de bajo gasto cardíaco (shock cardiogénico)",
+      "Taquicardia, diaforesis y ansiedad intensa con disnea"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-2 min",
+        "accion": "Posición y oxigenoterapia",
+        "detalles": "Sentar al paciente con piernas colgando (reduce retorno venoso). O2 al 100% con mascarilla de alto flujo. Si SpO2 <90% o trabajo respiratorio severo: CPAP/BiPAP (CPAP 5-10 cmH2O). Preparar intubación si falla la VNI.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "2-5 min",
+        "accion": "Diurético de asa IV",
+        "detalles": "Furosemida IV para reducir precarga mediante diuresis y venodilatación directa. Inicio de acción: 5 min (efecto venodilatador) y 15-30 min (efecto diurético). Si el paciente toma furosemida crónica, administrar al menos el doble de su dosis habitual.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Furosemida",
+            "dosis": "40-80 mg IV en bolo (o 2.5 veces la dosis oral habitual si ya la toma). Puede repetirse en 20 min si no hay respuesta.",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "2-5 min",
+        "accion": "Nitroglicerina para reducir precarga y poscarga",
+        "detalles": "La nitroglicerina es clave en el manejo del EAP por su efecto venodilatador y vasodilatador coronario. NO administrar si PAS <90 mmHg. Titular según PA y respuesta clínica.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Nitroglicerina",
+            "dosis": "0.4 mg SL cada 5 min (hasta 3 dosis), luego infusión IV 5-200 mcg/min (titular según PA)",
+            "via": "SL/IV"
+          }
+        ],
+        "decision": {
+          "pregunta": "¿PAS >90 mmHg?",
+          "si": "Administrar nitroglicerina SL y considerar infusión IV. Titular para mantener PAS >90 mmHg.",
+          "no": "NO administrar vasodilatadores. Considerar soporte inotrópico (dobutamina) o vasopresores."
+        }
+      },
+      {
+        "orden": 4,
+        "tiempo": "5-10 min",
+        "accion": "Considerar morfina en casos seleccionados",
+        "detalles": "Morfina reduce la ansiedad, el trabajo respiratorio y la precarga. Uso controvertido actualmente; reservar para ansiedad severa refractaria. Precaución: depresión respiratoria, hipotensión y náuseas.",
+        "farmacos": [
+          {
+            "nombre": "Morfina",
+            "dosis": "2-4 mg IV lento. Puede repetir cada 5-15 min (monitorizar FR y PA)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "10-30 min",
+        "accion": "Reevaluar y manejo según PA",
+        "detalles": "Si PAS <90 mmHg: shock cardiogénico, considerar inotrópicos y soporte mecánico. Si PAS 90-140 mmHg: continuar manejo estándar. Si PAS >140 mmHg: priorizar vasodilatadores.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Dobutamina (si bajo gasto)",
+            "dosis": "2-20 mcg/kg/min IV en infusión continua",
+            "via": "IV"
+          },
+          {
+            "nombre": "Norepinefrina (si shock)",
+            "dosis": "0.1-0.5 mcg/kg/min IV en infusión continua",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 6,
+        "tiempo": "30-60 min",
+        "accion": "Identificar y tratar causa precipitante",
+        "detalles": "ECG: descartar SCA/arritmias. Ecocardiograma urgente. Analítica: troponina, BNP/NT-proBNP, función renal. Causas comunes: SCA, crisis hipertensiva, arritmias, valvulopatía aguda, incumplimiento terapéutico.",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Furosemida",
+        "dosis": "40-80 mg IV en bolo",
+        "via": "IV",
+        "indicacion": "Diurético de asa para reducir sobrecarga de volumen y precarga"
+      },
+      {
+        "nombre": "Nitroglicerina",
+        "dosis": "0.4 mg SL o 5-200 mcg/min IV",
+        "via": "SL/IV",
+        "indicacion": "Vasodilatador para reducir precarga y poscarga (requiere PAS >90)"
+      },
+      {
+        "nombre": "Morfina",
+        "dosis": "2-4 mg IV cada 5-15 min",
+        "via": "IV",
+        "indicacion": "Ansiolítico y reductor de precarga en casos seleccionados"
+      },
+      {
+        "nombre": "Dobutamina",
+        "dosis": "2-20 mcg/kg/min IV",
+        "via": "IV",
+        "indicacion": "Soporte inotrópico en EAP con bajo gasto cardíaco"
+      },
+      {
+        "nombre": "Norepinefrina",
+        "dosis": "0.1-0.5 mcg/kg/min IV",
+        "via": "IV",
+        "indicacion": "Vasopresor en EAP con shock cardiogénico"
+      }
+    ],
+    "notasEnfermeria": [
+      "Sentar al paciente con piernas colgando para reducir el retorno venoso y mejorar la mecánica respiratoria.",
+      "Monitorizar diuresis horaria; la respuesta a furosemida se espera en 15-30 minutos. Reportar si diuresis <0.5 mL/kg/h.",
+      "CPAP/BiPAP es de primera línea en VNI; reduce la necesidad de intubación. Asegurar buen sellado de mascarilla.",
+      "Vigilar signos de deterioro: esputo rosado espumoso en aumento, desaturación progresiva, confusión, bradicardia.",
+      "Balance hídrico negativo es el objetivo; registrar ingresos y egresos de forma estricta."
+    ]
+  },
+  {
+    "id": "proto_estado_asmatico",
+    "nombre": "Estado Asmático - Crisis Asmática Severa",
+    "descripcion": "Protocolo de manejo del estado asmático (crisis asmática severa o casi fatal), definido como una exacerbación de asma que no responde al tratamiento broncodilatador inicial y amenaza la vida del paciente.",
+    "categoria": "respiratorio",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "Dificultad para hablar (frases entrecortadas o palabras sueltas)",
+      "Uso de músculos accesorios con tiraje intercostal y supraclavicular",
+      "SpO2 <92% o PEF <25% del predicho",
+      "Tórax silente (disminución de sibilancias = obstrucción severa)",
+      "Alteración del nivel de conciencia, agotamiento respiratorio, cianosis"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-5 min",
+        "accion": "Oxígeno y broncodilatador de acción corta",
+        "detalles": "O2 para mantener SpO2 93-95%. Salbutamol nebulizado continuo o MDI con espaciador (4-8 puffs cada 20 min). En crisis severa, preferir nebulización continua.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Salbutamol",
+            "dosis": "2.5-5 mg nebulizado cada 20 min x 3 dosis, luego cada 1-4h. O nebulización continua 10-15 mg/h. MDI: 4-8 puffs cada 20 min",
+            "via": "Nebulización/MDI"
+          },
+          {
+            "nombre": "Ipratropio",
+            "dosis": "0.5 mg nebulizado junto con salbutamol cada 20 min x 3 dosis",
+            "via": "Nebulización"
+          }
+        ]
+      },
+      {
+        "orden": 2,
+        "tiempo": "5-15 min",
+        "accion": "Corticosteroide sistémico",
+        "detalles": "Administrar corticosteroide sistémico lo antes posible. Reduce la inflamación de la vía aérea. El beneficio máximo se observa a las 4-6 horas, por lo que la administración temprana es crucial.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Metilprednisolona",
+            "dosis": "60-125 mg IV. Pediátrico: 1-2 mg/kg IV (máx. 60 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Hidrocortisona (alternativa)",
+            "dosis": "200 mg IV",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "15-30 min",
+        "accion": "Evaluar respuesta y considerar sulfato de magnesio",
+        "detalles": "Si no hay mejoría con broncodilatadores + corticosteroide, administrar MgSO4 IV. El magnesio tiene efecto broncodilatador por relajación del músculo liso bronquial.",
+        "farmacos": [
+          {
+            "nombre": "Sulfato de magnesio (MgSO4)",
+            "dosis": "2 g IV en 20 min (diluido en 100 mL de SSN). Pediátrico: 25-75 mg/kg IV (máx. 2 g)",
+            "via": "IV"
+          }
+        ],
+        "decision": {
+          "pregunta": "¿Hay mejoría con broncodilatadores y corticosteroide?",
+          "si": "Continuar salbutamol cada 1-4h, espaciar según mejoría. Mantener corticosteroide.",
+          "no": "Administrar MgSO4 IV. Evaluar necesidad de tratamientos de rescate (paso 4)."
+        }
+      },
+      {
+        "orden": 4,
+        "tiempo": "30-60 min",
+        "accion": "Tratamientos de rescate en crisis refractaria",
+        "detalles": "Si persiste sin mejoría: considerar epinefrina IM/SC, aminofilina IV (uso controvertido), o ketamina. Preparar intubación si hay signos de fallo respiratorio inminente.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Epinefrina",
+            "dosis": "0.3-0.5 mg IM/SC (solución 1:1000) cada 20 min x 3 dosis",
+            "via": "IM/SC"
+          },
+          {
+            "nombre": "Aminofilina (uso controvertido)",
+            "dosis": "Carga: 5-6 mg/kg IV en 20 min (si no toma teofilina). Mantenimiento: 0.5-0.9 mg/kg/h",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Si deterioro",
+        "accion": "Intubación y ventilación mecánica",
+        "detalles": "Indicaciones: apnea, alteración de conciencia, agotamiento respiratorio, hipoxemia refractaria (SpO2 <90% con O2 alto flujo), hipercapnia progresiva. Usar ketamina como agente inductor (broncodilatador). Ventilación protectora con tiempos espiratorios prolongados.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Ketamina (inducción)",
+            "dosis": "1-2 mg/kg IV para intubación",
+            "via": "IV"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Salbutamol",
+        "dosis": "2.5-5 mg nebulizado cada 20 min o nebulización continua 10-15 mg/h",
+        "via": "Nebulización",
+        "indicacion": "Broncodilatador beta-2 agonista de acción corta, primera línea"
+      },
+      {
+        "nombre": "Ipratropio",
+        "dosis": "0.5 mg nebulizado cada 20 min x 3 dosis",
+        "via": "Nebulización",
+        "indicacion": "Anticolinérgico broncodilatador, sinérgico con salbutamol"
+      },
+      {
+        "nombre": "Metilprednisolona",
+        "dosis": "60-125 mg IV",
+        "via": "IV",
+        "indicacion": "Corticosteroide sistémico antiinflamatorio para crisis asmática"
+      },
+      {
+        "nombre": "Sulfato de magnesio",
+        "dosis": "2 g IV en 20 min",
+        "via": "IV",
+        "indicacion": "Broncodilatador por relajación del músculo liso; en crisis refractaria"
+      },
+      {
+        "nombre": "Epinefrina",
+        "dosis": "0.3-0.5 mg IM/SC cada 20 min",
+        "via": "IM/SC",
+        "indicacion": "Broncodilatador de rescate en crisis severa refractaria"
+      },
+      {
+        "nombre": "Ketamina",
+        "dosis": "1-2 mg/kg IV",
+        "via": "IV",
+        "indicacion": "Agente de inducción con propiedades broncodilatadoras para intubación"
+      }
+    ],
+    "notasEnfermeria": [
+      "El tórax silente (ausencia de sibilancias) NO indica mejoría; significa obstrucción tan severa que no hay flujo aéreo suficiente para generar sibilancias.",
+      "Monitorizar PEF antes y después de cada tratamiento para objetivar respuesta. Documentar la mejor cifra obtenida.",
+      "La nebulización continua de salbutamol requiere monitorización de FC y K+ (riesgo de taquicardia e hipopotasemia).",
+      "Preparar equipo de intubación desde el inicio en toda crisis severa; la descompensación puede ser rápida.",
+      "Evitar sedación excesiva; los sedantes pueden suprimir el estímulo respiratorio y precipitar paro respiratorio."
+    ]
+  },
+  {
+    "id": "proto_hemorragia_masiva",
+    "nombre": "Hemorragia Masiva",
+    "descripcion": "Protocolo de manejo de la hemorragia masiva, definida como la pérdida de un volumen sanguíneo completo en 24 horas, 50% en 3 horas, o sangrado >150 mL/min. Incluye activación del protocolo de transfusión masiva.",
+    "categoria": "trauma",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Taquicardia >120 lpm con hipotensión (PAS <90 mmHg)",
+      "Sangrado visible activo no controlable con presión directa",
+      "Índice de choque (FC/PAS) >1.0",
+      "Alteración del nivel de conciencia con palidez y diaforesis",
+      "Necesidad de >4 concentrados de glóbulos rojos en 1 hora"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-3 min",
+        "accion": "Control del sangrado y acceso vascular",
+        "detalles": "Presión directa sobre herida externa. Torniquete si extremidad con hemorragia no controlable. Dos accesos venosos de gran calibre (14-16G) o acceso intraóseo. Muestra de sangre para grupo, Rh, pruebas cruzadas, coagulación, hemograma y gasometría.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-10 min",
+        "accion": "Administrar ácido tranexámico",
+        "detalles": "Administrar dentro de las primeras 3 horas del inicio de la hemorragia. Reduce la mortalidad por hemorragia en un 20-30%. NO administrar después de 3 horas (puede ser perjudicial).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Ácido tranexámico",
+            "dosis": "1 g IV en 10 min (bolo inicial), luego 1 g IV en infusión en 8 horas",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Activar protocolo de transfusión masiva",
+        "detalles": "Activar PTM cuando se cumplen criterios. Relación de hemoderivados 1:1:1 (GR:PFC:plaquetas). Solicitar sangre tipo O Rh negativo si no hay tiempo para pruebas cruzadas. Usar calentador de hemoderivados.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Concentrados de Glóbulos Rojos",
+            "dosis": "Tipo O Rh- inicialmente, luego isogrupo. Administrar con calentador.",
+            "via": "IV"
+          },
+          {
+            "nombre": "Plasma Fresco Congelado",
+            "dosis": "10-15 mL/kg IV. Relación 1:1 con GR en protocolo de transfusión masiva.",
+            "via": "IV"
+          },
+          {
+            "nombre": "Plaquetas",
+            "dosis": "1 concentrado plaquetario por cada 5-6 unidades de GR. Objetivo plaquetas >50,000/μL.",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Resucitación inicial con cristaloides y monitoreo",
+        "detalles": "Cristaloides como puente hasta disponibilidad de hemoderivados. Evitar resucitación excesiva con cristaloides (dilución de factores de coagulación). Objetivo de PAS: 80-90 mmHg (hipotensión permisiva) excepto en TEC.",
+        "farmacos": [
+          {
+            "nombre": "Ringer Lactato",
+            "dosis": "500-1000 mL IV en bolo rápido (calentado a 37-40°C si es posible)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "30-60 min",
+        "accion": "Corregir coagulopatía y monitoreo de laboratorio",
+        "detalles": "Obtener gasometría, fibrinógeno, TP/TTPa, plaquetas cada 30-60 min. Corregir acidosis, hipotermia y coagulopatía (tríada letal del trauma). Administrar fibrinógeno si <150 mg/dL.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Fibrinógeno (crioprecipitado)",
+            "dosis": "Crioprecipitado: 10 unidades IV si fibrinógeno <150 mg/dL. Objetivo >200 mg/dL.",
+            "via": "IV"
+          },
+          {
+            "nombre": "Calcio gluconato",
+            "dosis": "1-2 g IV cada 30 min según Ca++ ionizado (mantener >1.1 mmol/L). La hipocalcemia por citrato de transfusiones afecta la coagulación.",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 6,
+        "tiempo": "Continuo",
+        "accion": "Control quirúrgico definitivo",
+        "detalles": "Cirugía de control de daños si es necesario: empaquetamiento, clampaje, reparación vascular. Angioembolización en hemorragias no quirúrgicas. El control del foco hemorrágico es la prioridad definitiva.",
+        "critico": true
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Ácido tranexámico",
+        "dosis": "1 g IV en 10 min + 1 g IV en 8h",
+        "via": "IV",
+        "indicacion": "Antifibrinolítico; administrar en las primeras 3 horas de la hemorragia"
+      },
+      {
+        "nombre": "Concentrados de Glóbulos Rojos",
+        "dosis": "Según necesidad, relación 1:1:1",
+        "via": "IV",
+        "indicacion": "Restaurar capacidad de transporte de oxígeno"
+      },
+      {
+        "nombre": "Plasma Fresco Congelado",
+        "dosis": "10-15 mL/kg IV",
+        "via": "IV",
+        "indicacion": "Reponer factores de coagulación en transfusión masiva"
+      },
+      {
+        "nombre": "Plaquetas",
+        "dosis": "1 unidad por cada 5-6 unidades de GR",
+        "via": "IV",
+        "indicacion": "Mantener plaquetas >50,000/μL durante hemorragia activa"
+      },
+      {
+        "nombre": "Fibrinógeno/Crioprecipitado",
+        "dosis": "10 unidades IV si fibrinógeno <150 mg/dL",
+        "via": "IV",
+        "indicacion": "Reponer fibrinógeno consumido en coagulopatía"
+      },
+      {
+        "nombre": "Calcio gluconato",
+        "dosis": "1-2 g IV cada 30 min según niveles",
+        "via": "IV",
+        "indicacion": "Corregir hipocalcemia por citrato de hemoderivados; esencial para coagulación"
+      }
+    ],
+    "notasEnfermeria": [
+      "Aplicar el protocolo de transfusión masiva: relación 1:1:1 de GR:PFC:plaquetas para prevenir la coagulopatía dilucional.",
+      "Calentar TODOS los hemoderivados y cristaloides; la hipotermia agrava la coagulopatía y debe prevenirse activamente.",
+      "Monitorizar calcio ionizado cada 30 min durante la transfusión masiva; el citrato de los hemoderivados quela el calcio.",
+      "El ácido tranexámico debe administrarse en los primeros 180 minutos del inicio de la hemorragia; pasadas las 3 horas puede ser perjudicial.",
+      "Documentar cada unidad de hemoderivado administrada con hora exacta. Comunicar al médico si el sangrado supera la reposición."
+    ]
+  },
+  {
+    "id": "proto_hipertermia_maligna",
+    "nombre": "Hipertermia Maligna",
+    "descripcion": "Protocolo de manejo de la hipertermia maligna, una emergencia anestésica farmacogenética potencialmente mortal desencadenada por anestésicos halogenados o succinilcolina en individuos susceptibles. La mortalidad sin tratamiento supera el 70%.",
+    "categoria": "otro",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Elevación inexplicable de ETCO2 y taquicardia durante anestesia general",
+      "Rigidez muscular generalizada, especialmente trismus al administrar succinilcolina",
+      "Temperatura corporal en ascenso rápido (>1°C cada 5 min)",
+      "Acidosis mixta (respiratoria y metabólica) con hiperpotasemia",
+      "Arritmias ventriculares con rabdomiólisis (elevación de CK, mioglobinuria)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-2 min",
+        "accion": "Suspender agente desencadenante y pedir ayuda",
+        "detalles": "Suspender INMEDIATAMENTE todos los anestésicos halogenados y succinilcolina. Avisar al equipo. Hiperventilar con O2 al 100% a flujos altos (≥10 L/min). Cambiar circuito y absorbedor de CO2 si es posible.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "2-5 min",
+        "accion": "Administrar Dantroleno IV",
+        "detalles": "Dantroleno es el ÚNICO antídoto específico. Cada vial de 20 mg se reconstituye con 60 mL de agua estéril (NO usar SSN). La reconstitución es laboriosa; se necesitan múltiples personas. Administrar lo más rápido posible.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Dantroleno",
+            "dosis": "2.5 mg/kg IV en bolo rápido. Repetir cada 5-10 min hasta controlar síntomas (máx. acumulado ~10 mg/kg, sin límite real si necesario)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Enfriamiento activo",
+        "detalles": "Iniciar enfriamiento agresivo si temperatura >39°C. Objetivo: temperatura central <38.5°C. Detener enfriamiento al alcanzar 38°C para evitar hipotermia reactiva.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "SSN 0.9% frío",
+            "dosis": "Lavado gástrico, vesical y rectal con SSN fría. Infusión IV de SSN frío (4°C) 15 mL/kg.",
+            "via": "IV/Lavados"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "5-15 min",
+        "accion": "Tratar hiperpotasemia y arritmias",
+        "detalles": "La rabdomiólisis libera potasio masivamente. Tratar hiperpotasemia con protocolo estándar. Tratar arritmias ventriculares con amiodarona. EVITAR bloqueantes de canales de calcio (interacción letal con dantroleno).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Insulina regular + Dextrosa",
+            "dosis": "Insulina 10 UI IV + Dextrosa 50% 50 mL IV",
+            "via": "IV"
+          },
+          {
+            "nombre": "Gluconato de calcio 10%",
+            "dosis": "10-20 mL IV en 2-3 min (para hiperpotasemia con cambios ECG)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Bicarbonato de sodio",
+            "dosis": "1-2 mEq/kg IV si acidosis metabólica severa (pH <7.2)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Protección renal y monitoreo",
+        "detalles": "Forzar diuresis con líquidos IV y furosemida para prevenir fallo renal por mioglobinuria. Objetivo: diuresis >2 mL/kg/h. Monitorizar CK, mioglobina, K+, Ca++, gasometría y coagulación seriados. Mantener dantroleno cada 4-6h por 24-48h.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Furosemida",
+            "dosis": "40-80 mg IV (si diuresis inadecuada)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Dantroleno (mantenimiento)",
+            "dosis": "1 mg/kg IV cada 4-6h durante 24-48h post-crisis",
+            "via": "IV"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Dantroleno",
+        "dosis": "2.5 mg/kg IV bolo, repetir cada 5-10 min. Mantenimiento: 1 mg/kg IV cada 4-6h x 24-48h",
+        "via": "IV",
+        "indicacion": "Antídoto específico; relajante muscular de acción directa que inhibe la liberación de calcio del retículo sarcoplásmico"
+      },
+      {
+        "nombre": "Insulina regular + Dextrosa 50%",
+        "dosis": "10 UI insulina + 25 g dextrosa IV",
+        "via": "IV",
+        "indicacion": "Tratamiento de hiperpotasemia asociada a rabdomiólisis"
+      },
+      {
+        "nombre": "Gluconato de calcio 10%",
+        "dosis": "10-20 mL IV",
+        "via": "IV",
+        "indicacion": "Estabilización de membrana cardíaca en hiperpotasemia"
+      },
+      {
+        "nombre": "Bicarbonato de sodio",
+        "dosis": "1-2 mEq/kg IV",
+        "via": "IV",
+        "indicacion": "Corrección de acidosis metabólica severa"
+      },
+      {
+        "nombre": "Furosemida",
+        "dosis": "40-80 mg IV",
+        "via": "IV",
+        "indicacion": "Forzar diuresis para protección renal ante mioglobinuria"
+      }
+    ],
+    "notasEnfermeria": [
+      "NUNCA administrar bloqueantes de canales de calcio (verapamilo, diltiazem) junto con dantroleno; la combinación puede causar colapso cardiovascular fatal.",
+      "La reconstitución del dantroleno es laboriosa (cada vial de 20 mg requiere 60 mL de agua estéril); asignar personal exclusivo para esta tarea.",
+      "Conocer la ubicación del kit de hipertermia maligna en el área quirúrgica. Verificar stock de dantroleno periódicamente (mínimo 36 viales).",
+      "Monitorizar temperatura central (esofágica, rectal o vesical); la axilar es inexacta en esta emergencia.",
+      "Asesorar a la familia sobre la naturaleza genética de la condición y la necesidad de estudio (test de contractura in vitro) para familiares de primer grado."
+    ]
+  },
+  {
+    "id": "proto_cad",
+    "nombre": "CAD - Cetoacidosis Diabética",
+    "abreviatura": "CAD",
+    "descripcion": "Protocolo de manejo de la cetoacidosis diabética, una complicación aguda grave de la diabetes mellitus caracterizada por hiperglucemia, cetonemia, acidosis metabólica y deshidratación. Es más frecuente en DM tipo 1 pero puede ocurrir en DM tipo 2.",
+    "categoria": "metabolico",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "Glucemia >250 mg/dL con cetonuria/cetonemia y pH <7.3",
+      "Respiración de Kussmaul (rápida y profunda) con aliento cetónico",
+      "Deshidratación severa con taquicardia e hipotensión",
+      "Dolor abdominal difuso con náuseas y vómitos",
+      "Alteración del nivel de conciencia (obnubilación, coma) con pH <7.0"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-15 min",
+        "accion": "Evaluación inicial y estudios de laboratorio",
+        "detalles": "Glucemia, gasometría arterial, electrolitos (Na+, K+, Cl-, Mg++), cetonas en sangre/orina, osmolaridad, función renal, hemograma, ECG. Calcular anion gap: Na - (Cl + HCO3); valor normal 12±4. CAD: anion gap >12. Clasificar severidad según pH.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿K+ sérico >3.3 mEq/L?",
+          "si": "Puede iniciarse insulina junto con reposición de K+ (paso 3)",
+          "no": "NO iniciar insulina hasta corregir K+ >3.3 mEq/L (riesgo de arritmias letales)"
+        }
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-30 min",
+        "accion": "Resucitación con líquidos IV",
+        "detalles": "La hidratación es la primera prioridad. Déficit típico: 5-7 litros. SSN 0.9% en la primera hora. Después, ajustar según Na+ corregido. Cuando glucemia <250 mg/dL, cambiar a dextrosa 5% + SSN 0.45% para prevenir hipoglucemia.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "SSN 0.9%",
+            "dosis": "1000-1500 mL IV en la primera hora. Luego 250-500 mL/h (ajustar según estado hemodinámico).",
+            "via": "IV"
+          },
+          {
+            "nombre": "Dextrosa 5% + SSN 0.45%",
+            "dosis": "150-250 mL/h IV cuando glucemia <250 mg/dL (para mantener glucemia 150-200 mg/dL mientras se resuelve la cetosis)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "15-60 min",
+        "accion": "Insulina regular en infusión continua",
+        "detalles": "Iniciar SOLO si K+ >3.3 mEq/L. Objetivo: reducir glucemia 50-75 mg/dL por hora. Si la glucemia baja más rápido, reducir dosis o agregar dextrosa. NO suspender insulina hasta que se resuelva la cetosis (pH >7.3, HCO3 >15, anion gap <12).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Insulina regular",
+            "dosis": "Bolo: 0.1 UI/kg IV, luego infusión: 0.1 UI/kg/h IV. Alternativa sin bolo: 0.14 UI/kg/h IV",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "30-60 min",
+        "accion": "Reposición de potasio",
+        "detalles": "El K+ total corporal está deplecionado aunque el nivel sérico pueda estar normal o elevado (por acidosis). La insulina desplaza K+ al intracelular, pudiendo causar hipopotasemia peligrosa. Reposición según niveles.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Cloruro de potasio (KCl)",
+            "dosis": "K+ <3.3: 20-40 mEq/h IV (NO iniciar insulina). K+ 3.3-5.3: 20-30 mEq por cada litro de SSN. K+ >5.3: no reponer, control en 2h.",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Cada 1-2 horas",
+        "accion": "Monitoreo seriado y ajustes",
+        "detalles": "Glucemia capilar cada hora. Electrolitos y gasometría cada 2-4 horas. Ajustar velocidad de insulina para descenso de glucemia de 50-75 mg/dL/h. Cuando glucemia <250: reducir insulina a 0.02-0.05 UI/kg/h y agregar dextrosa.",
+        "critico": true
+      },
+      {
+        "orden": 6,
+        "tiempo": "Resolución",
+        "accion": "Criterios de resolución y transición a insulina SC",
+        "detalles": "Criterios de resolución de CAD: pH >7.3, HCO3 >15 mEq/L, anion gap <12, paciente tolerando VO. Administrar insulina SC 1-2 horas ANTES de suspender la infusión IV para evitar rebote de hiperglucemia y cetosis.",
+        "farmacos": [
+          {
+            "nombre": "Insulina glargina o NPH",
+            "dosis": "Administrar dosis SC basal 1-2h antes de suspender infusión IV. Calcular según requerimientos previos del paciente.",
+            "via": "SC"
+          }
+        ]
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "SSN 0.9%",
+        "dosis": "1000-1500 mL IV primera hora, luego 250-500 mL/h",
+        "via": "IV",
+        "indicacion": "Resucitación hídrica; corrige deshidratación y mejora perfusión renal"
+      },
+      {
+        "nombre": "Insulina regular (infusión)",
+        "dosis": "0.1 UI/kg/h IV (con o sin bolo de 0.1 UI/kg)",
+        "via": "IV",
+        "indicacion": "Suprime cetogénesis y corrige hiperglucemia"
+      },
+      {
+        "nombre": "Cloruro de potasio (KCl)",
+        "dosis": "20-40 mEq/h IV según niveles de K+",
+        "via": "IV",
+        "indicacion": "Reposición de K+ deplecionado; prevenir hipopotasemia por insulina"
+      },
+      {
+        "nombre": "Dextrosa 5%",
+        "dosis": "Agregar cuando glucemia <250 mg/dL (150-250 mL/h)",
+        "via": "IV",
+        "indicacion": "Prevenir hipoglucemia mientras se mantiene insulina para resolver cetosis"
+      },
+      {
+        "nombre": "Bicarbonato de sodio",
+        "dosis": "100 mEq en 400 mL de agua + 20 mEq KCl, a pasar en 2h (solo si pH <6.9)",
+        "via": "IV",
+        "indicacion": "Solo en acidosis severa (pH <6.9); uso controvertido"
+      }
+    ],
+    "notasEnfermeria": [
+      "NUNCA iniciar insulina si K+ <3.3 mEq/L; la insulina desplaza K+ al intracelular y puede causar arritmias ventriculares fatales.",
+      "La resolución de la CAD se define por pH, bicarbonato y anion gap, NO por la glucemia. La insulina se mantiene hasta que se resuelva la cetosis.",
+      "Monitorizar glucemia capilar cada hora y electrolitos cada 2-4h. Vigilar signos de hipopotasemia: debilidad, calambres, cambios ECG.",
+      "Administrar insulina SC basal 1-2h ANTES de suspender la infusión IV para evitar el efecto rebote.",
+      "Investigar y tratar el factor precipitante: infección (más común), incumplimiento terapéutico, debut diabético, IAM, pancreatitis."
+    ]
+  },
+  {
+    "id": "proto_eclampsia",
+    "nombre": "Eclampsia / Preeclampsia Severa",
+    "abreviatura": "PE/E",
+    "descripcion": "Protocolo de manejo de la emergencia hipertensiva en el embarazo. La preeclampsia severa (PA ≥160/110 con proteinuria y/o daño orgánico) puede progresar a eclampsia (convulsiones) y síndrome HELLP. Emergencia obstétrica que amenaza la vida materna y fetal.",
+    "categoria": "obstetrico",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "PA sistólica ≥160 mmHg o diastólica ≥110 mmHg persistente",
+      "Convulsiones tónico-clónicas (eclampsia)",
+      "Cefalea intensa refractaria a analgesia",
+      "Alteraciones visuales: escotomas, visión borrosa, amaurosis",
+      "Dolor epigástrico o en hipocondrio derecho (distensión hepática)",
+      "Oliguria <500 mL/24h",
+      "Edema pulmonar agudo",
+      "Plaquetas <100.000/µL o LDH elevada (HELLP)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-5 min",
+        "accion": "Estabilización inmediata y protección de la vía aérea",
+        "detalles": "Posición en decúbito lateral izquierdo (mejorar retorno venoso y prevenir aspiración). Si convulsiona: proteger de lesiones, no introducir objetos en boca, aspirar secreciones. Oxígeno a alto flujo. Monitorización continua: PA, FC, SatO2, FCF.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-5 min",
+        "accion": "Administrar Sulfato de Magnesio (MgSO4) — PRIMERA LÍNEA",
+        "detalles": "Dosis de carga: 4-6 g IV en 15-20 min diluidos en 100 mL SF. Mantenimiento: 1-2 g/h en perfusión continua. El MgSO4 es anticonvulsivante de elección en eclampsia (superior a diazepam y fenitoína). Mantener 24-48h postparto.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Sulfato de Magnesio",
+            "dosis": "Carga: 4-6 g IV en 15-20 min; Mantenimiento: 1-2 g/h",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Control de la presión arterial",
+        "detalles": "Objetivo: PA <160/110 pero no descender >25% en primeras horas (riesgo de hipoperfusión placentaria). Labetalol IV es primera línea. Alternativas: hidralazina IV, nifedipino oral.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Labetalol",
+            "dosis": "20 mg IV en bolo; repetir 40-80 mg cada 10-15 min (máx 300 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Hidralazina",
+            "dosis": "5-10 mg IV cada 15-20 min (máx 30 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Nifedipino",
+            "dosis": "10-20 mg VO cada 30 min (máx 60 mg)",
+            "via": "Oral"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Evaluación materna y fetal completa",
+        "detalles": "Analítica urgente: hemograma, plaquetas, LDH, GOT/GPT, bilirrubina, creatinina, ácido úrico, proteinuria. Descartar síndrome HELLP (hemólisis + enzimas hepáticas elevadas + trombocitopenia). Monitorización fetal continua: RCTG.",
+        "critico": false
+      },
+      {
+        "orden": 5,
+        "tiempo": "30 min - 2h",
+        "accion": "Decisión sobre finalización del embarazo",
+        "detalles": "La eclampsia y preeclampsia severa refractaria son indicación de parto urgente independientemente de la edad gestacional. En <34 semanas: considerar maduración pulmonar con corticoides si el estado materno lo permite (betametasona 12 mg IM × 2 dosis/24h). La vía de parto depende de las condiciones obstétricas.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Eclampsia refractaria al MgSO4 o deterioro materno/fetal?",
+          "si": "Cesárea urgente",
+          "no": "Estabilizar y planificar parto según condiciones obstétricas"
+        }
+      },
+      {
+        "orden": 6,
+        "tiempo": "Postparto",
+        "accion": "Vigilancia postparto intensiva",
+        "detalles": "Mantener MgSO4 24-48h postparto. Continuar antihipertensivos. Vigilar diuresis, PA cada 15 min las primeras 4h. El riesgo de eclampsia persiste hasta 48-72h postparto. Control de hemorragia postparto (mayor riesgo en HELLP).",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Sulfato de Magnesio",
+        "dosis": "Carga: 4-6 g IV en 15-20 min; Mantenimiento: 1-2 g/h",
+        "via": "IV",
+        "indicacion": "Anticonvulsivante de primera línea en eclampsia y prevención en preeclampsia severa"
+      },
+      {
+        "nombre": "Labetalol",
+        "dosis": "20 mg IV en bolo, escalar cada 10-15 min (máx 300 mg)",
+        "via": "IV",
+        "indicacion": "Antihipertensivo de primera línea en emergencia hipertensiva del embarazo"
+      },
+      {
+        "nombre": "Hidralazina",
+        "dosis": "5-10 mg IV cada 15-20 min",
+        "via": "IV",
+        "indicacion": "Alternativa antihipertensiva"
+      },
+      {
+        "nombre": "Nifedipino",
+        "dosis": "10-20 mg VO cada 30 min",
+        "via": "Oral",
+        "indicacion": "Alternativa si no hay acceso IV"
+      },
+      {
+        "nombre": "Betametasona",
+        "dosis": "12 mg IM cada 24h × 2 dosis",
+        "via": "IM",
+        "indicacion": "Maduración pulmonar fetal si <34 semanas"
+      }
+    ],
+    "notasEnfermeria": [
+      "Monitorizar reflejo rotuliano cada hora durante infusión de MgSO4: la AUSENCIA de reflejo indica toxicidad por magnesio.",
+      "Mantener antídoto preparado: Gluconato de Calcio 1 g IV lento para toxicidad por MgSO4 (depresión respiratoria, bradicardia).",
+      "Controlar diuresis horaria: debe ser >25-30 mL/h. El MgSO4 se excreta por vía renal; la oliguria aumenta el riesgo de toxicidad.",
+      "NUNCA administrar nifedipino y MgSO4 simultáneamente sin supervisión estrecha: hipotensión severa.",
+      "El síndrome HELLP puede presentarse sin hipertensión significativa: sospechar ante dolor epigástrico + malestar + náuseas."
+    ]
+  },
+  {
+    "id": "proto_sobredosis_opioides",
+    "nombre": "Intoxicación por Opioides",
+    "abreviatura": "IOp",
+    "descripcion": "Protocolo de manejo de la sobredosis/intoxicación aguda por opioides (heroína, fentanilo, morfina, metadona, tramadol). La depresión respiratoria es la principal causa de muerte. La naloxona es el antídoto específico.",
+    "categoria": "otro",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Depresión respiratoria: FR <12 rpm o apnea",
+      "Miosis puntiforme bilateral (pupilas en alfiler)",
+      "Disminución del nivel de conciencia / coma",
+      "Cianosis",
+      "Hipotensión",
+      "Bradicardia",
+      "Edema pulmonar no cardiogénico (heroína/fentanilo)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "Evaluación rápida y apertura de vía aérea",
+        "detalles": "Evaluar consciencia (estímulo verbal/dolor), respiración y pulso. Abrir vía aérea (maniobra frente-mentón), aspirar secreciones. Si apnea: iniciar ventilación con bolsa-mascarilla. Si paro cardíaco: iniciar RCP.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "1-3 min",
+        "accion": "Administrar Naloxona",
+        "detalles": "Naloxona 0.4-2 mg IV/IM/SC/IN. Si no hay respuesta en 2-3 minutos, repetir dosis. En sospecha de fentanilo o derivados potentes: pueden requerirse dosis mayores (hasta 10 mg totales). Vía intranasal: 4 mg (2 mg por fosa nasal) si no hay acceso IV.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Naloxona",
+            "dosis": "0.4-2 mg IV/IM/SC; repetir cada 2-3 min hasta respuesta (máx 10 mg)",
+            "via": "IV/IM/SC/IN"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "3-10 min",
+        "accion": "Monitorización continua y soporte respiratorio",
+        "detalles": "Monitorizar SatO2, FR, FC, PA, ECG. Oxígeno suplementario. La naloxona tiene vida media más corta (30-90 min) que muchos opioides: riesgo de re-sedación. Si paciente intubado, mantener ventilación mecánica hasta respuesta.",
+        "critico": true
+      },
+      {
+        "orden": 4,
+        "tiempo": "10-60 min",
+        "accion": "Infusión continua de Naloxona (si renarcotización)",
+        "detalles": "Si se requieren dosis repetidas o el opioide es de larga duración (metadona, fentanilo transdérmico): perfusión continua de naloxona 0.4-0.8 mg/h IV. Ajustar según respuesta clínica. Mantener mínimo 4-6h (24h si metadona).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Naloxona (perfusión)",
+            "dosis": "0.4-0.8 mg/h IV en perfusión continua (2/3 de la dosis de respuesta por hora)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Evaluación de complicaciones y observación",
+        "detalles": "Vigilar: edema pulmonar no cardiogénico, rabdomiólisis (CK, mioglobina), hipotermia, síndrome compartimental (por inmovilización prolongada). Observación mínima: 4-6h si opioides de corta duración, 24h si metadona u opioides de liberación prolongada.",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Naloxona",
+        "dosis": "0.4-2 mg IV/IM/SC/IN; repetir cada 2-3 min (máx 10 mg)",
+        "via": "IV/IM/SC/IN",
+        "indicacion": "Antagonista opioide específico — revierte depresión respiratoria, sedación y miosis"
+      },
+      {
+        "nombre": "Naloxona (perfusión)",
+        "dosis": "0.4-0.8 mg/h IV ajustable",
+        "via": "IV",
+        "indicacion": "Prevenir renarcotización con opioides de larga duración"
+      }
+    ],
+    "notasEnfermeria": [
+      "Al administrar naloxona, dosificar PROGRESIVAMENTE: despertar brusco puede causar agitación severa, vómito con aspiración, edema pulmonar o síndrome de abstinencia agudo.",
+      "La naloxona tiene vida media MENOR que la mayoría de opioides: vigilar renarcotización. Nunca dar de alta tras una sola dosis sin observación.",
+      "En pacientes con dependencia crónica a opioides: usar dosis menores de naloxona (0.04-0.1 mg) y titular para restaurar respiración sin precipitar abstinencia completa.",
+      "Buscar parches de fentanilo transdérmico en todo el cuerpo (pueden estar ocultos); retirarlos si se encuentran.",
+      "Documentar: sustancia sospechada, vía de consumo, hora estimada de exposición, dosis de naloxona y respuesta."
+    ]
+  },
+  {
+    "id": "proto_reaccion_transfusional",
+    "nombre": "Reacción Transfusional Aguda",
+    "abreviatura": "RTA",
+    "descripcion": "Protocolo de manejo de reacciones adversas agudas a la transfusión de hemoderivados. Incluye reacciones hemolíticas (incompatibilidad ABO), febriles no hemolíticas, alérgicas/anafilácticas, TRALI y sobrecarga circulatoria (TACO).",
+    "categoria": "otro",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "Fiebre >1°C sobre la basal durante o tras transfusión",
+      "Escalofríos intensos / rigidez",
+      "Hipotensión o hipertensión súbita",
+      "Taquicardia",
+      "Disnea / desaturación / edema pulmonar",
+      "Urticaria, prurito, angioedema",
+      "Dolor lumbar o torácico",
+      "Hemoglobinuria (orina oscura)",
+      "Sensación de muerte inminente"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "DETENER LA TRANSFUSIÓN INMEDIATAMENTE",
+        "detalles": "Clamplar la vía de transfusión pero NO retirar el acceso venoso. Mantener permeable con SF 0.9%. Verificar la identidad del paciente y la etiqueta de la bolsa de hemoderivado. Monitorizar signos vitales.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "1-5 min",
+        "accion": "Evaluación clínica y clasificación de la reacción",
+        "detalles": "Valorar: fiebre, urticaria, disnea, hipotensión, dolor. Si shock anafiláctico: epinefrina 0.3-0.5 mg IM. Si disnea con infiltrados bilaterales: sospechar TRALI. Si fiebre + hemoglobinuria: sospechar reacción hemolítica.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Hay signos de anafilaxia o reacción hemolítica?",
+          "si": "Tratamiento de emergencia: epinefrina (anafilaxia) o fluidoterapia agresiva + consulta hematología (hemolítica)",
+          "no": "Tratamiento sintomático: antihistamínicos (alergia leve), paracetamol (febril)"
+        }
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Tratamiento según tipo de reacción",
+        "detalles": "Febril no hemolítica: paracetamol 1g IV. Alérgica leve (urticaria): dexclorfeniramina 5 mg IV. Anafilaxia: epinefrina 0.3-0.5 mg IM + corticoides + fluidos. Hemolítica: SF 0.9% a 200 mL/h, mantener diuresis >100 mL/h, alertar UCI.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Epinefrina (anafilaxia)",
+            "dosis": "0.3-0.5 mg IM; repetir cada 5-15 min si necesario",
+            "via": "IM"
+          },
+          {
+            "nombre": "Dexclorfeniramina",
+            "dosis": "5 mg IV",
+            "via": "IV"
+          },
+          {
+            "nombre": "Hidrocortisona",
+            "dosis": "100-200 mg IV",
+            "via": "IV"
+          },
+          {
+            "nombre": "Paracetamol",
+            "dosis": "1 g IV",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Estudios de laboratorio y notificación",
+        "detalles": "Enviar: muestra de sangre del paciente (nueva extracción), bolsa de hemoderivado con sistema de infusión, muestra de orina. Solicitar: Coombs directo, haptoglobina, LDH, bilirrubina, hemograma. Notificar al banco de sangre y cumplimentar formulario de reacción transfusional.",
+        "critico": false
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Monitorización y prevención de complicaciones",
+        "detalles": "Vigilar función renal: creatinina, diuresis. En reacción hemolítica: mantener diuresis >100 mL/h (furosemida si necesario). Vigilar CID: fibrinógeno, DD, plaquetas. Monitorización continua mínimo 4-6h.",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Epinefrina",
+        "dosis": "0.3-0.5 mg IM (anafilaxia)",
+        "via": "IM",
+        "indicacion": "Reacción anafiláctica a la transfusión"
+      },
+      {
+        "nombre": "Dexclorfeniramina",
+        "dosis": "5 mg IV",
+        "via": "IV",
+        "indicacion": "Reacción alérgica leve-moderada (urticaria, prurito)"
+      },
+      {
+        "nombre": "Hidrocortisona",
+        "dosis": "100-200 mg IV",
+        "via": "IV",
+        "indicacion": "Complemento en reacciones alérgicas severas"
+      },
+      {
+        "nombre": "Paracetamol",
+        "dosis": "1 g IV",
+        "via": "IV",
+        "indicacion": "Reacción febril no hemolítica"
+      },
+      {
+        "nombre": "Furosemida",
+        "dosis": "20-40 mg IV",
+        "via": "IV",
+        "indicacion": "Mantener diuresis en reacción hemolítica o TACO"
+      }
+    ],
+    "notasEnfermeria": [
+      "Los primeros 15 minutos de transfusión son CRÍTICOS: permanecer junto al paciente y tomar signos vitales a los 0, 5 y 15 min.",
+      "NUNCA reanudar una transfusión detenida por sospecha de reacción hemolítica o anafiláctica.",
+      "Verificar SIEMPRE la identidad del paciente con doble comprobación (nombre + fecha nacimiento + pulsera) antes de iniciar.",
+      "La reacción hemolítica aguda por incompatibilidad ABO es la causa más frecuente de muerte por transfusión y es SIEMPRE un error humano prevenible.",
+      "Distinguir TRALI (edema pulmonar no cardiogénico, 6h post-transfusión) de TACO (sobrecarga circulatoria): TRALI cursa con hipotensión, TACO con hipertensión y PVC elevada."
+    ]
+  },
+  {
+    "id": "proto_acv_hemorragico",
+    "nombre": "ACV Hemorrágico",
+    "abreviatura": "HIC",
+    "descripcion": "Protocolo de manejo de la hemorragia intracerebral espontánea (no traumática). Segunda causa de ictus (15-20%). Mortalidad a 30 días del 40%. El control precoz de la presión arterial y la reversión de anticoagulación son pilares del tratamiento.",
+    "categoria": "neurologico",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Déficit neurológico focal de inicio brusco",
+      "Cefalea intensa súbita ('la peor de mi vida')",
+      "Disminución rápida del nivel de conciencia (GCS descendente)",
+      "Vómitos en escopetazo",
+      "Rigidez de nuca (si hemorragia subaracnoidea asociada)",
+      "Crisis convulsiva",
+      "Anisocoria (herniación cerebral inminente)",
+      "HTA severa (PA >220/120 mmHg)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-10 min",
+        "accion": "Estabilización inicial y ABC",
+        "detalles": "Asegurar vía aérea (GCS ≤8: intubar). Oxígeno para SatO2 >94%. Monitorización continua: PA, FC, SatO2, GCS. Posición: cabecera elevada 30°. Acceso venoso con SF (NO suero glucosado). Glucemia capilar urgente.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-15 min",
+        "accion": "Neuroimagen urgente — TAC craneal SIN contraste",
+        "detalles": "TAC urgente para confirmar hemorragia y diferenciar de ictus isquémico. Determinar localización, volumen (ABC/2) y presencia de hidrocefalia o efecto masa. Angiotac si sospecha de malformación vascular o aneurisma.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Hemorragia confirmada en TAC?",
+          "si": "Continuar protocolo de HIC: control PA + reversión anticoagulación si aplica",
+          "no": "Reevaluar: considerar protocolo de ictus isquémico o HSA"
+        }
+      },
+      {
+        "orden": 3,
+        "tiempo": "15-60 min",
+        "accion": "Control intensivo de la presión arterial",
+        "detalles": "Objetivo: PAS <140 mmHg en las primeras horas (estudio INTERACT2). Labetalol IV es primera línea. Si refractario: nicardipino en perfusión. Evitar descensos bruscos de PA >60 mmHg en la primera hora.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Labetalol",
+            "dosis": "10-20 mg IV en 1-2 min; repetir cada 10-15 min (máx 300 mg/día)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Nicardipino",
+            "dosis": "5 mg/h IV, titular cada 5 min (máx 15 mg/h)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "Inmediato si aplica",
+        "accion": "Reversión de anticoagulación",
+        "detalles": "Si anticoagulación con warfarina: vitamina K 10 mg IV + CCP (concentrado de complejo protrombínico) 25-50 UI/kg. Si ACODs (dabigatrán): idarucizumab 5 g IV. Si ACODs anti-Xa (rivaroxabán, apixabán): andexanet alfa o CCP. Objetivo: INR <1.3 en <60 min.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Vitamina K (fitomenadiona)",
+            "dosis": "10 mg IV lento (en 10-20 min)",
+            "via": "IV"
+          },
+          {
+            "nombre": "CCP (Concentrado Complejo Protrombínico)",
+            "dosis": "25-50 UI/kg IV según INR",
+            "via": "IV"
+          },
+          {
+            "nombre": "Idarucizumab (si dabigatrán)",
+            "dosis": "5 g IV en 2 bolos de 2.5 g",
+            "via": "IV"
+          },
+          {
+            "nombre": "Ácido tranexámico",
+            "dosis": "1 g IV en 10 min (primeras 4.5h)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Prevención y tratamiento de complicaciones",
+        "detalles": "Profilaxis anticonvulsiva si crisis (levetiracetam 1 g IV). Profilaxis de TVP: compresión neumática intermitente (NO heparina en primeras 24-48h). Normoglucemia (140-180 mg/dL). Normotermia (tratar fiebre agresivamente). Monitorización neurológica: GCS cada hora.",
+        "critico": false
+      },
+      {
+        "orden": 6,
+        "tiempo": "Variable",
+        "accion": "Valoración neuroquirúrgica",
+        "detalles": "Indicaciones quirúrgicas: hematoma cerebeloso >3 cm con deterioro, hidrocefalia obstructiva (drenaje ventricular), hematoma lobar superficial >30 mL con deterioro. Los hematomas profundos (ganglios basales) rara vez se benefician de cirugía.",
+        "critico": false,
+        "decision": {
+          "pregunta": "¿Hematoma cerebeloso >3 cm, hidrocefalia o deterioro rápido?",
+          "si": "Neurocirugía urgente: evacuación o DVE",
+          "no": "Manejo conservador en UCI neurológica"
+        }
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Labetalol",
+        "dosis": "10-20 mg IV en bolo, escalar cada 10-15 min",
+        "via": "IV",
+        "indicacion": "Control de HTA — primera línea"
+      },
+      {
+        "nombre": "Nicardipino",
+        "dosis": "5-15 mg/h IV en perfusión",
+        "via": "IV",
+        "indicacion": "Control de HTA refractaria a labetalol"
+      },
+      {
+        "nombre": "Vitamina K",
+        "dosis": "10 mg IV",
+        "via": "IV",
+        "indicacion": "Reversión de warfarina (efecto en 6-24h)"
+      },
+      {
+        "nombre": "CCP",
+        "dosis": "25-50 UI/kg IV",
+        "via": "IV",
+        "indicacion": "Reversión rápida de warfarina/ACODs anti-Xa"
+      },
+      {
+        "nombre": "Idarucizumab",
+        "dosis": "5 g IV",
+        "via": "IV",
+        "indicacion": "Reversión específica de dabigatrán"
+      },
+      {
+        "nombre": "Levetiracetam",
+        "dosis": "1 g IV",
+        "via": "IV",
+        "indicacion": "Anticonvulsivante si crisis epiléptica"
+      },
+      {
+        "nombre": "Ácido tranexámico",
+        "dosis": "1 g IV en 10 min",
+        "via": "IV",
+        "indicacion": "Reducir expansión del hematoma (primeras 4.5h)"
+      }
+    ],
+    "notasEnfermeria": [
+      "Monitorización neurológica estricta: GCS, pupilas y focalidad cada hora las primeras 24h. Cualquier descenso de GCS ≥2 puntos: alertar inmediatamente.",
+      "Control de PA cada 15 min durante fase aguda. Evitar PA extremas: tanto la HTA (expansión hematoma) como la hipotensión (isquemia perilesional) son deletéreas.",
+      "Cabecera elevada 30° para favorecer retorno venoso cerebral. Evitar flexión del cuello (impide drenaje yugular).",
+      "En pacientes anticoagulados: la reversión tiene PRIORIDAD incluso antes del TAC si hay alta sospecha clínica.",
+      "Tratar la fiebre agresivamente: cada grado >37°C empeora el pronóstico neurológico. Paracetamol 1g/6h + medidas físicas."
+    ]
+  }
+]

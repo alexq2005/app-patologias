@@ -1,0 +1,1110 @@
+[
+  {
+    "id": "lab_hemoglobina",
+    "nombre": "Hemoglobina",
+    "abreviatura": "Hb",
+    "categoria": "hematologia",
+    "rangos": {
+      "adultoHombre": { "min": 13.5, "max": 17.5, "unidad": "g/dL" },
+      "adultoMujer": { "min": 12.0, "max": 16.0, "unidad": "g/dL" },
+      "pediatrico": { "min": 11.0, "max": 16.0, "unidad": "g/dL" }
+    },
+    "significadoAlto": "Puede indicar policitemia, deshidratación, enfermedad pulmonar crónica o cardiopatías congénitas cianóticas.",
+    "significadoBajo": "Indica anemia de diversa etiología (ferropénica, megaloblástica, hemolítica), hemorragia aguda o crónica, o estados de sobrehidratación.",
+    "farmacosAlteran": ["Eritropoyetina", "Metotrexato", "Zidovudina", "Cloranfenicol", "Hierro IV"],
+    "implicacionesEnfermeria": [
+      "Monitorizar signos de anemia: palidez, taquicardia, disnea y fatiga",
+      "Controlar signos vitales antes y durante transfusiones sanguíneas",
+      "Educar al paciente sobre alimentos ricos en hierro si hay déficit",
+      "Vigilar signos de sangrado activo en valores descendentes"
+    ]
+  },
+  {
+    "id": "lab_hematocrito",
+    "nombre": "Hematocrito",
+    "abreviatura": "Hto",
+    "categoria": "hematologia",
+    "rangos": {
+      "adultoHombre": { "min": 40, "max": 54, "unidad": "%" },
+      "adultoMujer": { "min": 36, "max": 48, "unidad": "%" },
+      "pediatrico": { "min": 33, "max": 45, "unidad": "%" }
+    },
+    "significadoAlto": "Sugiere hemoconcentración por deshidratación, policitemia vera o eritrocitosis secundaria a hipoxia crónica.",
+    "significadoBajo": "Indica anemia, hemorragia, sobrehidratación o destrucción acelerada de eritrocitos (hemólisis).",
+    "farmacosAlteran": ["Eritropoyetina", "Diuréticos", "Fluidos IV", "Quimioterapia", "Anticoagulantes"],
+    "implicacionesEnfermeria": [
+      "Evaluar estado de hidratación del paciente junto con el valor",
+      "Correlacionar con hemoglobina para valorar la severidad de la anemia",
+      "Monitorizar balance hídrico en pacientes con valores alterados"
+    ]
+  },
+  {
+    "id": "lab_leucocitos",
+    "nombre": "Leucocitos",
+    "abreviatura": "WBC",
+    "categoria": "hematologia",
+    "rangos": {
+      "adulto": { "min": 4500, "max": 11000, "unidad": "células/µL" },
+      "pediatrico": { "min": 5000, "max": 15000, "unidad": "células/µL" }
+    },
+    "significadoAlto": "Leucocitosis: puede indicar infección bacteriana, inflamación, estrés, leucemia o respuesta a corticoides.",
+    "significadoBajo": "Leucopenia: sugiere inmunosupresión, aplasia medular, infecciones virales graves o efecto de quimioterapia.",
+    "farmacosAlteran": ["Corticosteroides", "Quimioterapia", "Antibióticos", "Litio", "Filgrastim"],
+    "implicacionesEnfermeria": [
+      "Implementar precauciones de aislamiento en leucopenia severa (<1000/µL)",
+      "Vigilar signos de infección: fiebre, escalofríos, eritema",
+      "Monitorizar temperatura cada 4 horas en pacientes neutropénicos",
+      "Educar al paciente sobre medidas de higiene y prevención de infecciones"
+    ]
+  },
+  {
+    "id": "lab_plaquetas",
+    "nombre": "Plaquetas",
+    "abreviatura": "PLT",
+    "categoria": "hematologia",
+    "rangos": {
+      "adulto": { "min": 150000, "max": 400000, "unidad": "células/µL" },
+      "pediatrico": { "min": 150000, "max": 450000, "unidad": "células/µL" }
+    },
+    "significadoAlto": "Trombocitosis: puede asociarse a infecciones, inflamación crónica, déficit de hierro, esplenectomía o trastornos mieloproliferativos.",
+    "significadoBajo": "Trombocitopenia: riesgo de sangrado; causas incluyen PTI, CID, hiperesplenismo, quimioterapia o fármacos.",
+    "farmacosAlteran": ["Heparina", "Quimioterapia", "Ácido valproico", "AINEs", "Vancomicina"],
+    "implicacionesEnfermeria": [
+      "Vigilar signos de sangrado: petequias, equimosis, epistaxis, hematuria",
+      "Evitar punciones innecesarias y aplicar presión prolongada en sitios de punción",
+      "Alertar si plaquetas <50000 (riesgo de sangrado) o <20000 (sangrado espontáneo)",
+      "Instruir al paciente a usar cepillo dental suave y maquinilla eléctrica"
+    ]
+  },
+  {
+    "id": "lab_eritrocitos",
+    "nombre": "Eritrocitos",
+    "abreviatura": "RBC",
+    "categoria": "hematologia",
+    "rangos": {
+      "adultoHombre": { "min": 4.5, "max": 5.5, "unidad": "millones/µL" },
+      "adultoMujer": { "min": 4.0, "max": 5.0, "unidad": "millones/µL" },
+      "pediatrico": { "min": 3.8, "max": 5.5, "unidad": "millones/µL" }
+    },
+    "significadoAlto": "Eritrocitosis: puede deberse a policitemia vera, hipoxia crónica (EPOC, altitud), deshidratación o tumores productores de eritropoyetina.",
+    "significadoBajo": "Sugiere anemia de cualquier tipo, hemorragia, hemólisis o insuficiencia medular.",
+    "farmacosAlteran": ["Eritropoyetina", "Metotrexato", "Cloranfenicol", "Zidovudina", "Hidroxiurea"],
+    "implicacionesEnfermeria": [
+      "Correlacionar con hemoglobina y hematocrito para evaluar anemia",
+      "Valorar síntomas de hipoxia tisular: disnea, fatiga, mareos",
+      "Controlar dieta y suplementación en anemias carenciales"
+    ]
+  },
+  {
+    "id": "lab_vcm",
+    "nombre": "Volumen Corpuscular Medio",
+    "abreviatura": "VCM",
+    "categoria": "hematologia",
+    "rangos": {
+      "adulto": { "min": 80, "max": 100, "unidad": "fL" },
+      "pediatrico": { "min": 70, "max": 95, "unidad": "fL" }
+    },
+    "significadoAlto": "Macrocitosis: asociada a déficit de vitamina B12 o ácido fólico, alcoholismo, hipotiroidismo o síndromes mielodisplásicos.",
+    "significadoBajo": "Microcitosis: sugiere anemia ferropénica, talasemia o anemia de enfermedad crónica.",
+    "farmacosAlteran": ["Metotrexato", "Fenitoína", "Zidovudina", "Hidroxiurea", "Trimetoprim"],
+    "implicacionesEnfermeria": [
+      "Utilizar el VCM para orientar el tipo de anemia y guiar la educación al paciente",
+      "Correlacionar con niveles de hierro, B12 y ácido fólico según corresponda",
+      "Informar al médico sobre cambios significativos en el VCM durante tratamientos"
+    ]
+  },
+  {
+    "id": "lab_hcm",
+    "nombre": "Hemoglobina Corpuscular Media",
+    "abreviatura": "HCM",
+    "categoria": "hematologia",
+    "rangos": {
+      "adulto": { "min": 27, "max": 33, "unidad": "pg" }
+    },
+    "significadoAlto": "Hipercromía: puede asociarse a anemias megaloblásticas por déficit de B12 o folato, o esferocitosis hereditaria.",
+    "significadoBajo": "Hipocromía: indica deficiencia de hierro o talasemia; los eritrocitos contienen menos hemoglobina de lo normal.",
+    "farmacosAlteran": ["Hierro oral/IV", "Ácido fólico", "Vitamina B12", "Metotrexato", "Fenitoína"],
+    "implicacionesEnfermeria": [
+      "Complementar la valoración con VCM y CHCM para clasificar anemias",
+      "Educar sobre la importancia de la adherencia al tratamiento con hierro o vitaminas",
+      "Monitorizar respuesta al tratamiento con controles seriados"
+    ]
+  },
+  {
+    "id": "lab_reticulocitos",
+    "nombre": "Reticulocitos",
+    "abreviatura": "Ret",
+    "categoria": "hematologia",
+    "rangos": {
+      "adulto": { "min": 0.5, "max": 2.5, "unidad": "%" }
+    },
+    "significadoAlto": "Indica respuesta medular activa: recuperación de anemia, hemorragia reciente, hemólisis o respuesta a tratamiento con hierro/EPO.",
+    "significadoBajo": "Sugiere producción medular inadecuada: aplasia medular, anemia megaloblástica, infiltración tumoral o efecto de quimioterapia.",
+    "farmacosAlteran": ["Eritropoyetina", "Hierro IV", "Quimioterapia", "Cloranfenicol", "Ácido fólico"],
+    "implicacionesEnfermeria": [
+      "Utilizar como indicador de respuesta al tratamiento antianémico",
+      "Esperar elevación a los 5-7 días de inicio de tratamiento con hierro",
+      "Informar valores bajos persistentes al equipo médico"
+    ]
+  },
+  {
+    "id": "lab_glucosa",
+    "nombre": "Glucosa en ayunas",
+    "abreviatura": "Glu",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 70, "max": 100, "unidad": "mg/dL" },
+      "pediatrico": { "min": 60, "max": 100, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperglucemia: puede indicar diabetes mellitus, estrés metabólico, pancreatitis, síndrome de Cushing o efecto farmacológico.",
+    "significadoBajo": "Hipoglucemia: riesgo de daño neurológico; causas incluyen sobredosis de insulina, ayuno prolongado, insuficiencia hepática o insulinoma.",
+    "farmacosAlteran": ["Insulina", "Metformina", "Corticosteroides", "Tiazidas", "Betabloqueantes"],
+    "implicacionesEnfermeria": [
+      "Verificar que la muestra sea en ayunas de al menos 8 horas",
+      "Monitorizar glucemia capilar según protocolo en pacientes diabéticos",
+      "Vigilar signos de hipoglucemia: sudoración, temblor, confusión, taquicardia",
+      "Educar al paciente sobre el autocontrol glucémico y dieta"
+    ]
+  },
+  {
+    "id": "lab_sodio",
+    "nombre": "Sodio",
+    "abreviatura": "Na",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 135, "max": 145, "unidad": "mEq/L" },
+      "pediatrico": { "min": 135, "max": 145, "unidad": "mEq/L" }
+    },
+    "significadoAlto": "Hipernatremia: indica deshidratación, diabetes insípida, exceso de ingesta de sodio o pérdida de agua libre.",
+    "significadoBajo": "Hiponatremia: puede causar edema cerebral; asociada a SIADH, insuficiencia cardíaca, cirrosis, diuréticos o polidipsia.",
+    "farmacosAlteran": ["Diuréticos tiazídicos", "Furosemida", "Litio", "Carbamazepina", "SSRIs"],
+    "implicacionesEnfermeria": [
+      "Monitorizar estado neurológico: confusión, letargia, convulsiones",
+      "Controlar balance hídrico estricto y peso diario",
+      "Corregir lentamente (<10 mEq/L en 24h) para evitar mielinólisis pontina",
+      "Vigilar edema periférico y signos de sobrecarga hídrica"
+    ]
+  },
+  {
+    "id": "lab_potasio",
+    "nombre": "Potasio",
+    "abreviatura": "K",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 3.5, "max": 5.0, "unidad": "mEq/L" },
+      "pediatrico": { "min": 3.5, "max": 5.5, "unidad": "mEq/L" }
+    },
+    "significadoAlto": "Hiperpotasemia: riesgo de arritmias letales; causas incluyen insuficiencia renal, acidosis, rabdomiólisis o exceso de suplementos.",
+    "significadoBajo": "Hipopotasemia: riesgo de arritmias, debilidad muscular e íleo; asociada a vómitos, diarrea, diuréticos o alcalosis.",
+    "farmacosAlteran": ["IECA/ARA-II", "Espironolactona", "Furosemida", "Insulina", "Digoxina"],
+    "implicacionesEnfermeria": [
+      "Monitorización cardíaca continua si K >6.0 o <3.0 mEq/L",
+      "Verificar función renal antes de administrar suplementos de potasio",
+      "Administrar potasio IV diluido y lento (nunca en bolo directo)",
+      "Vigilar ECG: ondas T picudas (hiperK) o aplanadas con onda U (hipoK)"
+    ]
+  },
+  {
+    "id": "lab_calcio",
+    "nombre": "Calcio sérico",
+    "abreviatura": "Ca",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 8.5, "max": 10.5, "unidad": "mg/dL" },
+      "pediatrico": { "min": 8.8, "max": 10.8, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hipercalcemia: puede causar arritmias, confusión y coma; asociada a hiperparatiroidismo, metástasis óseas o intoxicación por vitamina D.",
+    "significadoBajo": "Hipocalcemia: causa tetania, espasmos y convulsiones; asociada a hipoparatiroidismo, déficit de vitamina D o pancreatitis aguda.",
+    "farmacosAlteran": ["Tiazidas", "Furosemida", "Bifosfonatos", "Vitamina D", "Corticosteroides"],
+    "implicacionesEnfermeria": [
+      "Valorar signos de Chvostek y Trousseau en hipocalcemia",
+      "Monitorizar ECG: QT prolongado (hipoCa) o QT corto (hiperCa)",
+      "Asegurar ingesta adecuada de vitamina D para absorción del calcio",
+      "Mantener precauciones de seguridad por riesgo de convulsiones"
+    ]
+  },
+  {
+    "id": "lab_magnesio",
+    "nombre": "Magnesio",
+    "abreviatura": "Mg",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 1.5, "max": 2.5, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hipermagnesemia: causa hipotensión, bradicardia, depresión respiratoria y arreflexia; frecuente en insuficiencia renal.",
+    "significadoBajo": "Hipomagnesemia: causa arritmias, temblores y convulsiones; asociada a alcoholismo, diarrea crónica y uso de diuréticos.",
+    "farmacosAlteran": ["Sulfato de magnesio IV", "Omeprazol", "Furosemida", "Aminoglucósidos", "Cisplatino"],
+    "implicacionesEnfermeria": [
+      "Vigilar reflejos rotulianos durante infusión de magnesio IV (preeclampsia)",
+      "Monitorizar ECG por riesgo de arritmias en ambas alteraciones",
+      "Valorar nivel de conciencia y función respiratoria con niveles altos",
+      "Corregir hipomagnesemia antes de tratar hipopotasemia resistente"
+    ]
+  },
+  {
+    "id": "lab_fosforo",
+    "nombre": "Fósforo",
+    "abreviatura": "P",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 2.5, "max": 4.5, "unidad": "mg/dL" },
+      "pediatrico": { "min": 4.0, "max": 7.0, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperfosfatemia: frecuente en insuficiencia renal crónica; causa calcificaciones ectópicas y prurito. Relación inversa con calcio.",
+    "significadoBajo": "Hipofosfatemia: causa debilidad muscular, insuficiencia respiratoria y hemólisis; asociada a realimentación, antiácidos y alcoholismo.",
+    "farmacosAlteran": ["Antiácidos con aluminio", "Vitamina D", "Sevelámero", "Insulina", "Corticosteroides"],
+    "implicacionesEnfermeria": [
+      "Administrar quelantes de fósforo con las comidas en insuficiencia renal",
+      "Vigilar síndrome de realimentación en pacientes desnutridos",
+      "Monitorizar niveles conjuntos de calcio y fósforo"
+    ]
+  },
+  {
+    "id": "lab_acido_urico",
+    "nombre": "Ácido úrico",
+    "abreviatura": "AU",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adultoHombre": { "min": 3.4, "max": 7.0, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 2.4, "max": 6.0, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperuricemia: riesgo de gota, litiasis renal y nefropatía; asociada a dieta rica en purinas, síndrome de lisis tumoral o insuficiencia renal.",
+    "significadoBajo": "Hipouricemia: poco frecuente; puede asociarse a síndrome de Fanconi, enfermedad de Wilson o uso de uricosúricos.",
+    "farmacosAlteran": ["Alopurinol", "Tiazidas", "Aspirina a dosis bajas", "Quimioterapia", "Losartán"],
+    "implicacionesEnfermeria": [
+      "Fomentar ingesta hídrica abundante (>2L/día) para prevenir litiasis",
+      "Educar sobre dieta baja en purinas: limitar carnes rojas, mariscos y alcohol",
+      "Monitorizar función renal en pacientes con hiperuricemia crónica"
+    ]
+  },
+  {
+    "id": "lab_proteinas_totales",
+    "nombre": "Proteínas totales",
+    "abreviatura": "PT",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 6.0, "max": 8.3, "unidad": "g/dL" }
+    },
+    "significadoAlto": "Hiperproteinemia: asociada a deshidratación, mieloma múltiple, infecciones crónicas o enfermedades autoinmunes.",
+    "significadoBajo": "Hipoproteinemia: indica desnutrición, síndrome nefrótico, insuficiencia hepática, enteropatía perdedora de proteínas o quemaduras extensas.",
+    "farmacosAlteran": ["Corticosteroides", "Estrógenos", "Insulina", "Hormona de crecimiento", "Andrógenos"],
+    "implicacionesEnfermeria": [
+      "Evaluar estado nutricional y valorar necesidad de soporte nutricional",
+      "Monitorizar presencia de edema por disminución de presión oncótica",
+      "Correlacionar con albúmina sérica para valoración nutricional completa"
+    ]
+  },
+  {
+    "id": "lab_tp_inr",
+    "nombre": "Tiempo de Protrombina / INR",
+    "abreviatura": "TP/INR",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 0.8, "max": 1.2, "unidad": "INR" }
+    },
+    "significadoAlto": "INR elevado: mayor riesgo de sangrado; indica deficiencia de factores de coagulación, hepatopatía, déficit de vitamina K o efecto de anticoagulantes orales.",
+    "significadoBajo": "INR bajo en paciente anticoagulado indica efecto terapéutico insuficiente y mayor riesgo trombótico.",
+    "farmacosAlteran": ["Warfarina", "Acenocumarol", "Antibióticos", "Amiodarona", "AINEs"],
+    "implicacionesEnfermeria": [
+      "Rango terapéutico con anticoagulantes orales: INR 2.0-3.0 (válvulas mecánicas: 2.5-3.5)",
+      "Vigilar signos de sangrado: hematuria, melenas, epistaxis, equimosis",
+      "Educar al paciente sobre interacciones con alimentos ricos en vitamina K",
+      "Tener disponible vitamina K y plasma fresco congelado como antídotos"
+    ]
+  },
+  {
+    "id": "lab_ttpa",
+    "nombre": "Tiempo de Tromboplastina Parcial Activada",
+    "abreviatura": "TTPa",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 25, "max": 35, "unidad": "segundos" }
+    },
+    "significadoAlto": "TTPa prolongado: indica deficiencia de factores VIII, IX, XI, XII, hemofilia, CID, presencia de anticoagulante lúpico o efecto de heparina.",
+    "significadoBajo": "TTPa acortado: puede indicar hipercoagulabilidad, trombofilia o fase temprana de CID.",
+    "farmacosAlteran": ["Heparina no fraccionada", "Warfarina", "Dabigatrán", "Ácido tranexámico", "Factor VII recombinante"],
+    "implicacionesEnfermeria": [
+      "Objetivo terapéutico con heparina: TTPa 1.5-2.5 veces el valor control",
+      "Extraer muestra del brazo contrario a la infusión de heparina",
+      "Tener disponible protamina como antídoto de heparina",
+      "Monitorizar cada 6 horas durante infusión continua de heparina"
+    ]
+  },
+  {
+    "id": "lab_fibrinogeno",
+    "nombre": "Fibrinógeno",
+    "abreviatura": "Fib",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 200, "max": 400, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperfibrinogenemia: reactante de fase aguda; elevado en infecciones, inflamación, embarazo, neoplasias y postquirúrgico.",
+    "significadoBajo": "Hipofibrinogenemia: riesgo de sangrado; asociada a CID, fibrinólisis, hepatopatía grave, transfusión masiva o afibrinogenemia congénita.",
+    "farmacosAlteran": ["Ácido tranexámico", "Estrógenos", "Trombolíticos", "Ácido valproico", "L-asparaginasa"],
+    "implicacionesEnfermeria": [
+      "Valor crítico <100 mg/dL: alertar inmediatamente al equipo médico",
+      "Preparar crioprecipitado o concentrado de fibrinógeno si hay sangrado activo",
+      "Monitorizar en conjunto con TP, TTPa y plaquetas en sospecha de CID"
+    ]
+  },
+  {
+    "id": "lab_dimero_d",
+    "nombre": "Dímero D",
+    "abreviatura": "DD",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 0, "max": 500, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Elevado en trombosis venosa profunda, embolia pulmonar, CID, cirugía reciente, embarazo, infecciones y neoplasias. Alta sensibilidad pero baja especificidad.",
+    "significadoBajo": "Valores normales tienen alto valor predictivo negativo para descartar eventos tromboembólicos.",
+    "farmacosAlteran": ["Anticoagulantes", "Trombolíticos", "Estrógenos", "Heparina", "Ácido tranexámico"],
+    "implicacionesEnfermeria": [
+      "Utilizado principalmente para descartar TEP/TVP (alto valor predictivo negativo)",
+      "Correlacionar siempre con la clínica del paciente por su baja especificidad",
+      "Valorar signos de TVP: edema unilateral, dolor y enrojecimiento en extremidad"
+    ]
+  },
+  {
+    "id": "lab_tiempo_sangrado",
+    "nombre": "Tiempo de sangrado",
+    "abreviatura": "TS",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 1, "max": 9, "unidad": "minutos" }
+    },
+    "significadoAlto": "Prolongado: indica disfunción plaquetaria, enfermedad de von Willebrand, trombocitopenia severa o efecto de antiagregantes.",
+    "significadoBajo": "No tiene significado clínico relevante; la hemostasia primaria funciona adecuadamente.",
+    "farmacosAlteran": ["Aspirina", "Clopidogrel", "AINEs", "Ticagrelor", "Dipiridamol"],
+    "implicacionesEnfermeria": [
+      "Realizar prueba antes de procedimientos invasivos en pacientes con riesgo",
+      "Suspender antiagregantes según protocolo prequirúrgico (aspirina 7 días, clopidogrel 5 días)",
+      "Aplicar presión sostenida en sitios de punción si está prolongado"
+    ]
+  },
+  {
+    "id": "lab_alt",
+    "nombre": "Alanina Aminotransferasa",
+    "abreviatura": "ALT/GPT",
+    "categoria": "hepatico",
+    "rangos": {
+      "adulto": { "min": 7, "max": 56, "unidad": "U/L" }
+    },
+    "significadoAlto": "Indica daño hepatocelular: hepatitis viral o tóxica, esteatosis, cirrosis, isquemia hepática o hepatotoxicidad por fármacos. Más específica del hígado que la AST.",
+    "significadoBajo": "No tiene significado clínico relevante. Valores muy bajos pueden verse en déficit de piridoxina (vitamina B6).",
+    "farmacosAlteran": ["Paracetamol", "Estatinas", "Isoniazida", "Metotrexato", "Amiodarona"],
+    "implicacionesEnfermeria": [
+      "Monitorizar en pacientes que inician estatinas, antituberculosos o antiepilépticos",
+      "Alertar si ALT >3 veces el límite superior normal con síntomas",
+      "Educar al paciente sobre evitar alcohol y hepatotóxicos",
+      "Correlacionar con AST: ratio AST/ALT >2 sugiere hepatopatía alcohólica"
+    ]
+  },
+  {
+    "id": "lab_ast",
+    "nombre": "Aspartato Aminotransferasa",
+    "abreviatura": "AST/GOT",
+    "categoria": "hepatico",
+    "rangos": {
+      "adulto": { "min": 10, "max": 40, "unidad": "U/L" }
+    },
+    "significadoAlto": "Indica daño celular hepático o muscular: hepatitis, infarto de miocardio, rabdomiólisis, hemólisis o miopatía por estatinas.",
+    "significadoBajo": "No tiene significado clínico relevante. Puede verse en uremia o déficit de vitamina B6.",
+    "farmacosAlteran": ["Paracetamol", "Estatinas", "Isoniazida", "Eritromicina", "Anticonvulsivantes"],
+    "implicacionesEnfermeria": [
+      "No es específica del hígado; correlacionar con ALT y GGT",
+      "En sospecha de IAM, correlacionar con troponina y CK-MB",
+      "Monitorizar junto con CK en pacientes con miopatía por estatinas"
+    ]
+  },
+  {
+    "id": "lab_bilirrubina_total",
+    "nombre": "Bilirrubina total",
+    "abreviatura": "BT",
+    "categoria": "hepatico",
+    "rangos": {
+      "adulto": { "min": 0.1, "max": 1.2, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperbilirrubinemia: causa ictericia visible >2.5 mg/dL; indica hemólisis, hepatopatía, obstrucción biliar o síndrome de Gilbert.",
+    "significadoBajo": "No tiene significado clínico relevante.",
+    "farmacosAlteran": ["Rifampicina", "Atazanavir", "Paracetamol", "Anabolizantes", "Eritromicina"],
+    "implicacionesEnfermeria": [
+      "Valorar ictericia en piel, mucosas y escleróticas",
+      "Diferenciar bilirrubina directa/indirecta para orientar la causa",
+      "Monitorizar color de orina (coluria) y heces (acolia) como indicadores",
+      "Vigilar prurito asociado a colestasis y aplicar medidas de confort"
+    ]
+  },
+  {
+    "id": "lab_bilirrubina_directa",
+    "nombre": "Bilirrubina directa (conjugada)",
+    "abreviatura": "BD",
+    "categoria": "hepatico",
+    "rangos": {
+      "adulto": { "min": 0.0, "max": 0.3, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Indica colestasis intrahepática o extrahepática: obstrucción biliar por cálculos, tumores, hepatitis colestásica o cirrosis biliar primaria.",
+    "significadoBajo": "No tiene significado clínico relevante.",
+    "farmacosAlteran": ["Anticonceptivos orales", "Eritromicina", "Clorpromazina", "Anabolizantes", "Rifampicina"],
+    "implicacionesEnfermeria": [
+      "Correlacionar con fosfatasa alcalina y GGT en sospecha de colestasis",
+      "Vigilar signos de obstrucción biliar: acolia, coluria, prurito",
+      "Preparar al paciente para estudios de imagen (ecografía, CPRE) si procede"
+    ]
+  },
+  {
+    "id": "lab_fosfatasa_alcalina",
+    "nombre": "Fosfatasa Alcalina",
+    "abreviatura": "FA",
+    "categoria": "hepatico",
+    "rangos": {
+      "adulto": { "min": 44, "max": 147, "unidad": "U/L" },
+      "pediatrico": { "min": 100, "max": 400, "unidad": "U/L" }
+    },
+    "significadoAlto": "Elevada en colestasis, metástasis hepáticas, enfermedad de Paget, hiperparatiroidismo, fracturas en consolidación y crecimiento óseo infantil.",
+    "significadoBajo": "Rara vez clínicamente significativo; puede verse en hipotiroidismo, anemia perniciosa o déficit de zinc.",
+    "farmacosAlteran": ["Anticonvulsivantes", "Anticonceptivos orales", "Alopurinol", "Antibióticos", "Metotrexato"],
+    "implicacionesEnfermeria": [
+      "Valores elevados en niños y adolescentes son normales por el crecimiento óseo",
+      "Diferenciar origen hepático u óseo con GGT (si GGT normal, origen óseo)",
+      "Monitorizar en pacientes con patología ósea o hepatobiliar"
+    ]
+  },
+  {
+    "id": "lab_ggt",
+    "nombre": "Gamma-Glutamil Transferasa",
+    "abreviatura": "GGT",
+    "categoria": "hepatico",
+    "rangos": {
+      "adulto": { "min": 9, "max": 48, "unidad": "U/L" }
+    },
+    "significadoAlto": "Elevada en enfermedad hepatobiliar, alcoholismo crónico, pancreatitis, uso de anticonvulsivantes y colestasis. Muy sensible a la ingesta de alcohol.",
+    "significadoBajo": "No tiene significado clínico relevante.",
+    "farmacosAlteran": ["Fenitoína", "Carbamazepina", "Barbitúricos", "Rifampicina", "Paracetamol"],
+    "implicacionesEnfermeria": [
+      "Útil como marcador de consumo de alcohol: se eleva con ingesta crónica",
+      "Ayuda a confirmar origen hepático de la fosfatasa alcalina elevada",
+      "Monitorizar en pacientes con antecedentes de alcoholismo",
+      "Educar al paciente sobre abstinencia alcohólica si GGT está elevada"
+    ]
+  },
+  {
+    "id": "lab_creatinina",
+    "nombre": "Creatinina sérica",
+    "abreviatura": "Cr",
+    "categoria": "renal",
+    "rangos": {
+      "adultoHombre": { "min": 0.7, "max": 1.3, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 0.6, "max": 1.1, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Indica deterioro de la función renal: insuficiencia renal aguda o crónica, deshidratación, obstrucción urinaria, rabdomiólisis o nefrotoxicidad.",
+    "significadoBajo": "Puede verse en desnutrición severa, pérdida de masa muscular (caquexia) o embarazo por aumento del filtrado glomerular.",
+    "farmacosAlteran": ["AINEs", "Aminoglucósidos", "Vancomicina", "IECA/ARA-II", "Medios de contraste yodados"],
+    "implicacionesEnfermeria": [
+      "Calcular el aclaramiento de creatinina para ajustar dosis de fármacos nefrotóxicos",
+      "Asegurar hidratación adecuada antes de administrar contraste yodado",
+      "Monitorizar diuresis horaria en pacientes con insuficiencia renal aguda",
+      "Alertar si creatinina se duplica respecto al valor basal del paciente"
+    ]
+  },
+  {
+    "id": "lab_bun_urea",
+    "nombre": "BUN / Urea",
+    "abreviatura": "BUN",
+    "categoria": "renal",
+    "rangos": {
+      "adulto": { "min": 7, "max": 20, "unidad": "mg/dL" },
+      "pediatrico": { "min": 5, "max": 18, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Azoemia: indica insuficiencia renal, deshidratación, hemorragia digestiva, dieta hiperproteica, catabolismo aumentado o insuficiencia cardíaca.",
+    "significadoBajo": "Puede indicar enfermedad hepática severa (menor síntesis de urea), desnutrición proteica o sobrehidratación.",
+    "farmacosAlteran": ["AINEs", "Aminoglucósidos", "Corticosteroides", "Tetraciclinas", "Diuréticos"],
+    "implicacionesEnfermeria": [
+      "Calcular ratio BUN/Creatinina: >20:1 sugiere causa prerrenal (deshidratación)",
+      "Monitorizar balance hídrico y peso diario",
+      "Valorar estado de hidratación: turgencia cutánea, mucosas, presión arterial",
+      "Correlacionar con creatinina para diferenciar causa renal vs prerrenal"
+    ]
+  },
+  {
+    "id": "lab_acido_urico_renal",
+    "nombre": "Ácido úrico (perfil renal)",
+    "abreviatura": "AU",
+    "categoria": "renal",
+    "rangos": {
+      "adultoHombre": { "min": 3.4, "max": 7.0, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 2.4, "max": 6.0, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperuricemia con riesgo de nefropatía por uratos, litiasis renal y gota; frecuente en ERC, síndrome de lisis tumoral y uso de diuréticos.",
+    "significadoBajo": "Puede indicar tubulopatía renal con pérdida excesiva de ácido úrico o efecto de fármacos uricosúricos.",
+    "farmacosAlteran": ["Alopurinol", "Febuxostat", "Tiazidas", "Ciclosporina", "Rasburicasa"],
+    "implicacionesEnfermeria": [
+      "Hidratar abundantemente en síndrome de lisis tumoral para prevenir nefropatía",
+      "Monitorizar función renal en pacientes con hiperuricemia crónica",
+      "Administrar alopurinol profiláctico antes de quimioterapia según protocolo"
+    ]
+  },
+  {
+    "id": "lab_tfg",
+    "nombre": "Tasa de Filtrado Glomerular",
+    "abreviatura": "TFG",
+    "categoria": "renal",
+    "rangos": {
+      "adulto": { "min": 90, "max": 120, "unidad": "mL/min/1.73m²" }
+    },
+    "significadoAlto": "TFG >120 puede verse en embarazo o fase inicial de nefropatía diabética (hiperfiltración glomerular).",
+    "significadoBajo": "Indica enfermedad renal crónica: G1 >90, G2 60-89, G3a 45-59, G3b 30-44, G4 15-29, G5 <15 (diálisis).",
+    "farmacosAlteran": ["IECA/ARA-II", "AINEs", "Aminoglucósidos", "Metformina", "Medios de contraste"],
+    "implicacionesEnfermeria": [
+      "Clasificar el estadio de ERC según TFG para ajustar cuidados",
+      "Ajustar dosis de fármacos de eliminación renal según TFG",
+      "Contraindicar metformina si TFG <30 mL/min/1.73m²",
+      "Derivar a nefrología si TFG <30 para planificar terapia sustitutiva"
+    ]
+  },
+  {
+    "id": "lab_cistatina_c",
+    "nombre": "Cistatina C",
+    "abreviatura": "CysC",
+    "categoria": "renal",
+    "rangos": {
+      "adulto": { "min": 0.6, "max": 1.0, "unidad": "mg/L" }
+    },
+    "significadoAlto": "Indica disminución de la función renal; más preciso que la creatinina en ancianos, obesos y pacientes con masa muscular alterada.",
+    "significadoBajo": "Rara vez clínicamente significativo; puede verse en hipertiroidismo.",
+    "farmacosAlteran": ["Corticosteroides", "Ciclosporina", "AINEs", "Aminoglucósidos", "Cisplatino"],
+    "implicacionesEnfermeria": [
+      "Útil cuando la creatinina no es fiable (amputados, ancianos, caquécticos)",
+      "No se afecta por la masa muscular, dieta ni género",
+      "Solicitar cuando hay discrepancia entre creatinina y clínica del paciente"
+    ]
+  },
+  {
+    "id": "lab_troponina",
+    "nombre": "Troponina I",
+    "abreviatura": "TnI",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 0, "max": 0.04, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Elevada: indica daño miocárdico; diagnóstico de IAM si se acompaña de clínica y ECG. También se eleva en miocarditis, TEP masiva, sepsis grave e insuficiencia renal.",
+    "significadoBajo": "Valores normales ayudan a descartar IAM con alto valor predictivo negativo.",
+    "farmacosAlteran": ["Doxorrubicina", "5-Fluorouracilo", "Trastuzumab", "Cocaína", "Simpaticomiméticos"],
+    "implicacionesEnfermeria": [
+      "Extraer muestra seriada: al ingreso, a las 3h y 6h para detectar curva de elevación",
+      "No retrasar la extracción por espera de ayuno; es una urgencia diagnóstica",
+      "Monitorización electrocardiográfica continua si troponina elevada",
+      "Asegurar acceso venoso y preparar tratamiento de reperfusión si IAM confirmado"
+    ]
+  },
+  {
+    "id": "lab_ck_mb",
+    "nombre": "Creatina Quinasa MB",
+    "abreviatura": "CK-MB",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 0, "max": 5, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Elevada en infarto agudo de miocardio (pico a las 12-24h), miocarditis, cardioversión, cirugía cardíaca o rabdomiólisis severa.",
+    "significadoBajo": "Valores normales ayudan a descartar daño miocárdico reciente.",
+    "farmacosAlteran": ["Estatinas", "Fibratos", "Doxorrubicina", "Cocaína", "Antipsicóticos"],
+    "implicacionesEnfermeria": [
+      "Se eleva a las 4-8h del IAM y normaliza en 48-72h; útil para detectar reinfarto",
+      "Complementar siempre con troponina para mayor especificidad",
+      "Diferenciar de CK total elevada por causa muscular (ejercicio, inyecciones IM)"
+    ]
+  },
+  {
+    "id": "lab_bnp",
+    "nombre": "Péptido Natriurético Cerebral",
+    "abreviatura": "BNP",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 0, "max": 100, "unidad": "pg/mL" }
+    },
+    "significadoAlto": "Indica insuficiencia cardíaca descompensada; valores correlacionan con la severidad. También se eleva en TEP, hipertensión pulmonar y fibrilación auricular.",
+    "significadoBajo": "Ayuda a descartar insuficiencia cardíaca como causa de disnea (alto valor predictivo negativo).",
+    "farmacosAlteran": ["Sacubitrilo/valsartán", "IECA", "Diuréticos", "Betabloqueantes", "Nesiritida"],
+    "implicacionesEnfermeria": [
+      "BNP <100 pg/mL: IC improbable; >400 pg/mL: IC muy probable",
+      "Monitorizar peso diario y balance hídrico en pacientes con BNP elevado",
+      "Valorar disnea, ortopnea, edema periférico y crepitantes pulmonares",
+      "Útil para monitorizar respuesta al tratamiento de la insuficiencia cardíaca"
+    ]
+  },
+  {
+    "id": "lab_pro_bnp",
+    "nombre": "Pro-Péptido Natriurético Cerebral N-terminal",
+    "abreviatura": "NT-proBNP",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 0, "max": 300, "unidad": "pg/mL" }
+    },
+    "significadoAlto": "Elevado en insuficiencia cardíaca (valores ajustados por edad: <50 años >450, 50-75 años >900, >75 años >1800 pg/mL). También en ERC y sepsis.",
+    "significadoBajo": "Valores normales descartan IC con alta sensibilidad. No se afecta por sacubitrilo (a diferencia del BNP).",
+    "farmacosAlteran": ["IECA", "ARA-II", "Betabloqueantes", "Diuréticos", "Espironolactona"],
+    "implicacionesEnfermeria": [
+      "Interpretar según edad del paciente por los diferentes puntos de corte",
+      "Preferido sobre BNP en pacientes tratados con sacubitrilo/valsartán",
+      "Monitorizar tendencia: descenso >30% indica buena respuesta al tratamiento",
+      "Correlacionar con clínica y no interpretar de forma aislada"
+    ]
+  },
+  {
+    "id": "lab_ldh",
+    "nombre": "Lactato Deshidrogenasa",
+    "abreviatura": "LDH",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 140, "max": 280, "unidad": "U/L" }
+    },
+    "significadoAlto": "Elevada en infarto de miocardio (tardío), hemólisis, embolia pulmonar, hepatopatía, linfoma, anemia megaloblástica y destrucción tisular generalizada.",
+    "significadoBajo": "Rara vez clínicamente significativo.",
+    "farmacosAlteran": ["Anestésicos", "Aspirina", "Fluorouracilo", "Metotrexato", "Narcóticos"],
+    "implicacionesEnfermeria": [
+      "Marcador inespecífico de daño tisular; correlacionar con otros marcadores específicos",
+      "En sospecha de hemólisis, correlacionar con haptoglobina y bilirrubina indirecta",
+      "Monitorizar como marcador pronóstico en linfomas y tumores germinales"
+    ]
+  },
+  {
+    "id": "lab_tsh",
+    "nombre": "Hormona Estimulante de la Tiroides",
+    "abreviatura": "TSH",
+    "categoria": "endocrino",
+    "rangos": {
+      "adulto": { "min": 0.4, "max": 4.0, "unidad": "mUI/L" }
+    },
+    "significadoAlto": "Indica hipotiroidismo primario; también se eleva en tiroiditis de Hashimoto, déficit de yodo o tras suspender levotiroxina.",
+    "significadoBajo": "Indica hipertiroidismo (enfermedad de Graves, bocio multinodular tóxico) o supresión por exceso de hormona tiroidea exógena.",
+    "farmacosAlteran": ["Levotiroxina", "Amiodarona", "Litio", "Metimazol", "Propiltiouracilo"],
+    "implicacionesEnfermeria": [
+      "Administrar levotiroxina en ayunas, 30-60 minutos antes del desayuno",
+      "Monitorizar TSH cada 6-8 semanas tras ajuste de dosis de levotiroxina",
+      "Vigilar signos de hipotiroidismo: fatiga, aumento de peso, bradicardia, intolerancia al frío",
+      "Vigilar signos de hipertiroidismo: taquicardia, pérdida de peso, temblor, ansiedad"
+    ]
+  },
+  {
+    "id": "lab_t4_libre",
+    "nombre": "Tiroxina Libre",
+    "abreviatura": "T4L",
+    "categoria": "endocrino",
+    "rangos": {
+      "adulto": { "min": 0.8, "max": 1.8, "unidad": "ng/dL" }
+    },
+    "significadoAlto": "Indica hipertiroidismo, tiroiditis aguda (fase tirotóxica), sobredosis de levotiroxina o amiodarona.",
+    "significadoBajo": "Indica hipotiroidismo; si TSH también baja, sospechar hipotiroidismo central (hipofisario).",
+    "farmacosAlteran": ["Levotiroxina", "Amiodarona", "Propranolol", "Corticosteroides", "Heparina"],
+    "implicacionesEnfermeria": [
+      "Interpretar siempre junto con TSH para diagnóstico correcto",
+      "TSH alta + T4L baja = hipotiroidismo primario",
+      "TSH baja + T4L alta = hipertiroidismo",
+      "No extraer muestra justo después de tomar levotiroxina (falso elevado)"
+    ]
+  },
+  {
+    "id": "lab_t3",
+    "nombre": "Triyodotironina",
+    "abreviatura": "T3",
+    "categoria": "endocrino",
+    "rangos": {
+      "adulto": { "min": 80, "max": 200, "unidad": "ng/dL" }
+    },
+    "significadoAlto": "Elevada en hipertiroidismo (especialmente T3-tirotoxicosis), fase aguda de tiroiditis o exceso de tratamiento tiroideo.",
+    "significadoBajo": "Disminuida en hipotiroidismo, síndrome del eutiroideo enfermo (enfermedad no tiroidea grave), desnutrición o ayuno prolongado.",
+    "farmacosAlteran": ["Levotiroxina", "Amiodarona", "Propranolol", "Anticonvulsivantes", "Estrógenos"],
+    "implicacionesEnfermeria": [
+      "Solicitar T3 cuando TSH baja pero T4L normal (descartar T3-tirotoxicosis)",
+      "Valores bajos en pacientes críticos no siempre indican hipotiroidismo (síndrome del enfermo eutiroideo)",
+      "Monitorizar frecuencia cardíaca y presión arterial en T3 elevada"
+    ]
+  },
+  {
+    "id": "lab_cortisol",
+    "nombre": "Cortisol sérico",
+    "abreviatura": "Cort",
+    "categoria": "endocrino",
+    "rangos": {
+      "adulto": { "min": 6, "max": 23, "unidad": "µg/dL" }
+    },
+    "significadoAlto": "Indica síndrome de Cushing, estrés agudo, depresión, alcoholismo o tratamiento crónico con corticoides exógenos.",
+    "significadoBajo": "Indica insuficiencia suprarrenal (enfermedad de Addison), hipopituitarismo o suspensión brusca de corticoides.",
+    "farmacosAlteran": ["Prednisona", "Dexametasona", "Ketoconazol", "Estrógenos", "Opioides"],
+    "implicacionesEnfermeria": [
+      "Extraer muestra por la mañana (6-8 AM) por el ritmo circadiano del cortisol",
+      "Nunca suspender corticoides bruscamente: reducir gradualmente para evitar crisis addisoniana",
+      "Vigilar signos de crisis suprarrenal: hipotensión, hipoglucemia, confusión",
+      "Educar al paciente con corticoterapia crónica sobre la necesidad de portar identificación médica"
+    ]
+  },
+  {
+    "id": "lab_hba1c",
+    "nombre": "Hemoglobina Glucosilada",
+    "abreviatura": "HbA1c",
+    "categoria": "endocrino",
+    "rangos": {
+      "adulto": { "min": 4.0, "max": 5.6, "unidad": "%" }
+    },
+    "significadoAlto": "Indica mal control glucémico en los últimos 2-3 meses. HbA1c 5.7-6.4% = prediabetes; ≥6.5% = diabetes mellitus.",
+    "significadoBajo": "Puede verse en anemias hemolíticas, hemorragia reciente, embarazo o hemoglobinopatías (falso resultado bajo).",
+    "farmacosAlteran": ["Insulina", "Metformina", "Sulfonilureas", "Análogos GLP-1", "Inhibidores SGLT2"],
+    "implicacionesEnfermeria": [
+      "Objetivo terapéutico general en diabetes: HbA1c <7% (individualizar según paciente)",
+      "No requiere ayuno para su determinación",
+      "Monitorizar cada 3 meses en pacientes con diabetes no controlada",
+      "Educar que refleja el promedio glucémico de 2-3 meses, no un valor puntual"
+    ]
+  },
+  {
+    "id": "lab_insulina",
+    "nombre": "Insulina en ayunas",
+    "abreviatura": "Ins",
+    "categoria": "endocrino",
+    "rangos": {
+      "adulto": { "min": 2.6, "max": 24.9, "unidad": "µUI/mL" }
+    },
+    "significadoAlto": "Hiperinsulinemia: indica resistencia a la insulina, síndrome metabólico, obesidad, insulinoma o fase temprana de DM tipo 2.",
+    "significadoBajo": "Indica diabetes tipo 1 (destrucción de células beta), DM2 avanzada con agotamiento pancreático o insuficiencia pancreática exocrina.",
+    "farmacosAlteran": ["Insulina exógena", "Sulfonilureas", "Metformina", "Corticosteroides", "Tiazidas"],
+    "implicacionesEnfermeria": [
+      "Asegurar extracción en ayunas de al menos 8 horas",
+      "Calcular índice HOMA-IR junto con glucosa para evaluar resistencia a insulina",
+      "Correlacionar con péptido C para diferenciar insulina endógena de exógena"
+    ]
+  },
+  {
+    "id": "lab_ph_urinario",
+    "nombre": "pH urinario",
+    "abreviatura": "pH-U",
+    "categoria": "orina",
+    "rangos": {
+      "adulto": { "min": 4.5, "max": 8.0, "unidad": "" }
+    },
+    "significadoAlto": "Orina alcalina (>8.0): infección urinaria por Proteus, dieta vegetariana, alcalosis metabólica, acidosis tubular renal o vómitos prolongados.",
+    "significadoBajo": "Orina ácida (<4.5): dieta hiperproteica, acidosis metabólica, diabetes descompensada, diarrea severa o deshidratación.",
+    "farmacosAlteran": ["Bicarbonato sódico", "Acetazolamida", "Ácido ascórbico", "Cloruro amónico", "Citrato potásico"],
+    "implicacionesEnfermeria": [
+      "Considerar pH urinario al interpretar sedimento y prevención de litiasis",
+      "Alcalinizar orina con bicarbonato para prevenir nefropatía por metotrexato",
+      "Recoger muestra de orina fresca; la orina en reposo se alcaliniza"
+    ]
+  },
+  {
+    "id": "lab_densidad_urinaria",
+    "nombre": "Densidad urinaria",
+    "abreviatura": "Dens",
+    "categoria": "orina",
+    "rangos": {
+      "adulto": { "min": 1.005, "max": 1.030, "unidad": "" }
+    },
+    "significadoAlto": "Orina concentrada: deshidratación, SIADH, insuficiencia cardíaca, proteinuria masiva o glucosuria.",
+    "significadoBajo": "Orina diluida: diabetes insípida, ingesta hídrica excesiva, insuficiencia renal crónica (incapacidad de concentrar orina) o uso de diuréticos.",
+    "farmacosAlteran": ["Diuréticos", "Desmopresina", "Medios de contraste", "Manitol", "Glucosa IV"],
+    "implicacionesEnfermeria": [
+      "Correlacionar con estado de hidratación del paciente",
+      "Densidad fija ~1.010 indica pérdida de capacidad de concentración renal",
+      "Monitorizar en pacientes con sospecha de diabetes insípida"
+    ]
+  },
+  {
+    "id": "lab_proteinas_orina",
+    "nombre": "Proteínas en orina",
+    "abreviatura": "Prot-U",
+    "categoria": "orina",
+    "rangos": {
+      "adulto": { "min": 0, "max": 150, "unidad": "mg/24h" }
+    },
+    "significadoAlto": "Proteinuria: indica daño glomerular (>3.5 g/24h = síndrome nefrótico), nefropatía diabética, preeclampsia, mieloma múltiple o nefritis.",
+    "significadoBajo": "Valores normales indican función glomerular adecuada; no hay significado clínico en proteinuria baja.",
+    "farmacosAlteran": ["IECA/ARA-II", "AINEs", "Aminoglucósidos", "Litio", "Ciclosporina"],
+    "implicacionesEnfermeria": [
+      "Instruir sobre recolección correcta de orina de 24 horas",
+      "Usar tira reactiva como cribado; confirmar con proteinuria cuantitativa",
+      "Monitorizar en pacientes diabéticos e hipertensos como marcador de nefropatía",
+      "Los IECA/ARA-II tienen efecto nefroprotector al reducir proteinuria"
+    ]
+  },
+  {
+    "id": "lab_glucosa_orina",
+    "nombre": "Glucosa en orina",
+    "abreviatura": "Glu-U",
+    "categoria": "orina",
+    "rangos": {
+      "adulto": { "min": 0, "max": 15, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Glucosuria: aparece cuando la glucemia supera el umbral renal (~180 mg/dL). Indica diabetes descompensada, glucosuria renal o efecto de iSGLT2.",
+    "significadoBajo": "La ausencia de glucosa en orina es normal; valores de 0-15 mg/dL se consideran no detectables.",
+    "farmacosAlteran": ["Inhibidores SGLT2", "Corticosteroides", "Tiazidas", "Ácido ascórbico", "Cefalosporinas"],
+    "implicacionesEnfermeria": [
+      "Tener en cuenta que iSGLT2 (dapagliflozina, empagliflozina) producen glucosuria terapéutica",
+      "No usar glucosuria como único método de control en diabetes",
+      "Vigilar riesgo de infecciones urinarias en pacientes con glucosuria persistente"
+    ]
+  },
+  {
+    "id": "lab_microalbuminuria",
+    "nombre": "Microalbuminuria",
+    "abreviatura": "mAlb",
+    "categoria": "orina",
+    "rangos": {
+      "adulto": { "min": 0, "max": 30, "unidad": "mg/g creatinina" }
+    },
+    "significadoAlto": "Microalbuminuria (30-300 mg/g): marcador precoz de nefropatía diabética e hipertensiva. Macroalbuminuria (>300 mg/g): indica daño glomerular establecido.",
+    "significadoBajo": "Valores normales (<30 mg/g) indican ausencia de daño glomerular significativo.",
+    "farmacosAlteran": ["IECA/ARA-II", "AINEs", "Aminoglucósidos", "Inhibidores SGLT2", "Finerenona"],
+    "implicacionesEnfermeria": [
+      "Cribado anual en pacientes diabéticos e hipertensos",
+      "Preferir muestra de primera orina de la mañana (ratio albúmina/creatinina)",
+      "Iniciar IECA/ARA-II ante microalbuminuria positiva en diabéticos",
+      "Evitar recoger muestra durante menstruación, infección urinaria o ejercicio intenso"
+    ]
+  },
+  {
+    "id": "lab_ph_arterial",
+    "nombre": "pH arterial",
+    "abreviatura": "pH",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 7.35, "max": 7.45, "unidad": "" }
+    },
+    "significadoAlto": "Alcalemia (>7.45): alcalosis respiratoria (hiperventilación) o metabólica (vómitos, diuréticos). Puede causar tetania e irritabilidad neuromuscular.",
+    "significadoBajo": "Acidemia (<7.35): acidosis respiratoria (retención de CO2) o metabólica (cetoacidosis, acidosis láctica, insuficiencia renal). pH <7.20 es potencialmente letal.",
+    "farmacosAlteran": ["Bicarbonato sódico", "Acetazolamida", "Diuréticos del asa", "Salicilatos", "Metformina"],
+    "implicacionesEnfermeria": [
+      "pH <7.20 o >7.60: situación de emergencia que requiere intervención inmediata",
+      "Interpretar siempre junto con PaCO2 y HCO3 para determinar el trastorno primario",
+      "Verificar que la muestra sea arterial y se analice en menos de 15 minutos",
+      "Transportar la muestra en hielo y sin burbujas de aire"
+    ]
+  },
+  {
+    "id": "lab_pao2",
+    "nombre": "Presión Parcial de Oxígeno",
+    "abreviatura": "PaO2",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 80, "max": 100, "unidad": "mmHg" }
+    },
+    "significadoAlto": "Hiperoxemia: generalmente por FiO2 elevada. En neonatos prematuros, PaO2 alta aumenta riesgo de retinopatía.",
+    "significadoBajo": "Hipoxemia: indica insuficiencia respiratoria. PaO2 <60 mmHg = insuficiencia respiratoria parcial; requiere oxigenoterapia. Causas: neumonía, SDRA, TEP, EPOC.",
+    "farmacosAlteran": ["Oxígeno suplementario", "Broncodilatadores", "Sedantes/opioides", "Anestésicos", "Óxido nítrico"],
+    "implicacionesEnfermeria": [
+      "Registrar FiO2 del paciente al momento de la extracción",
+      "Calcular PaO2/FiO2 (índice de Kirby): <300 = lesión pulmonar; <200 = SDRA",
+      "Monitorizar saturación de O2 con pulsioximetría de forma continua",
+      "Ajustar oxigenoterapia según objetivo de PaO2 del paciente"
+    ]
+  },
+  {
+    "id": "lab_paco2",
+    "nombre": "Presión Parcial de Dióxido de Carbono",
+    "abreviatura": "PaCO2",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 35, "max": 45, "unidad": "mmHg" }
+    },
+    "significadoAlto": "Hipercapnia (>45 mmHg): indica hipoventilación (EPOC, depresión respiratoria, fatiga muscular) = acidosis respiratoria.",
+    "significadoBajo": "Hipocapnia (<35 mmHg): indica hiperventilación (ansiedad, dolor, TEP, compensación de acidosis metabólica) = alcalosis respiratoria.",
+    "farmacosAlteran": ["Opioides", "Benzodiazepinas", "Broncodilatadores", "Salicilatos", "Progesterona"],
+    "implicacionesEnfermeria": [
+      "En pacientes con EPOC crónico, tolerar PaCO2 más alta (hipercapnia permisiva)",
+      "Monitorizar patrón respiratorio: frecuencia, profundidad y esfuerzo",
+      "Alertar si PaCO2 >50 mmHg con acidosis: posible necesidad de ventilación mecánica",
+      "Evaluar nivel de conciencia en hipercapnia progresiva (narcosis por CO2)"
+    ]
+  },
+  {
+    "id": "lab_hco3",
+    "nombre": "Bicarbonato",
+    "abreviatura": "HCO3",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 22, "max": 26, "unidad": "mEq/L" }
+    },
+    "significadoAlto": "HCO3 >26: alcalosis metabólica (vómitos, aspiración gástrica, diuréticos) o compensación renal de acidosis respiratoria crónica.",
+    "significadoBajo": "HCO3 <22: acidosis metabólica (cetoacidosis, acidosis láctica, diarrea severa, insuficiencia renal) o compensación de alcalosis respiratoria.",
+    "farmacosAlteran": ["Bicarbonato sódico", "Acetazolamida", "Diuréticos tiazídicos", "Furosemida", "Topiramato"],
+    "implicacionesEnfermeria": [
+      "Calcular anión gap (Na - Cl - HCO3) para clasificar la acidosis metabólica",
+      "Anión gap >12: cetoacidosis, acidosis láctica, intoxicaciones",
+      "Anión gap normal: diarrea, acidosis tubular renal, fístulas intestinales",
+      "Monitorizar nivel de conciencia y patrón respiratorio (Kussmaul en acidosis severa)"
+    ]
+  },
+  {
+    "id": "lab_saturacion_o2",
+    "nombre": "Saturación de Oxígeno Arterial",
+    "abreviatura": "SaO2",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 95, "max": 100, "unidad": "%" }
+    },
+    "significadoAlto": "100% generalmente indica oxígeno suplementario. En pacientes con EPOC, SaO2 100% puede indicar oxigenoterapia excesiva.",
+    "significadoBajo": "SaO2 <90% indica hipoxemia significativa (equivale a PaO2 ~60 mmHg en la curva de disociación). Requiere intervención inmediata.",
+    "farmacosAlteran": ["Oxígeno suplementario", "Opioides", "Sedantes", "Broncodilatadores", "Óxido nítrico"],
+    "implicacionesEnfermeria": [
+      "Objetivo en EPOC: SaO2 88-92% (evitar supresión del estímulo hipóxico)",
+      "Objetivo general: SaO2 ≥94% (≥92% si riesgo de hipercapnia)",
+      "La pulsioximetría puede ser inexacta con esmalte de uñas, hipotermia o mala perfusión",
+      "Correlacionar pulsioximetría con gasometría arterial en casos dudosos"
+    ]
+  },
+  {
+    "id": "lab_lactato",
+    "nombre": "Lactato",
+    "abreviatura": "Lac",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 0.5, "max": 2.0, "unidad": "mmol/L" },
+      "pediatrico": { "min": 0.5, "max": 2.2, "unidad": "mmol/L" }
+    },
+    "significadoAlto": "Hiperlactatemia: puede indicar hipoperfusión tisular, sepsis, shock, isquemia mesentérica, insuficiencia hepática grave o efecto de metformina. Lactato >4 mmol/L se asocia a mortalidad elevada en sepsis.",
+    "significadoBajo": "Sin relevancia clínica significativa en valores bajos.",
+    "farmacosAlteran": ["Metformina", "Epinefrina", "Linezolid", "Nucleósidos antirretrovirales", "Propofol (infusión prolongada)"],
+    "implicacionesEnfermeria": [
+      "Monitorizar lactato seriado cada 2-4h en sepsis/shock para evaluar respuesta al tratamiento",
+      "Objetivo de resucitación: aclaramiento de lactato >10% en primeras 6 horas",
+      "Lactato >4 mmol/L: alertar al equipo médico inmediatamente",
+      "Asegurar extracción venosa sin torniquete prolongado (falso aumento)",
+      "Correlacionar con signos de perfusión: relleno capilar, diuresis, nivel de conciencia"
+    ]
+  },
+  {
+    "id": "lab_procalcitonina",
+    "nombre": "Procalcitonina",
+    "abreviatura": "PCT",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 0, "max": 0.05, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "PCT >0.5 ng/mL sugiere infección bacteriana sistémica. PCT >2 ng/mL alta probabilidad de sepsis bacteriana. PCT >10 ng/mL asociada a shock séptico o fallo multiorgánico. Útil para diferenciar infección bacteriana de viral.",
+    "significadoBajo": "Valores <0.1 ng/mL hacen improbable una infección bacteriana sistémica. Útil para guiar la suspensión de antibióticos.",
+    "farmacosAlteran": ["Antibióticos (disminuyen si efectivos)", "OKT3", "Alemtuzumab", "Granulocyte-CSF"],
+    "implicacionesEnfermeria": [
+      "Monitorizar PCT seriada para guiar duración de antibioterapia (descenso >80% apoya suspensión)",
+      "PCT <0.25 ng/mL: considerar suspensión de antibióticos (consenso con equipo médico)",
+      "No se eleva significativamente en infecciones virales ni autoinmunes (valor diferencial)",
+      "Extraer muestra antes de iniciar antibióticos cuando sea posible"
+    ]
+  },
+  {
+    "id": "lab_magnesio",
+    "nombre": "Magnesio",
+    "abreviatura": "Mg",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adultoHombre": { "min": 1.7, "max": 2.2, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 1.7, "max": 2.2, "unidad": "mg/dL" },
+      "pediatrico": { "min": 1.7, "max": 2.1, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hipermagnesemia: puede causar hipotensión, bradicardia, depresión respiratoria, arreflexia y paro cardíaco. Frecuente en insuficiencia renal con suplementos de Mg o antiácidos.",
+    "significadoBajo": "Hipomagnesemia: causa arritmias (torsades de pointes), convulsiones, tetania, debilidad muscular. Frecuente en alcoholismo, diuréticos, malabsorción. Dificulta la corrección de hipopotasemia e hipocalcemia.",
+    "farmacosAlteran": ["Diuréticos de asa", "Inhibidores de bomba de protones", "Aminoglucósidos", "Cisplatino", "Ciclosporina", "Sulfato de magnesio IV"],
+    "implicacionesEnfermeria": [
+      "Monitorizar ECG en hipo/hipermagnesemia: buscar prolongación QT, arritmias",
+      "Administrar sulfato de magnesio IV lento (riesgo de hipotensión y paro si rápido)",
+      "Controlar reflejo rotuliano durante infusión de MgSO4 (eclampsia): ausencia indica toxicidad",
+      "Vigilar en pacientes con diuréticos crónicos: solicitar Mg junto con K+",
+      "Hipomagnesemia refractaria: corregir Mg antes de intentar corregir K+ o Ca2+"
+    ]
+  },
+  {
+    "id": "lab_bnp",
+    "nombre": "NT-proBNP",
+    "abreviatura": "NT-proBNP",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 0, "max": 125, "unidad": "pg/mL" }
+    },
+    "significadoAlto": "Elevación proporcional a la severidad de la insuficiencia cardíaca. >300 pg/mL en <50 años, >900 en 50-75 años, >1800 en >75 años sugiere IC aguda. También se eleva en TEP, sepsis, insuficiencia renal y fibrilación auricular.",
+    "significadoBajo": "Valores dentro de rango descartan IC con alto valor predictivo negativo. Útil en urgencias para diferenciar disnea cardíaca de pulmonar.",
+    "farmacosAlteran": ["IECA/ARA-II (disminuyen)", "Sacubitrilo-valsartán (aumenta BNP, no NT-proBNP)", "Betabloqueantes", "Diuréticos", "Nesiritida"],
+    "implicacionesEnfermeria": [
+      "Monitorizar NT-proBNP seriado para evaluar respuesta al tratamiento de IC",
+      "Considerar edad al interpretar: umbrales diagnósticos aumentan con la edad",
+      "Correlacionar con peso diario, balance hídrico y signos de congestión",
+      "Valores muy elevados: alertar sobre posible descompensación aguda",
+      "En pacientes obesos los valores pueden estar falsamente bajos"
+    ]
+  },
+  {
+    "id": "lab_dimero_d",
+    "nombre": "D-dímero",
+    "abreviatura": "DD",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 0, "max": 500, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Indica activación de coagulación y fibrinólisis. Elevado en TVP, TEP, CID, sepsis, cirugía reciente, neoplasias, embarazo. Alto valor predictivo negativo: DD normal descarta TVP/TEP en pacientes con baja probabilidad clínica (Wells).",
+    "significadoBajo": "Sin relevancia clínica. Valor normal con alta probabilidad clínica no descarta trombosis.",
+    "farmacosAlteran": ["Anticoagulantes (disminuyen)", "Fibrinolíticos (aumentan transitoriamente)", "Anticonceptivos orales (elevan)"],
+    "implicacionesEnfermeria": [
+      "Interpretar siempre junto con escalas clínicas (Wells para TVP/TEP)",
+      "En >50 años aplicar corte ajustado: edad × 10 ng/mL (ej. 65 años → 650 ng/mL)",
+      "DD negativo con baja probabilidad clínica: seguro excluir TEP sin imagen",
+      "Vigilar signos de TVP: edema unilateral, dolor gemelar, signo de Homans",
+      "En sospecha de CID: solicitar DD junto con fibrinógeno, plaquetas y TP"
+    ]
+  },
+  {
+    "id": "lab_ferritina",
+    "nombre": "Ferritina",
+    "abreviatura": "Fer",
+    "categoria": "hematologia",
+    "rangos": {
+      "adultoHombre": { "min": 20, "max": 250, "unidad": "ng/mL" },
+      "adultoMujer": { "min": 10, "max": 120, "unidad": "ng/mL" },
+      "pediatrico": { "min": 7, "max": 140, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Sobrecarga de hierro (hemocromatosis, transfusiones repetidas), inflamación crónica, hepatopatía, neoplasias, síndrome hemofagocítico. Ferritina >500 ng/mL en inflamación; >1000 ng/mL buscar hemocromatosis o hemofagocitosis.",
+    "significadoBajo": "Ferritina <10-15 ng/mL confirma ferropenia (marcador más específico de déficit de hierro). Causa de anemia ferropénica: pérdidas GI, menorragia, malabsorción, dieta insuficiente.",
+    "farmacosAlteran": ["Hierro oral/IV", "Deferoxamina (quelante)", "Eritropoyetina", "Transfusiones sanguíneas"],
+    "implicacionesEnfermeria": [
+      "Ferritina <15 ng/mL: déficit de hierro confirmado, educar sobre suplementación",
+      "Tomar hierro oral en ayunas con vitamina C (mejora absorción)",
+      "Ferritina elevada + anemia: sospechar anemia de enfermedad crónica (no dar hierro)",
+      "Monitorizar en pacientes politransfundidos: riesgo de sobrecarga férrica"
+    ]
+  },
+  {
+    "id": "lab_fosforo",
+    "nombre": "Fósforo",
+    "abreviatura": "P",
+    "categoria": "renal",
+    "rangos": {
+      "adulto": { "min": 2.5, "max": 4.5, "unidad": "mg/dL" },
+      "pediatrico": { "min": 4.0, "max": 7.0, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperfosfatemia: común en enfermedad renal crónica (ERC), rabdomiólisis, lisis tumoral, hipoparatiroidismo. Causa calcificaciones metastásicas (producto Ca×P >55). Principal causa de hiperparatiroidismo secundario en ERC.",
+    "significadoBajo": "Hipofosfatemia: causa debilidad muscular, insuficiencia respiratoria (debilidad diafragmática), rabdomiólisis, hemólisis. Frecuente en síndrome de realimentación, alcalosis respiratoria, hiperparatiroidismo.",
+    "farmacosAlteran": ["Quelantes de fósforo (sevelamer, carbonato cálcico)", "Vitamina D", "Insulina", "Fosfato sódico/potásico IV", "Antiácidos con aluminio"],
+    "implicacionesEnfermeria": [
+      "En ERC: monitorizar fósforo junto con calcio, PTH y vitamina D",
+      "Educar sobre dieta baja en fósforo: evitar procesados, refrescos de cola, lácteos excesivos",
+      "Administrar quelantes de fósforo CON las comidas (no entre comidas)",
+      "En síndrome de realimentación: monitorizar P cada 6-12h las primeras 72h",
+      "Hipofosfatemia severa (<1 mg/dL): reposición IV lenta, vigilar hipocalcemia"
+    ]
+  },
+  {
+    "id": "lab_acido_urico",
+    "nombre": "Ácido Úrico",
+    "abreviatura": "AU",
+    "categoria": "renal",
+    "rangos": {
+      "adultoHombre": { "min": 3.4, "max": 7.0, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 2.4, "max": 6.0, "unidad": "mg/dL" },
+      "pediatrico": { "min": 2.0, "max": 5.5, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperuricemia: riesgo de gota (artritis aguda por cristales de urato), nefrolitiasis úrica, nefropatía por uratos (lisis tumoral). Se asocia a síndrome metabólico, HTA y enfermedad cardiovascular.",
+    "significadoBajo": "Hipouricemia: generalmente sin relevancia clínica. Puede verse en síndrome de Fanconi, SIADH, xantinuria hereditaria o tratamiento excesivo con uricosúricos.",
+    "farmacosAlteran": ["Alopurinol", "Febuxostat", "Diuréticos tiazídicos (aumentan)", "Losartán (disminuye)", "Rasburicasa", "Ácido acetilsalicílico (dosis-dependiente)"],
+    "implicacionesEnfermeria": [
+      "En crisis gotosa: aplicar frío local, elevar articulación, no manipular",
+      "Fomentar ingesta hídrica >2L/día para prevenir litiasis renal",
+      "Educar sobre dieta baja en purinas: limitar carnes rojas, mariscos, alcohol (cerveza)",
+      "En lisis tumoral: hidratación vigorosa + rasburicasa o alopurinol profiláctico",
+      "Monitorizar función renal en pacientes con hiperuricemia crónica"
+    ]
+  }
+]
