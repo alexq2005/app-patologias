@@ -883,11 +883,11 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   // ── Section quick-nav config ─────────────────────────────
   const scrollRef = useRef<ScrollView>(null);
   const sectionQuickNav = useMemo(() => [
-    { key: 'fisio', label: 'Fisiopatologia', icon: 'dna' },
+    { key: 'fisio', label: 'Fisiopatología', icon: 'dna' },
     { key: 'signos', label: 'Signos', icon: 'stethoscope' },
-    { key: 'dx', label: 'Diagnostico', icon: 'clipboard-pulse-outline' },
+    { key: 'dx', label: 'Diagnóstico', icon: 'clipboard-pulse-outline' },
     { key: 'tx', label: 'Tratamiento', icon: 'medical-bag' },
-    { key: 'enf', label: 'Enfermeria', icon: 'heart-pulse' },
+    { key: 'enf', label: 'Enfermería', icon: 'heart-pulse' },
     { key: 'nanda', label: 'NANDA', icon: 'format-list-group' },
     { key: 'alarma', label: 'Alarma', icon: 'alarm-light-outline' },
   ], []);

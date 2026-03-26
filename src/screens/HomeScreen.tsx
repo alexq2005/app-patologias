@@ -275,7 +275,7 @@ export function HomeScreen({ navigation }: Props) {
             {/* Stats pills */}
             <View style={{ flexDirection: 'row', marginTop: rs.space(16), gap: rs.space(8) }}>
               {[
-                { icon: 'book-open-page-variant', value: `${pathologyCount}`, label: 'Patologias', color: '#fff' },
+                { icon: 'book-open-page-variant', value: `${pathologyCount}`, label: 'Patologías', color: '#fff' },
                 { icon: 'human-male-female', value: `${bodySystems.length}`, label: 'Sistemas', color: '#fff' },
                 { icon: 'heart', value: `${favoriteCount}`, label: 'Favoritos', color: '#FF6B8A' },
               ].map((stat, i) => (

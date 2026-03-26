@@ -190,8 +190,8 @@ export function SettingsScreen() {
 
   const handleClearSearchHistory = useCallback(() => {
     confirmAction(
-      'Limpiar historial de busqueda',
-      `Se eliminaran ${history.length} busquedas guardadas.`,
+      'Limpiar historial de búsqueda',
+      `Se eliminarán ${history.length} búsquedas guardadas.`,
       clearSearchHistory,
     );
   }, [confirmAction, clearSearchHistory, history.length]);
@@ -199,7 +199,7 @@ export function SettingsScreen() {
   const handleClearRecent = useCallback(() => {
     confirmAction(
       'Limpiar recientes',
-      `Se eliminaran ${recent.length} patologias visitadas recientemente.`,
+      `Se eliminarán ${recent.length} patologías visitadas recientemente.`,
       clearRecent,
     );
   }, [confirmAction, clearRecent, recent.length]);
@@ -207,7 +207,7 @@ export function SettingsScreen() {
   const handleClearQuizHistory = useCallback(() => {
     confirmAction(
       'Limpiar historial de quiz',
-      `Se eliminaran los resultados de ${totalSessions} sesiones de quiz.`,
+      `Se eliminarán los resultados de ${totalSessions} sesiones de quiz.`,
       clearQuizResults,
     );
   }, [confirmAction, clearQuizResults, totalSessions]);
@@ -215,7 +215,7 @@ export function SettingsScreen() {
   const handleClearFavorites = useCallback(() => {
     confirmAction(
       'Eliminar todos los favoritos',
-      `Se eliminaran ${favoriteCount} patologias de favoritos. Esta accion no se puede deshacer.`,
+      `Se eliminarán ${favoriteCount} patologías de favoritos. Esta acción no se puede deshacer.`,
       clearFavorites,
     );
   }, [confirmAction, clearFavorites, favoriteCount]);
@@ -240,7 +240,7 @@ export function SettingsScreen() {
   const handleClearAll = useCallback(() => {
     Alert.alert(
       'Borrar todos los datos',
-      'Se eliminaran favoritos, notas, historial de busqueda, recientes y resultados de quiz. Esta accion NO se puede deshacer.',
+      'Se eliminarán favoritos, notas, historial de búsqueda, recientes y resultados de quiz. Esta acción NO se puede deshacer.',
       [
         { text: 'Cancelar', style: 'cancel' },
         {
@@ -286,7 +286,7 @@ export function SettingsScreen() {
         <SectionHeader title="Gestionar datos" icon="broom" colors={colors} rs={rs} />
         <SettingRow
           icon="magnify-close"
-          label="Limpiar historial de busqueda"
+          label="Limpiar historial de búsqueda"
           subtitle={`${history.length} busquedas`}
           onPress={history.length > 0 ? handleClearSearchHistory : undefined}
           colors={colors} rs={rs}
@@ -342,7 +342,7 @@ export function SettingsScreen() {
         />
         <SettingRow
           icon="shield-lock-outline"
-          label="Politica de Privacidad"
+          label="Política de Privacidad"
           onPress={() => navigation.navigate('PrivacyPolicy')}
           colors={colors} rs={rs}
         />

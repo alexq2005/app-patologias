@@ -51,25 +51,25 @@ interface SlideData {
 const SLIDES: SlideData[] = [
   {
     id: '1',
-    title: '151 Patologias',
+    title: '151 Patologías',
     description:
-      'Toda la informacion clinica que necesitas, organizada por sistemas corporales',
+      'Toda la información clínica que necesitas, organizada por sistemas corporales',
     icon: 'book-open-page-variant',
     iconColor: '#FFFFFF',
     bgCircleColor: '#6D28D9',
   },
   {
     id: '2',
-    title: 'Cuidados de Enfermeria',
+    title: 'Cuidados de Enfermería',
     description:
-      'NANDA, NIC, NOC, medicamentos, diagnosticos y valoraciones de enfermeria',
+      'NANDA, NIC, NOC, medicamentos, diagnósticos y valoraciones de enfermería',
     icon: 'heart-pulse',
     iconColor: '#FFFFFF',
     bgCircleColor: '#DC2626',
   },
   {
     id: '3',
-    title: 'Herramientas Clinicas',
+    title: 'Herramientas Clínicas',
     description:
       'Escalas, valores de laboratorio, protocolos de emergencia y test de conocimiento',
     icon: 'medical-bag',

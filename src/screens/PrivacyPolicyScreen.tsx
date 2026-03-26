@@ -54,70 +54,70 @@ type Props = NativeStackScreenProps<RootStackParamList, 'PrivacyPolicy'>;
 
 const SECTIONS = [
   {
-    title: '1. Informacion que recopilamos',
+    title: '1. Información que recopilamos',
     content:
-      'Patologias de Enfermeria es una aplicacion que funciona completamente sin conexion a internet (offline). ' +
-      'No recopilamos, transmitimos ni almacenamos ningun dato personal en servidores externos. ' +
-      'Toda la informacion que generas (favoritos, notas, historial de quiz, configuracion de tema) ' +
+      'Patologías de Enfermería es una aplicación que funciona completamente sin conexión a internet (offline). ' +
+      'No recopilamos, transmitimos ni almacenamos ningún dato personal en servidores externos. ' +
+      'Toda la información que generas (favoritos, notas, historial de quiz, configuración de tema) ' +
       'se guarda exclusivamente en el almacenamiento local de tu dispositivo.',
   },
   {
     title: '2. Datos almacenados localmente',
     content:
-      'La aplicacion almacena de forma local en tu dispositivo:\n' +
-      '• Patologias marcadas como favoritas\n' +
-      '• Notas personales por patologia\n' +
+      'La aplicación almacena de forma local en tu dispositivo:\n' +
+      '• Patologías marcadas como favoritas\n' +
+      '• Notas personales por patología\n' +
       '• Historial de sesiones de quiz y resultados\n' +
       '• Preferencia de tema visual (claro/oscuro)\n' +
-      '• Estado de activacion del acceso Premium\n' +
-      '• Historial de patologias recientemente visitadas\n\n' +
-      'Estos datos nunca son enviados a ningun servidor externo.',
+      '• Estado de activación del acceso Premium\n' +
+      '• Historial de patologías recientemente visitadas\n\n' +
+      'Estos datos nunca son enviados a ningún servidor externo.',
   },
   {
     title: '3. Permisos del dispositivo',
     content:
-      'La aplicacion no solicita permisos de camara, microfono, ubicacion, contactos ni acceso a archivos. ' +
-      'Unicamente utiliza almacenamiento de preferencias del sistema (AsyncStorage) para persistir ' +
-      'tu configuracion entre sesiones.',
+      'La aplicación no solicita permisos de cámara, micrófono, ubicación, contactos ni acceso a archivos. ' +
+      'Únicamente utiliza almacenamiento de preferencias del sistema (AsyncStorage) para persistir ' +
+      'tu configuración entre sesiones.',
   },
   {
     title: '4. Servicios de terceros',
     content:
-      'La aplicacion no integra servicios de analisis (Analytics), publicidad, rastreo de comportamiento ' +
-      'ni redes sociales. No se comparte informacion con terceros de ninguna forma.',
+      'La aplicación no integra servicios de análisis (Analytics), publicidad, rastreo de comportamiento ' +
+      'ni redes sociales. No se comparte información con terceros de ninguna forma.',
   },
   {
     title: '5. Seguridad de los datos',
     content:
       'Dado que todos los datos se almacenan localmente en tu dispositivo, la seguridad de los mismos ' +
-      'depende de las medidas de seguridad de tu dispositivo (codigo PIN, patron, biometria). ' +
-      'Te recomendamos mantener tu dispositivo protegido con una contrasena o bloqueo de pantalla.',
+      'depende de las medidas de seguridad de tu dispositivo (código PIN, patrón, biometría). ' +
+      'Te recomendamos mantener tu dispositivo protegido con una contraseña o bloqueo de pantalla.',
   },
   {
-    title: '6. Eliminacion de datos',
+    title: '6. Eliminación de datos',
     content:
-      'Puedes eliminar todos los datos generados por la aplicacion en cualquier momento ' +
-      'desinstalando la aplicacion de tu dispositivo. Esto borrara permanentemente ' +
-      'favoritos, notas, historial de quiz y configuracion almacenados localmente.',
+      'Puedes eliminar todos los datos generados por la aplicación en cualquier momento ' +
+      'desinstalando la aplicación de tu dispositivo. Esto borrará permanentemente ' +
+      'favoritos, notas, historial de quiz y configuración almacenados localmente.',
   },
   {
     title: '7. Menores de edad',
     content:
-      'Esta aplicacion esta diseñada para estudiantes y profesionales de enfermeria. ' +
-      'No esta orientada a menores de 13 años. Si eres menor de esa edad, ' +
-      'te solicitamos que uses la aplicacion bajo supervision de un adulto.',
+      'Esta aplicación está diseñada para estudiantes y profesionales de enfermería. ' +
+      'No está orientada a menores de 13 años. Si eres menor de esa edad, ' +
+      'te solicitamos que uses la aplicación bajo supervisión de un adulto.',
   },
   {
-    title: '8. Cambios a esta politica',
+    title: '8. Cambios a esta política',
     content:
-      'Podemos actualizar esta Politica de Privacidad periodicamente. ' +
-      'Los cambios significativos seran comunicados mediante actualizaciones de la aplicacion. ' +
-      'Te recomendamos revisar esta seccion ocasionalmente.',
+      'Podemos actualizar esta Política de Privacidad periódicamente. ' +
+      'Los cambios significativos serán comunicados mediante actualizaciones de la aplicación. ' +
+      'Te recomendamos revisar esta sección ocasionalmente.',
   },
   {
     title: '9. Contacto',
     content:
-      'Si tienes preguntas sobre esta Politica de Privacidad o sobre el manejo de tus datos, ' +
+      'Si tienes preguntas sobre esta Política de Privacidad o sobre el manejo de tus datos, ' +
       'puedes contactarnos en: alexq2005@gmail.com',
   },
 ];

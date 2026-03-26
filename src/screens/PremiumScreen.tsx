@@ -59,7 +59,7 @@ const PREMIUM_FEATURES = [
   { icon: 'scale-balance', text: 'Escalas clinicas completas' },
   { icon: 'flask-outline', text: 'Valores de laboratorio' },
   { icon: 'hospital-building', text: 'Protocolos de emergencia' },
-  { icon: 'stethoscope', text: 'Diagnosticos NANDA/NIC/NOC' },
+  { icon: 'stethoscope', text: 'Diagnósticos NANDA/NIC/NOC' },
   { icon: 'chart-line', text: 'Dashboard de progreso' },
 ];
 

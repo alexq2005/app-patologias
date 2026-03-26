@@ -54,85 +54,85 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Terms'>;
 
 const SECTIONS = [
   {
-    title: '1. Aceptacion de los terminos',
+    title: '1. Aceptación de los términos',
     content:
-      'Al descargar, instalar o usar la aplicacion Patologias de Enfermeria, aceptas estar sujeto ' +
-      'a estos Terminos y Condiciones. Si no estas de acuerdo con alguna parte de estos terminos, ' +
-      'no debes usar la aplicacion.',
+      'Al descargar, instalar o usar la aplicación Patologías de Enfermería, aceptas estar sujeto ' +
+      'a estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de estos términos, ' +
+      'no debes usar la aplicación.',
   },
   {
-    title: '2. Descargo de responsabilidad medica (IMPORTANTE)',
+    title: '2. Descargo de responsabilidad médica (IMPORTANTE)',
     content:
-      'AVISO LEGAL CRITICO: Esta aplicacion es exclusivamente una herramienta de REFERENCIA EDUCATIVA ' +
-      'para estudiantes y profesionales de enfermeria.\n\n' +
-      '• La informacion NO reemplaza el criterio clinico profesional\n' +
-      '• NO debe utilizarse como unica fuente para tomar decisiones clinicas\n' +
-      '• NO reemplaza la evaluacion medica ni el diagnostico profesional\n' +
-      '• Las dosis, protocolos y guias pueden variar segun la institucion\n' +
-      '• Siempre consulta fuentes primarias y guias institucionales vigentes\n\n' +
-      'El uso de esta aplicacion en situaciones de emergencia o como guia clinica unica ' +
+      'AVISO LEGAL CRÍTICO: Esta aplicación es exclusivamente una herramienta de REFERENCIA EDUCATIVA ' +
+      'para estudiantes y profesionales de enfermería.\n\n' +
+      '• La información NO reemplaza el criterio clínico profesional\n' +
+      '• NO debe utilizarse como única fuente para tomar decisiones clínicas\n' +
+      '• NO reemplaza la evaluación médica ni el diagnóstico profesional\n' +
+      '• Las dosis, protocolos y guías pueden variar según la institución\n' +
+      '• Siempre consulta fuentes primarias y guías institucionales vigentes\n\n' +
+      'El uso de esta aplicación en situaciones de emergencia o como guía clínica única ' +
       'es responsabilidad exclusiva del usuario.',
   },
   {
     title: '3. Uso permitido',
     content:
-      'Esta aplicacion esta diseñada para:\n' +
-      '• Estudio academico de enfermeria y ciencias de la salud\n' +
-      '• Referencia rapida para profesionales de enfermeria capacitados\n' +
-      '• Preparacion para examenes y evaluaciones clinicas\n' +
-      '• Repaso de contenidos de enfermeria\n\n' +
-      'Queda estrictamente prohibido el uso de esta aplicacion para diagnosticar, ' +
-      'tratar o prescribir tratamientos a pacientes sin la supervision de un profesional de la salud certificado.',
+      'Esta aplicación está diseñada para:\n' +
+      '• Estudio académico de enfermería y ciencias de la salud\n' +
+      '• Referencia rápida para profesionales de enfermería capacitados\n' +
+      '• Preparación para exámenes y evaluaciones clínicas\n' +
+      '• Repaso de contenidos de enfermería\n\n' +
+      'Queda estrictamente prohibido el uso de esta aplicación para diagnosticar, ' +
+      'tratar o prescribir tratamientos a pacientes sin la supervisión de un profesional de la salud certificado.',
   },
   {
     title: '4. Exactitud del contenido',
     content:
-      'Nos esforzamos por mantener el contenido actualizado y preciso, basandonos en guias clinicas ' +
-      'y literatura medica vigente. Sin embargo, la medicina es una ciencia en constante evolucion. ' +
-      'No garantizamos que toda la informacion este completa, actualizada o libre de errores. ' +
-      'El usuario asume la responsabilidad de verificar la informacion con fuentes actualizadas.',
+      'Nos esforzamos por mantener el contenido actualizado y preciso, basándonos en guías clínicas ' +
+      'y literatura médica vigente. Sin embargo, la medicina es una ciencia en constante evolución. ' +
+      'No garantizamos que toda la información esté completa, actualizada o libre de errores. ' +
+      'El usuario asume la responsabilidad de verificar la información con fuentes actualizadas.',
   },
   {
     title: '5. Propiedad intelectual',
     content:
-      'Todo el contenido de esta aplicacion, incluyendo textos, datos clinicos, diagramas, ' +
-      'iconos y codigo fuente, esta protegido por derechos de autor. ' +
-      'No esta permitido reproducir, distribuir, modificar o crear obras derivadas ' +
+      'Todo el contenido de esta aplicación, incluyendo textos, datos clínicos, diagramas, ' +
+      'íconos y código fuente, está protegido por derechos de autor. ' +
+      'No está permitido reproducir, distribuir, modificar o crear obras derivadas ' +
       'sin el consentimiento expreso por escrito del desarrollador.',
   },
   {
     title: '6. Acceso Premium',
     content:
-      'La aplicacion ofrece funcionalidades adicionales mediante acceso Premium, ya sea ' +
-      'a traves de periodo de prueba gratuito, codigo de activacion o suscripcion. ' +
+      'La aplicación ofrece funcionalidades adicionales mediante acceso Premium, ya sea ' +
+      'a través de período de prueba gratuito, código de activación o suscripción. ' +
       'El acceso Premium es personal e intransferible. ' +
-      'No se ofrecen reembolsos salvo que la politica de la tienda de aplicaciones lo exija.',
+      'No se ofrecen reembolsos salvo que la política de la tienda de aplicaciones lo exija.',
   },
   {
-    title: '7. Limitacion de responsabilidad',
+    title: '7. Limitación de responsabilidad',
     content:
-      'En la maxima medida permitida por la ley aplicable, el desarrollador no sera responsable ' +
+      'En la máxima medida permitida por la ley aplicable, el desarrollador no será responsable ' +
       'por daños directos, indirectos, incidentales o consecuentes que resulten del uso o ' +
-      'incapacidad de uso de la aplicacion, incluyendo decisiones clinicas tomadas en base ' +
+      'incapacidad de uso de la aplicación, incluyendo decisiones clínicas tomadas en base ' +
       'al contenido de la misma.',
   },
   {
     title: '8. Modificaciones',
     content:
-      'Nos reservamos el derecho de modificar estos Terminos y Condiciones en cualquier momento. ' +
-      'Los cambios significativos seran comunicados mediante actualizaciones de la aplicacion. ' +
-      'El uso continuado de la aplicacion despues de dichos cambios implica la aceptacion de los nuevos terminos.',
+      'Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. ' +
+      'Los cambios significativos serán comunicados mediante actualizaciones de la aplicación. ' +
+      'El uso continuado de la aplicación después de dichos cambios implica la aceptación de los nuevos términos.',
   },
   {
     title: '9. Ley aplicable',
     content:
-      'Estos terminos se rigen por las leyes de la Republica Argentina. ' +
-      'Cualquier disputa sera resuelta por los tribunales competentes de la Ciudad Autonoma de Buenos Aires.',
+      'Estos términos se rigen por las leyes de la República Argentina. ' +
+      'Cualquier disputa será resuelta por los tribunales competentes de la Ciudad Autónoma de Buenos Aires.',
   },
   {
     title: '10. Contacto',
     content:
-      'Para consultas sobre estos terminos, contactanos en: alexq2005@gmail.com',
+      'Para consultas sobre estos términos, contáctanos en: alexq2005@gmail.com',
   },
 ];
 
