@@ -23,53 +23,59 @@
 | Monitorear crashes | Google Play Console > Android Vitals |
 | Fix bugs reportados | Responder reviews negativas con fixes |
 
-### Mes 2: Contenido nuevo (Mayo 2026)
-**Update v1.1 — Procedimientos de Enfermeria**
+### Mes 2: Busqueda por Voz + Visual Upgrade (Mayo 2026)
+**Update v1.1 — Busqueda por Voz y Fotos Reales**
 
 | Feature | Detalle |
 |---------|---------|
-| **30 procedimientos** | Sonda vesical, via periferica, aspiracion, curacion, etc. |
-| **Paso a paso** | Cada procedimiento con materiales, tecnica, precauciones |
-| **Imagenes** | Fotos o diagramas de cada procedimiento |
-| **Calculadora de dosis** | Goteo, diluciones, peso/dosis |
-| Marketing | 5 reels mostrando los procedimientos + "actualiza la app" |
+| **Busqueda por voz** | Boton microfono en SearchBar → Google Speech → texto → busqueda. Libreria: `@react-native-voice/voice`. Permiso RECORD_AUDIO. Diferenciador vs competencia |
+| **Eliminar TODOS los iconos restantes** | Reemplazar por fotos reales de Unsplash en: Quick Actions (Home), OnboardingScreen (3 slides), PremiumScreen (hero), DashboardScreen, SettingsScreen rows. ~25 fotos nuevas |
+| **Descargar 10 condition images faltantes** | inhaler, neuron, liver, stomach, joints, blood_test, microscope, pills, stethoscope, cancer_cells — actualmente remapeadas a fotos genéricas |
+| **Rediseño PathologyDetailScreen** | Hero banner con foto + gradiente (estilo HomeScreen), secciones con cards modernas |
+| Marketing | Reel: "Busca patologias con tu voz" + demo en video |
 
-### Mes 3: Engagement (Junio 2026)
-**Update v1.2 — Casos Clinicos + Notificaciones**
+### Mes 3: Contenido nuevo + Engagement (Junio 2026)
+**Update v1.2 — Procedimientos + Casos Clinicos**
 
 | Feature | Detalle |
 |---------|---------|
+| **30 procedimientos de enfermeria** | Sonda vesical, via periferica, aspiracion, curacion, etc. Paso a paso con materiales, tecnica, precauciones |
+| **Calculadora de dosis** | Goteo (ml/h, gotas/min), diluciones, peso/dosis |
 | **20 casos clinicos** | Paciente simulado con datos → diagnostico + plan de cuidados |
-| **Caso del dia** | Notificacion push diaria con un caso clinico nuevo |
-| **Patologia del dia push** | Recordatorio diario para abrir la app |
+| **Caso del dia push** | Notificacion push diaria con caso clinico nuevo |
 | **Compartir resultados quiz** | Boton para compartir score en redes/WhatsApp |
-| Marketing | "Caso clinico del dia" en Instagram Stories |
+| **Rediseño QuizScreen** | Cards con fotos por categoria de pregunta |
+| **Rediseño OnboardingScreen** | Fotos reales de enfermeria en vez de iconos |
+| Marketing | "Caso clinico del dia" en Instagram Stories + "nueva calculadora de dosis" |
 
 ---
 
 ## Fase 2 — Meses 4-6 (Crecimiento)
 
-### Mes 4: Comunidad (Julio 2026)
+### Mes 4: Comunidad + Gamificacion (Julio 2026)
 **Update v1.3 — Modo Estudio + Flashcards**
 
 | Feature | Detalle |
 |---------|---------|
-| **Flashcards** | Tarjetas de repaso con preguntas/respuestas rapidas |
+| **Flashcards** | Tarjetas de repaso con fotos clinicas, pregunta/respuesta rapida |
 | **Modo estudio** | Marcar patologias como "estudiada" / "por repasar" |
 | **Recordatorios de estudio** | Notificacion configurable para repasar |
 | **Racha de estudio** | "Llevas 7 dias consecutivos estudiando" (gamificacion) |
 | **Widget Android** | Patologia del dia en la pantalla de inicio |
+| **Rediseño PremiumScreen** | Hero con foto de enfermeros + gradiente, sin icono estrella |
+| **Rediseño DashboardScreen** | Cards con fotos, graficos de progreso mejorados |
 
-### Mes 5: Mas contenido (Agosto 2026)
-**Update v1.4 — Expansion de datos**
+### Mes 5: Expansion de contenido (Agosto 2026)
+**Update v1.4 — Mas patologias y herramientas**
 
 | Feature | Detalle |
 |---------|---------|
 | **+50 patologias** | Llegar a 200+ (pediatricas, geriatricas, psiquiatricas) |
-| **Patologias psiquiatricas** | Nuevo sistema: 12-15 patologias de salud mental |
-| **Patologias pediatricas** | Nuevo sistema: 12-15 patologias infantiles |
-| **Mas escalas** | Escala de Downton, APACHE II, TISS-28, Child-Pugh |
+| **Patologias psiquiatricas** | Nuevo sistema: 12-15 patologias de salud mental con fotos |
+| **Patologias pediatricas** | Nuevo sistema: 12-15 patologias infantiles con fotos |
+| **Mas escalas** | Escala de Downton, APACHE II, TISS-28, Child-Pugh (con fotos) |
 | **Mas protocolos** | Transfusion sanguinea, quimioterapia, aislamiento |
+| **0 iconos genericos** | Meta: absolutamente toda la app usa fotos reales, 0 Material Icons como elemento visual principal |
 
 ### Mes 6: Monetizacion (Septiembre 2026)
 **Update v1.5 — Plan Anual + Referidos**
@@ -79,7 +85,7 @@
 | **Plan anual** | $19.99/año (ahorro del 65% vs mensual) |
 | **Codigo de referido** | "Invita a un colega y ambos obtienen 1 mes gratis" |
 | **Descuento estudiante** | Verificacion con email .edu → 50% descuento |
-| **Badges/logros** | "Completaste 50 patologias", "10 quizzes perfectos" |
+| **Badges/logros** | "Completaste 50 patologias", "10 quizzes perfectos" con fotos |
 
 ---
 
@@ -113,6 +119,57 @@
 | **Resumenes descargables** | PDF por sistema para imprimir/estudiar offline |
 | **Preparacion de examen** | Quiz especifico para examenes de certificacion |
 | **Guia de entrevista laboral** | Preguntas frecuentes en entrevistas de enfermeria |
+
+---
+
+## Objetivo: 0 Iconos Genericos — Tracking
+
+Meta: eliminar absolutamente todos los Material Community Icons usados como elemento visual principal
+y reemplazarlos por fotos reales. Los iconos se mantienen SOLO como indicadores pequeños (tabs, badges, chevrons).
+
+### Estado actual (v1.0)
+
+| Pantalla | Iconos como visual principal | Fotos reales | Estado |
+|----------|------------------------------|-------------|--------|
+| HomeScreen | Quick Actions (6 iconos) | Hero card, sistemas grid | ⚠️ Parcial |
+| SystemsScreen | — | 12 fotos de sistemas | ✅ Completo |
+| ScalesScreen | — | 9 fotos + carrusel hero | ✅ Completo |
+| ToolsScreen | — | 10 fotos con gradiente | ✅ Completo |
+| SearchScreen | Icono busqueda empty state | — | ⚠️ Parcial |
+| PathologyDetailScreen | — | Hero con condition image | ⚠️ 10 remapeadas |
+| PathologyCard | — | Thumbnail condition image | ⚠️ 10 remapeadas |
+| OnboardingScreen | 3 iconos grandes | — | ❌ Pendiente |
+| PremiumScreen | Icono estrella header | — | ❌ Pendiente |
+| DashboardScreen | Iconos de stats | — | ❌ Pendiente |
+| QuizScreen | Iconos categorias | — | ❌ Pendiente |
+| QuizSessionScreen | — | — | ❌ Pendiente |
+| SettingsScreen | Iconos en cada row | — | ❌ Pendiente |
+| AllFavoritesScreen | Icono empty state | — | ⚠️ Parcial |
+| AllNotesScreen | Icono empty state | — | ⚠️ Parcial |
+
+### Plan de eliminacion
+
+| Update | Pantallas a migrar | Fotos necesarias |
+|--------|-------------------|-----------------|
+| v1.1 (Mes 2) | Quick Actions, PathologyDetail, conditionImages faltantes | ~16 fotos |
+| v1.2 (Mes 3) | OnboardingScreen, QuizScreen | ~6 fotos |
+| v1.3 (Mes 4) | PremiumScreen, DashboardScreen | ~4 fotos |
+| v1.4 (Mes 5) | Empty states, SettingsScreen | ~8 fotos |
+| v1.5 (Mes 6) | Revision final — 0 iconos como visual principal | Verificacion |
+
+### Busqueda por Voz — Especificacion tecnica
+
+| Aspecto | Detalle |
+|---------|---------|
+| **Libreria** | `@react-native-voice/voice` (MIT, gratis) |
+| **Motor** | Google Speech Recognition (nativo Android) |
+| **Permiso** | `RECORD_AUDIO` en AndroidManifest.xml |
+| **Idioma** | `es-AR` (español Argentina) con fallback a `es` |
+| **UI** | Boton microfono en SearchBar → animacion de onda → texto |
+| **Flujo** | 1. Tap mic → 2. Escucha (max 10s) → 3. Texto → 4. Busqueda normal |
+| **Pantallas** | SearchScreen (principal), HomeScreen (search bar del header) |
+| **Offline** | No funciona offline (requiere Google Speech) — mostrar mensaje |
+| **Fallback** | Si el permiso es denegado, ocultar boton de microfono |
 
 ---
 
