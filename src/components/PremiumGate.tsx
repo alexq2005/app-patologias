@@ -35,7 +35,7 @@ export function PremiumGate({ feature, children }: Props) {
         </Text>
         {trialDaysLeft === 0 && (
           <View style={styles.expiredBadge}>
-            <Text style={styles.expiredText}>Tu prueba gratuita de 14 dias ha finalizado</Text>
+            <Text style={styles.expiredText}>Tu periodo de prueba de 15 dias ha finalizado. Suscribite para continuar.</Text>
           </View>
         )}
         <TouchableOpacity

@@ -1,13 +1,18 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { NativeModules } from 'react-native';
+import { NativeModules, Alert, Linking } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { isActivated as checkActivation, validateActivationCode, saveActivation } from '../utils/activation';
 
 const IS_FREE_BUILD: boolean = NativeModules.BuildConfigModule?.IS_FREE ?? false;
 
 const TRIAL_START_KEY = '@patologias_trial_start';
-const PREMIUM_KEY = '@patologias_premium';
-const TRIAL_DAYS = 14;
+const SUBSCRIPTION_KEY = '@patologias_subscription';
+const TRIAL_DAYS = 15;
+
+// Google Play subscription product ID — configure in Play Console
+export const SUBSCRIPTION_SKU = 'patologias_premium_monthly';
+// Play Store listing URL — update with actual package once published
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.patologiasenfermeria';
 
 interface PremiumContextType {
   isPremium: boolean;
@@ -16,9 +21,12 @@ interface PremiumContextType {
   isTrialActive: boolean;
   trialDaysLeft: number;
   trialStartDate: number | null;
+  trialExpired: boolean;
   isSubscribed: boolean;
+  purchasing: boolean;
   activateSubscription: () => void;
-  restoreSubscription: () => void;
+  restoreSubscription: () => Promise<boolean>;
+  purchaseSubscription: () => Promise<void>;
   activateWithCode: (code: string) => Promise<boolean>;
   loaded: boolean;
 }
@@ -30,13 +38,16 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isCodeActivated, setIsCodeActivated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [purchasing, setPurchasing] = useState(false);
 
+  // ── Initialize on mount ───────────────────
   useEffect(() => {
     Promise.all([
       AsyncStorage.getItem(TRIAL_START_KEY),
-      AsyncStorage.getItem(PREMIUM_KEY),
+      AsyncStorage.getItem(SUBSCRIPTION_KEY),
       checkActivation(),
-    ]).then(([trialRaw, premiumRaw, activated]) => {
+    ]).then(([trialRaw, subRaw, activated]) => {
+      // Trial start
       if (trialRaw) {
         setTrialStartDate(parseInt(trialRaw, 10));
       } else {
@@ -44,12 +55,13 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
         setTrialStartDate(now);
         AsyncStorage.setItem(TRIAL_START_KEY, now.toString()).catch(() => {});
       }
-      if (premiumRaw === 'true') setIsSubscribed(true);
+      if (subRaw === 'true') setIsSubscribed(true);
       if (activated) setIsCodeActivated(true);
       setLoaded(true);
     }).catch(() => setLoaded(true));
   }, []);
 
+  // ── Derived state ─────────────────────────
   const trialDaysLeft = (() => {
     if (!trialStartDate) return TRIAL_DAYS;
     const elapsed = Date.now() - trialStartDate;
@@ -58,17 +70,39 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   })();
 
   const isTrialActive = trialDaysLeft > 0;
+  const trialExpired = !isTrialActive && !isSubscribed && !isCodeActivated;
   const isPremium = IS_FREE_BUILD || isCodeActivated || isSubscribed || isTrialActive;
 
+  // ── Actions ───────────────────────────────
   const activateSubscription = useCallback(() => {
     setIsSubscribed(true);
-    AsyncStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
+    AsyncStorage.setItem(SUBSCRIPTION_KEY, 'true').catch(() => {});
   }, []);
 
-  const restoreSubscription = useCallback(() => {
-    AsyncStorage.getItem(PREMIUM_KEY).then(val => {
-      if (val === 'true') setIsSubscribed(true);
-    }).catch(() => {});
+  const restoreSubscription = useCallback(async (): Promise<boolean> => {
+    // TODO: Validate with Google Play Billing API when published
+    const val = await AsyncStorage.getItem(SUBSCRIPTION_KEY);
+    if (val === 'true') {
+      setIsSubscribed(true);
+      return true;
+    }
+    return false;
+  }, []);
+
+  const purchaseSubscription = useCallback(async () => {
+    setPurchasing(true);
+    try {
+      // Open Play Store listing for subscription
+      // When Google Play Billing is integrated, this will use the billing flow
+      await Linking.openURL(PLAY_STORE_URL);
+    } catch {
+      Alert.alert(
+        'Google Play',
+        'No se pudo abrir Google Play. Verifica tu conexion a internet.',
+      );
+    } finally {
+      setPurchasing(false);
+    }
   }, []);
 
   const activateWithCode = useCallback(async (code: string): Promise<boolean> => {
@@ -85,8 +119,9 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   return (
     <PremiumContext.Provider value={{
       isPremium, isFreeBuild: IS_FREE_BUILD, isCodeActivated,
-      isTrialActive, trialDaysLeft, trialStartDate,
-      isSubscribed, activateSubscription, restoreSubscription,
+      isTrialActive, trialDaysLeft, trialStartDate, trialExpired,
+      isSubscribed, purchasing,
+      activateSubscription, restoreSubscription, purchaseSubscription,
       activateWithCode, loaded,
     }}>
       {children}
