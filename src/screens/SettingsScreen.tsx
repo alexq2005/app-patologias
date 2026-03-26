@@ -2,7 +2,7 @@
 // SettingsScreen — App configuration & data management
 // ============================================================
 
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState, useRef } from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import {
   StyleSheet,
   Alert,
   Animated,
+  TextInput,
+  Modal,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,6 +23,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { useTheme } from '../context/ThemeContext';
+import { usePremium } from '../context/PremiumContext';
 import { useFavoritesContext } from '../context/FavoritesContext';
 import { useNotesContext } from '../context/NotesContext';
 import { usePathologyData } from '../hooks/usePathologyData';
@@ -138,6 +141,7 @@ export function SettingsScreen() {
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
+  const { isPremium, isCodeActivated, activateWithCode } = usePremium();
   const { favoriteCount, clearFavorites } = useFavoritesContext();
   const { noteCount } = useNotesContext();
   const { pathologies } = usePathologyData();
@@ -145,6 +149,37 @@ export function SettingsScreen() {
   const { recent, clearRecent } = useRecentPathologies();
   const { results, totalSessions, clearResults: clearQuizResults } = useQuiz();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
+
+  // ── Easter egg: tap version 5 times ───────
+  const tapCountRef = useRef(0);
+  const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [showUnlockModal, setShowUnlockModal] = useState(false);
+  const [unlockCode, setUnlockCode] = useState('');
+  const [unlockError, setUnlockError] = useState(false);
+
+  const handleVersionTap = useCallback(() => {
+    if (isCodeActivated) return;
+    tapCountRef.current += 1;
+    if (tapTimerRef.current) clearTimeout(tapTimerRef.current);
+    tapTimerRef.current = setTimeout(() => { tapCountRef.current = 0; }, 2000);
+    if (tapCountRef.current >= 5) {
+      tapCountRef.current = 0;
+      setUnlockCode('');
+      setUnlockError(false);
+      setShowUnlockModal(true);
+    }
+  }, [isCodeActivated]);
+
+  const handleUnlockSubmit = useCallback(async () => {
+    const success = await activateWithCode(unlockCode);
+    if (success) {
+      setShowUnlockModal(false);
+      setUnlockCode('');
+      Alert.alert('Premium activado', 'Todas las patologias han sido desbloqueadas.');
+    } else {
+      setUnlockError(true);
+    }
+  }, [unlockCode, activateWithCode]);
 
   const confirmAction = useCallback((title: string, message: string, action: () => void) => {
     Alert.alert(title, message, [
@@ -320,10 +355,106 @@ export function SettingsScreen() {
         <SettingRow
           icon="tag-outline"
           label="Version"
-          subtitle="1.0.0"
+          subtitle={isCodeActivated ? '1.0.0 · Premium' : '1.0.0'}
+          onPress={handleVersionTap}
+          color={isCodeActivated ? '#10B981' : undefined}
           colors={colors} rs={rs}
+          trailing={isCodeActivated
+            ? <MaterialCommunityIcons name="check-decagram" size={rs.font(20)} color="#10B981" />
+            : undefined
+          }
         />
       </ScrollView>
+
+      {/* ── Unlock Modal ── */}
+      <Modal
+        visible={showUnlockModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowUnlockModal(false)}
+      >
+        <View style={{
+          flex: 1, backgroundColor: 'rgba(0,0,0,0.55)',
+          justifyContent: 'center', alignItems: 'center',
+          paddingHorizontal: rs.space(32),
+        }}>
+          <View style={{
+            width: '100%',
+            backgroundColor: colors.cardBackground,
+            borderRadius: 24,
+            padding: rs.space(24),
+            elevation: 10,
+          }}>
+            <View style={{ alignItems: 'center', marginBottom: rs.space(20) }}>
+              <View style={{
+                width: 56, height: 56, borderRadius: 18,
+                backgroundColor: colors.primary + '15',
+                alignItems: 'center', justifyContent: 'center',
+                marginBottom: rs.space(12),
+              }}>
+                <MaterialCommunityIcons name="lock-open-variant-outline" size={28} color={colors.primary} />
+              </View>
+              <Text style={{ fontSize: rs.font(18), fontWeight: '800', color: colors.text }}>
+                Desbloquear Premium
+              </Text>
+              <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, textAlign: 'center', marginTop: rs.space(4) }}>
+                Ingresa el codigo de activacion
+              </Text>
+            </View>
+
+            <TextInput
+              value={unlockCode}
+              onChangeText={(t) => { setUnlockCode(t); setUnlockError(false); }}
+              placeholder="Codigo de activacion"
+              placeholderTextColor={colors.textLight}
+              secureTextEntry
+              autoFocus
+              style={{
+                backgroundColor: colors.background,
+                borderRadius: 14,
+                paddingHorizontal: rs.space(16),
+                paddingVertical: rs.space(14),
+                fontSize: rs.font(15),
+                color: colors.text,
+                borderWidth: 1.5,
+                borderColor: unlockError ? colors.error : colors.border,
+                marginBottom: unlockError ? rs.space(4) : rs.space(16),
+              }}
+            />
+            {unlockError && (
+              <Text style={{ fontSize: rs.font(12), color: colors.error, marginBottom: rs.space(12), marginLeft: rs.space(4) }}>
+                Codigo incorrecto. Intenta de nuevo.
+              </Text>
+            )}
+
+            <TouchableOpacity
+              onPress={handleUnlockSubmit}
+              activeOpacity={0.85}
+              style={{
+                backgroundColor: colors.primary,
+                borderRadius: 14,
+                paddingVertical: rs.space(14),
+                alignItems: 'center',
+                marginBottom: rs.space(10),
+              }}
+            >
+              <Text style={{ fontSize: rs.font(15), fontWeight: '700', color: '#fff' }}>
+                Activar
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => setShowUnlockModal(false)}
+              activeOpacity={0.7}
+              style={{ alignItems: 'center', paddingVertical: rs.space(8) }}
+            >
+              <Text style={{ fontSize: rs.font(14), color: colors.textSecondary, fontWeight: '600' }}>
+                Cancelar
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
