@@ -6,7 +6,6 @@ import React, { useRef, useCallback } from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableWithoutFeedback,
   Animated,
   StyleSheet,
@@ -16,7 +15,6 @@ import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { neuCard } from '../utils/neumorphism';
 import { BODY_SYSTEM_ICONS } from '../utils/colors';
-import { getSystemImage } from '../utils/systemImages';
 import type { ThemeColors } from '../utils/colors';
 import type { BodySystem } from '../types';
 import { SPACING, RADIUS } from '../utils/spacing';
@@ -81,15 +79,6 @@ export function BodySystemCard({ system, onPress, pathologyCount }: BodySystemCa
           { transform: [{ scale: scaleAnim }] },
         ]}
       >
-        {/* Background image */}
-        <Image
-          source={getSystemImage(system.id)}
-          style={styles.bgImage}
-          resizeMode="cover"
-        />
-        {/* Gradient overlay for readability */}
-        <View style={[styles.imageOverlay, { backgroundColor: colors.cardBackground }]} />
-
         {/* Top accent bar */}
         <View style={[styles.accentBar, { backgroundColor: system.color }]} />
 
@@ -133,24 +122,6 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       justifyContent: 'center',
       minHeight: rs.space(155),
       overflow: 'hidden',
-    },
-    bgImage: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      width: '100%',
-      height: '100%',
-      opacity: 0.15,
-    },
-    imageOverlay: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      opacity: 0.55,
     },
     accentBar: {
       position: 'absolute',
