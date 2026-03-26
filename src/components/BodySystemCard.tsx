@@ -6,22 +6,20 @@ import React, { useRef, useCallback } from 'react';
 import {
   View,
   Text,
+  ImageBackground,
   TouchableWithoutFeedback,
   Animated,
   StyleSheet,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
-import { neuCard } from '../utils/neumorphism';
 import { BODY_SYSTEM_ICONS } from '../utils/colors';
+import { getSystemImage } from '../utils/systemImages';
 import type { ThemeColors } from '../utils/colors';
 import type { BodySystem } from '../types';
 import { SPACING, RADIUS } from '../utils/spacing';
-
-// ─────────────────────────────────────────────
-// Props
-// ─────────────────────────────────────────────
 
 interface BodySystemCardProps {
   system: BodySystem;
@@ -29,14 +27,9 @@ interface BodySystemCardProps {
   pathologyCount: number;
 }
 
-// ─────────────────────────────────────────────
-// Component
-// ─────────────────────────────────────────────
-
 export function BodySystemCard({ system, onPress, pathologyCount }: BodySystemCardProps) {
   const { colors } = useTheme();
   const rs = useResponsiveScale();
-  const styles = createStyles(colors, rs);
 
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
@@ -75,95 +68,90 @@ export function BodySystemCard({ system, onPress, pathologyCount }: BodySystemCa
       <Animated.View
         style={[
           styles.card,
-          neuCard(colors),
           { transform: [{ scale: scaleAnim }] },
         ]}
       >
-        {/* Top accent bar */}
-        <View style={[styles.accentBar, { backgroundColor: system.color }]} />
+        <ImageBackground
+          source={getSystemImage(system.id)}
+          style={styles.imageBackground}
+          imageStyle={styles.image}
+        >
+          <LinearGradient
+            colors={[system.color + '80', system.color + 'D0']}
+            locations={[0, 0.7]}
+            style={styles.gradient}
+          >
+            {/* Badge count */}
+            <View style={styles.badgeRow}>
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{pathologyCount}</Text>
+              </View>
+            </View>
 
-        {/* Icon circle */}
-        <View style={[styles.iconCircle, { backgroundColor: system.color + '20' }]}>
-          <Icon name={iconName} size={rs.font(24)} color={system.color} />
-        </View>
-
-        {/* System name */}
-        <Text style={styles.systemName} numberOfLines={2}>
-          {system.nombre}
-        </Text>
-
-        {/* Pathology count badge */}
-        <View style={[styles.badge, { backgroundColor: system.color + '12', borderColor: system.color + '30' }]}>
-          <Text style={[styles.badgeCount, { color: system.color }]}>
-            {pathologyCount}
-          </Text>
-          <Text style={[styles.badgeText, { color: system.color }]}>
-            patologias
-          </Text>
-        </View>
+            {/* Bottom content */}
+            <View style={styles.bottomContent}>
+              <Icon name={iconName} size={rs.font(20)} color="#fff" />
+              <Text style={styles.systemName} numberOfLines={2}>
+                {system.nombre}
+              </Text>
+            </View>
+          </LinearGradient>
+        </ImageBackground>
       </Animated.View>
     </TouchableWithoutFeedback>
   );
 }
 
-// ─────────────────────────────────────────────
-// Styles factory
-// ─────────────────────────────────────────────
-
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
-  StyleSheet.create({
-    card: {
-      flex: 1,
-      margin: rs.space(SPACING.sm),
-      paddingTop: rs.space(SPACING.lg + 4),
-      paddingBottom: rs.space(SPACING.lg),
-      paddingHorizontal: rs.space(SPACING.md),
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: rs.space(155),
-      overflow: 'hidden',
-    },
-    accentBar: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: 3,
-      borderTopLeftRadius: RADIUS.lg,
-      borderTopRightRadius: RADIUS.lg,
-    },
-    iconCircle: {
-      width: rs.space(48),
-      height: rs.space(48),
-      borderRadius: rs.space(24),
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: rs.space(SPACING.sm),
-    },
-    systemName: {
-      fontSize: rs.font(12),
-      fontWeight: '700',
-      color: colors.text,
-      textAlign: 'center',
-      marginBottom: rs.space(SPACING.sm),
-      lineHeight: rs.font(16),
-      paddingHorizontal: rs.space(2),
-    },
-    badge: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: rs.space(SPACING.sm),
-      paddingVertical: rs.space(3),
-      borderRadius: RADIUS.pill,
-      borderWidth: 1,
-      gap: rs.space(3),
-    },
-    badgeCount: {
-      fontSize: rs.font(12),
-      fontWeight: '800',
-    },
-    badgeText: {
-      fontSize: rs.font(10),
-      fontWeight: '500',
-    },
-  });
+const styles = StyleSheet.create({
+  card: {
+    flex: 1,
+    margin: 6,
+    borderRadius: 18,
+    overflow: 'hidden',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+  },
+  imageBackground: {
+    width: '100%',
+    height: 130,
+  },
+  image: {
+    borderRadius: 18,
+  },
+  gradient: {
+    flex: 1,
+    borderRadius: 18,
+    padding: 12,
+    justifyContent: 'space-between',
+  },
+  badgeRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  badge: {
+    backgroundColor: 'rgba(255,255,255,0.25)',
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#fff',
+  },
+  bottomContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  systemName: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#fff',
+    lineHeight: 18,
+  },
+});
