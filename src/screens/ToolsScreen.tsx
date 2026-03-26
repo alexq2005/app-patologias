@@ -1,5 +1,5 @@
 // ============================================================
-// ToolsScreen — Feature grid (Tab 5)
+// ToolsScreen — Feature grid (Tab 5) — redesigned with images
 // ============================================================
 
 import React, { useRef, useEffect, useCallback, useMemo } from 'react';
@@ -9,8 +9,9 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
-  StyleSheet,
   Animated,
+  ImageBackground,
+  Dimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,11 +22,10 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 import { useTheme } from '../context/ThemeContext';
 import { useTabBar } from '../context/TabBarContext';
-import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
-import { neuCard } from '../utils/neumorphism';
-import { SPACING, RADIUS } from '../utils/spacing';
-import type { ThemeColors } from '../utils/colors';
+import { useResponsiveScale } from '../utils/responsive';
 import type { RootStackParamList, TabParamList } from '../types';
+
+const { width: SCREEN_W } = Dimensions.get('window');
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Herramientas'>,
@@ -35,36 +35,76 @@ type NavigationProp = CompositeNavigationProp<
 interface ToolItem {
   id: string;
   label: string;
+  subtitle: string;
   icon: string;
-  color: string;
+  gradient: [string, string];
+  image: any;
   route: keyof RootStackParamList | keyof TabParamList;
   premium: boolean;
 }
 
 const TOOLS: ToolItem[] = [
-  { id: 'quiz', label: 'Test de Patologias', icon: 'head-question-outline', color: '#7C3AED', route: 'QuizScreen', premium: true },
-  { id: 'scales', label: 'Escalas Clinicas', icon: 'chart-timeline-variant-shimmer', color: '#B45309', route: 'Escalas', premium: true },
-  { id: 'lab', label: 'Valores Lab', icon: 'flask-outline', color: '#059669', route: 'LabValues', premium: true },
-  { id: 'protocols', label: 'Protocolos', icon: 'hospital-box-outline', color: '#DC2626', route: 'EmergencyProtocols', premium: true },
-  { id: 'nanda', label: 'NANDA-NIC-NOC', icon: 'clipboard-check-outline', color: '#2563EB', route: 'NandaScreen', premium: true },
-  { id: 'dashboard', label: 'Mi Progreso', icon: 'chart-arc', color: '#8B5CF6', route: 'Dashboard', premium: true },
-  { id: 'favorites', label: 'Mis Favoritos', icon: 'heart-outline', color: '#EC4899', route: 'AllFavorites', premium: false },
-  { id: 'notes', label: 'Mis Notas', icon: 'note-text-outline', color: '#F59E0B', route: 'AllNotes', premium: false },
-  { id: 'premium', label: 'Premium', icon: 'star-four-points-outline', color: '#6D28D9', route: 'PremiumScreen', premium: false },
-  { id: 'settings', label: 'Configuracion', icon: 'cog-outline', color: '#4B5563', route: 'SettingsScreen', premium: false },
+  {
+    id: 'quiz', label: 'Test de Patologias', subtitle: 'Evalua tus conocimientos',
+    icon: 'head-question-outline', gradient: ['#7C3AED', '#5B21B6'],
+    image: require('../assets/images/conditions/brain_ct.jpg'),
+    route: 'QuizScreen', premium: true,
+  },
+  {
+    id: 'scales', label: 'Escalas Clinicas', subtitle: '17 escalas de valoracion',
+    icon: 'chart-timeline-variant-shimmer', gradient: ['#D97706', '#B45309'],
+    image: require('../assets/images/conditions/heart_monitor.jpg'),
+    route: 'Escalas', premium: true,
+  },
+  {
+    id: 'lab', label: 'Valores de Laboratorio', subtitle: 'Rangos de referencia',
+    icon: 'flask-outline', gradient: ['#059669', '#047857'],
+    image: require('../assets/images/conditions/glucose.jpg'),
+    route: 'LabValues', premium: true,
+  },
+  {
+    id: 'protocols', label: 'Protocolos', subtitle: 'Emergencias paso a paso',
+    icon: 'hospital-box-outline', gradient: ['#DC2626', '#B91C1C'],
+    image: require('../assets/images/conditions/iv_drip.jpg'),
+    route: 'EmergencyProtocols', premium: true,
+  },
+  {
+    id: 'nanda', label: 'NANDA-NIC-NOC', subtitle: 'Diagnosticos de enfermeria',
+    icon: 'clipboard-check-outline', gradient: ['#2563EB', '#1D4ED8'],
+    image: require('../assets/images/conditions/ecg.jpg'),
+    route: 'NandaScreen', premium: true,
+  },
+  {
+    id: 'dashboard', label: 'Mi Progreso', subtitle: 'Estadisticas y actividad',
+    icon: 'chart-arc', gradient: ['#8B5CF6', '#7C3AED'],
+    image: require('../assets/images/conditions/blood_pressure.jpg'),
+    route: 'Dashboard', premium: true,
+  },
+  {
+    id: 'favorites', label: 'Mis Favoritos', subtitle: 'Patologias guardadas',
+    icon: 'heart-outline', gradient: ['#EC4899', '#DB2777'],
+    image: require('../assets/images/conditions/chest_xray.jpg'),
+    route: 'AllFavorites', premium: false,
+  },
+  {
+    id: 'notes', label: 'Mis Notas', subtitle: 'Apuntes personales',
+    icon: 'note-text-outline', gradient: ['#F59E0B', '#D97706'],
+    image: require('../assets/images/conditions/bandage.jpg'),
+    route: 'AllNotes', premium: false,
+  },
+  {
+    id: 'premium', label: 'Premium', subtitle: 'Desbloquea todo el contenido',
+    icon: 'crown-outline', gradient: ['#6D28D9', '#4C1D95'],
+    image: require('../assets/images/conditions/surgery.jpg'),
+    route: 'PremiumScreen', premium: false,
+  },
+  {
+    id: 'settings', label: 'Configuracion', subtitle: 'Tema, datos y mas',
+    icon: 'cog-outline', gradient: ['#6B7280', '#4B5563'],
+    image: require('../assets/images/conditions/kidney.jpg'),
+    route: 'SettingsScreen', premium: false,
+  },
 ];
-
-function useFadeIn(duration = 400, delay = 0) {
-  const opacity = useRef(new Animated.Value(0)).current;
-  const translateY = useRef(new Animated.Value(16)).current;
-  useEffect(() => {
-    Animated.parallel([
-      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
-      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
-    ]).start();
-  }, [opacity, translateY, duration, delay]);
-  return { opacity, translateY };
-}
 
 export function ToolsScreen() {
   const { colors } = useTheme();
@@ -72,125 +112,113 @@ export function ToolsScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
   const { handleScroll } = useTabBar();
-  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
-  const { opacity, translateY } = useFadeIn(380, 60);
+
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(fadeAnim, { toValue: 1, duration: 500, delay: 100, useNativeDriver: true }).start();
+  }, [fadeAnim]);
 
   const handlePress = useCallback(
-    (tool: ToolItem) => {
-      navigation.navigate(tool.route as any);
-    },
+    (tool: ToolItem) => { navigation.navigate(tool.route as any); },
     [navigation],
   );
 
+  const cardWidth = (SCREEN_W - rs.space(48)) / 2;
+
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={{ paddingTop: insets.top + rs.space(16), paddingBottom: rs.space(24), paddingHorizontal: rs.space(24) }}
       >
-        <Animated.View style={{ opacity, transform: [{ translateY }] }}>
-          <Text style={styles.headerTitle}>Herramientas</Text>
-          <Text style={styles.headerSubtitle}>Recursos clinicos y de estudio</Text>
+        <Animated.View style={{ opacity: fadeAnim }}>
+          <Text style={{ fontSize: rs.font(26), fontWeight: '800', color: '#fff', letterSpacing: -0.5 }}>
+            Herramientas
+          </Text>
+          <Text style={{ fontSize: rs.font(13), color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
+            Recursos clinicos y de estudio
+          </Text>
         </Animated.View>
       </LinearGradient>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + rs.space(80) }]}
+        contentContainerStyle={{ paddingTop: rs.space(16), paddingBottom: insets.bottom + rs.space(80), paddingHorizontal: rs.space(16) }}
         onScroll={handleScroll}
         scrollEventThrottle={16}
       >
-        <View style={styles.grid}>
+        <Animated.View style={{ opacity: fadeAnim, flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(12) }}>
           {TOOLS.map(tool => (
             <TouchableOpacity
               key={tool.id}
-              style={[styles.toolCard, neuCard(colors)]}
               onPress={() => handlePress(tool)}
-              activeOpacity={0.75}
+              activeOpacity={0.85}
+              style={{
+                width: cardWidth,
+                height: rs.space(120),
+                borderRadius: 20,
+                overflow: 'hidden',
+                elevation: 4,
+                shadowColor: tool.gradient[1],
+                shadowOffset: { width: 0, height: 3 },
+                shadowOpacity: 0.25,
+                shadowRadius: 8,
+              }}
             >
-              <View style={[styles.toolIconWrap, { backgroundColor: tool.color + '18' }]}>
-                <MaterialCommunityIcons name={tool.icon} size={rs.font(26)} color={tool.color} />
-              </View>
-              <Text style={styles.toolLabel} numberOfLines={2}>{tool.label}</Text>
-              {tool.premium && (
-                <View style={[styles.premiumBadge, { backgroundColor: colors.primary + '18' }]}>
-                  <MaterialCommunityIcons name="star" size={10} color={colors.primary} />
-                </View>
-              )}
+              <ImageBackground
+                source={tool.image}
+                style={{ flex: 1 }}
+                imageStyle={{ borderRadius: 20 }}
+              >
+                <LinearGradient
+                  colors={[tool.gradient[0] + '90', tool.gradient[1] + 'E8']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0.3, y: 1 }}
+                  style={{
+                    flex: 1, borderRadius: 20,
+                    padding: rs.space(14),
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  {/* Top: icon + premium badge */}
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <View style={{
+                      width: 38, height: 38, borderRadius: 12,
+                      backgroundColor: 'rgba(255,255,255,0.2)',
+                      alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <MaterialCommunityIcons name={tool.icon} size={20} color="#fff" />
+                    </View>
+                    {tool.premium && (
+                      <View style={{
+                        width: 22, height: 22, borderRadius: 11,
+                        backgroundColor: 'rgba(255,255,255,0.25)',
+                        alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        <MaterialCommunityIcons name="star" size={12} color="#FFD700" />
+                      </View>
+                    )}
+                  </View>
+
+                  {/* Bottom: label + subtitle */}
+                  <View>
+                    <Text style={{ fontSize: rs.font(13), fontWeight: '800', color: '#fff' }} numberOfLines={1}>
+                      {tool.label}
+                    </Text>
+                    <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.75)', marginTop: 2 }} numberOfLines={1}>
+                      {tool.subtitle}
+                    </Text>
+                  </View>
+                </LinearGradient>
+              </ImageBackground>
             </TouchableOpacity>
           ))}
-        </View>
+        </Animated.View>
       </ScrollView>
     </View>
   );
 }
-
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
-  StyleSheet.create({
-    container: { flex: 1, backgroundColor: colors.background },
-    header: {
-      paddingBottom: rs.space(SPACING.xxl),
-      paddingHorizontal: rs.space(SPACING.xxl),
-    },
-    headerTitle: {
-      fontSize: rs.font(26),
-      fontWeight: '800',
-      color: colors.gradientText,
-      letterSpacing: -0.5,
-      marginBottom: rs.space(4),
-    },
-    headerSubtitle: {
-      fontSize: rs.font(14),
-      fontWeight: '500',
-      color: colors.gradientText,
-      opacity: 0.82,
-    },
-    scrollContent: {
-      paddingTop: rs.space(SPACING.lg),
-    },
-    grid: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      paddingHorizontal: rs.space(SPACING.md),
-      gap: rs.space(SPACING.md),
-    },
-    toolCard: {
-      width: '30%',
-      flexGrow: 1,
-      flexBasis: rs.space(100),
-      maxWidth: '48%',
-      alignItems: 'center',
-      paddingVertical: rs.space(SPACING.lg),
-      paddingHorizontal: rs.space(SPACING.sm),
-      gap: rs.space(SPACING.sm),
-      position: 'relative',
-    },
-    toolIconWrap: {
-      width: rs.space(52),
-      height: rs.space(52),
-      borderRadius: RADIUS.md,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    toolLabel: {
-      fontSize: rs.font(12),
-      fontWeight: '700',
-      color: colors.text,
-      textAlign: 'center',
-      lineHeight: rs.font(16),
-    },
-    premiumBadge: {
-      position: 'absolute',
-      top: rs.space(SPACING.sm),
-      right: rs.space(SPACING.sm),
-      width: 18,
-      height: 18,
-      borderRadius: 9,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
