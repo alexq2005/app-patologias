@@ -45,13 +45,13 @@ interface ToolItem {
 
 const TOOLS: ToolItem[] = [
   {
-    id: 'quiz', label: 'Test de Patologias', subtitle: 'Evalua tus conocimientos',
+    id: 'quiz', label: 'Test de Patologías', subtitle: 'Evaluá tus conocimientos',
     icon: 'head-question-outline', gradient: ['#7C3AED', '#5B21B6'],
     image: require('../assets/images/conditions/brain_ct.jpg'),
     route: 'QuizScreen', premium: true,
   },
   {
-    id: 'scales', label: 'Escalas Clinicas', subtitle: '17 escalas de valoracion',
+    id: 'scales', label: 'Escalas Clínicas', subtitle: '17 escalas de valoración',
     icon: 'chart-timeline-variant-shimmer', gradient: ['#D97706', '#B45309'],
     image: require('../assets/images/conditions/heart_monitor.jpg'),
     route: 'Escalas', premium: true,
@@ -69,19 +69,19 @@ const TOOLS: ToolItem[] = [
     route: 'EmergencyProtocols', premium: true,
   },
   {
-    id: 'nanda', label: 'NANDA-NIC-NOC', subtitle: 'Diagnosticos de enfermeria',
+    id: 'nanda', label: 'NANDA-NIC-NOC', subtitle: 'Diagnósticos de enfermería',
     icon: 'clipboard-check-outline', gradient: ['#2563EB', '#1D4ED8'],
     image: require('../assets/images/conditions/ecg.jpg'),
     route: 'NandaScreen', premium: true,
   },
   {
-    id: 'dashboard', label: 'Mi Progreso', subtitle: 'Estadisticas y actividad',
+    id: 'dashboard', label: 'Mi Progreso', subtitle: 'Estadísticas y actividad',
     icon: 'chart-arc', gradient: ['#8B5CF6', '#7C3AED'],
     image: require('../assets/images/conditions/blood_pressure.jpg'),
     route: 'Dashboard', premium: true,
   },
   {
-    id: 'favorites', label: 'Mis Favoritos', subtitle: 'Patologias guardadas',
+    id: 'favorites', label: 'Mis Favoritos', subtitle: 'Patologías guardadas',
     icon: 'heart-outline', gradient: ['#EC4899', '#DB2777'],
     image: require('../assets/images/conditions/chest_xray.jpg'),
     route: 'AllFavorites', premium: false,
@@ -99,7 +99,7 @@ const TOOLS: ToolItem[] = [
     route: 'PremiumScreen', premium: false,
   },
   {
-    id: 'settings', label: 'Configuracion', subtitle: 'Tema, datos y mas',
+    id: 'settings', label: 'Configuración', subtitle: 'Tema, datos y más',
     icon: 'cog-outline', gradient: ['#6B7280', '#4B5563'],
     image: require('../assets/images/conditions/kidney.jpg'),
     route: 'SettingsScreen', premium: false,

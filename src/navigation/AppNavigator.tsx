@@ -240,7 +240,7 @@ export function AppNavigator() {
         <Stack.Screen
           name="SystemPathologies"
           component={SystemPathologiesScreen}
-          options={{ title: 'Patologias' }}
+          options={{ title: 'Patologías' }}
         />
         <Stack.Screen
           name="PathologyDetail"
@@ -275,7 +275,7 @@ export function AppNavigator() {
         <Stack.Screen
           name="QuizScreen"
           component={QuizScreen}
-          options={{ title: 'Test de Patologias' }}
+          options={{ title: 'Test de Patologías' }}
         />
         <Stack.Screen
           name="QuizSession"
@@ -310,17 +310,17 @@ export function AppNavigator() {
         <Stack.Screen
           name="SettingsScreen"
           component={SettingsScreen}
-          options={{ title: 'Configuracion' }}
+          options={{ title: 'Configuración' }}
         />
         <Stack.Screen
           name="PrivacyPolicy"
           component={PrivacyPolicyScreen}
-          options={{ title: 'Politica de Privacidad' }}
+          options={{ title: 'Política de Privacidad' }}
         />
         <Stack.Screen
           name="Terms"
           component={TermsScreen}
-          options={{ title: 'Terminos de Uso' }}
+          options={{ title: 'Términos de Uso' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

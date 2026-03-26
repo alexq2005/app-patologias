@@ -84,14 +84,14 @@ export function AboutScreen({ navigation }: Props) {
   };
 
   const stats = [
-    { icon: 'book-open-variant', value: String(pathologyCount), label: 'Patologias' },
+    { icon: 'book-open-variant', value: String(pathologyCount), label: 'Patologías' },
     { icon: 'human-handsup', value: String(bodySystems.length), label: 'Sistemas corporales' },
-    { icon: 'scale-balance', value: String(scales.length), label: 'Escalas clinicas' },
+    { icon: 'scale-balance', value: String(scales.length), label: 'Escalas clínicas' },
   ];
 
   const links = [
-    { icon: 'shield-lock-outline', label: 'Politica de privacidad', onPress: handlePrivacy },
-    { icon: 'file-document-outline', label: 'Terminos y condiciones', onPress: handleTerms },
+    { icon: 'shield-lock-outline', label: 'Política de privacidad', onPress: handlePrivacy },
+    { icon: 'file-document-outline', label: 'Términos y condiciones', onPress: handleTerms },
     { icon: 'star-outline', label: 'Calificar la app', onPress: handleRate },
     { icon: 'email-outline', label: CONTACT_EMAIL, onPress: handleEmail },
   ];
@@ -131,10 +131,10 @@ export function AboutScreen({ navigation }: Props) {
         {/* Description */}
         <View style={[styles.card, neuCard(colors)]}>
           <Text style={styles.description}>
-            Aplicacion de referencia clinica para estudiantes y profesionales de enfermeria.
-            Incluye patologias detalladas con fisiopatologia, cuidados de enfermeria, diagnosticos
-            NANDA/NIC/NOC, escalas clinicas, valores de laboratorio y protocolos de emergencia.
-            Funciona completamente sin conexion a internet.
+            Aplicación de referencia clínica para estudiantes y profesionales de enfermería.
+            Incluye patologías detalladas con fisiopatología, cuidados de enfermería, diagnósticos
+            NANDA/NIC/NOC, escalas clínicas, valores de laboratorio y protocolos de emergencia.
+            Funciona completamente sin conexión a internet.
           </Text>
         </View>
 
@@ -151,7 +151,7 @@ export function AboutScreen({ navigation }: Props) {
 
         {/* Links */}
         <View style={[styles.card, neuCard(colors)]}>
-          <Text style={styles.sectionTitle}>Informacion</Text>
+          <Text style={styles.sectionTitle}>Información</Text>
           {links.map((link, i) => (
             <TouchableOpacity
               key={i}
@@ -169,7 +169,7 @@ export function AboutScreen({ navigation }: Props) {
         {/* Footer */}
         <View style={styles.footer}>
           <MaterialCommunityIcons name="heart" size={rs.font(16)} color={colors.accent} />
-          <Text style={styles.footerText}>Hecho con amor para enfermeria</Text>
+          <Text style={styles.footerText}>Hecho con amor para enfermería</Text>
           <MaterialCommunityIcons name="heart" size={rs.font(16)} color={colors.accent} />
         </View>
       </ScrollView>
