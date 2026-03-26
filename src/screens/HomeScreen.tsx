@@ -99,7 +99,7 @@ const QUICK_ACTIONS: QuickAction[] = [
 
 export function HomeScreen({ navigation }: Props) {
   const { colors, isDark, toggleTheme } = useTheme();
-  const { isPremium, isTrialActive, trialDaysLeft } = usePremium();
+  const { isPremium, isTrialActive, trialDaysLeft, trialExpired, isSubscribed, isCodeActivated } = usePremium();
   const { favoriteCount } = useFavoritesContext();
   const { pathologies, bodySystems, pathologyCount } = usePathologyData();
   const { recent } = useRecentPathologies();
@@ -588,15 +588,15 @@ export function HomeScreen({ navigation }: Props) {
           )}
         </View>
 
-        {/* ── PREMIUM BANNER ── */}
-        {!isPremium && (
+        {/* ── PREMIUM / TRIAL BANNER ── */}
+        {!isSubscribed && !isCodeActivated && (
           <View style={{ marginTop: rs.space(24), paddingHorizontal: rs.space(20) }}>
             <TouchableOpacity
               onPress={() => navigation.navigate('PremiumScreen')}
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={isTrialActive ? ['#7C3AED', '#4F46E5'] : ['#DC2626', '#991B1B']}
+                colors={trialExpired ? ['#DC2626', '#991B1B'] : ['#7C3AED', '#4F46E5']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={{
@@ -610,18 +610,18 @@ export function HomeScreen({ navigation }: Props) {
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   <MaterialCommunityIcons
-                    name={isTrialActive ? 'crown' : 'lock-open-variant'}
+                    name={trialExpired ? 'lock-outline' : 'clock-outline'}
                     size={22} color="#fff"
                   />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontSize: rs.font(14), fontWeight: '800', color: '#fff' }}>
-                    {isTrialActive ? 'Prueba gratuita activa' : 'Desbloquea todo'}
+                    {trialExpired ? 'Periodo de prueba finalizado' : 'Periodo de prueba'}
                   </Text>
                   <Text style={{ fontSize: rs.font(12), color: 'rgba(255,255,255,0.75)', marginTop: 2 }}>
-                    {isTrialActive
-                      ? `${trialDaysLeft} ${trialDaysLeft === 1 ? 'dia' : 'dias'} restantes`
-                      : `Accede a las ${pathologyCount} patologias`}
+                    {trialExpired
+                      ? 'Suscribite para acceso completo'
+                      : `${trialDaysLeft} ${trialDaysLeft === 1 ? 'dia' : 'dias'} restantes · Toca para ver planes`}
                   </Text>
                 </View>
                 <MaterialCommunityIcons name="chevron-right" size={22} color="rgba(255,255,255,0.7)" />
