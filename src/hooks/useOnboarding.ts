@@ -12,12 +12,17 @@ export function useOnboarding() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log('[Onboarding] Checking AsyncStorage...');
     AsyncStorage.getItem(STORAGE_KEY)
       .then(value => {
+        console.log('[Onboarding] Got value:', value);
         setIsComplete(value === 'true');
         setIsLoading(false);
       })
-      .catch(() => setIsLoading(false));
+      .catch(err => {
+        console.error('[Onboarding] AsyncStorage error:', err);
+        setIsLoading(false);
+      });
   }, []);
 
   const completeOnboarding = useCallback(async () => {

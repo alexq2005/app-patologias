@@ -51,7 +51,7 @@ function useFadeIn(duration = 400, delay = 0) {
 type Props = NativeStackScreenProps<RootStackParamList, 'AboutScreen'>;
 
 const APP_VERSION = '1.0.0';
-const CONTACT_EMAIL = 'soporte@patologiasenfermeria.app';
+const CONTACT_EMAIL = 'alexq2005@gmail.com';
 
 // ─────────────────────────────────────────────
 // Component

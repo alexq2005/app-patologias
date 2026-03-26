@@ -9,6 +9,7 @@ import { TabBarProvider } from './src/context/TabBarContext';
 import { AppNavigator } from './src/navigation/AppNavigator';
 
 export default function App() {
+  console.log('[App] Rendering App root');
   return (
     <ErrorBoundary>
       <SafeAreaProvider>

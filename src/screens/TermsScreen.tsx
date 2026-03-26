@@ -132,7 +132,7 @@ const SECTIONS = [
   {
     title: '10. Contacto',
     content:
-      'Para consultas sobre estos terminos, contactanos en: soporte@patologiasenfermeria.app',
+      'Para consultas sobre estos terminos, contactanos en: alexq2005@gmail.com',
   },
 ];
 
