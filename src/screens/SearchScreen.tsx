@@ -106,14 +106,14 @@ export function SearchScreen() {
         value={query}
         onChangeText={setQuery}
         onClear={clearSearch}
-        placeholder="Buscar patologia..."
+        placeholder="Buscar patología..."
         autoFocus={false}
       />
 
       {showHistory && (
         <View style={styles.historySection}>
           <View style={styles.historyHeader}>
-            <Text style={styles.historyTitle}>Busquedas recientes</Text>
+            <Text style={styles.historyTitle}>Búsquedas recientes</Text>
             <TouchableOpacity onPress={clearHistory}>
               <Text style={[styles.historyClear, { color: colors.primary }]}>Limpiar</Text>
             </TouchableOpacity>

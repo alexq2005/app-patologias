@@ -187,8 +187,8 @@ function MainTabs() {
     >
       <Tab.Screen name="Inicio" component={HomeScreen} options={{ tabBarAccessibilityLabel: 'Inicio' }} />
       <Tab.Screen name="Sistemas" component={SystemsScreen} options={{ tabBarAccessibilityLabel: 'Sistemas corporales' }} />
-      <Tab.Screen name="Busqueda" component={SearchScreen} options={{ tabBarAccessibilityLabel: 'Buscar patologias' }} />
-      <Tab.Screen name="Escalas" component={ScalesScreen} options={{ tabBarAccessibilityLabel: 'Escalas clinicas' }} />
+      <Tab.Screen name="Busqueda" component={SearchScreen} options={{ tabBarLabel: 'Búsqueda', tabBarAccessibilityLabel: 'Buscar patologías' }} />
+      <Tab.Screen name="Escalas" component={ScalesScreen} options={{ tabBarAccessibilityLabel: 'Escalas clínicas' }} />
       <Tab.Screen name="Herramientas" component={ToolsScreen} options={{ tabBarAccessibilityLabel: 'Herramientas' }} />
     </Tab.Navigator>
   );

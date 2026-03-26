@@ -52,11 +52,11 @@ function useFadeIn(duration = 400, delay = 0) {
 type Props = NativeStackScreenProps<RootStackParamList, 'PremiumScreen'>;
 
 const PREMIUM_FEATURES = [
-  { icon: 'book-open-variant', text: 'Todas las patologias sin restriccion' },
+  { icon: 'book-open-variant', text: 'Todas las patologías sin restricción' },
   { icon: 'heart-multiple', text: 'Favoritos ilimitados' },
   { icon: 'note-multiple', text: 'Notas ilimitadas' },
   { icon: 'brain', text: 'Quiz interactivo completo' },
-  { icon: 'scale-balance', text: 'Escalas clinicas completas' },
+  { icon: 'scale-balance', text: 'Escalas clínicas completas' },
   { icon: 'flask-outline', text: 'Valores de laboratorio' },
   { icon: 'hospital-building', text: 'Protocolos de emergencia' },
   { icon: 'stethoscope', text: 'Diagnósticos NANDA/NIC/NOC' },
@@ -64,7 +64,7 @@ const PREMIUM_FEATURES = [
 ];
 
 const FREE_FEATURES = [
-  { icon: 'book-outline', text: '3 patologias por sistema (33 total)' },
+  { icon: 'book-outline', text: '3 patologías por sistema (33 total)' },
   { icon: 'heart-outline', text: 'Hasta 5 favoritos' },
   { icon: 'note-outline', text: 'Hasta 5 notas' },
 ];
@@ -278,7 +278,7 @@ export function PremiumScreen({ navigation }: Props) {
               }}>
                 <MaterialCommunityIcons name="alert-circle" size={rs.font(14)} color={colors.error} />
                 <Text style={{ fontSize: rs.font(12), color: colors.error, fontWeight: '600' }}>
-                  Tu periodo de prueba de 15 dias ha finalizado. Suscribite para continuar.
+                  Tu período de prueba de 15 días ha finalizado. Suscribite para continuar.
                 </Text>
               </View>
             )}

@@ -18,7 +18,7 @@ export function SearchBar({
   value,
   onChangeText,
   onClear,
-  placeholder = 'Buscar patologia...',
+  placeholder = 'Buscar patología...',
   autoFocus = false,
 }: Props) {
   const { colors } = useTheme();
@@ -46,10 +46,10 @@ export function SearchBar({
         autoCorrect={false}
         returnKeyType="search"
         accessibilityRole="search"
-        accessibilityLabel="Buscar patologia"
+        accessibilityLabel="Buscar patología"
       />
       {value.length > 0 && (
-        <TouchableOpacity onPress={handleClear} style={styles.clearButton} accessibilityRole="button" accessibilityLabel="Limpiar busqueda">
+        <TouchableOpacity onPress={handleClear} style={styles.clearButton} accessibilityRole="button" accessibilityLabel="Limpiar búsqueda">
           <MaterialCommunityIcons name="close-circle" size={18} color={colors.textLight} />
         </TouchableOpacity>
       )}

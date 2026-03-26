@@ -821,7 +821,7 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
           <TouchableOpacity
             onPress={handleShare}
             style={{ padding: 8 }}
-            accessibilityLabel="Compartir patologia"
+            accessibilityLabel="Compartir patología"
           >
             <MaterialCommunityIcons name="share-variant" size={22} color="#FFFFFF" />
           </TouchableOpacity>
@@ -1030,7 +1030,7 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
             2. FISIOPATOLOGIA (open by default — key section)
         ═══════════════════════════════════════════════════ */}
         <CollapsibleSection
-          title="Fisiopatologia"
+          title="Fisiopatología"
           icon="dna"
           accentColor={systemColor}
           initiallyOpen
