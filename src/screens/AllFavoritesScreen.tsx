@@ -128,7 +128,7 @@ export function AllFavoritesScreen({ navigation }: Props) {
           <Text style={styles.headerTitle}>Mis Favoritos</Text>
           <Text style={styles.headerSubtitle}>
             {favoritePathologies.length}{' '}
-            {favoritePathologies.length === 1 ? 'patologia guardada' : 'patologias guardadas'}
+            {favoritePathologies.length === 1 ? 'patología guardada' : 'patologías guardadas'}
           </Text>
         </Animated.View>
       </LinearGradient>

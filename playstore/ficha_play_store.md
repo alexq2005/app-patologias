@@ -1,71 +1,71 @@
 # Ficha de Google Play Store
 
-## Datos basicos
+## Datos básicos
 
-- **Nombre de la app**: Patologias de Enfermeria
+- **Nombre de la app**: Patologías de Enfermería
 - **Desarrollador**: alexq2005@gmail.com
-- **Categoria**: Medicina
-- **Clasificacion de contenido**: Todos (ver IARC abajo)
-- **Idioma principal**: Español (Latinoamerica)
-- **Pais de disponibilidad**: Todos
+- **Categoría**: Medicina
+- **Clasificación de contenido**: Todos (ver IARC abajo)
+- **Idioma principal**: Español (Latinoamérica)
+- **País de disponibilidad**: Todos
 
 ---
 
-## Titulo (max 30 caracteres)
+## Título (max 30 caracteres)
 
 ```
-Patologias de Enfermeria
+Patologías de Enfermería
 ```
 
-## Descripcion corta (max 80 caracteres)
+## Descripción corta (max 80 caracteres)
 
 ```
-Guia clinica con 151 patologias, escalas NANDA-NIC-NOC y quiz para enfermeria.
+Guía clínica con 151 patologías, escalas NANDA-NIC-NOC y quiz para enfermería.
 ```
 
-## Descripcion completa (max 4000 caracteres)
+## Descripción completa (max 4000 caracteres)
 
 ```
-Patologias de Enfermeria es la guia clinica mas completa para profesionales y estudiantes de enfermeria. Con 151 patologias organizadas por 12 sistemas corporales, accede a toda la informacion que necesitas para tu practica clinica y estudio.
+Patologías de Enfermería es la guía clínica más completa para profesionales y estudiantes de enfermería. Con 151 patologías organizadas por 12 sistemas corporales, accede a toda la información que necesitas para tu práctica clínica y estudio.
 
-CONTENIDO CLINICO COMPLETO
-• 151 patologias con informacion detallada: definicion, fisiopatologia, signos y sintomas, diagnostico, tratamiento medico y cuidados de enfermeria
-• 12 sistemas corporales: cardiovascular, respiratorio, neurologico, digestivo, endocrino, renal/urinario, musculoesqueletico, hematologico, inmunologico, tegumentario, reproductivo y traumatologico
-• Diagnosticos NANDA-NIC-NOC para cada patologia
-• Fichas farmacologicas con via, dosis y cuidados de enfermeria especificos
+CONTENIDO CLÍNICO COMPLETO
+• 151 patologías con información detallada: definición, fisiopatología, signos y síntomas, diagnóstico, tratamiento médico y cuidados de enfermería
+• 12 sistemas corporales: cardiovascular, respiratorio, neurológico, digestivo, endocrino, renal/urinario, musculoesquelético, hematológico, inmunológico, tegumentario, reproductivo y traumatológico
+• Diagnósticos NANDA-NIC-NOC para cada patología
+• Fichas farmacológicas con vía, dosis y cuidados de enfermería específicos
 
-HERRAMIENTAS CLINICAS
-• 17 escalas de valoracion interactivas: Glasgow, NEWS2, Norton, Braden, APGAR, EVA, Wells, Barthel, Morse, RASS, Mallampati, ASA, qSOFA, NIHSS, Aldrete, FLACC, MUST
-• Calculadora automatica con interpretacion de resultados
-• Valores de laboratorio con rangos normales e implicaciones de enfermeria
+HERRAMIENTAS CLÍNICAS
+• 17 escalas de valoración interactivas: Glasgow, NEWS2, Norton, Braden, APGAR, EVA, Wells, Barthel, Morse, RASS, Mallampati, ASA, qSOFA, NIHSS, Aldrete, FLACC, MUST
+• Calculadora automática con interpretación de resultados
+• Valores de laboratorio con rangos normales e implicaciones de enfermería
 • Protocolos de emergencia paso a paso
 
-ESTUDIO Y EVALUACION
-• Quiz interactivo con 8 tipos de preguntas: fisiopatologia, signos y sintomas, diagnostico, tratamiento, cuidados de enfermeria, NANDA, complicaciones y emergencias
-• Seleccion por sistema corporal y cantidad de preguntas
+ESTUDIO Y EVALUACIÓN
+• Quiz interactivo con 8 tipos de preguntas: fisiopatología, signos y síntomas, diagnóstico, tratamiento, cuidados de enfermería, NANDA, complicaciones y emergencias
+• Selección por sistema corporal y cantidad de preguntas
 • Historial de resultados y seguimiento de progreso
-• Dashboard con estadisticas de estudio
+• Dashboard con estadísticas de estudio
 
 FUNCIONES PERSONALES
-• Favoritos ilimitados para guardar patologias importantes
-• Notas personales en cada patologia
-• Historial de busqueda y patologias visitadas recientemente
-• Busqueda avanzada con filtrado por sistema
+• Favoritos ilimitados para guardar patologías importantes
+• Notas personales en cada patología
+• Historial de búsqueda y patologías visitadas recientemente
+• Búsqueda avanzada con filtrado por sistema
 
 DISEÑO PROFESIONAL
 • Interfaz moderna con modo oscuro/claro
-• Fotos clinicas reales por sistema corporal
-• Funciona completamente offline — ideal para hospitales y clinicas sin WiFi
-• Optimizado para uso rapido durante guardias y practicas
+• Fotos clínicas reales por sistema corporal
+• Funciona completamente offline — ideal para hospitales y clínicas sin WiFi
+• Optimizado para uso rápido durante guardias y prácticas
 
 MODELO FREEMIUM
-• Prueba gratuita de 15 dias con acceso completo
-• 3 patologias gratuitas por sistema (33 total) despues del trial
-• Suscripcion mensual para acceso ilimitado
+• Prueba gratuita de 15 días con acceso completo
+• 3 patologías gratuitas por sistema (33 total) después del trial
+• Suscripción mensual para acceso ilimitado
 
-Desarrollada por profesionales de enfermeria para profesionales de enfermeria. Toda la informacion esta basada en evidencia cientifica actualizada y guias de practica clinica internacionales.
+Desarrollada por profesionales de enfermería para profesionales de enfermería. Toda la información está basada en evidencia científica actualizada y guías de práctica clínica internacionales.
 
-Descarga Patologias de Enfermeria y lleva toda tu biblioteca clinica en el bolsillo.
+Descarga Patologías de Enfermería y lleva toda tu biblioteca clínica en el bolsillo.
 ```
 
 ---
@@ -73,11 +73,11 @@ Descarga Patologias de Enfermeria y lleva toda tu biblioteca clinica en el bolsi
 ## Novedades (What's new)
 
 ```
-Version 1.0.0 — Lanzamiento inicial
-• 151 patologias clinicas organizadas por 12 sistemas corporales
-• 17 escalas de valoracion interactivas con calculadora
-• Quiz de evaluacion con 8 tipos de preguntas
-• Diagnosticos NANDA-NIC-NOC
+Versión 1.0.0 — Lanzamiento inicial
+• 151 patologías clínicas organizadas por 12 sistemas corporales
+• 17 escalas de valoración interactivas con calculadora
+• Quiz de evaluación con 8 tipos de preguntas
+• Diagnósticos NANDA-NIC-NOC
 • Valores de laboratorio y protocolos de emergencia
 • Modo oscuro y funcionamiento offline
 ```
@@ -87,11 +87,11 @@ Version 1.0.0 — Lanzamiento inicial
 ## Datos de contacto
 
 - **Email de soporte**: alexq2005@gmail.com
-- **URL de politica de privacidad**: https://patologiasenfermeria.github.io/privacy
+- **URL de política de privacidad**: https://patologiasenfermeria.github.io/privacy
   (Subir el archivo privacy.html a GitHub Pages u otro hosting)
 
 ---
 
 ## Tags / Palabras clave sugeridas
 
-enfermeria, patologias, clinica, NANDA, NIC, NOC, escalas clinicas, Glasgow, enfermero, salud, medicina, hospital, cuidados, farmacologia, quiz medico
+enfermería, patologías, clínica, NANDA, NIC, NOC, escalas clínicas, Glasgow, enfermero, salud, medicina, hospital, cuidados, farmacología, quiz médico

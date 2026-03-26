@@ -175,7 +175,7 @@ export function SettingsScreen() {
     if (success) {
       setShowUnlockModal(false);
       setUnlockCode('');
-      Alert.alert('Premium activado', 'Todas las patologias han sido desbloqueadas.');
+      Alert.alert('Premium activado', 'Todas las patologías han sido desbloqueadas.');
     } else {
       setUnlockError(true);
     }
@@ -278,7 +278,7 @@ export function SettingsScreen() {
           <StatRow icon="heart" label="Favoritos" value={`${favoriteCount}`} colors={colors} rs={rs} />
           <StatRow icon="note-text" label="Notas" value={`${noteCount}`} colors={colors} rs={rs} />
           <StatRow icon="head-question" label="Quizzes completados" value={`${totalSessions}`} colors={colors} rs={rs} />
-          <StatRow icon="magnify" label="Busquedas guardadas" value={`${history.length}`} colors={colors} rs={rs} />
+          <StatRow icon="magnify" label="Búsquedas guardadas" value={`${history.length}`} colors={colors} rs={rs} />
           <StatRow icon="clock-outline" label="Recientes" value={`${recent.length}`} colors={colors} rs={rs} />
         </View>
 

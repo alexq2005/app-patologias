@@ -1,28 +1,28 @@
-# Patologias de Enfermeria
+# Patologías de Enfermería
 
-Aplicacion movil de referencia clinica para profesionales y estudiantes de enfermeria. Contiene 151 patologias organizadas por 12 sistemas corporales, con informacion detallada de diagnosticos NANDA-NIC-NOC, cuidados de enfermeria, farmacologia y protocolos de emergencia.
+Aplicación móvil de referencia clínica para profesionales y estudiantes de enfermería. Contiene 151 patologías organizadas por 12 sistemas corporales, con información detallada de diagnósticos NANDA-NIC-NOC, cuidados de enfermería, farmacología y protocolos de emergencia.
 
-## Caracteristicas
+## Características
 
-- **151 patologias** con informacion clinica completa
-- **12 sistemas corporales** con fotos medicas reales
-- **17 escalas clinicas** interactivas con calculadora (Glasgow, NEWS2, Norton, etc.)
+- **151 patologías** con información clínica completa
+- **12 sistemas corporales** con fotos médicas reales
+- **17 escalas clínicas** interactivas con calculadora (Glasgow, NEWS2, Norton, etc.)
 - **Quiz interactivo** con 8 tipos de preguntas
-- **Valores de laboratorio** con rangos e implicaciones de enfermeria
+- **Valores de laboratorio** con rangos e implicaciones de enfermería
 - **Protocolos de emergencia** paso a paso
 - **NANDA-NIC-NOC** browser con filtrado
 - **Favoritos y notas** personales ilimitadas
-- **Modo oscuro/claro** con toggle o automatico
+- **Modo oscuro/claro** con toggle o automático
 - **Funciona offline** — toda la data es local, ideal para hospitales
-- **Freemium**: 15 dias de prueba + suscripcion Google Play
+- **Freemium**: 15 días de prueba + suscripción Google Play
 
-## Stack Tecnologico
+## Stack Tecnológico
 
-| Tecnologia | Version | Uso |
+| Tecnología | Versión | Uso |
 |-----------|---------|-----|
 | React Native | 0.84.1 | Framework mobile |
-| TypeScript | 5.8 | Tipado estatico |
-| React Navigation | 7.x | Navegacion (Stack + Tabs) |
+| TypeScript | 5.8 | Tipado estático |
+| React Navigation | 7.x | Navegación (Stack + Tabs) |
 | AsyncStorage | 2.x | Persistencia local |
 | LinearGradient | - | Gradientes UI |
 | Vector Icons | - | Material Community Icons |
@@ -33,13 +33,13 @@ Aplicacion movil de referencia clinica para profesionales y estudiantes de enfer
 ```
 src/
 ├── assets/images/
-│   ├── conditions/     # 13 fotos clinicas (ECG, rayos X, etc.)
+│   ├── conditions/     # 13 fotos clínicas (ECG, rayos X, etc.)
 │   ├── systems/        # 12 fotos por sistema corporal
-│   └── scales/         # 9 fotos para escalas clinicas
+│   └── scales/         # 9 fotos para escalas clínicas
 ├── components/         # 9 componentes reutilizables
 ├── context/            # 5 Context providers (Theme, Premium, Favorites, Notes, TabBar)
-├── data/               # JSONs estaticos (~2.5 MB total)
-│   ├── pathologies.json      # 151 patologias
+├── data/               # JSONs estáticos (~2.5 MB total)
+│   ├── pathologies.json      # 151 patologías
 │   ├── body_systems.json     # 12 sistemas
 │   ├── clinical_scales.json  # 17 escalas
 │   ├── emergency_protocols.json
@@ -52,12 +52,12 @@ src/
 └── utils/              # 12 utilidades
 ```
 
-## Configuracion Android
+## Configuración Android
 
 - **Namespace**: `com.patologiasenfermeria`
 - **Min SDK**: 24 (Android 7.0)
 - **Target SDK**: 36 (Android 16)
-- **Flavors**: `free` (trial + suscripcion) y `premium` (todo desbloqueado)
+- **Flavors**: `free` (trial + suscripción) y `premium` (todo desbloqueado)
 - **Signing**: Release keystore configurado en `gradle.properties`
 
 ## Desarrollo
@@ -109,24 +109,24 @@ cd android && ./gradlew app:bundleFreeRelease
 | Premium Release APK | 64 MB | `android/app/build/outputs/apk/premium/release/` |
 | Free Release AAB | 45 MB | `android/app/build/outputs/bundle/freeRelease/` |
 
-## Modelo de Monetizacion
+## Modelo de Monetización
 
 | Concepto | Detalle |
 |----------|---------|
-| Trial | 15 dias de prueba con acceso completo |
-| Free despues del trial | 3 patologias/sistema (33 total), 5 favoritos, 5 notas |
-| Suscripcion | Mensual via Google Play (`patologias_premium_monthly`) |
-| Activacion por codigo | Easter egg: Settings > Version > tap 5 veces |
+| Trial | 15 días de prueba con acceso completo |
+| Free después del trial | 3 patologías/sistema (33 total), 5 favoritos, 5 notas |
+| Suscripción | Mensual vía Google Play (`patologias_premium_monthly`) |
+| Activación por código | Easter egg: Settings > Version > tap 5 veces |
 
 ## Documentos para Play Store
 
-Todos los documentos estan en `playstore/`:
+Todos los documentos están en `playstore/`:
 - `ficha_play_store.md` — Textos de la ficha
-- `privacy_policy.html` — Politica de privacidad (subir a hosting)
-- `clasificacion_contenido_IARC.md` — Respuestas para clasificacion
-- `icon_512x512.svg` — Icono (exportar a PNG)
-- `feature_graphic_1024x500.svg` — Grafico promocional (exportar a PNG)
-- `INSTRUCCIONES_PUBLICACION.md` — Guia paso a paso
+- `privacy_policy.html` — Política de privacidad (subir a hosting)
+- `clasificacion_contenido_IARC.md` — Respuestas para clasificación
+- `icon_512x512.svg` — Ícono (exportar a PNG)
+- `feature_graphic_1024x500.svg` — Gráfico promocional (exportar a PNG)
+- `INSTRUCCIONES_PUBLICACION.md` — Guía paso a paso
 - `PLAN_ACTUALIZACIONES.md` — Roadmap de 12 meses
 
 ## Contacto

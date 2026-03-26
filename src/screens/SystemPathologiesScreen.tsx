@@ -156,7 +156,7 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
           <View style={[styles.countDot, { backgroundColor: systemColor }]} />
           <Text style={styles.countText}>
             {filteredPathologies.length}{' '}
-            {filteredPathologies.length === 1 ? 'patologia' : 'patologias'}
+            {filteredPathologies.length === 1 ? 'patología' : 'patologías'}
             {searchQuery.trim() ? ' encontradas' : ' en este sistema'}
           </Text>
         </View>
@@ -179,8 +179,8 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
         <Text style={styles.emptyTitle}>Sin resultados</Text>
         <Text style={styles.emptySubtitle}>
           {searchQuery.trim()
-            ? `No se encontraron patologias que coincidan con "${searchQuery.trim()}"`
-            : 'No hay patologias en este sistema'}
+            ? `No se encontraron patologías que coincidan con "${searchQuery.trim()}"`
+            : 'No hay patologías en este sistema'}
         </Text>
       </View>
     ),

@@ -204,7 +204,7 @@ export function ScalesScreen() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(6) }}>
                 <MaterialCommunityIcons name="star-four-points" size={14} color={colors.primary} />
                 <Text style={{ fontSize: rs.font(14), fontWeight: '800', color: colors.text }}>
-                  Mas utilizadas
+                  Más utilizadas
                 </Text>
               </View>
             </View>
@@ -274,7 +274,7 @@ export function ScalesScreen() {
             value={query}
             onChangeText={setQuery}
             onClear={() => setQuery('')}
-            placeholder="Buscar escala clinica..."
+            placeholder="Buscar escala clínica..."
           />
         </View>
 
@@ -329,11 +329,11 @@ export function ScalesScreen() {
     () => (
       <View style={{ marginTop: rs.space(20), paddingHorizontal: rs.space(16), gap: rs.space(8) }}>
         <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.8 }}>
-          Acceso rapido
+          Acceso rápido
         </Text>
         {[
           { name: 'Valores de Laboratorio', sub: 'Rangos de referencia', icon: 'test-tube', color: '#2563EB', screen: 'LabValues' as const },
-          { name: 'Protocolos de Emergencia', sub: 'Actuacion por patologia', icon: 'ambulance', color: '#DC2626', screen: 'EmergencyProtocols' as const },
+          { name: 'Protocolos de Emergencia', sub: 'Actuación por patología', icon: 'ambulance', color: '#DC2626', screen: 'EmergencyProtocols' as const },
         ].map(link => (
           <TouchableOpacity
             key={link.screen}

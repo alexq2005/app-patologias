@@ -368,7 +368,7 @@ export function HomeScreen({ navigation }: Props) {
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(6) }}>
               <MaterialCommunityIcons name="star-four-points" size={16} color={colors.primary} />
               <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: colors.text, letterSpacing: -0.3 }}>
-                Patologia del dia
+                Patología del día
               </Text>
             </View>
 
@@ -616,12 +616,12 @@ export function HomeScreen({ navigation }: Props) {
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontSize: rs.font(14), fontWeight: '800', color: '#fff' }}>
-                    {trialExpired ? 'Periodo de prueba finalizado' : 'Periodo de prueba'}
+                    {trialExpired ? 'Período de prueba finalizado' : 'Período de prueba'}
                   </Text>
                   <Text style={{ fontSize: rs.font(12), color: 'rgba(255,255,255,0.75)', marginTop: 2 }}>
                     {trialExpired
                       ? 'Suscribite para acceso completo'
-                      : `${trialDaysLeft} ${trialDaysLeft === 1 ? 'dia' : 'dias'} restantes · Toca para ver planes`}
+                      : `${trialDaysLeft} ${trialDaysLeft === 1 ? 'día' : 'días'} restantes · Toca para ver planes`}
                   </Text>
                 </View>
                 <MaterialCommunityIcons name="chevron-right" size={22} color="rgba(255,255,255,0.7)" />

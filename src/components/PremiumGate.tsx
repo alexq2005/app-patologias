@@ -31,11 +31,11 @@ export function PremiumGate({ feature, children }: Props) {
         <Text style={styles.title}>Contenido Premium</Text>
         <Text style={styles.feature}>{feature}</Text>
         <Text style={styles.description}>
-          Esta funcionalidad requiere una suscripcion Premium para acceder.
+          Esta funcionalidad requiere una suscripción Premium para acceder.
         </Text>
         {trialDaysLeft === 0 && (
           <View style={styles.expiredBadge}>
-            <Text style={styles.expiredText}>Tu periodo de prueba de 15 dias ha finalizado. Suscribite para continuar.</Text>
+            <Text style={styles.expiredText}>Tu período de prueba de 15 días ha finalizado. Suscribite para continuar.</Text>
           </View>
         )}
         <TouchableOpacity
