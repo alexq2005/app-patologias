@@ -1106,5 +1106,46 @@
       "En lisis tumoral: hidratación vigorosa + rasburicasa o alopurinol profiláctico",
       "Monitorizar función renal en pacientes con hiperuricemia crónica"
     ]
+  },
+  {
+    "id": "lab_pcr",
+    "nombre": "Proteína C Reactiva",
+    "abreviatura": "PCR",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 0, "max": 5, "unidad": "mg/L" },
+      "pediatrico": { "min": 0, "max": 5, "unidad": "mg/L" }
+    },
+    "significadoAlto": "Indica inflamación aguda o crónica. PCR >10 mg/L sugiere infección bacteriana significativa. PCR >100 mg/L orienta fuertemente a infección bacteriana severa, sepsis o necrosis tisular extensa. Valores entre 5-10 mg/L pueden verse en infecciones virales, inflamación leve o posquirúrgico.",
+    "significadoBajo": "Valores normales o bajos descartan inflamación sistémica significativa. Útil como marcador de exclusión de infección bacteriana activa.",
+    "farmacosAlteran": ["Estatinas (disminuyen)", "Anticonceptivos orales (aumentan)", "AINEs (pueden disminuir)", "Corticoides (disminuyen)", "Tocilizumab (suprime PCR)"],
+    "implicacionesEnfermeria": [
+      "Monitorizar PCR seriada cada 24-48h para evaluar respuesta al tratamiento antibiótico",
+      "PCR que no desciende tras 48-72h de antibióticos: alertar al equipo médico sobre posible resistencia o foco no drenado",
+      "Correlacionar con clínica: fiebre, leucocitosis, procalcitonina para valorar gravedad infecciosa",
+      "En posquirúrgico: PCR elevada es normal las primeras 48-72h; si persiste o asciende, sospechar complicación",
+      "Extraer muestra en ayunas, tubo seco o con EDTA según protocolo del laboratorio"
+    ]
+  },
+  {
+    "id": "lab_vsg",
+    "nombre": "Velocidad de Sedimentación Globular",
+    "abreviatura": "VSG",
+    "categoria": "hematologia",
+    "rangos": {
+      "adultoHombre": { "min": 0, "max": 15, "unidad": "mm/h" },
+      "adultoMujer": { "min": 0, "max": 20, "unidad": "mm/h" },
+      "pediatrico": { "min": 0, "max": 10, "unidad": "mm/h" }
+    },
+    "significadoAlto": "VSG elevada indica inflamación inespecífica. Se eleva en infecciones, enfermedades autoinmunes (lupus, artritis reumatoidea), neoplasias, anemia y embarazo. VSG >100 mm/h sugiere mieloma múltiple, arteritis temporal, infección grave o neoplasia avanzada.",
+    "significadoBajo": "VSG muy baja puede verse en policitemia, insuficiencia cardíaca congestiva, hipofibrinogenemia o uso de corticoides. Generalmente sin significado patológico.",
+    "farmacosAlteran": ["AINEs (disminuyen)", "Corticoides (disminuyen)", "Anticonceptivos orales (aumentan)", "Heparina (puede aumentar)", "Ácido valproico"],
+    "implicacionesEnfermeria": [
+      "La VSG es inespecífica: siempre correlacionar con PCR y clínica del paciente",
+      "Muestra de sangre venosa con anticoagulante EDTA; procesar dentro de 2 horas",
+      "Útil para seguimiento de enfermedades inflamatorias crónicas (artritis reumatoidea, lupus)",
+      "En pacientes con VSG >100: considerar derivación urgente si no hay diagnóstico establecido",
+      "No usar como marcador único de infección — la PCR y procalcitonina son más específicas"
+    ]
   }
 ]
