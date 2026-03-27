@@ -2,7 +2,7 @@
   {
     "id": "cardiovascular",
     "nombre": "Sistema Cardiovascular",
-    "descripcion": "Corazon, vasos sanguineos y circulacion. Incluye patologias como hipertension, insuficiencia cardiaca, infarto y arritmias.",
+    "descripcion": "Corazón, vasos sanguíneos y circulación. Incluye patologías como hipertensión, insuficiencia cardíaca, infarto y arritmias.",
     "color": "#E55050",
     "icon": "heart-pulse",
     "pathologyCount": 16
@@ -10,15 +10,15 @@
   {
     "id": "respiratorio",
     "nombre": "Sistema Respiratorio",
-    "descripcion": "Vias aereas, pulmones e intercambio gaseoso. Incluye EPOC, asma, neumonia y embolia pulmonar.",
+    "descripcion": "Vías aéreas, pulmones e intercambio gaseoso. Incluye EPOC, asma, neumonía y embolia pulmonar.",
     "color": "#54A0FF",
     "icon": "lungs",
     "pathologyCount": 13
   },
   {
     "id": "neurologico",
-    "nombre": "Sistema Neurologico",
-    "descripcion": "Cerebro, medula espinal y nervios perifericos. Incluye ACV, epilepsia, Parkinson y meningitis.",
+    "nombre": "Sistema Neurológico",
+    "descripcion": "Cerebro, médula espinal y nervios periféricos. Incluye ACV, epilepsia, Parkinson y meningitis.",
     "color": "#6C5CE7",
     "icon": "brain",
     "pathologyCount": 13
@@ -26,7 +26,7 @@
   {
     "id": "digestivo",
     "nombre": "Sistema Digestivo",
-    "descripcion": "Tracto gastrointestinal, higado, pancreas y vesicula. Incluye ulcera peptica, cirrosis y pancreatitis.",
+    "descripcion": "Tracto gastrointestinal, hígado, páncreas y vesícula. Incluye úlcera péptica, cirrosis y pancreatitis.",
     "color": "#F78B3D",
     "icon": "stomach",
     "pathologyCount": 13
@@ -34,7 +34,7 @@
   {
     "id": "endocrino",
     "nombre": "Sistema Endocrino",
-    "descripcion": "Glandulas y hormonas. Incluye diabetes mellitus, hipo/hipertiroidismo e insuficiencia suprarrenal.",
+    "descripcion": "Glándulas y hormonas. Incluye diabetes mellitus, hipo/hipertiroidismo e insuficiencia suprarrenal.",
     "color": "#E0A030",
     "icon": "scale-balance",
     "pathologyCount": 12
@@ -42,31 +42,31 @@
   {
     "id": "renal_urinario",
     "nombre": "Sistema Renal y Urinario",
-    "descripcion": "Riñones, ureteres, vejiga y uretra. Incluye insuficiencia renal, infeccion urinaria y litiasis.",
+    "descripcion": "Riñones, uréteres, vejiga y uretra. Incluye insuficiencia renal, infección urinaria y litiasis.",
     "color": "#FDAD5A",
-    "icon": "kidney",
+    "icon": "water-pump",
     "pathologyCount": 14
   },
   {
     "id": "musculoesqueletico",
-    "nombre": "Sistema Musculoesqueletico",
-    "descripcion": "Huesos, articulaciones, musculos y tejido conectivo. Incluye fracturas, artritis y osteoporosis.",
+    "nombre": "Sistema Musculoesquelético",
+    "descripcion": "Huesos, articulaciones, músculos y tejido conectivo. Incluye fracturas, artritis y osteoporosis.",
     "color": "#00B894",
     "icon": "bone",
     "pathologyCount": 13
   },
   {
     "id": "hematologico",
-    "nombre": "Sistema Hematologico",
-    "descripcion": "Sangre y organos hematopoyeticos. Incluye anemias, leucemias y trastornos de coagulacion.",
+    "nombre": "Sistema Hematológico",
+    "descripcion": "Sangre y órganos hematopoyéticos. Incluye anemias, leucemias y trastornos de coagulación.",
     "color": "#C44569",
     "icon": "water",
     "pathologyCount": 13
   },
   {
     "id": "inmunologico",
-    "nombre": "Sistema Inmunologico",
-    "descripcion": "Defensa del organismo. Incluye VIH/SIDA, lupus, artritis reumatoide y reacciones alergicas.",
+    "nombre": "Sistema Inmunológico",
+    "descripcion": "Defensa del organismo. Incluye VIH/SIDA, lupus, artritis reumatoide y reacciones alérgicas.",
     "color": "#2ECC71",
     "icon": "shield-plus-outline",
     "pathologyCount": 12
@@ -74,7 +74,7 @@
   {
     "id": "tegumentario",
     "nombre": "Sistema Tegumentario",
-    "descripcion": "Piel, cabello y uñas. Incluye ulceras por presion, quemaduras, dermatitis y heridas.",
+    "descripcion": "Piel, cabello y uñas. Incluye úlceras por presión, quemaduras, dermatitis y heridas.",
     "color": "#E8A87C",
     "icon": "hand-back-right-outline",
     "pathologyCount": 12
@@ -82,15 +82,15 @@
   {
     "id": "reproductivo",
     "nombre": "Sistema Reproductivo",
-    "descripcion": "Organos reproductivos masculinos y femeninos. Incluye preeclampsia, cancer de mama y prostatitis.",
+    "descripcion": "Órganos reproductivos masculinos y femeninos. Incluye preeclampsia, cáncer de mama y prostatitis.",
     "color": "#FD79A8",
     "icon": "human-pregnant",
     "pathologyCount": 12
   },
   {
     "id": "traumatologico",
-    "nombre": "Traumatologia y Emergencias",
-    "descripcion": "Lesiones por trauma, quemaduras y emergencias traumaticas. Incluye TCE, politraumatismo, fracturas y lesion medular.",
+    "nombre": "Traumatología y Emergencias",
+    "descripcion": "Lesiones por trauma, quemaduras y emergencias traumáticas. Incluye TCE, politraumatismo, fracturas y lesión medular.",
     "color": "#FF6348",
     "icon": "ambulance",
     "pathologyCount": 10

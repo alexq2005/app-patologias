@@ -108,6 +108,7 @@ export interface Pathology {
   emergencyLevel: EmergencyLevel;
   relatedPathologyIds?: string[];
   isPremium: boolean;
+  videoUrl?: string;
 }
 
 // --- Clinical Scales ---
@@ -288,6 +289,7 @@ export type RootStackParamList = {
   AllFavorites: undefined;
   AboutScreen: undefined;
   PremiumScreen: undefined;
+  DifferentialScreen: undefined;
   SettingsScreen: undefined;
   PrivacyPolicy: undefined;
   Terms: undefined;
