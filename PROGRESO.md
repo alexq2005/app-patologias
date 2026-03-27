@@ -4,14 +4,15 @@
 
 ---
 
-## 2026-03-27 — Sesion 3: Quiz educativo — aprender de las respuestas
+## 2026-03-27 — Sesion 3: Quiz educativo + compilacion release
 
-### Commits realizados (2)
+### Commits realizados (3)
 
 | # | Hash | Tipo | Descripcion |
 |---|------|------|-------------|
 | 1 | `d61dae2` | feat | Transformar quiz en herramienta educativa con feedback enriquecido |
 | 2 | `f21736f` | chore | Rebuild del bundle Android |
+| 3 | `92a1cab` | docs | Actualizar PROGRESO.md y CHANGELOG con quiz learning feature |
 
 ### Cambios detallados
 
@@ -33,6 +34,21 @@
 - `QuizQuestion` ahora incluye: `pathologyId`, `clinicalPearl?`, `keyFact?`
 - `buildClinicalPearl()` y `buildKeyFact()` nuevas funciones en useQuiz.ts
 
+### Compilacion release verificada
+
+| Build | Tamaño | Ruta |
+|-------|--------|------|
+| Free Release APK | 65 MB | `android/app/build/outputs/apk/free/release/app-free-release.apk` |
+| Premium Release APK | 65 MB | `android/app/build/outputs/apk/premium/release/app-premium-release.apk` |
+| Free Release AAB | 45 MB | `android/app/build/outputs/bundle/freeRelease/app-free-release.aab` |
+
+### Verificacion en emulador
+- Quiz educativo probado end-to-end: respuesta correcta, incorrecta, resumen con revision de errores
+- Feedback con 3 capas (explicacion, clinical pearl, dato clave) — OK
+- Boton "Ver patologia completa" navega correctamente — OK
+- "Revisar errores — ¡Aprende!" expande lista de errores con explicaciones — OK
+- "Consejo de estudio" adaptado al score — OK
+
 ### Estado del proyecto post-sesion
 
 | Aspecto | Estado |
@@ -40,6 +56,7 @@
 | TypeScript | 0 errores |
 | Tests | 13/13 pasan |
 | Bundle JS | OK (52 assets) |
+| Build release | BUILD SUCCESSFUL (APK free, APK premium, AAB) |
 
 ---
 
