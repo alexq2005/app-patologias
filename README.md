@@ -8,12 +8,14 @@ Aplicación móvil de referencia clínica para profesionales y estudiantes de en
 - **12 sistemas corporales** con fotos médicas reales
 - **17 escalas clínicas** interactivas con calculadora (Glasgow, NEWS2, Norton, etc.)
 - **Quiz interactivo** con 8 tipos de preguntas
+- **Diagnóstico diferencial** interactivo por síntomas con ranking de coincidencia
 - **Valores de laboratorio** con rangos e implicaciones de enfermería
 - **Protocolos de emergencia** paso a paso
 - **NANDA-NIC-NOC** browser con filtrado
 - **Favoritos y notas** personales ilimitadas
 - **Modo oscuro/claro** con toggle o automático
 - **Funciona offline** — toda la data es local, ideal para hospitales
+- **Videos educativos** por patología (enlace a YouTube, planeado para futuras versiones)
 - **Freemium**: 15 días de prueba + suscripción Google Play
 
 ## Stack Tecnológico
@@ -25,8 +27,9 @@ Aplicación móvil de referencia clínica para profesionales y estudiantes de en
 | React Navigation | 7.x | Navegación (Stack + Tabs) |
 | AsyncStorage | 2.x | Persistencia local |
 | LinearGradient | - | Gradientes UI |
-| Vector Icons | - | Material Community Icons |
+| Vector Icons | - | Íconos indicadores (tabs, badges) |
 | Safe Area Context | - | Safe areas iOS/Android |
+| Jest | 29.x | Testing unitario (13 tests) |
 
 ## Estructura del Proyecto
 
@@ -44,10 +47,10 @@ src/
 │   ├── clinical_scales.json  # 17 escalas
 │   ├── emergency_protocols.json
 │   └── lab_values.json
-├── hooks/              # 8 custom hooks
+├── hooks/              # 9 custom hooks (incluye useDifferentialDiagnosis)
 ├── navigation/
-│   └── AppNavigator.tsx      # 5 tabs + 18 stack screens
-├── screens/            # 20 pantallas
+│   └── AppNavigator.tsx      # 5 tabs + 19 stack screens
+├── screens/            # 21 pantallas (incluye DifferentialScreen)
 ├── types/
 └── utils/              # 12 utilidades
 ```

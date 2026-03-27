@@ -111,11 +111,11 @@
 | **Casos por dificultad** | Básico, intermedio, avanzado |
 
 ### Mes 11-12: Contenido Premium+
-**Update v2.2 — Contenido exclusivo**
+**Update v2.2 — Videos educativos + Contenido exclusivo**
 
 | Feature | Detalle |
 |---------|---------|
-| **Videos cortos** | 2-3 min explicando procedimientos clave |
+| **Videos educativos por patología** | Enlace a videos curados de YouTube (Osmosis, Ninja Nerd, Enfermería Evidente, etc.) para reconocer signos y síntomas. Campo `videoUrl` ya existe en el tipo Pathology. Reproducción in-app con `react-native-youtube-iframe`. Empezar con ~30 videos (cardiovascular, respiratorio, neurológico) e ir expandiendo. **Solo enlazar, no descargar** — legal vía YouTube embed API |
 | **Resúmenes descargables** | PDF por sistema para imprimir/estudiar offline |
 | **Preparación de examen** | Quiz específico para exámenes de certificación |
 | **Guía de entrevista laboral** | Preguntas frecuentes en entrevistas de enfermería |
@@ -127,22 +127,23 @@
 Meta: eliminar absolutamente todos los Material Community Icons usados como elemento visual principal
 y reemplazarlos por fotos reales. Los íconos se mantienen SOLO como indicadores pequeños (tabs, badges, chevrons).
 
-### Estado actual (v1.0)
+### Estado actual (v1.1-dev, actualizado 2026-03-27)
 
 | Pantalla | Íconos como visual principal | Fotos reales | Estado |
 |----------|------------------------------|-------------|--------|
-| HomeScreen | Quick Actions (6 íconos) | Hero card, sistemas grid | ⚠️ Parcial |
+| HomeScreen | — | Quick Actions con fotos, hero card, sistemas grid | ✅ Completo |
 | SystemsScreen | — | 12 fotos de sistemas | ✅ Completo |
 | ScalesScreen | — | 9 fotos + carrusel hero | ✅ Completo |
 | ToolsScreen | — | 10 fotos con gradiente | ✅ Completo |
 | SearchScreen | Ícono búsqueda empty state | — | ⚠️ Parcial |
 | PathologyDetailScreen | — | Hero con condition image | ⚠️ 10 remapeadas |
 | PathologyCard | — | Thumbnail condition image | ⚠️ 10 remapeadas |
-| OnboardingScreen | 3 íconos grandes | — | ❌ Pendiente |
+| OnboardingScreen | — | 3 slides full-screen con fotos clínicas | ✅ Completo |
 | PremiumScreen | Ícono estrella header | — | ❌ Pendiente |
 | DashboardScreen | Íconos de stats | — | ❌ Pendiente |
-| QuizScreen | Íconos categorías | — | ❌ Pendiente |
-| QuizSessionScreen | — | — | ❌ Pendiente |
+| QuizScreen | — | Chips con thumbnails de sistemas | ✅ Completo |
+| QuizSessionScreen | — | — | ⚠️ Parcial |
+| DifferentialScreen | — | Usa colores de sistema + badges | ✅ Completo (nuevo) |
 | SettingsScreen | Íconos en cada row | — | ❌ Pendiente |
 | AllFavoritesScreen | Ícono empty state | — | ⚠️ Parcial |
 | AllNotesScreen | Ícono empty state | — | ⚠️ Parcial |

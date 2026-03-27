@@ -19,11 +19,12 @@ App.tsx
                                 │   ├── Búsqueda → SearchScreen
                                 │   ├── Escalas → ScalesScreen
                                 │   └── Herramientas → ToolsScreen
-                                └── Stack Screens (18)
+                                └── Stack Screens (19)
                                     ├── SystemPathologies
                                     ├── PathologyDetail
                                     ├── ScaleDetail
                                     ├── QuizScreen / QuizSession
+                                    ├── DifferentialScreen ← NUEVO
                                     ├── LabValues
                                     ├── EmergencyProtocols / ProtocolDetail
                                     ├── NandaScreen
@@ -53,7 +54,8 @@ JSON estáticos (offline)
         ├── useRecentPathologies() ←── AsyncStorage @patologias_recent
         ├── useFavorites() ←── AsyncStorage @patologias_favorites
         ├── useNotes() ←── AsyncStorage @patologias_notes
-        └── useQuiz() ←── genera preguntas aleatorias de pathologies.json
+        ├── useQuiz() ←── genera preguntas aleatorias de pathologies.json
+        └── useDifferentialDiagnosis() ←── matching de síntomas con ranking
 ```
 
 ## Premium Gating
@@ -92,11 +94,13 @@ Código: SHA-256 hash validation (easter egg en Settings > Version x5)
 ## Diseño Visual
 
 - **Color primario**: Violeta `#6D28D9` (diferencia de GuiaFarmaco que usa azul)
-- **Estilo**: Neumorphism con sombras suaves
-- **Imágenes**: Fotos reales de Unsplash (royalty-free)
+- **Estilo**: Neumorphism con sombras suaves + hero cards con fotos clínicas
+- **Imágenes**: Fotos reales de Unsplash (royalty-free) — usadas como fondo de cards, quick actions, onboarding, quiz chips
+- **Íconos**: MaterialCommunityIcons solo como indicadores pequeños (tabs, badges, chevrons), NO como elementos visuales principales
 - **Tipografía**: System fonts con responsive scaling
-- **Animaciones**: Animated API (fade in, slide, spring)
+- **Animaciones**: Animated API (fade in, slide, spring) + pill indicators en tabs
 - **Dark mode**: Completo con toggle o automático por sistema
+- **Videos educativos**: Campo `videoUrl` en Pathology para enlazar videos de YouTube (futuro)
 
 ## Decisiones de Arquitectura
 
