@@ -150,18 +150,22 @@ export function buildExplanation(
     }
   })();
 
-  // Add enriching context from the pathology data
   if (!pathology) return base;
 
-  let extra = '';
+  // Build enriching context based on question type
+  const parts: string[] = [base];
+
   switch (type) {
     case 'signosSintomas': {
       const otherSigns = [
         ...pathology.signosYSintomas.signos,
         ...pathology.signosYSintomas.sintomas,
-      ].filter(s => s !== correctAnswer).slice(0, 2);
+      ].filter(s => s !== correctAnswer).slice(0, 3);
       if (otherSigns.length > 0) {
-        extra = `\n\n📋 Otros signos/síntomas clave: ${otherSigns.join(', ')}.`;
+        parts.push(`\n\n📋 Otros signos/síntomas: ${otherSigns.join(', ')}.`);
+      }
+      if (pathology.criteriosAlarma.length > 0) {
+        parts.push(`\n🚨 Atención: si presenta "${pathology.criteriosAlarma[0]}", es criterio de alarma.`);
       }
       break;
     }
@@ -169,7 +173,11 @@ export function buildExplanation(
       const otherComp = pathology.complicaciones
         .filter(c => c !== correctAnswer).slice(0, 2);
       if (otherComp.length > 0) {
-        extra = `\n\n⚠️ Otras complicaciones a vigilar: ${otherComp.join(', ')}.`;
+        parts.push(`\n\n⚠️ Otras complicaciones: ${otherComp.join(', ')}.`);
+      }
+      const relatedCare = pathology.cuidadosEnfermeria.intervenciones.slice(0, 1);
+      if (relatedCare.length > 0) {
+        parts.push(`\n🩺 Para prevenirla: ${relatedCare[0]}.`);
       }
       break;
     }
@@ -177,7 +185,11 @@ export function buildExplanation(
       const otherCare = pathology.cuidadosEnfermeria.intervenciones
         .filter(c => c !== correctAnswer).slice(0, 2);
       if (otherCare.length > 0) {
-        extra = `\n\n🩺 Otras intervenciones importantes: ${otherCare.join('; ')}.`;
+        parts.push(`\n\n🩺 Otras intervenciones: ${otherCare.join('; ')}.`);
+      }
+      const relatedVal = pathology.cuidadosEnfermeria.valoracion.slice(0, 1);
+      if (relatedVal.length > 0) {
+        parts.push(`\n📋 Valoración clave: ${relatedVal[0]}.`);
       }
       break;
     }
@@ -185,7 +197,11 @@ export function buildExplanation(
       const otherObj = pathology.tratamientoMedico.objetivos
         .filter(o => o !== correctAnswer).slice(0, 2);
       if (otherObj.length > 0) {
-        extra = `\n\n💊 Otros objetivos terapéuticos: ${otherObj.join('; ')}.`;
+        parts.push(`\n\n💊 Otros objetivos: ${otherObj.join('; ')}.`);
+      }
+      const farma = pathology.tratamientoMedico.farmacologico?.slice(0, 1);
+      if (farma && farma.length > 0) {
+        parts.push(`\n💉 Fármaco clave: ${farma[0].nombre} (${farma[0].grupo}) — ${farma[0].dosis}.`);
       }
       break;
     }
@@ -193,31 +209,121 @@ export function buildExplanation(
       const otherAlarm = pathology.criteriosAlarma
         .filter(c => c !== correctAnswer).slice(0, 2);
       if (otherAlarm.length > 0) {
-        extra = `\n\n🚨 Otros criterios de alarma: ${otherAlarm.join('; ')}.`;
+        parts.push(`\n\n🚨 Otros criterios de alarma: ${otherAlarm.join('; ')}.`);
+      }
+      const emergCare = pathology.cuidadosEnfermeria.intervenciones.slice(0, 1);
+      if (emergCare.length > 0) {
+        parts.push(`\n🩺 Intervención inmediata: ${emergCare[0]}.`);
       }
       break;
     }
     case 'nanda': {
+      const matchedNanda = pathology.npiNanda.find(n => n.nombre === correctAnswer);
+      if (matchedNanda?.definicion) {
+        parts.push(`\n\n📖 Definición: ${matchedNanda.definicion.slice(0, 150)}.`);
+      }
+      if (matchedNanda?.caracteristicasDefinitorias && matchedNanda.caracteristicasDefinitorias.length > 0) {
+        parts.push(`\n📝 Características definitorias: ${matchedNanda.caracteristicasDefinitorias.slice(0, 3).join(', ')}.`);
+      }
       const otherNanda = pathology.npiNanda
-        .filter(n => n.nombre !== correctAnswer)
-        .slice(0, 1);
+        .filter(n => n.nombre !== correctAnswer).slice(0, 1);
       if (otherNanda.length > 0) {
-        extra = `\n\n📖 Otro diagnóstico NANDA aplicable: "${otherNanda[0].nombre}".`;
+        parts.push(`\n📖 Otro NANDA aplicable: "${otherNanda[0].nombre}".`);
       }
       break;
     }
     case 'diagnostico': {
-      const otherTests = pathology.diagnostico.pruebas
-        .filter(t => t.nombre !== correctAnswer)
-        .slice(0, 2);
-      if (otherTests.length > 0) {
-        extra = `\n\n🔬 Otras pruebas diagnósticas: ${otherTests.map(t => t.nombre).join(', ')}.`;
+      const matchedTest = pathology.diagnostico.pruebas.find(t => t.nombre === correctAnswer);
+      if (matchedTest?.descripcion) {
+        parts.push(`\n\n🔬 ${matchedTest.descripcion}.`);
+      }
+      if (matchedTest?.valoresReferencia) {
+        parts.push(`\n📊 Valores de referencia: ${matchedTest.valoresReferencia}.`);
+      }
+      if (matchedTest?.cuidadosEnfermeria && matchedTest.cuidadosEnfermeria.length > 0) {
+        parts.push(`\n🩺 Cuidados: ${matchedTest.cuidadosEnfermeria.slice(0, 2).join('; ')}.`);
+      }
+      break;
+    }
+    case 'fisiopatologia': {
+      if (pathology.factoresRiesgo && pathology.factoresRiesgo.length > 0) {
+        parts.push(`\n\n⚠️ Factores de riesgo: ${pathology.factoresRiesgo.slice(0, 3).join(', ')}.`);
       }
       break;
     }
   }
 
-  return base + extra;
+  return parts.join('');
+}
+
+/** Build a "clinical pearl" — a brief educational fact */
+export function buildClinicalPearl(
+  pathology: Pathology,
+  type: QuizQuestionType,
+): string | undefined {
+  // Use definición as a brief clinical summary
+  if (pathology.definicion && pathology.definicion.length > 20) {
+    const def = pathology.definicion.length > 180
+      ? pathology.definicion.slice(0, 177) + '...'
+      : pathology.definicion;
+    return def;
+  }
+  return undefined;
+}
+
+/** Build a "key fact" — a memorable fact for learning */
+export function buildKeyFact(
+  pathology: Pathology,
+  type: QuizQuestionType,
+): string | undefined {
+  // Pick something memorable based on the question type
+  switch (type) {
+    case 'signosSintomas':
+    case 'fisiopatologia': {
+      if (pathology.epidemiologia) {
+        const epi = pathology.epidemiologia.length > 150
+          ? pathology.epidemiologia.slice(0, 147) + '...'
+          : pathology.epidemiologia;
+        return epi;
+      }
+      break;
+    }
+    case 'cuidadosEnfermeria':
+    case 'nanda': {
+      // Show a key nursing assessment tip
+      const val = pathology.cuidadosEnfermeria.valoracion;
+      if (val.length > 0) {
+        return `Valoración prioritaria: ${val[0]}`;
+      }
+      break;
+    }
+    case 'complicaciones':
+    case 'emergencia': {
+      // Show the emergency level context
+      const levelLabels: Record<string, string> = {
+        critico: 'Nivel de emergencia: CRÍTICO — requiere atención inmediata',
+        moderado: 'Nivel de emergencia: MODERADO — vigilancia activa',
+        leve: 'Nivel de emergencia: LEVE — monitoreo estándar',
+        ninguno: 'Sin urgencia asociada',
+      };
+      return levelLabels[pathology.emergencyLevel] || undefined;
+    }
+    case 'tratamiento': {
+      const farma = pathology.tratamientoMedico.farmacologico;
+      if (farma && farma.length > 0 && farma[0].cuidadosEnfermeria.length > 0) {
+        return `Cuidado al administrar ${farma[0].nombre}: ${farma[0].cuidadosEnfermeria[0]}`;
+      }
+      break;
+    }
+    case 'diagnostico': {
+      const prueba = pathology.diagnostico.pruebas[0];
+      if (prueba?.valoresReferencia) {
+        return `Valores de referencia (${prueba.nombre}): ${prueba.valoresReferencia}`;
+      }
+      break;
+    }
+  }
+  return undefined;
 }
 
 // ─────────────────────────────────────────────
@@ -263,7 +369,10 @@ export function generateQuestion(
     options: shuffled,
     correctIndex,
     pathologyName: target.nombre,
+    pathologyId: target.id,
     explanation: buildExplanation(type, target.nombre, correctAnswer, target),
+    clinicalPearl: buildClinicalPearl(target, type),
+    keyFact: buildKeyFact(target, type),
   };
 }
 

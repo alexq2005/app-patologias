@@ -228,7 +228,10 @@ export interface QuizQuestion {
   options: string[];
   correctIndex: number;
   pathologyName: string;
+  pathologyId: string;
   explanation: string;
+  clinicalPearl?: string;
+  keyFact?: string;
 }
 
 export interface QuizSession {
