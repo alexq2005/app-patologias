@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-03-27 — Sesion 3: Quiz educativo — aprender de las respuestas
+
+### Commits realizados (2)
+
+| # | Hash | Tipo | Descripcion |
+|---|------|------|-------------|
+| 1 | `d61dae2` | feat | Transformar quiz en herramienta educativa con feedback enriquecido |
+| 2 | `f21736f` | chore | Rebuild del bundle Android |
+
+### Cambios detallados
+
+**Quiz educativo — feedback enriquecido por pregunta**
+- **"¿Sabías que...?"** (clinicalPearl): muestra la definición clínica de la patología tras cada respuesta
+- **"Dato clave"** (keyFact): epidemiología, nivel de emergencia, valores de referencia, o cuidados farmacológicos según el tipo de pregunta
+- **"Ver patología completa"**: botón que navega al detalle de la patología para profundizar
+- **Explicaciones mejoradas**: incluyen signos/síntomas relacionados, intervenciones de enfermería, dosis farmacológicas, valores de referencia de pruebas diagnósticas, definiciones NANDA con características definitorias
+
+**Resumen de quiz — revisión de errores**
+- **"Revisar errores — ¡Aprende!"**: sección expandible que muestra cada pregunta fallada con:
+  - Tu respuesta vs respuesta correcta (visual con colores)
+  - Explicación completa del por qué
+  - Clinical pearl de la patología
+  - Botón "Estudiar [patología]" para ir al detalle
+- **"Consejo de estudio"**: mensaje motivacional adaptado al porcentaje (>=80%, 60-79%, <60%)
+
+**Tipos actualizados**
+- `QuizQuestion` ahora incluye: `pathologyId`, `clinicalPearl?`, `keyFact?`
+- `buildClinicalPearl()` y `buildKeyFact()` nuevas funciones en useQuiz.ts
+
+### Estado del proyecto post-sesion
+
+| Aspecto | Estado |
+|---------|--------|
+| TypeScript | 0 errores |
+| Tests | 13/13 pasan |
+| Bundle JS | OK (52 assets) |
+
+---
+
 ## 2026-03-27 — Sesion 2: Visual upgrade + Diagnostico diferencial + Testing
 
 ### Commits realizados (7)
