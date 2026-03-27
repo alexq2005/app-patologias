@@ -622,7 +622,7 @@ export function QuizSessionScreen({ navigation, route }: Props) {
   if (showSummary) {
     return (
       <View style={{ flex: 1, backgroundColor: colors.background }}>
-        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <StatusBar barStyle={colors.background === '#0F172A' ? 'light-content' : 'dark-content'} backgroundColor={colors.background} />
         <SummaryScreen
           session={session}
           category={categoryLabel}
@@ -645,7 +645,7 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <StatusBar barStyle={colors.background === '#0F172A' ? 'light-content' : 'dark-content'} backgroundColor={colors.background} />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -745,6 +745,27 @@ export function QuizSessionScreen({ navigation, route }: Props) {
                   {isCorrect ? '¡Correcto!' : 'Respuesta incorrecta'}
                 </Text>
               </View>
+              {!isCorrect && (
+                <View style={{
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                  backgroundColor: colors.quizCorrect + '12',
+                  borderRadius: 10,
+                  padding: rs.space(10),
+                  marginBottom: rs.space(8),
+                  gap: rs.space(6),
+                }}>
+                  <MaterialCommunityIcons name="check-circle" size={16} color={colors.quizCorrect} style={{ marginTop: 2 }} />
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ fontSize: rs.font(11), fontWeight: '600', color: colors.quizCorrect, marginBottom: 2 }}>
+                      Respuesta correcta:
+                    </Text>
+                    <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+                      {currentQ.options[currentQ.correctIndex]}
+                    </Text>
+                  </View>
+                </View>
+              )}
               <Text style={styles.explanationText}>{currentQ.explanation}</Text>
             </View>
           </Animated.View>
@@ -822,7 +843,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
     questionText: {
       fontSize: rs.font(16),
       fontWeight: '700',
-      color: '#1E293B',
+      color: colors.text,
       lineHeight: 24,
     },
     optionsContainer: {
@@ -845,7 +866,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
     },
     explanationText: {
       fontSize: rs.font(13),
-      color: '#64748B',
+      color: colors.textSecondary,
       lineHeight: 19,
     },
     nextButton: {
