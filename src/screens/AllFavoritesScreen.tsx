@@ -98,10 +98,16 @@ export function AllFavoritesScreen({ navigation }: Props) {
 
   const renderEmpty = () => (
     <View style={styles.emptyContainer}>
-      <MaterialCommunityIcons name="heart-off-outline" size={rs.font(64)} color={colors.textLight} />
-      <Text style={styles.emptyTitle}>Sin favoritos</Text>
+      <View style={{
+        width: rs.space(80), height: rs.space(80), borderRadius: rs.space(40),
+        backgroundColor: colors.primary + '12', alignItems: 'center', justifyContent: 'center',
+        marginBottom: rs.space(16),
+      }}>
+        <MaterialCommunityIcons name="heart-plus-outline" size={rs.font(36)} color={colors.primary} />
+      </View>
+      <Text style={styles.emptyTitle}>Guardá tus patologías</Text>
       <Text style={styles.emptySubtitle}>
-        Agrega patologias a favoritos tocando el icono de corazon en cualquier ficha.
+        Tocá el corazón en cualquier patología para acceder rápido desde acá.
       </Text>
     </View>
   );

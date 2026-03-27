@@ -19,6 +19,7 @@ import {
   StatusBar,
   Animated,
   BackHandler,
+  Alert,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -493,23 +494,43 @@ export function QuizSessionScreen({ navigation, route }: Props) {
     setSession(generated);
   }, []);  // run once
 
-  // Block native back during quiz
+  // Confirm exit during quiz
+  const confirmExit = useCallback(() => {
+    Alert.alert(
+      'Salir del test',
+      '¿Estás seguro? Se perderá tu progreso actual.',
+      [
+        { text: 'Continuar test', style: 'cancel' },
+        { text: 'Salir', style: 'destructive', onPress: () => navigation.goBack() },
+      ],
+    );
+  }, [navigation]);
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => null,
+      headerLeft: showSummary
+        ? undefined
+        : () => (
+            <TouchableOpacity onPress={confirmExit} style={{ padding: 8 }}>
+              <MaterialCommunityIcons name="close" size={24} color={colors.text} />
+            </TouchableOpacity>
+          ),
       gestureEnabled: false,
       title: showSummary ? 'Resultado' : `Pregunta ${(session?.currentIndex ?? 0) + 1}`,
     });
-  }, [navigation, showSummary, session?.currentIndex]);
+  }, [navigation, showSummary, session?.currentIndex, confirmExit, colors.text]);
 
-  // Also block Android hardware back button during quiz
+  // Android hardware back button — confirm exit during quiz
   useEffect(() => {
     const handler = BackHandler.addEventListener('hardwareBackPress', () => {
-      if (!showSummary) return true; // block back
+      if (!showSummary) {
+        confirmExit();
+        return true;
+      }
       return false;
     });
     return () => handler.remove();
-  }, [showSummary]);
+  }, [showSummary, confirmExit]);
 
   // Answer feedback animation
   const feedbackOpacity = useRef(new Animated.Value(0)).current;

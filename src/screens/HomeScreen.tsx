@@ -17,7 +17,6 @@ import {
   Dimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   CompositeNavigationProp,
@@ -32,7 +31,7 @@ import { usePathologyData } from '../hooks/usePathologyData';
 import { useRecentPathologies } from '../hooks/useRecentPathologies';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
-import { BODY_SYSTEM_COLORS, BODY_SYSTEM_ICONS, type ThemeColors } from '../utils/colors';
+import { BODY_SYSTEM_COLORS, type ThemeColors } from '../utils/colors';
 import { SPACING, RADIUS } from '../utils/spacing';
 import { useTabBar } from '../context/TabBarContext';
 import { getSystemImage } from '../utils/systemImages';
@@ -80,17 +79,17 @@ function useFadeIn(duration = 500, delay = 0) {
 interface QuickAction {
   id: string;
   label: string;
-  icon: string;
   gradient: [string, string];
+  image: ReturnType<typeof require>;
 }
 
 const QUICK_ACTIONS: QuickAction[] = [
-  { id: 'buscar',     label: 'Buscar',      icon: 'magnify',           gradient: ['#3B82F6', '#1D4ED8'] },
-  { id: 'test',       label: 'Test',         icon: 'head-question',     gradient: ['#8B5CF6', '#6D28D9'] },
-  { id: 'protocolos', label: 'Protocolos',   icon: 'hospital-box',      gradient: ['#EF4444', '#DC2626'] },
-  { id: 'nanda',      label: 'NANDA',        icon: 'clipboard-pulse',   gradient: ['#F59E0B', '#D97706'] },
-  { id: 'lab',        label: 'Lab',          icon: 'flask',             gradient: ['#10B981', '#059669'] },
-  { id: 'escalas',    label: 'Escalas',      icon: 'chart-timeline-variant-shimmer', gradient: ['#EC4899', '#DB2777'] },
+  { id: 'buscar',     label: 'Buscar',      gradient: ['#3B82F6', '#1D4ED8'], image: require('../assets/images/conditions/brain_ct.jpg') },
+  { id: 'test',       label: 'Test',         gradient: ['#8B5CF6', '#6D28D9'], image: require('../assets/images/conditions/surgery.jpg') },
+  { id: 'protocolos', label: 'Protocolos',   gradient: ['#EF4444', '#DC2626'], image: require('../assets/images/conditions/iv_drip.jpg') },
+  { id: 'nanda',      label: 'NANDA',        gradient: ['#F59E0B', '#D97706'], image: require('../assets/images/conditions/heart_monitor.jpg') },
+  { id: 'lab',        label: 'Lab',          gradient: ['#10B981', '#059669'], image: require('../assets/images/conditions/blood_pressure.jpg') },
+  { id: 'escalas',    label: 'Escalas',      gradient: ['#EC4899', '#DB2777'], image: require('../assets/images/scales/pain_scale.jpg') },
 ];
 
 // ─────────────────────────────────────────────
@@ -192,6 +191,36 @@ export function HomeScreen({ navigation }: Props) {
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
+      {/* ── Decorative background ── */}
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <LinearGradient
+          colors={isDark
+            ? [colors.gradientStart + '15', colors.background, colors.background]
+            : [colors.gradientStart + '08', colors.background, colors.primary + '05']
+          }
+          locations={[0, 0.35, 1]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={{ flex: 1 }}
+        />
+        {/* Decorative blurred circles */}
+        <View style={{
+          position: 'absolute', top: rs.space(400), right: -60,
+          width: 200, height: 200, borderRadius: 100,
+          backgroundColor: colors.primary + (isDark ? '08' : '06'),
+        }} />
+        <View style={{
+          position: 'absolute', top: rs.space(650), left: -80,
+          width: 250, height: 250, borderRadius: 125,
+          backgroundColor: colors.secondary + (isDark ? '06' : '04'),
+        }} />
+        <View style={{
+          position: 'absolute', bottom: rs.space(100), right: -40,
+          width: 180, height: 180, borderRadius: 90,
+          backgroundColor: colors.accent + (isDark ? '06' : '04'),
+        }} />
+      </View>
+
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + rs.space(90) }}
@@ -233,10 +262,7 @@ export function HomeScreen({ navigation }: Props) {
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
-                  <MaterialCommunityIcons
-                    name={isDark ? 'white-balance-sunny' : 'moon-waning-crescent'}
-                    size={20} color="#fff"
-                  />
+                  <Text style={{ fontSize: 18 }}>{isDark ? '☀️' : '🌙'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('SettingsScreen')}
@@ -247,7 +273,7 @@ export function HomeScreen({ navigation }: Props) {
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
-                  <MaterialCommunityIcons name="cog-outline" size={20} color="#fff" />
+                  <Text style={{ fontSize: 18 }}>⚙️</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -266,7 +292,7 @@ export function HomeScreen({ navigation }: Props) {
                 gap: rs.space(10),
               }}
             >
-              <MaterialCommunityIcons name="magnify" size={20} color="rgba(255,255,255,0.6)" />
+              <Text style={{ fontSize: 16 }}>🔍</Text>
               <Text style={{ fontSize: rs.font(14), color: 'rgba(255,255,255,0.5)', flex: 1 }}>
                 Buscar entre {pathologyCount} patologias...
               </Text>
@@ -275,28 +301,27 @@ export function HomeScreen({ navigation }: Props) {
             {/* Stats pills */}
             <View style={{ flexDirection: 'row', marginTop: rs.space(16), gap: rs.space(8) }}>
               {[
-                { icon: 'book-open-page-variant', value: `${pathologyCount}`, label: 'Patologías', color: '#fff' },
-                { icon: 'human-male-female', value: `${bodySystems.length}`, label: 'Sistemas', color: '#fff' },
-                { icon: 'heart', value: `${favoriteCount}`, label: 'Favoritos', color: '#FF6B8A' },
+                { value: `${pathologyCount}`, label: 'Patologías' },
+                { value: `${bodySystems.length}`, label: 'Sistemas' },
+                ...(favoriteCount > 0
+                  ? [{ value: `${favoriteCount}`, label: 'Favoritos' }]
+                  : [{ value: '17', label: 'Escalas' }]),
               ].map((stat, i) => (
                 <View
                   key={i}
                   style={{
                     flex: 1,
-                    flexDirection: 'row',
                     alignItems: 'center',
                     backgroundColor: 'rgba(255,255,255,0.12)',
                     borderRadius: 12,
-                    paddingVertical: rs.space(8),
-                    paddingHorizontal: rs.space(10),
-                    gap: rs.space(6),
+                    paddingVertical: rs.space(10),
+                    paddingHorizontal: rs.space(8),
                   }}
                 >
-                  <MaterialCommunityIcons name={stat.icon} size={14} color={stat.color} />
-                  <Text style={{ fontSize: rs.font(12), fontWeight: '800', color: '#fff' }}>
+                  <Text style={{ fontSize: rs.font(18), fontWeight: '900', color: '#fff' }}>
                     {stat.value}
                   </Text>
-                  <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.6)', fontWeight: '500' }}>
+                  <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.6)', fontWeight: '500', marginTop: 2 }}>
                     {stat.label}
                   </Text>
                 </View>
@@ -321,37 +346,40 @@ export function HomeScreen({ navigation }: Props) {
               <TouchableOpacity
                 key={action.id}
                 onPress={() => handleQuickAction(action.id)}
-                activeOpacity={0.8}
+                activeOpacity={0.85}
               >
-                <LinearGradient
-                  colors={action.gradient}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
+                <ImageBackground
+                  source={action.image}
                   style={{
-                    width: rs.space(72),
+                    width: rs.space(78),
                     height: rs.space(84),
-                    borderRadius: 20,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: rs.space(6),
+                    borderRadius: 18,
+                    overflow: 'hidden',
                     elevation: 4,
                     shadowColor: action.gradient[1],
                     shadowOffset: { width: 0, height: 4 },
                     shadowOpacity: 0.3,
                     shadowRadius: 8,
                   }}
+                  imageStyle={{ borderRadius: 18 }}
+                  resizeMode="cover"
                 >
-                  <View style={{
-                    width: 40, height: 40, borderRadius: 14,
-                    backgroundColor: 'rgba(255,255,255,0.2)',
-                    alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <MaterialCommunityIcons name={action.icon} size={22} color="#fff" />
-                  </View>
-                  <Text style={{ fontSize: rs.font(10), fontWeight: '700', color: '#fff', textAlign: 'center' }}>
-                    {action.label}
-                  </Text>
-                </LinearGradient>
+                  <LinearGradient
+                    colors={[action.gradient[0] + 'CC', action.gradient[1] + 'EE']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0.5, y: 1 }}
+                    style={{
+                      flex: 1,
+                      alignItems: 'center',
+                      justifyContent: 'flex-end',
+                      paddingBottom: rs.space(10),
+                    }}
+                  >
+                    <Text style={{ fontSize: rs.font(11), fontWeight: '800', color: '#fff', textAlign: 'center', textShadowColor: 'rgba(0,0,0,0.3)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3 }}>
+                      {action.label}
+                    </Text>
+                  </LinearGradient>
+                </ImageBackground>
               </TouchableOpacity>
             ))}
           </ScrollView>
@@ -365,8 +393,7 @@ export function HomeScreen({ navigation }: Props) {
             marginTop: rs.space(24),
             paddingHorizontal: rs.space(20),
           }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(6) }}>
-              <MaterialCommunityIcons name="star-four-points" size={16} color={colors.primary} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12) }}>
               <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: colors.text, letterSpacing: -0.3 }}>
                 Patología del día
               </Text>
@@ -395,15 +422,10 @@ export function HomeScreen({ navigation }: Props) {
                   {/* System badge + Emergency */}
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: rs.space(8) }}>
                     <View style={{
-                      flexDirection: 'row', alignItems: 'center', gap: 4,
                       backgroundColor: podColor + '40', borderRadius: 20,
-                      paddingHorizontal: rs.space(10), paddingVertical: rs.space(4),
+                      paddingHorizontal: rs.space(12), paddingVertical: rs.space(4),
                     }}>
-                      <MaterialCommunityIcons
-                        name={BODY_SYSTEM_ICONS[pathologyOfTheDay.bodySystemId] ?? 'medical-bag'}
-                        size={12} color="#fff"
-                      />
-                      <Text style={{ fontSize: rs.font(11), fontWeight: '600', color: '#fff', textTransform: 'capitalize' }}>
+                      <Text style={{ fontSize: rs.font(11), fontWeight: '700', color: '#fff', textTransform: 'capitalize' }}>
                         {pathologyOfTheDay.bodySystemId.replace(/_/g, ' ')}
                       </Text>
                     </View>
@@ -420,17 +442,14 @@ export function HomeScreen({ navigation }: Props) {
 
                   {/* CTA */}
                   <View style={{
-                    flexDirection: 'row', alignItems: 'center',
                     alignSelf: 'flex-start',
                     backgroundColor: 'rgba(255,255,255,0.2)',
                     borderRadius: 12, paddingHorizontal: rs.space(14),
                     paddingVertical: rs.space(8), marginTop: rs.space(12),
-                    gap: rs.space(6),
                   }}>
                     <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: '#fff' }}>
-                      Ver detalle
+                      Ver detalle →
                     </Text>
-                    <MaterialCommunityIcons name="arrow-right" size={16} color="#fff" />
                   </View>
                 </LinearGradient>
               </ImageBackground>
@@ -446,12 +465,9 @@ export function HomeScreen({ navigation }: Props) {
           paddingHorizontal: rs.space(20),
         }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: rs.space(14) }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(6) }}>
-              <MaterialCommunityIcons name="human" size={16} color={colors.primary} />
-              <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: colors.text, letterSpacing: -0.3 }}>
-                Sistemas corporales
-              </Text>
-            </View>
+            <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: colors.text, letterSpacing: -0.3 }}>
+              Sistemas corporales
+            </Text>
             <TouchableOpacity onPress={() => navigation.navigate('Sistemas')} activeOpacity={0.7}>
               <Text style={{ fontSize: rs.font(13), fontWeight: '600', color: colors.primary }}>
                 Ver todos
@@ -475,27 +491,29 @@ export function HomeScreen({ navigation }: Props) {
                     imageStyle={{ borderRadius: 18 }}
                   >
                     <LinearGradient
-                      colors={[sysColor + '90', sysColor + 'E0']}
+                      colors={['transparent', sysColor + 'D0']}
+                      locations={[0.2, 1]}
                       style={{
                         flex: 1, borderRadius: 18,
                         padding: rs.space(14),
-                        justifyContent: 'flex-end',
+                        justifyContent: 'space-between',
                       }}
                     >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(6) }}>
-                        <MaterialCommunityIcons
-                          name={BODY_SYSTEM_ICONS[system.id] ?? 'medical-bag'}
-                          size={18} color="#fff"
-                        />
-                        <View style={{ flex: 1 }}>
-                          <Text style={{ fontSize: rs.font(13), fontWeight: '800', color: '#fff' }} numberOfLines={1}>
-                            {system.nombre}
-                          </Text>
-                          <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.8)', fontWeight: '500' }}>
-                            {system.count} patologias
-                          </Text>
-                        </View>
+                      <View style={{
+                        backgroundColor: '#fff', borderRadius: 8,
+                        paddingHorizontal: 6, paddingVertical: 2,
+                        alignSelf: 'flex-end', elevation: 2,
+                      }}>
+                        <Text style={{ fontSize: rs.font(10), fontWeight: '900', color: sysColor }}>
+                          {system.pathologyCount}
+                        </Text>
                       </View>
+                      <Text style={{
+                        fontSize: rs.font(13), fontWeight: '800', color: '#fff',
+                        textShadowColor: 'rgba(0,0,0,0.4)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3,
+                      }} numberOfLines={2}>
+                        {system.nombre}
+                      </Text>
                     </LinearGradient>
                   </ImageBackground>
                 </TouchableOpacity>
@@ -506,12 +524,9 @@ export function HomeScreen({ navigation }: Props) {
 
         {/* ── RECENTLY VIEWED ── */}
         <View style={{ marginTop: rs.space(28), paddingHorizontal: rs.space(20) }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(6) }}>
-            <MaterialCommunityIcons name="history" size={16} color={colors.primary} />
-            <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: colors.text, letterSpacing: -0.3 }}>
-              {recentPathologyObjects.length > 0 ? 'Vistas recientemente' : 'Comienza a explorar'}
-            </Text>
-          </View>
+          <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: colors.text, letterSpacing: -0.3, marginBottom: rs.space(12) }}>
+            {recentPathologyObjects.length > 0 ? 'Vistas recientemente' : 'Comienza a explorar'}
+          </Text>
 
           {recentPathologyObjects.length > 0 ? (
             <FlatList
@@ -533,23 +548,15 @@ export function HomeScreen({ navigation }: Props) {
                       padding: rs.space(12),
                     }, neuCard(colors)]}
                   >
-                    <View style={{
-                      width: 32, height: 32, borderRadius: 10,
-                      backgroundColor: sysColor + '18',
-                      alignItems: 'center', justifyContent: 'center',
-                      marginBottom: rs.space(8),
-                    }}>
-                      <MaterialCommunityIcons
-                        name={BODY_SYSTEM_ICONS[item.bodySystemId] ?? 'medical-bag'}
-                        size={16} color={sysColor}
-                      />
-                    </View>
-                    <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text, marginBottom: rs.space(4) }} numberOfLines={2}>
+                    <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text, marginBottom: rs.space(6) }} numberOfLines={2}>
                       {item.nombre}
                     </Text>
-                    <Text style={{ fontSize: rs.font(10), color: sysColor, fontWeight: '600', textTransform: 'capitalize' }}>
-                      {item.bodySystemId.replace(/_/g, ' ')}
-                    </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(6) }}>
+                      <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: sysColor }} />
+                      <Text style={{ fontSize: rs.font(10), color: sysColor, fontWeight: '600', textTransform: 'capitalize' }}>
+                        {item.bodySystemId.replace(/_/g, ' ')}
+                      </Text>
+                    </View>
                   </TouchableOpacity>
                 );
               }}
@@ -566,24 +573,15 @@ export function HomeScreen({ navigation }: Props) {
                 gap: rs.space(14),
               }, neuCard(colors)]}
             >
-              <LinearGradient
-                colors={[colors.primary + '20', colors.primary + '08']}
-                style={{
-                  width: 52, height: 52, borderRadius: 16,
-                  alignItems: 'center', justifyContent: 'center',
-                }}
-              >
-                <MaterialCommunityIcons name="compass-outline" size={26} color={colors.primary} />
-              </LinearGradient>
               <View style={{ flex: 1 }}>
                 <Text style={{ fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginBottom: 2 }}>
                   Explora los {bodySystems.length} sistemas
                 </Text>
                 <Text style={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(17) }}>
-                  Accede a {pathologyCount} patologias organizadas por sistema corporal
+                  Accedé a {pathologyCount} patologías organizadas por sistema corporal
                 </Text>
               </View>
-              <MaterialCommunityIcons name="chevron-right" size={22} color={colors.textLight} />
+              <Text style={{ fontSize: rs.font(18), color: colors.textLight }}>→</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -604,16 +602,7 @@ export function HomeScreen({ navigation }: Props) {
                   borderRadius: 18, padding: rs.space(16), gap: rs.space(12),
                 }}
               >
-                <View style={{
-                  width: 44, height: 44, borderRadius: 14,
-                  backgroundColor: 'rgba(255,255,255,0.2)',
-                  alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <MaterialCommunityIcons
-                    name={trialExpired ? 'lock-outline' : 'clock-outline'}
-                    size={22} color="#fff"
-                  />
-                </View>
+                <Text style={{ fontSize: rs.font(24) }}>{trialExpired ? '🔒' : '⏳'}</Text>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontSize: rs.font(14), fontWeight: '800', color: '#fff' }}>
                     {trialExpired ? 'Período de prueba finalizado' : 'Período de prueba'}
@@ -624,7 +613,7 @@ export function HomeScreen({ navigation }: Props) {
                       : `${trialDaysLeft} ${trialDaysLeft === 1 ? 'día' : 'días'} restantes · Toca para ver planes`}
                   </Text>
                 </View>
-                <MaterialCommunityIcons name="chevron-right" size={22} color="rgba(255,255,255,0.7)" />
+                <Text style={{ fontSize: rs.font(18), color: 'rgba(255,255,255,0.7)' }}>→</Text>
               </LinearGradient>
             </TouchableOpacity>
           </View>
@@ -637,7 +626,7 @@ export function HomeScreen({ navigation }: Props) {
             backgroundColor: colors.success + '15', borderRadius: 20,
             paddingHorizontal: rs.space(14), paddingVertical: rs.space(5),
           }}>
-            <MaterialCommunityIcons name="wifi-off" size={12} color={colors.success} />
+            <Text style={{ fontSize: 10 }}>📡</Text>
             <Text style={{ fontSize: rs.font(11), fontWeight: '600', color: colors.success }}>
               Funciona sin conexion
             </Text>

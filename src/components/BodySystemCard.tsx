@@ -12,10 +12,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
-import { BODY_SYSTEM_ICONS } from '../utils/colors';
 import { getSystemImage } from '../utils/systemImages';
 import type { ThemeColors } from '../utils/colors';
 import type { BodySystem } from '../types';
@@ -55,8 +53,6 @@ export function BodySystemCard({ system, onPress, pathologyCount }: BodySystemCa
     onPress(system);
   }, [onPress, system]);
 
-  const iconName = BODY_SYSTEM_ICONS[system.id] ?? 'hospital-box-outline';
-
   return (
     <TouchableWithoutFeedback
       onPress={handlePress}
@@ -89,8 +85,7 @@ export function BodySystemCard({ system, onPress, pathologyCount }: BodySystemCa
             </View>
 
             {/* Bottom content */}
-            <View style={styles.bottomContent}>
-              <Icon name={iconName} size={rs.font(20)} color="#fff" />
+            <View>
               <Text style={styles.systemName} numberOfLines={2}>
                 {system.nombre}
               </Text>
@@ -132,26 +127,24 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   badge: {
-    backgroundColor: 'rgba(255,255,255,0.25)',
+    backgroundColor: '#fff',
     borderRadius: 10,
     paddingHorizontal: 8,
     paddingVertical: 3,
+    elevation: 2,
   },
   badgeText: {
     fontSize: 12,
-    fontWeight: '800',
-    color: '#fff',
-  },
-  bottomContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    fontWeight: '900',
+    color: '#333',
   },
   systemName: {
-    flex: 1,
     fontSize: 14,
     fontWeight: '800',
     color: '#fff',
     lineHeight: 18,
+    textShadowColor: 'rgba(0,0,0,0.4)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 4,
   },
 });

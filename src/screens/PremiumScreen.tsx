@@ -13,6 +13,7 @@ import {
   StatusBar,
   Animated,
   ActivityIndicator,
+  ImageBackground,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -157,28 +158,30 @@ export function PremiumScreen({ navigation }: Props) {
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
-      {/* Header */}
-      <LinearGradient
-        colors={[colors.gradientStart, colors.gradientEnd]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
+      {/* Header with clinical photo */}
+      <ImageBackground
+        source={require('../assets/images/conditions/surgery.jpg')}
         style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        resizeMode="cover"
       >
+        <LinearGradient
+          colors={[colors.gradientStart + 'DD', colors.gradientEnd + 'BB', 'transparent']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={StyleSheet.absoluteFillObject}
+        />
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color={colors.gradientText} />
+          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color="#FFFFFF" />
         </TouchableOpacity>
         <Animated.View style={[styles.headerContent, { opacity, transform: [{ translateY }] }]}>
-          <View style={styles.starIcon}>
-            <MaterialCommunityIcons name="star-circle" size={rs.font(52)} color={colors.gradientText} />
-          </View>
-          <Text style={styles.headerTitle}>Premium</Text>
-          <Text style={styles.headerSubtitle}>Acceso completo a todos los contenidos</Text>
+          <Text style={[styles.headerTitle, { color: '#FFFFFF' }]}>Premium</Text>
+          <Text style={[styles.headerSubtitle, { color: 'rgba(255,255,255,0.85)' }]}>Acceso completo a todos los contenidos</Text>
         </Animated.View>
-      </LinearGradient>
+      </ImageBackground>
 
       <ScrollView
         style={styles.scroll}

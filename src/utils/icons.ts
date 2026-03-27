@@ -7,7 +7,7 @@ export const TAB_ICONS: Record<string, string> = {
   Inicio: 'home',
   Sistemas: 'human-male-board',
   Busqueda: 'magnify',
-  Escalas: 'chart-timeline-variant',
+  Escalas: 'clipboard-pulse',
   Herramientas: 'wrench',
 };
 
@@ -15,13 +15,13 @@ export const TAB_ICONS_OUTLINE: Record<string, string> = {
   Inicio: 'home-outline',
   Sistemas: 'human-male-board-poll',
   Busqueda: 'magnify',
-  Escalas: 'chart-timeline-variant',
+  Escalas: 'clipboard-pulse-outline',
   Herramientas: 'wrench-outline',
 };
 
 export const FEATURE_ICONS: Record<string, string> = {
   quiz: 'head-question-outline',
-  scales: 'chart-timeline-variant-shimmer',
+  scales: 'clipboard-pulse',
   labValues: 'flask-outline',
   protocols: 'hospital-box-outline',
   nanda: 'clipboard-check-outline',
