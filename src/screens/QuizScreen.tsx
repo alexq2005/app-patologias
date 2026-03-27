@@ -17,6 +17,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { Image } from 'react-native';
 import type { RootStackParamList, BodySystemId } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
@@ -24,6 +25,7 @@ import { useQuiz } from '../hooks/useQuiz';
 import { PremiumGate } from '../components/PremiumGate';
 import type { ThemeColors } from '../utils/colors';
 import { BODY_SYSTEM_COLORS, BODY_SYSTEM_ICONS } from '../utils/colors';
+import { getSystemImage } from '../utils/systemImages';
 import { neuCard, neuCardSubtle, neuPill } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
 
@@ -94,35 +96,53 @@ function SystemChip({
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
-      style={[
-        neuPill(colors),
-        {
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingHorizontal: rs.space(SPACING.md),
-          paddingVertical: rs.space(SPACING.sm),
-          marginRight: rs.space(SPACING.sm),
-          marginBottom: rs.space(SPACING.sm),
-          backgroundColor: selected ? chipColor + '20' : colors.neuSurface,
-          borderWidth: selected ? 1.5 : 0.5,
-          borderColor: selected ? chipColor : colors.neuBorderDark,
-        },
-      ]}
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingRight: rs.space(12),
+        paddingLeft: rs.space(4),
+        paddingVertical: rs.space(4),
+        marginRight: rs.space(6),
+        marginBottom: rs.space(6),
+        backgroundColor: selected ? chipColor + '15' : colors.neuSurface,
+        borderWidth: selected ? 1.5 : 1,
+        borderColor: selected ? chipColor : colors.border + '50',
+        borderRadius: 22,
+      }}
     >
-      {icon && (
-        <MaterialCommunityIcons
-          name={icon}
-          size={14}
-          color={selected ? chipColor : colors.textSecondary}
-          style={{ marginRight: rs.space(4) }}
+      {/* Thumbnail image or icon */}
+      {systemId ? (
+        <Image
+          source={getSystemImage(systemId)}
+          style={{
+            width: 30, height: 30, borderRadius: 15,
+            marginRight: rs.space(8),
+            borderWidth: selected ? 1.5 : 0,
+            borderColor: chipColor,
+          }}
+          resizeMode="cover"
         />
-      )}
+      ) : icon ? (
+        <View style={{
+          width: 30, height: 30, borderRadius: 15,
+          backgroundColor: selected ? chipColor + '20' : colors.primary + '12',
+          alignItems: 'center', justifyContent: 'center',
+          marginRight: rs.space(8),
+        }}>
+          <MaterialCommunityIcons
+            name={icon}
+            size={16}
+            color={selected ? chipColor : colors.primary}
+          />
+        </View>
+      ) : null}
       <Text
         style={{
-          fontSize: rs.font(13),
+          fontSize: rs.font(12),
           fontWeight: selected ? '700' : '500',
           color: selected ? chipColor : colors.textSecondary,
         }}
+        numberOfLines={1}
       >
         {nombre}
       </Text>
@@ -143,23 +163,28 @@ function CountPill({ count, selected, onPress, colors, rs }: CountPillProps) {
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
-      style={[
-        neuPill(colors),
-        {
-          paddingHorizontal: rs.space(SPACING.lg),
-          paddingVertical: rs.space(SPACING.sm),
-          marginRight: rs.space(SPACING.sm),
-          backgroundColor: selected ? colors.primary + '20' : colors.neuSurface,
-          borderWidth: selected ? 1.5 : 0.5,
-          borderColor: selected ? colors.primary : colors.neuBorderDark,
-        },
-      ]}
+      style={{
+        width: rs.space(48),
+        height: rs.space(40),
+        borderRadius: 12,
+        marginRight: rs.space(8),
+        backgroundColor: selected ? colors.primary : colors.neuSurface,
+        borderWidth: selected ? 0 : 1,
+        borderColor: colors.border + '60',
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: selected ? 3 : 0,
+        shadowColor: colors.primary,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: selected ? 0.3 : 0,
+        shadowRadius: 4,
+      }}
     >
       <Text
         style={{
           fontSize: rs.font(15),
           fontWeight: selected ? '800' : '500',
-          color: selected ? colors.primary : colors.textSecondary,
+          color: selected ? '#fff' : colors.textSecondary,
         }}
       >
         {count}
@@ -335,16 +360,17 @@ export function QuizScreen({ navigation }: Props) {
           {/* ── Config card ──────────────────────────── */}
           <View style={[neuCard(colors), styles.configCard]}>
             <Text style={styles.sectionLabel}>Sistema corporal</Text>
+            {/* "Todos" on its own row */}
+            <SystemChip
+              systemId={null}
+              nombre="Todos los sistemas"
+              icon="view-grid-outline"
+              selected={selectedCategory === null}
+              onPress={() => setSelectedCategory(null)}
+              colors={colors}
+              rs={rs}
+            />
             <View style={styles.chipsRow}>
-              <SystemChip
-                systemId={null}
-                nombre="Todos"
-                icon="view-grid-outline"
-                selected={selectedCategory === null}
-                onPress={() => setSelectedCategory(null)}
-                colors={colors}
-                rs={rs}
-              />
               {bodySystems.map(sys => (
                 <SystemChip
                   key={sys.id}
@@ -377,17 +403,23 @@ export function QuizScreen({ navigation }: Props) {
             </View>
 
             <TouchableOpacity
-              style={styles.startButton}
               onPress={handleStart}
               activeOpacity={0.8}
             >
-              <MaterialCommunityIcons
-                name="play-circle-outline"
-                size={20}
-                color="#FFFFFF"
-                style={{ marginRight: rs.space(SPACING.sm) }}
-              />
-              <Text style={styles.startButtonText}>Iniciar Test</Text>
+              <LinearGradient
+                colors={[colors.gradientStart, colors.gradientEnd]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.startButton}
+              >
+                <MaterialCommunityIcons
+                  name="rocket-launch-outline"
+                  size={20}
+                  color="#FFFFFF"
+                  style={{ marginRight: rs.space(SPACING.sm) }}
+                />
+                <Text style={styles.startButtonText}>Iniciar Test</Text>
+              </LinearGradient>
             </TouchableOpacity>
           </View>
 
@@ -395,20 +427,24 @@ export function QuizScreen({ navigation }: Props) {
           {totalSessions > 0 && (
             <View style={styles.statsRow}>
               <View style={[neuCardSubtle(colors), styles.statCard]}>
-                <MaterialCommunityIcons
-                  name="star-outline"
-                  size={22}
-                  color={colors.quiz}
-                />
+                <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: colors.quiz + '15', alignItems: 'center', justifyContent: 'center' }}>
+                  <MaterialCommunityIcons
+                    name="trophy-outline"
+                    size={22}
+                    color={colors.quiz}
+                  />
+                </View>
                 <Text style={styles.statValue}>{averageScore}%</Text>
                 <Text style={styles.statLabel}>Promedio</Text>
               </View>
               <View style={[neuCardSubtle(colors), styles.statCard]}>
-                <MaterialCommunityIcons
-                  name="clipboard-check-outline"
-                  size={22}
-                  color={colors.quiz}
-                />
+                <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: colors.quiz + '15', alignItems: 'center', justifyContent: 'center' }}>
+                  <MaterialCommunityIcons
+                    name="lightning-bolt-outline"
+                    size={22}
+                    color={colors.quiz}
+                  />
+                </View>
                 <Text style={styles.statValue}>{totalSessions}</Text>
                 <Text style={styles.statLabel}>Sesiones</Text>
               </View>
@@ -434,13 +470,15 @@ export function QuizScreen({ navigation }: Props) {
 
           {results.length === 0 && (
             <View style={styles.emptyState}>
-              <MaterialCommunityIcons
-                name="brain"
-                size={48}
-                color={colors.textLight}
-              />
+              <View style={{
+                width: 72, height: 72, borderRadius: 22,
+                backgroundColor: colors.primary + '12', alignItems: 'center', justifyContent: 'center',
+                marginBottom: 12,
+              }}>
+                <MaterialCommunityIcons name="head-lightbulb-outline" size={34} color={colors.primary} />
+              </View>
               <Text style={styles.emptyText}>
-                Completa tu primer test para ver tu historial
+                Completá tu primer test para ver tu historial
               </Text>
             </View>
           )}
@@ -507,18 +545,17 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       marginBottom: rs.space(SPACING.xl),
     },
     startButton: {
-      backgroundColor: colors.primary,
       borderRadius: RADIUS.lg,
       paddingVertical: rs.space(SPACING.md),
       paddingHorizontal: rs.space(SPACING.xxl),
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      elevation: 4,
+      flexDirection: 'row' as const,
+      alignItems: 'center' as const,
+      justifyContent: 'center' as const,
+      elevation: 6,
       shadowColor: colors.primary,
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.3,
-      shadowRadius: 4,
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.35,
+      shadowRadius: 8,
     },
     startButtonText: {
       fontSize: rs.font(16),

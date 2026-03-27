@@ -26,6 +26,7 @@ import {
   Share,
   Alert,
   Animated,
+  Linking,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -875,9 +876,10 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   // ── Navigate to related pathology ─────────────────────────
   const navigateToRelated = useCallback(
     (relId: string) => {
-      navigation.push('PathologyDetail', { pathologyId: relId });
+      const related = getPathologyById(relId);
+      navigation.push('PathologyDetail', { pathologyId: relId, pathologyName: related?.nombre });
     },
-    [navigation],
+    [navigation, getPathologyById],
   );
 
   // ── Section quick-nav config ─────────────────────────────
@@ -936,6 +938,47 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
             </Text>
           </View>
         </View>
+
+        {/* ── Video button ── */}
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => {
+            const url = pathology.videoUrl
+              ? pathology.videoUrl
+              : `https://www.youtube.com/results?search_query=enfermeria+${encodeURIComponent(pathology.nombre)}`;
+            Linking.openURL(url);
+          }}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginHorizontal: rs.space(16),
+            marginBottom: rs.space(12),
+            paddingVertical: rs.space(10),
+            paddingHorizontal: rs.space(14),
+            backgroundColor: '#FF000015',
+            borderRadius: 14,
+            borderWidth: 1,
+            borderColor: '#FF000025',
+            gap: rs.space(10),
+          }}
+        >
+          <View style={{
+            width: 36, height: 36, borderRadius: 10,
+            backgroundColor: '#FF0000',
+            alignItems: 'center', justifyContent: 'center',
+          }}>
+            <MaterialCommunityIcons name="play" size={20} color="#fff" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+              {pathology.videoUrl ? 'Ver video explicativo' : 'Buscar videos en YouTube'}
+            </Text>
+            <Text style={{ fontSize: rs.font(11), color: colors.textSecondary, marginTop: 1 }}>
+              {pathology.videoUrl ? 'Video seleccionado para esta patología' : `"${pathology.nombre}" enfermería`}
+            </Text>
+          </View>
+          <MaterialCommunityIcons name="open-in-new" size={16} color={colors.textLight} />
+        </TouchableOpacity>
 
         {/* ── Quick Section Nav ── */}
         <ScrollView
@@ -1503,7 +1546,7 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
                     style={{ marginRight: rs.space(4) }}
                   />
                   <Text style={[styles.relatedPillText, { color: systemColor }]}>
-                    {relId}
+                    {getPathologyById(relId)?.nombre ?? relId}
                   </Text>
                 </TouchableOpacity>
               ))}

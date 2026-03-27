@@ -162,10 +162,16 @@ export function AllNotesScreen({ navigation }: Props) {
 
   const renderEmpty = () => (
     <View style={styles.emptyContainer}>
-      <MaterialCommunityIcons name="note-off-outline" size={rs.font(64)} color={colors.textLight} />
-      <Text style={styles.emptyTitle}>Sin notas</Text>
+      <View style={{
+        width: rs.space(80), height: rs.space(80), borderRadius: rs.space(40),
+        backgroundColor: colors.primary + '12', alignItems: 'center', justifyContent: 'center',
+        marginBottom: rs.space(16),
+      }}>
+        <MaterialCommunityIcons name="note-edit-outline" size={rs.font(36)} color={colors.primary} />
+      </View>
+      <Text style={styles.emptyTitle}>Tus apuntes personales</Text>
       <Text style={styles.emptySubtitle}>
-        Agrega notas desde el detalle de cualquier patologia para estudiarlas o recordarlas aqui.
+        Creá notas desde el detalle de cualquier patología para repasar después.
       </Text>
     </View>
   );

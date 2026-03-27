@@ -136,9 +136,15 @@ export function SearchScreen() {
 
       {showEmpty && (
         <View style={styles.emptyState}>
-          <MaterialCommunityIcons name="magnify-remove-outline" size={48} color={colors.textLight} />
+          <View style={{
+            width: 72, height: 72, borderRadius: 36,
+            backgroundColor: colors.textLight + '15', alignItems: 'center', justifyContent: 'center',
+            marginBottom: 12,
+          }}>
+            <MaterialCommunityIcons name="text-search" size={32} color={colors.textSecondary} />
+          </View>
           <Text style={styles.emptyTitle}>Sin resultados</Text>
-          <Text style={styles.emptyText}>No se encontraron patologias para "{query}"</Text>
+          <Text style={styles.emptyText}>No se encontraron patologías para "{query}"</Text>
         </View>
       )}
 

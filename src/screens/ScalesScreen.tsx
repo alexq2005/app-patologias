@@ -111,78 +111,81 @@ export function ScalesScreen() {
   const renderItem = useCallback(
     ({ item }: { item: ClinicalScale }) => {
       const accentColor = SCALE_COLORS[item.categoria] ?? colors.primary;
-      const iconName = SCALE_ICONS[item.categoria] ?? 'clipboard-pulse-outline';
 
       return (
         <TouchableOpacity
           onPress={() => handleScalePress(item)}
-          activeOpacity={0.85}
+          activeOpacity={0.88}
           style={{
             marginHorizontal: rs.space(16),
-            marginVertical: rs.space(4),
-            borderRadius: 16,
+            marginVertical: rs.space(5),
+            borderRadius: 18,
             overflow: 'hidden',
-            elevation: 3,
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.1,
-            shadowRadius: 6,
+            elevation: 4,
+            shadowColor: accentColor,
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.2,
+            shadowRadius: 10,
           }}
         >
           <ImageBackground
             source={getScaleImage(item.categoria)}
-            style={{ width: '100%', minHeight: rs.space(90) }}
-            imageStyle={{ borderRadius: 16 }}
+            style={{ width: '100%', minHeight: rs.space(100) }}
+            imageStyle={{ borderRadius: 18 }}
           >
             <LinearGradient
-              colors={[accentColor + '95', accentColor + 'E5']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0.5 }}
+              colors={['transparent', accentColor + '40', accentColor + 'D8']}
+              locations={[0, 0.3, 1]}
+              start={{ x: 0.7, y: 0 }}
+              end={{ x: 0, y: 1 }}
               style={{
                 flex: 1,
-                borderRadius: 16,
-                padding: rs.space(14),
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: rs.space(12),
+                borderRadius: 18,
+                padding: rs.space(16),
+                justifyContent: 'flex-end',
               }}
             >
-              {/* Icon */}
+              {/* Abbreviation badge - top right */}
               <View style={{
-                width: 44, height: 44, borderRadius: 14,
-                backgroundColor: 'rgba(255,255,255,0.2)',
-                alignItems: 'center', justifyContent: 'center',
+                position: 'absolute', top: rs.space(12), right: rs.space(12),
+                backgroundColor: '#fff',
+                borderRadius: 10, paddingHorizontal: 10, paddingVertical: 4,
+                elevation: 2,
+                shadowColor: '#000', shadowOffset: { width: 0, height: 1 },
+                shadowOpacity: 0.15, shadowRadius: 3,
               }}>
-                <MaterialCommunityIcons name={iconName} size={24} color="#fff" />
+                <Text style={{ fontSize: rs.font(11), fontWeight: '900', color: accentColor, letterSpacing: 0.5 }}>
+                  {item.abreviatura}
+                </Text>
               </View>
 
-              {/* Content */}
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: rs.font(15), fontWeight: '800', color: '#fff' }} numberOfLines={1}>
-                  {item.nombre}
-                </Text>
-                <Text style={{ fontSize: rs.font(11), color: 'rgba(255,255,255,0.8)', marginTop: 2 }} numberOfLines={1}>
-                  {item.descripcion}
-                </Text>
+              {/* Bottom content */}
+              <Text style={{
+                fontSize: rs.font(16), fontWeight: '800', color: '#fff',
+                textShadowColor: 'rgba(0,0,0,0.4)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 4,
+              }} numberOfLines={1}>
+                {item.nombre}
+              </Text>
+              <Text style={{
+                fontSize: rs.font(11), color: 'rgba(255,255,255,0.9)', marginTop: 3,
+                textShadowColor: 'rgba(0,0,0,0.3)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3,
+              }} numberOfLines={2}>
+                {item.descripcion}
+              </Text>
+              <View style={{
+                flexDirection: 'row', alignItems: 'center', marginTop: rs.space(8), gap: rs.space(6),
+              }}>
                 <View style={{
-                  flexDirection: 'row', alignItems: 'center', gap: rs.space(8), marginTop: rs.space(6),
+                  width: 4, height: 4, borderRadius: 2,
+                  backgroundColor: 'rgba(255,255,255,0.7)',
+                }} />
+                <Text style={{
+                  fontSize: rs.font(10), color: 'rgba(255,255,255,0.75)',
+                  fontWeight: '600', textTransform: 'capitalize',
                 }}>
-                  <View style={{
-                    backgroundColor: 'rgba(255,255,255,0.2)',
-                    borderRadius: 8, paddingHorizontal: 8, paddingVertical: 2,
-                  }}>
-                    <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: '#fff' }}>
-                      {item.abreviatura}
-                    </Text>
-                  </View>
-                  <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.7)', textTransform: 'capitalize' }}>
-                    {item.categoria.replace(/_/g, ' ')}
-                  </Text>
-                </View>
+                  {item.categoria.replace(/_/g, ' ')}
+                </Text>
               </View>
-
-              {/* Arrow */}
-              <MaterialCommunityIcons name="chevron-right" size={22} color="rgba(255,255,255,0.6)" />
             </LinearGradient>
           </ImageBackground>
         </TouchableOpacity>
@@ -211,7 +214,7 @@ export function ScalesScreen() {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: rs.space(16), gap: rs.space(10) }}
+              contentContainerStyle={{ paddingHorizontal: rs.space(16), gap: rs.space(12) }}
             >
               {featuredScales.map(scale => {
                 const accentColor = SCALE_COLORS[scale.categoria] ?? colors.primary;
@@ -219,43 +222,56 @@ export function ScalesScreen() {
                   <TouchableOpacity
                     key={scale.id}
                     onPress={() => handleScalePress(scale)}
-                    activeOpacity={0.85}
+                    activeOpacity={0.88}
                     style={{
-                      width: SCREEN_W * 0.42,
-                      height: rs.space(140),
-                      borderRadius: 20,
+                      width: SCREEN_W * 0.44,
+                      height: rs.space(160),
+                      borderRadius: 22,
                       overflow: 'hidden',
-                      elevation: 4,
+                      elevation: 5,
+                      shadowColor: accentColor,
+                      shadowOffset: { width: 0, height: 4 },
+                      shadowOpacity: 0.3,
+                      shadowRadius: 10,
                     }}
                   >
                     <ImageBackground
                       source={getScaleImage(scale.categoria)}
                       style={{ flex: 1 }}
-                      imageStyle={{ borderRadius: 20 }}
+                      imageStyle={{ borderRadius: 22 }}
                     >
                       <LinearGradient
-                        colors={['transparent', accentColor + 'D0']}
-                        locations={[0.2, 1]}
+                        colors={['transparent', 'rgba(0,0,0,0.15)', accentColor + 'E0']}
+                        locations={[0, 0.45, 1]}
                         style={{
-                          flex: 1, borderRadius: 20,
-                          padding: rs.space(12),
+                          flex: 1, borderRadius: 22,
+                          padding: rs.space(14),
                           justifyContent: 'space-between',
                         }}
                       >
+                        {/* Badge top-left */}
                         <View style={{
-                          backgroundColor: 'rgba(255,255,255,0.25)',
-                          borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3,
+                          backgroundColor: '#fff',
+                          borderRadius: 10, paddingHorizontal: 10, paddingVertical: 4,
                           alignSelf: 'flex-start',
+                          elevation: 2,
                         }}>
-                          <Text style={{ fontSize: rs.font(11), fontWeight: '800', color: '#fff' }}>
+                          <Text style={{ fontSize: rs.font(12), fontWeight: '900', color: accentColor, letterSpacing: 0.5 }}>
                             {scale.abreviatura}
                           </Text>
                         </View>
+                        {/* Bottom text */}
                         <View>
-                          <Text style={{ fontSize: rs.font(13), fontWeight: '800', color: '#fff' }} numberOfLines={2}>
+                          <Text style={{
+                            fontSize: rs.font(14), fontWeight: '800', color: '#fff',
+                            textShadowColor: 'rgba(0,0,0,0.4)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3,
+                          }} numberOfLines={2}>
                             {scale.nombre}
                           </Text>
-                          <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.8)', marginTop: 2, textTransform: 'capitalize' }}>
+                          <Text style={{
+                            fontSize: rs.font(10), color: 'rgba(255,255,255,0.85)', marginTop: 3,
+                            fontWeight: '600', textTransform: 'capitalize',
+                          }}>
                             {scale.categoria.replace(/_/g, ' ')}
                           </Text>
                         </View>
@@ -364,7 +380,7 @@ export function ScalesScreen() {
   );
 
   return (
-    <PremiumGate feature="Escalas Clinicas">
+    <PremiumGate feature="Escalas Clínicas">
       <View style={{ flex: 1, backgroundColor: colors.background }}>
         <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
@@ -376,10 +392,10 @@ export function ScalesScreen() {
           style={{ paddingTop: insets.top + rs.space(16), paddingBottom: rs.space(24), paddingHorizontal: rs.space(24) }}
         >
           <Text style={{ fontSize: rs.font(26), fontWeight: '800', color: '#fff', letterSpacing: -0.5 }}>
-            Escalas Clinicas
+            Escalas Clínicas
           </Text>
           <Text style={{ fontSize: rs.font(13), color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
-            {scales.length} escalas de valoracion de enfermeria
+            {scales.length} escalas de valoración de enfermería
           </Text>
         </LinearGradient>
 
@@ -398,7 +414,7 @@ export function ScalesScreen() {
                 No se encontraron escalas
               </Text>
               <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, marginTop: rs.space(4) }}>
-                Intenta con otra busqueda o categoria
+                Intenta con otra búsqueda o categoría
               </Text>
             </View>
           }

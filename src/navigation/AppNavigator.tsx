@@ -14,11 +14,11 @@ import { neuElevated } from '../utils/neumorphism';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 const TAB_ICONS = {
-  home: { active: 'home', inactive: 'home-outline' },
-  systems: { active: 'human-male-board', inactive: 'human-male-board-poll' },
-  search: { active: 'magnify', inactive: 'magnify' },
-  scales: { active: 'chart-timeline-variant-shimmer', inactive: 'chart-timeline-variant' },
-  tools: { active: 'wrench', inactive: 'wrench-outline' },
+  home: { active: 'home-variant', inactive: 'home-variant-outline' },
+  systems: { active: 'view-grid', inactive: 'view-grid-outline' },
+  search: { active: 'card-search', inactive: 'card-search-outline' },
+  scales: { active: 'chart-box', inactive: 'chart-box-outline' },
+  tools: { active: 'medical-bag', inactive: 'medical-bag' },
 };
 
 // Tab Screens
@@ -35,6 +35,7 @@ import { LabValuesScreen } from '../screens/LabValuesScreen';
 import { EmergencyProtocolsScreen } from '../screens/EmergencyProtocolsScreen';
 import { ProtocolDetailScreen } from '../screens/ProtocolDetailScreen';
 import { NandaScreen } from '../screens/NandaScreen';
+import { DifferentialScreen } from '../screens/DifferentialScreen';
 import { QuizScreen } from '../screens/QuizScreen';
 import { QuizSessionScreen } from '../screens/QuizSessionScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
@@ -51,61 +52,80 @@ import { useOnboarding } from '../hooks/useOnboarding';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
-function TabIcon({ iconActive, iconInactive, label, focused, colors, rs }: {
-  iconActive: string; iconInactive: string; label: string; focused: boolean; colors: ThemeColors; rs: ResponsiveScale;
+function TabIcon({ iconActive, iconInactive, label, focused, colors, rs, isDark }: {
+  iconActive: string; iconInactive: string; label: string; focused: boolean; colors: ThemeColors; rs: ResponsiveScale; isDark: boolean;
 }) {
-  const scaleAnim = useRef(new Animated.Value(focused ? 1 : 0.9)).current;
-  const bgAnim = useRef(new Animated.Value(focused ? 1 : 0)).current;
+  const scaleAnim = useRef(new Animated.Value(focused ? 1 : 0.92)).current;
+  const pillWidth = useRef(new Animated.Value(focused ? 1 : 0)).current;
 
   useEffect(() => {
     Animated.parallel([
       Animated.spring(scaleAnim, {
-        toValue: focused ? 1 : 0.9,
+        toValue: focused ? 1 : 0.92,
         useNativeDriver: true,
-        speed: 18,
-        bounciness: focused ? 8 : 0,
+        speed: 20,
+        bounciness: focused ? 6 : 0,
       }),
-      Animated.timing(bgAnim, {
+      Animated.spring(pillWidth, {
         toValue: focused ? 1 : 0,
-        duration: 200,
         useNativeDriver: false,
+        speed: 14,
+        bounciness: 2,
       }),
     ]).start();
-  }, [focused, scaleAnim, bgAnim]);
+  }, [focused, scaleAnim, pillWidth]);
 
-  const bgColor = bgAnim.interpolate({
+  const pillBg = pillWidth.interpolate({
     inputRange: [0, 1],
-    outputRange: ['transparent', colors.primary + '15'],
+    outputRange: ['transparent', colors.primary + (isDark ? '25' : '18')],
+  });
+
+  const pillPadH = pillWidth.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, rs.space(16)],
   });
 
   return (
     <Animated.View style={{ alignItems: 'center', justifyContent: 'center', transform: [{ scale: scaleAnim }] }}>
+      {/* Pill indicator (Material 3 style) */}
       <Animated.View style={{
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: bgColor,
-        borderRadius: 14,
-        paddingHorizontal: rs.space(12),
-        paddingVertical: rs.space(4),
+        backgroundColor: pillBg,
+        borderRadius: 16,
+        paddingHorizontal: pillPadH,
+        paddingVertical: rs.space(5),
+        minWidth: 24,
       }}>
         <MaterialCommunityIcons
           name={focused ? iconActive : iconInactive}
-          size={focused ? rs.font(26) : rs.font(23)}
+          size={rs.font(22)}
           color={focused ? colors.primary : colors.tabBarInactive}
         />
       </Animated.View>
       <Text style={{
-        fontSize: rs.font(11),
-        fontWeight: focused ? '700' : '600',
+        fontSize: rs.font(10),
+        fontWeight: focused ? '700' : '500',
         color: focused ? colors.primary : colors.tabBarInactive,
-        marginTop: 2,
+        marginTop: 3,
+        letterSpacing: focused ? 0.2 : 0,
       }} numberOfLines={1}>{label}</Text>
+      {/* Active dot indicator */}
+      {focused && (
+        <View style={{
+          width: 4,
+          height: 4,
+          borderRadius: 2,
+          backgroundColor: colors.primary,
+          marginTop: 3,
+        }} />
+      )}
     </Animated.View>
   );
 }
 
 function AnimatedTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
   const insets = useSafeAreaInsets();
   const rs = useResponsiveScale();
   const { translateY } = useTabBar();
@@ -128,10 +148,17 @@ function AnimatedTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
       <View
         style={{
           flexDirection: 'row',
-          ...neuElevated(colors),
-          borderTopWidth: 0,
-          height: rs.space(68),
+          backgroundColor: isDark ? colors.surface + 'F5' : colors.neuSurface + 'F8',
+          borderRadius: 24,
+          height: rs.space(72),
           alignItems: 'center',
+          elevation: 12,
+          shadowColor: isDark ? '#000' : colors.primary,
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: isDark ? 0.4 : 0.12,
+          shadowRadius: 16,
+          borderWidth: 1,
+          borderColor: isDark ? colors.border + '40' : colors.borderLight,
         }}
       >
         {state.routes.map((route, index) => {
@@ -168,6 +195,7 @@ function AnimatedTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
                 focused={focused}
                 colors={colors}
                 rs={rs}
+                isDark={isDark}
               />
             </TouchableOpacity>
           );
@@ -271,6 +299,11 @@ export function AppNavigator() {
           name="NandaScreen"
           component={NandaScreen}
           options={{ title: 'NANDA-NIC-NOC' }}
+        />
+        <Stack.Screen
+          name="DifferentialScreen"
+          component={DifferentialScreen}
+          options={{ title: 'Diagnóstico Diferencial' }}
         />
         <Stack.Screen
           name="QuizScreen"

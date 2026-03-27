@@ -52,7 +52,7 @@ function shuffleArray<T>(arr: T[]): T[] {
  * For a given question type, extract a list of candidate answer strings
  * from a pathology so we can build the correct answer and distractors.
  */
-function extractCandidates(
+export function extractCandidates(
   p: Pathology,
   type: QuizQuestionType,
 ): string[] {
@@ -97,62 +97,134 @@ function extractCandidates(
 }
 
 /** Build the question text given a type and pathology name */
-function buildQuestionText(type: QuizQuestionType, pathologyName: string): string {
+export function buildQuestionText(type: QuizQuestionType, pathologyName: string): string {
   switch (type) {
     case 'fisiopatologia':
-      return `¿Cual es el mecanismo fisiopatologico de ${pathologyName}?`;
+      return `¿Cuál es el mecanismo fisiopatológico de ${pathologyName}?`;
     case 'signosSintomas':
-      return `¿Cual es un signo o sintoma de ${pathologyName}?`;
+      return `¿Cuál es un signo o síntoma de ${pathologyName}?`;
     case 'cuidadosEnfermeria':
-      return `¿Cual es un cuidado de enfermeria prioritario en ${pathologyName}?`;
+      return `¿Cuál es un cuidado de enfermería prioritario en ${pathologyName}?`;
     case 'nanda':
-      return `¿Cual diagnostico NANDA corresponde a ${pathologyName}?`;
+      return `¿Cuál es un diagnóstico NANDA de ${pathologyName}?`;
     case 'complicaciones':
-      return `¿Cual es una complicacion de ${pathologyName}?`;
+      return `¿Cuál es una complicación de ${pathologyName}?`;
     case 'tratamiento':
-      return `¿Cual es un objetivo del tratamiento de ${pathologyName}?`;
+      return `¿Cuál es un objetivo del tratamiento de ${pathologyName}?`;
     case 'diagnostico':
-      return `¿Que prueba diagnostica es clave para ${pathologyName}?`;
+      return `¿Cuál es una prueba diagnóstica clave de ${pathologyName}?`;
     case 'emergencia':
-      return `¿Cual es un criterio de alarma de ${pathologyName}?`;
+      return `¿Cuál es un criterio de alarma de ${pathologyName}?`;
     default:
       return `Pregunta sobre ${pathologyName}`;
   }
 }
 
-/** Build an explanation string for the correct answer */
-function buildExplanation(
+/** Build an explanation string for the correct answer — enriched for learning */
+export function buildExplanation(
   type: QuizQuestionType,
   pathologyName: string,
   correctAnswer: string,
+  pathology?: Pathology,
 ): string {
+  const base = (() => {
+    switch (type) {
+      case 'fisiopatologia':
+        return `La fisiopatología de ${pathologyName}: ${correctAnswer}`;
+      case 'signosSintomas':
+        return `"${correctAnswer}" es un signo/síntoma característico de ${pathologyName}.`;
+      case 'cuidadosEnfermeria':
+        return `Cuidado de enfermería prioritario en ${pathologyName}: ${correctAnswer}.`;
+      case 'nanda':
+        return `El diagnóstico NANDA "${correctAnswer}" es aplicable en ${pathologyName}.`;
+      case 'complicaciones':
+        return `"${correctAnswer}" es una complicación reconocida de ${pathologyName}.`;
+      case 'tratamiento':
+        return `Objetivo terapéutico en ${pathologyName}: ${correctAnswer}.`;
+      case 'diagnostico':
+        return `La prueba "${correctAnswer}" es clave en el diagnóstico de ${pathologyName}.`;
+      case 'emergencia':
+        return `Criterio de alarma en ${pathologyName}: ${correctAnswer}.`;
+      default:
+        return correctAnswer;
+    }
+  })();
+
+  // Add enriching context from the pathology data
+  if (!pathology) return base;
+
+  let extra = '';
   switch (type) {
-    case 'fisiopatologia':
-      return `La fisiopatologia de ${pathologyName}: ${correctAnswer}`;
-    case 'signosSintomas':
-      return `"${correctAnswer}" es un signo/sintoma caracteristico de ${pathologyName}.`;
-    case 'cuidadosEnfermeria':
-      return `Cuidado prioritario en ${pathologyName}: ${correctAnswer}`;
-    case 'nanda':
-      return `El diagnostico NANDA "${correctAnswer}" es aplicable en ${pathologyName}.`;
-    case 'complicaciones':
-      return `"${correctAnswer}" es una complicacion reconocida de ${pathologyName}.`;
-    case 'tratamiento':
-      return `Objetivo terapeutico en ${pathologyName}: ${correctAnswer}`;
-    case 'diagnostico':
-      return `La prueba "${correctAnswer}" es clave en el diagnostico de ${pathologyName}.`;
-    case 'emergencia':
-      return `Criterio de alarma en ${pathologyName}: ${correctAnswer}`;
-    default:
-      return correctAnswer;
+    case 'signosSintomas': {
+      const otherSigns = [
+        ...pathology.signosYSintomas.signos,
+        ...pathology.signosYSintomas.sintomas,
+      ].filter(s => s !== correctAnswer).slice(0, 2);
+      if (otherSigns.length > 0) {
+        extra = `\n\n📋 Otros signos/síntomas clave: ${otherSigns.join(', ')}.`;
+      }
+      break;
+    }
+    case 'complicaciones': {
+      const otherComp = pathology.complicaciones
+        .filter(c => c !== correctAnswer).slice(0, 2);
+      if (otherComp.length > 0) {
+        extra = `\n\n⚠️ Otras complicaciones a vigilar: ${otherComp.join(', ')}.`;
+      }
+      break;
+    }
+    case 'cuidadosEnfermeria': {
+      const otherCare = pathology.cuidadosEnfermeria.intervenciones
+        .filter(c => c !== correctAnswer).slice(0, 2);
+      if (otherCare.length > 0) {
+        extra = `\n\n🩺 Otras intervenciones importantes: ${otherCare.join('; ')}.`;
+      }
+      break;
+    }
+    case 'tratamiento': {
+      const otherObj = pathology.tratamientoMedico.objetivos
+        .filter(o => o !== correctAnswer).slice(0, 2);
+      if (otherObj.length > 0) {
+        extra = `\n\n💊 Otros objetivos terapéuticos: ${otherObj.join('; ')}.`;
+      }
+      break;
+    }
+    case 'emergencia': {
+      const otherAlarm = pathology.criteriosAlarma
+        .filter(c => c !== correctAnswer).slice(0, 2);
+      if (otherAlarm.length > 0) {
+        extra = `\n\n🚨 Otros criterios de alarma: ${otherAlarm.join('; ')}.`;
+      }
+      break;
+    }
+    case 'nanda': {
+      const otherNanda = pathology.npiNanda
+        .filter(n => n.nombre !== correctAnswer)
+        .slice(0, 1);
+      if (otherNanda.length > 0) {
+        extra = `\n\n📖 Otro diagnóstico NANDA aplicable: "${otherNanda[0].nombre}".`;
+      }
+      break;
+    }
+    case 'diagnostico': {
+      const otherTests = pathology.diagnostico.pruebas
+        .filter(t => t.nombre !== correctAnswer)
+        .slice(0, 2);
+      if (otherTests.length > 0) {
+        extra = `\n\n🔬 Otras pruebas diagnósticas: ${otherTests.map(t => t.nombre).join(', ')}.`;
+      }
+      break;
+    }
   }
+
+  return base + extra;
 }
 
 // ─────────────────────────────────────────────
 // generateQuestion
 // ─────────────────────────────────────────────
 
-function generateQuestion(
+export function generateQuestion(
   target: Pathology,
   allPathologies: Pathology[],
   type: QuizQuestionType,
@@ -191,7 +263,7 @@ function generateQuestion(
     options: shuffled,
     correctIndex,
     pathologyName: target.nombre,
-    explanation: buildExplanation(type, target.nombre, correctAnswer),
+    explanation: buildExplanation(type, target.nombre, correctAnswer, target),
   };
 }
 

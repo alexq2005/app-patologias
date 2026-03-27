@@ -1,5 +1,6 @@
 // ============================================================
 // OnboardingScreen — First-time user introduction (3 slides)
+// Full-screen clinical photos with gradient overlays
 // ============================================================
 
 import React, { useRef, useState, useCallback } from 'react';
@@ -12,16 +13,14 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
+  ImageBackground,
+  type ImageSourcePropType,
   type ViewToken,
-  type NativeSyntheticEvent,
-  type NativeScrollEvent,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale } from '../utils/responsive';
 import { SPACING, RADIUS } from '../utils/spacing';
 import type { RootStackParamList } from '../types';
@@ -38,43 +37,51 @@ interface Props {
 interface SlideData {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
-  icon: string;
-  iconColor: string;
-  bgCircleColor: string;
+  image: ImageSourcePropType;
+  gradient: [string, string, string];
+  stat: string;
+  statLabel: string;
 }
 
 // ─────────────────────────────────────────────
-// Slide data
+// Slide data — clinical photos with meaning
 // ─────────────────────────────────────────────
 
 const SLIDES: SlideData[] = [
   {
     id: '1',
-    title: '151 Patologías',
+    title: 'Tu referencia clínica\nen el bolsillo',
+    subtitle: 'PATOLOGÍAS DE ENFERMERÍA',
     description:
-      'Toda la información clínica que necesitas, organizada por sistemas corporales',
-    icon: 'book-open-page-variant',
-    iconColor: '#FFFFFF',
-    bgCircleColor: '#6D28D9',
+      'Fisiopatología, signos, diagnósticos y cuidados de enfermería para cada patología',
+    image: require('../assets/images/conditions/iv_drip.jpg'),
+    gradient: ['rgba(109,40,217,0.85)', 'rgba(109,40,217,0.6)', 'transparent'],
+    stat: '151',
+    statLabel: 'Patologías clínicas',
   },
   {
     id: '2',
-    title: 'Cuidados de Enfermería',
+    title: 'NANDA, NIC, NOC\nintegrados',
+    subtitle: 'CUIDADOS DE ENFERMERÍA',
     description:
-      'NANDA, NIC, NOC, medicamentos, diagnósticos y valoraciones de enfermería',
-    icon: 'heart-pulse',
-    iconColor: '#FFFFFF',
-    bgCircleColor: '#DC2626',
+      '455 diagnósticos enfermeros con características definitorias y factores relacionados',
+    image: require('../assets/images/conditions/heart_monitor.jpg'),
+    gradient: ['rgba(220,38,38,0.85)', 'rgba(220,38,38,0.6)', 'transparent'],
+    stat: '455',
+    statLabel: 'Diagnósticos NANDA',
   },
   {
     id: '3',
-    title: 'Herramientas Clínicas',
+    title: 'Escalas, laboratorio\ny protocolos',
+    subtitle: 'HERRAMIENTAS CLÍNICAS',
     description:
-      'Escalas, valores de laboratorio, protocolos de emergencia y test de conocimiento',
-    icon: 'medical-bag',
-    iconColor: '#FFFFFF',
-    bgCircleColor: '#059669',
+      'Glasgow, Norton, valores de referencia, protocolos de emergencia y diagnóstico diferencial',
+    image: require('../assets/images/conditions/blood_pressure.jpg'),
+    gradient: ['rgba(5,150,105,0.85)', 'rgba(5,150,105,0.6)', 'transparent'],
+    stat: '17',
+    statLabel: 'Escalas de valoración',
   },
 ];
 
@@ -83,16 +90,14 @@ const SLIDES: SlideData[] = [
 // ─────────────────────────────────────────────
 
 export function OnboardingScreen({ navigation, onComplete }: Props) {
-  const { colors, isDark } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const screenWidth = Dimensions.get('window').width;
+  const screenHeight = Dimensions.get('window').height;
 
   const flatListRef = useRef<FlatList<SlideData>>(null);
   const scrollX = useRef(new Animated.Value(0)).current;
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // ─── Handlers ───
 
   const onViewableItemsChanged = useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
@@ -109,10 +114,13 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
     navigation.reset({ index: 0, routes: [{ name: 'MainTabs' }] });
   }, [navigation, onComplete]);
 
-  const handleStart = useCallback(() => {
-    onComplete();
-    navigation.reset({ index: 0, routes: [{ name: 'MainTabs' }] });
-  }, [navigation, onComplete]);
+  const handleNext = useCallback(() => {
+    if (currentIndex < SLIDES.length - 1) {
+      flatListRef.current?.scrollToIndex({ index: currentIndex + 1, animated: true });
+    } else {
+      handleSkip();
+    }
+  }, [currentIndex, handleSkip]);
 
   const isLastPage = currentIndex === SLIDES.length - 1;
 
@@ -120,57 +128,59 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
 
   const renderSlide = useCallback(
     ({ item }: { item: SlideData }) => (
-      <View style={[styles.slide, { width: screenWidth }]}>
-        {/* Icon circle */}
-        <View
-          style={[
-            styles.iconCircle,
-            {
-              backgroundColor: item.bgCircleColor,
-              width: rs.space(140),
-              height: rs.space(140),
-              borderRadius: rs.space(70),
-            },
-          ]}
+      <View style={{ width: screenWidth, height: screenHeight }}>
+        <ImageBackground
+          source={item.image}
+          style={StyleSheet.absoluteFillObject}
+          resizeMode="cover"
         >
-          <MaterialCommunityIcons
-            name={item.icon}
-            size={rs.font(80)}
-            color={item.iconColor}
+          {/* Gradient overlay from top */}
+          <LinearGradient
+            colors={item.gradient}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 0.55 }}
+            style={StyleSheet.absoluteFillObject}
           />
-        </View>
 
-        {/* Title */}
-        <Text
-          style={[
-            styles.title,
-            {
-              color: colors.text,
-              fontSize: rs.font(22),
-              marginTop: SPACING.xxl,
-            },
-          ]}
-        >
-          {item.title}
-        </Text>
+          {/* Dark bottom for text legibility */}
+          <LinearGradient
+            colors={['transparent', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.92)']}
+            start={{ x: 0.5, y: 0.4 }}
+            end={{ x: 0.5, y: 1 }}
+            style={StyleSheet.absoluteFillObject}
+          />
 
-        {/* Description */}
-        <Text
-          style={[
-            styles.description,
-            {
-              color: colors.textSecondary,
-              fontSize: rs.font(14),
-              marginTop: SPACING.md,
-              paddingHorizontal: SPACING.xxxl,
-            },
-          ]}
-        >
-          {item.description}
-        </Text>
+          {/* Content */}
+          <View style={[styles.slideContent, { paddingTop: insets.top + rs.space(60) }]}>
+            {/* Subtitle badge */}
+            <View style={styles.subtitleBadge}>
+              <Text style={[styles.subtitleText, { fontSize: rs.font(11) }]}>
+                {item.subtitle}
+              </Text>
+            </View>
+
+            {/* Big stat */}
+            <Text style={[styles.statNumber, { fontSize: rs.font(72) }]}>
+              {item.stat}
+            </Text>
+            <Text style={[styles.statLabel, { fontSize: rs.font(14) }]}>
+              {item.statLabel}
+            </Text>
+          </View>
+
+          {/* Bottom text */}
+          <View style={[styles.bottomText, { paddingBottom: insets.bottom + rs.space(140) }]}>
+            <Text style={[styles.title, { fontSize: rs.font(26) }]}>
+              {item.title}
+            </Text>
+            <Text style={[styles.description, { fontSize: rs.font(14), marginTop: rs.space(12) }]}>
+              {item.description}
+            </Text>
+          </View>
+        </ImageBackground>
       </View>
     ),
-    [screenWidth, colors, rs],
+    [screenWidth, screenHeight, rs, insets],
   );
 
   // ─── Dot indicators ───
@@ -185,13 +195,13 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
 
       const dotWidth = scrollX.interpolate({
         inputRange,
-        outputRange: [8, 24, 8],
+        outputRange: [8, 28, 8],
         extrapolate: 'clamp',
       });
 
       const dotOpacity = scrollX.interpolate({
         inputRange,
-        outputRange: [0.3, 1, 0.3],
+        outputRange: [0.4, 1, 0.4],
         extrapolate: 'clamp',
       });
 
@@ -200,11 +210,7 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
           key={index}
           style={[
             styles.dot,
-            {
-              width: dotWidth,
-              opacity: dotOpacity,
-              backgroundColor: colors.primary,
-            },
+            { width: dotWidth, opacity: dotOpacity },
           ]}
         />
       );
@@ -213,35 +219,8 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
   // ─── Layout ───
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.neuBackground }]}>
-      <StatusBar
-        barStyle={isDark ? 'light-content' : 'dark-content'}
-        backgroundColor={colors.neuBackground}
-      />
-
-      {/* Skip button (top-right, non-last pages) */}
-      {!isLastPage && (
-        <TouchableOpacity
-          style={[
-            styles.skipButton,
-            {
-              top: insets.top + SPACING.md,
-              right: SPACING.lg,
-            },
-          ]}
-          onPress={handleSkip}
-          activeOpacity={0.7}
-        >
-          <Text
-            style={[
-              styles.skipText,
-              { color: colors.textSecondary, fontSize: rs.font(14) },
-            ]}
-          >
-            Omitir
-          </Text>
-        </TouchableOpacity>
-      )}
+    <View style={styles.container}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
       {/* Slides */}
       <FlatList
@@ -262,47 +241,32 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
         scrollEventThrottle={16}
       />
 
-      {/* Bottom section: dots + button */}
-      <View
-        style={[
-          styles.bottomSection,
-          { paddingBottom: Math.max(insets.bottom, SPACING.xxl) + SPACING.lg },
-        ]}
-      >
-        {/* Dot indicators */}
+      {/* Floating bottom controls */}
+      <View style={[styles.controls, { paddingBottom: Math.max(insets.bottom, SPACING.lg) + SPACING.md }]}>
+        {/* Skip (non-last pages) */}
+        <TouchableOpacity
+          onPress={handleSkip}
+          activeOpacity={0.7}
+          style={styles.skipButton}
+        >
+          <Text style={[styles.skipText, { fontSize: rs.font(14) }]}>
+            {isLastPage ? '' : 'Omitir'}
+          </Text>
+        </TouchableOpacity>
+
+        {/* Dots */}
         <View style={styles.dotsContainer}>{renderDots()}</View>
 
-        {/* CTA button (last page) */}
-        {isLastPage && (
-          <TouchableOpacity
-            onPress={handleStart}
-            activeOpacity={0.85}
-            style={{ marginTop: SPACING.xxl }}
-          >
-            <LinearGradient
-              colors={[colors.gradientStart, colors.gradientEnd]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={[
-                styles.ctaButton,
-                {
-                  paddingVertical: rs.space(14),
-                  paddingHorizontal: rs.space(48),
-                  borderRadius: RADIUS.pill,
-                },
-              ]}
-            >
-              <Text
-                style={[
-                  styles.ctaText,
-                  { color: colors.gradientText, fontSize: rs.font(16) },
-                ]}
-              >
-                Comenzar
-              </Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        )}
+        {/* Next / Start button */}
+        <TouchableOpacity
+          onPress={handleNext}
+          activeOpacity={0.85}
+          style={styles.nextButton}
+        >
+          <Text style={[styles.nextText, { fontSize: rs.font(14) }]}>
+            {isLastPage ? 'Comenzar' : 'Siguiente'}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -315,42 +279,70 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000',
   },
-  skipButton: {
-    position: 'absolute',
-    zIndex: 10,
-    paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.md,
-  },
-  skipText: {
-    fontWeight: '600',
-  },
-  slide: {
+  slideContent: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: SPACING.xl,
+    paddingHorizontal: SPACING.xxl,
   },
-  iconCircle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 6,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
+  subtitleBadge: {
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    borderRadius: RADIUS.pill,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    marginBottom: 16,
+  },
+  subtitleText: {
+    color: 'rgba(255,255,255,0.9)',
+    fontWeight: '700',
+    letterSpacing: 1.5,
+  },
+  statNumber: {
+    color: '#FFFFFF',
+    fontWeight: '900',
+    letterSpacing: -2,
+  },
+  statLabel: {
+    color: 'rgba(255,255,255,0.8)',
+    fontWeight: '600',
+    marginTop: 4,
+  },
+  bottomText: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingHorizontal: SPACING.xxl,
   },
   title: {
-    fontWeight: '700',
-    textAlign: 'center',
+    color: '#FFFFFF',
+    fontWeight: '800',
+    lineHeight: 34,
+    letterSpacing: -0.5,
   },
   description: {
-    textAlign: 'center',
+    color: 'rgba(255,255,255,0.75)',
+    fontWeight: '500',
     lineHeight: 22,
   },
-  bottomSection: {
+  controls: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: SPACING.lg,
+    justifyContent: 'space-between',
+    paddingHorizontal: SPACING.xl,
+    paddingTop: SPACING.md,
+  },
+  skipButton: {
+    width: 80,
+  },
+  skipText: {
+    color: 'rgba(255,255,255,0.6)',
+    fontWeight: '600',
   },
   dotsContainer: {
     flexDirection: 'row',
@@ -358,19 +350,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dot: {
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 4,
+    height: 4,
+    borderRadius: 2,
+    marginHorizontal: 3,
+    backgroundColor: '#FFFFFF',
   },
-  ctaButton: {
-    elevation: 4,
-    shadowColor: '#6D28D9',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
+  nextButton: {
+    width: 80,
+    alignItems: 'flex-end',
   },
-  ctaText: {
+  nextText: {
+    color: '#FFFFFF',
     fontWeight: '700',
-    textAlign: 'center',
   },
 });
