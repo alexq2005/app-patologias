@@ -15,10 +15,9 @@
  */
 
 import { Platform } from 'react-native';
+import { APP_VERSION } from './appInfo';
 
 const SENTRY_DSN = ''; // ← paste DSN here once Sentry project is created
-
-const APP_VERSION = '2.0.0';
 
 export function initSentry(): void {
   if (!SENTRY_DSN) {
