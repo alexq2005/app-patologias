@@ -2,6 +2,18 @@
 
 ## [Unreleased] — 2026-05-05 (Release Infrastructure)
 
+### Fixed
+- **4 bugs latentes de React Hooks** detectados al pagar deuda de lint:
+  - `PathologyDetailScreen`: 3 hooks (`useCallback`, `useRef`, `useMemo`) llamados después del early-return cuando `pathology` era `undefined` — crash garantizado al re-renderizar con id válido tras inválido
+  - `ProtocolDetailScreen`: `useMemo` de `sortedSteps` tras early-return — mismo patrón
+  - `LabValuesScreen`: dep `rs` innecesaria en `useMemo` (ya estaba en `styles`)
+  - `QuizSessionScreen`: `useEffect` con deps vacías + comment "run once" que ignoraba cambios en `category`/`questionCount`/`generateQuiz`
+- **60 errores de lint** eliminados: imports muertos, destructured no usados (~20 archivos)
+
+### Changed
+- **CI lint job promovido a bloqueante** (`continue-on-error: false`). Cualquier PR futuro que introduzca un error ESLint frena el merge
+- **`.eslintrc.js`** con `overrides`: jest globals en tests, `no-bitwise` desactivado en `activation.ts` (SHA-256-style hash)
+
 ### Added
 - **MiSuite hub** (`src/screens/MiSuiteScreen.tsx` + `src/services/miSuite.ts`): pantalla de ecosistema 3-en-1 (Patologías + Curso + Guía Farmacológica). Detecta cuáles apps están instaladas via deep-link schemes, ofrece abrir o descargar de Play Store. Card actual marcada "ESTÁS AQUÍ", otras con status visual (instalada/no instalada). Service expone `APPS` registry + `chooseLaunchUrls(app, status)` con fallback chain (scheme → market:// → https://play.google.com). 12 unit tests sobre invariantes del registry y los 3 paths del fallback. Android: `<queries>` para curso/farmacologia + `<intent-filter>` patologias:// (deep-link de retorno desde otras apps). Tile "Mi suite" en Tools tab
 - **OTA content sync** (`src/services/contentSync.ts` + `db.ts` ext.): infraestructura para actualizar `pathologies.json` sin republicar el AAB. Pipeline: fetch manifest → validate → version compare → fetch JSON → validate shape → repopulate atómico en SQLite. Gated por `FEATURES.contentOTA` (off por default). Defensas: HTTPS-only, size sanity (100KB-10MB), `minAppVersion` gating, downgrade refusal, transacción atómica con rollback. **Throttling 6h** entre fetches (con bypass `{ force: true }` para futuro botón "Buscar actualización ahora"). 33 unit tests
