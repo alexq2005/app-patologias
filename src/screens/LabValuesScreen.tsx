@@ -6,9 +6,7 @@ import React, {
   useState,
   useMemo,
   useCallback,
-  useEffect,
   useLayoutEffect,
-  useRef,
 } from 'react';
 import {
   View,
@@ -18,7 +16,6 @@ import {
   ScrollView,
   StyleSheet,
   StatusBar,
-  Animated,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -29,7 +26,7 @@ import { useTheme } from '../context/ThemeContext';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { LAB_COLORS, type ThemeColors } from '../utils/colors';
-import { neuCard, neuCardSubtle, neuPill } from '../utils/neumorphism';
+import { neuCard } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
 import { SearchBar } from '../components/SearchBar';
 import { PremiumGate } from '../components/PremiumGate';
@@ -333,7 +330,7 @@ export function LabValuesScreen({ navigation }: Props) {
         </Text>
       </View>
     ),
-    [query, categories, activeCategory, filtered.length, colors, rs, styles],
+    [query, categories, activeCategory, filtered.length, colors, styles],
   );
 
   return (

@@ -286,7 +286,7 @@ function ScoreDisplay({
 
 export function ScaleDetailScreen({ route, navigation }: Props) {
   const { scaleId } = route.params;
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const { getScaleById } = usePathologyData();

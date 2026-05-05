@@ -72,7 +72,7 @@ export function DashboardScreen({ navigation }: Props) {
   const insets = useSafeAreaInsets();
   const { results, averageScore, totalSessions } = useQuiz();
   const { recent } = useRecentPathologies();
-  const { getPathologyById, getBodySystemById, bodySystems } = usePathologyData();
+  const { getPathologyById, getBodySystemById } = usePathologyData();
 
   const styles = createStyles(colors, rs);
   const { opacity, translateY } = useFadeIn(380, 40);

@@ -19,7 +19,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type {
   RootStackParamList,
-  EmergencyProtocol,
   ProtocolStep,
 } from '../types';
 import { useTheme } from '../context/ThemeContext';
@@ -240,6 +239,12 @@ export function ProtocolDetailScreen({ navigation, route }: Props) {
   const { protocolId } = route.params;
   const protocol = useMemo(() => getProtocolById(protocolId), [getProtocolById, protocolId]);
 
+  // Hook MUST run on every render — keep above the early return.
+  const sortedSteps = useMemo(
+    () => (protocol ? [...protocol.pasos].sort((a, b) => a.orden - b.orden) : []),
+    [protocol],
+  );
+
   useLayoutEffect(() => {
     if (protocol) {
       navigation.setOptions({ title: protocol.nombre });
@@ -257,11 +262,6 @@ export function ProtocolDetailScreen({ navigation, route }: Props) {
 
   const catColor = PROTOCOL_COLORS[protocol.categoria] ?? colors.primary;
   const catIcon = PROTOCOL_ICONS[protocol.categoria] ?? 'hospital-building';
-
-  const sortedSteps = useMemo(
-    () => [...protocol.pasos].sort((a, b) => a.orden - b.orden),
-    [protocol.pasos],
-  );
 
   return (
     <View style={styles.container}>

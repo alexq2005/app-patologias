@@ -29,7 +29,6 @@ import type { RootStackParamList, QuizSession, QuizResult, BodySystemId } from '
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { useQuiz } from '../hooks/useQuiz';
-import { BODY_SYSTEM_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
@@ -39,8 +38,6 @@ import { SPACING, RADIUS } from '../utils/spacing';
 // ─────────────────────────────────────────────
 
 type Props = NativeStackScreenProps<RootStackParamList, 'QuizSession'>;
-
-type AnswerState = 'unanswered' | 'correct' | 'wrong';
 
 // ─────────────────────────────────────────────
 // Progress bar
@@ -453,7 +450,7 @@ function SummaryScreen({ session, category, onBack, onNavigateToPathology, color
             </Text>
           </TouchableOpacity>
 
-          {showReview && wrongQuestions.map((item, wIdx) => (
+          {showReview && wrongQuestions.map((item, _wIdx) => (
             <View
               key={item.question.id}
               style={[
@@ -659,7 +656,7 @@ export function QuizSessionScreen({ navigation, route }: Props) {
       questionCount,
     });
     setSession(generated);
-  }, []);  // run once
+  }, [category, questionCount, generateQuiz]);
 
   // Confirm exit during quiz
   const confirmExit = useCallback(() => {

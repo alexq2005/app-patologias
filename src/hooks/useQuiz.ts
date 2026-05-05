@@ -259,7 +259,7 @@ export function buildExplanation(
 /** Build a "clinical pearl" — a brief educational fact */
 export function buildClinicalPearl(
   pathology: Pathology,
-  type: QuizQuestionType,
+  _type: QuizQuestionType,
 ): string | undefined {
   // Use definición as a brief clinical summary
   if (pathology.definicion && pathology.definicion.length > 20) {

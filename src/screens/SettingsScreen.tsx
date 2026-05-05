@@ -11,12 +11,10 @@ import {
   StatusBar,
   StyleSheet,
   Alert,
-  Animated,
   TextInput,
   Modal,
   ActivityIndicator,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -142,17 +140,17 @@ function ThemeChips({ current, onChange, colors, rs }: {
 // ─────────────────────────────────────────────
 
 export function SettingsScreen() {
-  const { colors, themeMode, setThemeMode, isDark } = useTheme();
+  const { colors, themeMode, setThemeMode } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
-  const { isPremium, isCodeActivated, activateWithCode } = usePremium();
+  const { isCodeActivated, activateWithCode } = usePremium();
   const { favoriteCount, clearFavorites } = useFavoritesContext();
   const { noteCount } = useNotesContext();
   const { pathologies } = usePathologyData();
   const { history, clearHistory: clearSearchHistory } = useSearchHistory();
   const { recent, clearRecent } = useRecentPathologies();
-  const { results, totalSessions, clearResults: clearQuizResults } = useQuiz();
+  const { totalSessions, clearResults: clearQuizResults } = useQuiz();
   const dataInfo = useDataInfo();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
 

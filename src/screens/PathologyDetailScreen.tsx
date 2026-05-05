@@ -25,7 +25,6 @@ import {
   Platform,
   Share,
   Alert,
-  Animated,
   Linking,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -119,7 +118,7 @@ interface SubSectionProps {
   rs: ResponsiveScale;
 }
 
-function SubSection({ label, icon, iconColor, children, colors, rs }: SubSectionProps) {
+function SubSection({ label, icon, iconColor, children, colors: _colors, rs }: SubSectionProps) {
   return (
     <View style={{ marginTop: rs.space(12) }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6) }}>
@@ -768,7 +767,7 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   const rs = useResponsiveScale();
   const { isFavorite, toggleFavorite } = useFavoritesContext();
   const { getNote, saveNote, deleteNote } = useNotesContext();
-  const { getPathologyById, getPathologyById: _get } = usePathologyData();
+  const { getPathologyById } = usePathologyData();
   const { addRecent } = useRecentPathologies();
 
   const [notesModalVisible, setNotesModalVisible] = useState(false);
@@ -806,7 +805,7 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         title: pathology.nombre,
         message: `${pathology.nombre}\n\n${pathology.definicion}\n\nPatologia de Enfermeria`,
       });
-    } catch (_) {}
+    } catch {}
   }, [pathology]);
 
   // ── Navigation header ──────────────────────────────────────
@@ -845,6 +844,26 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   // Styles
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
 
+  // ── Hooks must run unconditionally — keep ABOVE the early-return guard ──
+  const navigateToRelated = useCallback(
+    (relId: string) => {
+      const related = getPathologyById(relId);
+      navigation.push('PathologyDetail', { pathologyId: relId, pathologyName: related?.nombre });
+    },
+    [navigation, getPathologyById],
+  );
+
+  const scrollRef = useRef<ScrollView>(null);
+  const sectionQuickNav = useMemo(() => [
+    { key: 'fisio', label: 'Fisiopatología', icon: 'dna' },
+    { key: 'signos', label: 'Signos', icon: 'stethoscope' },
+    { key: 'dx', label: 'Diagnóstico', icon: 'clipboard-pulse-outline' },
+    { key: 'tx', label: 'Tratamiento', icon: 'medical-bag' },
+    { key: 'enf', label: 'Enfermería', icon: 'heart-pulse' },
+    { key: 'nanda', label: 'NANDA', icon: 'format-list-group' },
+    { key: 'alarma', label: 'Alarma', icon: 'alarm-light-outline' },
+  ], []);
+
   // ── Loading / Not found ────────────────────────────────────
   if (!pathology) {
     return (
@@ -872,27 +891,6 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
     pathology.relatedPathologyIds && pathology.relatedPathologyIds.length > 0,
   );
   const hasNote = Boolean(getNote(pathologyId));
-
-  // ── Navigate to related pathology ─────────────────────────
-  const navigateToRelated = useCallback(
-    (relId: string) => {
-      const related = getPathologyById(relId);
-      navigation.push('PathologyDetail', { pathologyId: relId, pathologyName: related?.nombre });
-    },
-    [navigation, getPathologyById],
-  );
-
-  // ── Section quick-nav config ─────────────────────────────
-  const scrollRef = useRef<ScrollView>(null);
-  const sectionQuickNav = useMemo(() => [
-    { key: 'fisio', label: 'Fisiopatología', icon: 'dna' },
-    { key: 'signos', label: 'Signos', icon: 'stethoscope' },
-    { key: 'dx', label: 'Diagnóstico', icon: 'clipboard-pulse-outline' },
-    { key: 'tx', label: 'Tratamiento', icon: 'medical-bag' },
-    { key: 'enf', label: 'Enfermería', icon: 'heart-pulse' },
-    { key: 'nanda', label: 'NANDA', icon: 'format-list-group' },
-    { key: 'alarma', label: 'Alarma', icon: 'alarm-light-outline' },
-  ], []);
 
   // ── Render ─────────────────────────────────────────────────
   return (

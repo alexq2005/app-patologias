@@ -22,7 +22,7 @@ import { useTheme } from '../context/ThemeContext';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
-import { SPACING, RADIUS } from '../utils/spacing';
+import { SPACING } from '../utils/spacing';
 import type { ThemeColors } from '../utils/colors';
 import type { RootStackParamList } from '../types';
 

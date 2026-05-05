@@ -9,8 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import type { RootStackParamList, TabParamList } from '../types';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
-import { useTabBar, TabBarProvider } from '../context/TabBarContext';
-import { neuElevated } from '../utils/neumorphism';
+import { useTabBar } from '../context/TabBarContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 const TAB_ICONS = {

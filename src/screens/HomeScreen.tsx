@@ -10,9 +10,7 @@ import {
   FlatList,
   TouchableOpacity,
   StatusBar,
-  StyleSheet,
   Animated,
-  Image,
   ImageBackground,
   Dimensions,
 } from 'react-native';
@@ -29,10 +27,9 @@ import { usePremium } from '../context/PremiumContext';
 import { useFavoritesContext } from '../context/FavoritesContext';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { useRecentPathologies } from '../hooks/useRecentPathologies';
-import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
-import { neuCard, neuCardSubtle } from '../utils/neumorphism';
-import { BODY_SYSTEM_COLORS, type ThemeColors } from '../utils/colors';
-import { SPACING, RADIUS } from '../utils/spacing';
+import { useResponsiveScale } from '../utils/responsive';
+import { neuCard } from '../utils/neumorphism';
+import { BODY_SYSTEM_COLORS } from '../utils/colors';
 import { useTabBar } from '../context/TabBarContext';
 import { getSystemImage } from '../utils/systemImages';
 import { getConditionImage } from '../utils/conditionImages';
@@ -98,7 +95,7 @@ const QUICK_ACTIONS: QuickAction[] = [
 
 export function HomeScreen({ navigation }: Props) {
   const { colors, isDark, toggleTheme } = useTheme();
-  const { isPremium, isTrialActive, trialDaysLeft, trialExpired, isSubscribed, isCodeActivated } = usePremium();
+  const { trialDaysLeft, trialExpired, isSubscribed, isCodeActivated } = usePremium();
   const { favoriteCount } = useFavoritesContext();
   const { pathologies, bodySystems, pathologyCount } = usePathologyData();
   const { recent } = useRecentPathologies();

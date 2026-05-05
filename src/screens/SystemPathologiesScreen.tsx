@@ -162,7 +162,7 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
         </View>
       </View>
     ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     [searchQuery, filteredPathologies.length, systemColor, systemId, systemName, styles, handleClearSearch],
   );
 
