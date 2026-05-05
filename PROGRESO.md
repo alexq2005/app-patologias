@@ -4,6 +4,52 @@
 
 ---
 
+## 2026-05-05 — Sesion 8: Indicador UI de ultima actualizacion
+
+### Resumen
+Layer visible para el OTA: en Settings ahora se ve la version del dataset y cuando fue verificado por ultima vez. Tambien se aprovecho para extraer `APP_VERSION` a constante unica (antes duplicado en sentry.ts y contentSync.ts) y arreglar la "Version" row que estaba hardcoded a 1.0.0.
+
+### Archivos
+
+| Archivo | Tipo | Detalle |
+|---------|------|---------|
+| `src/config/appInfo.ts` | nuevo | `APP_VERSION = '2.0.0'` — single source |
+| `src/data/db.ts` | extension | `getLastSyncedAt()`, `setLastSyncedAt(ts)` reusan tabla `meta` con upsert |
+| `src/services/contentSync.ts` | modificado | Importa APP_VERSION desde appInfo. Llama setLastSyncedAt tras manifest fetch (incluso si no-update) y tras repopulate |
+| `src/hooks/useDataInfo.ts` | nuevo | Hook reactivo (useFocusEffect) + `formatRelativeTime` con plurales castellanos |
+| `src/screens/SettingsScreen.tsx` | modificado | Nueva row "Datos clinicos" con icono database. Version row usa APP_VERSION |
+| `src/config/sentry.ts` | modificado | Importa APP_VERSION desde appInfo |
+| `__tests__/useDataInfo.test.ts` | nuevo | 7 tests cubriendo segundos→años, plurales, clamp futuro |
+
+### UX del indicador
+
+| Estado | Subtitle |
+|--------|----------|
+| Bundled, nunca synced (default hoy) | `v1 · versión inicial` |
+| OTA on, sin update | `v1 · verificado hace 5 minutos` |
+| OTA on, update aplicado | `v3 · actualizado hace 2 horas` |
+
+Distincion clave: "verificado" significa "pegamos al server, no hay nada nuevo". "Actualizado" significa "se aplico data nueva". El timestamp NO se actualiza cuando la red falla — eso seria mentirle al usuario.
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 36/36 (era 29, +7 nuevos en useDataInfo) |
+
+### Detalle de proceso
+
+Hubo un commit que mezclo refactor + feature por error (`38e3087` en historia local). Detectado antes de push: `git reset --soft HEAD~1` y splitteo en commits atomicos. Sin riesgo (los cambios estaban preservados en el index).
+
+### Pendiente
+
+- Setup manual de hosting OTA + Sentry (no cambia)
+- Throttling de sync (lastCheckedAt ya existe en meta — facil agregar gate)
+- Deuda de lint sigue intacta
+
+---
+
 ## 2026-05-05 — Sesion 7: Fase 3 — OTA content sync
 
 ### Resumen
