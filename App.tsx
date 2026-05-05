@@ -8,7 +8,9 @@ import { NotesProvider } from './src/context/NotesContext';
 import { TabBarProvider } from './src/context/TabBarContext';
 import { AppNavigator } from './src/navigation/AppNavigator';
 import { initDatabase } from './src/data/db';
+import { initSentry } from './src/config/sentry';
 
+initSentry();
 initDatabase();
 
 export default function App() {
