@@ -4,6 +4,73 @@
 
 ---
 
+## 2026-05-05 — Sesion 7: Fase 3 — OTA content sync
+
+### Resumen
+Infraestructura para actualizar el dataset de patologias sin republicar el AAB. La app ahora puede pullear un manifest remoto al boot, comparar versiones, descargar el nuevo `pathologies.json`, validar shape/size/version, y repopular SQLite en una transaccion atomica. **Flag off por default** — la infra esta lista pero inerte hasta que el usuario hostee el manifest.
+
+### Archivos
+
+| Archivo | Tipo | Detalle |
+|---------|------|---------|
+| `src/services/contentSync.ts` | nuevo | `syncContent()`, `validateManifest()`, `validateDataset()`, `compareVersions()`. SyncResult discriminated union |
+| `src/data/db.ts` | refactor + extension | Extraidas `ensureSchema()`, `insertPathologies()`, `setDataVersion()`. Tabla `meta`. Exports nuevos: `getCurrentDataVersion()`, `repopulateFromJson(data, version)` |
+| `App.tsx` | modificado | `syncContent()` fire-and-forget despues de `initDatabase()` |
+| `__tests__/contentSync.test.ts` | nuevo | 28 unit tests (compareVersions, validateManifest reject paths, validateDataset shape, syncContent disabled) |
+
+### Defensas implementadas (v1)
+
+| Threat | Defense |
+|--------|---------|
+| Network failure | try/catch -> log + silent fallback. App sigue con dataset actual |
+| MITM | HTTPS only en validateManifest (regex `^https://`) |
+| Size attack | 100KB ≤ size ≤ 10MB en manifest validation |
+| Schema mismatch | `manifest.minAppVersion` ≤ APP_VERSION o reject |
+| Downgrade attack | `manifest.version > getCurrentDataVersion()` o no-op |
+| Corrupt JSON | `validateDataset()` chequea array no-vacio + 3 entries con id/nombre/bodySystemId |
+| Partial write | `BEGIN; DELETE; INSERT; UPDATE meta; COMMIT;` con `ROLLBACK` en error |
+
+### Defensas NO implementadas (deferidas)
+
+- **SHA-256 / signature validation**: agregar `react-native-quick-crypto` cuando el host sea menos confiable. Por ahora HTTPS+host control son razonables. JSDoc documenta el upgrade path
+- **Throttling de sync**: por ahora pega al server en cada boot. Si el bandwidth se vuelve issue, agregar `lastCheckedAt` en meta + skip si < N horas
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 29/29 passing (era 13, +16 nuevos en contentSync) |
+| Bug atrapado por mi propio test | `compareVersions('2', '2.0.0')` devolvia 1 sin destructure default — fix antes de commit |
+
+### Pendiente para activar OTA en produccion
+
+1. Hostear `pathologies.json` y `manifest.json` en GitHub Pages / Cloudflare / S3 (bucket publico, HTTPS)
+2. Pegar URL en `MANIFEST_URL` en `src/services/contentSync.ts:42`
+3. Subir `FEATURES.contentOTA` a `true` en `src/config/features.ts:18`
+4. Rebuild bundle + AAB
+
+### Manifest format
+
+```json
+{
+  "version": 2,
+  "url": "https://example.com/pathologies-v2.json",
+  "minAppVersion": "2.0.0",
+  "size": 2453678,
+  "updatedAt": "2026-05-05T00:00:00Z"
+}
+```
+
+### Pendiente para proxima sesion
+
+- Setup manual de hosting OTA (decision del usuario sobre donde hostear)
+- Setup manual de Sentry (sigue pendiente desde Sesion 6)
+- Deuda de lint: 78 errors / 564 warnings — eventual cleanup
+- Considerar throttling de sync (lastCheckedAt) si el bandwidth resulta issue
+
+---
+
 ## 2026-05-05 — Sesion 6: Fase 2 — Infraestructura para releases
 
 ### Resumen
