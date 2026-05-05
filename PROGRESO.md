@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-05-05 — Sesion 10: Boton "Buscar actualizacion ahora" en Settings
+
+### Resumen
+La row "Datos clinicos" pasa de display-only a tap-able cuando el flag `contentOTA` esta on. Tap → spinner → Alert con resultado. Bypass del throttle 6h via `syncContent({ force: true })`. Cuando el flag esta off (default hoy), la row sigue display-only — cero deuda.
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `src/hooks/useDataInfo.ts` | Refactor: `DataInfo` extiende nueva `DataInfoSnapshot` + expone `refresh()` para re-leer manualmente. `useFocusEffect` no re-fire cuando la pantalla ya esta enfocada → necesario despues de un sync iniciado desde la misma pantalla |
+| `src/screens/SettingsScreen.tsx` | Imports: `isFeatureEnabled`, `syncContent`, `ActivityIndicator`. Estado `syncing` con mutex (`if (syncing) return`). Handler `handleSyncNow` async con feedback Alert. Row condicionalmente tap-able segun `otaEnabled` |
+
+### UX
+
+| Estado | Que ve el usuario |
+|--------|-------------------|
+| OTA off (default hoy) | Row no tap-able (igual que hoy) |
+| OTA on, idle | "v1 · verificado hace 2h" + chevron |
+| OTA on, sincronizando | "Buscando actualizaciones…" + spinner |
+| OTA on, success update | Alert "Version nueva: v3", subtitle se refresca |
+| OTA on, no update | Alert "Tu app ya tiene la ultima version disponible" |
+| OTA on, error | Alert "No se pudo actualizar: [reason]" |
+
+### Decisiones de diseño
+
+- **Solo tap-able cuando flag on**: si fuera siempre tap-able, el usuario taparia hoy y veria "OTA disabled" — feedback negativo gratis. Mejor no exponer interactividad cuando no hay funcionalidad detras.
+- **Mutex contra doble-tap (`if (syncing) return`)**: dos taps rapidos = dos fetches paralelos = dos repopulates compitiendo por la transaccion SQLite. El flag bloquea el segundo.
+- **Refresh() manual en hook**: useFocusEffect no refire mientras la pantalla sigue enfocada. Sin refresh manual, el subtitle no actualizaria tras un sync exitoso hasta que el usuario navegara fuera y volviera.
+- **`disabled` y `throttled` marcados como unreachable**: el handler comenta explicitamente que esos status son inalcanzables — gated por `otaEnabled` (no llega si flag off) + always `force: true` (bypasea throttle). Sin el comment, futuro lector pensaria que falta un caso.
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 41/41 sin cambio (no se agregaron tests de Settings — componente grande, costo > beneficio) |
+
+### Pendiente
+
+- Setup manual hosting OTA + Sentry (sin cambio)
+- Deuda lint (sin cambio)
+- Considerar test de componente para SettingsScreen si se vuelve mas complejo
+
+---
+
 ## 2026-05-05 — Sesion 9: Throttling de OTA sync
 
 ### Resumen
