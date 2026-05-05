@@ -107,6 +107,11 @@ const TOOLS: ToolItem[] = [
     gradient: ['#6B7280', '#374151'], icon: 'cog-outline',
     route: 'SettingsScreen', premium: false,
   },
+  {
+    id: 'misuite', label: 'Mi suite', subtitle: 'Las 3 apps de enfermería',
+    gradient: ['#0EA5E9', '#0369A1'], icon: 'apps',
+    route: 'MiSuite', premium: false,
+  },
 ];
 
 export function ToolsScreen() {
