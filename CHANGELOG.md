@@ -3,9 +3,13 @@
 ## [Unreleased] — 2026-05-05 (Release Infrastructure)
 
 ### Added
+- **OTA content sync** (`src/services/contentSync.ts` + `db.ts` ext.): infraestructura para actualizar `pathologies.json` sin republicar el AAB. Pipeline: fetch manifest → validate → version compare → fetch JSON → validate shape → repopulate atómico en SQLite. Gated por `FEATURES.contentOTA` (off por default). Defensas: HTTPS-only, size sanity (100KB-10MB), `minAppVersion` gating, downgrade refusal, transacción atómica con rollback. 28 unit tests
 - **Feature flag registry** (`src/config/features.ts`): tipado, compile-time, con helper `isFeatureEnabled(flag)`. Flags iniciales para `videoLinks`, `voiceSearch`, `exportNotesPdf`, `contentOTA`, `syncBetweenDevices`, `quizHistory` (todos en `false`)
 - **Sentry crash reporting scaffold** (`src/config/sentry.ts`): `initSentry()` con `require()` defensivo en try/catch. No-op si dep no instalada o DSN vacío. PII strip por default. Setup manual documentado en el archivo
 - **GitHub Actions CI** (`.github/workflows/ci.yml`): jobs `test` y `typecheck` bloqueantes; `lint` non-blocking hasta pagar deuda. Concurrency cancela runs viejos
+
+### Changed
+- **`db.ts` refactorizado**: extraídas `ensureSchema()`, `insertPathologies()`, `setDataVersion()`. Tabla `meta` agregada para tracking de versión. Comportamiento existente (initial populate desde bundled JSON) preservado
 
 ### Fixed
 - Mocks de Jest desactualizados desde la migración v2.0.0: agregados `react-native-encrypted-storage`, `@op-engineering/op-sqlite`, `@shopify/flash-list`. Tests vuelven a 13/13 passing
