@@ -151,14 +151,10 @@ export function SearchScreen() {
       {results.length > 0 && (
         <FlashList
           data={results}
-          estimatedItemSize={120}
           renderItem={renderResult}
           keyExtractor={item => item.pathology.id}
           contentContainerStyle={[styles.listContent, { paddingBottom: insets.bottom + rs.space(80) }]}
           showsVerticalScrollIndicator={false}
-          initialNumToRender={10}
-          maxToRenderPerBatch={10}
-          windowSize={7}
           onScroll={handleScroll}
           scrollEventThrottle={16}
         />
