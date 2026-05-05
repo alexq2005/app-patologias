@@ -4,6 +4,65 @@
 
 ---
 
+## 2026-05-05 — Sesion 12: Pago de deuda de lint + 4 bugs latentes destapados
+
+### Resumen
+La deuda de lint (78 errors / 564 warnings inicial, 89/586 tras MiSuite) bajo a **0 errors / 524 warnings**. CI lint job promovido a bloqueante. En el camino se destaparon 4 bugs reales de React Hooks que estaban siendo enmascarados por el `continue-on-error: true`.
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `.eslintrc.js` | Overrides: jest globals en tests/setup, `no-bitwise` off en activation.ts |
+| `.github/workflows/ci.yml` | Lint job: `continue-on-error: true` → removido. Ahora bloquea PRs |
+| `src/screens/PathologyDetailScreen.tsx` | **BUG**: `useCallback`+`useRef`+`useMemo` llamados tras early-return → movidos arriba |
+| `src/screens/ProtocolDetailScreen.tsx` | **BUG**: `useMemo` tras early-return → movido arriba |
+| `src/screens/LabValuesScreen.tsx` | **BUG**: dep `rs` innecesaria en useMemo → removida |
+| `src/screens/QuizSessionScreen.tsx` | **BUG**: useEffect con deps vacias ignoraba category/questionCount/generateQuiz → agregadas |
+| 20+ archivos | Cleanup: imports muertos, destructured no usados, `_` prefix en args intencionalmente unused |
+
+### Bugs destapados (todos cosméticos hasta que React detectara la inconsistencia)
+
+#### PathologyDetailScreen / ProtocolDetailScreen — rules-of-hooks
+React enforce runtime que el hook count sea idéntico entre renders. Ambas pantallas tenían:
+```tsx
+if (!entity) return <NotFound />;  // 7 hooks ya corrieron
+const memo = useMemo(...);         // 8vo hook
+```
+Primer render con id inválido → 7 hooks. Segundo render con id válido → 8 hooks → `Rendered more hooks than during the previous render` → crash. Era cuestión de tiempo hasta que un deep-link viejo lo disparara.
+
+#### LabValuesScreen — exhaustive-deps cosmético
+`rs` estaba en deps pero ya estaba referenciado vía `styles` (que SI tiene rs). Re-create del memo cuando el rs ref cambiaba pero styles no. Sin impacto funcional, solo waste de cómputo.
+
+#### QuizSessionScreen — exhaustive-deps con intent error
+```tsx
+useEffect(() => { generateQuiz({ category, questionCount }); }, []);  // run once
+```
+Si la pantalla se reusara (navigate replace con otros params), el quiz no se regeneraba. En la práctica navigation push → unmount/remount, así que el bug no se manifestaba — pero la intent era frágil.
+
+### Verificacion
+
+| Check | Antes | Despues |
+|-------|-------|---------|
+| ESLint errors | 89 | **0** |
+| ESLint warnings | 586 | 524 (524 inline-styles deferidas — convencion RN) |
+| `tsc --noEmit` | 0 | 0 |
+| Tests | 53/53 | 53/53 |
+| CI lint job | non-blocking | **blocking** |
+
+### Decisiones
+
+- **Inline-styles warnings (524) NO atacadas**: convencion RN de la base de codigo es estilos inline. Extraerlos a StyleSheet objetos seria ~3 sesiones de refactor sin ganancia clara. La regla queda como warning para visibilidad.
+- **`no-bitwise` off en activation.ts** en vez de inline `// eslint-disable-line` por linea: el archivo entero implementa SHA-256 con bitwise — disable per-file es honest.
+- **`useTheme()`/`useResponsiveScale()` removidos en BodySystemCard** cuando colors/rs no se usaban: si la prop no se consume, el subscribe a context es waste. No es feature, es deuda real.
+
+### Pendiente
+
+- Setup manual hosting OTA + Sentry (sin cambio)
+- 524 warnings de inline-styles si alguna sesion futura quiere ir 100% StyleSheet (low priority)
+
+---
+
 ## 2026-05-05 — Sesion 11: Integracion de MiSuite (hub del ecosistema)
 
 ### Resumen

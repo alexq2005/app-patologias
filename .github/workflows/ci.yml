@@ -25,11 +25,8 @@ jobs:
       - run: npm test -- --watchAll=false --ci
 
   lint:
-    name: ESLint (non-blocking)
+    name: ESLint
     runs-on: ubuntu-latest
-    # Currently 78 pre-existing lint errors; surface the report without
-    # blocking PRs until the debt is paid down. Flip to `false` once clean.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
