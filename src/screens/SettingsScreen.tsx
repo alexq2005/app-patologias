@@ -14,6 +14,7 @@ import {
   Animated,
   TextInput,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -32,6 +33,8 @@ import { useRecentPathologies } from '../hooks/useRecentPathologies';
 import { useQuiz } from '../hooks/useQuiz';
 import { useDataInfo, formatRelativeTime } from '../hooks/useDataInfo';
 import { APP_VERSION } from '../config/appInfo';
+import { isFeatureEnabled } from '../config/features';
+import { syncContent } from '../services/contentSync';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { neuCard } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
@@ -165,6 +168,30 @@ export function SettingsScreen() {
     const verb = dataInfo.dataVersion === 1 ? 'verificado' : 'actualizado';
     return `${versionLabel} · ${verb} ${relative}`;
   }, [dataInfo]);
+
+  // ── "Buscar actualización" handler — only wired when OTA flag is on ─
+  const otaEnabled = isFeatureEnabled('contentOTA');
+  const [syncing, setSyncing] = useState(false);
+
+  const handleSyncNow = useCallback(async () => {
+    if (syncing) return;
+    setSyncing(true);
+    try {
+      const result = await syncContent({ force: true });
+      dataInfo.refresh();
+      if (result.status === 'updated') {
+        Alert.alert('Datos actualizados', `Versión nueva: v${result.to}`);
+      } else if (result.status === 'no-update') {
+        Alert.alert('Sin cambios', 'Tu app ya tiene la última versión disponible.');
+      } else if (result.status === 'error') {
+        Alert.alert('No se pudo actualizar', result.reason);
+      }
+      // 'disabled' and 'throttled' are unreachable here: button is gated by
+      // otaEnabled, and we always pass force: true.
+    } finally {
+      setSyncing(false);
+    }
+  }, [syncing, dataInfo]);
 
   // ── Easter egg: tap version 5 times ───────
   const tapCountRef = useRef(0);
@@ -371,7 +398,12 @@ export function SettingsScreen() {
         <SettingRow
           icon="database-outline"
           label="Datos clínicos"
-          subtitle={dataSubtitle}
+          subtitle={syncing ? 'Buscando actualizaciones…' : dataSubtitle}
+          onPress={otaEnabled ? handleSyncNow : undefined}
+          trailing={syncing
+            ? <ActivityIndicator size="small" color={colors.primary} />
+            : undefined
+          }
           colors={colors} rs={rs}
         />
         <SettingRow
