@@ -6,7 +6,6 @@ import React, { useCallback, useMemo } from 'react';
 import {
   View,
   Text,
-  FlatList,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -31,6 +30,7 @@ import { neuCard } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
 import type { ThemeColors } from '../utils/colors';
 import type { RootStackParamList, TabParamList, SearchResult } from '../types';
+import { FlashList } from '@shopify/flash-list';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Busqueda'>,
@@ -149,8 +149,9 @@ export function SearchScreen() {
       )}
 
       {results.length > 0 && (
-        <FlatList
+        <FlashList
           data={results}
+          estimatedItemSize={120}
           renderItem={renderResult}
           keyExtractor={item => item.pathology.id}
           contentContainerStyle={[styles.listContent, { paddingBottom: insets.bottom + rs.space(80) }]}

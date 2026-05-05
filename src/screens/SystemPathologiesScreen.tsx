@@ -5,7 +5,6 @@
 import React, { useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import {
   View,
-  FlatList,
   Text,
   Image,
   StyleSheet,
@@ -26,6 +25,7 @@ import { getSystemImage } from '../utils/systemImages';
 import { PathologyCard } from '../components/PathologyCard';
 import { SearchBar } from '../components/SearchBar';
 import type { ThemeColors } from '../utils/colors';
+import { FlashList } from '@shopify/flash-list';
 
 // ── Types ─────────────────────────────────────────────────────
 
@@ -196,8 +196,9 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
         backgroundColor={systemColor}
         translucent={false}
       />
-      <FlatList
+      <FlashList
         data={filteredPathologies}
+        estimatedItemSize={120}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ListHeaderComponent={ListHeader}
