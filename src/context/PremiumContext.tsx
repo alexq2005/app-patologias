@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { NativeModules, Alert, Linking } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import { isActivated as checkActivation, validateActivationCode, saveActivation } from '../utils/activation';
 
 // IS_FREE=true means free/restricted flavor, IS_FREE=false means premium/full flavor
@@ -44,8 +44,8 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   // ── Initialize on mount ───────────────────
   useEffect(() => {
     Promise.all([
-      AsyncStorage.getItem(TRIAL_START_KEY),
-      AsyncStorage.getItem(SUBSCRIPTION_KEY),
+      EncryptedStorage.getItem(TRIAL_START_KEY),
+      EncryptedStorage.getItem(SUBSCRIPTION_KEY),
       checkActivation(),
     ]).then(([trialRaw, subRaw, activated]) => {
       // Trial start
@@ -54,7 +54,7 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       } else {
         const now = Date.now();
         setTrialStartDate(now);
-        AsyncStorage.setItem(TRIAL_START_KEY, now.toString()).catch(() => {});
+        EncryptedStorage.setItem(TRIAL_START_KEY, now.toString()).catch(() => {});
       }
       if (subRaw === 'true') setIsSubscribed(true);
       if (activated) setIsCodeActivated(true);
@@ -77,12 +77,12 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   // ── Actions ───────────────────────────────
   const activateSubscription = useCallback(() => {
     setIsSubscribed(true);
-    AsyncStorage.setItem(SUBSCRIPTION_KEY, 'true').catch(() => {});
+    EncryptedStorage.setItem(SUBSCRIPTION_KEY, 'true').catch(() => {});
   }, []);
 
   const restoreSubscription = useCallback(async (): Promise<boolean> => {
     // TODO: Validate with Google Play Billing API when published
-    const val = await AsyncStorage.getItem(SUBSCRIPTION_KEY);
+    const val = await EncryptedStorage.getItem(SUBSCRIPTION_KEY);
     if (val === 'true') {
       setIsSubscribed(true);
       return true;
@@ -115,16 +115,22 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
     return false;
   }, []);
 
+  const value = useMemo(() => ({
+    isPremium, isFreeBuild: !IS_PREMIUM_BUILD, isCodeActivated,
+    isTrialActive, trialDaysLeft, trialStartDate, trialExpired,
+    isSubscribed, purchasing,
+    activateSubscription, restoreSubscription, purchaseSubscription,
+    activateWithCode, loaded,
+  }), [
+    isPremium, isCodeActivated, isTrialActive, trialDaysLeft, trialStartDate, trialExpired,
+    isSubscribed, purchasing, activateSubscription, restoreSubscription, purchaseSubscription,
+    activateWithCode, loaded
+  ]);
+
   if (!loaded) return null;
 
   return (
-    <PremiumContext.Provider value={{
-      isPremium, isFreeBuild: !IS_PREMIUM_BUILD, isCodeActivated,
-      isTrialActive, trialDaysLeft, trialStartDate, trialExpired,
-      isSubscribed, purchasing,
-      activateSubscription, restoreSubscription, purchaseSubscription,
-      activateWithCode, loaded,
-    }}>
+    <PremiumContext.Provider value={value}>
       {children}
     </PremiumContext.Provider>
   );
