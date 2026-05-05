@@ -84,6 +84,23 @@ export function getCurrentDataVersion(): number {
   return Number.isFinite(parsed) ? parsed : BUNDLED_DATA_VERSION;
 }
 
+/** Returns the unix timestamp (ms) of the last successful manifest check, or null if never. */
+export function getLastSyncedAt(): number | null {
+  const result = db.executeSync('SELECT value FROM meta WHERE key = ?', ['last_synced_at']);
+  const row = result.rows?.[0];
+  if (!row) return null;
+  const parsed = parseInt(row.value as string, 10);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+/** Records the unix timestamp (ms) of the last successful manifest check. */
+export function setLastSyncedAt(timestampMs: number): void {
+  db.executeSync(
+    'INSERT INTO meta (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value=excluded.value',
+    ['last_synced_at', String(timestampMs)]
+  );
+}
+
 export function initDatabase() {
   ensureSchema();
 

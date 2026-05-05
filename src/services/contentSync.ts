@@ -23,7 +23,7 @@
  */
 
 import type { Pathology } from '../types';
-import { getCurrentDataVersion, repopulateFromJson } from '../data/db';
+import { getCurrentDataVersion, repopulateFromJson, setLastSyncedAt } from '../data/db';
 import { isFeatureEnabled } from '../config/features';
 import { APP_VERSION } from '../config/appInfo';
 
@@ -85,6 +85,10 @@ export async function syncContent(): Promise<SyncResult> {
     }
 
     const current = getCurrentDataVersion();
+    // Mark "we successfully reached the server" — even when no update is available,
+    // this lets the UI show "verificado hace X" instead of "nunca verificado".
+    setLastSyncedAt(Date.now());
+
     if (manifest.version <= current) {
       return { status: 'no-update', current };
     }
@@ -96,6 +100,7 @@ export async function syncContent(): Promise<SyncResult> {
     }
 
     repopulateFromJson(data, manifest.version);
+    setLastSyncedAt(Date.now());
     return { status: 'updated', from: current, to: manifest.version };
   } catch (err) {
     return { status: 'error', reason: err instanceof Error ? err.message : String(err) };
