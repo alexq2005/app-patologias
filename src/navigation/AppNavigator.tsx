@@ -46,6 +46,7 @@ import { AboutScreen } from '../screens/AboutScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { PrivacyPolicyScreen } from '../screens/PrivacyPolicyScreen';
 import { TermsScreen } from '../screens/TermsScreen';
+import { MiSuiteScreen } from '../screens/MiSuiteScreen';
 import { OnboardingScreen } from '../screens/OnboardingScreen';
 import { useOnboarding } from '../hooks/useOnboarding';
 
@@ -354,6 +355,11 @@ export function AppNavigator() {
           name="Terms"
           component={TermsScreen}
           options={{ title: 'Términos de Uso' }}
+        />
+        <Stack.Screen
+          name="MiSuite"
+          component={MiSuiteScreen}
+          options={{ title: 'Mi suite' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
