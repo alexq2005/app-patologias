@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import type { Pathology, SearchResult } from '../types';
 import { normalizeText } from '../utils/search';
-import { usePathologyData } from './usePathologyData';
+import { db, rowToPathology } from '../data/db';
 
 const MAX_RESULTS = 50;
 const DEBOUNCE_MS = 150;
@@ -56,7 +56,6 @@ function scorePathology(pathology: Pathology, terms: string[]): SearchResult | n
 }
 
 export function usePathologySearch() {
-  const { pathologies } = usePathologyData();
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
 
@@ -70,16 +69,19 @@ export function usePathologySearch() {
     const terms = normalizeText(debouncedQuery).split(/\s+/).filter(t => t.length >= 2);
     if (terms.length === 0) return [];
 
+    const result = db.executeSync('SELECT * FROM pathologies');
+    const rawData = result.rows?.map(rowToPathology) || [];
+
     const scored: SearchResult[] = [];
-    for (const p of pathologies) {
-      const result = scorePathology(p, terms);
-      if (result) scored.push(result);
+    for (const p of rawData) {
+      const rowResult = scorePathology(p, terms);
+      if (rowResult) scored.push(rowResult);
     }
 
     return scored
       .sort((a, b) => b.score - a.score)
       .slice(0, MAX_RESULTS);
-  }, [debouncedQuery, pathologies]);
+  }, [debouncedQuery]);
 
   const clearSearch = useCallback(() => {
     setQuery('');

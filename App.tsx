@@ -7,6 +7,9 @@ import { FavoritesProvider } from './src/context/FavoritesContext';
 import { NotesProvider } from './src/context/NotesContext';
 import { TabBarProvider } from './src/context/TabBarContext';
 import { AppNavigator } from './src/navigation/AppNavigator';
+import { initDatabase } from './src/data/db';
+
+initDatabase();
 
 export default function App() {
   console.log('[App] Rendering App root');
