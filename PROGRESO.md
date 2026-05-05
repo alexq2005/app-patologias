@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-05-05 — Sesion 5: Higiene del repo + separacion de proyectos
+
+### Resumen
+Limpieza preparatoria para futuras releases: working tree depurado, screenshots de iteración eliminadas, `.gitignore` reforzado para evitar contaminación futura, version bump a `2.0.0` (alineando `package.json`, `versionName` Android y CHANGELOG). Trabajo del modulo "Curso de Enfermería" extraido del repo y movido a proyecto independiente en `F:\programas\curso-enfermeria\` (es otro producto, ciclo de release distinto).
+
+### Cambios
+
+| Area | Detalle |
+|------|---------|
+| `.gitignore` | Ignora `screen_*.png`, `test*.png`, `*.jpg`/`*.html` en raiz, build outputs, `.env`, IDE/OS junk |
+| Cleanup | 119 screenshots de iteracion eliminadas; 4 JPG sueltos y 2 HTML de tooling movidos al proyecto Curso |
+| `package.json` | `version: 2.0.0` (estaba en `0.0.1`) |
+| `android/app/build.gradle` | `versionCode: 2`, `versionName: "2.0.0"` (estaba en `1.0`) |
+| Curso de Enfermería | Movido a `F:\programas\curso-enfermeria\` (screens, data, types, utils, HTML tools, JPGs); refs revertidas en `App.tsx`, `AppNavigator.tsx`, `ToolsScreen.tsx`, `types/index.ts` |
+| `db.ts` | Devuelto a `src/data/` (es infra de Patologias, no del Curso); `initDatabase()` restaurado en `App.tsx` |
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| TypeScript imports rotos | 0 (db.ts resuelve correctamente) |
+| Refs huerfanas a Curso en `src/` | 0 |
+
+### Pendiente para proxima sesion
+
+- Fase 2 del plan de actualizaciones: feature flags locales, GitHub Actions, crash reporting, reorganizar `src/screens/` en subcarpetas
+- Evaluar Fase 3: OTA de contenido (actualizar `pathologies.json` sin republicar APK)
+
+---
+
+## 2026-03-29 — Sesion 4: Hyper-Optimización y Escalabilidad
+
+### Cambios detallados
+- **SQLite Migración:** Se cambió la lectura JSON sincrona a memoria (que llenaba el Heap/RAM del Engine) por una motor nativo `C++ SQLite JSI` (`@op-engineering/op-sqlite`). Se escribieron inyectores para leer las 151 patologías instantáneamente de un fichero real de Base de Datos.
+- **Rendimiento UI:** Pantallas con scroll gigante sustituidas por `@shopify/flash-list`.
+- **Seguridad:** Los keys premium expuestos en AsyncStorage pasaron a `react-native-encrypted-storage`.
+
+---
+
 ## 2026-03-27 — Sesion 3: Quiz educativo + compilacion release
 
 ### Commits realizados (3)

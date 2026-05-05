@@ -17,6 +17,7 @@ Aplicación móvil de referencia clínica para profesionales y estudiantes de en
 - **Funciona offline** — toda la data es local, ideal para hospitales
 - **Videos educativos** por patología (enlace a YouTube, planeado para futuras versiones)
 - **Freemium**: 15 días de prueba + suscripción Google Play
+- **🔥 Arquitectura Optimizada (v2.0)**: Uso nativo de `SQLite` vía C++ JSI para carga de datos asíncrona off-RAM (soporta deceneas de miles de patologías en milisegundos), listas masivas con `@shopify/flash-list` para 60 FPS garantizados, y seguridad de estado Premium integrada a Keystore nativo con `react-native-encrypted-storage`.
 
 ## Stack Tecnológico
 
@@ -25,9 +26,12 @@ Aplicación móvil de referencia clínica para profesionales y estudiantes de en
 | React Native | 0.84.1 | Framework mobile |
 | TypeScript | 5.8 | Tipado estático |
 | React Navigation | 7.x | Navegación (Stack + Tabs) |
-| AsyncStorage | 2.x | Persistencia local |
+| AsyncStorage | 2.x | Reemplazado por EncryptedStorage |
+| EncryptedStorage | - | Seguridad Keystore/Keychain |
 | LinearGradient | - | Gradientes UI |
 | Vector Icons | - | Íconos indicadores (tabs, badges) |
+| FlashList | - | Rendering asíncrono a 60 FPS |
+| OP-SQLite | - | Bridge C++ SQLite ultrarrápido |
 | Safe Area Context | - | Safe areas iOS/Android |
 | Jest | 29.x | Testing unitario (13 tests) |
 

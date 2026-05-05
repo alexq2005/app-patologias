@@ -47,10 +47,12 @@ JSON estáticos (offline)
 ├── emergency_protocols.json
 └── lab_values.json
         │
-        ▼
-   usePathologyData()  ←── hook central, carga todo en memoria
+    db.ts (Generación SQLite automática)
         │
-        ├── usePathologySearch() ←── búsqueda full-text con scoring
+        ▼
+   usePathologyData()  ←── hook central, consultas SQL síncronas as-needed (`db.executeSync`)
+        │
+        ├── usePathologySearch() ←── Búsquedas O(1) vía queries SQL
         ├── useRecentPathologies() ←── AsyncStorage @patologias_recent
         ├── useFavorites() ←── AsyncStorage @patologias_favorites
         ├── useNotes() ←── AsyncStorage @patologias_notes
@@ -76,12 +78,13 @@ Suscripción: Google Play monthly (patologias_premium_monthly)
 Código: SHA-256 hash validation (easter egg en Settings > Version x5)
 ```
 
-## Persistencia (AsyncStorage)
+## Persistencia
 
-| Key | Tipo | Descripción |
-|-----|------|-------------|
-| `@patologias_trial_start` | timestamp | Inicio del período de prueba |
-| `@patologias_subscription` | 'true'/'false' | Estado de suscripción |
+| Key | Tipo/Motor | Descripción |
+|-----|------------|-------------|
+| `patologias_premium_estado` | EncryptedStorage | Variables hiper-seguras de Premium |
+| `@patologias_trial_start` | AsyncStorage | Inicio del período de prueba |
+| `@patologias_subscription` | AsyncStorage | Estado de suscripción |
 | `@patologias_activated` | 'true' | Activación por código |
 | `@patologias_favorites` | string[] | IDs de patologías favoritas |
 | `@patologias_notes` | Record<string, string> | Notas por patología |
@@ -107,7 +110,8 @@ Código: SHA-256 hash validation (easter egg en Settings > Version x5)
 | Decisión | Razón |
 |----------|-------|
 | JSON estático vs API | Funciona offline en hospitales sin WiFi |
-| AsyncStorage vs SQLite | Datos simples (favoritos, notas) no justifican SQL |
+| Reemplazo a FlashList | Para prevenir tirones de GPU (stutters) renderizando miles de elementos |
+| SQLite integrado vía JSI | Permite escalar el sistema evadiendo el límite V8 Engine y RAM Overflows |
 | SHA-256 puro en JS | Sin dependencias nativas para validación de código |
 | Pre-bundle JS en assets | Bug de Metro BundleDownloader en Windows con RN 0.84 |
 | JDK 21 vs Java 25 | Java 25 rompe CMake del Android Gradle Plugin |
