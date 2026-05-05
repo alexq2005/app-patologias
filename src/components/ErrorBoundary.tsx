@@ -31,7 +31,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
           <Text style={styles.message}>
             La aplicación encontró un error inesperado.
           </Text>
-          {__DEV__ && this.state.error && (
+          {this.state.error && (
             <ScrollView style={styles.detailsScroll}>
               <Text style={styles.details}>
                 {this.state.error.toString()}
