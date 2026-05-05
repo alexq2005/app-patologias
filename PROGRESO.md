@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-05-05 — Sesion 6: Fase 2 — Infraestructura para releases
+
+### Resumen
+Tres pilares de infraestructura para preparar la app para futuras updates: feature flags tipados, scaffold de crash reporting (Sentry), y CI en GitHub Actions con tests + typecheck bloqueantes. En el camino: pago de deuda tecnica (mocks de Jest desactualizados desde la migracion a EncryptedStorage/SQLite + 2 errores de TypeScript de FlashList v2 API).
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `src/config/features.ts` (nuevo) | Registry tipado de 6 feature flags compile-time + helper `isFeatureEnabled` |
+| `src/config/sentry.ts` (nuevo) | `initSentry()` con `require()` defensivo dentro de try/catch — no-op si dep no esta instalada o DSN vacio. PII strip en `beforeSend` |
+| `App.tsx` | `initSentry()` llamado antes de `initDatabase()` |
+| `jest.setup.js` | Mocks agregados: `react-native-encrypted-storage`, `@op-engineering/op-sqlite` (count: 1 para skip de populate), `@shopify/flash-list` (alias FlatList) |
+| `src/screens/SearchScreen.tsx` | Removidas props heredadas FlatList (`estimatedItemSize`, `initialNumToRender`, `windowSize`) — FlashList v2 hace recycling automatico |
+| `src/screens/SystemPathologiesScreen.tsx` | Misma limpieza FlashList v2 |
+| `.github/workflows/ci.yml` (nuevo) | Tres jobs: `test` (Jest, blocking), `typecheck` (tsc, blocking), `lint` (ESLint, non-blocking hasta pagar deuda). Concurrency cancela runs viejos |
+
+### Verificacion
+
+| Check | Antes | Despues |
+|-------|-------|---------|
+| Jest tests | 0/13 (App.test crash por mock encrypted-storage) | 13/13 passing |
+| `tsc --noEmit` | 2 errores (FlashList API) | 0 errores |
+| ESLint | 78 errors / 564 warnings | sin cambio (deferred) |
+
+### Decisiones de alcance
+
+**Items de Fase 2 del plan original que se SALTARON intencionalmente:**
+- **Channels Android (internal/beta/production)**: redundante. Los flavors `free`/`premium` + Play Store tracks (internal/closed/open testing) ya cubren el caso. Build types separados duplicarian configuracion sin ganancia.
+- **Reorganizar `src/screens/` en subcarpetas**: 23 mov + ~100 import refactors. Bajo-impacto-alto-riesgo. Diferido hasta sesion dedicada (cuando haga falta agregar 5+ pantallas).
+
+**Sentry vs Crashlytics**: elegido Sentry — independiente de Firebase (no acoplarse al ecosistema si no se usan otros servicios), free tier 5K errores/mes alcanza, mejor DX para indie devs (source maps automaticos).
+
+### Pendiente para proxima sesion
+
+- **Setup manual de Sentry** (require interaccion del usuario):
+  1. crear proyecto en https://sentry.io
+  2. pegar DSN en `src/config/sentry.ts:21`
+  3. correr `npx @sentry/wizard@latest -i reactNative -p android`
+  4. rebuild AAB
+- **Deuda de lint**: 78 errors / 564 warnings — ataque por archivo en sesiones futuras
+- **Fase 3** (cuando el usuario decida arrancar): OTA de contenido como prioridad #1
+
+---
+
 ## 2026-05-05 — Sesion 5: Higiene del repo + separacion de proyectos
 
 ### Resumen
