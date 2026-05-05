@@ -19,14 +19,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import type { RootStackParamList, BodySystemId, EmergencyLevel } from '../types';
+import type { RootStackParamList, EmergencyLevel } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { useDifferentialDiagnosis, type DifferentialResult } from '../hooks/useDifferentialDiagnosis';
 import { normalizeText } from '../utils/search';
 import { BODY_SYSTEM_COLORS, BODY_SYSTEM_ICONS, EMERGENCY_LEVEL_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
-import { neuCard, neuCardSubtle, neuPill } from '../utils/neumorphism';
+import { neuCard, neuPill } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
 
 // ─────────────────────────────────────────────

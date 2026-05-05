@@ -26,7 +26,7 @@ import { PremiumGate } from '../components/PremiumGate';
 import type { ThemeColors } from '../utils/colors';
 import { BODY_SYSTEM_COLORS, BODY_SYSTEM_ICONS } from '../utils/colors';
 import { getSystemImage } from '../utils/systemImages';
-import { neuCard, neuCardSubtle, neuPill } from '../utils/neumorphism';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
 
 // ─────────────────────────────────────────────

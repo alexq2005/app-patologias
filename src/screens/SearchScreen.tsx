@@ -2,7 +2,7 @@
 // SearchScreen — full-text pathology search
 // ============================================================
 
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import {
   View,
   Text,
@@ -26,8 +26,7 @@ import { useSearchHistory } from '../hooks/useSearchHistory';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { SearchBar } from '../components/SearchBar';
 import { PathologyCard } from '../components/PathologyCard';
-import { neuCard } from '../utils/neumorphism';
-import { SPACING, RADIUS } from '../utils/spacing';
+import { SPACING } from '../utils/spacing';
 import type { ThemeColors } from '../utils/colors';
 import type { RootStackParamList, TabParamList, SearchResult } from '../types';
 import { FlashList } from '@shopify/flash-list';

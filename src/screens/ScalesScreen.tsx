@@ -9,7 +9,6 @@ import {
   FlatList,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Animated,
   TouchableOpacity,
   ImageBackground,
@@ -32,10 +31,9 @@ import { usePathologyData } from '../hooks/usePathologyData';
 import { SearchBar } from '../components/SearchBar';
 import { PremiumGate } from '../components/PremiumGate';
 import { neuCard } from '../utils/neumorphism';
-import { SCALE_COLORS, SCALE_ICONS, type ThemeColors } from '../utils/colors';
+import { SCALE_COLORS } from '../utils/colors';
 import { getScaleImage } from '../utils/scaleImages';
 import type { ClinicalScale, RootStackParamList, TabParamList } from '../types';
-import { SPACING, RADIUS } from '../utils/spacing';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 

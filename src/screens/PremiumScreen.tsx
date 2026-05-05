@@ -75,11 +75,11 @@ const FREE_FEATURES = [
 // ─────────────────────────────────────────────
 
 export function PremiumScreen({ navigation }: Props) {
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const {
-    isPremium, isCodeActivated, isTrialActive, trialDaysLeft, trialExpired,
+    isCodeActivated, isTrialActive, trialDaysLeft, trialExpired,
     isSubscribed, purchasing,
     activateWithCode, restoreSubscription, purchaseSubscription,
   } = usePremium();
@@ -101,7 +101,7 @@ export function PremiumScreen({ navigation }: Props) {
     if (ok) setCode('');
   }, [code, activateWithCode]);
 
-  const [restoring, setRestoring] = useState(false);
+  const [, setRestoring] = useState(false);
   const handleRestore = useCallback(async () => {
     setRestoring(true);
     const restored = await restoreSubscription();

@@ -12,12 +12,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useTheme } from '../context/ThemeContext';
-import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { getSystemImage } from '../utils/systemImages';
-import type { ThemeColors } from '../utils/colors';
 import type { BodySystem } from '../types';
-import { SPACING, RADIUS } from '../utils/spacing';
 
 interface BodySystemCardProps {
   system: BodySystem;
@@ -26,9 +22,6 @@ interface BodySystemCardProps {
 }
 
 export function BodySystemCard({ system, onPress, pathologyCount }: BodySystemCardProps) {
-  const { colors } = useTheme();
-  const rs = useResponsiveScale();
-
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
   const handlePressIn = useCallback(() => {

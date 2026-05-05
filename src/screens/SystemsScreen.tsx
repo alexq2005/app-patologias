@@ -71,7 +71,7 @@ function useFadeIn(duration = 400, delay = 0) {
 // ─────────────────────────────────────────────
 
 export function SystemsScreen() {
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();

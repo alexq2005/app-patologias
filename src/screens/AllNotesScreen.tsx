@@ -2,7 +2,7 @@
 // AllNotesScreen — full list of user notes across pathologies
 // ============================================================
 
-import React, { useRef, useEffect, useCallback, useMemo, useState } from 'react';
+import React, { useRef, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   Text,

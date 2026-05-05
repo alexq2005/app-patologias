@@ -2,7 +2,7 @@
 // ToolsScreen — Feature grid (Tab 5) — redesigned with images
 // ============================================================
 
-import React, { useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import {
   View,
   Text,

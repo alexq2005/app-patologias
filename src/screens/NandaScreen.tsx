@@ -26,13 +26,12 @@ import type {
   NandaDiagnosis,
   NicIntervention,
   NocResult,
-  Pathology,
 } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { type ThemeColors } from '../utils/colors';
-import { neuCard, neuCardSubtle } from '../utils/neumorphism';
+import { neuCard } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
 import { SearchBar } from '../components/SearchBar';
 import { PremiumGate } from '../components/PremiumGate';

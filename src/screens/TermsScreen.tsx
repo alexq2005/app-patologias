@@ -19,7 +19,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
-import { neuCard } from '../utils/neumorphism';
 import { SPACING } from '../utils/spacing';
 import type { ThemeColors } from '../utils/colors';
 import type { RootStackParamList } from '../types';
