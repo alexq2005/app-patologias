@@ -4,6 +4,54 @@
 
 ---
 
+## 2026-05-05 — Sesion 11: Integracion de MiSuite (hub del ecosistema)
+
+### Resumen
+Pantalla "Mi suite" integrada al repo con tests, docs y bundle rebuild. Es un hub que detecta cuales de las 3 apps del ecosistema (Patologias, Curso, Farmacologia) estan instaladas en el dispositivo via deep-link schemes, y ofrece abrir o descargar de Play Store. Pequeño refactor: extraida la logica pura (APPS registry + URL fallback chain) a `src/services/miSuite.ts` para que sea testeable sin component setup.
+
+### Archivos
+
+| Archivo | Tipo | Detalle |
+|---------|------|---------|
+| `src/services/miSuite.ts` | nuevo | APPS registry, AppEntry/InstallStatus types, playStoreAppUrl/playStoreWebUrl builders, chooseLaunchUrls(app, status) con fallback ordenado |
+| `src/screens/MiSuiteScreen.tsx` | nuevo | Hero gradient + 3 cards. useFocusEffect → checkInstalls(). handlePress simplificado a loop sobre chooseLaunchUrls con try/catch |
+| `__tests__/miSuite.test.ts` | nuevo | 12 tests: APPS shape (3 entries, 1 isCurrent, ids/schemes/pkgs unicos, formato hex/reverse-DNS), Play Store URL builders, chooseLaunchUrls 3 paths |
+| `android/app/src/main/AndroidManifest.xml` | modificado | `<queries>` para curso:// y farmacologia:// (Android 11+ package visibility). `<intent-filter>` para patologias:// (deep link de retorno desde otras apps del ecosistema) |
+| `src/types/index.ts` | modificado | RootStackParamList += `MiSuite: undefined` |
+| `src/navigation/AppNavigator.tsx` | modificado | Stack.Screen registration con title "Mi suite" |
+| `src/screens/ToolsScreen.tsx` | modificado | Tarjeta "Mi suite" agregada al grid |
+| `android/.../index.android.bundle` | rebuild | Pre-bundle obligatorio en Windows |
+
+### Decision: refactor minimo antes de testear
+
+La logica original tenia `Linking.openURL().catch().catch()` anidado dentro del componente — el punto mas error-prone (4 strings de URL hardcoded en 2 ramas). Sin extraer, los tests requeririan setup pesado de component-rendering (ThemeProvider + mocks de Linking + useFocusEffect que dispare). Extraer 1 helper de 8 lineas convierte ese caso en 5 tests sobre funciones puras. El global rule "Refactor → Feature" aplica: la feature aqui son los tests, y el refactor las hace faciles. handlePress paso de 17 lineas anidadas a 8 lineas con un loop trivial.
+
+### Defensas implementadas
+
+| Caso | Comportamiento |
+|------|----------------|
+| App actual ('Patologias') | Card no clickeable, marcada "ESTAS AQUI" |
+| App instalada | Tap → intenta scheme; si falla → market://; si falla → https://play.google.com |
+| App no instalada | Tap → market://; si falla → https://play.google.com |
+| Status 'checking' (carrera) | Defensivo: trata como 'missing' (Play Store directo) — evita intentar scheme antes de saber si esta instalada |
+| Linking.canOpenURL throws | Catch → 'missing' |
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 53/53 (era 41, +12 en miSuite) |
+| Bundle rebuild | OK (Metro v0.83.5, sin warnings) |
+
+### Pendiente
+
+- Setup manual hosting OTA + Sentry (sin cambio)
+- Deuda lint (sin cambio)
+- Cuando las otras 2 apps del ecosistema esten en Play Store, verificar que los `pkg` names en APPS coincidan con los reales (`com.cursoenfermeria.free`, `com.guiafarmacologica.free`) — el test catchea typos pero no verifica que coincidan con el listing real
+
+---
+
 ## 2026-05-05 — Sesion 10: Boton "Buscar actualizacion ahora" en Settings
 
 ### Resumen
