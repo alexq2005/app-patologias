@@ -30,6 +30,8 @@ import { usePathologyData } from '../hooks/usePathologyData';
 import { useSearchHistory } from '../hooks/useSearchHistory';
 import { useRecentPathologies } from '../hooks/useRecentPathologies';
 import { useQuiz } from '../hooks/useQuiz';
+import { useDataInfo, formatRelativeTime } from '../hooks/useDataInfo';
+import { APP_VERSION } from '../config/appInfo';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { neuCard } from '../utils/neumorphism';
 import { SPACING, RADIUS } from '../utils/spacing';
@@ -148,7 +150,21 @@ export function SettingsScreen() {
   const { history, clearHistory: clearSearchHistory } = useSearchHistory();
   const { recent, clearRecent } = useRecentPathologies();
   const { results, totalSessions, clearResults: clearQuizResults } = useQuiz();
+  const dataInfo = useDataInfo();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
+
+  // ── "Datos clínicos" subtitle: shows dataset version + relative sync time ─
+  const dataSubtitle = useMemo(() => {
+    const versionLabel = `v${dataInfo.dataVersion}`;
+    if (dataInfo.lastSyncedAt === null) {
+      return dataInfo.dataVersion === 1
+        ? `${versionLabel} · versión inicial`
+        : versionLabel;
+    }
+    const relative = formatRelativeTime(dataInfo.lastSyncedAt);
+    const verb = dataInfo.dataVersion === 1 ? 'verificado' : 'actualizado';
+    return `${versionLabel} · ${verb} ${relative}`;
+  }, [dataInfo]);
 
   // ── Easter egg: tap version 5 times ───────
   const tapCountRef = useRef(0);
@@ -353,9 +369,15 @@ export function SettingsScreen() {
           colors={colors} rs={rs}
         />
         <SettingRow
+          icon="database-outline"
+          label="Datos clínicos"
+          subtitle={dataSubtitle}
+          colors={colors} rs={rs}
+        />
+        <SettingRow
           icon="tag-outline"
           label="Version"
-          subtitle={isCodeActivated ? '1.0.0 · Premium' : '1.0.0'}
+          subtitle={isCodeActivated ? `${APP_VERSION} · Premium` : APP_VERSION}
           onPress={handleVersionTap}
           color={isCodeActivated ? '#10B981' : undefined}
           colors={colors} rs={rs}
