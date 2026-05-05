@@ -23,7 +23,7 @@
  */
 
 import type { Pathology } from '../types';
-import { getCurrentDataVersion, repopulateFromJson, setLastSyncedAt } from '../data/db';
+import { getCurrentDataVersion, getLastSyncedAt, repopulateFromJson, setLastSyncedAt } from '../data/db';
 import { isFeatureEnabled } from '../config/features';
 import { APP_VERSION } from '../config/appInfo';
 
@@ -45,6 +45,14 @@ const MIN_PAYLOAD_BYTES = 100 * 1024;        // 100 KB
 const MAX_PAYLOAD_BYTES = 10 * 1024 * 1024;  // 10 MB
 const FETCH_TIMEOUT_MS = 30_000;
 
+/**
+ * Minimum interval between manifest fetches.
+ * Trade-off: lower = fresher updates but more bandwidth/battery; higher = staler but cheaper.
+ * 6h means at most 4 fetches/day per user — reasonable for a free hosting tier.
+ * Bypass with `syncContent({ force: true })` for manual "check now" UX.
+ */
+const MIN_SYNC_INTERVAL_MS = 6 * 60 * 60 * 1000;
+
 interface ManifestV1 {
   /** Monotonically increasing integer. Higher = newer. */
   version: number;
@@ -60,14 +68,34 @@ interface ManifestV1 {
 
 export type SyncResult =
   | { status: 'disabled' }
+  | { status: 'throttled'; nextEligibleAt: number }
   | { status: 'no-update'; current: number }
   | { status: 'updated'; from: number; to: number }
   | { status: 'error'; reason: string };
 
-export async function syncContent(): Promise<SyncResult> {
+export interface SyncOptions {
+  /** Bypass the throttle window. Use for manual "check now" actions. */
+  force?: boolean;
+}
+
+export async function syncContent(options: SyncOptions = {}): Promise<SyncResult> {
   if (!isFeatureEnabled('contentOTA')) {
     return { status: 'disabled' };
   }
+
+  // Throttle BEFORE checking MANIFEST_URL so a misconfigured host doesn't
+  // produce an error every cold boot — once we've synced once, errors are
+  // suppressed until the throttle window passes.
+  if (!options.force) {
+    const lastSynced = getLastSyncedAt();
+    if (lastSynced !== null) {
+      const elapsed = Date.now() - lastSynced;
+      if (elapsed < MIN_SYNC_INTERVAL_MS) {
+        return { status: 'throttled', nextEligibleAt: lastSynced + MIN_SYNC_INTERVAL_MS };
+      }
+    }
+  }
+
   if (!MANIFEST_URL) {
     return { status: 'error', reason: 'MANIFEST_URL not configured' };
   }

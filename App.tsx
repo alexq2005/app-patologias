@@ -16,7 +16,8 @@ initDatabase();
 
 // Fire-and-forget OTA content sync — never blocks app render. Gated internally
 // by FEATURES.contentOTA so this is a no-op until the flag flips and the
-// MANIFEST_URL is configured.
+// MANIFEST_URL is configured. Also internally throttled to MIN_SYNC_INTERVAL_MS
+// to avoid pegging the host on every cold start.
 syncContent().then(result => {
   if (result.status === 'updated') {
     console.log(`[ContentSync] dataset updated v${result.from} → v${result.to}`);
