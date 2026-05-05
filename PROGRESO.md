@@ -4,6 +4,41 @@
 
 ---
 
+## 2026-05-05 — Sesion 9: Throttling de OTA sync
+
+### Resumen
+Gate de 6 horas entre manifest fetches para no pegar al server en cada cold boot. Si lastSyncedAt < 6h, syncContent devuelve `{ status: 'throttled', nextEligibleAt }`. Bypass via parametro `{ force: true }` — pensado para futuro boton "Buscar actualizacion ahora" en Settings.
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `src/services/contentSync.ts` | `MIN_SYNC_INTERVAL_MS = 6h`. Nuevo SyncResult variant `throttled` con `nextEligibleAt` absoluto. SyncOptions `{ force?: boolean }`. Reorden critico: throttle ANTES de MANIFEST_URL check |
+| `App.tsx` | Comment actualizado para reflejar throttling |
+| `__tests__/contentSync.test.ts` | +5 tests: throttled, no-throttle con force, no-throttle con sync vieja, no-throttle en primer boot, error MANIFEST_URL |
+
+### Decision de diseño: por que reordenar throttle antes de MANIFEST_URL check
+
+Caso: usuario flippea `FEATURES.contentOTA = true` pero olvida configurar MANIFEST_URL. Con orden anterior (URL check primero), cada cold boot loggea "MANIFEST_URL not configured" — ruido. Con orden nuevo (throttle primero), tras la primera vez el throttle suprime los errores hasta que pasen 6h.
+
+**Pero**: esto requiere que `setLastSyncedAt` se llame incluso cuando MANIFEST_URL está vacío. Hoy NO se llama. Trade-off: prefiero el orden correcto (throttle es defense-in-depth, va arriba). El error de MANIFEST_URL vacio se loggeara cada boot mientras lastSyncedAt sea null — que es OK porque indica que el OTA está activado pero no configurado, situación que el dev debe arreglar pronto. Un upgrade futuro: marcar lastSyncedAt incluso en errores de config para silenciar.
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 41/41 (era 36, +5 throttling) |
+| Bug atrapado por mi test | Orden inicial de gates devolvia error en vez de throttled — fix antes de commit |
+
+### Pendiente
+
+- Boton "Buscar actualizacion ahora" en Settings — usaria `syncContent({ force: true })` + estado de carga. Probable proxima sesion
+- Setup manual hosting OTA + Sentry (pendiente desde antes)
+- Deuda lint (pendiente desde antes)
+
+---
+
 ## 2026-05-05 — Sesion 8: Indicador UI de ultima actualizacion
 
 ### Resumen
