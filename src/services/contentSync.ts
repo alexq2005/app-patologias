@@ -25,6 +25,7 @@
 import type { Pathology } from '../types';
 import { getCurrentDataVersion, repopulateFromJson } from '../data/db';
 import { isFeatureEnabled } from '../config/features';
+import { APP_VERSION } from '../config/appInfo';
 
 /**
  * Manifest URL — must serve a JSON document conforming to ManifestV1.
@@ -39,9 +40,6 @@ import { isFeatureEnabled } from '../config/features';
  * a host).
  */
 const MANIFEST_URL = '';
-
-/** Current app version — checked against manifest.minAppVersion. Keep in sync with package.json. */
-const APP_VERSION = '2.0.0';
 
 const MIN_PAYLOAD_BYTES = 100 * 1024;        // 100 KB
 const MAX_PAYLOAD_BYTES = 10 * 1024 * 1024;  // 10 MB
