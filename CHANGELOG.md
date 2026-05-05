@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased] — 2026-05-05 (Release Infrastructure)
+
+### Added
+- **Feature flag registry** (`src/config/features.ts`): tipado, compile-time, con helper `isFeatureEnabled(flag)`. Flags iniciales para `videoLinks`, `voiceSearch`, `exportNotesPdf`, `contentOTA`, `syncBetweenDevices`, `quizHistory` (todos en `false`)
+- **Sentry crash reporting scaffold** (`src/config/sentry.ts`): `initSentry()` con `require()` defensivo en try/catch. No-op si dep no instalada o DSN vacío. PII strip por default. Setup manual documentado en el archivo
+- **GitHub Actions CI** (`.github/workflows/ci.yml`): jobs `test` y `typecheck` bloqueantes; `lint` non-blocking hasta pagar deuda. Concurrency cancela runs viejos
+
+### Fixed
+- Mocks de Jest desactualizados desde la migración v2.0.0: agregados `react-native-encrypted-storage`, `@op-engineering/op-sqlite`, `@shopify/flash-list`. Tests vuelven a 13/13 passing
+- Props heredadas de FlatList en `SearchScreen` y `SystemPathologiesScreen` (`estimatedItemSize`, `initialNumToRender`, `windowSize`) que FlashList v2 ya no soporta — eliminadas. TypeScript ahora compila con 0 errores
+
 ## [2.0.0] — 2026-03-29 (Hyper-Optimization Update)
 
 ### Added
