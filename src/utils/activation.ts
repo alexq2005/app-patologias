@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 const ACTIVATION_KEY = '@patologias_activated';
 
@@ -86,7 +86,7 @@ export function validateActivationCode(code: string): boolean {
 
 export async function isActivated(): Promise<boolean> {
   try {
-    const val = await AsyncStorage.getItem(ACTIVATION_KEY);
+    const val = await EncryptedStorage.getItem(ACTIVATION_KEY);
     return val === 'true';
   } catch {
     return false;
@@ -94,9 +94,9 @@ export async function isActivated(): Promise<boolean> {
 }
 
 export async function saveActivation(): Promise<void> {
-  await AsyncStorage.setItem(ACTIVATION_KEY, 'true').catch(() => {});
+  await EncryptedStorage.setItem(ACTIVATION_KEY, 'true').catch(() => {});
 }
 
 export async function clearActivation(): Promise<void> {
-  await AsyncStorage.removeItem(ACTIVATION_KEY).catch(() => {});
+  await EncryptedStorage.removeItem(ACTIVATION_KEY).catch(() => {});
 }
