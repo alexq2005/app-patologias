@@ -2,6 +2,39 @@ jest.mock('@react-native-async-storage/async-storage', () =>
   require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
 );
 
+jest.mock('react-native-encrypted-storage', () => {
+  const store = new Map();
+  return {
+    __esModule: true,
+    default: {
+      setItem: jest.fn((k, v) => { store.set(k, v); return Promise.resolve(); }),
+      getItem: jest.fn(k => Promise.resolve(store.get(k) ?? null)),
+      removeItem: jest.fn(k => { store.delete(k); return Promise.resolve(); }),
+      clear: jest.fn(() => { store.clear(); return Promise.resolve(); }),
+    },
+  };
+});
+
+jest.mock('@op-engineering/op-sqlite', () => ({
+  open: jest.fn(() => ({
+    // Return a non-zero count so initDatabase() skips the populate branch in tests.
+    // Specific tests that need real data should override this with executeSync.mockReturnValueOnce.
+    executeSync: jest.fn((sql) => {
+      if (typeof sql === 'string' && sql.includes('COUNT(*)')) {
+        return { rows: [{ count: 1 }] };
+      }
+      return { rows: [] };
+    }),
+    execute: jest.fn(() => Promise.resolve({ rows: [] })),
+    close: jest.fn(),
+  })),
+}));
+
+jest.mock('@shopify/flash-list', () => {
+  const { FlatList } = require('react-native');
+  return { FlashList: FlatList };
+});
+
 jest.mock('react-native-vector-icons/MaterialCommunityIcons', () => {
   const { Text } = require('react-native');
   return (props) => <Text>{props.name}</Text>;

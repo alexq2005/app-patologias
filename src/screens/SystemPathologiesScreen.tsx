@@ -198,7 +198,6 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
       />
       <FlashList
         data={filteredPathologies}
-        estimatedItemSize={120}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ListHeaderComponent={ListHeader}
@@ -207,9 +206,6 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         removeClippedSubviews={Platform.OS === 'android'}
-        initialNumToRender={10}
-        maxToRenderPerBatch={10}
-        windowSize={7}
       />
     </View>
   );
