@@ -2,7 +2,7 @@
 // TabBarContext — controls tab bar visibility (hide on scroll)
 // ============================================================
 
-import React, { createContext, useContext, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useRef, useCallback, useMemo } from 'react';
 import { Animated, type NativeSyntheticEvent, type NativeScrollEvent } from 'react-native';
 
 interface TabBarContextValue {
@@ -61,8 +61,10 @@ export function TabBarProvider({ children }: { children: React.ReactNode }) {
     [show, hide],
   );
 
+  const value = useMemo(() => ({ translateY, handleScroll, show }), [translateY, handleScroll, show]);
+
   return (
-    <TabBarCtx.Provider value={{ translateY, handleScroll, show }}>
+    <TabBarCtx.Provider value={value}>
       {children}
     </TabBarCtx.Provider>
   );
