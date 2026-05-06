@@ -4,6 +4,63 @@
 
 ---
 
+## 2026-05-06 — Sesion 14: Audit de orphan refs + normalizer k↔c
+
+### Resumen
+Tu busqueda de "hipercalemia" destapo dos bugs: la patologia no existe (id huérfano `pat_hiperkalemia` referenciado en `relatedPathologyIds` de rabdomiolisis) Y el normalizer no tolera variantes ortograficas `k↔c`. Audit sistematico encontro **38 ids huerfanos / 45 refs rotas** total. Limpieza completa + fix del normalizer + tests.
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `src/data/pathologies.json` | 10 renames (typos de ids reales) + 35 removes (sin match) + 1 dedupe (`pat_icc` duplicado). Total: 45 refs limpiadas |
+| `src/utils/search.ts` | Regla `k → c` agregada al normalizer + JSDoc explicando estrategia bidireccional |
+| `src/screens/SystemPathologiesScreen.tsx` | Removida copia local de `normalizeText` (que ademas no tenia `.trim()`). Importa del util. Single source of truth |
+| `__tests__/search.test.ts` | Nuevo: 7 tests cubriendo lowercase, diacritics, trim, k↔c, case-insensitive, combinacion, idempotencia |
+
+### Renames aplicados (10)
+
+| Orphan | Replacement |
+|--------|-------------|
+| pat_asma_bronquial | pat_asma |
+| pat_coagulación_intravascular_diseminada | pat_cid |
+| pat_esclerosis_lateral_amiotrofica | pat_esclerosis_lateral |
+| pat_fracturas | pat_fracturas_extremidades |
+| pat_insuficiencia_respiratoria | pat_ira |
+| pat_litiasis_renal | pat_litiasis |
+| pat_litiasis_urinaria | pat_litiasis |
+| pat_sindrome_guillain_barre | pat_guillain_barre |
+| pat_tceg | pat_tce |
+
+### Patologias FALTANTES (detectadas durante el audit, a agregar en sesion dedicada)
+
+Comunes en enfermeria, valen sesion de contenido propia:
+- Hiperkalemia (la del bug original)
+- Shock (genérico — hoy solo hay shock_cardiogenico y shock_hipovolemico)
+- Insuficiencia renal aguda + crónica
+- Insuficiencia suprarrenal
+- Hashimoto
+- SII (sindrome intestino irritable)
+- Incontinencia urinaria
+- Otros: rinitis alergica, fasciitis necrotizante, hashimoto, etc
+
+### Verificacion
+
+| Check | Antes | Despues |
+|-------|-------|---------|
+| Orphan refs | 45 | 0 |
+| Tests | 53 | 60 (+7 normalizer) |
+| `tsc --noEmit` | 0 errores | 0 errores |
+| Lint | 0 errores | 0 errores |
+
+### Pendiente
+
+- Subir AAB v2.0.1 a Play Store (manual)
+- Sesion de contenido para agregar las ~7 patologias faltantes detectadas + bumpear a v2.0.2
+- Considerar agregar a CI un check de orphan refs (`node -e "..."` script en package.json scripts) para que falle si vuelven a aparecer
+
+---
+
 ## 2026-05-06 — Sesion 13: Release v2.0.1 — bundle + AAB con fixes de hooks
 
 ### Resumen

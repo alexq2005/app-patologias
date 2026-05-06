@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased] — 2026-05-06 (Data quality + search)
+
+### Fixed
+- **45 referencias rotas** en `relatedPathologyIds` (38 ids únicos huérfanos): tap "ver patología relacionada" llevaba a pantalla "no encontrada". 10 fueron typos de ids reales (renombrados: `pat_asma_bronquial → pat_asma`, `pat_tceg → pat_tce`, etc), 35 sin match válido (eliminados). Bonus: 1 dedupe de `pat_icc` duplicado
+- **Search no tolera variantes ortográficas k↔c**: `normalizeText` ahora colapsa `k → c` (`hiperkalemia / hipercalemia`, `ketoacidosis / cetoacidosis`). Bug destapado por búsqueda de "hipercalemia" del usuario
+
+### Changed
+- `src/screens/SystemPathologiesScreen.tsx` ahora importa `normalizeText` desde `src/utils/search.ts` en vez de tener copia local (que además carecía del `.trim()`). Single source of truth
+
+### Notes
+- Patologías FALTANTES detectadas durante el audit (a agregar en sesión dedicada de contenido): hiperkalemia, shock genérico, insuficiencia renal/suprarrenal, hashimoto, SII, incontinencia urinaria
+
 ## [2.0.1] — 2026-05-06 (Hook bug fixes — patch release)
 
 ### Fixed
