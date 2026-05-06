@@ -87,13 +87,26 @@ adb install -g android/app/build/outputs/apk/free/release/app-free-release.apk
 
 ## CI / Quality Gates
 
-`.github/workflows/ci.yml` corre 4 jobs bloqueantes en cada PR/push a main:
+`.github/workflows/ci.yml` corre 4 jobs bloqueantes + 1 informativo en cada PR/push a main:
 1. **test** — `npm test --watchAll=false --ci` (60 tests)
 2. **lint** — `npm run lint` (0 errors; 524 inline-styles warnings deferidas)
 3. **typecheck** — `npx tsc --noEmit` (0 errors)
 4. **data** — `node scripts/check-orphans.js` (0 refs huérfanas en `relatedPathologyIds`)
+5. **freshness** (warning-only, no bloquea) — `node scripts/check-stale.js`: reporta patologías sin `revisadoEn` o con revisión > 24 meses. Útil para priorizar sesiones de contenido clínico
 
 Antes de pushear, correr local:
 ```bash
 npm test -- --watchAll=false && npx tsc --noEmit && npm run lint && npm run check:orphans
 ```
+
+## Clinical content versioning
+
+Cada `Pathology` puede llevar dos campos opcionales para trazabilidad clínica:
+- `revisadoEn`: ISO date `YYYY-MM-DD` de la última revisión clínica del entry
+- `fuentes`: array de etiquetas libre — recomendado: `"ESC 2024"`, `"AHA 2025"`, `"GOLD 2025"`, `"KDIGO 2022"`, `"NICE NG136"`
+
+Estos campos son optativos hoy (151 entries sin fecha) pero TODA edición/agregado nuevo debe setearlos. El job `freshness` los audita.
+
+Disclaimer visible:
+- About → tarjeta "Información clínica" con fecha de última revisión general
+- PathologyDetail → footnote al pie de cada detalle

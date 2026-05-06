@@ -58,3 +58,15 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/check-orphans.js
+
+  freshness:
+    name: Clinical freshness (stale revisions, warning-only)
+    runs-on: ubuntu-latest
+    # Reporta patologías sin `revisadoEn` o con > 24 meses. Exit 0 siempre —
+    # informativo, no bloqueante. Útil para priorizar sesiones de contenido.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/check-stale.js
