@@ -64,6 +64,65 @@ Comunes en enfermeria, valen sesion de contenido propia:
 
 ---
 
+## 2026-05-06 — Sesion 17: Primera actualización de contenido clínico (B con web)
+
+### Resumen
+Aplicada B (web-search-driven content update) a la patología más prioritaria: **Insuficiencia Cardíaca Congestiva** (`pat_icc`). El entry estaba en algoritmo pre-2021 — faltaban 2 de los 4 pilares fundacionales del manejo moderno (ARNI y SGLT2i). Validado contra fuentes oficiales 2023-2024.
+
+### Workflow ejecutado
+
+1. Read estado actual de `pat_icc` desde JSON
+2. WebSearch ESC 2024 HF guidelines + dosis específicas (sacubitril/valsartán, SGLT2i)
+3. Diff propuesto al usuario con citas a 6 fuentes
+4. Aprobación explícita del usuario (opción A: full diff)
+5. Aplicación via Node script idempotente
+6. Smoke test (TS, jest, orphans, freshness)
+7. Commit atómico con sources en mensaje
+
+### Cambios en `pat_icc.tratamientoMedico.farmacologico`
+
+| Acción | Droga | Razón |
+|--------|-------|-------|
+| ADD | Sacubitril/Valsartán (ARNI) | Pilar #1 ESC 2023, preferido sobre IECA, dosis 24/26 → 49/51 → 97/103 c/12h |
+| ADD | Dapagliflozina/Empagliflozina (SGLT2i) | Pilar #4 ESC 2023, 10mg/d sin titulación, across all EF |
+| CHANGE | IECA (Enalapril/Ramipril) | Reclasificado como ALTERNATIVA (mecanismo updated) |
+| KEEP | Furosemida, Carvedilol, Espironolactona | Sigue vigente |
+
+### Metadata (primera entry con tracking)
+
+- `revisadoEn: "2026-05-06"`
+- `fuentes`: ESC 2023 Focused Update, PARADIGM-HF, DAPA-HF, EMPEROR-Reduced, DELIVER, EMPEROR-Preserved
+
+### Métrica freshness
+
+| Antes | Después |
+|-------|---------|
+| 0 / 151 fresh | **1** / 151 fresh |
+
+### Verificación
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 60/60 |
+| `check:orphans` | OK |
+| `check:stale` | 1 fresh (anteriormente 0) |
+
+### Tiempo invertido y velocidad
+
+~30 min total: web search + diff + approval + apply + commit. **Esta es la velocidad real de B-collab con web search**: ~1 patología por sesión enfocada de 30-45 min. Para 25 patologías de alto cambio = 12+ sesiones similares.
+
+### Pendiente (sesiones futuras de contenido)
+
+Próximas patologías de alto cambio para revisar (orden sugerido por impacto):
+- pat_fa (Fibrilación Auricular) — ESC 2024 AF guidelines major changes (DOAC primero, ablación temprana)
+- pat_iam (IAM) — AHA/ESC 2023 STEMI/NSTEMI updates
+- pat_diabetes_2 — ADA 2025 algoritmo (GLP-1 + SGLT2i prioritized)
+- pat_epoc — GOLD 2025 (LABA/LAMA dual primero, triple si exacerbador)
+- pat_hta — ESC 2024 HTN (target <130/80, SPC desde el inicio)
+
+---
+
 ## 2026-05-06 — Sesion 16: Clinical disclaimer (C) + governance infra (A)
 
 ### Resumen

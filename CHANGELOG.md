@@ -2,6 +2,9 @@
 
 ## [Unreleased] — 2026-05-06 (Data quality + search + legal disclaimer)
 
+### Content updates (validated vs 2024+ sources)
+- **`pat_icc` Insuficiencia Cardíaca → ESC 2023 4-pillar algorithm**: agregados Sacubitril/Valsartán (ARNI 1ra línea preferida sobre IECA) y SGLT2i (Dapagliflozina/Empagliflozina 10mg/d, across all EF spectrum). IECA reclasificado como alternativa. Primera patología con `revisadoEn` + `fuentes` (6 fuentes: ESC 2023 Focused Update, PARADIGM-HF, DAPA-HF, EMPEROR-Reduced/Preserved, DELIVER). Métrica `check:stale`: 0/151 → 1/151 fresh
+
 ### Added
 - **Clinical reference disclaimer** en About y al pie de cada PathologyDetail. About: tarjeta destacada con "Última revisión general: Mayo 2026 · Fuentes principales hasta 2023" + aviso explícito de que NO sustituye criterio profesional ni guías institucionales actualizadas. PathologyDetail: footnote pequeño con info icon al final del scroll
 - **Clinical content versioning infrastructure**: `Pathology` type extiende con campos opcionales `revisadoEn` (ISO date) y `fuentes` (`"ESC 2024"`, etc). `scripts/check-stale.js` + CI job `freshness` (warning-only) reporta patologías sin fecha de revisión o con > 24 meses. Convención documentada en CLAUDE.md para futuras ediciones
