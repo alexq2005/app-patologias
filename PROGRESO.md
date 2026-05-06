@@ -64,6 +64,45 @@ Comunes en enfermeria, valen sesion de contenido propia:
 
 ---
 
+## 2026-05-06 — Sesion 16: Clinical disclaimer (C) + governance infra (A)
+
+### Resumen
+Usuario pregunto "el contenido esta actualizado a 2026?". Respuesta honesta: fuentes mayoritariamente 2017-2022, ninguna 2024+. Implementadas dos protecciones: disclaimer visible (legal) + infra de versionado (gobernanza).
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `src/screens/AboutScreen.tsx` | Tarjeta "Información clínica" antes del footer con borde warning. Última revisión, fuentes hasta 2023, aviso explícito |
+| `src/screens/PathologyDetailScreen.tsx` | Footnote con info icon al final de cada detalle. Texto pequeño no invasivo |
+| `src/types/index.ts` | Pathology + `revisadoEn?: string` + `fuentes?: string[]` (opcionales) |
+| `scripts/check-stale.js` (nuevo) | Audit informativo. Reporta sin-fecha + > 24 meses. Exit 0 SIEMPRE (warning-only) |
+| `package.json` | `check:stale` script |
+| `.github/workflows/ci.yml` | Nuevo job `freshness` (no bloquea) |
+| `CLAUDE.md` | Documentada convención: toda edición nueva debe setear revisadoEn + fuentes |
+
+### Decisiones
+
+- **Disclaimer NO modal**: hubiera molestado en cada apertura. Footnote pequeño + tarjeta en About logra protección legal sin friccion UX.
+- **Job freshness es WARNING-only** (exit 0 siempre): contenido tiene shelf-life largo, no toda patologia necesita revision sincronizada. Job sirve para visibility, no como gate.
+- **revisadoEn + fuentes son opcionales**: 151 patologias sin fecha hoy. Hacerlos required rompería todo. Convención: setearlos al editar/agregar nuevos.
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `tsc --noEmit` | 0 errores |
+| Tests | 60/60 |
+| Lint | 0 errors, 531 warnings (+7 inline-styles del disclaimer, esperable) |
+| `check:orphans` | 0 huerfanas |
+| `check:stale` | 0 fresh / 151 sin fecha (informativo) |
+
+### Pendiente (B postergada)
+
+**B = auditar y actualizar contenido clínico ~25 patologias de alto cambio (cardio, EPOC, diabetes, ACLS) a guías 2024+** — requiere validación clínica del usuario. Cuando se haga, setear `revisadoEn: "2026-XX-XX"` y `fuentes: ["ESC 2024", ...]` en cada entry tocada — el job `freshness` lo refleja.
+
+---
+
 ## 2026-05-06 — Sesion 13: Release v2.0.1 — bundle + AAB con fixes de hooks
 
 ### Resumen

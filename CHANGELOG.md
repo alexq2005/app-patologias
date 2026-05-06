@@ -1,8 +1,10 @@
 # Changelog
 
-## [Unreleased] — 2026-05-06 (Data quality + search)
+## [Unreleased] — 2026-05-06 (Data quality + search + legal disclaimer)
 
 ### Added
+- **Clinical reference disclaimer** en About y al pie de cada PathologyDetail. About: tarjeta destacada con "Última revisión general: Mayo 2026 · Fuentes principales hasta 2023" + aviso explícito de que NO sustituye criterio profesional ni guías institucionales actualizadas. PathologyDetail: footnote pequeño con info icon al final del scroll
+- **Clinical content versioning infrastructure**: `Pathology` type extiende con campos opcionales `revisadoEn` (ISO date) y `fuentes` (`"ESC 2024"`, etc). `scripts/check-stale.js` + CI job `freshness` (warning-only) reporta patologías sin fecha de revisión o con > 24 meses. Convención documentada en CLAUDE.md para futuras ediciones
 - **Data integrity check** (`scripts/check-orphans.js` + CI job `data`): valida que toda entrada en `relatedPathologyIds` apunte a una patología real. Bloquea PRs futuros que introduzcan refs huérfanas. `npm run check:orphans` para correr local
 
 ### Fixed
