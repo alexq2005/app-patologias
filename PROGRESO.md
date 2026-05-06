@@ -57,7 +57,10 @@ Comunes en enfermeria, valen sesion de contenido propia:
 
 - Subir AAB v2.0.1 a Play Store (manual)
 - Sesion de contenido para agregar las ~7 patologias faltantes detectadas + bumpear a v2.0.2
-- Considerar agregar a CI un check de orphan refs (`node -e "..."` script en package.json scripts) para que falle si vuelven a aparecer
+
+### Adicionado en la misma sesion (post-AD)
+
+**`scripts/check-orphans.js` + CI job `data`**: previene recurrencia de la deuda limpiada hoy. Job separado en CI workflow (no requiere `npm ci` — script Node puro), `npm run check:orphans` para correr local. Cualquier PR futuro que introduzca un id huerfano frena el merge.
 
 ---
 
