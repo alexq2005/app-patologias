@@ -19501,8 +19501,7 @@
     "emergencyLevel": "moderado",
     "relatedPathologyIds": [
       "pat_icc",
-      "pat_hta",
-      "pat_icc"
+      "pat_hta"
     ],
     "isPremium": true
   },
@@ -22633,7 +22632,7 @@
     "emergencyLevel": "critico",
     "relatedPathologyIds": [
       "pat_acv",
-      "pat_tceg"
+      "pat_tce"
     ],
     "isPremium": true
   },
@@ -26420,7 +26419,6 @@
     ],
     "emergencyLevel": "moderado",
     "relatedPathologyIds": [
-      "pat_anemias",
       "pat_lupus",
       "pat_neutropenia",
       "pat_mieloma"
@@ -26736,7 +26734,6 @@
     ],
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
-      "pat_anemias",
       "pat_purpura_trombocitopenica",
       "pat_policitemia",
       "pat_mieloma"
@@ -28108,9 +28105,7 @@
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
       "pat_artritis_reumatoide",
-      "pat_espondiloartritis",
-      "pat_lupus",
-      "pat_enfermedad_inflamatoria_intestinal"
+      "pat_lupus"
     ],
     "isPremium": true
   },
@@ -28461,7 +28456,6 @@
     "relatedPathologyIds": [
       "pat_lupus",
       "pat_artritis_reumatoide",
-      "pat_insuficiencia_renal",
       "pat_sindrome_nefrotico"
     ],
     "isPremium": true
@@ -28813,7 +28807,6 @@
     "relatedPathologyIds": [
       "pat_fibrosis_pulmonar",
       "pat_tuberculosis",
-      "pat_insuficiencia_renal",
       "pat_vasculitis"
     ],
     "isPremium": true
@@ -29504,7 +29497,6 @@
     ],
     "emergencyLevel": "critico",
     "relatedPathologyIds": [
-      "pat_insuficiencia_renal",
       "pat_inmunodeficiencia_primaria",
       "pat_vasculitis",
       "pat_lupus"
@@ -31582,7 +31574,7 @@
     ],
     "emergencyLevel": "moderado",
     "relatedPathologyIds": [
-      "pat_litiasis_renal",
+      "pat_litiasis",
       "pat_ira",
       "pat_dm2",
       "pat_vejiga_neurogenica"
@@ -32654,8 +32646,6 @@
     "emergencyLevel": "critico",
     "relatedPathologyIds": [
       "pat_ira",
-      "pat_hiperkalemia",
-      "pat_acidosis_metabólica",
       "pat_sindrome_compartimental"
     ],
     "isPremium": true
@@ -34714,11 +34704,7 @@
       "Pérdida de peso no explicada >10% en 6 meses"
     ],
     "emergencyLevel": "moderado",
-    "relatedPathologyIds": [
-      "pat_carcinoma_basocelular",
-      "pat_carcinoma_espinocelular",
-      "pat_nevos_melanociticos"
-    ],
+    "relatedPathologyIds": [],
     "isPremium": true
   },
   {
@@ -35045,8 +35031,7 @@
     ],
     "emergencyLevel": "ninguno",
     "relatedPathologyIds": [
-      "pat_asma_bronquial",
-      "pat_rinitis_alergica",
+      "pat_asma",
       "pat_urticaria"
     ],
     "isPremium": true
@@ -35383,7 +35368,6 @@
     "emergencyLevel": "moderado",
     "relatedPathologyIds": [
       "pat_celulitis",
-      "pat_fasciitis_necrotizante",
       "pat_pie_diabetico"
     ],
     "isPremium": true
@@ -36054,8 +36038,7 @@
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
       "pat_dermatitis_atopica",
-      "pat_anafilaxia",
-      "pat_rinitis_alergica"
+      "pat_anafilaxia"
     ],
     "isPremium": true
   },
@@ -37852,10 +37835,7 @@
     ],
     "emergencyLevel": "critico",
     "relatedPathologyIds": [
-      "pat_fractura_tibial",
-      "pat_lesión_vascular",
-      "pat_rabdomiolisis",
-      "pat_lesión_renal_aguda"
+      "pat_rabdomiolisis"
     ],
     "isPremium": true
   },
@@ -38241,10 +38221,8 @@
     ],
     "emergencyLevel": "critico",
     "relatedPathologyIds": [
-      "pat_lesión_renal_aguda",
       "pat_purpura_trombocitopenica",
-      "pat_coagulación_intravascular_diseminada",
-      "pat_enterocolitis_hemorrágica"
+      "pat_cid"
     ],
     "isPremium": true
   },
@@ -38593,7 +38571,7 @@
       "pat_dm2",
       "pat_irc",
       "pat_hipotiroidismo",
-      "pat_sindrome_guillain_barre"
+      "pat_guillain_barre"
     ],
     "isPremium": true
   },
@@ -38929,7 +38907,7 @@
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
       "pat_pielonefritis",
-      "pat_litiasis_renal",
+      "pat_litiasis",
       "pat_irc"
     ],
     "isPremium": true
@@ -39576,8 +39554,7 @@
     ],
     "emergencyLevel": "moderado",
     "relatedPathologyIds": [
-      "pat_eclampsia",
-      "pat_aborto"
+      "pat_eclampsia"
     ],
     "isPremium": true
   },
@@ -41587,7 +41564,7 @@
     ],
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
-      "pat_esclerosis_lateral_amiotrofica"
+      "pat_esclerosis_lateral"
     ],
     "isPremium": true
   },
@@ -42032,8 +42009,7 @@
     "relatedPathologyIds": [
       "pat_hipertiroidismo",
       "pat_icc",
-      "pat_fa",
-      "pat_insuficiencia_suprarrenal"
+      "pat_fa"
     ],
     "isPremium": true
   },
@@ -42408,9 +42384,7 @@
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
       "pat_anemia_ferropenica",
-      "pat_gastritis_crónica",
-      "pat_neuropatia_periférica",
-      "pat_celiaca"
+      "pat_neuropatia_periférica"
     ],
     "isPremium": true
   },
@@ -42781,7 +42755,6 @@
     "relatedPathologyIds": [
       "pat_leucemia",
       "pat_linfoma",
-      "pat_anemia",
       "pat_sepsis"
     ],
     "isPremium": true
@@ -43186,9 +43159,7 @@
     "relatedPathologyIds": [
       "pat_dm1",
       "pat_anemia_ferropenica",
-      "pat_osteoporosis",
-      "pat_hashimoto",
-      "pat_sii"
+      "pat_osteoporosis"
     ],
     "isPremium": true
   },
@@ -43590,9 +43561,7 @@
     "relatedPathologyIds": [
       "pat_tvp",
       "pat_tep",
-      "pat_saf",
-      "pat_lupus",
-      "pat_neoplasias"
+      "pat_lupus"
     ],
     "isPremium": true
   },
@@ -44348,9 +44317,7 @@
     "relatedPathologyIds": [
       "pat_irc",
       "pat_itu",
-      "pat_cancer_próstata",
-      "pat_litiasis_urinaria",
-      "pat_incontinencia_urinaria"
+      "pat_litiasis"
     ],
     "isPremium": true
   },
@@ -46109,7 +46076,7 @@
       "pat_politraumatismo",
       "pat_neumotorax",
       "pat_hemotorax",
-      "pat_insuficiencia_respiratoria"
+      "pat_ira"
     ],
     "isPremium": false
   },
@@ -47159,7 +47126,6 @@
     "relatedPathologyIds": [
       "pat_hipotermia",
       "pat_sdra",
-      "pat_paro_cardiorrespiratorio",
       "pat_tce",
       "pat_lesión_medular"
     ],
@@ -47519,7 +47485,7 @@
     "relatedPathologyIds": [
       "pat_shock_hipovolemico",
       "pat_politraumatismo",
-      "pat_fracturas",
+      "pat_fracturas_extremidades",
       "pat_sindrome_compartimental"
     ],
     "isPremium": false
@@ -47883,10 +47849,7 @@
     "emergencyLevel": "critico",
     "relatedPathologyIds": [
       "pat_ahogamiento",
-      "pat_paro_cardiorrespiratorio",
-      "pat_shock",
-      "pat_politraumatismo",
-      "pat_congelación"
+      "pat_politraumatismo"
     ],
     "isPremium": false
   }
