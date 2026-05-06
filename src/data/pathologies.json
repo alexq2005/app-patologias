@@ -520,6 +520,20 @@
           ]
         },
         {
+          "nombre": "Sacubitril/Valsartán (ARNI)",
+          "grupo": "Inhibidor de neprilisina + ARA-II",
+          "mecanismo": "Inhibe la neprilisina (aumenta péptidos natriuréticos vasoactivos) y bloquea AT1. Reduce mortalidad CV y hospitalizaciones vs IECA en HFrEF (PARADIGM-HF). 1ra línea ESC 2023, preferido sobre IECA",
+          "dosis": "Inicio 49/51 mg c/12h (24/26 c/12h si <50 kg, eGFR 30-60, o paciente venía con IECA). Titular cada 2-4 semanas hasta target 97/103 mg c/12h. Requiere washout de 36h si transición desde IECA",
+          "cuidadosEnfermeria": [
+            "Washout de 36h obligatorio si paciente venía con IECA (riesgo de angioedema)",
+            "Monitorizar PA: hipotensión sintomática es el efecto adverso más común",
+            "Control de K+ y función renal a la 1-2 semanas post-inicio y post-titulación",
+            "Contraindicado: angioedema previo, embarazo, eGFR <30 mL/min, hipersensibilidad",
+            "Educar: tomar siempre con o sin alimentos de forma consistente",
+            "No combinar con IECA simultáneamente (doble inhibición SRAA)"
+          ]
+        },
+        {
           "nombre": "Carvedilol",
           "grupo": "Betabloqueante no selectivo con efecto alfa1",
           "mecanismo": "Bloquea receptores beta1, beta2 y alfa1 reduciendo FC, PA y remodelado cardíaco",
@@ -535,7 +549,7 @@
         {
           "nombre": "Enalapril / Ramipril",
           "grupo": "IECA",
-          "mecanismo": "Reduce postcarga y precarga, revierte remodelado cardíaco, reduce mortalidad en HFrEF",
+          "mecanismo": "Reduce postcarga y precarga, revierte remodelado cardíaco, reduce mortalidad en HFrEF. ALTERNATIVA cuando ARNI no es tolerado, contraindicado, o no accesible (ESC 2023: ARNI es 1ra línea preferida)",
           "dosis": "Enalapril 2.5-20 mg c/12h; Ramipril 1.25-10 mg/dia",
           "cuidadosEnfermeria": [
             "Vigilar hipotensión en primera dosis",
@@ -554,6 +568,20 @@
             "Contraindicada con K > 5.0 o creatinina > 2.5",
             "Vigilar ginecomastia en hombres",
             "No combinar con IECAs + ARA-II simultaneamente"
+          ]
+        },
+        {
+          "nombre": "Dapagliflozina o Empagliflozina (SGLT2i)",
+          "grupo": "Inhibidor del cotransportador sodio-glucosa tipo 2",
+          "mecanismo": "Reduce mortalidad CV y hospitalizaciones por IC independiente de DBT. 1ra línea ESC 2023 across all EF spectrum (HFrEF: DAPA-HF/EMPEROR-Reduced; HFpEF/HFmrEF: DELIVER/EMPEROR-Preserved). 4to pilar fundacional",
+          "dosis": "Dapagliflozina 10 mg/día VO; Empagliflozina 10 mg/día VO. Sin titulación (dosis única desde el inicio)",
+          "cuidadosEnfermeria": [
+            "Diuresis osmótica leve los primeros días (sed, poliuria) — generalmente autolimitada",
+            "Riesgo de cetoacidosis euglicémica (rara pero grave): suspender ante cirugía mayor, ayuno >24h, enfermedad aguda con vómitos. Glucemia capilar puede ser normal aún en cetoacidosis",
+            "Higiene genital diaria — riesgo de infecciones micóticas y, raro, gangrena de Fournier",
+            "Verificar eGFR ≥20 mL/min (HF independiente de DBT)",
+            "En DBT: posible hipoglucemia si combinado con sulfonilureas/insulina — ajustar dosis",
+            "Educar al paciente sobre signos de cetoacidosis (náuseas, vómitos, dolor abdominal, malestar)"
           ]
         }
       ],
@@ -746,7 +774,16 @@
       "pat_fa",
       "pat_eap"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-06",
+    "fuentes": [
+      "ESC 2023 Focused Update HF (Eur Heart J 2024)",
+      "PARADIGM-HF (sacubitril/valsartan)",
+      "DAPA-HF (dapagliflozin HFrEF)",
+      "EMPEROR-Reduced (empagliflozin HFrEF)",
+      "DELIVER (dapagliflozin HFpEF/HFmrEF)",
+      "EMPEROR-Preserved (empagliflozin HFpEF)"
+    ]
   },
   {
     "id": "pat_iam",
