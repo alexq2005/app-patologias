@@ -1552,6 +1552,20 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
           </View>
         ) : null}
 
+        {/* Clinical disclaimer footnote — visible en cada detalle */}
+        <View style={[styles.disclaimerFootnote, { borderColor: colors.border, backgroundColor: colors.surface }]}>
+          <MaterialCommunityIcons
+            name="information-outline"
+            size={rs.font(14)}
+            color={colors.textLight}
+            style={{ marginTop: 1 }}
+          />
+          <Text style={[styles.disclaimerFootnoteText, { color: colors.textLight }]}>
+            Información de referencia educativa. Verificá guías institucionales actualizadas
+            antes de cualquier decisión clínica. Ver Acerca de para fecha de última revisión.
+          </Text>
+        </View>
+
         {/* Bottom padding */}
         <View style={{ height: rs.space(100) }} />
       </ScrollView>
@@ -1868,6 +1882,19 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       borderRadius: rs.space(28),
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    disclaimerFootnote: {
+      flexDirection: 'row',
+      gap: rs.space(8),
+      padding: rs.space(12),
+      marginTop: rs.space(16),
+      borderRadius: 10,
+      borderWidth: 1,
+    },
+    disclaimerFootnoteText: {
+      flex: 1,
+      fontSize: rs.font(11),
+      lineHeight: rs.font(16),
     },
   });
 }
