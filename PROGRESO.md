@@ -4,6 +4,43 @@
 
 ---
 
+## 2026-05-06 — Sesion 13: Release v2.0.1 — bundle + AAB con fixes de hooks
+
+### Resumen
+Bump a `2.0.1` (versionCode 3) y rebuild del AAB para llevar a produccion los 4 fixes de hook bugs de Sesion 12. El bundle anterior commiteado en `c2c7add` no incluia esos fixes — los usuarios actuales tienen los crashes latentes hasta que se republique en Play Store.
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `package.json` | `version: 2.0.0` → `2.0.1` |
+| `android/app/build.gradle` | `versionCode: 2 → 3`, `versionName: "2.0.0" → "2.0.1"` |
+| `src/config/appInfo.ts` | `APP_VERSION = '2.0.1'` |
+| `android/app/src/main/assets/index.android.bundle` | Rebundleado con todos los fixes |
+
+### Patch notes (semver patch — no nuevas features)
+
+- Fix: `PathologyDetailScreen` ya no crashea cuando se abre con id invalido tras id valido (hooks reordenados antes del early-return)
+- Fix: `ProtocolDetailScreen` mismo patron arreglado
+- Fix: `LabValuesScreen` dep `rs` removida del useMemo de `ListHeaderComponent`
+- Fix: `QuizSessionScreen` regenera el quiz si los params (category/questionCount) cambian
+
+### Verificacion
+
+| Check | Resultado |
+|-------|-----------|
+| `npx react-native bundle` | OK, 0 warnings |
+| `./gradlew app:bundleFreeRelease` | BUILD SUCCESSFUL en 9m 38s, 433 tasks |
+| AAB output | `android/app/build/outputs/bundle/freeRelease/app-free-release.aab` — **51 MB** |
+
+### Pendiente
+
+1. **Subir AAB a Play Store** — Internal testing track primero, despues promote a production. Ver `playstore/INSTRUCCIONES_PUBLICACION.md`
+2. **Setup Sentry** para verificar que la tasa de crashes baja tras este release
+3. **Activar OTA end-to-end** (push gh-pages, configurar MANIFEST_URL, flip flag)
+
+---
+
 ## 2026-05-05 — Sesion 12: Pago de deuda de lint + 4 bugs latentes destapados
 
 ### Resumen
