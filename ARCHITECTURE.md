@@ -1,6 +1,6 @@
 # Arquitectura — Patologías de Enfermería
 
-**Versión actual**: v2.0.1 (versionCode 3, mayo 2026)
+**Versión actual**: v1.0.0 (versionCode 4, mayo 2026 — primer lanzamiento público del ecosistema)
 
 ## Boot sequence (App.tsx)
 
