@@ -26,6 +26,7 @@ import { PathologyCard } from '../components/PathologyCard';
 import { SearchBar } from '../components/SearchBar';
 import type { ThemeColors } from '../utils/colors';
 import { FlashList } from '@shopify/flash-list';
+import { normalizeText } from '../utils/search';
 
 // ── Types ─────────────────────────────────────────────────────
 
@@ -33,12 +34,6 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SystemPathologies'>;
 
 // ── Helpers ───────────────────────────────────────────────────
 
-function normalizeText(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
 
 function matchesQuery(pathology: Pathology, query: string): boolean {
   if (!query) return true;
