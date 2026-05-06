@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.1] — 2026-05-06 (Hook bug fixes — patch release)
+
+### Fixed
+- **Crash en `PathologyDetailScreen`** al abrir patología con id inválido tras una válida — 3 hooks (`useCallback`/`useRef`/`useMemo`) reordenados arriba del early-return guard
+- **Crash en `ProtocolDetailScreen`** mismo patrón — `useMemo` de `sortedSteps` reordenado
+- **`LabValuesScreen`** dep `rs` redundante removida (la cubría `styles`)
+- **`QuizSessionScreen`** `useEffect` ahora regenera el quiz cuando `category`/`questionCount` cambian (antes deps vacías ignoraban cambios)
+
+### Changed
+- `versionCode 2 → 3`, `versionName "2.0.0" → "2.0.1"` (semver patch)
+- `package.json`, `android/build.gradle` y `src/config/appInfo.ts` alineados a `2.0.1`
+
+### Notes
+- v2.0.1 lleva los fixes de Sesión 12 a producción. Bundle `c2c7add` (commiteado en Sesión 11) se quedó sin esos fixes.
+- **Bug de contenido conocido NO incluido en este release**: la patología "Hipercalemia/Hiperkalemia/Hiperpotasemia" no existe como entry en `pathologies.json` aunque está referenciada en `relatedPathologyIds` (id huérfano). Diferido a v2.0.2 con sesión dedicada de contenido.
+
 ## [Unreleased] — 2026-05-05 (Release Infrastructure)
 
 ### Fixed
