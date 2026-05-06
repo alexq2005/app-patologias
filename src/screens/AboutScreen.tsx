@@ -166,6 +166,40 @@ export function AboutScreen({ navigation }: Props) {
           ))}
         </View>
 
+        {/* Información clínica + disclaimer */}
+        <View style={[styles.card, neuCard(colors), { borderColor: colors.warning + '40', borderWidth: 1 }]}>
+          <View style={styles.disclaimerHeader}>
+            <MaterialCommunityIcons name="information-outline" size={rs.font(20)} color={colors.warning} />
+            <Text style={[styles.sectionTitle, { color: colors.warning, marginLeft: 8 }]}>
+              Información clínica
+            </Text>
+          </View>
+          <Text style={[styles.disclaimerLabel, { color: colors.text }]}>
+            Última revisión general:
+          </Text>
+          <Text style={[styles.disclaimerValue, { color: colors.textSecondary }]}>
+            Mayo 2026 · Fuentes principales hasta 2023
+          </Text>
+
+          <Text style={[styles.disclaimerLabel, { color: colors.text, marginTop: 12 }]}>
+            Aviso importante:
+          </Text>
+          <Text style={[styles.disclaimerBody, { color: colors.textSecondary }]}>
+            Esta app es una herramienta de <Text style={{ fontWeight: '700' }}>referencia educativa</Text>.
+            NO sustituye el juicio clínico profesional, el examen físico directo, ni las guías
+            institucionales actualizadas (ESC, AHA, KDIGO, GOLD, NICE, OMS) que pueden haber
+            cambiado desde la última revisión de este contenido.
+          </Text>
+          <Text style={[styles.disclaimerBody, { color: colors.textSecondary, marginTop: 8 }]}>
+            Para decisiones críticas (dosis, indicaciones, contraindicaciones, protocolos de
+            emergencia) siempre consultá la guía vigente de tu institución y el último consenso
+            de la sociedad científica correspondiente.
+          </Text>
+          <Text style={[styles.disclaimerBody, { color: colors.textLight, marginTop: 12, fontSize: rs.font(11), fontStyle: 'italic' }]}>
+            Ver Términos de Uso para detalle legal completo.
+          </Text>
+        </View>
+
         {/* Footer */}
         <View style={styles.footer}>
           <MaterialCommunityIcons name="heart" size={rs.font(16)} color={colors.accent} />
@@ -291,5 +325,25 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       color: colors.textSecondary,
       fontWeight: '500',
       fontStyle: 'italic',
+    },
+    disclaimerHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: rs.space(SPACING.md),
+    },
+    disclaimerLabel: {
+      fontSize: rs.font(12),
+      fontWeight: '700',
+      letterSpacing: 0.3,
+      textTransform: 'uppercase',
+    },
+    disclaimerValue: {
+      fontSize: rs.font(13),
+      marginTop: 2,
+    },
+    disclaimerBody: {
+      fontSize: rs.font(13),
+      lineHeight: rs.font(19),
+      marginTop: 4,
     },
   });
