@@ -80,8 +80,10 @@ adb install -g android/app/build/outputs/apk/free/release/app-free-release.apk
 
 ## Play Store
 
-- Versión actual: **v2.0.1** (versionCode 3) — listo para subir, AAB pendiente de upload manual
-- AAB: `android/app/build/outputs/bundle/freeRelease/app-free-release.aab` (51 MB en v2.0.1)
+- Versión actual: **v1.0.0** (versionCode 4) — primer lanzamiento público del ecosistema. AAB pendiente de rebuild con nueva versión + upload manual
+- AAB: `android/app/build/outputs/bundle/freeRelease/app-free-release.aab`
+- Nota de versionado: la versión 2.0.x interna nunca se publicó. Se reseteó a 1.0.0 para alinear con marketing público. versionCode permanece monotónico (4) por requisito Play Store
+- Ver `ROADMAP.md` (raíz) para plan v1.0.x → v2.0+
 - All docs in `playstore/` folder
 - Privacy policy needs to be hosted publicly (GitHub Pages recommended)
 

@@ -1,6 +1,43 @@
 # Changelog
 
-## [Unreleased] — 2026-05-06 (Data quality + search + legal disclaimer)
+> **Nota de versionado**: las entradas `[2.0.0]`, `[2.0.1]`, `[Unreleased]` listadas debajo corresponden al **versionado interno de desarrollo** (jamás publicado a Play Store). Para alinear con el lanzamiento público del ecosistema, todo el trabajo acumulado se compila como **v1.0.0 — Public ecosystem launch**. Las entradas internas se conservan como referencia histórica del proceso de construcción.
+
+## [1.0.0] — 2026-05-06 (Lanzamiento público — Ecosistema v1)
+
+Primera versión pública en Play Store. Compila todo el trabajo de desarrollo interno (anteriores 2.0.0 + 2.0.1 + post-2.0.1 work — ver historial debajo) en un release coherente.
+
+### Highlights para el usuario final
+- **151 patologías** por sistema con NANDA-NIC-NOC, escalas, lab values, protocolos
+- **Quiz educativo** con revisión de errores
+- **Diagnóstico diferencial** por síntomas con ranking
+- **Búsqueda tolerante** a tildes y variantes ortográficas (`hipercalemia` ≡ `hiperkalemia`)
+- **Funciona offline** 100% (SQLite local)
+- **Mi Suite** — hub para conectar con Curso de Enfermería y Guía Farmacológica
+- **Dark mode + responsive**
+- **15 días trial → freemium** con suscripción Google Play o código de activación
+
+### Highlights técnicos (heredados del trabajo interno 2.0.x)
+- Stack moderno: React Native 0.84, op-sqlite via JSI, FlashList, EncryptedStorage para tokens premium
+- 60 unit tests + 4 jobs CI bloqueantes (test, lint, typecheck, data integrity)
+- Infra OTA lista para v1.1 (manifest validation, throttle, force sync, indicador UI)
+- Sentry scaffold defensivo listo para v1.1
+- Disclaimer clínico visible (About card + footnote PathologyDetail)
+- Versionado clínico: `revisadoEn` + `fuentes` por patología, audit job `freshness`
+
+### Bug fix de seguridad incluido
+- 4 bugs latentes de React Hooks corregidos (PathologyDetail/ProtocolDetail/LabValues/QuizSession) — destapados al pagar deuda de lint, prevenían crashes en re-renders específicos
+
+### Notas
+- versionCode interno saltó a 4 (incrementado siempre, vc es contador inmutable). versionName 1.0.0 es lo que el usuario ve.
+- Bug de contenido conocido NO bloqueante: faltan ~7 patologías (hiperkalemia, shock genérico, IRA, hashimoto, etc) — diferidas a v1.1 sesiones de contenido
+
+---
+
+## Historial de desarrollo interno (pre-1.0)
+
+> Estas entradas documentan iteraciones que jamás llegaron a Play Store. Mantenidas como histórico del proceso.
+
+## [Unreleased Internal] — 2026-05-06 (Data quality + search + legal disclaimer)
 
 ### Content updates (validated vs 2024+ sources)
 - **`pat_icc` Insuficiencia Cardíaca → ESC 2023 4-pillar algorithm**: agregados Sacubitril/Valsartán (ARNI 1ra línea preferida sobre IECA) y SGLT2i (Dapagliflozina/Empagliflozina 10mg/d, across all EF spectrum). IECA reclasificado como alternativa. Primera patología con `revisadoEn` + `fuentes` (6 fuentes: ESC 2023 Focused Update, PARADIGM-HF, DAPA-HF, EMPEROR-Reduced/Preserved, DELIVER). Métrica `check:stale`: 0/151 → 1/151 fresh

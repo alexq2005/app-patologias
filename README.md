@@ -2,7 +2,7 @@
 
 Aplicación móvil de referencia clínica para profesionales y estudiantes de enfermería. Contiene 151 patologías organizadas por 12 sistemas corporales, con información detallada de diagnósticos NANDA-NIC-NOC, cuidados de enfermería, farmacología y protocolos de emergencia.
 
-**Versión actual**: v2.0.1 (versionCode 3)
+**Versión actual**: v1.0.0 (versionCode 4) — primer lanzamiento público del ecosistema. Ver [ROADMAP.md](ROADMAP.md)
 
 ## Características
 
