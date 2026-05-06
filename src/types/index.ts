@@ -109,6 +109,20 @@ export interface Pathology {
   relatedPathologyIds?: string[];
   isPremium: boolean;
   videoUrl?: string;
+
+  /**
+   * ISO date (YYYY-MM-DD) of the last clinical review of this entry.
+   * Used by `scripts/check-stale.js` to flag pathologies > 24 months old.
+   * Optional today; new/updated entries should set it. Audit job warns (not blocking).
+   */
+  revisadoEn?: string;
+
+  /**
+   * Primary clinical sources used to write/review this entry.
+   * Free-form labels — recommended format: "ESC 2024", "AHA 2025", "GOLD 2025",
+   * "KDIGO 2022", "NICE NG136", etc. Used for traceability.
+   */
+  fuentes?: string[];
 }
 
 // --- Clinical Scales ---
