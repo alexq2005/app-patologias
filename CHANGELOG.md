@@ -2,6 +2,9 @@
 
 ## [Unreleased] — 2026-05-06 (Data quality + search)
 
+### Added
+- **Data integrity check** (`scripts/check-orphans.js` + CI job `data`): valida que toda entrada en `relatedPathologyIds` apunte a una patología real. Bloquea PRs futuros que introduzcan refs huérfanas. `npm run check:orphans` para correr local
+
 ### Fixed
 - **45 referencias rotas** en `relatedPathologyIds` (38 ids únicos huérfanos): tap "ver patología relacionada" llevaba a pantalla "no encontrada". 10 fueron typos de ids reales (renombrados: `pat_asma_bronquial → pat_asma`, `pat_tceg → pat_tce`, etc), 35 sin match válido (eliminados). Bonus: 1 dedupe de `pat_icc` duplicado
 - **Search no tolera variantes ortográficas k↔c**: `normalizeText` ahora colapsa `k → c` (`hiperkalemia / hipercalemia`, `ketoacidosis / cetoacidosis`). Bug destapado por búsqueda de "hipercalemia" del usuario
