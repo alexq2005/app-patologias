@@ -4,6 +4,49 @@
 
 ---
 
+## 2026-05-21 — Sesion 20: Revisión clínica de pat_iam a ESC 2023 ACS + AHA 2025 ACS + Cuarta Definición Universal del IM
+
+### Resumen
+Segunda iteración del flujo de revisión clínica. La entry `pat_iam` (Infarto Agudo de Miocardio) tenía 7 gaps clínicos vs guidelines vigentes: clasificación incompleta (solo tipos 1-2 de 5 universales, sin STEMI equivalents), CK-MB listado como prueba de rutina (obsoleto en era de troponina hs), P2Y12 inhibitor sin prasugrel ni distinción de pretreatment, tiempos ICP genéricos ("<90 min") en vez de estratificados por contexto (60/90/120), y morfina sin warning sobre interacción con P2Y12 orales (cambio importante post-ATLANTIC trial).
+
+Cross-check contra ESC 2023 ACS (Eur Heart J 2023;44(38):3720), AHA/ACC/ACEP 2025 ACS y Cuarta Definición Universal del IM (2018, vigente). Edición quirúrgica de 7 secciones; mantenidas intactas factoresRiesgo, fisiopatologia, signosYSintomas, anamnesis, examenFisico, AAS, heparina, noFarmacologico, cuidadosEnfermeria, NANDA/NIC/NOC, complicaciones, criteriosAlarma.
+
+### Cambios en pat_iam (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 4 tipos (IAMCEST/IAMSEST/tipo1/tipo2) a 8 tipos completos: 5 universales (1-5 con subtipos 4a/b/c) + STEMI equivalents explícitos (Sgarbossa, De Winter, T hiperagudas, oclusión tronco) + IAMCEST y NSTE-ACS como categorías ECG |
+| `diagnostico.pruebas.ECG` | Agregado V7-V9 (posterior) y V3R-V4R (VD) cuando hay sospecha; STEMI equivalents en la descripción; objetivo < 10 min |
+| `diagnostico.pruebas.Troponina` | Recalibrada como única biomarker primaria (Fourth Universal Definition); algoritmo 0h/1h ESC 2023 explicado; advertencia "una sola troponina elevada NO confirma IAM" (necesario delta + contexto) |
+| `diagnostico.pruebas.CK-MB` | Recalibrada de "rutina cada 8h" a "uso limitado": solo si no hay troponina hs o sospecha de reinfarto temprano (< 48h) |
+| `diagnostico.pruebas.Coronariografía` | Tiempos estratificados ESC 2023: < 60 min centro PCI 24/7, < 90 min traslado, > 120 min → preferir fibrinólisis. Acceso radial preferido sobre femoral |
+| `farmacologico.P2Y12 inhibitor` | De "Ticagrelor/Clopidogrel" genérico a entrada completa con jerarquía ESC 2023 (Prasugrel preferido en STEMI con ICP, Ticagrelor segundo, Clopidogrel reservado), distinción pretreatment STEMI vs no-pretreatment NSTE-ACS (Class III), prasugrel nunca como pretreatment, suspensión pre-CABG |
+| `farmacologico.Morfina` | Warning agregado: la morfina retrasa absorción intestinal de P2Y12 orales; usar solo si nitrato/betabloqueante fallan |
+| `tratamientoMedico.quirurgico` | De 3 líneas genéricas a 5 puntos con tiempos ESC 2023, estrategia fármaco-invasiva post-fibrinólisis, NSTE-ACS invasiva precoz/inmediata/selectiva por riesgo |
+| `revisadoEn` | `"2026-05-21"` |
+| `fuentes` | 3 entradas: ESC 2023 ACS, AHA/ACC 2025 ACS, Fourth Universal Definition of MI |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: mecanismos clínicos sin cambios
+- `anamnesis`, `examenFisico`: ya completos y guideline-aligned
+- `farmacologico.AAS`, `farmacologico.Heparina`: dosis y manejo no cambiaron
+- `noFarmacologico`: oxigenoterapia solo si SpO2<90% ya estaba alineada con ESC 2023
+- `cuidadosEnfermeria`, `npiNanda/Nic/Noc`, `complicaciones`, `criteriosAlarma`: clínicamente vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 3 frescas (era 2; +pat_iam), 148 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_iam movido a "Sesiones cerradas". Quedan 8 patologías priorizadas.
+
+### Commits esperados
+- `content(pat_iam): align with ESC 2023 ACS + AHA 2025 ACS + Fourth Universal Definition of MI`
+
+---
+
 ## 2026-05-21 — Sesion 19: Revisión clínica de pat_hta a ESC 2024 + AHA/ACC 2025
 
 ### Resumen
