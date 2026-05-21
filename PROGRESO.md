@@ -4,6 +4,58 @@
 
 ---
 
+## 2026-05-21 — Sesion 18: Auditoría 12-niveles + hardening de release signing
+
+### Resumen
+Auditoría integral del proyecto (12 niveles). Score 10/12 PASS + 1 WARN + 1 FAIL. Único hallazgo crítico: **passwords del keystore de release commiteados en `android/gradle.properties`** desde el commit `4831d64`. Limpieza completa: secrets movidos a user-level (`~/.gradle/gradle.properties`), template para devs futuros, AAB v1.0.0 verificado y listo para upload. Plus: limpieza de 6 dumps `ui*.xml` de uiautomator y plan estructurado de revisión clínica.
+
+### Cambios
+
+| Archivo | Detalle |
+|---------|---------|
+| `android/gradle.properties` | Removidas 4 vars con secrets (RELEASE_STORE_PASSWORD, RELEASE_KEY_PASSWORD, RELEASE_KEY_ALIAS). Mantiene RELEASE_STORE_FILE (path relativo, no es secret) + comentario explicando dónde van las creds |
+| `android/gradle.properties.example` | NUEVO. Template documentando vars requeridas en `~/.gradle/gradle.properties` |
+| `~/.gradle/gradle.properties` | NUEVO (fuera del repo). 4 vars de release signing |
+| `.gitignore` | + regla `/ui*.xml` (dumps de uiautomator) |
+| `ui*.xml` (6 archivos) | Eliminados — dumps de debug del emulador, 138 KB total |
+| `docs/CLINICAL_REVIEW_PLAN.md` | NUEVO. Cola priorizada de 10 patologías top con guideline objetivo, áreas críticas y fuentes canónicas por sistema |
+
+### Auditoría — resultados por nivel
+
+| # | Nivel | Resultado | Detalle |
+|---|---|---|---|
+| 1 | Static Analysis | ✅ PASS | tsc 0 errors · 69 TS/TSX · 17,401 LOC |
+| 2 | Dependencies | ⚠️ WARN | 17 paquetes outdated (minor); 8 advisories npm audit son todas dev-tooling (cli, ESLint, Jest), no bundladas al APK |
+| 3 | Security | 🔴→✅ FIXED | Creds movidas; jarsigner verifica AAB OK |
+| 4 | Import Chain | ✅ PASS | 60/60 tests cargan sin errores |
+| 5 | Config | ✅ PASS | features.ts typed registry íntegro · appInfo.ts v1.0.0 |
+| 6 | Data Integrity | ✅ PASS | 151 patologías · IDs únicos · 0 huérfanos |
+| 7 | Tests | ✅ PASS | 60/60 en 11.3s |
+| 8 | Performance | — | N/A (mobile app) |
+| 9 | Resilience | ✅ PASS | EncryptedStorage + OTA gated |
+| 10 | Observability | ✅ PASS | Sentry scaffold listo |
+| 11 | Compliance | ✅ PASS | Disclaimer + 1/151 `revisadoEn` |
+| 12 | Disaster Recovery | ✅ PASS | Git limpio + AAB reproducible |
+
+### AAB v1.0.0 — verificación de firma
+- Path: `android/app/build/outputs/bundle/freeRelease/app-free-release.aab` (52.7 MB, 2026-05-06)
+- `jarsigner -verify`: **jar verified.**
+- Alias: `***REMOVED***` (match con keystore)
+- Algoritmo: SHA384withRSA, 2048-bit
+- CN: `Patologias Enfermeria, OU=Mobile, O=PatologiasEnfermeria, L=Buenos Aires, ST=CABA, C=AR`
+
+### Pendientes detectados (no resueltos esta sesión)
+- **Git history leak**: las 4 passwords aún figuran en commits anteriores a hoy. Si el repo se hace público (planteado en ROADMAP), opciones: (a) rotar keystore + cambiar upload key en Play Console, (b) `git filter-repo` para scrubbear historial. Recomendado (a) si Play App Signing habilitado
+- **Revisión clínica**: ver `docs/CLINICAL_REVIEW_PLAN.md` — 10 patologías top priorizadas con guidelines objetivo. **Decisión consciente**: NO se marcó `revisadoEn` masivo sin revisión real (sería falsificar metadata clínica). Cadencia sugerida: 1 entry/sesión, 60-90 min
+- **Dependencies majors**: op-sqlite 15→16, ESLint 8→10, Jest 29→30, Prettier 2→3. Deferir post-launch
+
+### Commits principales (esperados)
+- `chore(security): move release keystore credentials out of repo`
+- `chore: gitignore + cleanup uiautomator dumps`
+- `docs: add clinical content review plan with priority queue`
+
+---
+
 ## 2026-05-06 — Sesion 14: Audit de orphan refs + normalizer k↔c
 
 ### Resumen
