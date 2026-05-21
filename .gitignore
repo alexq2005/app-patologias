@@ -79,6 +79,9 @@ yarn-error.log
 /test_*.png
 /test*.png
 
+# Android uiautomator hierarchy dumps (debug from emulator)
+/ui*.xml
+
 # Loose images at repo root (real assets live in src/assets/**)
 /*.jpg
 /*.jpeg
