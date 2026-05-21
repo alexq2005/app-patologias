@@ -1,0 +1,19 @@
+# Required variables for release signing
+# -----------------------------------------------------------------------------
+# Copy these into your USER-LEVEL gradle.properties (NOT this project file).
+# Location:
+#   Windows: %USERPROFILE%\.gradle\gradle.properties
+#   macOS/Linux: ~/.gradle/gradle.properties
+#
+# These are picked up automatically by android/app/build.gradle when running
+# `./gradlew app:assembleFreeRelease` or `app:bundleFreeRelease`.
+# -----------------------------------------------------------------------------
+
+# RELEASE_STORE_FILE is set in android/gradle.properties (tracked) since it
+# points to android/app/release.keystore (a relative path, not a secret).
+# Override here ONLY if your keystore lives elsewhere.
+# RELEASE_STORE_FILE=release.keystore
+
+RELEASE_STORE_PASSWORD=<your-keystore-password>
+RELEASE_KEY_ALIAS=<your-key-alias>
+RELEASE_KEY_PASSWORD=<your-key-password>
