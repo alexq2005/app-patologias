@@ -867,23 +867,39 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por ECG y biomarcadores",
+      "nombre": "Clasificación combinada: ECG + Cuarta Definición Universal del IM (2018, vigente en ESC 2023)",
       "tipos": [
         {
-          "nombre": "IAMCEST",
-          "descripcion": "IAM con elevación del segmento ST: oclusion total de coronaria. Requiere reperfusion urgente"
+          "nombre": "IAMCEST (STEMI)",
+          "descripcion": "IAM con elevación del segmento ST >= 1 mm en 2 derivaciones contiguas (>= 2 mm en V2-V3 en hombres < 40 años): oclusión total de coronaria. Requiere reperfusión urgente con ICP primaria o fibrinólisis."
         },
         {
-          "nombre": "IAMSEST",
-          "descripcion": "IAM sin elevación del ST: oclusion subtotal. Diagnóstico por biomarcadores"
+          "nombre": "STEMI equivalentes (ESC 2023)",
+          "descripcion": "Patrones ECG que indican oclusión coronaria aguda sin elevación clásica del ST y requieren manejo como IAMCEST: bloqueo de rama izquierda nuevo o presumido nuevo con criterios de Sgarbossa modificados (Smith); ondas T hiperagudas; síndrome de De Winter (depresión ST ascendente + T picudas en precordiales); oclusión de tronco común (depresión difusa del ST + elevación en aVR >= 1 mm); IAM posterior aislado (depresión ST en V1-V3 con R alta)."
         },
         {
-          "nombre": "IAM tipo 1",
-          "descripcion": "Por rotura de placa aterosclerotica con trombo"
+          "nombre": "IAMSEST (NSTE-ACS)",
+          "descripcion": "IAM sin elevación del ST: oclusión subtotal o circulación colateral. Diagnóstico por elevación de troponina hs con cambios isquémicos en ECG (depresión ST, inversión T). Estrategia invasiva precoz (< 24h) si: diagnóstico confirmado, cambios dinámicos del ST, STE transitoria o GRACE > 140 (Class IIa A, ESC 2023)."
         },
         {
-          "nombre": "IAM tipo 2",
-          "descripcion": "Por desequilibrio oferta/demanda (espasmo, anemia, taquicardia severa)"
+          "nombre": "IAM Tipo 1 (espontáneo)",
+          "descripcion": "Por rotura, ulceración, fisuración o erosión de placa aterosclerótica con trombo intracoronario. Causa más frecuente de IAMCEST e IAMSEST."
+        },
+        {
+          "nombre": "IAM Tipo 2 (por desequilibrio oferta/demanda)",
+          "descripcion": "Sin rotura de placa. Causas: espasmo coronario, disfunción microvascular, anemia severa, taquiarritmia, hipotensión, shock, hipoxemia, crisis hipertensiva. Tratamiento dirigido a la causa precipitante."
+        },
+        {
+          "nombre": "IAM Tipo 3 (muerte súbita)",
+          "descripcion": "Muerte cardíaca con síntomas isquémicos y cambios ECG sugestivos, antes de obtener biomarcadores o con valores no diagnósticos."
+        },
+        {
+          "nombre": "IAM Tipo 4a/4b/4c (relacionado a ICP)",
+          "descripcion": "4a: peri-procedural (< 48h post-ICP) con elevación de troponina > 5x p99. 4b: trombosis de stent (aguda < 24h, subaguda 1-30d, tardía 30d-1 año, muy tardía > 1 año). 4c: reestenosis intra-stent con IAM en el territorio."
+        },
+        {
+          "nombre": "IAM Tipo 5 (post-CABG)",
+          "descripcion": "Asociado a cirugía de bypass coronario. Elevación de troponina > 10x p99 con nueva onda Q, BRIHH, oclusión documentada por angiografía o pérdida de miocardio viable por imagen."
         }
       ]
     },
@@ -905,46 +921,49 @@
       ],
       "pruebas": [
         {
-          "nombre": "ECG de 12 derivaciones",
-          "descripcion": "Debe realizarse en los primeros 10 minutos del primer contacto médico. Elevación del ST >= 1mm en 2 derivaciones contiguas indica IAMCEST",
-          "valoresReferencia": "Elevación ST >= 1mm en V1-V4 (anterior), II,III,aVF (inferior), I, aVL (lateral)",
+          "nombre": "ECG de 12 derivaciones (+ posteriores V7-V9 y derechas V3R-V4R si sospecha)",
+          "descripcion": "ESC 2023: realizar e interpretar en los primeros 10 min del primer contacto médico. Buscar elevación clásica del ST PERO también STEMI equivalentes (BRIHH nuevo + Sgarbossa modificado, De Winter, T hiperagudas, oclusión de tronco con STE en aVR + depresión difusa, IAM posterior aislado). Si IAM inferior, agregar derivaciones derechas para detectar compromiso del VD.",
+          "valoresReferencia": "Elevación ST >= 1 mm en 2 derivaciones contiguas (>= 2 mm en V2-V3 en hombres < 40 años o >= 1.5 mm en mujeres). Localización: V1-V4 anterior; II/III/aVF inferior; I/aVL/V5-V6 lateral; V7-V9 posterior; V3R-V4R ventrículo derecho.",
           "cuidadosEnfermeria": [
-            "Realizar INMEDIATAMENTE al ingreso",
-            "Correcta colocación de electrodos",
-            "Identificar derivaciones con cambios",
-            "Repetir cada 30 min o ante cambio de síntomas",
-            "Trasmitir al médico urgente"
+            "Realizar INMEDIATAMENTE al ingreso (objetivo < 10 min del primer contacto médico)",
+            "Correcta colocación de electrodos (verificar V1 en 4° EIC paraesternal derecho)",
+            "En IAM inferior, registrar V3R-V4R (compromiso del VD cambia el manejo de nitratos)",
+            "Identificar derivaciones con cambios y nombrar la pared comprometida",
+            "Repetir cada 15-30 min si ECG inicial no diagnóstico pero alta sospecha",
+            "Transmitir al médico de inmediato; activar código IAM si STEMI o equivalente"
           ]
         },
         {
-          "nombre": "Troponina I o T de alta sensibilidad",
-          "descripcion": "Marcador específico de necrosis miocardica. Se eleva a las 3-6h, pico a las 12-24h",
-          "valoresReferencia": "Troponina I hs: < 0.016 ng/mL (normal); 0-1h protocolo de descarte rápido",
+          "nombre": "Troponina cardíaca de alta sensibilidad (hs-cTnI o hs-cTnT)",
+          "descripcion": "Biomarcador único requerido para diagnóstico (Cuarta Definición Universal del IM). ESC 2023 recomienda protocolo de descarte/rule-in 0h/1h (preferido) o 0h/2h con troponina hs. Se eleva en 1-3h post-injuria con assays hs, pico 12-24h. Detecta IAM Tipo 1 (rotura placa) y Tipo 2 (desequilibrio oferta/demanda) - distinción es clínica, no por troponina.",
+          "valoresReferencia": "Valor depende del assay; cada laboratorio publica su p99 (URL). Ejemplo hs-cTnI: < p99 = normal. Algoritmo 0h/1h ESC 2023: rule-out si valor inicial muy bajo + delta < cutoff; rule-in si valor inicial muy alto O delta > cutoff a 1h.",
           "cuidadosEnfermeria": [
-            "Obtener muestra al ingreso y repetir a las 3h",
-            "Tiempo de extracción critico para diagnóstico",
-            "Anotar hora exacta de extracción"
+            "Obtener muestra basal al ingreso y repetir a 1h o 3h según algoritmo institucional",
+            "Anotar hora EXACTA de cada extracción (el delta es el dato diagnóstico, no el valor absoluto)",
+            "No descartar IAM solo por una troponina inicial negativa si dolor < 3h de evolución",
+            "Una sola troponina elevada NO confirma IAM (puede ser injuria miocárdica no isquémica): se necesita patrón ascendente o descendente + contexto clínico"
           ]
         },
         {
-          "nombre": "CK-MB",
-          "descripcion": "Fracción miocardica de creatinkinasa; se eleva a las 4-8h, pico 12-24h, normaliza en 48-72h",
-          "valoresReferencia": "CK-MB < 6.3 ng/mL normal; fracción > 5% del CK total sugiere origen cardíaco",
+          "nombre": "CK-MB (uso limitado en la era de troponina hs)",
+          "descripcion": "Fracción miocárdica de creatinkinasa. ESC 2023 y Cuarta Definición Universal del IM: NO se recomienda como prueba de rutina cuando hay disponible troponina hs. Conserva utilidad solo en (a) entornos sin acceso a troponina hs y (b) sospecha de reinfarto temprano (< 48h del IAM índice) donde la troponina hs todavía está elevada por el evento original.",
+          "valoresReferencia": "CK-MB < 6.3 ng/mL normal; fracción > 5% del CK total sugiere origen cardíaco. Cinética: eleva a 4-8h, pico 12-24h, normaliza a 48-72h (por eso útil en reinfarto temprano).",
           "cuidadosEnfermeria": [
-            "Obtener al ingreso y cada 8h en primeras 24h",
-            "Útil para detectar reinfarto por reinicio de elevación"
+            "Solicitar solo si troponina hs no disponible o sospecha de reinfarto en primeras 48h",
+            "No reemplaza a la troponina como prueba diagnóstica primaria"
           ]
         },
         {
-          "nombre": "Coronariografia urgente",
-          "descripcion": "Visualización directa de arterias coronarias. En IAMCEST, objetivo es realizarla en < 90 min del primer contacto médico",
+          "nombre": "Coronariografía urgente",
+          "descripcion": "Visualización directa de arterias coronarias y vía a la ICP primaria. Tiempos objetivo ESC 2023 desde el primer contacto médico hasta wire-crossing: < 60 min si presenta directamente a un centro con ICP 24/7; < 90 min si requiere traslado y se llegará en tiempo; si el traslado superará 120 min, preferir fibrinólisis primero seguida de coronariografía a 2-24h (estrategia farmaco-invasiva). En NSTE-ACS de alto riesgo, estrategia invasiva precoz < 24h.",
           "cuidadosEnfermeria": [
-            "Preparación de sitio de acceso (radial o femoral)",
-            "Verificar alergias a contraste iodado",
-            "Acceso venoso periférico de buen calibre",
-            "Premedicar con antialergicos si alergia al contraste",
-            "Consentimiento informado urgente",
-            "Rasurado y asepsia de zona de punción"
+            "Preferir acceso radial sobre femoral (ESC 2023: menor sangrado y mortalidad en ACS)",
+            "Verificar alergias a contraste yodado y a aspirina",
+            "Asegurar 2 accesos venosos periféricos de buen calibre",
+            "Premedicar con antialérgicos solo si alergia documentada al contraste",
+            "Consentimiento informado urgente (no diferir la ICP por trámite)",
+            "Asepsia y tricotomía de zona de punción según protocolo",
+            "Verificar función renal previa (creatinina basal para evaluar nefropatía por contraste)"
           ]
         }
       ]
@@ -970,15 +989,19 @@
           ]
         },
         {
-          "nombre": "Ticagrelor / Clopidogrel",
-          "grupo": "Inhibidor del receptor P2Y12 - antiagregante",
-          "mecanismo": "Bloquea receptor plaquetario P2Y12 del ADP, inhibiendo agregación plaquetaria",
-          "dosis": "Ticagrelor: 180 mg dosis carga, luego 90 mg c/12h. Clopidogrel: 600 mg carga, luego 75 mg/dia",
+          "nombre": "Inhibidor del receptor P2Y12 (Prasugrel, Ticagrelor o Clopidogrel)",
+          "grupo": "Antiagregante plaquetario - bloqueante del receptor P2Y12 del ADP",
+          "mecanismo": "Bloquea el receptor P2Y12 en plaquetas, inhibiendo la agregación mediada por ADP. Junto con AAS forma la DAPT (Dual AntiPlatelet Therapy), pilar del tratamiento post-IAM por 12 meses (puede acortarse 1-3 meses en alto riesgo de sangrado, o extenderse si alto riesgo isquémico).",
+          "dosis": "Prasugrel: 60 mg carga + 10 mg/día (5 mg si > 75 años o < 60 kg; contraindicado con ACV/AIT previo). Ticagrelor: 180 mg carga + 90 mg c/12h. Clopidogrel: 600 mg carga + 75 mg/día (reservado si los otros dos no son opciones).",
           "cuidadosEnfermeria": [
-            "Administrar junto a AAS (doble antiagregación)",
-            "Vigilar signos de sangrado (encías, hematomas, melena)",
-            "No suspender sin indicación médica (riesgo de trombosis de stent)",
-            "Ticagrelor contraindicado con ACV hemorrágico previo"
+            "ESC 2023: en STEMI con ICP, PRASUGREL es preferido sobre ticagrelor (TX en eficacia post-ISAR-REACT 5); ticagrelor preferido sobre clopidogrel; clopidogrel solo si prasugrel y ticagrelor no son opciones",
+            "Pretreatment: SÍ en STEMI antes de ICP (degradado de I-A a IIb-B en ESC 2023, pero aún razonable); NO en NSTE-ACS con estrategia invasiva precoz < 24h (Class III, anatomía desconocida)",
+            "Prasugrel NO se usa como pretreatment (se administra una vez conocida la anatomía coronaria)",
+            "Administrar junto a AAS desde el diagnóstico (excepto pretreatment NSTE-ACS)",
+            "Vigilar signos de sangrado: encías, hematomas espontáneos, melena, hematuria, hemoptisis",
+            "NO suspender sin indicación médica explícita (riesgo de trombosis aguda de stent, mortalidad alta)",
+            "Ticagrelor: vigilar disnea (efecto adverso característico, no es IC) y bradiarritmias",
+            "Coordinar con cirugía: prasugrel/ticagrelor requieren 5-7 días de suspensión pre-CABG; clopidogrel 5 días"
           ]
         },
         {
@@ -996,14 +1019,16 @@
         },
         {
           "nombre": "Morfina",
-          "grupo": "Analgesico opiode",
-          "mecanismo": "Agonista opioide mu; reduce dolor, ansiedad y precarga cardíaca",
-          "dosis": "2-4 mg IV lento, repetir cada 5-15 min si necesario",
+          "grupo": "Analgésico opioide",
+          "mecanismo": "Agonista opioide mu; reduce dolor, ansiedad y precarga cardíaca por venodilatación.",
+          "dosis": "2-4 mg IV lento, repetir cada 5-15 min según dolor y tolerancia hemodinámica. Reservar para dolor refractario a nitroglicerina y betabloqueante.",
           "cuidadosEnfermeria": [
-            "Monitorizar FR y SpO2 tras administración",
-            "Antidoto: naloxona disponible",
-            "Precaución en hipotensión o bradicardia",
-            "Puede enmascarar síntomas de complicaciones"
+            "ESC 2023: usar solo si el dolor no responde a nitroglicerina/betabloqueante. La morfina ENLENTECE la absorción intestinal de inhibidores P2Y12 orales (especialmente ticagrelor/prasugrel), retrasando el inicio del efecto antiagregante",
+            "Si paciente recibió morfina, considerar dosis IV/triturada de P2Y12 si disponible, o vigilar respuesta antiagregante",
+            "Monitorizar FR, SpO2 y nivel de conciencia tras cada dosis",
+            "Antídoto: naloxona disponible al lado de la cama",
+            "Precaución en hipotensión (especialmente IAM de VD donde la precarga es crítica) o bradicardia",
+            "Puede enmascarar dolor recurrente que indica isquemia residual o complicación mecánica"
           ]
         }
       ],
@@ -1015,9 +1040,11 @@
         "Ambiente tranquilo para reducir demanda de oxigeno"
       ],
       "quirurgico": [
-        "Angioplastia primaria (ICP-p): tratamiento de elección en IAMCEST si < 90 min",
-        "Cirugia de bypass coronario (CABG): si falla ICP o enfermedad multivaso",
-        "Fibrinolisis: si no disponible ICP en tiempo adecuado"
+        "ICP primaria (Angioplastia primaria): tratamiento de elección en STEMI y STEMI equivalentes. Tiempos objetivo ESC 2023 desde el primer contacto médico (FCM) hasta wire-crossing: < 60 min si paciente presenta directamente a un centro con ICP 24/7; < 90 min si requiere traslado.",
+        "Fibrinólisis (alteplasa, tenecteplasa, reteplasa): indicada cuando se prevé que el tiempo FCM-wire crossing superará 120 min. Aplicar lo más rápido posible, idealmente < 10 min del diagnóstico de STEMI.",
+        "Estrategia fármaco-invasiva post-fibrinólisis: coronariografía a 2-24h si fibrinólisis exitosa; ICP de rescate inmediata si fibrinólisis fallida (no resolución del ST > 50% a 60-90 min, inestabilidad o dolor persistente).",
+        "Cirugía de bypass coronario (CABG): considerar si anatomía no apta para ICP, enfermedad de tronco común, enfermedad de 3 vasos en diabéticos con SYNTAX score alto, o complicaciones mecánicas (rotura de tabique interventricular, regurgitación mitral aguda por rotura de músculo papilar, rotura de pared libre).",
+        "Estrategia invasiva en NSTE-ACS (ESC 2023): inmediata (< 2h) si inestabilidad o muy alto riesgo; precoz (< 24h) si diagnóstico confirmado, cambios dinámicos del ST, STE transitoria o GRACE > 140; selectiva si bajo riesgo."
       ]
     },
     "cuidadosEnfermeria": {
@@ -1190,7 +1217,13 @@
       "pat_eap",
       "pat_fa"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-21",
+    "fuentes": [
+      "ESC 2023 Guidelines for the management of acute coronary syndromes (Eur Heart J 2023;44(38):3720-3826)",
+      "ACC/AHA/ACEP/NAEMSP/SCAI 2025 Guideline for the Management of Patients With Acute Coronary Syndromes (Circulation 2025)",
+      "Fourth Universal Definition of Myocardial Infarction (Thygesen K et al, Eur Heart J 2019;40(3):237-269)"
+    ]
   },
   {
     "id": "pat_angina",
