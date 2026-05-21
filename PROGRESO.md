@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-05-21 — Sesion 19: Revisión clínica de pat_hta a ESC 2024 + AHA/ACC 2025
+
+### Resumen
+Primera ejecución del flujo de revisión clínica definido en `docs/CLINICAL_REVIEW_PLAN.md`. La entry `pat_hta` (Hipertensión Arterial) estaba **internamente inconsistente**: definición usaba umbral 140/90 (ESC viejo), clasificación usaba 130 (AHA/ACC 2017) y target era <130/80 universal (AHA/ACC moderno). Resultado: imposible clasificar coherentemente a un paciente con la entry como estaba.
+
+Cross-check contra fuentes primarias (`escardio.org`, `ahajournals.org`, `jacc.org`) para confirmar guidelines vigentes. Edición quirúrgica de 5 secciones, sin tocar contenido válido (fisiopatología, factores de riesgo, NANDA/NIC/NOC, cuidados de enfermería estándar).
+
+### Cambios en pat_hta (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Mención explícita de confirmación por MAPA/MDPA + categoría "PA elevada" ESC 2024 + nomenclatura Stage 1/2 AHA/ACC 2025 |
+| `clasificacion` | Reemplazado esquema "JNC 8 / ESC 2018" (5 tipos) por ESC 2024 (3 tipos + crisis) con equivalencias AHA/ACC 2025. Incluye umbrales out-of-office (MDPA ≥135/85, MAPA 24h ≥130/80) |
+| `diagnostico.pruebas` | +2 entradas nuevas: MAPA 24h (con patrón non-dipping) y MDPA estructurado (protocolo 7 días). Total pruebas: 6 → 8 |
+| `tratamientoMedico.objetivos` | Targets diferenciados por edad (ESC 2024: <65a <130/80; 65-79a <140/80; ≥80a 140-150/<80) + nota target universal AHA/ACC 2025 + mención de PREVENT risk score |
+| `tratamientoMedico.farmacologico` | +1 entrada: Combinación píldora-única (SPC) como **primer paso terapéutico** (cambio de paradigma ESC 2024, no rescate). Total fármacos: 4 → 5 |
+| `revisadoEn` | `"2026-05-21"` |
+| `fuentes` | `["ESC 2024 Guidelines (Eur Heart J 2024;45(38):3912-4018)", "AHA/ACC 2025 Guideline (Hypertension 2025)"]` |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: mecanismos sin cambios en guidelines nuevas
+- `npiNanda`, `npiNic`, `npiNoc`: taxonomías cambian con cadencia distinta (NANDA-I 2024-2026 vigente, sin updates de códigos usados)
+- `cuidadosEnfermeria`, `complicaciones`, `criteriosAlarma`: clínicamente vigentes
+- `noFarmacologico`: dieta DASH y umbrales lifestyle no cambiaron
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 2 frescas (era 1; +pat_hta), 149 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed (11.3s)
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_hta movido a tabla "Sesiones cerradas". Quedan 9 patologías priorizadas (pat_iam, pat_dm2, pat_acv, pat_epoc, pat_asma, pat_fa, pat_neumonia, pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_hta): align with ESC 2024 + AHA/ACC 2025 hypertension guidelines`
+
+---
+
 ## 2026-05-21 — Sesion 18: Auditoría 12-niveles + hardening de release signing
 
 ### Resumen
