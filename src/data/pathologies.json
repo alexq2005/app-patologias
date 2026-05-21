@@ -3,7 +3,7 @@
     "id": "pat_hta",
     "nombre": "Hipertensión Arterial",
     "bodySystemId": "cardiovascular",
-    "definicion": "Elevación persistente de la presión arterial sistolica >= 140 mmHg y/o diastolica >= 90 mmHg, considerada un factor de riesgo cardiovascular mayor y causa de daño en órganos diana.",
+    "definicion": "Elevación persistente de la presión arterial sistólica >= 140 mmHg y/o diastólica >= 90 mmHg en consulta, confirmada con mediciones repetidas o monitoreo ambulatorio (MAPA) y/o domiciliario (MDPA). ESC 2024 introduce además la categoría 'PA elevada' (PAS 120-139 y/o PAD 70-89 mmHg) al considerar el riesgo cardiovascular como un continuo, no binario. AHA/ACC 2025 mantiene la nomenclatura de estadios (Stage 1: 130-139/80-89; Stage 2: >=140/90). El diagnóstico nunca se hace con una única medición de consultorio.",
     "epidemiologia": "Afecta al 30-45% de la población adulta mundial. En Argentina, la prevalencia es del 36,3%. Es la principal causa de accidente cerebrovascular y una de las causas más frecuentes de insuficiencia renal y cardiopatia.",
     "factoresRiesgo": [
       "Edad avanzada",
@@ -38,23 +38,19 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación JNC 8 / ESC 2018",
+      "nombre": "Clasificación ESC 2024 (con equivalencias AHA/ACC 2025)",
       "tipos": [
         {
-          "nombre": "Normal",
-          "descripcion": "PAS < 120 y PAD < 80 mmHg"
+          "nombre": "PA no elevada (ESC 2024)",
+          "descripcion": "PAS < 120 mmHg y PAD < 70 mmHg. Equivalente a 'Normal' en AHA/ACC 2025 (<120/80)."
         },
         {
-          "nombre": "Elevada",
-          "descripcion": "PAS 120-129 y PAD < 80 mmHg"
+          "nombre": "PA elevada (ESC 2024)",
+          "descripcion": "PAS 120-139 mmHg y/o PAD 70-89 mmHg. ESC 2024 reemplazó el esquema 'Normal/Pre-HTA' por esta categoría única para reflejar riesgo cardiovascular continuo. En AHA/ACC 2025 se desglosa en 'Elevada' (120-129/<80) y 'Stage 1' (130-139/80-89)."
         },
         {
-          "nombre": "HTA Grado 1",
-          "descripcion": "PAS 130-139 o PAD 80-89 mmHg"
-        },
-        {
-          "nombre": "HTA Grado 2",
-          "descripcion": "PAS >= 140 o PAD >= 90 mmHg"
+          "nombre": "Hipertensión confirmada (ESC 2024 / Stage 2 AHA/ACC 2025)",
+          "descripcion": "PAS >= 140 mmHg y/o PAD >= 90 mmHg en consulta confirmada con MAPA o MDPA. Umbrales out-of-office: MDPA >= 135/85; MAPA 24h promedio >= 130/80; MAPA diurna >= 135/85."
         },
         {
           "nombre": "Crisis hipertensiva",
@@ -137,15 +133,43 @@
             "Conservar muestra refrigerada",
             "Descartar primera micción del dia"
           ]
+        },
+        {
+          "nombre": "Monitoreo Ambulatorio de PA (MAPA) 24h",
+          "descripcion": "ESC 2024 lo posiciona como herramienta diagnóstica de primera línea (junto con MDPA) para confirmar HTA, ya que una única medición de consultorio es insuficiente. Detecta HTA enmascarada, HTA de bata blanca y patrón non-dipping nocturno (predictor independiente de eventos CV).",
+          "valoresReferencia": "Promedio 24h normal < 130/80; diurno < 135/85; nocturno < 120/70. HTA enmascarada: consultorio normal pero MAPA elevada. Bata blanca: lo opuesto.",
+          "cuidadosEnfermeria": [
+            "Explicar duración (24h) y que debe continuar actividades habituales",
+            "Verificar ajuste correcto del manguito en brazo no dominante",
+            "Instruir registro de actividades, sueño y síntomas en diario",
+            "Advertir que el equipo mide cada 15-30 min de día y cada 30-60 min de noche",
+            "Evitar mojar el equipo (no ducharse durante el registro)"
+          ]
+        },
+        {
+          "nombre": "Monitoreo Domiciliario de PA (MDPA)",
+          "descripcion": "Alternativa al MAPA cuando éste no está disponible. ESC 2024 recomienda MDPA estructurado durante 7 días (descartando día 1) con 2 mediciones matinales y 2 vespertinas. Mejora adherencia al tratamiento y permite ajuste terapéutico basado en datos reales.",
+          "valoresReferencia": "Promedio MDPA normal < 135/85 mmHg. >= 135/85 confirma HTA.",
+          "cuidadosEnfermeria": [
+            "Educar en técnica correcta: reposo 5 min, brazo a nivel cardíaco, sin hablar",
+            "Recomendar tensiómetro automático de brazo validado (no de muñeca)",
+            "Indicar 2 mediciones consecutivas (1 min de diferencia) mañana y noche",
+            "Registrar valores en libreta o app, llevar a consulta",
+            "No medir tras café, ejercicio o emoción intensa"
+          ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Reducir PA a < 130/80 mmHg en general",
-        "Prevenir daño en órganos diana",
-        "Reducir riesgo cardiovascular global",
-        "Mejorar calidad de vida"
+        "Target ESC 2024 < 65 años: < 130/80 mmHg (no menos de 120/70 si tolerancia lo permite)",
+        "Target ESC 2024 65-79 años: < 140/80 mmHg (idealmente cerca de 130/80 si bien tolerado)",
+        "Target ESC 2024 >= 80 años: PAS 140-150 mmHg con PAD < 80 mmHg (evitar hipotensión ortostática)",
+        "Target AHA/ACC 2025: < 130/80 mmHg universal (excepciones individualizadas en institucionalizados, expectativa de vida limitada, embarazo)",
+        "Iniciar tratamiento farmacológico si PA >= 140/90 sostenida, o >= 130/80 con enfermedad CV establecida o riesgo PREVENT 10y elevado",
+        "Prevenir daño en órganos diana (corazón, cerebro, riñón, retina, grandes vasos)",
+        "Reducir riesgo cardiovascular global integrado (no tratar solo el número)",
+        "Mejorar calidad de vida y adherencia al tratamiento crónico"
       ],
       "farmacologico": [
         {
@@ -196,6 +220,20 @@
             "Alternativa en intolerancia a IECAs por tos",
             "Contraindicado en embarazo",
             "Monitorizar función renal"
+          ]
+        },
+        {
+          "nombre": "Combinación píldora-única (SPC): IECA/ARA-II + amlodipina o tiazida",
+          "grupo": "Combinación fija de dos antihipertensivos en un solo comprimido",
+          "mecanismo": "Combina dos clases con mecanismos complementarios (bloqueo del sistema renina-angiotensina + vasodilatación calcio-antagonista o diuresis). Las SPC superan al ajuste secuencial de monoterapias en velocidad de control y adherencia.",
+          "dosis": "Ej: Perindopril/Amlodipina 4/5 mg a 8/10 mg; Telmisartán/HCTZ 40/12.5 mg a 80/25 mg. Iniciar con dosis bajas y titular cada 2-4 semanas hasta target.",
+          "cuidadosEnfermeria": [
+            "ESC 2024 recomienda SPC como PRIMER paso terapéutico en la mayoría de los pacientes con HTA confirmada, no como rescate tras fallo de monoterapia (cambio de paradigma)",
+            "AHA/ACC 2025 también prefiere SPC para Stage 2 (PAS >=140 o PAD >=90)",
+            "Monitorizar PA, función renal y potasio a los 2-4 semanas tras inicio o cambio de dosis",
+            "Educar al paciente: una sola toma diaria mejora adherencia vs múltiples pastillas",
+            "Verificar contraindicaciones de cada componente (embarazo para IECA/ARA-II, gota para tiazida)",
+            "Si la PA no se controla con SPC a dosis plena, agregar tercer fármaco (espironolactona como cuarto pilar en HTA resistente)"
           ]
         }
       ],
@@ -374,7 +412,12 @@
       "pat_irc",
       "pat_dm2"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-21",
+    "fuentes": [
+      "ESC 2024 Guidelines for the management of elevated blood pressure and hypertension (Eur Heart J 2024;45(38):3912-4018)",
+      "AHA/ACC 2025 Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults (Hypertension 2025)"
+    ]
   },
   {
     "id": "pat_icc",

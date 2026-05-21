@@ -55,5 +55,6 @@ Usar exactamente estos strings en el campo `fuentes` para mantener consistencia 
 | Fecha | ID | Cambio principal | Commit |
 |---|---|---|---|
 | 2026-05-06 | `pat_icc` | Tratamiento HF a algoritmo 4-pilares ESC 2023 | `a3e6e3f` |
+| 2026-05-21 | `pat_hta` | Definición + clasificación + targets + SPC alineados a ESC 2024 y AHA/ACC 2025; agregado MAPA y MDPA como diagnóstico de 1ª línea | pendiente |
 
 (actualizar esta tabla en cada sesión clínica nueva)
