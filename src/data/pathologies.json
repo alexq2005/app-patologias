@@ -1571,37 +1571,59 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación temporal",
+      "nombre": "Clasificación combinada: temporal ESC 2024 + Stages AHA/ACC/HRS 2023",
       "tipos": [
         {
-          "nombre": "FA de primer diagnóstico",
-          "descripcion": "Primera vez que se detecta, independientemente del tiempo de evolución"
+          "nombre": "ESC temporal — FA de primer diagnóstico",
+          "descripcion": "Primera vez que se detecta, independientemente del tiempo de evolución, duración o severidad de síntomas."
         },
         {
-          "nombre": "FA paroxistica",
-          "descripcion": "Episodios que terminan espontaneamente en < 7 dias"
+          "nombre": "ESC temporal — FA paroxística",
+          "descripcion": "Episodios autolimitados que terminan espontáneamente o con cardioversión en < 7 días (a menudo < 48h)."
         },
         {
-          "nombre": "FA persistente",
-          "descripcion": "Dura > 7 dias o requiere cardioversion para terminar"
+          "nombre": "ESC temporal — FA persistente",
+          "descripcion": "Dura > 7 días o requiere intervención (cardioversión farmacológica o eléctrica) para terminar."
         },
         {
-          "nombre": "FA persistente de larga duración",
-          "descripcion": "> 12 meses de duración"
+          "nombre": "ESC temporal — FA persistente de larga duración",
+          "descripcion": "FA continua de > 12 meses cuando aún se persigue estrategia de control de ritmo."
         },
         {
-          "nombre": "FA permanente",
-          "descripcion": "Se acepta la FA como ritmo definitivo, sin intentar cardioversion"
+          "nombre": "ESC temporal — FA permanente",
+          "descripcion": "FA aceptada como ritmo definitivo por paciente y clínico; no se intentan más estrategias de control de ritmo."
+        },
+        {
+          "nombre": "AHA/ACC/HRS 2023 — Stage 1: En riesgo",
+          "descripcion": "Factores de riesgo modificables (obesidad, HTA, OSA, alcohol) o no modificables (edad, sexo masculino, genética). Foco: modificación agresiva de factores de riesgo."
+        },
+        {
+          "nombre": "AHA/ACC/HRS 2023 — Stage 2: Pre-FA",
+          "descripcion": "Evidencia estructural (dilatación auricular, ectopia auricular frecuente, flutter, AHRE en dispositivos). Mayor riesgo de FA clínica."
+        },
+        {
+          "nombre": "AHA/ACC/HRS 2023 — Stage 3: FA clínica",
+          "descripcion": "3A paroxística; 3B persistente; 3C persistente de larga duración; 3D ablación exitosa con mantenimiento de ritmo sinusal. Posibilidad de progresión o regresión entre subestadios."
+        },
+        {
+          "nombre": "AHA/ACC/HRS 2023 — Stage 4: FA permanente",
+          "descripcion": "Aceptación conjunta paciente-clínico de FA como ritmo definitivo."
+        },
+        {
+          "nombre": "Severidad sintomática EHRA",
+          "descripcion": "EHRA I: sin síntomas. II: leves, sin afectar actividad diaria. III: severos, actividad afectada. IV: incapacitantes (síncope, IC severa)."
         }
       ]
     },
     "diagnostico": {
       "anamnesis": [
-        "Inicio y duración de los síntomas",
-        "Episodios previos y su terminación",
-        "Patologías asociadas (hipertiroidismo, IC, valvulopatia)",
-        "Medicación actual",
-        "Calculo de score CHA2DS2-VASc para riesgo embolico"
+        "Inicio y duración de los síntomas (clave para decidir cardioversión segura: < 48h)",
+        "Episodios previos, su terminación y patrón temporal",
+        "Patologías asociadas (HTA, IC, valvulopatía mitral, hipertiroidismo, apnea del sueño, ERC)",
+        "Medicación actual y adherencia",
+        "Cálculo del score CHA₂DS₂-VA (ESC 2024 — sin componente sexo femenino) para riesgo tromboembólico",
+        "Cálculo del score HAS-BLED para riesgo de sangrado y modificación de factores corregibles",
+        "Evaluar síntomas con escala EHRA (I-IV) para cuantificar impacto"
       ],
       "examenFisico": [
         "Pulso irregular en ritmo y amplitud",
@@ -1637,22 +1659,35 @@
           ]
         },
         {
-          "nombre": "Score CHA2DS2-VASc",
-          "descripcion": "Herramienta de evaluación de riesgo tromboembólico para indicación de anticoagulación",
-          "valoresReferencia": "Score >= 2 en hombres o >= 3 en mujeres indica anticoagulación. IC=1, HTA=1, edad>75=2, DM=1, ACV previo=2, EV periférica=1, edad65-74=1, sexo femenino=1",
+          "nombre": "Score CHA₂DS₂-VA (ESC 2024) — riesgo tromboembólico",
+          "descripcion": "ESC 2024 simplificó el clásico CHA₂DS₂-VASc eliminando el componente 'Sex (female)' porque el sexo femenino no agrega riesgo independiente significativo cuando se controla por otros factores. Es la herramienta vigente para decidir anticoagulación en FA no valvular.",
+          "valoresReferencia": "Componentes (puntos): C (insuficiencia cardíaca / disfunción VI) = 1; H (hipertensión) = 1; A₂ (edad >= 75) = 2; D (diabetes) = 1; S₂ (ACV/AIT/embolia previa) = 2; V (enfermedad vascular: IAM, EVP, placa aórtica) = 1; A (edad 65-74) = 1. Total: 0-7. Indicación: CHA₂DS₂-VA = 0 → NO anticoagular; = 1 → considerar (Class IIa, individualizar riesgo-beneficio); >= 2 → anticoagular (Class I).",
           "cuidadosEnfermeria": [
-            "Calcular en todo paciente con FA",
-            "Documentar y comunicar al médico para decision terapéutica"
+            "Calcular en TODO paciente con FA, recalcular en cada visita (el score cambia con la edad y comorbilidades nuevas)",
+            "Documentar el score y comunicar al médico la indicación derivada",
+            "Si el paciente venía con score VASc previo, recalcular con VA (puede cambiar la indicación en mujeres jóvenes sin otros factores)"
+          ]
+        },
+        {
+          "nombre": "Score HAS-BLED — riesgo de sangrado",
+          "descripcion": "Score complementario al CHA₂DS₂-VA: NO se usa para decidir si anticoagular sino para identificar y modificar factores corregibles de sangrado, optimizando seguridad de la anticoagulación.",
+          "valoresReferencia": "Componentes (1 punto cada uno): H (HTA no controlada), A (función renal o hepática anormal), S (ACV previo), B (sangrado previo o predisposición), L (INR lábil si warfarina), E (edad > 65), D (drogas: AINE/antiagregantes/alcohol). Total: 0-9. HAS-BLED >= 3 = alto riesgo de sangrado → corregir factores modificables (HTA, abandono de alcohol/AINEs, optimizar INR) y no necesariamente suspender anticoagulación.",
+          "cuidadosEnfermeria": [
+            "Riesgo de sangrado alto NO contraindica anticoagulación; obliga a modificar factores corregibles y vigilar estrechamente",
+            "Identificar y eliminar AINEs y consumo excesivo de alcohol",
+            "Evaluar adherencia y técnica con warfarina (medir TTR — Time in Therapeutic Range); si TTR < 65% considerar cambio a DOAC"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Controlar la frecuencia cardíaca ventricular",
-        "Prevenir tromboembolia cerebral",
-        "Restaurar ritmo sinusal si es posible y beneficioso",
-        "Tratar causas subyacentes"
+        "Enfoque AF-CARE (ESC 2024): C — Comorbilidades y factores de riesgo (HTA, IC, OSA, obesidad, DM, alcohol); A — Avoid stroke/embolismo (anticoagulación según CHA₂DS₂-VA); R — Reduce symptoms (control de frecuencia y/o ritmo); E — Evaluation continua y dinámica",
+        "Prevención de tromboembolia (objetivo de mayor impacto en mortalidad): anticoagulación si CHA₂DS₂-VA >= 2 (Class I) o = 1 individualizado (IIa); DOACs preferidos sobre warfarina excepto en FA valvular",
+        "Control de frecuencia ventricular: target lenient < 110 lpm en reposo aceptable (RACE II) en pacientes oligosintomáticos; target estricto < 80 lpm si síntomas o disfunción VI",
+        "Control de ritmo precoz (EAST-AFNET 4, 2020): en FA de < 1 año con riesgo CV, la estrategia precoz de control de ritmo reduce eventos CV vs solo control de FC",
+        "Ablación con catéter (Class I AHA 2023) como primera línea en FA paroxística sintomática en pacientes jóvenes con pocas comorbilidades, y en FA + IC con FEr (CASTLE-AF)",
+        "Tratar causas subyacentes y comorbilidades modificables (HTA, OSA, hipertiroidismo, obesidad, alcohol)"
       ],
       "farmacologico": [
         {
@@ -1667,15 +1702,31 @@
           ]
         },
         {
-          "nombre": "Apixaban / Rivaroxaban",
-          "grupo": "Anticoagulante oral directo (ACOD) - inhibidor del factor Xa",
-          "mecanismo": "Inhibe directamente el factor Xa, interrumpiendo la cascada de coagulación sin monitoreo de INR",
-          "dosis": "Apixaban 5 mg c/12h (2.5 si criterios de reducción de dosis); Rivaroxaban 20 mg/dia con cena",
+          "nombre": "DOACs (Apixaban, Rivaroxaban, Edoxaban, Dabigatrán)",
+          "grupo": "Anticoagulantes orales directos — PREFERIDOS sobre warfarina en FA no valvular (ESC 2024 Class I; AHA/ACC 2023)",
+          "mecanismo": "Apixaban, Rivaroxaban, Edoxaban: inhibidores directos del factor Xa. Dabigatrán: inhibidor directo de la trombina (factor IIa). No requieren control de INR; ventana terapéutica más predecible que warfarina; menor sangrado intracraneal vs warfarina.",
+          "dosis": "Apixaban 5 mg c/12h (2.5 mg c/12h si >=2 de: edad>=80, peso<=60kg, creatinina>=1.5). Rivaroxaban 20 mg/día con cena (15 mg si TFG 15-49). Edoxaban 60 mg/día (30 mg si TFG 15-50, peso<=60kg, o uso de inhibidor P-gp). Dabigatrán 150 mg c/12h (110 mg si edad>=80 o riesgo de sangrado).",
           "cuidadosEnfermeria": [
-            "Administrar con alimentos (Rivaroxaban)",
-            "Vigilar signos de sangrado: hematuria, melena, epistaxis, equimosis",
-            "No requiere control de INR",
-            "Antidoto: Andexanet alfa para anti-Xa"
+            "ESC 2024 reafirma DOACs preferidos sobre warfarina, EXCEPTO: prótesis valvular mecánica y estenosis mitral moderada-severa (en esos casos, warfarina)",
+            "Evitar reducción de dosis off-label (asociada a mayor mortalidad y embolia sin reducir sangrado)",
+            "Administrar Rivaroxaban con la cena (mejora biodisponibilidad); los demás no requieren alimento específico",
+            "Vigilar signos de sangrado: hematuria, melena, epistaxis recurrente, equimosis espontáneas, cefalea persistente (descartar HIC)",
+            "Ajuste por función renal: medir TFG basal y cada 6-12 meses (cada 3 meses si TFG < 60); cada DOAC tiene umbrales específicos",
+            "ANTÍDOTOS: Idarucizumab (Praxbind) para dabigatrán; Andexanet alfa para apixaban/rivaroxaban/edoxaban. Si no disponibles: PCC (Concentrado de Complejo Protrombínico) 50 U/kg",
+            "Suspensión pre-cirugía: 24-48h sin riesgo o 48-96h con riesgo según fármaco + función renal; reanudar 6-72h post-cirugía según hemostasia",
+            "Adherencia es CRÍTICA: a diferencia de warfarina, vida media corta significa que una dosis omitida deja al paciente desprotegido en horas"
+          ]
+        },
+        {
+          "nombre": "Warfarina — reservada para FA valvular",
+          "grupo": "Anticoagulante oral antagonista de vitamina K — primera línea SOLO en FA valvular (prótesis mecánica, estenosis mitral moderada-severa)",
+          "mecanismo": "Inhibe la síntesis hepática de factores de coagulación dependientes de vitamina K (II, VII, IX, X y proteínas C y S). Requiere monitorización con INR.",
+          "dosis": "Iniciar 5 mg/día (3 mg en ancianos/bajo peso); ajustar por INR. Objetivo INR: 2.0-3.0 (FA no valvular si se usa por contraindicación a DOAC); 2.5-3.5 (prótesis mecánica mitral o aórtica de generación antigua).",
+          "cuidadosEnfermeria": [
+            "ESC 2024 / AHA 2023: warfarina YA NO es primera línea en FA no valvular. Reservada para prótesis valvular mecánica y estenosis mitral moderada-severa, o paciente que viene estable con TTR > 65-70%",
+            "Educar sobre interacciones medicamentosas (ATB, AINE, amiodarona, ISRS, hierba de San Juan) y alimentarias (vegetales verdes ricos en vit K — consistencia, no eliminación)",
+            "Antídotos: Vitamina K oral o IV + PCC en sangrado mayor; plasma fresco si PCC no disponible (menos eficaz)",
+            "Vigilar TTR (Time in Therapeutic Range): si < 65% considerar cambio a DOAC (si no valvular)"
           ]
         },
         {
@@ -1705,9 +1756,12 @@
         }
       ],
       "noFarmacologico": [
-        "Control de factores predisponentes (HTA, peso, alcohol)",
-        "Cardioversion eléctrica si FA de < 48h o con anticoagulación adecuada",
-        "Ablación con cateter (aislamiento de venas pulmonares) en FA paroxistica sintomatica"
+        "Control de factores predisponentes (eje 'C' de AF-CARE): manejo agresivo de HTA, pérdida de peso si IMC > 27 (puede reducir carga de FA), cesación de alcohol o reducción a < 3 unidades/semana, tratamiento de OSA con CPAP si indicado, control glucémico en DM, tratamiento de hipertiroidismo",
+        "Cardioversión eléctrica: indicada en FA de < 48h sin anticoagulación previa O en FA > 48h tras 3 semanas de anticoagulación efectiva, O guiada por ETE para descartar trombo en orejuela. Requiere anticoagulación al menos 4 semanas post-cardioversión",
+        "Cardioversión farmacológica: flecainida o propafenona ('pill-in-the-pocket') en pacientes sin cardiopatía estructural; amiodarona si IC o cardiopatía estructural",
+        "Ablación con catéter (aislamiento de venas pulmonares por radiofrecuencia o crioablación): AHA 2023 Class I como primera línea en FA paroxística sintomática en pacientes jóvenes con pocas comorbilidades (no esperar fallo farmacológico); también Class I en FA + IC con FE reducida (CASTLE-AF, RAFT-AF — reducen mortalidad y hospitalizaciones)",
+        "Control de ritmo precoz (estrategia EAST-AFNET 4): en FA reciente (< 1 año) con riesgo CV elevado, iniciar control de ritmo precoz reduce eventos CV vs control de FC aislado",
+        "Manejo de AHRE (Atrial High-Rate Episodes) en dispositivos cardíacos: la indicación de anticoagulación NO es automática; valorar duración del AHRE + CHA₂DS₂-VA; episodios cortos en pacientes de bajo riesgo no requieren anticoagulación"
       ],
       "quirurgico": [
         "Ablación quirúrgica (procedimiento Maze)",
@@ -1847,7 +1901,13 @@
       "pat_acv",
       "pat_iam"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ESC 2024 Guidelines for the management of atrial fibrillation (Eur Heart J 2024)",
+      "ACC/AHA/ACCP/HRS 2023 Guideline for the Diagnosis and Management of Atrial Fibrillation (Circulation 2024;149:e1-e156)",
+      "Ensayos clave: EAST-AFNET 4 (NEJM 2020 — early rhythm control); CASTLE-AF (NEJM 2018 — ablación en FA+IC); RACE II (NEJM 2010 — lenient rate control); PROTECT-AF/PREVAIL (LAAO con WATCHMAN)"
+    ]
   },
   {
     "id": "pat_tvp",

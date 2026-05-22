@@ -4,6 +4,49 @@
 
 ---
 
+## 2026-05-22 — Sesion 25: Revisión clínica de pat_fa a ESC 2024 + AHA/ACC/HRS 2023
+
+### Resumen
+Séptima iteración. La entry `pat_fa` (Fibrilación Auricular) tenía gaps importantes vs guidelines vigentes: usaba CHA₂DS₂-VASc (cuando ESC 2024 ya lo reemplazó por CHA₂DS₂-VA al eliminar el componente sexo femenino), DOACs limitados a apixaban/rivaroxaban (faltaban dabigatrán y edoxaban, ambos estándar), ausencia de warfarina explicitada como reservada solo para FA valvular, sin HAS-BLED, sin stages AHA 2023, sin escala EHRA, sin enfoque AF-CARE, ablación con catéter descrita como segunda línea (cuando AHA 2023 la posiciona Class I como primera línea en pacientes seleccionados), sin mencionar control de ritmo precoz (EAST-AFNET 4) ni ablación en FA+IC (CASTLE-AF), sin lenient rate control (RACE II), sin antídotos específicos para DOACs (idarucizumab para dabigatrán, andexanet para anti-Xa), sin manejo de AHRE.
+
+Cross-check: ESC 2024 AF Guidelines (Eur Heart J 2024), AHA/ACC/ACCP/HRS 2023 AF Guideline (Circulation 2024;149:e1-e156), ensayos EAST-AFNET 4, CASTLE-AF, RACE II, PROTECT-AF/PREVAIL. Edición quirúrgica de 6 secciones.
+
+### Cambios en pat_fa (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `diagnostico.anamnesis` | CHA₂DS₂-VASc → CHA₂DS₂-VA; +HAS-BLED; +escala EHRA |
+| `clasificacion` | De 5 a 10 tipos: mantiene 5 categorías ESC temporales + 4 stages AHA 2023 (en riesgo, pre-FA, FA con subestadios 3A-D, permanente) + EHRA I-IV |
+| `diagnostico.pruebas.Score` | Renombrado CHA₂DS₂-VA con componentes ESC 2024 (sin sexo) + umbrales clase I/IIa/no anticoagular |
+| `diagnostico.pruebas` (NUEVA) | +HAS-BLED para riesgo de sangrado: NO contraindica anticoagulación, identifica factores corregibles |
+| `tratamientoMedico.objetivos` | De 4 a 6: enfoque AF-CARE (Comorbidities/Avoid stroke/Reduce symptoms/Evaluation) + control de ritmo precoz EAST-AFNET 4 + lenient rate control RACE II + ablación Class I AHA 2023 |
+| `farmacologico.DOACs` | Expandido de Apixaban/Rivaroxaban a 4 fármacos (Apixaban/Rivaroxaban/Edoxaban/Dabigatrán) + criterios de reducción de dosis por fármaco + ANTÍDOTOS específicos (Idarucizumab para dabigatrán, Andexanet alfa para anti-Xa) + suspensión perioperatoria + advertencia "no reducir off-label" |
+| `farmacologico.Warfarina` (NUEVA) | Reposicionada como SOLO para FA valvular (prótesis mecánica, estenosis mitral); educación sobre interacciones; antídoto (Vit K + PCC); TTR < 65% justifica cambio a DOAC |
+| `noFarmacologico` (expandido) | De 3 a 6: eje C de AF-CARE (control de comorbilidades); cardioversión farmacológica "pill-in-pocket"; ablación Class I primera línea + indicación en FA+IC (CASTLE-AF); control de ritmo precoz EAST-AFNET 4; manejo de AHRE (anticoagulación NO automática) |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 3 entradas: ESC 2024 + AHA/ACC 2023 + ensayos clave (EAST-AFNET, CASTLE-AF, RACE II, PROTECT-AF/PREVAIL) |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `examenFisico`: vigente (pulso irregular, déficit de pulso, signos IC ya cubiertos)
+- `farmacologico.Metoprolol/Bisoprolol`, `Amiodarona`, `Digoxina`: dosis y manejo no cambiaron significativamente
+- `quirurgico`: ablación Maze y cierre orejuela WATCHMAN ya estaban
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 8 frescas (era 7; +pat_fa), 143 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_fa movido a "Sesiones cerradas". Quedan 3 patologías priorizadas (pat_neumonia, pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_fa): align with ESC 2024 + AHA/ACC/HRS 2023 — CHA2DS2-VA + DOAC expansion + AF-CARE`
+
+---
+
 ## 2026-05-22 — Sesion 24: Revisión clínica de pat_asma a GINA 2024-2025
 
 ### Resumen
