@@ -4,6 +4,55 @@
 
 ---
 
+## 2026-05-22 — Sesion 23: Revisión clínica de pat_epoc a GOLD 2025
+
+### Resumen
+Quinta iteración. La entry `pat_epoc` tenía gaps fundamentales vs GOLD 2025: clasificación solo por FEV1 (GOLD 1-4) sin grupos ABE (vigentes desde GOLD 2023 que reemplazaron ABCD), algoritmo terapéutico sin estratificar por grupo (no contemplaba LABA solo, LABA+LAMA dual como primera línea en B/E, triple terapia LABA+LAMA+ICS), ausencia de eosinófilos sanguíneos para guiar uso de ICS, ausencia de dupilumab (aprobado FDA/EMA 2024 para EPOC eosinofílico refractario), ventilación no invasiva (VNI) no mencionada como primera línea en exacerbación con acidosis, BiPAP domiciliaria ausente, vacuna RSV ausente (nueva GOLD 2024-25), cribado DAAT no listado como acción concreta, antibiótico empírico sin criterios de Anthonisen, corticoide sistémico con dosis correcta pero sin clarificar "5 días sin tapering" (REDUCE trial). Además: typo "Uscar" en cuidados de Salbutamol.
+
+Cross-check: GOLD 2025 Report (publicado 15-Nov-2024, vigente para 2025), ensayos IMPACT/ETHOS (triple terapia), BOREAS/NOTUS (dupilumab), HOT-HMV (BiPAP domiciliaria), REDUCE (corticoides 5 días). Edición quirúrgica de 6 secciones; el bloque farmacológico duplicó (4→8 fármacos) reorganizado por algoritmo ABE.
+
+### Cambios en pat_epoc (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Actualizada a GOLD 2025: integra síntomas + exacerbaciones + limitación funcional + obstrucción; incluye causas no-tabáquicas (DAAT, exposiciones, desarrollo pulmonar) |
+| `clasificacion` | De 4 (GOLD 1-4) a 10 tipos: mantiene 4 niveles espirométricos + 3 grupos ABE (A monoterapia LAMA/LABA, B dual LABA+LAMA, E exacerbador con triple según eosinófilos) + 3 niveles de severidad de exacerbación |
+| `diagnostico.pruebas.TAC` | Agregado cribado anual de cáncer de pulmón con TC baja dosis en fumadores 50-80 años con >=20 paquetes/año |
+| `diagnostico.pruebas` (NUEVAS) | +Recuento de eosinófilos en sangre (clave para decidir ICS: <100 NO; 100-300 zona gris; >=300 SÍ) +Cribado de alfa-1 antitripsina (una vez en la vida de todo paciente EPOC) |
+| `tratamientoMedico.objetivos` | De 4 a 7: agregado tratamiento inicial guiado por grupo ABE, eosinófilos como guía, vacunación completa (RSV nueva) |
+| `farmacologico.Salbutamol` | Reposicionado como rescate (no mantenimiento); fix typo "Uscar"→"Aclarar"; rol de espaciador clarificado |
+| `farmacologico.LAMA` (renombrado) | De "Tiotropio" a familia LAMA completa (Tiotropio, Glicopirronio, Aclidinio, Umeclidinio); GOLD 2025 preferido sobre LABA en monoterapia |
+| `farmacologico.LABA` (NUEVO) | Familia LABA completa (Salmeterol, Formoterol, Indacaterol, Olodaterol, Vilanterol); alternativa a LAMA en grupo A |
+| `farmacologico.LABA+LAMA dual` (NUEVO) | Píldora-única; tratamiento INICIAL en grupos B y E (cambio paradigmático GOLD 2023+, NO escalado tras monoterapia) |
+| `farmacologico.Triple terapia` (REEMPLAZA Fluticasona/Salmeterol genérico) | LABA+LAMA+ICS en píldora-única (Trelegy, Trimbow); indicación por EOSINÓFILOS no severidad; ensayos IMPACT/ETHOS; reducción de mortalidad demostrada |
+| `farmacologico.Dupilumab` (NUEVO) | Biológico anti-IL-4Rα; GOLD 2025 lo incluye para EPOC con eosinófilos >=300 y exacerbaciones a pesar de triple terapia (BOREAS/NOTUS) |
+| `farmacologico.Corticoide sistémico` | Aclarado: 40 mg x 5 días sin tapering (REDUCE trial); reservado para exacerbación, no estable |
+| `farmacologico.Antibiótico` (NUEVO) | Indicación por criterios de Anthonisen (2 de 3 síntomas cardinales o purulencia sola o ventilado); cobertura típica + Pseudomonas si riesgo; azitromicina profiláctica en exacerbador frecuente |
+| `noFarmacologico` (expandido) | De 6 a 12 puntos: VNI primera línea en exacerbación con acidosis (pH<=7.35 + PaCO2>=45); BiPAP domiciliaria en hipercapnia crónica (HOT-HMV); SpO2 88-92% con Venturi; vacunación completa GOLD 2025 (influenza, PCV20, COVID, Tdap, RSV, zóster); cribado DAAT; cribado cáncer; manejo de comorbilidades |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 5 entradas: GOLD 2025 + IMPACT/ETHOS + BOREAS/NOTUS + HOT-HMV + REDUCE |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`: vigentes
+- `signosYSintomas`: clínica clásica vigente
+- `anamnesis`, `examenFisico`: vigentes (mMRC ya mencionado en cuidados; podría agregarse CAT pero no es crítico)
+- `quirurgico`: cirugía de reducción de volumen y trasplante vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 6 frescas (era 5; +pat_epoc), 145 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_epoc movido a "Sesiones cerradas". Quedan 5 patologías priorizadas (pat_asma, pat_fa, pat_neumonia, pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_epoc): align with GOLD 2025 — ABE classification + triple therapy + dupilumab`
+
+---
+
 ## 2026-05-22 — Sesion 22: Revisión clínica de pat_acv a AHA/ASA 2024 + ESO 2024 + AHA 2022 ICH + AHA 2023 HSA
 
 ### Resumen

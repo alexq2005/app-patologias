@@ -2740,7 +2740,7 @@
     "id": "pat_epoc",
     "nombre": "Enfermedad Pulmonar Obstructiva Crónica (EPOC)",
     "bodySystemId": "respiratorio",
-    "definicion": "Enfermedad prevenible y tratable caracterizada por limitación persistente del flujo aereo que no es completamente reversible, asociada a una respuesta inflamatoria crónica de la via aerea y del pulmón a particulas nocivas o gases, principalmente el humo del tabaco.",
+    "definicion": "GOLD 2025: enfermedad pulmonar heterogénea caracterizada por síntomas respiratorios crónicos (disnea, tos, expectoración, exacerbaciones) debidos a anomalías de la vía aérea (bronquitis, bronquiolitis) y/o de los alvéolos (enfisema) que causan obstrucción persistente y a menudo progresiva del flujo aéreo. La definición moderna integra síntomas + exacerbaciones + limitación funcional, no solo el FEV1/FVC < 0.70. Principal causa: tabaco; otras: exposiciones ambientales/ocupacionales, déficit de alfa-1 antitripsina, alteraciones del desarrollo pulmonar.",
     "epidemiologia": "Afecta al 10-15% de los adultos mayores de 40 años. Cuarta causa de muerte mundial. En Argentina, prevalencia del 14.5% en mayores de 40 años. Infradiagnosticada: solo el 25-40% de los casos estan diagnosticados.",
     "factoresRiesgo": [
       "Tabaquismo (causa del 80-90% de casos)",
@@ -2774,23 +2774,47 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación GOLD segun FEV1/FVC post-broncodilatador",
+      "nombre": "Clasificación combinada GOLD 2025: severidad espirométrica + grupo ABE + severidad de exacerbación",
       "tipos": [
         {
-          "nombre": "GOLD 1 - Leve",
-          "descripcion": "FEV1/FVC < 0.70 y FEV1 >= 80% del predicho"
+          "nombre": "Severidad espirométrica GOLD 1 — Leve",
+          "descripcion": "FEV1/FVC < 0.70 post-broncodilatador (criterio de obstrucción) y FEV1 >= 80% del predicho."
         },
         {
-          "nombre": "GOLD 2 - Moderado",
-          "descripcion": "FEV1 50-79% del predicho"
+          "nombre": "Severidad espirométrica GOLD 2 — Moderada",
+          "descripcion": "FEV1/FVC < 0.70 y FEV1 50-79% del predicho."
         },
         {
-          "nombre": "GOLD 3 - Grave",
-          "descripcion": "FEV1 30-49% del predicho"
+          "nombre": "Severidad espirométrica GOLD 3 — Grave",
+          "descripcion": "FEV1/FVC < 0.70 y FEV1 30-49% del predicho."
         },
         {
-          "nombre": "GOLD 4 - Muy grave",
-          "descripcion": "FEV1 < 30% del predicho"
+          "nombre": "Severidad espirométrica GOLD 4 — Muy grave",
+          "descripcion": "FEV1/FVC < 0.70 y FEV1 < 30% del predicho."
+        },
+        {
+          "nombre": "Grupo ABE — A (síntomas leves, pocas exacerbaciones)",
+          "descripcion": "mMRC 0-1 o CAT < 10, Y 0-1 exacerbaciones moderadas/año sin hospitalización. Tratamiento inicial: broncodilatador de acción larga en monoterapia (LAMA preferido sobre LABA)."
+        },
+        {
+          "nombre": "Grupo ABE — B (síntomas moderados-severos, pocas exacerbaciones)",
+          "descripcion": "mMRC >= 2 o CAT >= 10, Y 0-1 exacerbaciones moderadas/año sin hospitalización. Tratamiento inicial: combinación LABA + LAMA en píldora-única (GOLD 2023+ ya no recomienda monoterapia en este grupo)."
+        },
+        {
+          "nombre": "Grupo ABE — E (Exacerbador, independiente de síntomas)",
+          "descripcion": "GOLD 2023 reemplazó los antiguos grupos C/D por una única categoría 'E' (Exacerbador): >= 2 exacerbaciones moderadas/año O >= 1 exacerbación severa con hospitalización. Tratamiento inicial: LABA + LAMA; agregar ICS (triple terapia LABA+LAMA+ICS) si eosinófilos sanguíneos >= 300 cells/μL."
+        },
+        {
+          "nombre": "Severidad de exacerbación — Leve",
+          "descripcion": "Aumento de disnea, tos o expectoración que responde a broncodilatadores de acción corta SIN requerir corticoide sistémico ni antibiótico."
+        },
+        {
+          "nombre": "Severidad de exacerbación — Moderada",
+          "descripcion": "Requiere corticoide sistémico y/o antibiótico, manejada ambulatoriamente o en urgencias."
+        },
+        {
+          "nombre": "Severidad de exacerbación — Severa",
+          "descripcion": "Requiere hospitalización o consulta a urgencias por insuficiencia respiratoria aguda. Indicación de evaluar VNI si pH <= 7.35 + PaCO2 >= 45."
         }
       ]
     },
@@ -2841,78 +2865,157 @@
         },
         {
           "nombre": "TAC de torax de alta resolución",
-          "descripcion": "Cuantifica enfisema, detecta bullas y diferencia fenotipos (enfisema vs bronquitis crónica)",
+          "descripcion": "Cuantifica enfisema, detecta bullas y diferencia fenotipos (enfisema vs bronquitis crónica). GOLD 2025: cribado anual con TC de baja dosis para cáncer de pulmón en fumadores actuales o exfumadores 50-80 años con >= 20 paquetes/año.",
           "cuidadosEnfermeria": [
             "Preparar acceso venoso si se usa contraste",
             "Verificar función renal pre-contraste"
+          ]
+        },
+        {
+          "nombre": "Recuento de eosinófilos en sangre periférica",
+          "descripcion": "GOLD 2025: marcador clave para guiar el uso de corticoide inhalado (ICS) en EPOC. NO predice respuesta a broncodilatadores ni diagnostica EPOC; SÍ predice respuesta a ICS y riesgo de exacerbación. Idealmente solicitarlo en fase estable, no durante una exacerbación.",
+          "valoresReferencia": "Eosinófilos < 100 cells/μL: poco beneficio con ICS y mayor riesgo de neumonía → NO agregar ICS. 100-300 cells/μL: zona gris; considerar ICS si exacerbaciones persistentes con LABA+LAMA. >= 300 cells/μL: ICS aporta beneficio significativo en exacerbador → indicación de triple terapia LABA+LAMA+ICS. Eosinófilos persistentes >= 300 con exacerbaciones a pesar de triple terapia → considerar dupilumab.",
+          "cuidadosEnfermeria": [
+            "Hemograma estándar incluye recuento absoluto de eosinófilos — no requiere prueba especial",
+            "Evitar la extracción durante exacerbación o con corticoide sistémico reciente (artificialmente bajos)",
+            "Repetir en al menos 2 ocasiones para confirmar tendencia antes de decisiones terapéuticas mayores"
+          ]
+        },
+        {
+          "nombre": "Cribado de deficiencia de alfa-1 antitripsina (DAAT)",
+          "descripcion": "GOLD 2025 y guías nacionales: testear UNA VEZ a todo paciente con EPOC, especialmente si EPOC precoz (< 45 años), no fumador o pocos paquetes/año, enfisema basal predominante, historia familiar de EPOC/enfermedad hepática inexplicada, o panniculitis/vasculitis ANCA+. Identifica la única forma genética tratable de EPOC.",
+          "valoresReferencia": "Nivel sérico de alfa-1 antitripsina: < 80 mg/dL o < 11 μM sugiere déficit → confirmar con fenotipo (PI*ZZ, PI*SZ) o genotipo. Si confirmado: considerar terapia de aumentación (proteína AAT IV semanal) según protocolo.",
+          "cuidadosEnfermeria": [
+            "Educar al paciente sobre la naturaleza genética y la implicación familiar (cascada de cribado en familiares de primer grado)",
+            "Si déficit confirmado: derivar a centro especializado en DAAT para considerar terapia de aumentación",
+            "Asesorar sobre evitación absoluta del tabaco, exposición a humos y polvos ocupacionales (acelera dramáticamente la pérdida de FEV1)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Reducir síntomas y mejorar tolerancia al ejercicio",
-        "Prevenir exacerbaciones",
-        "Reducir progresion de la enfermedad",
-        "Reducir mortalidad"
+        "Reducir síntomas y mejorar tolerancia al ejercicio (objetivo de impacto inmediato)",
+        "Prevenir exacerbaciones (objetivo de modificación de enfermedad — cada exacerbación severa reduce supervivencia)",
+        "Frenar progresión: cesación tabáquica es la única intervención que altera la pendiente de pérdida de FEV1",
+        "Reducir mortalidad (demostrado para: cesación tabáquica, oxigenoterapia en hipoxemia, VNI en hipercapnia, triple terapia LABA+LAMA+ICS en exacerbador eosinofílico, rehabilitación respiratoria)",
+        "Tratamiento inicial guiado por GRUPO ABE (no solo por FEV1): A → mono LAMA o LABA; B → LABA+LAMA dual; E → LABA+LAMA con escalado a triple si eosinófilos >= 300",
+        "Eosinófilos en sangre como guía del uso de ICS (no como diagnóstico de EPOC)",
+        "Vacunación completa: influenza anual, neumococo (PCV20 preferida), SARS-CoV-2 según calendario, pertussis (Tdap) cada 10 años, RSV >= 60 años con EPOC (nueva GOLD 2024-2025), herpes zóster >= 50 años"
       ],
       "farmacologico": [
         {
-          "nombre": "Salbutamol (Albuterol)",
-          "grupo": "Beta-2 agonista de acción corta (SABA) - broncodilatador",
-          "mecanismo": "Activa receptores beta-2 en músculo liso bronquial, produciendo broncodilatación por via del AMPc",
-          "dosis": "2 puffs (200 mcg) cada 4-6h o a demanda; nebulización 2.5 mg en 3 mL SF",
+          "nombre": "Salbutamol (Albuterol) — SABA de rescate",
+          "grupo": "Beta-2 agonista de acción corta (SABA) — broncodilatador de rescate, NO de mantenimiento",
+          "mecanismo": "Activa receptores beta-2 en músculo liso bronquial, produciendo broncodilatación por vía del AMPc en 5-15 min.",
+          "dosis": "2 puffs (200 mcg) cada 4-6h a demanda; nebulización 2.5 mg en 3 mL SF en exacerbación. Uso pautado regular ya NO se recomienda en EPOC estable (GOLD prefiere LAMA o LABA de acción larga).",
           "cuidadosEnfermeria": [
-            "Enseñar técnica correcta de inhalación con espaciador",
-            "Taquicardia e hipokalemia como efectos adversos",
-            "Uscar con protocolo del médico (de rescate vs pautado)",
-            "Enjuague bucal post-inhalación para reducir efectos sistemicos"
+            "Enseñar técnica correcta de inhalación con espaciador (mejora 4-5x el depósito pulmonar vs MDI solo)",
+            "Vigilar taquicardia, temblor, hipokalemia (especialmente con dosis altas en exacerbación)",
+            "Aclarar al paciente la diferencia entre rescate (SABA a demanda) y mantenimiento (LAMA/LABA a horario fijo)",
+            "Enjuague bucal post-inhalación para reducir absorción sistémica"
           ]
         },
         {
-          "nombre": "Tiotropio",
-          "grupo": "Anticolinergico de acción larga (LAMA) - broncodilatador",
-          "mecanismo": "Bloquea receptores muscarinicos M3 en músculo liso bronquial, reduce broncoconstricción y secreciones",
-          "dosis": "18 mcg inhalado 1 vez/dia (Handihaler) o 5 mcg (Respimat)",
+          "nombre": "LAMA (Tiotropio, Glicopirronio, Aclidinio, Umeclidinio)",
+          "grupo": "Anticolinérgico de acción larga — broncodilatador de mantenimiento de 1ª elección en grupo A; componente esencial de duales y triples",
+          "mecanismo": "Bloquea receptores muscarínicos M3 en músculo liso bronquial: reduce broncoconstricción colinérgica y secreciones. Efecto sostenido 12-24h según molécula.",
+          "dosis": "Tiotropio 18 mcg/día Handihaler o 5 mcg/día Respimat; Glicopirronio 50 mcg/día; Umeclidinio 62.5 mcg/día.",
           "cuidadosEnfermeria": [
-            "Enseñar uso del dispositivo Handihaler o Respimat especificamente",
-            "Vigilar retención urinaria en próstata",
-            "Contraindicado en glaucoma de angulo estrecho",
-            "Sequedad bucal frecuente"
+            "GOLD 2025: LAMA preferido sobre LABA en monoterapia (mayor prevención de exacerbaciones)",
+            "Enseñar uso específico del dispositivo (Handihaler vs Respimat vs DPI vs MDI con espaciador)",
+            "Vigilar retención urinaria en pacientes con hiperplasia prostática",
+            "Contraindicado en glaucoma de ángulo estrecho",
+            "Sequedad bucal es el efecto adverso más frecuente; hidratación + buena higiene oral"
           ]
         },
         {
-          "nombre": "Fluticasona/Salmeterol",
-          "grupo": "Corticoide inhalado + beta-2 agonista de acción larga (ICS+LABA)",
-          "mecanismo": "Corticoide reduce inflamación de via aerea; LABA produce broncodilatación sostenida (12h)",
-          "dosis": "500/50 mcg c/12h inhalado",
+          "nombre": "LABA (Salmeterol, Formoterol, Indacaterol, Olodaterol, Vilanterol)",
+          "grupo": "Beta-2 agonista de acción larga — broncodilatador de mantenimiento; alternativa a LAMA en monoterapia grupo A; componente de duales/triples",
+          "mecanismo": "Mismo mecanismo que SABA pero con vida media prolongada (12-24h). Mejora síntomas, calidad de vida y reduce exacerbaciones.",
+          "dosis": "Salmeterol 50 mcg c/12h; Formoterol 12 mcg c/12h; Indacaterol 150-300 mcg/día; Olodaterol 5 mcg/día.",
           "cuidadosEnfermeria": [
-            "Enseñar inhalación con espaciador",
-            "Enjuague bucal OBLIGATORIO para prevenir candidiasis oral",
-            "En EPOC: indicado si exacerbaciones frecuentes o asma-EPOC overlap (ACO)",
-            "Monitorizar densidad osea con uso prolongado"
+            "NUNCA usar LABA en monoterapia en asma (riesgo de muerte); en EPOC es seguro",
+            "Vigilar taquicardia, palpitaciones, temblor",
+            "Adherencia diaria es clave — explicar que el efecto se construye con uso regular"
           ]
         },
         {
-          "nombre": "Prednisona / Metilprednisolona sistémica",
-          "grupo": "Corticoide sistémico - en exacerbación aguda",
-          "mecanismo": "Potente antiinflamatorio que reduce edema de via aerea en exacerbaciones",
-          "dosis": "Prednisona 40 mg/dia VO x 5 dias en exacerbación",
+          "nombre": "LABA + LAMA (combinación dual en píldora-única)",
+          "grupo": "Doble broncodilatador en un dispositivo — tratamiento inicial preferido en grupo B y E (GOLD 2025)",
+          "mecanismo": "Bloqueo simultáneo de los dos principales mecanismos de broncoconstricción (colinérgico y simpático). Superior a cualquier monoterapia en función pulmonar, síntomas y reducción de exacerbaciones, con perfil de seguridad similar.",
+          "dosis": "Tiotropio/Olodaterol (Stiolto) 5/5 mcg/día; Umeclidinio/Vilanterol (Anoro) 62.5/25 mcg/día; Glicopirronio/Indacaterol (Ultibro) 50/110 mcg/día; Aclidinio/Formoterol c/12h.",
+          "cuidadosEnfermeria": [
+            "GOLD 2025 (cambio paradigmático): LABA+LAMA es el inicio en grupo B (síntomas) y grupo E (exacerbador), NO escalado tras fallo de monoterapia",
+            "La píldora-única mejora adherencia vs dos inhaladores separados",
+            "Misma técnica inhalatoria que componentes individuales; reforzar adherencia diaria",
+            "Si paciente venía con monoterapia: cambio directo a dual, NO sumar otro inhalador del mismo grupo"
+          ]
+        },
+        {
+          "nombre": "Triple terapia LABA + LAMA + ICS (píldora-única)",
+          "grupo": "Triple inhalador — indicado en EPOC grupo E con eosinófilos >= 300 cells/μL o exacerbaciones persistentes con LABA+LAMA y eosinófilos >= 100",
+          "mecanismo": "Doble broncodilatación + corticoide inhalado antiinflamatorio. Reducción de mortalidad demostrada en exacerbadores eosinofílicos (IMPACT, ETHOS trials).",
+          "dosis": "Vilanterol/Umeclidinio/Fluticasona furoato (Trelegy) 25/62.5/100 mcg/día; Formoterol/Glicopirronio/Beclometasona (Trimbow) c/12h; Tiotropio/Olodaterol/Fluticasona (en estudio).",
+          "cuidadosEnfermeria": [
+            "Indicación basada en EOSINÓFILOS, no en severidad espirométrica per se",
+            "ICS aumenta riesgo de neumonía: vigilar fiebre, expectoración purulenta, infiltrados radiológicos",
+            "Enjuague bucal OBLIGATORIO post-inhalación para prevenir candidiasis oral y disfonía",
+            "Considerar de-escalar a LABA+LAMA si: eosinófilos < 100 sostenidos y/o sin exacerbaciones en 12 meses (no es para siempre)"
+          ]
+        },
+        {
+          "nombre": "Dupilumab (biológico anti-IL-4Rα) — exacerbador eosinofílico refractario",
+          "grupo": "Anticuerpo monoclonal anti-receptor de IL-4α — NUEVO en GOLD 2025 para EPOC con inflamación tipo 2",
+          "mecanismo": "Bloquea la señalización de IL-4 e IL-13, citocinas claves en inflamación eosinofílica (tipo 2). Aprobado FDA/EMA para EPOC en 2024 tras ensayos BOREAS y NOTUS, que mostraron reducción de exacerbaciones y mejoría funcional en pacientes con eosinófilos >= 300 a pesar de triple terapia.",
+          "dosis": "300 mg SC cada 2 semanas. Idealmente administrado por el paciente o cuidador entrenado.",
+          "cuidadosEnfermeria": [
+            "Indicado en EPOC grupo E con eosinófilos >= 300 cells/μL Y exacerbaciones persistentes a pesar de triple terapia LABA+LAMA+ICS optimizada",
+            "Educar técnica de auto-inyección SC (muslo, abdomen evitando 5 cm alrededor del ombligo, o brazo si la administra otra persona)",
+            "Vigilar reacciones en sitio de inyección, conjuntivitis (efecto adverso típico de anti-IL4Rα), hipereosinofilia transitoria",
+            "Coordinar con neumonología para indicación y seguimiento (no es tratamiento de primera línea)",
+            "Costo elevado: gestionar autorización con cobertura sanitaria"
+          ]
+        },
+        {
+          "nombre": "Corticoide sistémico (Prednisona / Metilprednisolona) en exacerbación aguda",
+          "grupo": "Corticoide sistémico — uso restringido a exacerbación moderada-severa, NO en EPOC estable",
+          "mecanismo": "Potente antiinflamatorio que reduce edema de vía aérea en exacerbaciones. Acorta duración de exacerbación y previene recaídas precoces.",
+          "dosis": "GOLD 2025: prednisona 40 mg/día VO por 5 días (NO más, NO menos — el ensayo REDUCE estableció 5 días como suficiente vs ciclos largos previos).",
           "cuidadosEnfermeria": [
             "Administrar con desayuno para reducir irritación gástrica",
-            "Hiperglucemia frecuente: monitorizar glucemia",
-            "Protección gástrica con IBP",
-            "No suspender abruptamente tratamientos largos"
+            "Hiperglucemia frecuente: monitorizar glucemia capilar especialmente en diabéticos",
+            "Protección gástrica con IBP si factor de riesgo (úlcera previa, NSAIDs concomitantes)",
+            "Ciclos de 5 días NO requieren tapering (cambio respecto a recomendaciones antiguas)",
+            "Reservar uso IV solo si imposibilidad de VO o ventilación mecánica"
+          ]
+        },
+        {
+          "nombre": "Antibiótico en exacerbación (Amoxicilina-clavulánico, Azitromicina, Doxiciclina)",
+          "grupo": "Antibiótico empírico — indicado en exacerbación con signos de infección bacteriana",
+          "mecanismo": "Cubre patógenos típicos: H. influenzae, S. pneumoniae, M. catarrhalis. En casos graves o de riesgo (FEV1 < 50%, exacerbaciones frecuentes): considerar Pseudomonas con quinolona o beta-lactámico antipseudomónico.",
+          "dosis": "Amoxicilina-clavulánico 875/125 mg c/8h VO x 5-7 días; Azitromicina 500 mg/día x 3 días; Doxiciclina 100 mg c/12h x 5 días.",
+          "cuidadosEnfermeria": [
+            "Indicación GOLD: 2 de 3 síntomas cardinales de Anthonisen (aumento de disnea, volumen de esputo, purulencia del esputo) O esputo purulento solo O paciente ventilado",
+            "Tomar cultivo de esputo en exacerbaciones severas o de mala respuesta",
+            "Vigilar diarrea por C. difficile, especialmente con clavulánico y quinolonas",
+            "Azitromicina profiláctica (250-500 mg 3x/semana) considerable en exacerbadores frecuentes a pesar de tratamiento óptimo — vigilar QT y ototoxicidad"
           ]
         }
       ],
       "noFarmacologico": [
-        "Cesación tabaquica (tratamiento más eficaz para frenar progresion)",
-        "Rehabilitación respiratoria",
-        "Oxigenoterapia domiciliaria si PaO2 < 55 mmHg o < 60 con cor pulmonale",
-        "Vacunación antiinfluenza y antineumococica",
-        "Nutrición adecuada",
-        "Técnicas de fisioterapia respiratoria y drenaje postural"
+        "Cesación tabáquica: ÚNICA intervención que altera la pendiente de declive del FEV1 — combinar consejo + farmacoterapia (vareniclina, bupropión o TRN); modelo 5 As en cada contacto",
+        "Rehabilitación respiratoria multidisciplinaria (6-12 semanas): ejercicio aeróbico + entrenamiento de fuerza + educación + apoyo nutricional y psicológico. Reduce disnea, mejora capacidad funcional y calidad de vida — beneficio comparable o superior al de fármacos en muchos pacientes",
+        "Oxigenoterapia domiciliaria de larga duración (OLD): indicada si PaO2 <= 55 mmHg O SaO2 <= 88% en reposo; o PaO2 56-59 con cor pulmonale, poliglobulia (Hto >55%) o desaturación nocturna. Mínimo 15 horas/día (idealmente 24h). Reduce mortalidad",
+        "Ventilación No Invasiva (VNI / BiPAP) en exacerbación aguda: PRIMERA LÍNEA si pH <= 7.35 + PaCO2 >= 45 mmHg O dificultad respiratoria con uso de musculatura accesoria. Reduce intubación, mortalidad y estancia hospitalaria. Configuración típica: IPAP 12-20, EPAP 4-6, FiO2 para SpO2 88-92%",
+        "VNI domiciliaria a largo plazo (BiPAP nocturno): considerar en pacientes con hipercapnia crónica estable (PaCO2 >= 52 mmHg) 2 semanas tras alta de exacerbación. HOT-HMV trial mostró reducción de reingreso y mejoría de supervivencia",
+        "Oxígeno controlado en exacerbación: objetivo SpO2 88-92% (NO mayor — riesgo de hipercapnia por pérdida del drive hipóxico y por efecto Haldane). Preferir Venturi sobre cánula nasal para titulación precisa de FiO2",
+        "Vacunación GOLD 2025: influenza anual; neumococo conjugado PCV20 (preferida sobre PCV13+PPSV23); SARS-CoV-2 según calendario; pertussis (Tdap) cada 10 años; RSV adultos >= 60 años con EPOC (nueva en GOLD 2024-2025); herpes zóster (Shingrix) >= 50 años",
+        "Cribado de alfa-1 antitripsina al menos UNA VEZ en la vida del paciente con EPOC",
+        "Cribado de cáncer de pulmón anual con TC de baja dosis en 50-80 años con >= 20 paquetes/año, actualmente fumando o que dejó hace < 15 años (USPSTF + GOLD endorsa)",
+        "Nutrición: prevenir caquexia/sarcopenia (mortalidad mayor); evaluar IMC y masa magra; aporte proteico 1.2-1.5 g/kg/día en EPOC avanzado",
+        "Técnicas de fisioterapia respiratoria: respiración con labios fruncidos, drenaje postural, ejercicios de tos efectiva y huff cough",
+        "Detección y tratamiento de comorbilidades: cardiovascular, ansiedad/depresión, osteoporosis, reflujo, apnea del sueño (overlap syndrome)"
       ],
       "quirurgico": [
         "Cirugia de reducción de volumen pulmonar (bullas gigantes)",
@@ -3083,7 +3186,15 @@
       "pat_neumonia",
       "pat_neumotorax"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "GOLD 2025 Global Strategy for the Diagnosis, Management, and Prevention of COPD (15 Nov 2024)",
+      "Ensayos clave triple terapia: IMPACT (NEJM 2018), ETHOS (NEJM 2020)",
+      "Ensayos clave dupilumab en EPOC: BOREAS (NEJM 2023), NOTUS (NEJM 2024)",
+      "Ensayo VNI domiciliaria: HOT-HMV (JAMA 2017)",
+      "Ensayo corticoide en exacerbación: REDUCE (JAMA 2013)"
+    ]
   },
   {
     "id": "pat_asma",
