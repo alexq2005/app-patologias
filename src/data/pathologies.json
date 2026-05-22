@@ -3234,31 +3234,51 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación de severidad GINA (segun control)",
+      "nombre": "Clasificación GINA 2024-2025: nivel de control + step terapéutico + severidad de crisis",
       "tipos": [
         {
-          "nombre": "Bien controlado",
-          "descripcion": "Síntomas diurnos <= 2 dias/semana, sin limitación de actividad, sin síntomas nocturnos, uso de rescate <= 2 dias/semana, FEV1 >= 80%"
+          "nombre": "Control: bien controlado",
+          "descripcion": "GINA: en las últimas 4 semanas, NINGUNO de los 4 criterios — síntomas diurnos > 2 días/semana, despertares nocturnos por asma, uso de rescate > 2 días/semana, limitación de actividad por asma."
         },
         {
-          "nombre": "Parcialmente controlado",
-          "descripcion": "1-2 criterios no cumplidos"
+          "nombre": "Control: parcialmente controlado",
+          "descripcion": "1-2 criterios presentes en las últimas 4 semanas."
         },
         {
-          "nombre": "No controlado",
-          "descripcion": "3-4 criterios no cumplidos"
+          "nombre": "Control: no controlado",
+          "descripcion": "3-4 criterios presentes en las últimas 4 semanas. Reevaluar adherencia, técnica inhalatoria, comorbilidades antes de subir de step."
         },
         {
-          "nombre": "Crisis asmática leve",
-          "descripcion": "Sibilancias, habla en frases, SpO2 > 95%, PEF > 70%"
+          "nombre": "Step terapéutico — Step 1 (síntomas < 2x/mes)",
+          "descripcion": "Track 1 (PREFERIDO GINA 2024): ICS-formoterol dosis baja PRN. Track 2 (alternativo): ICS dosis baja siempre que se use SABA. GINA eliminó SABA-only desde 2019 — TODO paciente con asma necesita ICS desde Step 1."
         },
         {
-          "nombre": "Crisis moderada",
-          "descripcion": "Habla en palabras, SpO2 91-95%, PEF 40-69%"
+          "nombre": "Step terapéutico — Step 2 (síntomas 2x/mes a casi diarios)",
+          "descripcion": "Track 1: ICS-formoterol dosis baja PRN (= Step 1, reduce exacerbaciones severas 60-65% vs SABA solo). Track 2: ICS dosis baja diario + SABA PRN."
         },
         {
-          "nombre": "Crisis severa / Status asmaticus",
-          "descripcion": "No puede hablar, SpO2 < 90%, PEF < 40%, 'torax silente'"
+          "nombre": "Step terapéutico — Step 3 (síntomas casi diarios, exacerbaciones)",
+          "descripcion": "Track 1: MART (Maintenance And Reliever Therapy) con ICS-formoterol dosis baja como mantenimiento Y rescate. Track 2: ICS-LABA dosis baja diario + SABA PRN."
+        },
+        {
+          "nombre": "Step terapéutico — Step 4 (síntomas diarios + función pulmonar baja)",
+          "descripcion": "Track 1: MART con ICS-formoterol dosis MEDIA. Track 2: ICS-LABA dosis media diario + SABA PRN. Considerar derivar a especialista."
+        },
+        {
+          "nombre": "Step terapéutico — Step 5 (asma severa)",
+          "descripcion": "Asma severa requiere derivación a especialista. MART con ICS-formoterol dosis alta + LAMA (tiotropio) + considerar BIOLÓGICO por fenotipo: anti-IgE (omalizumab) si alérgica; anti-IL5/5R (mepolizumab/reslizumab/benralizumab) o anti-IL4R (dupilumab) si eosinofílica; anti-TSLP (tezepelumab) independiente del fenotipo."
+        },
+        {
+          "nombre": "Crisis aguda — Leve a moderada",
+          "descripcion": "Habla en frases o palabras, FR aumentada, FC < 120, SpO2 90-95%, PEF 50-79% del mejor personal. Tratamiento ambulatorio o en urgencias con broncodilatadores + corticoide sistémico."
+        },
+        {
+          "nombre": "Crisis aguda — Severa",
+          "descripcion": "Habla en palabras sueltas, sentado inclinado, FR > 30, FC > 120, SpO2 < 90%, PEF < 50%, uso de musculatura accesoria. Requiere hospitalización; considerar magnesio sulfato IV."
+        },
+        {
+          "nombre": "Crisis aguda — Riesgo vital (life-threatening)",
+          "descripcion": "Tórax silente (sin sibilancias por flujo insuficiente), cianosis, alteración del nivel de conciencia, agotamiento, bradicardia, hipotensión, SpO2 < 90% a pesar de O2. Indicación de UCI, intubación si fallo respiratorio inminente."
         }
       ]
     },
@@ -3297,75 +3317,148 @@
         },
         {
           "nombre": "Pruebas de alergia (prick test o IgE específica)",
-          "descripcion": "Identifica sensibilización a alérgenos especificos para guiar medidas de evitación",
+          "descripcion": "Identifica sensibilización a alérgenos específicos para guiar medidas de evitación y considerar inmunoterapia. IgE total elevada + sensibilizaciones específicas también orientan a omalizumab en asma alérgica severa.",
           "cuidadosEnfermeria": [
-            "Suspender antihistaminicos 5-7 dias antes del prick test",
-            "Material de reanimación disponible (raro choque anafilactico)",
-            "Registrar reacciones positivas"
+            "Suspender antihistamínicos 5-7 días antes del prick test",
+            "Material de reanimación disponible (raro shock anafiláctico)",
+            "Registrar reacciones positivas con diámetro de la pápula"
+          ]
+        },
+        {
+          "nombre": "FeNO (fracción exhalada de óxido nítrico)",
+          "descripcion": "Biomarcador de inflamación eosinofílica/tipo 2 en la vía aérea. GINA 2024: útil para confirmar fenotipo Th2 y orientar respuesta a ICS y a biológicos. NO sustituye al diagnóstico funcional (espirometría) pero complementa la decisión terapéutica en asma de difícil control.",
+          "valoresReferencia": "Adultos: < 25 ppb bajo (inflamación tipo 2 poco probable); 25-50 ppb intermedio; > 50 ppb alto (inflamación tipo 2 probable). Niños: < 20 / 20-35 / > 35 ppb. Criterio GINA para dupilumab: FeNO >= 25 ppb o eosinófilos >= 300.",
+          "cuidadosEnfermeria": [
+            "Maniobra: inspiración profunda + espiración lenta (50 mL/s) durante 10 segundos con boquilla anti-bacteriana",
+            "Paciente NO debe haber comido, fumado ni hecho ejercicio intenso en la última hora",
+            "ICS reduce FeNO (esperado); aumento durante uso = mala adherencia probable",
+            "Registrar valor y compararlo con basal del paciente"
+          ]
+        },
+        {
+          "nombre": "Recuento de eosinófilos en sangre periférica",
+          "descripcion": "Marcador de inflamación eosinofílica sistémica. Junto con FeNO orienta selección de biológicos en asma severa. >= 300 cells/μL define asma eosinofílica con criterio para anti-IL5/IL5R o dupilumab; >= 150 puede ser suficiente para algunos biológicos según el contexto.",
+          "valoresReferencia": "Eosinófilos sanguíneos: < 150/μL bajo; 150-300/μL intermedio; >= 300/μL elevado. Hemograma estándar lo incluye.",
+          "cuidadosEnfermeria": [
+            "Evitar la medición durante exacerbación o curso reciente de corticoide sistémico (artificialmente bajos)",
+            "Confirmar con 2 mediciones separadas antes de indicar biológico costoso",
+            "Si eosinófilos muy elevados (> 1500): descartar otras causas (ABPA, EGPA/Churg-Strauss, parásitos)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Control de síntomas y prevención de crisis",
-        "Mantener función pulmonar normal",
-        "Permitir vida normal sin limitaciones",
-        "Minimizar uso de broncodilatadores de rescate"
+        "Eliminar el uso de SABA solo (cambio paradigmático GINA 2019): TODO paciente con asma necesita ICS desde Step 1",
+        "Track 1 preferido (GINA 2024): ICS-formoterol PRN en Steps 1-2 y MART (mantenimiento + rescate con el mismo inhalador) en Steps 3-5 — reduce exacerbaciones severas 60-65% vs SABA solo",
+        "Control de síntomas: < 2 días/semana de síntomas diurnos, sin despertares nocturnos, sin limitación de actividad, rescate < 2 días/semana",
+        "Prevención de exacerbaciones y de mortalidad",
+        "Mantener función pulmonar normal y prevenir remodelado de la vía aérea",
+        "Minimizar efectos adversos del tratamiento (especialmente corticoide sistémico crónico)",
+        "Educar al paciente: técnica de inhalación, identificación de desencadenantes, plan de acción escrito, adherencia al ICS aunque esté asintomático",
+        "Vacunación: influenza anual; neumococo si comorbilidad; SARS-CoV-2 según calendario; zóster en asma severa con uso de corticoide sistémico crónico"
       ],
       "farmacologico": [
         {
-          "nombre": "Salbutamol",
-          "grupo": "Beta-2 agonista de acción corta (SABA) - broncodilatador de rescate",
-          "mecanismo": "Broncodilatación rápida (inicio 3-5 min) por activación de receptores beta-2",
-          "dosis": "Crisis: 2-4 puffs (200-400 mcg) con espaciador cada 20 min x 3 en la primera hora; luego 2 puffs cada 4-6h",
+          "nombre": "Salbutamol (SABA) — rescate, NUNCA en monoterapia",
+          "grupo": "Beta-2 agonista de acción corta (SABA) — broncodilatador de rescate y manejo de crisis",
+          "mecanismo": "Broncodilatación rápida (inicio 3-5 min, pico 15-30 min) por activación de receptores beta-2 en músculo liso bronquial.",
+          "dosis": "Crisis: 4-10 puffs (400-1000 mcg) con espaciador cada 20 min hasta 3 veces en la primera hora, según respuesta; alternativa nebulización 2.5-5 mg cada 20 min x 3. Tras estabilización, espaciar a cada 4-6h.",
           "cuidadosEnfermeria": [
-            "Enseñar uso correcto de inhalador presurizado + espaciador",
-            "Taquicardia, temblor, hipokalemia como efectos adversos",
-            "Si necesita > 2 dias/semana: asma no controlada - informar al médico"
+            "GINA 2019+: SABA en MONOTERAPIA está PROSCRITO. Asociar siempre ICS desde Step 1 (mortalidad de asma por uso aislado de SABA)",
+            "Enseñar uso correcto de MDI + espaciador (mejora 4-5x el depósito pulmonar vs MDI solo)",
+            "Vigilar taquicardia, temblor, hipokalemia con dosis altas en crisis (medir K y ECG si dosis >= 20 mg acumulados)",
+            "Uso > 3 cartuchos al año o > 1 cartucho mensual = factor de riesgo de muerte por asma → reevaluar tratamiento de fondo",
+            "En crisis preferir MDI + espaciador sobre nebulizador (igual eficacia, menos aerosoles)"
           ]
         },
         {
-          "nombre": "Budesonida (corticoide inhalado)",
-          "grupo": "Corticoide inhalado (ICS) - tratamiento controlador",
-          "mecanismo": "Reduce inflamación crónica de la via aerea, disminuye hiperreactividad bronquial",
-          "dosis": "200-800 mcg/dia en 2 dosis segun severidad",
+          "nombre": "Budesonida o Beclometasona o Fluticasona (ICS) en monoterapia",
+          "grupo": "Corticoide inhalado (ICS) — controlador antiinflamatorio de base",
+          "mecanismo": "Reduce inflamación eosinofílica y remodelado de la vía aérea; disminuye hiperreactividad bronquial; reduce mortalidad por asma.",
+          "dosis": "Dosis baja: Budesonida 200-400 mcg/día, Beclometasona 200-500 mcg/día, Fluticasona propionato 100-250 mcg/día. Dosis media/alta según step.",
           "cuidadosEnfermeria": [
-            "Enjuague bucal OBLIGATORIO para prevenir candidiasis orofaringea",
-            "Uso diario aunque sin síntomas (tratamiento controlador)",
-            "Disfonía como efecto adverso (candidiasis o miopatia laringe)"
+            "Enjuague bucal OBLIGATORIO post-inhalación para prevenir candidiasis orofaríngea y disfonía",
+            "Uso DIARIO aunque el paciente esté asintomático: el efecto se construye con uso regular",
+            "Disfonía y candidiasis oral como efectos adversos más frecuentes",
+            "Uso prolongado a dosis altas: vigilar densidad mineral ósea, catarata, eje suprarrenal en niños"
           ]
         },
         {
-          "nombre": "Budesonida/Formoterol (ICS+LABA)",
-          "grupo": "Corticoide inhalado + beta-2 agonista de acción larga - terapia combinada",
-          "mecanismo": "Doble acción: antiinflamatoria (ICS) + broncodilatación sostenida 12h (LABA)",
-          "dosis": "160/4.5 mcg 1-2 puffs c/12h; puede usarse también como alivio (estrategia SMART)",
+          "nombre": "Budesonida/Formoterol (ICS-formoterol) — Track 1 GINA 2024 PRN + MART",
+          "grupo": "Combinación ICS + LABA de acción rápida — único régimen aprobado para uso PRN Y como MART",
+          "mecanismo": "El formoterol es un LABA de inicio rápido (similar a salbutamol pero más prolongado, hasta 12h). La combinación con ICS aporta efecto antiinflamatorio Y broncodilatación inmediata en cada uso, sea programado o de rescate.",
+          "dosis": "Steps 1-2: 1 puff PRN (Budesonida/formoterol 200/6 mcg o 160/4.5 mcg). Steps 3-5 (MART): 1-2 puffs c/12h regular + 1 puff adicional PRN como rescate (máx 12 puffs/día). Otras combinaciones aceptadas: beclometasona/formoterol.",
           "cuidadosEnfermeria": [
-            "LABA nunca en monoterapia sin ICS (riesgo de muerte por asma)",
+            "GINA 2024 Track 1 PREFERIDO: ICS-formoterol PRN reemplaza al SABA como rescate en TODOS los steps — no usar SABA y MART juntos",
+            "MART significa UN SOLO inhalador para mantenimiento y rescate: educar al paciente que NO necesita salbutamol aparte",
+            "Salmeterol (LABA NO de inicio rápido) en combinación con ICS NO puede usarse como rescate; solo como mantenimiento (Track 2)",
             "Enjuague bucal post-inhalación",
-            "Enseñar estrategia SMART si indicada"
+            "Vigilar uso excesivo (> 12 puffs/día): indica crisis o asma no controlada — evaluar urgente"
           ]
         },
         {
-          "nombre": "Metilprednisolona IV",
-          "grupo": "Corticoide sistémico - crisis moderada/severa",
-          "mecanismo": "Antiinflamatorio potente que revierte edema e inflamación de via aerea en crisis",
-          "dosis": "40-80 mg IV cada 6-8h en crisis severa, luego prednisona VO 40 mg/dia x 5-7 dias",
+          "nombre": "Tiotropio (LAMA) — add-on en Steps 4-5",
+          "grupo": "Anticolinérgico de acción larga — broncodilatador add-on a ICS-LABA en asma no controlada",
+          "mecanismo": "Bloquea receptores muscarínicos M3, broncodilatación complementaria a beta-2 agonistas. Reduce exacerbaciones cuando se añade a ICS-LABA en asma persistente moderada-severa.",
+          "dosis": "5 mcg/día inhalado (Respimat).",
           "cuidadosEnfermeria": [
-            "Administrar IV lento",
-            "Hiperglucemia frecuente: monitorizar glucemia",
-            "No suspender abruptamente cursos prolongados"
+            "GINA 2024: considerar LAMA como add-on antes de iniciar biológico (Step 4-5)",
+            "Misma técnica Respimat que en EPOC",
+            "Vigilar sequedad bucal, retención urinaria en hiperplasia prostática; contraindicado glaucoma de ángulo estrecho"
+          ]
+        },
+        {
+          "nombre": "Prednisona o Metilprednisolona sistémica — crisis moderada/severa",
+          "grupo": "Corticoide sistémico — pilar del tratamiento de la crisis",
+          "mecanismo": "Antiinflamatorio potente que revierte edema, inflamación e hipersecreción mucosa. Reduce ingresos y recidivas precoces. Su efecto tarda 4-6h, por eso debe darse PRECOZMENTE.",
+          "dosis": "Prednisona 40-50 mg VO/día x 5-7 días (sin tapering en cursos cortos). Metilprednisolona IV 40-80 mg c/6-8h solo si no tolera VO o ventilación mecánica. En niños 1-2 mg/kg/día (máx 40 mg) x 3-5 días.",
+          "cuidadosEnfermeria": [
+            "Administrar lo antes posible en la crisis (en la primera hora) — su efecto demora 4-6h",
+            "VO es equivalente a IV en pacientes que pueden deglutir y absorber",
+            "Cursos cortos (<= 7 días) NO requieren tapering",
+            "Vigilar hiperglucemia (especialmente en diabéticos) e irritación gástrica",
+            "Uso crónico (asma severa OCS-dependiente): vigilar osteoporosis, cataratas, supresión suprarrenal — meta GINA: minimizar OCS crónico mediante biológicos"
+          ]
+        },
+        {
+          "nombre": "Sulfato de magnesio IV — crisis severa refractaria",
+          "grupo": "Broncodilatador adyuvante — uso en crisis severa que no responde a broncodilatadores estándar",
+          "mecanismo": "Inhibe canales de calcio del músculo liso bronquial, produciendo broncodilatación. Aumenta el efecto de los beta-2 agonistas.",
+          "dosis": "Adultos: 1-2 g IV en 20 min (en 100 mL SF). Niños: 25-50 mg/kg IV (máx 2 g) en 20 min.",
+          "cuidadosEnfermeria": [
+            "Indicación: crisis severa con FEV1 < 25-30%, SpO2 < 92% o falta de respuesta a salbutamol nebulizado + corticoide en primera hora",
+            "Monitorizar PA (puede causar hipotensión y rubor) y reflejos osteotendinosos",
+            "Vigilar bradicardia y depresión respiratoria con sobredosis",
+            "NO usar de rutina; reservar para crisis refractaria como puente a otras medidas"
+          ]
+        },
+        {
+          "nombre": "Biológicos en asma severa Step 5 (omalizumab, mepolizumab, reslizumab, benralizumab, dupilumab, tezepelumab)",
+          "grupo": "Anticuerpos monoclonales — terapia biológica fenotipo-dirigida en asma severa no controlada con triple terapia",
+          "mecanismo": "Omalizumab: anti-IgE para asma alérgica con IgE elevada y sensibilización perenne. Mepolizumab/Reslizumab: anti-IL-5 para asma eosinofílica. Benralizumab: anti-IL-5R (depleción de eosinófilos). Dupilumab: anti-IL-4Rα bloquea IL-4/IL-13 (eosinofílica o tipo 2). Tezepelumab: anti-TSLP, primer biológico INDEPENDIENTE del fenotipo (aprobado 2021-22).",
+          "dosis": "Vía SC cada 2-8 semanas según fármaco. Indicado por especialista tras evaluación de fenotipo (IgE total, alérgenos, eosinófilos en sangre, FeNO).",
+          "cuidadosEnfermeria": [
+            "Selección por biomarcadores: Omalizumab si IgE 30-1500 + sensibilización alérgica; anti-IL5 si eosinófilos >= 300; Dupilumab si eosinófilos >= 300 O FeNO >= 25 ppb; Tezepelumab si fenotipo no claro o múltiples elegibles",
+            "Reacciones en sitio de inyección frecuentes (eritema, dolor) — generalmente leves",
+            "Anafilaxia rara pero posible — primera dosis bajo supervisión médica con material de reanimación",
+            "Educar técnica de auto-inyección SC tras varias dosis supervisadas",
+            "Objetivo: reducir o suspender corticoide sistémico oral crónico (OCS-sparing); monitorizar exacerbaciones, función pulmonar y FeNO/eosinófilos cada 4-6 meses",
+            "Coordinar autorización con cobertura sanitaria (costo elevado, requiere documentación de fenotipo y falla a triple terapia)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Control ambiental: evitar alérgenos identificados",
-        "No fumar y evitar humo de tabaco",
-        "Vacuna antigripal anual",
-        "Plan de acción escrito ante crisis",
-        "Evitar AINEs si asma sensible a aspirina",
-        "Inmunoterapia alergica subcutanea o sublingual si asma alergica"
+        "Control ambiental: identificar y evitar alérgenos relevantes (ácaros, animales, hongos, pólenes); en asma ocupacional cambio de puesto laboral es CURATIVO",
+        "Cesación tabáquica activa y evitación de tabaco pasivo en pacientes y convivientes",
+        "Plan de acción escrito para crisis (zona verde/amarilla/roja con dosis y umbrales personalizados de PEF o síntomas) — entregar y revisar en cada consulta",
+        "Vacunación: influenza anual (estándar); SARS-CoV-2 según calendario; neumococo si comorbilidad cardiovascular/pulmonar o asma severa; herpes zóster en pacientes con corticoide sistémico crónico",
+        "Evitar AINEs en pacientes con AERD (Aspirin-Exacerbated Respiratory Disease / asma de Widal: triada de asma + poliposis nasal + reacción a AINE) — considerar desensibilización si necesidad clínica de AAS",
+        "Inmunoterapia con alérgenos: subcutánea (SCIT) o sublingual (SLIT) si asma alérgica con sensibilización mono o oligoclonal demostrada, asma bien controlada — modifica el curso de la enfermedad",
+        "Actividad física aeróbica regular: NO debe restringirse; usar ICS-formoterol o SABA 15 min antes del ejercicio si EIB (broncoespasmo inducido por ejercicio)",
+        "Manejo de comorbilidades que empeoran el asma: rinitis alérgica (corticoide nasal), reflujo gastroesofágico, apnea del sueño, obesidad (pérdida de peso mejora dramáticamente el control)",
+        "Reducción de exposición a contaminación ambiental (PM2.5, ozono); calidad del aire en interiores (evitar combustión de biomasa)",
+        "Identificación temprana de asma severa OCS-dependiente: derivar para considerar biológicos (objetivo: eliminar corticoide oral crónico)"
       ],
       "quirurgico": []
     },
@@ -3506,7 +3599,15 @@
       "pat_ira",
       "pat_anafilaxia"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "GINA 2024 Global Strategy for Asthma Management and Prevention (Updated May 2024)",
+      "GINA 2025 Global Strategy for Asthma Management and Prevention (Update 2025)",
+      "GINA 2024 Difficult-to-Treat and Severe Asthma Pocket Guide (V5.0 Nov 2024)",
+      "Ensayos clave Track 1: SYGMA-1 y SYGMA-2 (ICS-formoterol PRN); NOVEL START (NEJM 2019)",
+      "Tezepelumab (anti-TSLP): NAVIGATOR trial (NEJM 2021)"
+    ]
   },
   {
     "id": "pat_neumonia",
