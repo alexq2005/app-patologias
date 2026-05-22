@@ -4892,27 +4892,35 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por mecanismo",
+      "nombre": "Clasificación por mecanismo (TOAST + definición tisular AHA/ASA 2024)",
       "tipos": [
         {
-          "nombre": "ACV isquémico trombótico",
-          "descripcion": "Trombo local en arteria aterosclerotica. Inicio gradual o por escalones"
+          "nombre": "ACV isquémico aterotrombótico",
+          "descripcion": "Trombo local sobre placa aterosclerótica en arteria de gran o mediano calibre. Inicio gradual o por escalones. Subgrupo TOAST: ateroesclerosis de grandes arterias."
         },
         {
-          "nombre": "ACV isquémico embolico",
-          "descripcion": "Embolo cardíaco (FA, IAM) o arterial. Inicio subito, deficit máximo al inicio"
+          "nombre": "ACV isquémico cardioembólico",
+          "descripcion": "Émbolo de origen cardíaco (FA, IAM con trombo mural, prótesis valvular, endocarditis) o aórtico. Inicio súbito con déficit máximo desde el inicio. La FA es la causa más frecuente. Indicación de anticoagulación a largo plazo."
         },
         {
-          "nombre": "Hemorragia intracerebral (HIC)",
-          "descripcion": "Rotura de arteria perforante. Hipertensión es causa principal. Deficit progresivo"
+          "nombre": "ACV isquémico lacunar (enfermedad de pequeño vaso)",
+          "descripcion": "Infartos < 15 mm en territorio de arterias perforantes. Causa: lipohialinosis y microateromas (HTA, DM). Síndromes clínicos típicos: hemiparesia motora pura, hemisíndrome sensitivo puro, disartria-mano torpe, hemiparesia atáxica."
         },
         {
-          "nombre": "Hemorragia subaracnoidea (HSA)",
-          "descripcion": "Rotura de aneurisma en espacio subaracnoideo. Cefalea subita 'thunderclap'"
+          "nombre": "ACV criptogénico / ESUS (Embolic Stroke of Undetermined Source)",
+          "descripcion": "Infarto no lacunar con territorio embólico pero sin fuente cardíaca clara, ni estenosis carotídea > 50%, ni otra causa identificada. Hasta 25% de los ACV isquémicos. Requiere monitoreo prolongado de ritmo (Holter implantable) para detectar FA paroxística."
         },
         {
-          "nombre": "Ataque isquémico transitorio (AIT)",
-          "descripcion": "Deficit focal < 24h (generalmente < 1h). Alto riesgo de ACV en siguientes 48h"
+          "nombre": "Hemorragia intracerebral (HIC) primaria",
+          "descripcion": "Rotura de arteria perforante en ganglios basales, tálamo, puente o cerebelo. HTA crónica es causa principal. Déficit progresivo en minutos-horas. Mortalidad 30-40% a 30 días."
+        },
+        {
+          "nombre": "Hemorragia subaracnoidea (HSA) aneurismática",
+          "descripcion": "Rotura de aneurisma sacular en espacio subaracnoideo (polígono de Willis). Cefalea súbita 'thunderclap' (la peor de la vida), náuseas, vómitos, meningismo. Riesgo de resangrado, vasoespasmo (días 4-14), hidrocefalia."
+        },
+        {
+          "nombre": "Ataque Isquémico Transitorio (AIT) — definición tisular AHA/ASA 2009/vigente",
+          "descripcion": "Episodio transitorio de disfunción neurológica focal por isquemia cerebral SIN evidencia de infarto agudo en neuroimagen (DWI negativa). La definición temporal antigua de '< 24h' fue reemplazada porque la mayoría de AIT con DWI+ son en realidad infartos. Riesgo de ACV 5-10% en siguientes 48h; aplicar score ABCD2 y considerar DAPT (clopidogrel + AAS x 21d) si ABCD2 >= 4."
         }
       ]
     },
@@ -4934,21 +4942,34 @@
       ],
       "pruebas": [
         {
-          "nombre": "TC de craneo sin contraste urgente",
-          "descripcion": "Primer estudio: descarta hemorragia (hiperintenso en TC) antes de trombolisis. En isquémico precoz puede ser normal",
+          "nombre": "TC de cráneo sin contraste urgente (con cálculo de ASPECTS si isquémico)",
+          "descripcion": "Primer estudio del código stroke: descarta hemorragia (hiperintensa en TC) antes de trombolisis. En isquémico precoz puede ser normal o mostrar signos sutiles (borramiento del núcleo lentiforme, hipodensidad insular, signo de la cuerda hiperdensa). El score ASPECTS (Alberta Stroke Program Early CT Score) cuantifica la extensión del infarto en territorio de la ACM y guía las decisiones de reperfusión.",
+          "valoresReferencia": "ASPECTS 0-10: 10 = TC normal; cada región afectada resta 1 punto. >= 6 favorable para trombectomía estándar; 3-5 'large core' candidato a trombectomía en <80 años con NIHSS >= 6 (AHA/ASA 2024 Class 1 basado en SELECT2/ANGEL-ASPECT/RESCUE-Japan LIMIT).",
           "cuidadosEnfermeria": [
-            "Realización en < 25 min del ingreso (objetivo)",
-            "Sin contraste inicialmente",
-            "Acompanar al paciente monitorizado",
-            "Si agitación: sedación mínima"
+            "Objetivo door-to-CT < 25 min (puerta a imagen)",
+            "Sin contraste como primera imagen (luego angio-TC + TC perfusión en mismo viaje al tomógrafo si LVO sospechada)",
+            "Acompañar al paciente monitorizado (PA, SpO2, ritmo, glucemia)",
+            "Si agitación: sedación mínima — la sedación profunda enmascara el déficit y altera scoring de NIHSS"
           ]
         },
         {
-          "nombre": "RMN cerebral con DWI",
-          "descripcion": "Superior a TC para infartos tempranos y lacunares; secuencia difusión (DWI) detecta isquemia en minutos",
+          "nombre": "Angio-TC de vasos de cuello e intracraneales + TC perfusión",
+          "descripcion": "Estándar 2024 para identificar oclusión de gran vaso (LVO) candidata a trombectomía mecánica y seleccionar pacientes para reperfusión en ventanas extendidas. Angio-TC identifica el sitio de oclusión (ACI, M1, M2, basilar). TC perfusión cuantifica core (infarto irreversible) vs penumbra (tejido salvable) usando software automatizado tipo RAPID/Olea.",
+          "valoresReferencia": "Mismatch favorable (criterios DEFUSE-3 y DAWN): core < 70 mL, ratio mismatch > 1.8, volumen mismatch > 15 mL. Estos parámetros extienden la ventana de trombectomía a 6-24h.",
           "cuidadosEnfermeria": [
-            "Verificar contraindicaciones para RMN (marcapasos, clips metalicos)",
-            "Tiempo más largo que TC: no demorar trombolisis por RMN"
+            "Verificar creatinina basal y alergias a contraste yodado (no diferir la imagen por creatinina pendiente si stroke agudo)",
+            "Asegurar 2 accesos venosos periféricos (idealmente 18G en fosa antecubital)",
+            "Premedicar antialérgicos solo si alergia documentada (no diferir reperfusión por screening alérgico)",
+            "Coordinar la cadena: angio-TC → decisión de trombectomía → traslado a sala de hemodinamia neurointervencionista"
+          ]
+        },
+        {
+          "nombre": "RMN cerebral con DWI / FLAIR (mismatch DWI-FLAIR)",
+          "descripcion": "Superior a TC para infartos tempranos y lacunares; la secuencia DWI detecta isquemia en minutos. El mismatch DWI+/FLAIR− identifica ACV de hora desconocida (wake-up stroke) ocurridos en las últimas 4.5h (WAKE-UP trial), permitiendo trombolisis en pacientes que se despertaron con déficit.",
+          "cuidadosEnfermeria": [
+            "Verificar contraindicaciones para RMN (marcapasos no compatible, clips ferromagnéticos, claustrofobia)",
+            "RMN puede tardar más que TC: usarla cuando aporta decisión (wake-up stroke, sospecha de infarto posterior, AIT)",
+            "No demorar trombolisis si la decisión ya se puede tomar con TC + angio-TC"
           ]
         },
         {
@@ -4980,54 +5001,103 @@
       ],
       "farmacologico": [
         {
-          "nombre": "Alteplasa IV (tPA)",
-          "grupo": "Trombolítico - tratamiento de reperfusion en ACV isquémico",
-          "mecanismo": "Disuelve el trombo arterial cerebral, restaurando flujo a la penumbra isquémica",
-          "dosis": "0.9 mg/kg IV (max 90 mg): 10% en bolo IV en 1 min, resto en 60 min",
+          "nombre": "Alteplasa IV (rt-PA)",
+          "grupo": "Trombolítico de primera línea — reperfusión farmacológica en ACV isquémico",
+          "mecanismo": "Activador tisular del plasminógeno recombinante: disuelve el trombo arterial cerebral, restaurando flujo a la penumbra isquémica",
+          "dosis": "0.9 mg/kg IV (máx 90 mg): 10% en bolo en 1 min, 90% en infusión en 60 min",
           "cuidadosEnfermeria": [
-            "Ventana terapéutica: 4.5 horas desde inicio de síntomas",
-            "Contraindicaciones absolutas: hemorragia en TC, anticoagulación activa, cirugia reciente",
-            "Monitorizar PA cada 15 min durante y 2h post-infusion: objetivo < 180/105",
-            "Vigilar signos de hemorragia intracraneal: empeoramiento neurológico, cefalea, nauseas",
-            "NO dar AAS hasta 24h post-tPA"
+            "Ventana terapéutica estándar: 4.5 horas desde inicio de síntomas",
+            "Ventana extendida con imagen avanzada (AHA/ASA 2024): hasta 9h en pacientes seleccionados con mismatch DWI/FLAIR o perfusión favorable (WAKE-UP, EXTEND, TRACE-III) — decisión de centro de stroke",
+            "Wake-up stroke (hora desconocida): elegible si mismatch DWI+/FLAIR− (WAKE-UP trial)",
+            "Contraindicaciones absolutas: hemorragia en TC, ACV o TCE severo en últimos 3 meses, neoplasia intracraneal, anticoagulación activa (INR > 1.7, TTPA prolongado, DOAC < 48h), cirugía mayor < 14 días, sangrado activo, plaquetas < 100.000",
+            "Monitorizar PA cada 15 min durante infusión y primeras 2h, luego cada 30 min hasta 6h, luego cada hora hasta 24h: objetivo < 180/105 mmHg",
+            "Vigilar signos de transformación hemorrágica: empeoramiento neurológico, cefalea súbita intensa, náuseas, vómitos, HTA brusca → suspender infusión y TC inmediato",
+            "Suspender infusión si angioedema (lengua/labios): antihistamínicos + corticoides + epinefrina si compromete vía aérea",
+            "NO administrar AAS, anticoagulantes ni otros antiagregantes en las primeras 24h post-tPA (TC de control a las 24h antes de iniciarlos)"
           ]
         },
         {
-          "nombre": "Ácido acetilsalicilico",
-          "grupo": "Antiagregante - prevención secundaria y tratamiento de ACV isquémico no tPA",
-          "mecanismo": "Inhibe agregación plaquetaria, reduce riesgo de extension del trombo y recurrencia",
-          "dosis": "300 mg en fase aguda (si no tPA), luego 100 mg/dia",
+          "nombre": "Tenecteplase (TNK) IV — alternativa a alteplasa",
+          "grupo": "Trombolítico de segunda generación — AHA/ASA 2024 Class IIa: alternativa razonable a alteplasa en stroke isquémico agudo",
+          "mecanismo": "Variante modificada del rt-PA con mayor especificidad por fibrina, mayor resistencia al PAI-1 y vida media más larga. Permite administración en bolo único.",
+          "dosis": "0.25 mg/kg IV en bolo único (máx 25 mg). Ventaja operativa: no requiere infusión de 60 min como alteplasa; facilita traslado rápido a sala de hemodinamia para trombectomía.",
           "cuidadosEnfermeria": [
-            "No administrar si hay hemorragia en TC",
-            "Esperar 24h post-tPA antes de iniciar",
-            "Asegurar que paciente puede deglutir (riesgo de aspiración en ACV)"
+            "Aplicar mismos criterios de inclusión/exclusión que alteplasa",
+            "Bolo único en 5-10 segundos a través de vía periférica permeable",
+            "Monitorización post-bolo idéntica a alteplasa (PA, neurológico, signos de sangrado)",
+            "No combinar con alteplasa; elegir uno u otro según protocolo institucional",
+            "TIMELESS trial no mostró beneficio en ventana 4.5-24h con trombectomía rápida; uso fuera de ventana estándar requiere selección por imagen"
           ]
         },
         {
-          "nombre": "Labetalol / Nicardipino IV",
-          "grupo": "Antihipertensivo IV - control de PA en fase aguda",
-          "mecanismo": "Labetalol: betabloqueante + alfabloqueante. Nicardipino: bloqueante de calcio",
-          "dosis": "Labetalol 10-20 mg IV en bolo, repetir; Nicardipino infusion 5-15 mg/h",
+          "nombre": "Ácido acetilsalicílico (AAS) ± Clopidogrel (DAPT en stroke menor/AIT)",
+          "grupo": "Antiagregante — fase aguda y prevención secundaria del ACV isquémico no cardioembólico",
+          "mecanismo": "AAS inhibe COX-1 plaquetaria reduciendo tromboxano A2. Clopidogrel inhibe receptor P2Y12. La combinación DAPT (Dual Antiplatelet Therapy) reduce recurrencia precoz en stroke menor y AIT de alto riesgo (CHANCE, POINT, THALES).",
+          "dosis": "AAS: 300 mg VO al diagnóstico (si no tPA), luego 100 mg/día indefinido. DAPT post-stroke menor/AIT (AHA/ASA 2024): clopidogrel 300-600 mg carga + 75 mg/día + AAS 81-100 mg/día por 21 días (luego monoterapia con AAS o clopidogrel).",
           "cuidadosEnfermeria": [
-            "En ACV isquémico: no bajar PA salvo > 220/120 o si se va a tPA (objetivo < 185/110)",
-            "En hemorrágico: objetivo PA sistolica < 140 mmHg",
-            "Monitorizar PA continua",
-            "NUNCA bajar la PA bruscamente en ACV isquémico (empeora isquemia)"
+            "Indicaciones de DAPT: NIHSS <= 3 (stroke menor) o AIT con ABCD2 >= 4 — comenzar dentro de 24h del evento",
+            "DAPT NO se mantiene a largo plazo (mayor riesgo de sangrado sin beneficio incremental): suspender a los 21-30 días",
+            "No administrar antiagregantes si hay hemorragia en TC",
+            "Esperar 24h post-tPA antes de iniciar antiagregación (TC de control)",
+            "Asegurar que el paciente puede deglutir (test de agua o evaluación fonoaudiológica) — riesgo de aspiración en ACV"
+          ]
+        },
+        {
+          "nombre": "Estatina de alta intensidad",
+          "grupo": "Hipolipemiante — pilar de prevención secundaria post-ACV isquémico",
+          "mecanismo": "Inhibe HMG-CoA reductasa: reduce LDL, estabiliza placa, efectos pleiotrópicos antiinflamatorios endoteliales. Reducción de recurrencia 16% (SPARCL trial).",
+          "dosis": "Atorvastatina 40-80 mg/día o rosuvastatina 20-40 mg/día. Inicio precoz en hospitalización (primeras 24-72h), independientemente de LDL basal.",
+          "cuidadosEnfermeria": [
+            "Iniciar en todo ACV isquémico de etiología aterotrombótica o criptogénica, sin esperar al perfil lipídico",
+            "Objetivo LDL < 70 mg/dL en prevención secundaria (< 55 si muy alto riesgo según ESC 2024/AHA 2025)",
+            "Vigilar mialgia, debilidad muscular (CPK si síntomas) y transaminasas a las 4-12 semanas",
+            "Educar: NO suspender por mialgias leves; consultar primero (cambio de estatina o reducción de dosis suele resolver)"
+          ]
+        },
+        {
+          "nombre": "Nimodipina (HSA aneurismática)",
+          "grupo": "Bloqueante de canales de calcio dihidropiridínico — prevención de vasoespasmo y isquemia cerebral diferida en HSA",
+          "mecanismo": "Acción preferencial sobre vasos cerebrales. NO previene el vasoespasmo angiográfico per se, pero reduce la isquemia cerebral diferida y mejora outcomes funcionales (AHA/ASA 2023 HSA Class I).",
+          "dosis": "60 mg VO/SNG cada 4 horas por 21 días. Iniciar dentro de las 96h del evento.",
+          "cuidadosEnfermeria": [
+            "Administrar SOLO en HSA aneurismática (NO en ICH ni en ACV isquémico)",
+            "Vigilar hipotensión: si TAS < 100 mmHg considerar reducir a 30 mg cada 2h en lugar de 60 mg cada 4h",
+            "Vía enteral (oral o SNG); no se recomienda vía IV (mayor toxicidad cardiovascular)",
+            "Coordinar la administración para que NO coincida con horarios de pico de medicación antihipertensiva"
+          ]
+        },
+        {
+          "nombre": "Labetalol / Nicardipino IV (control de PA por subtipo de ACV)",
+          "grupo": "Antihipertensivo IV — manejo de PA en fase aguda con targets diferenciados por subtipo",
+          "mecanismo": "Labetalol: betabloqueante + alfabloqueante (efecto rápido sin afectar flujo cerebral). Nicardipino: bloqueante de calcio dihidropiridínico (vasodilatación arterial). Ambos titulables y con buen control en stroke unit.",
+          "dosis": "Labetalol 10-20 mg IV en bolo cada 10 min (máx 300 mg) o infusión 2-8 mg/min. Nicardipino infusión 5 mg/h, titular 2.5 mg/h cada 5-15 min (máx 15 mg/h).",
+          "cuidadosEnfermeria": [
+            "ACV isquémico SIN reperfusión: NO bajar PA salvo > 220/120 mmHg o disfunción de órgano diana — la 'permissive hypertension' protege la penumbra",
+            "ACV isquémico CON tPA o trombectomía: PA < 185/110 antes; PA < 180/105 durante y primeras 24h post-procedimiento",
+            "Hemorragia intracerebral (HIC): target PAS 130-140 mmHg (Care Bundle INTERACT3 2023 mejoró outcomes funcionales); evitar reducción brusca > 60 mmHg",
+            "Hemorragia subaracnoidea (HSA): PAS < 160 mmHg antes del cierre del aneurisma; tras clipaje/coiling permitir HTA inducida si vasoespasmo sintomático",
+            "Monitorización continua (línea arterial preferida) — los antihipertensivos IV requieren PA validada minuto a minuto",
+            "NUNCA reducción brusca > 25% del basal en isquémico (empeora isquemia de la penumbra)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Cabecera a 0° las primeras 24h en ACV isquémico (aumenta perfusión cerebral)",
-        "Trombectomia mecánica si oclusion de grande vaso hasta 24h (con imagen de penumbra)",
-        "Temperatura normal (tratar fiebre > 37.5°C)",
-        "Glucemia 140-180 mg/dL",
-        "Evitar hipotensión",
-        "Profilaxis de TVP con HBPM a las 24-48h"
+        "Trombectomía mecánica (TM): tratamiento de elección en ACV isquémico por oclusión de gran vaso (LVO) de circulación anterior. Ventanas AHA/ASA 2024: 0-6h con NIHSS >= 6 y ASPECTS >= 6 (Class 1); 6-16h con criterios DEFUSE-3 (mismatch perfusión, core < 70 mL); 16-24h con criterios DAWN (mismatch clínico-imagen); 'large core' ASPECTS 3-5 con NIHSS >= 6 en < 80 años (SELECT2/ANGEL-ASPECT/RESCUE-Japan LIMIT) → Class 1",
+        "Posición de cabecera: AHA 2024 — individualizar. El trial HeadPoST (2017) mostró equivalencia entre 0° y 30° en isquémico. Cabecera a 30° si edema cerebral, riesgo de aspiración o hemorragia; permitir supina (0-15°) si tolerada y sin contraindicaciones",
+        "Temperatura: objetivo normotermia, tratar agresivamente fiebre > 37.5°C (paracetamol; medios físicos si refractaria) — la fiebre empeora outcomes por aumento de demanda metabólica de la penumbra",
+        "Glucemia: objetivo 140-180 mg/dL en fase aguda; tratar hipoglucemia < 70 inmediatamente (puede simular o empeorar déficit)",
+        "Evitar hipotensión arterial (PAM < 70 mmHg empeora la perfusión de la penumbra)",
+        "Profilaxis de TVP: compresión neumática intermitente desde el ingreso; HBPM (enoxaparina 40 mg SC/día) a partir de 24-48h en isquémico si estable; en HIC esperar al menos 48h con TC de control estable",
+        "Evaluación de disfagia formal antes de cualquier ingesta VO (test de agua o evaluación fonoaudiológica) — NPO hasta evaluación; el screening de disfagia es estándar de calidad",
+        "Rehabilitación precoz multidisciplinaria: movilización en primeras 24-48h si estable; fisioterapia, logopedia, terapia ocupacional desde admisión",
+        "Triage prehospitalario para LVO: usar escalas (LAMS, RACE) para llevar directamente a centro con trombectomía si LVO sospechada y tiempo de traslado razonable (no más de 30 min adicional vs centro más cercano)"
       ],
       "quirurgico": [
-        "Hemicraniectomia descompresiva en infarto maligno de ACM con edema cerebral grave",
-        "Evacuación quirúrgica de hematoma intracerebral en casos seleccionados",
-        "Clipaje o embolización de aneurisma en hemorragia subaracnoidea"
+        "Hemicraniectomía descompresiva: en infarto maligno de la ACM con edema cerebral grave en pacientes <= 60 años dentro de las primeras 48h (DESTINY, DECIMAL, HAMLET trials); considerar en > 60 años caso a caso",
+        "Evacuación quirúrgica de hematoma intracerebral: indicada en hematomas cerebelosos > 3 cm con deterioro neurológico o compresión de tronco; en HIC supratentorial el beneficio es controvertido salvo abordajes mínimamente invasivos (ENRICH 2024 mostró beneficio de evacuación mínimamente invasiva en hematomas lobares 30-80 mL en primeras 24h)",
+        "Clipaje quirúrgico o embolización endovascular (coiling) del aneurisma en HSA: idealmente dentro de las primeras 24-72h para prevenir resangrado (riesgo 20% en primeras 2 semanas). Coiling preferido sobre clipaje en aneurismas accesibles (ISAT trial)",
+        "Drenaje ventricular externo (DVE): indicado en hidrocefalia aguda post-HSA o HIC con extensión intraventricular, o si hipertensión craneal refractaria. Estricto manejo de presión y prevención de ventriculitis",
+        "Tratamiento endovascular del vasoespasmo en HSA: angioplastia intraluminal o vasodilatadores intraarteriales si vasoespasmo sintomático refractario a manejo médico"
       ]
     },
     "cuidadosEnfermeria": {
@@ -5188,7 +5258,15 @@
       "pat_dm2",
       "pat_epilepsia"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "AHA/ASA 2024 Guideline for the Management of Patients With Acute Ischemic Stroke (Stroke 2024)",
+      "AHA/ASA 2022 Guideline for the Management of Patients With Spontaneous Intracerebral Hemorrhage (Stroke 2022;53:e282-e361)",
+      "AHA/ASA 2023 Guideline for the Management of Patients With Aneurysmal Subarachnoid Hemorrhage (Stroke 2023)",
+      "ESO 2024 Guidelines on Acute Ischaemic Stroke",
+      "Ensayos clave: SELECT2, ANGEL-ASPECT, RESCUE-Japan LIMIT (large core); DEFUSE-3, DAWN (ventana extendida TM); WAKE-UP, EXTEND, TRACE-III (trombolisis extendida); INTERACT3 (ICH bundle); CHANCE, POINT, THALES (DAPT)"
+    ]
   },
   {
     "id": "pat_epilepsia",
