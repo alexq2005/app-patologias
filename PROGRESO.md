@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-05-22 — Sesion 24: Revisión clínica de pat_asma a GINA 2024-2025
+
+### Resumen
+Sexta iteración. La entry `pat_asma` tenía gaps de paradigma vs GINA 2024-2025: SABA presentado como rescate sin advertir sobre su prohibición en monoterapia (cambio GINA 2019), Track 1 (ICS-formoterol PRN + MART) mencionado como "estrategia SMART opcional" cuando es el track PREFERIDO desde steps 1-5, ausencia de los 5 steps GINA con sus algoritmos por track, sin FeNO ni eosinófilos sanguíneos como biomarcadores, sin LAMA (tiotropio) como add-on, sin magnesio sulfato IV en crisis refractaria, y ausencia TOTAL de los 6 biológicos (omalizumab/mepolizumab/reslizumab/benralizumab/dupilumab/tezepelumab) que son estándar Step 5 desde hace años. AERD (asma de Widal/aspirina) solo aparecía en factores de riesgo, no como subfenotipo con manejo.
+
+Cross-check: GINA 2024 Strategy Report (May 2024), GINA 2025 Strategy Report (May 2025), GINA Difficult-to-Treat and Severe Asthma Pocket Guide (V5.0 Nov 2024), ensayos SYGMA-1/2, NOVEL START, NAVIGATOR. Edición quirúrgica de 5 secciones; el bloque farmacológico se reorganizó completamente (4→7) y se reposicionó ICS-formoterol como pilar Track 1.
+
+### Cambios en pat_asma (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 6 a 11 tipos: mantiene 3 niveles de control + 5 steps GINA con Track 1/Track 2 explicitados + 3 niveles de severidad de crisis aguda (leve-moderada / severa / riesgo vital con "tórax silente") |
+| `diagnostico.pruebas` (NUEVAS) | +FeNO (umbrales 25/50 ppb, criterio dupilumab >=25); +Eosinófilos sangre (>=300 criterio anti-IL5/dupilumab); criterio omalizumab por IgE+sensibilización agregado a prick test |
+| `tratamientoMedico.objetivos` | De 4 a 8: explicita eliminación de SABA-only (paradigma GINA 2019), Track 1 preferido con reducción de 60-65% en exacerbaciones (SYGMA), vacunación incluyendo zóster en OCS crónico |
+| `farmacologico.Salbutamol` | Refundido como rescate con warning "MONOTERAPIA PROSCRITA"; uso > 3 cartuchos/año como factor de riesgo de muerte; dosis de crisis actualizada 4-10 puffs (no solo 2-4) |
+| `farmacologico.ICS monoterapia` | Renombrado para incluir alternativas (Budesonida, Beclometasona, Fluticasona) con dosis baja/media/alta GINA |
+| `farmacologico.ICS-formoterol` | REPOSICIONADO como Track 1 PREFERIDO (no opción más): PRN steps 1-2, MART steps 3-5; un solo inhalador para mantenimiento y rescate; salmeterol-LABA NO sirve para MART |
+| `farmacologico.Tiotropio (LAMA)` (NUEVO) | Add-on en Steps 4-5 antes de iniciar biológico |
+| `farmacologico.Corticoide sistémico` | Refinado: 40-50 mg/día x 5-7 días sin tapering; objetivo GINA es minimizar OCS crónico mediante biológicos |
+| `farmacologico.Sulfato de magnesio IV` (NUEVO) | 1-2 g IV en 20 min en crisis severa refractaria; criterios de indicación; monitorización |
+| `farmacologico.Biológicos` (NUEVO) | 6 biológicos en una entrada: omalizumab (anti-IgE), mepolizumab/reslizumab/benralizumab (anti-IL5/5R), dupilumab (anti-IL4R), tezepelumab (anti-TSLP, primer biológico independiente del fenotipo, NAVIGATOR 2021); selección por biomarcadores; objetivo OCS-sparing |
+| `noFarmacologico` (expandido) | De 6 a 10 puntos: cambio de puesto laboral curativo en asma ocupacional, AERD con desensibilización, ejercicio sin restricción + premedicación EIB, manejo de comorbilidades (rinitis, RGE, OSA, obesidad), reducción de exposición a PM2.5, derivación temprana en asma severa OCS-dependiente |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 5 entradas: GINA 2024 + 2025 + Severe Asthma Pocket Guide + SYGMA/NOVEL START + NAVIGATOR |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `quirurgico`: vacío en seed (correcto, asma no tiene cirugía estándar — termoplastia bronquial es excepcional y no estándar)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 7 frescas (era 6; +pat_asma), 144 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_asma movido a "Sesiones cerradas". Quedan 4 patologías priorizadas (pat_fa, pat_neumonia, pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_asma): align with GINA 2024-2025 — Track 1 preferred + biologics for severe asthma`
+
+---
+
 ## 2026-05-22 — Sesion 23: Revisión clínica de pat_epoc a GOLD 2025
 
 ### Resumen
