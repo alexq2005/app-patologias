@@ -4,6 +4,52 @@
 
 ---
 
+## 2026-05-22 — Sesion 21: Revisión clínica de pat_dm2 a ADA 2025 Standards of Care
+
+### Resumen
+Tercera iteración del flujo. La entry `pat_dm2` (Diabetes Mellitus Tipo 2) tenía 8 gaps clínicos vs ADA 2025: algoritmo terapéutico desactualizado (mantenía "metformina como primera línea universal" — paradigma pre-2023), ausencia de tirzepatide (agonista dual GIP/GLP-1), ausencia de finerenona (ns-MRA con beneficio renal/CV en DM2+ERC), CGM/Time in Range no contemplados como métricas, edad de screening en 45 (ADA bajó a 35 desde 2022), aspirina en prevención primaria no clarificada (ADA NO la recomienda), vacunación específica de DM2 no mencionada, target de PA específico ausente.
+
+Cross-check contra fuentes primarias: ADA Standards of Care 2025 (Diabetes Care Vol 48 Suppl 1), ADA/EASD Consensus Report (2022, update 2024), KDIGO 2024 para nefroprotección en DM con ERC. Edición quirúrgica de 4 secciones; ediciones en farmacológico (3 farmacos modificados + 2 nuevos: tirzepatide y finerenona).
+
+### Cambios en pat_dm2 (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De "control glucémico crudo" (controlada/parcial/mal) a 5 categorías ADA 2025: objetivo general (HbA1c<7 o TIR>70%), control estricto, control flexible (anciano frágil), mal controlada (no diagnóstica), EHH (emergencia). TIR como métrica primaria con CGM |
+| `diagnostico.pruebas` | De 2 a 3 entradas: (1) criterios diagnósticos ADA 2025 completos + screening desde 35 años; (2) NUEVA: CGM con métricas TIR/TBR/GMI; (3) perfil CV/renal con UACR como método preferido, threshold albuminuria > 30 mg/g → SGLT2i + considerar finerenona |
+| `tratamientoMedico.objetivos` | De 3 a 10 objetivos: HbA1c individualizada por subgrupo, TIR > 70%, PA < 130/80, LDL escalado por riesgo (<55/<70/<100), aspirina NO primaria, **SGLT2i/GLP-1 RA en ASCVD/IC/ERC independientemente de HbA1c o metformina**, pérdida de peso 5-10%, vacunación específica DM2 |
+| `farmacologico.Metformina` | Reposicionada de "primera línea universal" a "agente inicial preferido SI NO hay ASCVD/IC/ERC predominantes". Nota explícita sobre cambio paradigmático ADA 2025 |
+| `farmacologico.iSGLT2` | Reescrita con énfasis en indicación independiente de HbA1c por ASCVD/IC/ERC, listado de ensayos (EMPA-REG, DAPA-HF, DAPA-CKD), warning cetoacidosis euglucémica |
+| `farmacologico.aGLP-1` | Reescrita: indicación CV (LEADER, SUSTAIN-6, REWIND), combinación GLP-1+SGLT2i para MACE adicional, semaglutide oral incluido, suspensión pre-cirugía/endoscopia por riesgo de broncoaspiración |
+| `farmacologico.Tirzepatide` (NUEVO) | Agonista dual GIP/GLP-1, mayor potencia en HbA1c (-2-2.5%) y peso (-15-22%), endorsado por ADA 2025 en HFpEF+obesidad, MASH, obesidad, apnea del sueño |
+| `farmacologico.Finerenona` (NUEVO) | ns-MRA NO antidiabético sino nefroprotector. Add-on en DM2+ERC con albuminuria persistente. Datos FIDELIO-DKD y FIGARO-DKD. Monitorización de potasio |
+| `farmacologico.Insulina` | Refinada: basal-bolo + bolos prandiales, combinación basal + GLP-1 RA preferida sobre basal-bolo en falla a basal (ADA 2025), CGM indicado en todos los pacientes con insulina |
+| `criteriosAlarma` | Agregado: hipoglucemia severa Nivel 3 (asistencia tercero o pérdida de conciencia, independiente de valor) |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 3 entradas: ADA 2025 Standards of Care, ADA/EASD Consensus Report 2022/2024, KDIGO 2024 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`: mecanismos y epidemiología sin cambios
+- `signosYSintomas`: clínica clásica vigente
+- `anamnesis`, `examenFisico`: vigentes (aunque el examen de pies y fondo de ojo ya estaban bien)
+- `noFarmacologico`: dieta + ejercicio + pérdida de peso sin cambios mayores (el detalle de GLP-1 para peso ya está en farmacológico)
+- `quirurgico`: cirugía bariátrica sigue vigente con misma indicación
+- `cuidadosEnfermeria`, `npiNanda/Nic/Noc`, `complicaciones`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 4 frescas (era 3; +pat_dm2), 147 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_dm2 movido a "Sesiones cerradas". Quedan 7 patologías priorizadas (pat_acv, pat_epoc, pat_asma, pat_fa, pat_neumonia, pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_dm2): align with ADA 2025 Standards of Care + KDIGO 2024`
+
+---
+
 ## 2026-05-21 — Sesion 20: Revisión clínica de pat_iam a ESC 2023 ACS + AHA 2025 ACS + Cuarta Definición Universal del IM
 
 ### Resumen
