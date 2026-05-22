@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-05-22 — Sesion 22: Revisión clínica de pat_acv a AHA/ASA 2024 + ESO 2024 + AHA 2022 ICH + AHA 2023 HSA
+
+### Resumen
+Cuarta iteración. La entry `pat_acv` (Accidente Cerebrovascular) tenía 11 gaps clínicos vs guidelines vigentes: trombectomía descrita genéricamente sin ventanas estratificadas (faltaban DEFUSE-3, DAWN, SELECT2/ANGEL-ASPECT 2023 para large core), tenecteplase ausente (AHA 2024 Class IIa), ventana de tPA extendida con imagen (WAKE-UP/EXTEND/TRACE-III) no contemplada, DAPT corto post-stroke menor/AIT ausente (CHANCE/POINT/THALES), estatina alta intensidad post-ACV ausente, nimodipina para HSA ausente (Class I AHA 2023), TC perfusión y angio-TC no listados como pruebas, ASPECTS score no mencionado, targets de PA por subtipo no diferenciados (INTERACT3 2023 para HIC), AIT con definición temporal vieja (< 24h) en vez de definición tisular, ESUS como categoría no contemplada.
+
+Cross-check: AHA/ASA 2024 Acute Ischemic Stroke, AHA/ASA 2022 ICH, AHA/ASA 2023 aSAH, ESO 2024 Acute Ischaemic Stroke, ensayos clave 2018-2023. Edición quirúrgica de 7 secciones; el bloque farmacológico duplicó tamaño (3→6 fármacos) y el quirúrgico/noFarmacológico se expandieron significativamente.
+
+### Cambios en pat_acv (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 5 a 7 tipos: agregados ESUS (criptogénico embólico de fuente indeterminada), lacunar (enfermedad pequeño vaso); AIT actualizado a definición tisular AHA/ASA (DWI negativa) en vez de temporal (<24h); ABCD2 score mencionado para decisión DAPT |
+| `diagnostico.pruebas.TC sin contraste` | Reescrita con score ASPECTS (0-10) y sus thresholds para reperfusión (>=6 favorable, 3-5 large core candidato a TM con SELECT2/ANGEL-ASPECT 2023) |
+| `diagnostico.pruebas` (NUEVAS) | +Angio-TC vasos cuello/intracraneales + TC perfusión (estándar 2024 para LVO y ventana extendida; criterios DEFUSE-3 y DAWN); refinada RMN con mismatch DWI/FLAIR para wake-up stroke |
+| `farmacologico.Alteplasa` | Ventana extendida con imagen (hasta 9h en WAKE-UP/EXTEND/TRACE-III); contraindicaciones expandidas (DOAC <48h); monitorización por intervalo (15min/30min/1h hasta 24h); manejo de angioedema |
+| `farmacologico.Tenecteplase` (NUEVO) | AHA 2024 Class IIa, bolo único 0.25 mg/kg, mismos criterios que alteplasa; nota TIMELESS (sin beneficio en ventana tardía + TM rápida) |
+| `farmacologico.AAS` (expandido a DAPT) | DAPT clopidogrel 300-600 mg + AAS por 21 días en NIHSS <=3 o AIT con ABCD2 >=4 (CHANCE/POINT/THALES); luego monoterapia |
+| `farmacologico.Estatina alta intensidad` (NUEVO) | Atorvastatina 40-80 o rosuvastatina 20-40 al inicio (SPARCL); target LDL <70 (<55 muy alto riesgo) |
+| `farmacologico.Nimodipina` (NUEVO) | 60 mg c/4h x 21 días en HSA aneurismática (AHA 2023 Class I); vía enteral; precaución con TAS<100 |
+| `farmacologico.Labetalol/Nicardipino` | Targets PA refinados por subtipo: isquémico sin reperfusión <220/120 ('permissive HTN'); isquémico con tPA/TM <185/110 antes <180/105 durante; ICH 130-140 (INTERACT3 2023); HSA <160 antes del cierre; evitar reducción brusca >25% |
+| `noFarmacologico` (expandido) | Trombectomía mecánica con ventanas estratificadas (0-6h Class 1; 6-16h DEFUSE-3; 16-24h DAWN; large core ASPECTS 3-5 SELECT2/ANGEL-ASPECT/RESCUE-Japan LIMIT); posición de cabecera individualizada (HeadPoST 2017); profilaxis TVP por subtipo; rehab precoz multidisciplinaria; triage prehospitalario para LVO (LAMS, RACE) |
+| `quirurgico` (expandido) | Hemicraniectomía con criterios edad/tiempo; ENRICH 2024 (mínimamente invasiva para HIC lobar); coiling vs clipaje (ISAT); drenaje ventricular externo; tratamiento endovascular del vasoespasmo |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 5 entradas: AHA/ASA 2024 isquémico, AHA/ASA 2022 ICH, AHA/ASA 2023 HSA, ESO 2024, listado de ensayos clave |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`: vigentes (definición clásica + tisular ya en clasificación)
+- `signosYSintomas`: clínica clásica
+- `anamnesis`, `examenFisico`: ya incluían NIHSS, Glasgow, signos meníngeos
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 5 frescas (era 4; +pat_acv), 146 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_acv movido a "Sesiones cerradas". Quedan 6 patologías priorizadas (pat_epoc, pat_asma, pat_fa, pat_neumonia, pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_acv): align with AHA/ASA 2024 ischemic + 2022 ICH + 2023 SAH guidelines`
+
+---
+
 ## 2026-05-22 — Sesion 21: Revisión clínica de pat_dm2 a ADA 2025 Standards of Care
 
 ### Resumen
