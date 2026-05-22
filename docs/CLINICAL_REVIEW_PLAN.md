@@ -56,6 +56,7 @@ Usar exactamente estos strings en el campo `fuentes` para mantener consistencia 
 |---|---|---|---|
 | 2026-05-06 | `pat_icc` | Tratamiento HF a algoritmo 4-pilares ESC 2023 | `a3e6e3f` |
 | 2026-05-21 | `pat_hta` | Definición + clasificación + targets + SPC alineados a ESC 2024 y AHA/ACC 2025; agregado MAPA y MDPA como diagnóstico de 1ª línea | `ff7f7a2` |
-| 2026-05-21 | `pat_iam` | Clasificación a 5 tipos Universal Definition + STEMI equivalents; troponina hs como única biomarker primaria; tiempos ICP estratificados (60/90/120 min); prasugrel preferido ESC 2023; warning morfina+P2Y12 | pendiente |
+| 2026-05-21 | `pat_iam` | Clasificación a 5 tipos Universal Definition + STEMI equivalents; troponina hs como única biomarker primaria; tiempos ICP estratificados (60/90/120 min); prasugrel preferido ESC 2023; warning morfina+P2Y12 | `589ea1a` |
+| 2026-05-22 | `pat_dm2` | Algoritmo ADA 2025: SGLT2i/GLP-1 RA de inicio en ASCVD/IC/ERC independiente de HbA1c o metformina previa; +tirzepatide; +finerenona para nefroprotección; CGM/TIR como métrica; screening desde 35 años; aspirina NO en prevención primaria | pendiente |
 
 (actualizar esta tabla en cada sesión clínica nueva)

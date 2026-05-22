@@ -8807,23 +8807,27 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por control glucemico (HbA1c)",
+      "nombre": "Clasificación por control glucémico (HbA1c y Time in Range según ADA 2025)",
       "tipos": [
         {
-          "nombre": "Controlada",
-          "descripcion": "HbA1c < 7% (objetivo general). Algunas complicaciones pueden prevenirse"
+          "nombre": "Bien controlada — objetivo general",
+          "descripcion": "HbA1c < 7% O Time in Range (TIR, rango 70-180 mg/dL) > 70% en CGM. Objetivo apropiado para muchos adultos no embarazadas sin hipoglucemia severa o que afecte calidad de vida. Mantiene riesgo bajo de complicaciones micro y macrovasculares."
         },
         {
-          "nombre": "Parcialmente controlada",
-          "descripcion": "HbA1c 7-8%. Riesgo moderado de complicaciones"
+          "nombre": "Control estricto (paciente seleccionado)",
+          "descripcion": "HbA1c < 6.5% O TIR > 70% con Time Below Range (TBR < 70 mg/dL) < 4%. Considerar en pacientes jóvenes, sin complicaciones, alta expectativa de vida y bajo riesgo de hipoglucemia."
+        },
+        {
+          "nombre": "Control flexible (anciano frágil, comorbilidad severa)",
+          "descripcion": "HbA1c < 8% (incluso hasta 8.5% en anciano muy frágil). Prioriza evitar hipoglucemia, polifarmacia y carga terapéutica. Apropiado en expectativa de vida limitada, comorbilidad significativa, riesgo alto de hipoglucemia o caídas."
         },
         {
           "nombre": "Mal controlada",
-          "descripcion": "HbA1c > 8-9%. Alto riesgo de complicaciones micro y macrovasculares"
+          "descripcion": "HbA1c > objetivo personalizado (típicamente > 8-9% en pacientes con metas estándar). Indica necesidad de intensificar tratamiento o reevaluar adherencia, no es una categoría diagnóstica."
         },
         {
-          "nombre": "Estado hiperosmolar hiperglucemico (EHH)",
-          "descripcion": "Glucemia > 600 mg/dL, osmolaridad > 320, deshidratación severa sin cetosis"
+          "nombre": "Estado hiperosmolar hiperglucémico (EHH) — emergencia",
+          "descripcion": "Complicación aguda: glucemia > 600 mg/dL, osmolaridad sérica > 320 mOsm/kg, deshidratación severa sin cetosis significativa (a diferencia de la cetoacidosis). Mortalidad 10-20%. Más frecuente en DM2 ancianos."
         }
       ]
     },
@@ -8843,78 +8847,133 @@
       ],
       "pruebas": [
         {
-          "nombre": "Glucemia en ayunas + HbA1c",
-          "descripcion": "Diagnóstico y seguimiento del control metabólico",
-          "valoresReferencia": "HbA1c < 5.7% normal; 5.7-6.4% prediabetes; >= 6.5% DM. Objetivo terapéutico HbA1c < 7%",
+          "nombre": "Criterios diagnósticos de DM2 (ADA 2025) — cualquiera confirma",
+          "descripcion": "Screening recomendado desde los 35 años en adultos asintomáticos (bajado desde los 45 años en 2022) y antes si IMC >= 25 más factor de riesgo. Cualquiera de los criterios confirma DM si se repite en otra ocasión (excepto crisis hiperglucémica con síntomas inequívocos).",
+          "valoresReferencia": "Glucemia en ayunas (>= 8h) >= 126 mg/dL; o glucemia a 2h en SOG con 75 g >= 200 mg/dL; o HbA1c >= 6.5%; o glucemia al azar >= 200 mg/dL con síntomas clásicos. Prediabetes: glucemia ayunas 100-125; SOG 140-199; HbA1c 5.7-6.4%.",
           "cuidadosEnfermeria": [
-            "Ayuno de 8-12h para glucemia basal",
-            "HbA1c: extraer en cualquier momento, refleja ultimos 3 meses"
+            "Ayuno de 8-12h para glucemia basal o SOG",
+            "HbA1c: extraer en cualquier momento (refleja últimos 3 meses); afectada por anemia, hemoglobinopatías y embarazo",
+            "Confirmar diagnóstico con segunda prueba salvo síntomas clásicos + glucemia al azar >= 200"
           ]
         },
         {
-          "nombre": "Perfil lipidico, creatinina, microalbuminuria",
-          "descripcion": "Evaluación del riesgo cardiovascular y daño renal en DM2",
-          "valoresReferencia": "Objetivo DM2: LDL < 70 mg/dL con ECV o < 100 sin ECV; TFG > 60; albumina/creatinina < 30 mg/g",
+          "nombre": "Monitoreo Continuo de Glucosa (CGM)",
+          "descripcion": "ADA 2025 amplió la indicación: recomendado en DM2 con insulina basal-bolo (Class A), basal-only (Class B), e incluso en DM2 con hipoglucemiantes orales en situaciones seleccionadas. Las métricas TIR (Time in Range 70-180 mg/dL), TBR (Time Below Range < 70) y GMI (Glucose Management Indicator) complementan o superan a la HbA1c puntual.",
+          "valoresReferencia": "Objetivos en CGM: TIR 70-180 mg/dL > 70% del tiempo; TBR < 70 mg/dL < 4%; TBR < 54 mg/dL < 1%; coeficiente de variación < 36%. Anciano frágil: TIR > 50% con TBR < 1%.",
           "cuidadosEnfermeria": [
-            "Extraer en ayunas anualmente",
-            "Microalbuminuria en orina de mañana (relación albumina/creatinina)"
+            "Educar en colocación del sensor (brazo o abdomen) y calibración si requerida",
+            "Enseñar interpretación del Ambulatory Glucose Profile (AGP)",
+            "Configurar alarmas de hipoglucemia e hiperglucemia personalizadas",
+            "Revisar descarga de datos cada visita médica (cambios de tratamiento basados en patrón, no en valores aislados)"
+          ]
+        },
+        {
+          "nombre": "Perfil lipídico, creatinina con TFG y albuminuria",
+          "descripcion": "Evaluación del riesgo cardiovascular y daño renal — base de las decisiones de añadir GLP-1/SGLT2i/finerenona en DM2 según ADA 2025.",
+          "valoresReferencia": "ADA 2025: LDL < 70 mg/dL en DM2 con ECV o factores de riesgo múltiples; < 55 mg/dL en muy alto riesgo; < 100 sin ECV. TFG: > 60 normal; 30-60 ERC moderada; < 30 ERC severa. Cociente albúmina/creatinina (UACR) < 30 normal; 30-300 microalbuminuria (A2); > 300 macroalbuminuria (A3).",
+          "cuidadosEnfermeria": [
+            "Perfil lipídico en ayunas anualmente (o más frecuente si cambio terapéutico)",
+            "UACR en orina de la mañana (NO orina de 24h ya — método preferido por practicidad)",
+            "Creatinina + TFG estimada anual; cada 6 meses si TFG < 60 o albuminuria",
+            "Albuminuria > 30 mg/g + DM2 → indicación de SGLT2i + considerar finerenona"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "HbA1c < 7% (individualizar: < 6.5% si joven sin complicaciones; < 8% si anciano o complicaciones severas)",
-        "Reducir riesgo cardiovascular (principal causa de muerte)",
-        "Protección renal y retiniana"
+        "HbA1c < 7% (objetivo general adultos no embarazadas); < 6.5% si joven sin complicaciones y bajo riesgo de hipoglucemia; < 8% si anciano frágil, expectativa de vida limitada o riesgo alto de hipoglucemia",
+        "Time in Range > 70% (rango 70-180 mg/dL) con TBR < 4% en pacientes con CGM (métrica complementaria a HbA1c)",
+        "PA < 130/80 mmHg (alineado con ADA 2025 y AHA/ACC 2025)",
+        "LDL < 70 mg/dL en DM2 con ECV/riesgo múltiple; < 55 mg/dL en muy alto riesgo; < 100 sin ECV — estatina de alta intensidad en todos los DM2 >= 40 años",
+        "Aspirina: NO recomendada en prevención primaria de rutina (ADA 2025); sí en prevención secundaria con ECV establecida",
+        "Iniciar SGLT2i o GLP-1 RA con beneficio CV demostrado SI hay ASCVD, IC o ERC, INDEPENDIENTEMENTE de HbA1c basal o del uso previo de metformina (cambio paradigmático ADA 2024-2025)",
+        "Pérdida de peso 5-10% como objetivo modificador de enfermedad; en obesidad considerar GLP-1 RA o tirzepatide por su eficacia adicional",
+        "Vacunación: hepatitis B (no inmune), influenza anual, neumococo, COVID-19 según calendario, herpes zóster >= 50 años",
+        "Reducir riesgo cardiovascular (principal causa de muerte en DM2)",
+        "Protección renal, retiniana y de extremidades (prevención de pie diabético)"
       ],
       "farmacologico": [
         {
           "nombre": "Metformina",
-          "grupo": "Biguanida - primera linea universal en DM2",
-          "mecanismo": "Reduce gluconeogenesis hepática y mejora la sensibilidad periférica a la insulina; no produce hipoglucemia",
-          "dosis": "500 mg c/12h con comidas, aumentar hasta 1000 mg c/12h (max 3 g/dia)",
+          "grupo": "Biguanida — agente inicial preferido si NO hay ASCVD, IC o ERC predominantes (ADA 2025)",
+          "mecanismo": "Reduce gluconeogénesis hepática y mejora la sensibilidad periférica a la insulina; no produce hipoglucemia; efecto modesto en peso (-1 a -3 kg).",
+          "dosis": "500 mg c/12h con comidas, escalar a 1000 mg c/12h en 2-4 semanas (máx 2-3 g/día). Reducir dosis si TFG 30-45 mL/min/1.73m².",
           "cuidadosEnfermeria": [
-            "Administrar con comidas para reducir efectos gastrointestinales (nauseas, diarrea)",
-            "Suspender 48h antes de contrastes yodados IV o cirugia mayor",
-            "Contraindicada si TFG < 30 mL/min",
-            "Riesgo de acidosis lactica en insuficiencia renal severa (muy raro)"
+            "ADA 2025: Metformina ya NO es el agente universal de primera línea. Si el paciente tiene ASCVD/IC/ERC, se inicia SGLT2i o GLP-1 RA con beneficio CV/renal independientemente de metformina o HbA1c",
+            "Administrar con comidas para reducir efectos gastrointestinales (náuseas, diarrea, gusto metálico)",
+            "Suspender 48h antes de contrastes yodados IV o cirugía mayor; reiniciar tras 48h confirmando función renal",
+            "Contraindicada si TFG < 30 mL/min/1.73m²; precaución entre 30-45",
+            "Riesgo de acidosis láctica en insuficiencia renal severa, hipoxia, sepsis (raro pero serio)",
+            "Considerar suplementación de vitamina B12 si uso prolongado (> 4 años) por riesgo de déficit"
           ]
         },
         {
-          "nombre": "Empagliflozin / Dapagliflozin (iSGLT2)",
-          "grupo": "Inhibidor del cotransportador sodio-glucosa tipo 2 - con beneficio cardiovascular y renal",
-          "mecanismo": "Inhibe la reabsorción de glucosa en tubulo proximal renal, eliminandola en orina; reduce PA y peso",
-          "dosis": "Empagliflozin 10-25 mg/dia; Dapagliflozin 10 mg/dia",
+          "nombre": "iSGLT2: Empagliflozin, Dapagliflozin, Canagliflozin, Ertugliflozin",
+          "grupo": "Inhibidor del cotransportador sodio-glucosa tipo 2 — indicación independiente de HbA1c en DM2 con ASCVD, IC o ERC (ADA 2025)",
+          "mecanismo": "Inhibe la reabsorción de glucosa en el túbulo proximal renal, eliminándola en orina (glucosuria osmótica). Beneficios: reduce eventos CV (EMPA-REG, DECLARE, CANVAS), hospitalizaciones por IC (DAPA-HF, EMPEROR), progresión de ERC (DAPA-CKD, EMPA-KIDNEY). Efectos: -PA 3-5 mmHg, -peso 2-3 kg.",
+          "dosis": "Empagliflozin 10 mg/día (puede subirse a 25); Dapagliflozin 10 mg/día; Canagliflozin 100-300 mg/día. Suspender si TFG < 20-30 según fármaco (verificar ficha técnica vigente).",
           "cuidadosEnfermeria": [
-            "Vigilar infecciones genitales (candidosis vulvovaginal/balanopostitis por glucosuria)",
-            "Vigilar infecciones urinarias",
-            "Hidratación adecuada (riesgo de hipotensión en ancianos)",
-            "Suspender antes de cirugia o ayuno prolongado (cetoacidosis euglucémica rara)"
+            "ADA 2025: indicar SGLT2i SI hay ASCVD/IC/ERC INDEPENDIENTEMENTE de la HbA1c basal o del uso de metformina",
+            "Vigilar infecciones genitales (candidiasis vulvovaginal, balanopostitis por glucosuria) — la complicación más frecuente",
+            "Vigilar infecciones urinarias (raras pero pueden ser severas, incluida pielonefritis)",
+            "Hidratación adecuada (riesgo de hipotensión y depleción de volumen, especialmente en ancianos con diuréticos)",
+            "Suspender 3-4 días antes de cirugía mayor, ayuno prolongado o enfermedad aguda con riesgo de cetoacidosis euglucémica",
+            "Cetoacidosis euglucémica (CAD con glucemia normal o ligeramente elevada): rara pero diagnóstico difícil — alta sospecha si dolor abdominal/náuseas + acidosis con glucemia < 250 mg/dL"
           ]
         },
         {
-          "nombre": "Semaglutide / Liraglutide (aGLP-1)",
-          "grupo": "Agonista del receptor GLP-1 - con beneficio cardiovascular y pérdida de peso",
-          "mecanismo": "Estimula secreción de insulina glucosa-dependiente, inhibe glucagon, retarda vaciamiento gástrico, reduce apetito",
-          "dosis": "Semaglutide SC 0.25 mg/semana → 0.5 mg → 1 mg segun respuesta",
+          "nombre": "aGLP-1: Semaglutide, Liraglutide, Dulaglutide, Lixisenatide",
+          "grupo": "Agonista del receptor GLP-1 — indicación independiente de HbA1c en DM2 con ASCVD o muy alto riesgo CV (ADA 2025)",
+          "mecanismo": "Estimula secreción de insulina glucosa-dependiente (no produce hipoglucemia per se), inhibe glucagón, retrasa vaciamiento gástrico, reduce apetito por acción central. Beneficios CV demostrados en LEADER (liraglutide), SUSTAIN-6 (semaglutide), REWIND (dulaglutide). Pérdida de peso: 4-15% según fármaco y dosis.",
+          "dosis": "Semaglutide SC: 0.25 mg/sem x 4 sem → 0.5 mg → 1 mg → 2 mg según respuesta. Semaglutide VO: 3-14 mg/día (en ayunas). Liraglutide SC: 0.6 mg/día → 1.2 → 1.8 mg/día. Dulaglutide SC: 0.75-4.5 mg/sem.",
           "cuidadosEnfermeria": [
-            "Nauseas frecuentes al inicio: escalar la dosis lentamente",
-            "Refrigerar hasta primer uso",
-            "Administrar el mismo dia cada semana (SC en abdomen, muslo o brazo)",
-            "Contraindicado en cancer medular de tiroides o MEN2"
+            "ADA 2025: indicar GLP-1 RA SI hay ASCVD o muy alto riesgo CV, INDEPENDIENTEMENTE de HbA1c o metformina; preferido en obesidad por la pérdida de peso",
+            "Combinación GLP-1 + SGLT2i puede reducir MACE y eventos renales adicionalmente (ADA 2025 Class IIa)",
+            "Náuseas/vómitos al inicio son frecuentes: escalar la dosis lentamente, ingesta de comidas pequeñas y bajas en grasa",
+            "Refrigerar plumas hasta primer uso; tras primer uso pueden mantenerse a temperatura ambiente según ficha",
+            "Administrar SC en abdomen, muslo o brazo el mismo día cada semana (semanal) o el mismo horario (diario)",
+            "Contraindicado en cáncer medular de tiroides previo o personal/familiar, neoplasia endocrina múltiple MEN2",
+            "Precaución en pancreatitis previa; suspender si pancreatitis aguda durante tratamiento",
+            "Pre-cirugía/endoscopia: considerar suspender por riesgo de retención gástrica (broncoaspiración)"
           ]
         },
         {
-          "nombre": "Insulina NPH o glargina (en DM2 avanzada)",
-          "grupo": "Insulina - cuando el tratamiento oral no alcanza el objetivo",
-          "mecanismo": "Suple la deficiencia progresiva de células beta en DM2 avanzada",
-          "dosis": "Insulina basal: 0.1-0.2 UI/kg/noche; ajustar 2 UI cada 3 dias hasta glucemia basal 80-130 mg/dL",
+          "nombre": "Tirzepatide (agonista dual GIP/GLP-1)",
+          "grupo": "Agonista dual del receptor GIP y GLP-1 — ADA 2025 lo endorsa en HFpEF + obesidad, MASH, obesidad, apnea del sueño",
+          "mecanismo": "Activa simultáneamente los receptores GIP y GLP-1: mayor potencia hipoglucemiante y mayor pérdida de peso que GLP-1 RA monoagonistas. Reducción de HbA1c 2-2.5%; pérdida de peso 15-22% en obesidad (SURMOUNT trials).",
+          "dosis": "SC 2.5 mg/semana x 4 sem → 5 mg → 7.5 → 10 → 12.5 → 15 mg/sem según respuesta y tolerancia.",
           "cuidadosEnfermeria": [
-            "Educar sobre técnica de inyección SC",
-            "Riesgos de hipoglucemia",
-            "Rotación de zonas de inyección",
-            "Ajuste de dosis basal segun glucemia matutina"
+            "ADA 2025: preferido (junto con semaglutide en dosis altas) en DM2 con sobrepeso/obesidad y necesidad de pérdida de peso significativa",
+            "Mismas precauciones que GLP-1 RA (náuseas, contraindicación en MEN2/cáncer medular de tiroides, pancreatitis, pre-procedimiento)",
+            "Mayor frecuencia de efectos GI al escalar dosis: titulación lenta",
+            "Administrar mismo día de la semana, SC en abdomen/muslo/brazo"
+          ]
+        },
+        {
+          "nombre": "Finerenona (antagonista no esteroideo del receptor de mineralocorticoides)",
+          "grupo": "ns-MRA — NO es antidiabético sino nefroprotector. ADA 2025: añadir en DM2 + ERC con albuminuria persistente a pesar de tratamiento óptimo (IECA/ARA-II + SGLT2i a dosis máxima tolerada)",
+          "mecanismo": "Antagonista selectivo no esteroideo del receptor de mineralocorticoides (a diferencia de espironolactona/eplerenona, esteroideos). Reduce inflamación y fibrosis renal/cardíaca. Ensayos FIDELIO-DKD y FIGARO-DKD: reducción de progresión a ERC terminal y de MACE en DM2 con albuminuria.",
+          "dosis": "10-20 mg/día VO según TFG y potasio basal. Iniciar 10 mg si TFG 25-60; titular a 20 mg a las 4 semanas si K < 4.8 mEq/L.",
+          "cuidadosEnfermeria": [
+            "Es el único ns-MRA con beneficio renal y CV demostrado en DM2",
+            "Monitorizar potasio sérico al inicio, 4 semanas tras cambio de dosis, luego cada 4 meses (riesgo de hiperpotasemia)",
+            "Suspender o reducir si K > 5.5 mEq/L; reiniciar a dosis menor cuando K < 5.0",
+            "Evitar combinación con otros inhibidores del SRAA en dosis altas; precaución con potasio en dieta y suplementos",
+            "Verificar TFG: contraindicado si TFG < 25 al inicio"
+          ]
+        },
+        {
+          "nombre": "Insulina basal (glargina, degludec, NPH) ± bolos prandiales (lispro, aspart, glulisina)",
+          "grupo": "Insulina — indicada cuando el tratamiento no insulínico no alcanza objetivos o en hiperglucemia severa al diagnóstico (HbA1c > 10%, glucemia > 300, síntomas catabólicos)",
+          "mecanismo": "Reemplaza la secreción endógena progresivamente deficiente en DM2 avanzada. Basal mantiene control interprandial; bolos prandiales controlan la excursión postprandial.",
+          "dosis": "Basal inicial: 10 UI/día o 0.1-0.2 UI/kg/día; ajustar 2 UI cada 3 días hasta glucemia basal 80-130 mg/dL. Si HbA1c persiste alta con basal optimizada, agregar GLP-1 RA antes de pasar a basal-bolo (combinación de elección ADA 2025 por menor hipoglucemia y peso).",
+          "cuidadosEnfermeria": [
+            "Educar sobre técnica de inyección SC y rotación de zonas (prevenir lipohipertrofia)",
+            "Reconocer y tratar hipoglucemia (regla del 15: 15 g CHO rápido, recheck en 15 min)",
+            "Ajuste de dosis basal según glucemia matutina; bolos según conteo de CHO si basal-bolo",
+            "ADA 2025: considerar CGM en todos los pacientes con insulina (basal-bolo Class A, basal-only Class B) para detectar hipoglucemia oculta y patrones",
+            "Combinación basal + GLP-1 RA preferida sobre basal-bolo en DM2 que falla a basal, por menor hipoglucemia y favorable en peso"
           ]
         }
       ],
@@ -9053,9 +9112,10 @@
     ],
     "criteriosAlarma": [
       "Glucemia > 400 mg/dL",
-      "Confución o deterioro del estado de conciencia",
+      "Confusión o deterioro del estado de conciencia",
       "Poliuria extrema con deshidratación severa",
-      "Infección en pie diabetico con celulitis extensa o gangrena"
+      "Infección en pie diabético con celulitis extensa o gangrena",
+      "Hipoglucemia severa (Nivel 3): requiere asistencia de tercero o pérdida de conciencia, INDEPENDIENTEMENTE de valor numérico"
     ],
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
@@ -9064,7 +9124,13 @@
       "pat_hta",
       "pat_irc"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ADA Standards of Care in Diabetes—2025 (Diabetes Care 2025;48 Suppl 1)",
+      "ADA/EASD Consensus Report 2022/Update 2024: Management of Hyperglycemia in T2D",
+      "KDIGO 2024 Clinical Practice Guideline for Diabetes Management in CKD"
+    ]
   },
   {
     "id": "pat_hipotiroidismo",
