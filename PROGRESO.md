@@ -4,6 +4,52 @@
 
 ---
 
+## 2026-05-22 — Sesion 26: Revisión clínica de pat_neumonia a ATS/IDSA 2019 CAP + 2016 HAP/VAP + actualizaciones 2023-2024
+
+### Resumen
+Octava iteración. La entry `pat_neumonia` tenía 12 gaps significativos vs guidelines vigentes: clasificación con HAP y VAP fusionadas como "NAVM" (ATS/IDSA 2016 los separa), sin categoría de neumonía viral (omisión grave post-COVID), sin paneles virales ni ecografía pulmonar como pruebas, algoritmo antibiótico sin estratificar por nivel de cuidado, faltaban fluoroquinolonas respiratorias, no había cobertura específica MRSA (vancomicina/linezolid) ni Pseudomonas (pip-tazo/cefepime/meropenem) con criterios de riesgo, hidrocortisona en CAP severa ausente (CAPE COD NEJM 2023), criterios ATS/IDSA para UCI ausentes (solo CURB-65), duración del tratamiento sin mencionar (5 días estándar ATS 2019), switch IV→VO no explicitado, vacunación con esquema PCV13+PPSV23 obsoleto (ACIP 2024 simplificó a PCV20 o PCV21 desde 50 años), procalcitonina no aclarada (ATS/IDSA: NO usar para decidir ATB).
+
+Cross-check: ATS/IDSA 2019 CAP Guidelines (Am J Respir Crit Care Med), ATS/IDSA 2016 HAP/VAP Guidelines (Clin Infect Dis), ACIP 2024 PCV recommendations (MMWR), ensayo CAPE COD (NEJM 2023). Edición quirúrgica de 5 secciones; el bloque farmacológico se triplicó (3→7) y los objetivos se expandieron significativamente.
+
+### Cambios en pat_neumonia (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 4 a 7 tipos: HAP y VAP separadas correctamente (ATS/IDSA 2016); +Neumonía viral (COVID/influenza/RSV); +Inmunocomprometido (PJP, oportunistas); NAC típica/atípica refinadas con nota "ATS/IDSA 2019 ya no distingue empíricamente" |
+| `diagnostico.pruebas.Antígenos urinarios` | Refinado con sensibilidad/especificidad reales y advertencia de persistencia post-tratamiento |
+| `diagnostico.pruebas` (NUEVAS) | +PCR multiplex respiratoria (BioFire panel — identificación rápida bacteriana y viral); +Ecografía pulmonar POCUS (ATS 2024 reconoce utilidad); +Criterios ATS/IDSA 2007 para UCI (1 mayor o ≥3 menores) además del CURB-65; nota sobre procalcitonina NO recomendada por ATS/IDSA |
+| `tratamientoMedico.objetivos` | De 4 a 8: ATB en <4h del ingreso, estratificación por nivel + factores de riesgo, duración 5 días, switch IV→VO 48-72h, de-escalation, corticoide en severa, vacunación post-episodio |
+| `farmacologico.Amoxicilina` | Refinada como CAP ambulatorio; distingue SIN comorbilidades (amoxi sola) vs CON (amoxi-clav + macrólido/doxiciclina) |
+| `farmacologico.Azitromicina` | Refinada con advertencia ATS/IDSA: monoterapia solo si resistencia neumococo local <25%; agregada Doxiciclina como alternativa; warning QT y interacciones |
+| `farmacologico.Ceftriaxona` | Refundida como "Ceftriaxona o Ceftarolina + Macrólido" para CAP hospitalario no severo; advertencia "el beta-lactámico SOLO es subóptimo" |
+| `farmacologico.Fluoroquinolona respiratoria` (NUEVA) | Levofloxacino/Moxifloxacino como monoterapia alternativa; warnings FDA (tendinopatía, QT, neuropatía, aneurisma aórtico) |
+| `farmacologico.Vancomicina/Linezolid` (NUEVA) | Cobertura MRSA SOLO con factores de riesgo específicos ATS/IDSA 2019; monitorización vancomicina; warnings linezolid (trombocitopenia, síndrome serotoninérgico) |
+| `farmacologico.Pip-tazo/Cefepime/Meropenem` (NUEVA) | Cobertura Pseudomonas SOLO con factores de riesgo; combinación 2 antipseudomónicos al inicio + de-escalation; preservación de carbapenems |
+| `farmacologico.Hidrocortisona` (NUEVA) | 200 mg/día IV x 7 días en CAP severa (CAPE COD); criterios de indicación y contraindicación (influenza, sepsis fúngica) |
+| `noFarmacologico` (expandido) | De 5 a 11 puntos: VNI/HFNC en falla respiratoria, movilización temprana, fisioterapia con utilidad realista, VAP bundle completo, vacunación ACIP 2024 (PCV20/PCV21 desde 50 años, RSV >=60), drenaje pleural con criterios bioquímicos (pH<7.20, glucosa<40, LDH>1000) |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 4 entradas: ATS/IDSA 2019 CAP + 2016 HAP/VAP + ACIP 2024 + CAPE COD/ROSARIO |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes (CURB-65 y PSI ya estaban en examen)
+- `quirurgico`: drenaje pleural y decorticación vigentes (criterios refinados en noFarmacologico)
+- `cuidadosEnfermeria`, `npiNanda/Nic/Noc`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 9 frescas (era 8; +pat_neumonia), 142 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_neumonia movido a "Sesiones cerradas". Quedan 2 patologías priorizadas (pat_dm1, pat_angina).
+
+### Commits esperados
+- `content(pat_neumonia): align with ATS/IDSA 2019 CAP + 2016 HAP/VAP + ACIP 2024 + CAPE COD`
+
+---
+
 ## 2026-05-22 — Sesion 25: Revisión clínica de pat_fa a ESC 2024 + AHA/ACC/HRS 2023
 
 ### Resumen

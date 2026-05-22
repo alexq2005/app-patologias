@@ -3707,23 +3707,35 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por lugar de adquisición y agente",
+      "nombre": "Clasificación por lugar de adquisición y agente (ATS/IDSA 2019 + 2016)",
       "tipos": [
         {
-          "nombre": "NAC típica",
-          "descripcion": "Inicio brusco, fiebre alta, esputo purulento, consolidación lobar. Agente: Streptococcus pneumoniae"
+          "nombre": "NAC típica (Neumonía Adquirida en la Comunidad)",
+          "descripcion": "Inicio brusco, fiebre alta, esputo purulento, consolidación lobar, leucocitosis con desviación a la izquierda. Agente principal: Streptococcus pneumoniae (también H. influenzae, Moraxella catarrhalis en EPOC, Klebsiella en alcoholismo)."
         },
         {
           "nombre": "NAC atípica",
-          "descripcion": "Inicio insidioso, síntomas extrapulmonares, esputo escaso. Agentes: Mycoplasma, Legionella, Chlamydia"
+          "descripcion": "Inicio insidioso, síntomas extrapulmonares (cefalea, mialgia, GI), disociación clínico-radiológica, esputo escaso, leucocitosis leve. Agentes: Mycoplasma pneumoniae, Chlamydia pneumoniae, Legionella pneumophila (más severa, hiponatremia, alteración hepática). ATS/IDSA 2019 ya no distingue empíricamente entre típica y atípica: la cobertura inicial debe incluir ambas."
         },
         {
-          "nombre": "Neumonia nosocomial (NAVM)",
-          "descripcion": "Aparece > 48h tras hospitalización o ventilación. Agentes: Pseudomonas, Klebsiella, SAMR"
+          "nombre": "Neumonía viral (incluyendo COVID-19, influenza, RSV)",
+          "descripcion": "SARS-CoV-2, influenza A/B, RSV, parainfluenza, adenovirus, metapneumovirus. Patrón radiológico típicamente bilateral, intersticial o en vidrio deslustrado (especialmente COVID). Puede haber coinfección bacteriana secundaria. PCR multiplex respiratoria identifica rápidamente."
         },
         {
-          "nombre": "Neumonia aspirativa",
-          "descripcion": "Por inhalación de contenido orofaringeo. Lobulos inferiores y medios"
+          "nombre": "HAP — Hospital-Acquired Pneumonia (no ventilada)",
+          "descripcion": "Aparece >= 48h después del ingreso hospitalario en paciente NO ventilado. ATS/IDSA 2016 la separó conceptualmente de VAP. Agentes: Pseudomonas, Klebsiella, E. coli, S. aureus (incluyendo MRSA según factores locales)."
+        },
+        {
+          "nombre": "VAP — Ventilator-Associated Pneumonia",
+          "descripcion": "Aparece >= 48h del inicio de ventilación mecánica invasiva. Incidencia 9-27% en VM prolongada. Agentes habituales: Pseudomonas, Acinetobacter, S. aureus (MRSA), Enterobacteriaceae productoras de betalactamasas (BLEE)."
+        },
+        {
+          "nombre": "Neumonía aspirativa",
+          "descripcion": "Por aspiración de contenido orofaríngeo o gástrico en pacientes con disfagia, ACV, demencia, alteración de la conciencia. Lóbulos típicamente afectados: posterior superior y basal posterior del lóbulo inferior derecho (más declive en supino). Agentes: flora mixta orofaríngea (incluida anaerobios si neumonía necrotizante)."
+        },
+        {
+          "nombre": "Neumonía en inmunocomprometido",
+          "descripcion": "VIH/SIDA, post-trasplante, quimioterapia. Agentes oportunistas: Pneumocystis jirovecii (PJP), CMV, Aspergillus, Cryptococcus, micobacterias. Requiere abordaje y cobertura específicos."
         }
       ]
     },
@@ -3763,73 +3775,158 @@
           ]
         },
         {
-          "nombre": "Antigeno urinario de Legionella y Neumococo",
-          "descripcion": "Rápido, detecta antígenos en orina. Legionella serogrupo 1 y S. pneumoniae",
-          "valoresReferencia": "Positivo/Negativo. Alta especificidad (> 95%)",
+          "nombre": "Antígeno urinario de Legionella y Neumococo",
+          "descripcion": "Pruebas rápidas que detectan antígeno en orina. ATS/IDSA 2019 recomienda en NAC severa o factores de riesgo (viaje reciente, exposición a torres de refrigeración, brote epidemiológico para Legionella). Legionella detecta serogrupo 1 (90% de casos).",
+          "valoresReferencia": "Positivo/Negativo. Especificidad > 95%. Sensibilidad ~70-80% para Legionella, ~70% para neumococo. Pueden permanecer positivos varios días post-tratamiento.",
           "cuidadosEnfermeria": [
             "Muestra de orina fresca (primer orina de la mañana ideal)",
-            "Resultado en 15-30 min"
+            "Resultado en 15-30 min",
+            "Si positivo, ajustar tratamiento empírico al patógeno identificado (de-escalation)"
           ]
         },
         {
-          "nombre": "CURB-65 score",
-          "descripcion": "Herramienta de severidad: Confusion+1, Urea>7+1, FR>30+1, PAS<90 o PAD<60+1, edad>65+1",
-          "valoresReferencia": "0-1: ambulatorio; 2: hospitalización; 3-5: UCI",
+          "nombre": "PCR multiplex respiratoria + tests antigénicos virales",
+          "descripcion": "Estándar actual: PCR multiplex de hisopado nasofaríngeo o aspirado endotraqueal detecta simultáneamente influenza A/B, SARS-CoV-2, RSV, parainfluenza, metapneumovirus, adenovirus, bocavirus y patógenos atípicos (Mycoplasma, Chlamydia). En VAP/HAP: PCR multiplex de aspirado traqueal (BioFire FilmArray Pneumonia Panel) identifica patógenos bacterianos y resistencias en 1-2 horas, acelerando la de-escalation.",
+          "valoresReferencia": "Resultado cualitativo (positivo/negativo por patógeno) en 1-2 horas. Panel respiratorio amplio en muestra única.",
           "cuidadosEnfermeria": [
-            "Calcular al ingreso",
-            "Documenta la decision de ingreso y nivel de cuidado"
+            "Hisopado nasofaríngeo correcto (introducir profundo y rotar)",
+            "En pacientes ventilados: aspirado traqueal estéril",
+            "Útil especialmente en temporada gripal y brotes (COVID, RSV)",
+            "Resultado positivo de virus NO descarta coinfección bacteriana (especialmente en S. aureus y S. pneumoniae)"
+          ]
+        },
+        {
+          "nombre": "Ecografía pulmonar a pie de cama (POCUS pulmonar)",
+          "descripcion": "Herramienta creciente en evaluación de neumonía: mayor sensibilidad que la Rx para consolidaciones pequeñas, derrame pleural y patrón intersticial. Sin radiación. Especialmente útil en embarazadas, niños y reevaluación seriada. ATS 2024 reconoce su utilidad operativa.",
+          "valoresReferencia": "Consolidación: zonas hipoecogénicas con broncograma aéreo dinámico. Derrame pleural: zona anecoica. Patrón B (líneas verticales) sugiere proceso intersticial (edema, viral, ARDS).",
+          "cuidadosEnfermeria": [
+            "Operador-dependiente: requiere entrenamiento específico",
+            "Útil para evaluación seriada al lado del paciente sin trasladar a radiología",
+            "Identifica derrame pleural y guía toracocentesis"
+          ]
+        },
+        {
+          "nombre": "CURB-65 + criterios ATS/IDSA para CAP severa (UCI)",
+          "descripcion": "Doble evaluación de severidad. CURB-65 para decisión ambulatorio vs hospitalización. Criterios ATS/IDSA 2007 (vigentes en 2019) para decisión de UCI: 1 criterio MAYOR o >=3 criterios MENORES.",
+          "valoresReferencia": "CURB-65 (1 punto cada uno): Confusión, Urea > 19 mg/dL (7 mmol/L), FR >= 30, PAS < 90 o PAD <= 60, edad >= 65. Interpretación: 0-1 ambulatorio; 2 hospitalización; >= 3 UCI. CRITERIOS ATS/IDSA UCI — MAYORES: shock séptico que requiere vasopresores; insuficiencia respiratoria que requiere ventilación mecánica. MENORES (necesita >=3): FR >= 30, PaO2/FiO2 <= 250, infiltrados multilobares, confusión, urea >= 20 mg/dL, leucopenia < 4000, plaquetopenia < 100k, hipotermia < 36°C, hipotensión que requiere fluidos agresivos.",
+          "cuidadosEnfermeria": [
+            "Calcular al ingreso y reevaluar diariamente",
+            "Documentar decisión de nivel de cuidado",
+            "ATS/IDSA 2019 NO recomienda procalcitonina (PCT) para decidir si iniciar antibióticos en CAP — el diagnóstico se basa en clínica + imagen"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Erradicar microorganismo causante",
-        "Aliviar síntomas",
-        "Prevenir complicaciones",
-        "Reducir mortalidad"
+        "Iniciar antibiótico empírico precozmente (objetivo < 4h del ingreso) tras obtener cultivos",
+        "Estratificar la cobertura empírica por nivel de cuidado (ambulatorio / hospitalario no severo / UCI) y por factores de riesgo individuales/locales de MRSA y Pseudomonas (ATS/IDSA 2019)",
+        "Duración del tratamiento: mínimo 5 días, hasta vitales estables, oral tolerada y mental status normal (CAP). VAP/HAP: 7 días generalmente suficientes",
+        "Switch IV → VO a las 48-72h de mejoría clínica (afebril, vitales estables, oral tolerada) — reduce hospitalización y eventos adversos",
+        "De-escalation: ajustar a antibiótico de espectro estrecho una vez identificado el patógeno (cultivos, PCR multiplex, antígenos)",
+        "Considerar corticoide sistémico (hidrocortisona) en CAP severa según evidencia reciente — reduce mortalidad en CAP severa con marcadores de inflamación elevados",
+        "Soporte: O2 para SpO2 > 92% (88-92% si EPOC concomitante), fluidos titulados, manejo de sepsis/shock séptico si presente",
+        "Vacunación post-episodio: confirmar esquema de neumococo (PCV20 o PCV21) y reforzar influenza, COVID-19, RSV en mayores de 60 años"
       ],
       "farmacologico": [
         {
-          "nombre": "Amoxicilina-Clavulanico",
-          "grupo": "Aminopenicilina + inhibidor de betalactamasa - antibiotico primera linea NAC leve",
-          "mecanismo": "Inhibe sintesis de pared bacteriana; el ácido clavulanico protege de betalactamasas bacterianas",
-          "dosis": "875/125 mg c/8h VO o 1-2 g IV c/8h",
+          "nombre": "Amoxicilina o Amoxicilina-Clavulánico (CAP ambulatorio)",
+          "grupo": "Aminopenicilina ± inhibidor de betalactamasa — primera línea en CAP ambulatorio (ATS/IDSA 2019)",
+          "mecanismo": "Inhibe síntesis de pared bacteriana (peptidoglicano). El ácido clavulánico inhibe betalactamasas, ampliando cobertura a H. influenzae productora de betalactamasa y a anaerobios orofaríngeos.",
+          "dosis": "CAP ambulatorio SIN comorbilidades: Amoxicilina 1 g c/8h VO x 5 días. CON comorbilidades (EPOC, IC, ERC, DM, neoplasia, etilismo): Amoxicilina-clavulánico 875/125 mg c/8h o 2000/125 mg c/12h VO + Macrólido o Doxiciclina.",
           "cuidadosEnfermeria": [
-            "Administrar con alimentos (reduce nauseas)",
-            "Vigilar rash alergico y diarrea",
-            "Verificar alergias a penicilinas"
+            "ATS/IDSA 2019: amoxicilina sigue siendo primera línea en CAP ambulatorio sin comorbilidades, NO se requiere cobertura de atípicos rutinaria",
+            "Administrar con alimentos para reducir intolerancia gástrica",
+            "Vigilar rash alérgico y diarrea (incluida C. difficile)",
+            "Verificar alergias a penicilinas (preguntar específicamente por tipo de reacción: anafilaxia vs rash leve)"
           ]
         },
         {
-          "nombre": "Azitromicina",
-          "grupo": "Macrolido - NAC atípica o en combinación",
-          "mecanismo": "Inhibe sintesis proteica bacteriana unienidose al ribosoma 50S; activo frente a atipicos",
-          "dosis": "500 mg el primer dia, luego 250 mg/dia x 4 dias VO; o 500 mg/dia IV",
+          "nombre": "Azitromicina o Doxiciclina (cobertura de atípicos)",
+          "grupo": "Macrólido o tetraciclina — cobertura de patógenos atípicos en CAP, combinada con beta-lactámico en hospitalario",
+          "mecanismo": "Azitromicina: inhibe síntesis proteica unión a ribosoma 50S, activa frente a S. pneumoniae, Mycoplasma, Chlamydia, Legionella. Doxiciclina: inhibe 30S, alternativa a macrólido con buena cobertura de atípicos.",
+          "dosis": "Azitromicina: 500 mg el primer día, luego 250 mg/día VO x 4 días; o 500 mg IV/día. Doxiciclina: 100 mg c/12h VO.",
           "cuidadosEnfermeria": [
-            "Monitorizar intervalo QT (riesgo de arritmias)",
-            "Interacción con digoxina, warfarina",
-            "Nauseas frecuentes: administrar con alimentos"
+            "ATS/IDSA 2019: macrólido en monoterapia para CAP ambulatorio SOLO si resistencia local de S. pneumoniae < 25% (en muchos contextos no se cumple → preferir combinación)",
+            "Monitorizar intervalo QT con azitromicina (riesgo de arritmia ventricular); evitar combinación con otros que prolongan QT (haloperidol, ondansetrón a dosis altas, ciprofloxacino)",
+            "Interacciones: digoxina (aumenta nivel), warfarina (potencia anticoagulación) con azitromicina",
+            "Doxiciclina: evitar en embarazo y < 8 años (alteración dental); no administrar con leche, hierro o antiácidos"
           ]
         },
         {
-          "nombre": "Ceftriaxona",
-          "grupo": "Cefalosporina de 3a generación - NAC hospitalaria o grave",
-          "mecanismo": "Inhibe sintesis de pared bacteriana de amplio espectro grampositivos y negativos",
-          "dosis": "1-2 g IV cada 24h",
+          "nombre": "Ceftriaxona o Ceftarolina + Macrólido (CAP hospitalario no severo)",
+          "grupo": "Cefalosporina de 3ª/5ª generación + macrólido — combinación estándar en CAP hospitalario que no requiere UCI",
+          "mecanismo": "Ceftriaxona: 3ª generación, amplio espectro gram+/gram−. Ceftarolina: 5ª generación con actividad anti-MRSA. La combinación con macrólido cubre patógenos atípicos sinérgicamente.",
+          "dosis": "Ceftriaxona 1-2 g IV/día. Ceftarolina 600 mg IV c/12h. Asociar a azitromicina 500 mg IV/día o levofloxacino 750 mg IV/día (si macrólido contraindicado).",
           "cuidadosEnfermeria": [
-            "Administrar IV en 30 min disuelto en SF 0.9%",
-            "Vigilar reacción alergica cruzada con penicilinas (5-10%)",
-            "No mezclar en misma via con calcio (precipita)"
+            "Administrar Ceftriaxona IV en 30 min en SF 0.9%",
+            "NO mezclar Ceftriaxona en la misma vía con calcio (precipita — riesgo letal en neonatos)",
+            "Vigilar reacción alérgica cruzada con penicilinas (~2% en alergia confirmada, no contraindicación absoluta salvo anafilaxia previa)",
+            "Combinar siempre con cobertura de atípicos (macrólido o quinolona) — el beta-lactámico SOLO es subóptimo"
+          ]
+        },
+        {
+          "nombre": "Fluoroquinolona respiratoria (Levofloxacino o Moxifloxacino)",
+          "grupo": "Fluoroquinolona — monoterapia alternativa en CAP ambulatorio con comorbilidades o hospitalario; reserva con cautela",
+          "mecanismo": "Inhibe DNA girasa y topoisomerasa IV. Cobertura amplia de S. pneumoniae (incluso resistentes a macrólidos), atípicos y gram− (incluyendo Pseudomonas con levofloxacino a dosis altas).",
+          "dosis": "Levofloxacino 750 mg VO/IV cada 24h. Moxifloxacino 400 mg VO/IV cada 24h. Duración: 5-7 días.",
+          "cuidadosEnfermeria": [
+            "ATS/IDSA 2019: alternativa razonable en CAP ambulatorio con comorbilidades y en hospitalario, pero NO de primera línea rutinaria (preservar uso por riesgo de resistencia y efectos adversos)",
+            "Vigilar tendinopatía y rotura tendinosa (especialmente Aquiles); riesgo aumentado en ancianos, corticoides, post-trasplante",
+            "Prolongación de QT — evitar combinación con otros agentes QT-prolongadores",
+            "Disglucemia (hipo o hiperglucemia) en diabéticos: monitorizar glucemia",
+            "FDA: black-box warnings por neuropatía periférica, aneurisma aórtico, hipoglucemia severa, efectos psiquiátricos"
+          ]
+        },
+        {
+          "nombre": "Vancomicina o Linezolid (cobertura MRSA empírica)",
+          "grupo": "Cobertura anti-MRSA — agregar a régimen empírico SOLO con factores de riesgo o tinción Gram sugestiva",
+          "mecanismo": "Vancomicina: glicopéptido que inhibe síntesis de pared (D-Ala-D-Ala). Linezolid: oxazolidinona que inhibe inicio de síntesis proteica; mejor penetración pulmonar y biodisponibilidad oral 100%.",
+          "dosis": "Vancomicina: 15-20 mg/kg IV c/8-12h (ajustar por nivel sérico target 15-20 mg/L en neumonía). Linezolid: 600 mg IV/VO c/12h.",
+          "cuidadosEnfermeria": [
+            "ATS/IDSA 2019: agregar cobertura MRSA SOLO si: (a) hospitalización previa reciente con cultivos positivos a MRSA o uso de ATB IV en últimos 90 días; (b) tinción Gram con cocos gram+ en racimos; (c) neumonía necrotizante o post-influenza con shock; (d) usuarios de drogas IV",
+            "Vancomicina: monitorizar nivel valle (objetivo 15-20 mg/L), creatinina, audición (ototoxicidad en uso prolongado), 'red man syndrome' (infundir en >= 60 min)",
+            "Linezolid: vigilar trombocitopenia y neuropatía con uso > 2 semanas; síndrome serotoninérgico si combinado con ISRS o IMAO",
+            "De-escalation a las 48-72h si cultivos negativos a MRSA"
+          ]
+        },
+        {
+          "nombre": "Piperacilina-tazobactam o Cefepime o Meropenem (cobertura Pseudomonas)",
+          "grupo": "Beta-lactámico antipseudomónico — agregar al régimen empírico si factores de riesgo para Pseudomonas",
+          "mecanismo": "Piperacilina-tazobactam: amplio espectro incluyendo Pseudomonas, anaerobios. Cefepime: 4ª generación. Meropenem: carbapenem, reserva en MDR/BLEE.",
+          "dosis": "Piperacilina-tazobactam 4.5 g IV c/6-8h (infusión extendida 4h en infecciones severas mejora outcomes). Cefepime 2 g IV c/8h. Meropenem 1 g IV c/8h (2 g si BLEE o sospecha de MDR).",
+          "cuidadosEnfermeria": [
+            "ATS/IDSA 2019: cobertura Pseudomonas SOLO si: (a) cultivo previo positivo a P. aeruginosa; (b) hospitalización reciente con ATB IV en últimos 90 días; (c) EPOC severo con uso frecuente de ATB; (d) bronquiectasias; (e) neutropenia o inmunosupresión",
+            "Si cultivo Pseudomonas confirmado: combinar 2 antipseudomónicos de clases diferentes inicialmente, luego de-escalation a monoterapia según sensibilidad",
+            "Vigilar función renal y hepática; ajuste de dosis por TFG",
+            "Reservar carbapenems para casos MDR/BLEE (preservar utilidad por presión de selección)"
+          ]
+        },
+        {
+          "nombre": "Hidrocortisona en CAP severa",
+          "grupo": "Corticoide sistémico adyuvante — considerado en CAP severa con marcadores inflamatorios elevados",
+          "mecanismo": "Modula la respuesta inflamatoria sistémica. Evidencia creciente (incluyendo ensayos en CAP severa) sugiere reducción de mortalidad cuando se administra precozmente en pacientes con CAP severa.",
+          "dosis": "Hidrocortisona 200 mg/día IV (en infusión continua o dividida) durante 7 días, con disminución gradual posterior. Iniciar idealmente en las primeras 24h del ingreso a UCI por CAP severa.",
+          "cuidadosEnfermeria": [
+            "Indicación: CAP severa (criterios ATS/IDSA UCI) sin contraindicación al corticoide (sepsis fúngica, influenza H1N1 sin coinfección bacteriana documentada)",
+            "Monitorizar glucemia (hiperglucemia esperable, ajustar insulina), PA, signos de sangrado digestivo (profilaxis con IBP)",
+            "Vigilar superinfección oportunista, especialmente fúngica (candidiasis sistémica) en uso prolongado",
+            "NO indicado de rutina en CAP no severa"
           ]
         }
       ],
       "noFarmacologico": [
-        "Fisioterapia respiratoria para movilizar secreciones",
-        "Hidratación adecuada (fluidificar secreciones)",
-        "Oxigenoterapia si SpO2 < 94%",
-        "Posición semisentada para reducir aspiración",
-        "Incentivador respiratorio (volumen)"
+        "Oxigenoterapia para SpO2 > 92% (88-92% si EPOC concomitante para evitar hipercapnia)",
+        "Posición semisentada (Fowler 30-45°) para reducir aspiración y optimizar ventilación; evitar decúbito plano prolongado",
+        "VNI / VMNI en insuficiencia respiratoria que no responde a O2 convencional (especialmente en EPOC con neumonía); cánula nasal de alto flujo (HFNC) como alternativa en hipoxemia severa sin hipercapnia",
+        "Movilización temprana cuando es posible (reduce TVP, atelectasias, sarcopenia hospitalaria)",
+        "Fisioterapia respiratoria e incentivador inspiratorio: utilidad limitada en NAC no complicada; útil en NAVM, post-cirugía torácica y en pacientes con secreciones abundantes que no las pueden movilizar",
+        "Hidratación adecuada (evita deshidratación y fluidifica secreciones) pero EVITAR sobrecarga (empeora intercambio gaseoso y precipita IC)",
+        "Vacunación post-episodio: ACIP 2024 recomienda PCV20 o PCV21 en adultos >= 50 años (ampliada desde >=65 años en octubre 2024); influenza anual; SARS-CoV-2 según calendario; RSV en adultos >= 60 años con comorbilidad pulmonar/cardiovascular; herpes zóster en >= 50 años",
+        "Cesación tabáquica activa (uno de los factores de riesgo modificables más importantes)",
+        "Evaluación de la deglución con fonoaudiología en pacientes con sospecha de aspiración (ACV, demencia, post-IOT prolongada)",
+        "Prevención de NAVM (paquete VAP bundle): cabecera 30-45° permanente, higiene oral con clorhexidina, despertar diario y prueba de respiración espontánea, profilaxis úlcera y TVP, evitación de transporte innecesario, manejo de presión del cuff endotraqueal",
+        "Drenaje pleural si derrame paraneumónico complicado (pH < 7.20, glucosa < 40 mg/dL, LDH > 1000, presencia de bacterias en Gram/cultivo) o empiema franco; toracoscopia o decorticación si tabicado"
       ],
       "quirurgico": [
         "Drenaje pleural si derrame paraneumonico complicado o empiema",
@@ -3976,7 +4073,14 @@
       "pat_ira",
       "pat_tep"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ATS/IDSA 2019 Diagnosis and Treatment of Adults with Community-Acquired Pneumonia (Am J Respir Crit Care Med 2019;200:e45-e67)",
+      "ATS/IDSA 2016 Management of Adults With Hospital-acquired and Ventilator-associated Pneumonia (Clin Infect Dis 2016;63:e61-e111)",
+      "ACIP 2024 Recommendations for Pneumococcal Conjugate Vaccines (PCV20/PCV21) — MMWR 2024",
+      "Ensayos clave duración: ROSARIO (5 días); Esteroides en CAP severa: CAPE COD (NEJM 2023)"
+    ]
   },
   {
     "id": "pat_tep",
