@@ -4,6 +4,67 @@
 
 ---
 
+## 2026-05-22 — Sesion 28: Revisión clínica de pat_angina a ESC 2024 Chronic Coronary Syndromes 🎯 MILESTONE: TOP-10 COMPLETO
+
+### Resumen
+Décima iteración y CIERRE del queue top-10 priorizado. La entry `pat_angina` tenía gaps de paradigma vs ESC 2024 CCS: nomenclatura desactualizada (la entry usaba "angina de pecho/estable" cuando ESC desde 2019 introdujo Chronic Coronary Syndromes — CCS — como término paraguas que reemplaza "estable"); angina inestable mezclada en la clasificación CCS (en realidad pertenece a NSTE-ACS, síndromes AGUDOS); ausencia total de CCTA (Coronary CT Angiogram) como primera línea no invasiva, FFR/iFR para evaluación funcional intracoronaria, calcio score, tests funcionales con imagen (SPECT/eco-stress/RMN); INOCA/MINOCA/ANOCA como entidades reconocidas en ESC 2024 ausentes; algoritmo terapéutico ESC 2024 escalonado (BB+BCC Paso 1, nitratos LA/ranolazina/ivabradina Paso 2) ausente; ranolazina e ivabradina como antianginosos modernos ausentes; bloqueantes de calcio (BCC) no listados explícitamente en farmacológico; IECA/ARA-II como prevención secundaria ausentes; target LDL < 55 no especificado; criterios PCI vs CABG con Heart Team y SYNTAX/FFR no detallados; vacunación específica (influenza Class I en CCS) ausente.
+
+Cross-check: ESC 2024 CCS Guidelines (Eur Heart J 2024), ESC 2019 CCS (base del renombramiento), Cuarta Definición Universal del IM 2018, ensayos clave ISCHEMIA/FREEDOM/STICH/REDUCE-IT. Edición quirúrgica de 7 secciones; el bloque farmacológico se más que duplicó (4→9) reorganizado por modelo terapéutico escalonado.
+
+### Cambios en pat_angina (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Actualizada a nomenclatura ESC 2019/2024: CCS como espectro continuo; angina inestable EXCLUIDA explícitamente del CCS (pertenece a NSTE-ACS) |
+| `clasificacion` | De 6 a 11 tipos: severidad Canadian CCS I-IV mantenida + 3 escenarios clínicos ESC 2024 + Prinzmetal/vasoespástica refinada + ANOCA/INOCA + MINOCA + nota separadora sobre angina inestable como NSTE-ACS |
+| `diagnostico.pruebas.ECG` | Refinada con elevación transitoria de ST como pista para Prinzmetal |
+| `diagnostico.pruebas` (NUEVAS) | +CCTA como 1ª línea ESC 2024 (pretest 5-50%); +Calcio score CAC; +Tests funcionales con imagen (eco-stress, SPECT, PET, RMN con stress); +FFR/iFR durante cateterismo (Class I para estenosis intermedias) |
+| `tratamientoMedico.objetivos` | De 4 a 9: alivio + TMO (BB/BCC Paso 1) + AAS 75-100 + estatina LDL<55 + IECA/ARA + SGLT2i/GLP-1 si DM2+ASCVD + icosapent + revascularización con FFR + vacunación + rehabilitación cardíaca |
+| `farmacologico` (reorganización 4→9) | NTG SL refinada con contraindicación PDE5 explícita; +Nitrato larga acción con intervalo libre; Betabloqueante actualizado con preferencia ESC (bisoprolol/metoprolol succinato) y EVITAR en Prinzmetal puro; +BCC (no-DHP y DHP) con no-combinación verapamilo+BB; +Ranolazina (Paso 2, sin efecto FC/PA); +Ivabradina (Paso 2 si FC≥70 ritmo sinusal); AAS 75-100; Estatina alta intensidad con target LDL<55 + ezetimibe/iPCSK9 si no alcanza; +IECA/ARA-II para prevención secundaria con comorbilidad |
+| `quirurgico` (expandido) | Criterios revascularización ESC 2024 (FFR≤0.80 o anatomía alta riesgo); PCI vs CABG estratificado (FREEDOM en DM, STICH en disfunción VI, SYNTAX); +Heart Team multidisciplinario; +revascularización híbrida |
+| `noFarmacologico` (4→11) | Cesación tabáquica con farmacoterapia, rehabilitación cardíaca Class I, dieta mediterránea/DASH detalle, ejercicio cuantificado (150 min/sem), control de peso/PA/DM/LDL, vacunación Class I para influenza en CCS, manejo de estrés y depresión (doblan riesgo CV), cribado de apnea del sueño, restricción alcohol, adherencia terapéutica |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 4 entradas: ESC 2024 CCS + ESC 2019 CCS + 4ª Definición Universal IM + ensayos clave (ISCHEMIA, FREEDOM, STICH, REDUCE-IT, ANOCA/INOCA) |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **11 frescas** (era 10; +pat_angina), 140 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### 🎯 MILESTONE: Queue top-10 priorizado COMPLETO
+
+Las 10 patologías de mayor prevalencia + impacto clínico definidas en `docs/CLINICAL_REVIEW_PLAN.md` están AHORA revisadas y alineadas a guidelines 2022-2025. Sumando pat_icc (sesión 17 previa), el total es **11/151 entries con `revisadoEn` y `fuentes` completos**.
+
+Trabajo realizado en 10 sesiones del queue (sesiones 19-28) más sesión 17:
+- Cardiovascular: pat_icc, pat_hta, pat_iam, pat_fa, pat_angina (5)
+- Endocrino: pat_dm2, pat_dm1 (2)
+- Respiratorio: pat_epoc, pat_asma, pat_neumonia (3)
+- Neurológico: pat_acv (1)
+
+Guidelines vigentes incorporadas:
+- ESC 2023 ACS, ESC 2024 HTA, ESC 2024 FA, ESC 2024 CCS
+- AHA/ACC 2025 HTA, AHA/ACC 2025 ACS, AHA/ACC/HRS 2023 FA, AHA/ASA 2024 stroke + 2022 ICH + 2023 SAH
+- ADA 2025 Standards of Care (DM1 + DM2), KDIGO 2024, ISPAD 2024
+- GOLD 2025, GINA 2024-2025
+- ATS/IDSA 2019 CAP + 2016 HAP/VAP, ACIP 2024 PCV
+- Fourth Universal Definition of MI, CAPE COD, EAST-AFNET 4, CASTLE-AF, IMPACT/ETHOS, BOREAS/NOTUS, SYGMA, NAVIGATOR, FIDELIO-DKD, etc.
+
+### Commits esperados
+- `content(pat_angina): align with ESC 2024 Chronic Coronary Syndromes`
+
+### Próximos pasos (post-milestone)
+- Definir nuevo lote de 10 entries de 2ª prioridad (sugerencias en `CLINICAL_REVIEW_PLAN.md`)
+- Cualquier patología nueva o edición ahora SÍ debe llevar `revisadoEn` + `fuentes` (CLAUDE.md project lo declara obligatorio)
+- Considerar smoke test visual del UI en algunas de las 11 entries actualizadas para confirmar render correcto de las nuevas listas largas
+
+---
+
 ## 2026-05-22 — Sesion 27: Revisión clínica de pat_dm1 a ADA 2025 + ISPAD 2024
 
 ### Resumen

@@ -1229,7 +1229,7 @@
     "id": "pat_angina",
     "nombre": "Angina de Pecho",
     "bodySystemId": "cardiovascular",
-    "definicion": "Sindrome clínico caracterizado por dolor o malestar toracico transitorio causado por isquemia miocardica sin necrosis, generalmente precipitado por esfuerzo o estres y aliviado con reposo o nitroglicerina.",
+    "definicion": "Síndrome clínico de la enfermedad coronaria que cursa con dolor o malestar torácico transitorio por isquemia miocárdica sin necrosis. ESC 2019/2024 reemplazó 'angina estable / cardiopatía isquémica estable' por el término más amplio Chronic Coronary Syndromes (CCS), que abarca el espectro continuo de presentaciones (paciente con CAD sospechada, recién diagnosticado, estabilizado tras SCA, angina vasoespástica/microvascular, asintomático). La angina inestable NO forma parte de CCS — pertenece a los síndromes coronarios AGUDOS (NSTE-ACS).",
     "epidemiologia": "Prevalencia del 2-4% en la población adulta general. Afecta a 9 millones de personas en EEUU. Es la manifestación más frecuente de la cardiopatia isquémica crónica.",
     "factoresRiesgo": [
       "Tabaquismo",
@@ -1258,31 +1258,51 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación CCS y tipo clínico",
+      "nombre": "Clasificación combinada: CCS Canadian Class (severidad) + escenarios clínicos ESC 2024 + entidades especiales",
       "tipos": [
         {
-          "nombre": "CCS I",
-          "descripcion": "Solo actividades extenuantes producen angina"
+          "nombre": "Severidad Canadian CCS — Clase I",
+          "descripcion": "Solo actividades extenuantes producen angina (la actividad ordinaria — caminar, subir escaleras — NO la desencadena)."
         },
         {
-          "nombre": "CCS II",
-          "descripcion": "Ligera limitación. Angina al caminar > 2 cuadras o subir > 1 piso"
+          "nombre": "Severidad Canadian CCS — Clase II",
+          "descripcion": "Ligera limitación de la actividad ordinaria. Angina al caminar > 2 cuadras llanas o subir > 1 piso de escaleras a paso normal."
         },
         {
-          "nombre": "CCS III",
-          "descripcion": "Marcada limitación. Angina con actividad mínima"
+          "nombre": "Severidad Canadian CCS — Clase III",
+          "descripcion": "Marcada limitación de la actividad ordinaria. Angina al caminar 1-2 cuadras o al subir 1 piso a paso normal."
         },
         {
-          "nombre": "CCS IV",
-          "descripcion": "Angina en reposo"
+          "nombre": "Severidad Canadian CCS — Clase IV",
+          "descripcion": "Incapacidad para realizar cualquier actividad sin malestar; angina en reposo posible."
         },
         {
-          "nombre": "Angina inestable",
-          "descripcion": "Nuevo inicio, en reposo, o patron en aumento - requiere hospitalización urgente"
+          "nombre": "Escenario ESC 2024 CCS — Sospecha de CAD",
+          "descripcion": "Paciente con síntomas o anormalidades sugerentes de angina, pero sin diagnóstico confirmado. Se aplica el modelo de probabilidad pre-test (ponderado por factor de riesgo, ESC 2024)."
         },
         {
-          "nombre": "Angina de Prinzmetal",
-          "descripcion": "Vasoespasmo coronario: ocurre en reposo, madrugada, con elevación del ST"
+          "nombre": "Escenario ESC 2024 CCS — CAD obstructiva confirmada con angina estable",
+          "descripcion": "CAD confirmada por imagen no invasiva (CCTA) o invasiva, con angina recurrente controlable con tratamiento médico óptimo (TMO)."
+        },
+        {
+          "nombre": "Escenario ESC 2024 CCS — Estabilización post-SCA",
+          "descripcion": "Más de 12 meses del síndrome coronario agudo previo (IAM, NSTE-ACS) o revascularización; foco en prevención secundaria."
+        },
+        {
+          "nombre": "Angina de Prinzmetal (vasoespástica)",
+          "descripcion": "Vasoespasmo de arterias epicárdicas: dolor en reposo, especialmente nocturno o madrugada, con ELEVACIÓN transitoria del ST en ECG durante el episodio. Coronarias suelen ser normales o con estenosis leve. Tratamiento: BCC (diltiazem, amlodipina) + nitratos; EVITAR betabloqueantes (pueden empeorar vasoespasmo)."
+        },
+        {
+          "nombre": "ANOCA / INOCA (angina con coronarias no obstructivas)",
+          "descripcion": "Entidad reconocida en ESC 2024 — angina e isquemia demostrada en pruebas funcionales PERO sin estenosis epicárdica significativa. Fenotipos: disfunción endotelial, espasmo epicárdico, espasmo microvascular, disfunción microvascular. Especialmente frecuente en mujeres. Requiere evaluación invasiva con tests provocativos para identificar fenotipo y tratar dirigidamente."
+        },
+        {
+          "nombre": "MINOCA (IM con coronarias no obstructivas)",
+          "descripcion": "Infarto de miocardio con coronarias permeables o con estenosis < 50%. No es CCS pero forma parte del diferencial. Causas: rotura/erosión de placa con trombo lisado, vasoespasmo, miocarditis, takotsubo, embolia coronaria, disección coronaria espontánea (SCAD — más en mujeres jóvenes). Requiere RMN cardíaca para etiología."
+        },
+        {
+          "nombre": "Angina inestable (NO es CCS — pertenece a NSTE-ACS)",
+          "descripcion": "Nuevo inicio reciente, en reposo, o patrón crescendo. Pertenece a los SÍNDROMES CORONARIOS AGUDOS (NSTE-ACS); requiere hospitalización urgente y manejo según protocolo de SCA, no de CCS. Se diferencia del NSTEMI por la AUSENCIA de elevación de troponina."
         }
       ]
     },
@@ -1303,103 +1323,218 @@
       "pruebas": [
         {
           "nombre": "ECG en reposo",
-          "descripcion": "Puede ser normal entre episodios. Durante angina: depresion del ST, inversion de T",
-          "valoresReferencia": "Depresion ST > 1mm en 2 derivaciones contiguas indica isquemia",
+          "descripcion": "Punto de partida obligatorio. Puede ser totalmente normal entre episodios (no descarta CCS). Durante angina: depresión del ST u onda T invertida. Útil para detectar ondas Q de IAM previo, BRIHH, HVI o arritmias.",
+          "valoresReferencia": "Depresión ST >= 1 mm en 2 derivaciones contiguas durante dolor indica isquemia (alta especificidad). Elevación transitoria del ST durante dolor en reposo sugiere angina de Prinzmetal.",
           "cuidadosEnfermeria": [
-            "Realizar durante el episodio doloroso si es posible",
-            "Guardar trazado para comparación futura"
+            "Realizar DURANTE el episodio doloroso si es posible (el rendimiento es bajo si se hace en intervalo libre)",
+            "Guardar trazado y compararlo con previos para detectar cambios sutiles"
           ]
         },
         {
-          "nombre": "Prueba de esfuerzo (ergometria)",
-          "descripcion": "Detecta isquemia inducible mediante ejercicio gradual en cinta o bicicleta",
-          "valoresReferencia": "Positiva: depresion ST > 1mm, dolor, hipotensión, arritmias a bajo nivel de esfuerzo",
+          "nombre": "CCTA — Angio-TC coronario (ESC 2024 primera línea no invasiva)",
+          "descripcion": "ESC 2024: PRIMERA línea recomendada en pacientes con probabilidad pre-test BAJA-INTERMEDIA (5-50%) de CAD obstructiva. Visualiza directamente las arterias coronarias, detecta y cuantifica placas (calcificadas y no calcificadas), descarta CAD obstructiva con alto valor predictivo negativo. La CT-FFR derivada permite estimar significancia funcional de estenosis intermedias sin necesidad de cateterismo.",
+          "valoresReferencia": "Estenosis < 50%: no obstructiva (manejar con prevención y tratamiento médico). 50-70%: intermedia (considerar CT-FFR o evaluación funcional). > 70%: significativa (revascularización candidata si síntomas).",
           "cuidadosEnfermeria": [
-            "Verificar contraindicaciones: IAM reciente, IC descompensada, estenosis aortica severa",
-            "Monitorizar ECG y PA continua durante el estudio",
-            "Tener desfibrilador y medicación de emergencia disponibles",
-            "Suspender si PA cae, arritmias severas o dolor intenso",
-            "Paciente en ayunas 3h previas"
+            "Verificar función renal (creatinina basal) y alergias a contraste yodado",
+            "Premedicar con betabloqueante VO la noche previa y 1h antes si FC > 70 (mejor calidad de imagen)",
+            "Nitroglicerina SL inmediatamente antes (vasodilatación coronaria mejora visualización)",
+            "Educar sobre la necesidad de apnea durante adquisición (5-10 segundos)",
+            "Hidratación oral pre y post para reducir nefropatía por contraste"
           ]
         },
         {
-          "nombre": "Coronariografia diagnóstica",
-          "descripcion": "Visualización directa de coronarias; standard de oro para diagnóstico y planificación",
+          "nombre": "Calcio score coronario (CAC scoring) por TC sin contraste",
+          "descripcion": "Cuantifica el calcio coronario por puntuación de Agatston. Útil para estratificación de riesgo en pacientes asintomáticos con factores de riesgo intermedio o para reclasificar pacientes en zona gris. ESC 2024: puede usarse como complemento del modelo pre-test, no como prueba diagnóstica única.",
+          "valoresReferencia": "Score 0: muy bajo riesgo (CAD obstructiva poco probable). 1-99: leve. 100-399: moderado. >= 400: alto riesgo (intensificar prevención y considerar estudio funcional o anatómico).",
           "cuidadosEnfermeria": [
-            "Verificar alergias a contraste",
-            "Preparar acceso radial o femoral",
-            "Monitorizar post-procedimiento",
-            "Hemostasia adecuada del sitio de punción"
+            "TC sin contraste, rápido y sin necesidad de premedicación",
+            "Útil para 'argumentar' a pacientes la necesidad de tratamiento preventivo",
+            "Un score 0 NO descarta totalmente CAD si síntomas atípicos persisten"
+          ]
+        },
+        {
+          "nombre": "Prueba de esfuerzo (ergometría convencional)",
+          "descripcion": "Test funcional clásico. ESC 2024 lo posiciona en segundo plano (utilidad limitada en mujeres, ECG no interpretable, baja capacidad de ejercicio). Preferir test funcional CON IMAGEN si CCTA muestra estenosis intermedia o sospecha de isquemia.",
+          "valoresReferencia": "Positiva: depresión ST >= 1 mm horizontal o descendente a bajo nivel de esfuerzo, dolor anginoso, hipotensión, arritmias ventriculares.",
+          "cuidadosEnfermeria": [
+            "Verificar contraindicaciones: SCA reciente, IC descompensada, estenosis aórtica severa, arritmias inestables, miocarditis aguda",
+            "Monitorización continua de ECG, PA y SpO2",
+            "Tener desfibrilador y medicación de emergencia disponibles (atropina, adrenalina)",
+            "Suspender si caída de PA > 10 mmHg, arritmias severas, dolor intenso o SDST > 2 mm",
+            "Ayuno 3h previas; suspender betabloqueantes/BCC 24-48h previas si está en evaluación diagnóstica (no si es de control)"
+          ]
+        },
+        {
+          "nombre": "Test funcional con imagen (Eco-stress, SPECT, PET, RMN cardíaca con stress)",
+          "descripcion": "Pruebas funcionales con imagen — preferibles a la ergometría convencional cuando se necesita confirmar isquemia. Eco-stress (con ejercicio o dobutamina): operador-dependiente, sin radiación. SPECT con perfusión: cuantifica isquemia y viabilidad. PET: gold standard funcional. RMN cardíaca con stress (adenosina): excelente resolución espacial, sin radiación, integra perfusión + función + viabilidad.",
+          "valoresReferencia": "Eco-stress positivo: alteración de motilidad regional inducible por isquemia. SPECT/PET positivo: defecto de perfusión reversible. RMN: defecto de perfusión + reserva de flujo coronario reducida.",
+          "cuidadosEnfermeria": [
+            "Verificar contraindicaciones específicas (broncoespasmo activo en adenosina, asma severa para dobutamina)",
+            "Ayuno 3h previas; suspender cafeína 24h antes (interfiere con adenosina y dipiridamol)",
+            "Monitorización continua ECG y PA",
+            "Material de reanimación disponible (raras arritmias o broncoespasmo)"
+          ]
+        },
+        {
+          "nombre": "Coronariografía invasiva ± FFR/iFR",
+          "descripcion": "Indicada si: alto pretest (>= 50%), síntomas refractarios a TMO, prueba funcional positiva con alta carga de isquemia, o decisión de revascularización ya considerada. ESC 2024 (Class I): toda estenosis 'intermedia' (40-90% angiográfica) debe evaluarse con FFR (Fractional Flow Reserve) o iFR (instantaneous wave-free ratio) antes de revascularizar — el dato fisiológico, no el anatómico, guía la decisión.",
+          "valoresReferencia": "FFR <= 0.80: estenosis funcionalmente significativa, revascularización indicada si síntomas. iFR <= 0.89: equivalente, no requiere adenosina. SYNTAX score >22: enfermedad compleja, favorece CABG sobre PCI en tronco común o multivaso.",
+          "cuidadosEnfermeria": [
+            "Verificar alergias a contraste y función renal previa",
+            "Acceso RADIAL preferido sobre femoral (menor sangrado y mortalidad)",
+            "Monitorización post-procedimiento: pulso, hematoma en zona de punción, función renal a 24-48h",
+            "Hemostasia con dispositivo radial 2-3h o compresión femoral 6h",
+            "Educar al paciente: hidratación abundante post-procedimiento para eliminar contraste"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Alivio inmediato de episodio anginoso",
-        "Prevenir IAM y muerte",
-        "Mejorar calidad de vida",
-        "Controlar factores de riesgo"
+        "Alivio inmediato de episodios anginosos con nitroglicerina SL y educación de uso",
+        "Reducir frecuencia/intensidad de angina con tratamiento médico óptimo (TMO): betabloqueante y/o BCC como pilar de Paso 1 (modelo escalonado ESC 2024)",
+        "Prevención de IAM y muerte: AAS 75-100 mg/día (clopidogrel si intolerancia o tras stent), estatina de alta intensidad (target LDL < 55 mg/dL en muy alto riesgo, < 70 en alto riesgo), IECA/ARA-II si HTA/IC/DM/ERC/IAM previo",
+        "Considerar SGLT2i o GLP-1 RA con beneficio CV en DM2 + ASCVD (cruza con ADA 2025)",
+        "Considerar icosapent ethyl si TG >= 150 con LDL en target (REDUCE-IT)",
+        "Modificación de factores de riesgo: cesación tabáquica, dieta mediterránea, ejercicio aeróbico 150 min/semana, peso saludable, manejo de estrés, control de PA < 130/80 y de DM",
+        "Revascularización (PCI o CABG) si síntomas refractarios a TMO + estenosis funcionalmente significativa (FFR <= 0.80 o iFR <= 0.89) o anatomía de alto riesgo (tronco común, multivaso con SYNTAX alto)",
+        "Vacunación: influenza anual (clase I en CCS, reduce eventos CV), neumococo, COVID-19, RSV en >= 60 con comorbilidad",
+        "Rehabilitación cardíaca supervisada — clase I ESC 2024 — reduce mortalidad y mejora calidad de vida"
       ],
       "farmacologico": [
         {
-          "nombre": "Nitroglicerina sublingual",
-          "grupo": "Nitrato de acción corta - vasodilatador",
-          "mecanismo": "Libera oxido nitrico que relaja músculo liso vascular, reduce precarga y mejora flujo coronario",
-          "dosis": "0.4 mg SL al inicio del episodio; repetir cada 5 min hasta 3 dosis; si no alivia a los 15 min: llamar emergencias",
+          "nombre": "Nitroglicerina sublingual (rescate)",
+          "grupo": "Nitrato de acción corta — vasodilatador venoso y coronario para alivio de crisis anginosa",
+          "mecanismo": "Libera óxido nítrico que activa guanilato ciclasa en músculo liso vascular: reduce precarga (vasodilatación venosa), reduce postcarga y mejora flujo coronario, equilibrando demanda/aporte miocárdico.",
+          "dosis": "0.4 mg SL (o spray 0.4 mg) al inicio del episodio. Repetir cada 5 min hasta 3 dosis. Si no cede a los 15 min o el dolor es atípico/severo: SOSPECHAR SCA y llamar emergencias.",
           "cuidadosEnfermeria": [
-            "Enseñar técnica correcta de administración SL",
-            "Advertir hipotensión ortostática: paciente sentado o acostado",
-            "Conservar en frasco original oscuro",
-            "Verificar PA antes de administrar (no dar si PA < 90/60)",
-            "Contraindicada con sildenafil en ultimas 24-48h"
+            "Enseñar técnica SL (no tragar, no comer/beber durante 5 min)",
+            "Advertir hipotensión ortostática: paciente sentado o acostado durante la administración",
+            "Conservar en frasco original opaco (la NTG se inactiva con luz y humedad; vida útil ~6 meses tras apertura)",
+            "Verificar PA antes (NO dar si PAS < 90 mmHg)",
+            "CONTRAINDICACIÓN ABSOLUTA: uso de inhibidor PDE5 en últimas 24h (sildenafil/vardenafil) o 48h (tadalafil) — riesgo de hipotensión letal",
+            "Cefalea pulsátil es efecto adverso esperable; suele ceder con uso continuado",
+            "Profiláctica antes de actividad anginogénica conocida"
           ]
         },
         {
-          "nombre": "Atenolol / Metoprolol",
-          "grupo": "Betabloqueante cardioselectivo",
-          "mecanismo": "Bloquea receptores beta1, reduciendo FC y contractilidad, disminuyendo demanda de oxigeno",
-          "dosis": "Atenolol 25-100 mg/dia; Metoprolol 50-200 mg/dia",
+          "nombre": "Nitrato de larga acción (Mononitrato/Dinitrato de isosorbida, parche transdérmico)",
+          "grupo": "Nitrato de acción prolongada — antianginoso de mantenimiento (Paso 2 si BB+BCC insuficientes)",
+          "mecanismo": "Igual mecanismo que NTG SL pero efecto sostenido. Su utilidad se ve limitada por taquifilaxia (tolerancia) si no se respeta intervalo libre.",
+          "dosis": "Mononitrato de isosorbida 30-120 mg/día VO (formulación de liberación prolongada). Dinitrato 10-40 mg c/8-12h. Parche transdérmico 5-15 mg, retirar 8-12h al día para evitar taquifilaxia.",
           "cuidadosEnfermeria": [
-            "Medir FC antes de administrar (no dar si FC < 60)",
-            "No suspender abruptamente (angina de rebote)",
-            "Vigilar broncoespasmo en asmaticos",
-            "Controlar glucemia en diabeticos (enmascara hipoglucemia)"
+            "Respetar el INTERVALO LIBRE DE NITRATO de 8-12h al día para prevenir taquifilaxia (típicamente nocturno)",
+            "Vigilar cefalea y mareos al inicio",
+            "Misma contraindicación con PDE5 que NTG SL",
+            "Educar que el nitrato de larga acción NO sirve para tratar crisis aguda (usar NTG SL)"
           ]
         },
         {
-          "nombre": "Ácido acetilsalicilico",
-          "grupo": "Antiagregante plaquetario",
-          "mecanismo": "Inhibe COX-1 plaquetaria, reduce riesgo de IAM",
-          "dosis": "100 mg/dia en dosis unica",
+          "nombre": "Betabloqueante (Bisoprolol, Metoprolol succinato, Carvedilol, Nebivolol)",
+          "grupo": "Antianginoso de PRIMERA LÍNEA (Paso 1 ESC 2024) — bloquea receptores beta-1 cardíacos",
+          "mecanismo": "Reduce FC, contractilidad y PA, disminuyendo demanda miocárdica de O2. Beneficio adicional pronóstico en pacientes con IAM previo o IC con FEr.",
+          "dosis": "Bisoprolol 2.5-10 mg/día. Metoprolol succinato 50-200 mg/día. Carvedilol 6.25-25 mg c/12h. Nebivolol 5-10 mg/día. ESC 2024 prefiere preparaciones de liberación prolongada y cardioselectivas (bisoprolol, metoprolol succinato) sobre el clásico atenolol.",
+          "cuidadosEnfermeria": [
+            "Medir FC y PA antes de cada dosis; objetivo FC reposo 55-65 lpm",
+            "NO suspender abruptamente (riesgo de angina de rebote, IAM, taquiarritmias)",
+            "Precaución en asma severa (preferir cardioselectivos como bisoprolol) — broncoespasmo posible",
+            "Enmascara síntomas adrenérgicos de hipoglucemia en diabéticos — educar reconocimiento alternativo",
+            "EVITAR en angina de Prinzmetal pura (puede empeorar vasoespasmo por alfa-adrenérgico sin oposición)"
+          ]
+        },
+        {
+          "nombre": "Bloqueante de canales de calcio (BCC): Diltiazem, Verapamilo (no-DHP) o Amlodipina, Felodipina (DHP)",
+          "grupo": "Antianginoso de PRIMERA LÍNEA — alternativa o combinación con betabloqueante (Paso 1-2 ESC 2024)",
+          "mecanismo": "Bloquean canales L de calcio en músculo liso vascular y miocardio. No-DHP (diltiazem, verapamilo): reducen FC y contractilidad — alternativa a BB si contraindicado. DHP (amlodipina): vasodilatación arterial selectiva — se combina con BB.",
+          "dosis": "Diltiazem 120-360 mg/día. Verapamilo 120-480 mg/día. Amlodipina 5-10 mg/día. Felodipina 5-10 mg/día.",
+          "cuidadosEnfermeria": [
+            "BCC son la PRIMERA elección en angina vasoespástica (Prinzmetal) y en pacientes con contraindicación a BB",
+            "NO combinar BB con verapamilo o diltiazem (riesgo de bradicardia severa y bloqueo AV)",
+            "Amlodipina + BB SÍ está permitido y es combinación frecuente en Paso 2",
+            "Vigilar edema maleolar (especialmente amlodipina), constipación (verapamilo), cefalea, rubor"
+          ]
+        },
+        {
+          "nombre": "Ranolazina (antianginoso de segunda línea)",
+          "grupo": "Inhibidor del canal lento tardío de sodio — antianginoso metabólico sin efecto sobre FC ni PA",
+          "mecanismo": "Reduce sobrecarga intracelular de calcio en cardiomiocitos isquémicos al inhibir la corriente tardía de sodio. Mejora la relajación diastólica y la perfusión subendocárdica. NO afecta hemodinámica.",
+          "dosis": "375-500 mg c/12h, escalar a máx 750 mg c/12h. Ajustar en insuficiencia renal moderada-severa.",
+          "cuidadosEnfermeria": [
+            "Útil cuando BB y BCC son insuficientes, no tolerados o contraindicados; ideal si FC ya está baja o PA limítrofe",
+            "Prolonga QT — evitar combinación con otros agentes QT-prolongadores; ECG basal recomendado",
+            "Interacciones: inhibidores CYP3A4 fuertes (claritromicina, ketoconazol) contraindicados",
+            "Efectos adversos frecuentes: mareo, cefalea, náuseas, constipación"
+          ]
+        },
+        {
+          "nombre": "Ivabradina (antianginoso de segunda línea)",
+          "grupo": "Inhibidor selectivo de la corriente If del nodo sinusal — reduce FC en ritmo sinusal sin afectar contractilidad ni PA",
+          "mecanismo": "Bloquea selectivamente el canal If en el nodo sinusal, reduciendo la pendiente de despolarización diastólica. Reduce FC sin afectar inotropismo ni resistencia vascular.",
+          "dosis": "5-7.5 mg c/12h VO (2.5 mg si > 75 años o hepatopatía).",
+          "cuidadosEnfermeria": [
+            "INDICACIÓN: pacientes con FC reposo >= 70 lpm en RITMO SINUSAL con angina sintomática a pesar de BB optimizado, o cuando BB contraindicado",
+            "ESC 2024: especial valor en CCS + IC con FEr < 40% (mejora pronóstico)",
+            "Contraindicado en FA (no funciona porque la frecuencia no es regulada por el nodo sinusal)",
+            "Efecto adverso característico: fosfenos (destellos visuales transitorios al cambio de luz) — generalmente leves, no requieren suspensión"
+          ]
+        },
+        {
+          "nombre": "Ácido acetilsalicílico (AAS) — prevención secundaria",
+          "grupo": "Antiagregante plaquetario — pilar de prevención secundaria CV en CCS",
+          "mecanismo": "Inhibición irreversible de COX-1 plaquetaria, reduce tromboxano A2 y agregación. Reducción ~25% de eventos CV mayores en prevención secundaria.",
+          "dosis": "75-100 mg/día VO (ESC 2024). Clopidogrel 75 mg/día como alternativa en intolerancia a AAS.",
           "cuidadosEnfermeria": [
             "Administrar con alimentos para reducir irritación gástrica",
-            "Vigilar signos de sangrado gastrointestinal",
-            "Contraindicado con alergia o ulcera activa"
+            "Considerar protección gástrica (IBP) si factores de riesgo (edad > 60, dispepsia, anticoagulante o AINE concomitante, historia de úlcera)",
+            "Vigilar signos de sangrado gastrointestinal: melena, hematemesis, anemia",
+            "AAS está contraindicado en alergia confirmada o úlcera activa; clopidogrel como alternativa"
           ]
         },
         {
-          "nombre": "Estatinas (Atorvastatina)",
-          "grupo": "Inhibidor de HMG-CoA reductasa - hipolipemiante",
-          "mecanismo": "Reduce sintesis de colesterol hepático, estabiliza placas ateroscleroticas",
-          "dosis": "Atorvastatina 40-80 mg/noche",
+          "nombre": "Estatina de alta intensidad (Atorvastatina o Rosuvastatina)",
+          "grupo": "Inhibidor de HMG-CoA reductasa — pilar de prevención secundaria CV en CCS",
+          "mecanismo": "Reduce síntesis hepática de colesterol, estabiliza placas ateroscleróticas (efectos pleiotrópicos antiinflamatorios). Reduce eventos CV mayores y mortalidad.",
+          "dosis": "Atorvastatina 40-80 mg/noche o Rosuvastatina 20-40 mg/noche. Target ESC 2024: LDL < 55 mg/dL en muy alto riesgo (CCS con eventos previos), < 70 mg/dL en alto riesgo. Si no se alcanza target con estatina máxima tolerada: agregar ezetimibe y/o iPCSK9 (alirocumab, evolocumab).",
           "cuidadosEnfermeria": [
-            "Administrar por la noche (mayor sintesis de colesterol nocturna)",
-            "Monitorizar transaminasas y CK",
-            "Vigilar mialgias (miopatia, raro rabdomiolisis)",
-            "Interacción con jugo de pomelo"
+            "Atorvastatina y rosuvastatina pueden administrarse en cualquier momento del día (las de vida media corta como simvastatina sí prefieren noche)",
+            "Monitorizar transaminasas basales; controles si síntomas (no de rutina)",
+            "Vigilar mialgia, debilidad muscular, mioglobinuria (rabdomiólisis muy rara con dosis estándar)",
+            "Interacción con jugo de pomelo (atorvastatina más que rosuvastatina); con macrólidos, fibratos, ciclosporina",
+            "Educar: NO suspender por mialgia leve sin consultar (suele resolver con cambio o reducción)"
+          ]
+        },
+        {
+          "nombre": "IECA o ARA-II (Enalapril, Ramipril, Losartán, Valsartán)",
+          "grupo": "Inhibidor del eje renina-angiotensina — prevención secundaria en CCS con comorbilidad",
+          "mecanismo": "Inhibe formación o acción de angiotensina II: vasodilatación, reducción de remodelado cardíaco y renal, nefroprotección.",
+          "dosis": "Ramipril 2.5-10 mg/día. Enalapril 5-20 mg c/12h. Losartán 50-100 mg/día. Valsartán 80-320 mg/día.",
+          "cuidadosEnfermeria": [
+            "ESC 2024 INDICACIÓN en CCS: HTA, IC con FEr, DM, ERC, IAM previo, o disfunción VI asintomática",
+            "IECA: vigilar tos seca (10-20% — cambiar a ARA-II); hiperkalemia; aumento de creatinina (aceptable hasta 30% basal)",
+            "ARA-II: alternativa si intolerancia a IECA por tos; mismo perfil de hiperkalemia y renal",
+            "Contraindicado en embarazo, estenosis bilateral de arteria renal, angioedema previo"
           ]
         }
       ],
       "noFarmacologico": [
-        "Modificación de factores de riesgo (tabaco, dieta, ejercicio)",
-        "Rehabilitación cardíaca supervisada",
-        "Control del estres",
-        "Dieta mediterranea o DASH"
+        "Cesación tabáquica activa (reduce mortalidad CV ~36% a 5 años; combinar consejo + farmacoterapia: vareniclina, bupropión, TRN)",
+        "Rehabilitación cardíaca supervisada — Clase I ESC 2024: programa multidisciplinario de 12 semanas con ejercicio aeróbico + entrenamiento de fuerza + educación + apoyo psicosocial. Reduce mortalidad CV ~25% y hospitalizaciones",
+        "Dieta mediterránea o DASH: rica en frutas, verduras, legumbres, pescado, aceite de oliva; reducir grasas saturadas, sal, azúcares simples y carnes procesadas",
+        "Actividad física aeróbica >= 150 min/semana intensidad moderada o >= 75 min/semana intensa, distribuida en 3-5 días; añadir entrenamiento de fuerza 2x/semana",
+        "Control de peso: IMC objetivo 20-25; pérdida de peso 5-10% si sobrepeso/obesidad reduce eventos CV",
+        "Control de comorbilidades: PA < 130/80 (alineado con AHA 2025); DM con HbA1c individualizada y SGLT2i/GLP-1 RA si ASCVD; LDL < 55 en muy alto riesgo",
+        "Vacunación: influenza anual (Clase I ESC 2024 — reduce eventos CV en CCS); neumococo PCV20/PCV21; SARS-CoV-2 según calendario; RSV >= 60 años; herpes zóster >= 50 años",
+        "Manejo del estrés: técnicas de relajación, mindfulness, tratamiento de ansiedad/depresión (que duplican el riesgo CV)",
+        "Higiene del sueño y cribado de apnea obstructiva del sueño (frecuente en CCS, agrava isquemia nocturna)",
+        "Restricción de alcohol: <= 2 unidades/día en hombres, <= 1 en mujeres",
+        "Adherencia terapéutica: el factor más predictivo de outcomes en CCS — usar pastillero, recordatorios, polipíldoras cuando disponibles"
       ],
       "quirurgico": [
-        "Angioplastia coronaria transluminal percutanea (ACTP) con stent",
-        "Cirugia de bypass coronario (CABG) si enfermedad multivaso o tronco izquierdo"
+        "Indicación de revascularización (ESC 2024): síntomas refractarios a TMO + estenosis funcionalmente significativa (FFR <= 0.80, iFR <= 0.89) O anatomía de alto riesgo (tronco común, multivaso con SYNTAX alto, DM2 con multivaso, disfunción VI con isquemia significativa)",
+        "ICP (Intervención Coronaria Percutánea) con stent farmacoactivo (DES): preferible en estenosis 1-2 vasos sin compromiso de tronco, SYNTAX bajo, comorbilidad alta o preferencia del paciente. Acceso radial preferido. DAPT (AAS + inhibidor P2Y12) por 6-12 meses post-stent",
+        "Cirugía de revascularización coronaria (CABG): preferible en tronco común con SYNTAX > 22, enfermedad de 3 vasos especialmente en DM2 (FREEDOM trial), disfunción VI con CAD multivaso (STICH trial). El uso de injertos arteriales (mamaria interna izquierda a DA, considerar mamaria derecha o radial) mejora la durabilidad",
+        "Decisión PCI vs CABG por Heart Team multidisciplinario (cardiólogo intervencionista + cirujano cardiovascular + clínico) en anatomía compleja o multivaso",
+        "Revascularización híbrida (CABG con mamaria interna izquierda + PCI a otros vasos) considerada en casos seleccionados"
       ]
     },
     "cuidadosEnfermeria": {
@@ -1532,7 +1667,14 @@
       "pat_hta",
       "pat_icc"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ESC 2024 Guidelines for the management of chronic coronary syndromes (Eur Heart J 2024)",
+      "ESC 2019 Guidelines for the diagnosis and management of chronic coronary syndromes (renombramiento estable → CCS, vigente como base para 2024)",
+      "ESC 2024 Cuarta Definición Universal del IM (Thygesen K et al, Eur Heart J 2019;40:237-269) — para diferenciar CCS de SCA",
+      "Ensayos clave: ISCHEMIA (NEJM 2020 — TMO vs revascularización en CCS); FREEDOM (NEJM 2012 — CABG en DM); STICH (NEJM 2016 — CABG en disfunción VI); REDUCE-IT (NEJM 2018 — icosapent ethyl); ANOCA/INOCA assessment"
+    ]
   },
   {
     "id": "pat_fa",
