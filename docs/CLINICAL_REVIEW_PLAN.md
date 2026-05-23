@@ -78,8 +78,8 @@ Iniciado 2026-05-22 tras completar top-10. Orden por impacto clínico + prevalen
 
 | Prioridad | ID | Patología | Guideline objetivo | Estado |
 |---|---|---|---|---|
-| 1 | `pat_eap` | Edema Agudo de Pulmón | ESC 2021/2023 HF + ADVOR + EMPULSE | ✅ `pendiente commit` |
-| 2 | `pat_cetoacidosis` | Cetoacidosis Diabética | ADA 2024 hyperglycemic crises + ISPAD 2022 | pendiente |
+| 1 | `pat_eap` | Edema Agudo de Pulmón | ESC 2021/2023 HF + ADVOR + EMPULSE | ✅ `71e45b6` |
+| 2 | `pat_cetoacidosis` | Cetoacidosis Diabética | ADA 2024 hyperglycemic crises + ISPAD 2022 | ✅ `pendiente commit` |
 | 3 | `pat_tep` | Tromboembolismo Pulmonar | ESC 2019/2024 PE + DOACs | pendiente |
 | 4 | `pat_endocarditis` | Endocarditis Infecciosa | ESC 2023 IE | pendiente |
 | 5 | `pat_neumotorax` | Neumotórax | BTS 2023 + ACEP guideline | pendiente |
