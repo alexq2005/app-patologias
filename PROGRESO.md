@@ -4,6 +4,53 @@
 
 ---
 
+## 2026-05-23 — Sesion 35: Revisión clínica de pat_epilepsia a ILAE 2017 + AES SE + ESETT 2020
+
+### Resumen
+Séptima iteración del segundo lote. La entry `pat_epilepsia` tenía 14 gaps significativos vs ILAE 2017 (clasificación de 3 niveles vigente) + AES 2016 + ESETT Lancet 2020 + RAMPART NEJM 2012: definición vaga sin criterio operacional ILAE 2014 (≥2 crisis o 1 + recurrencia ≥60% o síndrome); clasificación ILAE 2017 incompleta (faltaban los 3 niveles + etiología transversal + síndromes); Status Epilepticus sin distinción t1/t2 (cuándo tratar vs cuándo aparece daño irreversible); algoritmo SE por fases ausente (inicial → primario BZ → secundario AED → refractario anestésicos); LORAZEPAM IV como primera elección (entry tenía solo diazepam); midazolam IM por RAMPART 2012 ausente; ESETT Lancet 2020 (LEV=FOS=VPA en SE) no reflejado — entry tenía solo fenitoína IV; AEDs modernos ausentes (Lacosamida, Brivaracetam, Cenobamate, Perampanel, CBD/Epidiolex); Lamotrigina como AED preferido en embarazo ausente; refractariedad farmacológica ILAE 2010 (falla a 2 AED → cirugía) no definida; cirugía moderna (LITT, RNS, DBS) ausente; video-EEG y EEG continuo para SE no convulsivo ausentes; SUDEP factores y prevención no detallados; PNES (pseudocrisis) no diferenciadas de epilepsia verdadera.
+
+Cross-check: ILAE 2017 Classification papers (Scheffer + Fisher, Epilepsia 2017), ILAE 2014 Operational Definition (Fisher, Epilepsia 2014), ILAE 2015 SE Definition, AES 2016 SE Treatment Guideline (Epilepsy Currents 2016), ESETT Trial (Lancet 2020;395:1217-1224), RAMPART (NEJM 2012). Edición quirúrgica de 6 secciones; el bloque farmacológico casi se duplicó (4→7) y la clasificación + noFarmacológico se triplicaron.
+
+### Cambios en pat_epilepsia (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Agregada definición OPERACIONAL ILAE 2014 vigente: ≥2 crisis no provocadas O 1 + recurrencia ≥60% O síndrome diagnosticado; distinción crisis aislada vs epilepsia |
+| `clasificacion` | De 4 a 10 tipos: ILAE 2017 Niveles 1 (tipo de crisis focal/generalizada/desconocida con subclasificaciones), 2 (tipo de epilepsia), 3 (síndrome); etiología transversal (estructural/genética/infecciosa/metabólica/inmune/desconocida); SE con tiempos t1/t2 por tipo; SE no convulsivo (SENC); SE refractario y super-refractario |
+| `diagnostico.pruebas` (reorganización 3→6) | EEG estándar refinado (sensibilidad 25-50% aislada); +Video-EEG en unidad epilepsia (clasificación + PNES + pre-cirugía); +EEG continuo en UCI (SE no convulsivo); RMN protocolo epilepsia 3T con secuencias específicas; Niveles AED solo con indicación específica (no rutina ILAE); +Evaluación pre-quirúrgica integrada (PET, SISCOM, MEG, sEEG) |
+| `tratamientoMedico.objetivos` | De 3 a 10: monoterapia → 2 AED → derivación a cirugía si refractario (ILAE 2010); algoritmo SE por 4 fases; PNES con video-EEG; embarazo evitar VPA preferir lamotrigina/LEV; SUDEP prevención; restricciones legales |
+| `farmacologico.VPA` | Refinado: CONTRAINDICADO en mujeres edad fértil sin anticoncepción documentada; hepatotoxicidad, hiperamonemia, pancreatitis |
+| `farmacologico.LEV` | Refinado: + carga 60 mg/kg IV en SE (ESETT); efectos conductuales 10-20%; brivaracetam como alternativa |
+| `farmacologico.Lamotrigina` (NUEVA) | Preferida embarazo + epilepsia focal/generalizada; titulación lenta obligatoria (rash 0.1-1% Stevens-Johnson); aclaramiento aumenta embarazo (ajustar dosis); ACO con estrógenos reduce nivel 50% |
+| `farmacologico.Lacosamida` (NUEVA) | 3ª generación, inactivación lenta de canal de sodio; IV disponible para SE como alternativa; pocas interacciones; vigilar PR |
+| `farmacologico.Benzodiazepinas SE` (refundida) | LORAZEPAM IV primera elección (vida media activa más larga que diazepam); MIDAZOLAM IM 10 mg si no acceso venoso (RAMPART NEJM 2012); midazolam IN/bucal alternativas; diazepam rectal pediátrico |
+| `farmacologico.AED 2ª línea SE` (refundida) | ESETT Lancet 2020: LEV = FOS = VPA equivalentes (47% terminación); LEV preferido por seguridad; VPA más rápido (mediana 7 min); FOS con monitorización ECG estricta |
+| `farmacologico.Anestésicos SE refractario` (NUEVA) | Midazolam infusión preferido por hemodinamia; Propofol con riesgo PROPOFOL INFUSION SYNDROME; Pentobarbital con vasopresores; EEG continuo guía destete tras 24-48h cesación ictal |
+| `noFarmacologico` (4→13) | +Adherencia AED como prevención SE (30% de SE por suspensión); +Dieta cetogénica/Atkins modificada en refractario (50% reducción >50% crisis); +CBD/Epidiolex FDA 2018 (Dravet, Lennox-Gastaut, esclerosis tuberosa); +VNS implantable; +RNS (NeuroPace) responsiva; +DBS tálamo anterior; +LITT láser termoablación; +SUDEP prevención detallada; +PNES con video-EEG |
+| `quirurgico` (3→6) | Refractariedad ILAE 2010 como gatillo; +LITT como alternativa mínimamente invasiva; +Neuromodulación VNS/RNS/DBS detalladas; +Electrodos intracraneales sEEG/subdurales como Fase 2 pre-quirúrgica |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 6 entradas: ILAE 2017 (Scheffer + Fisher) + ILAE 2014 op. def + AES SE + ESETT + RAMPART |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **18 frescas** (era 17; +pat_epilepsia), 133 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 7/10 completo
+1. ✅ pat_eap | 2. ✅ pat_cetoacidosis | 3. ✅ pat_tep | 4. ✅ pat_endocarditis | 5. ✅ pat_neumotorax | 6. ✅ pat_meningitis | 7. ✅ pat_epilepsia (sesión 35)
+8. pat_tuberculosis | 9. pat_cirrosis | 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_epilepsia): align with ILAE 2017 + AES SE algorithm + ESETT 2020`
+
+---
+
 ## 2026-05-23 — Sesion 34: Revisión clínica de pat_meningitis a ESCMID + IDSA + Thwaites
 
 ### Resumen
