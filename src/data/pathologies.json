@@ -6532,23 +6532,43 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por agente etiologico",
+      "nombre": "Clasificación por etiología + agente típico por edad y contexto",
       "tipos": [
         {
-          "nombre": "Meningitis bacteriana",
-          "descripcion": "Más grave. Agentes: Neisseria meningitidis, S. pneumoniae, Listeria (ancianos e inmunosuprimidos). Alta mortalidad sin tratamiento rápido"
+          "nombre": "Meningitis bacteriana — neonatos (< 1 mes)",
+          "descripcion": "Agentes: Streptococcus agalactiae (grupo B), E. coli, Listeria monocytogenes. Régimen empírico: ampicilina + cefotaxima ± gentamicina. Mortalidad y secuelas neurológicas elevadas."
         },
         {
-          "nombre": "Meningitis viral (aseptica)",
-          "descripcion": "Causa más frecuente. Enterovirus, herpes. Beninga en inmunocompetentes. Tratamiento de soporte"
+          "nombre": "Meningitis bacteriana — niños (1 mes - 18 años) y adultos jóvenes",
+          "descripcion": "Agentes: Streptococcus pneumoniae (más frecuente), Neisseria meningitidis (brotes), Haemophilus influenzae tipo b (raro post-vacunación). Régimen empírico: ceftriaxona + vancomicina (cobertura para neumococo resistente)."
         },
         {
-          "nombre": "Meningitis por hongos",
-          "descripcion": "Cryptococcus neoformans en VIH. Curso subagudo, alta mortalidad"
+          "nombre": "Meningitis bacteriana — adultos > 50 años o inmunosuprimidos",
+          "descripcion": "Agentes añadidos: Listeria monocytogenes (alto riesgo en > 50 años, embarazadas, inmunosuprimidos, alcoholismo). Régimen empírico: ceftriaxona + vancomicina + AMPICILINA (cobertura Listeria — las cefalosporinas NO la cubren). Mortalidad mayor."
+        },
+        {
+          "nombre": "Meningitis bacteriana — post-neurocirugía o trauma penetrante",
+          "descripcion": "Agentes: Staphylococcus aureus (incluyendo MRSA), Staphylococcus coagulasa-negativo, bacilos gram-negativos (incluida Pseudomonas). Régimen empírico: vancomicina + cefepime/ceftazidima/meropenem (cobertura anti-Pseudomonas)."
+        },
+        {
+          "nombre": "Meningitis viral (aséptica)",
+          "descripcion": "Causa más FRECUENTE de meningitis en conjunto. Agentes: enterovirus (60-80%), HSV-2 (meningitis de Mollaret), VIH agudo, virus de la coriomeningitis linfocitaria, arbovirus (West Nile). Benigna y autolimitada en inmunocompetentes; tratamiento sintomático + descartar bacteriana."
+        },
+        {
+          "nombre": "Encefalitis viral por HSV (Herpes simplex)",
+          "descripcion": "Distinción crítica: meningitis con ALTERACIÓN del nivel de conciencia, convulsiones o déficit focal = meningoencefalitis. HSV-1 (encefalitis temporal): puede ser fatal o dejar secuelas severas. INICIAR ACICLOVIR EMPÍRICO inmediatamente ante sospecha — no esperar PCR HSV. Mortalidad sin tratamiento > 70%; con tratamiento precoz < 20%."
+        },
+        {
+          "nombre": "Meningitis criptocócica (Cryptococcus neoformans/gattii)",
+          "descripcion": "Subaguda/crónica. Predominante en VIH avanzado (CD4 < 100), trasplantados, otras inmunosupresiones. Características LCR: presión apertura MUY elevada (> 25 cmH2O), pleocitosis linfocitaria leve a moderada, antígeno criptocócico (CrAg) positivo, tinta china positiva. Régimen: inducción 2 sem con anfotericina B liposomal + flucitosina; consolidación 8 sem con fluconazol 800 mg/día; mantenimiento 1+ años con fluconazol 200 mg/día. Manejo de PIC elevada con punciones lumbares evacuadoras seriadas."
         },
         {
           "nombre": "Meningitis tuberculosa",
-          "descripcion": "Curso subagudo/crónico. Alta mortalidad si no tratada. Paresia de pares craneales frecuente"
+          "descripcion": "Subaguda/crónica (semanas). Mortalidad 20-40% incluso con tratamiento. Frecuente parálisis de pares craneales (especialmente VI por afectación basal), hidrocefalia. LCR: linfocitos, proteínas MUY elevadas (> 100), glucosa baja, ADA elevada, PCR para M. tuberculosis, cultivo. Régimen: RIPE (rifampicina + isoniazida + pirazinamida + etambutol) 2 meses → RI 7-10 meses + DEXAMETASONA prolongada (0.4 mg/kg/día con descenso gradual en 6-8 semanas — reduce mortalidad y discapacidad)."
+        },
+        {
+          "nombre": "Meningitis con LCR normal aparente — atención",
+          "descripcion": "Hasta 5% de meningitis bacteriana puede presentar LCR poco alterado al inicio (especialmente meningococo de pocas horas, paciente inmunosuprimido). NO descartar diagnóstico — repetir PL a 6-12h si alta sospecha clínica, mantener ATB empíricos."
         }
       ]
     },
@@ -6568,87 +6588,181 @@
       ],
       "pruebas": [
         {
-          "nombre": "Punción lumbar con análisis de LCR",
-          "descripcion": "Estudio definitivo: citologia, bioquimica, cultivo, Gram del LCR. NO DEMORAR por encima de iniciar antibioticos si sospecha bacteriana",
-          "valoresReferencia": "LCR normal: glucosa 50-80, proteinas 15-45, leucocitos < 5. Bacteriana: glucosa baja, proteinas altas, PMN; viral: linfocitos predominantes",
+          "nombre": "Punción lumbar con análisis de LCR (estudio definitivo)",
+          "descripcion": "Estudio DEFINITIVO: presión de apertura, citología, bioquímica, Gram + cultivo, PCR multiplex. La PL NO debe retrasar el inicio de antibióticos si la sospecha bacteriana es alta — obtener hemocultivos primero, iniciar ATB + dexametasona, hacer PL en cuanto sea seguro.",
+          "valoresReferencia": "LCR normal: presión apertura 5-20 cmH2O, glucosa 50-80 mg/dL, ratio glucosa LCR/sangre > 0.6, proteínas 15-45 mg/dL, leucocitos < 5/μL. Patrón BACTERIANA: presión elevada, leucocitos 1000-5000+ con PMN > 80%, proteínas > 100, glucosa < 40 (ratio < 0.4). Patrón VIRAL: leucocitos 5-500 con linfocitos predominantes, proteínas normales o levemente altas, glucosa normal. Patrón TUBERCULOSA/CRIPTOCÓCICA: leucocitos linfocitarios moderados, proteínas muy altas (TB), glucosa baja, ADA elevada (TB) o CrAg positivo (criptococo).",
           "cuidadosEnfermeria": [
-            "Posición correcta en decubito lateral o sentada",
-            "Mantener posición estatica durante la punción",
-            "Material estéril completo",
-            "Preparar tubos numerados en orden",
-            "Vigilar post-PL: cefalea postural, hematoma",
-            "Reposo horizontal 1-4h post-PL"
+            "Posición correcta: decúbito lateral con flexión cervical + rodillas al pecho, o sentado con flexión",
+            "Mantener posición estática durante la punción (paciente colabora si consciente)",
+            "Aguja ATRAUMÁTICA (Sprotte/Whitacre) recomendada — reduce cefalea post-PL ~50% vs Quincke clásica",
+            "Tubos numerados 1-4 en orden: 1=Gram+cultivo, 2=bioquímica (glucemia, proteínas), 3=citología, 4=PCR/extras",
+            "Medir PRESIÓN DE APERTURA con paciente en decúbito lateral relajado — > 25 cmH2O sugiere criptococo o HIC",
+            "Vigilar post-PL: cefalea postural (típicamente 24-48h post), hematoma local",
+            "REPOSO horizontal post-PL: NO previene la cefalea (estudios modernos lo desmintieron); puede levantarse según tolerancia. La aguja atraumática es la mejor prevención"
           ]
         },
         {
-          "nombre": "Hemocultivos (2 pares) urgentes",
-          "descripcion": "Obtener ANTES de antibioticos; positivos en 50-80% de meningitis bacteriana",
+          "nombre": "PCR multiplex en LCR (BioFire FilmArray ME panel)",
+          "descripcion": "Estándar moderno: panel multiplex de PCR detecta 14 patógenos (bacterias, virus, hongos) en LCR en 1-2 horas. Sensibilidad superior al cultivo, especialmente tras inicio de antibióticos (PCR puede ser positiva hasta 9 días post-ATB cuando cultivo ya es negativo).",
+          "valoresReferencia": "Bacterias: E. coli K1, H. influenzae, L. monocytogenes, N. meningitidis, S. agalactiae, S. pneumoniae. Virus: CMV, enterovirus, HSV-1, HSV-2, HHV-6, parechovirus, VZV. Hongos: Cryptococcus neoformans/gattii.",
           "cuidadosEnfermeria": [
-            "Obtener INMEDIATAMENTE al ingreso, antes de antibioticos",
-            "No retrasar antibioticos más de 30 min"
+            "Reservar 1-2 mL de LCR adicional para PCR si disponible en la institución",
+            "Resultado positivo orienta antibiótico DIRIGIDO y permite de-escalation del empírico",
+            "Resultado negativo en PCR NO descarta completamente — combinar con cultivo y clínica",
+            "NO sustituye al cultivo (necesario para antibiograma)"
           ]
         },
         {
-          "nombre": "TC craneal antes de PL",
-          "descripcion": "Descartar HIC y efecto de masa antes de PL (riesgo de herniación)",
+          "nombre": "Hemocultivos (2 pares) — ANTES de antibióticos",
+          "descripcion": "Positivos en 50-80% de meningitis bacteriana. Obtenerlos antes del antibiótico siempre que NO retrase la dosis más de 5-10 min.",
           "cuidadosEnfermeria": [
-            "SOLO si nivel de conciencia reducido, papiledema, deficit focal o inmunosuprimido",
-            "No demorar antibioticos esperando TC en meningitis evidente sin HIC"
+            "Obtener INMEDIATAMENTE al ingreso, 2 sitios diferentes",
+            "NO retrasar antibióticos más de 5-10 min por cultivos — la demora aumenta mortalidad",
+            "Régimen ATB empírico debe iniciar en < 1 hora del ingreso (ESCMID)"
+          ]
+        },
+        {
+          "nombre": "Procalcitonina sérica",
+          "descripcion": "Marcador útil para diferenciar meningitis bacteriana de viral cuando el LCR no es concluyente. > 0.5 ng/mL sugiere bacteriana con buena especificidad.",
+          "valoresReferencia": "< 0.5 ng/mL: improbable bacteriana. 0.5-2: sospecha intermedia. > 2: alta sospecha bacteriana. No reemplaza el LCR pero ayuda en zona gris.",
+          "cuidadosEnfermeria": [
+            "Obtener al ingreso junto con hemograma y PCR",
+            "Útil en seguimiento de respuesta al ATB"
+          ]
+        },
+        {
+          "nombre": "TC craneal antes de PL — criterios IDSA específicos",
+          "descripcion": "Para descartar lesión que contraindique la PL por riesgo de herniación. Indicaciones IDSA antes de PL: inmunosupresión (VIH, post-trasplante, quimioterapia), historia de enfermedad del SNC (masa, ACV, infección focal), nueva crisis convulsiva en última semana, papiledema, alteración del nivel de conciencia (Glasgow < 14), déficit neurológico focal nuevo.",
+          "cuidadosEnfermeria": [
+            "SOLO indicada si cumple criterios IDSA — NO sistemática",
+            "Si TC indicada: obtener hemocultivos, INICIAR ATB + dexametasona, hacer TC, luego PL",
+            "El antibiótico empírico NO se demora esperando TC",
+            "Si TC sin contraindicaciones: PL inmediata"
+          ]
+        },
+        {
+          "nombre": "RMN cerebral",
+          "descripcion": "Más sensible que TC para complicaciones (cerebritis, empiema subdural, infartos por vasculitis, encefalitis HSV en temporales). Indicada en sospecha de encefalitis, complicaciones o evolución desfavorable.",
+          "valoresReferencia": "Encefalitis HSV: hiperseñal T2/FLAIR en lóbulo temporal mesial uni o bilateral (signo característico). Vasculitis: infartos isquémicos en territorio basilar. Hidrocefalia: dilatación ventricular.",
+          "cuidadosEnfermeria": [
+            "RMN urgente con secuencias DWI/FLAIR si sospecha encefalitis HSV — pero NO retrasar aciclovir empírico esperando RMN",
+            "RMN diferida para evaluar complicaciones (cerebritis, empiema, infartos) en pacientes con evolución desfavorable"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Erradicación del agente infeccioso con antibioticos URGENTES",
-        "Reducir inflamación meningea con dexametasona",
-        "Control de complicaciones neurologicas"
+        "Iniciar antibiótico empírico EN LA PRIMERA HORA del ingreso (ESCMID) — cada hora de retraso aumenta mortalidad",
+        "Régimen empírico ESTRATIFICADO por edad/contexto: ceftriaxona + vancomicina como base; AGREGAR ampicilina si > 50 años o inmunosuprimido (Listeria); AGREGAR aciclovir si alteración de conciencia o sospecha de encefalitis HSV",
+        "Administrar dexametasona ANTES o JUNTO con la primera dosis de antibiótico (mayor beneficio en S. pneumoniae — reduce mortalidad y sordera)",
+        "Identificar y manejar HIPERTENSIÓN INTRACRANEAL: cabecera 30°, control de fiebre, evitar maniobras de Valsalva, manitol o salina hipertónica si herniación inminente",
+        "Cribado de SIADH (frecuente en meningitis bacteriana): hiponatremia + osmolaridad sérica baja + orina concentrada → restringir líquidos, NO suero salino",
+        "Distinguir meningoencefalitis (alteración de conciencia, convulsiones, déficit focal) — INICIAR ACICLOVIR EMPÍRICO sin esperar PCR",
+        "Notificar a salud pública en meningitis meningocócica (enfermedad de declaración obligatoria) e iniciar QUIMIOPROFILAXIS a contactos cercanos",
+        "Aislamiento respiratorio por gotas en sospecha de N. meningitidis hasta completar 24h de antibiótico efectivo",
+        "Cribado de complicaciones a largo plazo: audiometría tras alta (sordera 5-30% en neumococo, más alta en niños); evaluación neurológica de secuelas; cribado de fístula LCR si recurrente"
       ],
       "farmacologico": [
         {
-          "nombre": "Ceftriaxona IV",
-          "grupo": "Cefalosporina 3a generación - antibiotico empirico de primera linea",
-          "mecanismo": "Bactericida de amplio espectro, penetra la barrera hematoencefalica (BHE) inflamada",
-          "dosis": "2 g IV c/12h (4 g/dia)",
+          "nombre": "Ceftriaxona IV + Vancomicina (base empírica en adultos)",
+          "grupo": "Cefalosporina 3ª gen + glicopéptido — régimen empírico estándar adulto inmunocompetente 18-50 años",
+          "mecanismo": "Ceftriaxona: bactericida amplio espectro, penetra BHE inflamada, cubre N. meningitidis y S. pneumoniae sensible. Vancomicina: cubre S. pneumoniae con resistencia intermedia o alta a penicilina (cada vez más frecuente — la cobertura con ceftriaxona sola es subóptima).",
+          "dosis": "Ceftriaxona 2 g IV c/12h (4 g/día); o cefotaxima 2 g IV c/4-6h. Vancomicina 15-20 mg/kg IV c/8-12h (ajustar por nivel; target valle 15-20 mg/L o AUC 400-600).",
           "cuidadosEnfermeria": [
-            "ADMINISTRAR EN < 30-60 MIN DEL INGRESO",
-            "Via venosa periférica o central",
-            "Infundir en 30 min",
-            "Primer dosis ANTES de esperar resultado de cultivos pero DESPUES de obtener hemocultivos y LCR si posible"
+            "ADMINISTRAR EN < 1 HORA DEL INGRESO o de la sospecha (ESCMID); cada hora de retraso aumenta mortalidad ~10-15%",
+            "Obtener hemocultivos x 2 ANTES (5-10 min máximo); si TC necesaria antes de PL: ATB primero, TC después, PL inmediatamente",
+            "Vancomicina: infundir en > 60 min (riesgo 'red man syndrome' si más rápida), niveles cada 24-48h, creatinina cada 48h",
+            "Ceftriaxona: NO mezclar en misma vía con calcio (precipitación)",
+            "Duración típica: meningococo 7 días; H. influenzae 7-10 días; neumococo 10-14 días; Listeria 21 días"
           ]
         },
         {
-          "nombre": "Dexametasona IV",
-          "grupo": "Corticoide - antiinflamatorio",
-          "mecanismo": "Reduce la inflamación meningea, disminuye edema y secuelas neurologicas (sordera en neumococo)",
-          "dosis": "0.15 mg/kg c/6h x 4 dias, ANTES o simultaneamente con primera dosis de antibiotico",
+          "nombre": "Ampicilina IV — añadir si > 50 años o inmunosuprimido (cobertura Listeria)",
+          "grupo": "Aminopenicilina — cobertura ESENCIAL para Listeria monocytogenes",
+          "mecanismo": "Listeria monocytogenes NO es cubierta por cefalosporinas. La ampicilina es el ATB de elección; alternativa: trimetoprima-sulfametoxazol (TMP-SMX) si alergia.",
+          "dosis": "Ampicilina 2 g IV c/4h (12 g/día). Alternativa en alergia: TMP-SMX 5 mg/kg (de TMP) IV c/6-8h.",
           "cuidadosEnfermeria": [
-            "Administrar ANTES o junto a la primera dosis de antibiotico (máxima eficacia)",
-            "Monitorizar glucemia (puede elevarla)",
-            "Protección gástrica"
+            "Indicación OBLIGATORIA si: edad > 50 años, embarazada, inmunosuprimido (corticoides crónicos, post-trasplante, VIH, alcoholismo), comorbilidades severas",
+            "Listeria tiene preferencia por troncoencéfalo (rombencefalitis) — síntomas atípicos: ataxia, parálisis de pares craneales, alteración de conciencia",
+            "Duración mínima 21 días (más larga que otros patógenos)"
           ]
         },
         {
-          "nombre": "Aciclovir IV",
-          "grupo": "Antiviral - si sospecha de encefalitis herpetica",
-          "mecanismo": "Inhibe la ADN polimerasa viral del HSV",
-          "dosis": "10 mg/kg IV c/8h x 14-21 dias",
+          "nombre": "Dexametasona IV — adyuvante en meningitis bacteriana sospechada",
+          "grupo": "Corticoide — reduce inflamación meníngea, edema cerebral y secuelas (sordera) — máxima eficacia en neumococo",
+          "mecanismo": "Inhibe respuesta inflamatoria desencadenada por la lisis bacteriana inducida por ATB. Reduce edema cerebral, HIC y secuelas auditivas (especialmente en S. pneumoniae). En H. influenzae pediátrico también reduce sordera.",
+          "dosis": "0.15 mg/kg IV c/6h x 4 días (típicamente 10 mg c/6h en adulto). ADMINISTRAR 10-20 min ANTES o SIMULTÁNEAMENTE con la primera dosis de antibiótico — si se administra > 1h después del ATB, el beneficio se pierde.",
           "cuidadosEnfermeria": [
-            "Infundir en 1h (evitar precipitación renal)",
-            "Hidratación adecuada para prevenir nefrotoxicidad",
-            "Monitorizar función renal"
+            "Timing CRÍTICO: antes o junto con la PRIMERA dosis de ATB (no después)",
+            "Continuar 4 días si se confirma meningitis bacteriana; suspender si LCR no concordante con bacteriana",
+            "Monitorizar glucemia (hiperglucemia frecuente, especialmente en diabéticos)",
+            "Protección gástrica con IBP en uso > 48h",
+            "NO indicada en meningitis viral, fúngica (excepto criptocócica con HIC severa) ni neonatos"
+          ]
+        },
+        {
+          "nombre": "Aciclovir IV — empírico si sospecha de encefalitis HSV",
+          "grupo": "Antiviral — INICIO EMPÍRICO ante alteración de conciencia, convulsiones o déficit focal en sospecha de meningoencefalitis",
+          "mecanismo": "Inhibe ADN polimerasa de HSV-1 (encefalitis temporal) y HSV-2 (meningitis recurrente).",
+          "dosis": "10 mg/kg IV c/8h (peso ideal) durante 14-21 días si HSV confirmado. Iniciar al sospechar — NO esperar PCR.",
+          "cuidadosEnfermeria": [
+            "Indicación de inicio empírico: meningitis con alteración de conciencia, convulsiones de novo, déficit focal, fiebre + cefalea atípica",
+            "Infundir SIEMPRE en ≥ 1h en > 100 mL de fluido (precipita en túbulos renales si bolo rápido o deshidratación)",
+            "HIDRATACIÓN IV adecuada (1-2 L/día además del aciclovir)",
+            "Monitorizar creatinina cada 24-48h; reducir dosis si TFG < 50",
+            "Mortalidad encefalitis HSV sin tratamiento > 70%; con aciclovir precoz < 20%"
+          ]
+        },
+        {
+          "nombre": "Anfotericina B liposomal + Flucitosina + Fluconazol — meningitis criptocócica",
+          "grupo": "Antifúngicos — régimen secuencial inducción + consolidación + mantenimiento",
+          "mecanismo": "Anfotericina liposomal: poros en membrana ergosterol fúngica. Flucitosina: inhibe síntesis de ARN/ADN fúngico (sinergia con anfotericina). Fluconazol: inhibe síntesis de ergosterol (mantenimiento).",
+          "dosis": "INDUCCIÓN (2 semanas): Anfotericina B liposomal 3-4 mg/kg/día IV + Flucitosina 100 mg/kg/día VO en 4 dosis. CONSOLIDACIÓN (8 semanas): Fluconazol 800 mg/día VO. MANTENIMIENTO (≥ 1 año, indefinido si VIH no controlado): Fluconazol 200 mg/día VO.",
+          "cuidadosEnfermeria": [
+            "Manejo de PIC ELEVADA (presión apertura > 25 cmH2O en 75%): PL evacuadoras seriadas diarias hasta normalizar — pilar del tratamiento, reduce mortalidad",
+            "Anfotericina: monitorizar K, Mg, creatinina diariamente; premedicar con paracetamol + difenhidramina + hidrocortisona para reacciones de infusión",
+            "Flucitosina: vigilar mielotoxicidad (hemograma cada 3-5 días); ajustar por TFG",
+            "En VIH: iniciar/optimizar TARV tras 2-4 sem de antifúngico (evitar IRIS)"
+          ]
+        },
+        {
+          "nombre": "RIPE + Dexametasona prolongada — meningitis tuberculosa",
+          "grupo": "Antifimicos + corticoide prolongado — reducción de mortalidad y secuelas",
+          "mecanismo": "Régimen TB estándar adaptado a SNC (Isoniazida, Rifampicina, Pirazinamida penetran bien BHE; Etambutol limitado). Dexametasona prolongada reduce mortalidad y discapacidad (ensayo Thwaites NEJM 2004).",
+          "dosis": "INTENSIVA (2 meses): Rifampicina 10 mg/kg/día + Isoniazida 5 mg/kg/día + Pirazinamida 25 mg/kg/día + Etambutol 15-20 mg/kg/día. MANTENIMIENTO (7-10 meses): Rifampicina + Isoniazida. DEXAMETASONA: 0.4 mg/kg/día IV con descenso gradual durante 6-8 semanas.",
+          "cuidadosEnfermeria": [
+            "Iniciar al sospecha sin esperar confirmación microbiológica (mortalidad alta)",
+            "Vigilar hepatotoxicidad de R/H/Z: transaminasas semanal primer mes",
+            "Etambutol: vigilar agudeza visual y discriminación cromática (neuritis óptica)",
+            "Suplemento de piridoxina (B6) 25-50 mg/día con isoniazida (previene neuropatía periférica)",
+            "Cribado VIH siempre (coinfección frecuente)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Aislamiento respiratorio (gotas) para Neisseria meningitidis hasta 24h de antibioticos",
-        "Habitación tranquila (fotofobia y fonofobia)",
-        "Control de hipertensión intracraneal",
-        "Quimioprofilaxis a contactos con meningococo (rifampicina 600 mg c/12h x 2 dias)"
+        "Aislamiento respiratorio por GOTAS para Neisseria meningitidis hasta completar 24h de antibiótico efectivo — mascarilla quirúrgica al personal y visitas, habitación individual si posible",
+        "Habitación tranquila y con luz tenue (fotofobia y fonofobia frecuentes)",
+        "Cabecera elevada 30° para optimizar drenaje venoso cerebral y reducir HIC",
+        "Control activo de la HIPERTENSIÓN INTRACRANEAL: cabecera 30°, evitar maniobras de Valsalva, control de fiebre (paracetamol, medios físicos), manitol 0.5-1 g/kg IV o salina hipertónica 3% si herniación inminente, ventilación con normocapnia (no hiperventilar profilácticamente)",
+        "QUIMIOPROFILAXIS a contactos cercanos en meningococo (contactos íntimos en los 7 días previos, contactos del hogar, parejas, compañeros de habitación, personal sanitario en contacto con secreciones sin protección): opciones — ciprofloxacino 500 mg VO DOSIS ÚNICA (preferido en adultos no embarazadas), rifampicina 600 mg c/12h VO x 2 días (4 dosis; alternativa clásica), ceftriaxona 250 mg IM DOSIS ÚNICA (preferido en embarazadas)",
+        "Quimioprofilaxis en H. influenzae tipo b: rifampicina 20 mg/kg/día VO x 4 días si contactos no vacunados < 4 años en hogar",
+        "NOTIFICACIÓN OBLIGATORIA a salud pública: meningitis meningocócica y meningocócica de declaración inmediata",
+        "Vacunación post-exposición o brote: meningococo conjugada cuadrivalente ACWY (Menveo, Menactra) + meningococo B (Bexsero, Trumenba) según serogrupo identificado; Hib pediátrica si no vacunado",
+        "Posición durante PL: lateral o sentada con flexión adecuada; uso de AGUJA ATRAUMÁTICA (Sprotte/Whitacre 22-25G) reduce cefalea post-PL hasta 50% vs aguja Quincke clásica — esta es la mejor prevención (el reposo en cama tras PL NO previene la cefalea, no obligar al paciente a permanecer horizontal)",
+        "Manejo de cefalea post-PL: paracetamol + cafeína (300-500 mg) + hidratación; parche hemático epidural autólogo (10-20 mL) si > 72h o severa",
+        "Control de complicaciones agudas: SIADH con restricción hídrica (NO suero salino — empeora); convulsiones con levetiracetam o fenitoína; HIC con manitol/salina hipertónica",
+        "Audiometría a 4-6 semanas post-alta (cribado de sordera, especialmente neumocócica — secuela en 5-30% de adultos, hasta 50% en pediatría)",
+        "Cribado de fístula LCR (RMN, cisternografía) en meningitis recurrente o post-trauma craneal previo",
+        "En embarazo con meningitis o convivencia con caso: consulta obstétrica + infectología para profilaxis y vacunación seguras"
       ],
       "quirurgico": [
-        "Derivación ventricular externa en hidrocefalia aguda",
-        "Desbridamiento en caso de empiema subdural"
+        "Derivación ventricular externa (DVE) en hidrocefalia aguda — frecuente complicación de meningitis bacteriana, criptocócica y tuberculosa",
+        "Derivación ventrículo-peritoneal definitiva si hidrocefalia persistente tras resolución de la infección",
+        "Drenaje quirúrgico de empiema subdural o absceso cerebral (frecuente en meningitis post-otomastoiditis o sinusitis)",
+        "Cierre de fístula LCR (otorrinolaringológico/neurocirujano) en meningitis recurrente post-fractura de base de cráneo o cirugía",
+        "Monitor de PIC invasivo en encefalitis severa con HIC refractaria; consideración de craniectomía descompresiva en casos extremos",
+        "Reemplazo o retirada de derivación VP infectada (frecuente en meningitis nosocomial post-procedimiento neurquirúrgico)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -6785,7 +6899,15 @@
       "pat_epilepsia",
       "pat_vih"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "ESCMID Guideline: Diagnosis and treatment of acute bacterial meningitis (van de Beek D et al, Clin Microbiol Infect 2016) — vigente con actualizaciones",
+      "IDSA Practice Guidelines for the Management of Bacterial Meningitis (Tunkel AR et al, Clin Infect Dis 2004) + IDSA 2017 Encephalitis Guidelines",
+      "Ensayo Thwaites — Dexametasona en meningitis tuberculosa (NEJM 2004)",
+      "BioFire FilmArray Meningitis/Encephalitis Panel — PCR multiplex CSF (FDA-aprobado, evidencia clínica creciente 2020-2024)",
+      "WHO 2022 Guidelines for the treatment of cryptococcal disease + IDSA cryptococcosis guidelines 2010 (con actualizaciones)"
+    ]
   },
   {
     "id": "pat_parkinson",
