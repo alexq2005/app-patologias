@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-05-23 — Sesion 33: Revisión clínica de pat_neumotorax a BTS 2023 + RCT Brown NEJM 2020
+
+### Resumen
+Quinta iteración del segundo lote. La entry `pat_neumotorax` tenía 11 gaps significativos vs BTS 2023 Pleural Disease and Procedures Statement + RCT Brown (NEJM 2020) + Hallows trial (Lancet 2020): paradigma terapéutico anclado al tamaño radiológico (< 2 cm = observación; > 2 cm = drenaje), cuando BTS 2023 abandonó completamente el corte de 2 cm y ahora la decisión es CLÍNICA por SÍNTOMAS independientemente del tamaño; manejo conservador para asintomático/mínimamente sintomático GRANDE no contemplado (RCT Brown demostró no-inferioridad de observación vs drenaje); ambulatorio con válvula Heimlich + catéter pigtail ausente (Hallows trial: alta el mismo día, reduce hospitalización); aspiración con aguja (NA) sin algoritmo claro; tubos pequeños (8-14 Fr) vs grandes no diferenciados; neumotórax catamenial (mujeres con endometriosis pleurodiafragmática) totalmente ausente como subtipo; O2 al 100% como "tratamiento" (BTS 2023 lo reposicionó como solo soporte por hipoxemia, no terapia primaria de reabsorción); descompresión por aguja con sitio único (ATLS 2018 actualizó a 4-5° EIC LAA como alternativa al clásico 2° EIC LMC); contraindicación permanente del BUCEO post-PSP ausente; restricciones de vuelo sin tiempo específico (1 sem post-resolución); pleurodesis sin diferenciar técnicas (talco vs abrasión).
+
+Cross-check: BTS 2023 Pleural Disease and Procedures Statement, Brown SGA et al (NEJM 2020;382:405-415) RCT PSP, Hallows et al (Lancet 2020;396:39-49) RCT ambulatorio, ATLS 10ª edición. Edición quirúrgica de 5 secciones; el bloque noFarmacológico se cuadriplicó (3→11) y quirúrgico triplicó (2→7).
+
+### Cambios en pat_neumotorax (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Paradigma BTS 2023 explicitado: decisión por SÍNTOMAS no por tamaño; mención RCT Brown |
+| `clasificacion` | De 5 a 8 tipos: agregado catamenial (mujeres reproductivas) + clasificación BTS 2023 por síntomas (asintomático/mínimamente sintomático vs sintomático significativo) + neumotórax a tensión refinado con dos sitios de descompresión (2° EIC LMC clásico + 4-5° EIC LAA ATLS 2018) |
+| `diagnostico.pruebas.Rx` | Refinado: BTS 2023 ya NO usa corte ≥2 cm como umbral; Rx en espiración NO recomendada rutinariamente; cuantificación Collins opcional |
+| `diagnostico.pruebas.POCUS` | Expandido: lung sliding, líneas B, lung point patognomónico; sensibilidad 90% vs 50% Rx supina |
+| `diagnostico.pruebas` (NUEVAS) | +TC torácica (con indicaciones específicas, NO rutina); +Gasometría arterial (solo si SSP/inestable, no rutina en PSP) |
+| `tratamientoMedico.objetivos` | De 3 a 8: descompresión inmediata en tensión, identificación de candidatos a conservador, ambulatorio con Heimlich, prevención de recurrencia (cesación tabáquica reduce 40%), restricciones específicas (vuelo, BUCEO de por vida), manejo psicosocial |
+| `farmacologico.O2` | Reposicionado: BTS 2023 ya NO lo endorsa como "tratamiento" sino como soporte para hipoxemia real; precaución hipercapnia en SSP por EPOC |
+| `farmacologico.Analgesia` | Ampliada: paracetamol+AINE primera línea, opioide si severo, premedicación pre-procedimiento, anestesia local con lidocaína |
+| `noFarmacologico` (3→11) | Manejo CONSERVADOR como primera opción en asintomático (RCT Brown); aspiración con aguja con criterios; AMBULATORIO con catéter pigtail + válvula Heimlich (Hallows); tubos pequeños 8-14 Fr vs grandes 14-24 Fr según contexto; descompresión por aguja con dos sitios alternativos; criterios de retirada del tubo; cesación tabáquica obligatoria; restricciones (vuelo 1 sem, BUCEO contraindicado de por vida) |
+| `quirurgico` (2→7) | VATS con indicaciones específicas (factor profesional, bilateral, hemoneumotórax, fuga >5-7 días, recurrencia, todos SSP); técnicas de pleurodesis diferenciadas (talco insuflación, abrasión mecánica, pleurectomía parcial); pleurodesis química por tubo como alternativa menos invasiva; cirugía CATAMENIAL específica (VATS + extirpación endometriósica + plicatura diafragmática + supresión hormonal); cirugía precoz en SSP |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 4 entradas: BTS 2023 + Brown NEJM 2020 + Hallows Lancet 2020 + ATLS 2018 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **16 frescas** (era 15; +pat_neumotorax), 135 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 5/10 completo
+1. ✅ pat_eap | 2. ✅ pat_cetoacidosis | 3. ✅ pat_tep | 4. ✅ pat_endocarditis | 5. ✅ pat_neumotorax (sesión 33)
+6. pat_meningitis | 7. pat_epilepsia | 8. pat_tuberculosis | 9. pat_cirrosis | 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_neumotorax): align with BTS 2023 + RCT Brown + Hallows ambulatory`
+
+---
+
 ## 2026-05-23 — Sesion 32: Revisión clínica de pat_endocarditis a ESC 2023 IE + Duke-ISCVID 2023 + POET
 
 ### Resumen

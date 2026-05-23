@@ -82,7 +82,7 @@ Iniciado 2026-05-22 tras completar top-10. Orden por impacto clínico + prevalen
 | 2 | `pat_cetoacidosis` | Cetoacidosis Diabética | ADA 2024 hyperglycemic crises + ISPAD 2022 | ✅ `pendiente commit` |
 | 3 | `pat_tep` | Tromboembolismo Pulmonar | ESC 2019 PE + DOACs + DOAC en cáncer | ✅ `pendiente commit` |
 | 4 | `pat_endocarditis` | Endocarditis Infecciosa | ESC 2023 IE + Duke-ISCVID 2023 + POET | ✅ `pendiente commit` |
-| 5 | `pat_neumotorax` | Neumotórax | BTS 2023 + ACEP guideline | pendiente |
+| 5 | `pat_neumotorax` | Neumotórax | BTS 2023 + RCT Brown NEJM 2020 + Hallows Lancet 2020 | ✅ `pendiente commit` |
 | 6 | `pat_meningitis` | Meningitis | IDSA + ESCMID 2024 | pendiente |
 | 7 | `pat_epilepsia` | Epilepsia | ILAE 2017 + AES 2024 status epilepticus | pendiente |
 | 8 | `pat_tuberculosis` | Tuberculosis | WHO 2022 + ATS/CDC/IDSA 2024 | pendiente |
