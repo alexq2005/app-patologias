@@ -4,6 +4,48 @@
 
 ---
 
+## 2026-05-23 — Sesion 34: Revisión clínica de pat_meningitis a ESCMID + IDSA + Thwaites
+
+### Resumen
+Sexta iteración del segundo lote. La entry `pat_meningitis` tenía 12 gaps importantes vs guidelines vigentes: régimen empírico limitado a ceftriaxona aislada (faltaban vancomicina para neumococo resistente y ampicilina para Listeria en > 50a / inmunosupresión); sin PCR multiplex en LCR (BioFire ME panel, FDA-aprobado, detecta 14 patógenos en 1-2h y sigue positivo hasta 9 días tras ATB); sin ratio glucosa LCR/sangre (< 0.4 más específico que glucosa absoluta); procalcitonina ausente; criterios IDSA específicos para TC pre-PL no detallados; régimen TB completo (RIPE + dexametasona prolongada según Thwaites NEJM 2004) ausente; régimen criptocócico completo (anfo liposomal + flucitosina inducción → fluconazol consolidación → mantenimiento) ausente; quimioprofilaxis solo con rifampicina (faltan ciprofloxacino DU preferido y ceftriaxona IM en embarazo); reposo post-PL desactualizado (estudios modernos: NO previene cefalea; aguja atraumática sí); vacuna meningococo B (Bexsero/Trumenba) no diferenciada de la ACWY; encefalitis HSV con aciclovir empírico no explicitada como distinción crítica (meningoencefalitis = alteración conciencia).
+
+Cross-check: ESCMID guideline Diagnosis and treatment of acute bacterial meningitis (Clin Microbiol Infect 2016, vigente con actualizaciones), IDSA Practice Guidelines Bacterial Meningitis (Clin Infect Dis 2004) + IDSA 2017 Encephalitis, Thwaites NEJM 2004 (dexametasona en TB meningitis), WHO 2022 Cryptococcal disease, BioFire ME panel evidencia clínica 2020-2024. Edición quirúrgica de 6 secciones.
+
+### Cambios en pat_meningitis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 4 a 9 tipos: meningitis bacteriana estratificada por edad/contexto (neonatos, 1m-18a, > 50a, post-neuro); +Encefalitis HSV distinguida; criptocócica + tuberculosa expandidas con régimen específico; advertencia "LCR normal no descarta meningitis temprana" |
+| `diagnostico.pruebas.PL/LCR` | Refinada: aguja atraumática (Sprotte) reduce cefalea 50%; reposo horizontal NO previene cefalea (estudios modernos lo desmintieron); medición presión apertura; ratio glucosa LCR/sangre < 0.4; tubos numerados |
+| `diagnostico.pruebas` (NUEVAS) | +PCR multiplex BioFire ME (14 patógenos 1-2h, positivo hasta 9 días post-ATB); +Procalcitonina sérica (> 0.5 sugiere bacteriana); +RMN cerebral (encefalitis HSV en temporales, complicaciones) |
+| `diagnostico.pruebas.TC` | Refinada con criterios IDSA específicos pre-PL (inmunosupresión, ACV/masa previa, convulsión <1 sem, papiledema, Glasgow<14, déficit focal) |
+| `tratamientoMedico.objetivos` | De 3 a 9: < 1h ATB (ESCMID), régimen estratificado por edad/contexto, dexametasona ANTES o JUNTO al ATB, distinguir meningoencefalitis → aciclovir empírico, SIADH con restricción hídrica, audiometría post-alta, notificación a salud pública |
+| `farmacologico` (reorganización 3→6) | Ceftriaxona+Vancomicina (base adulto); +Ampicilina si >50a o inmunosuprimido (Listeria); Dexametasona timing crítico (antes o junto a ATB); Aciclovir empírico si encefalitis HSV; **NUEVO** régimen criptocócico (anfo liposomal+flucitosina 2 sem → fluconazol 800 8 sem → 200 mantenimiento + PL evacuadoras seriadas por PIC); **NUEVO** régimen TB (RIPE 2m → RI 7-10m + Dexametasona 6-8 sem prolongada — Thwaites NEJM 2004) |
+| `noFarmacologico` (4→14) | Quimioprofilaxis expandida (ciprofloxacino DU preferido, rifampicina alternativa, ceftriaxona IM en embarazo); +Profilaxis Hib niños no vacunados; +Vacunación post-exposición (ACWY + B Bexsero/Trumenba); +Manejo HIC (manitol/salina hipertónica); +SIADH con restricción hídrica; +Aguja atraumática Sprotte/Whitacre (mejor prevención cefalea); +Audiometría post-alta; +Cribado de fístula LCR si recurrente |
+| `quirurgico` (2→6) | DVE en hidrocefalia + VP definitiva si persistente + drenaje empiema/absceso + cierre fístula LCR + monitor PIC en encefalitis severa + retirada de derivación VP infectada |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 5 entradas: ESCMID + IDSA + Thwaites TB + BioFire ME + WHO cryptococcal |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **17 frescas** (era 16; +pat_meningitis), 134 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 6/10 completo
+1. ✅ pat_eap | 2. ✅ pat_cetoacidosis | 3. ✅ pat_tep | 4. ✅ pat_endocarditis | 5. ✅ pat_neumotorax | 6. ✅ pat_meningitis (sesión 34)
+7. pat_epilepsia | 8. pat_tuberculosis | 9. pat_cirrosis | 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_meningitis): align with ESCMID + IDSA + Thwaites + BioFire ME panel`
+
+---
+
 ## 2026-05-23 — Sesion 33: Revisión clínica de pat_neumotorax a BTS 2023 + RCT Brown NEJM 2020
 
 ### Resumen
