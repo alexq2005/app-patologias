@@ -10446,7 +10446,7 @@
     "id": "pat_cetoacidosis",
     "nombre": "Cetoacidosis Diabetica",
     "bodySystemId": "endocrino",
-    "definicion": "Emergencia metabólica de la diabetes mellitus, principalmente tipo 1, caracterizada por la triada: hiperglucemia (> 250 mg/dL), acidosis metabólica (pH < 7.30) y cetosis/cetonemia, producida por deficiencia absoluta o relativa de insulina con exceso de hormonas contrarreguladoras.",
+    "definicion": "Emergencia metabólica de la diabetes mellitus, principalmente tipo 1, caracterizada por la triada (ADA 2024 hyperglycemic crises consensus): (1) hiperglucemia >= 200 mg/dL O historia previa de DM (umbral rebajado desde >250 mg/dL en consenso 2024 para incluir CAD euglucémica); (2) cetosis/cetonemia (β-OHB >= 3 mmol/L o cetonuria moderada-fuerte); (3) acidosis metabólica con anion gap elevado (pH < 7.3 O bicarbonato < 18 mEq/L). Producida por deficiencia absoluta o relativa de insulina con exceso de hormonas contrarreguladoras (glucagón, cortisol, catecolaminas, GH). La CAD euglucémica (glucemia < 200 mg/dL con cetosis + acidosis) representa ~10% de los casos y es más frecuente con SGLT2i, ayuno prolongado y embarazo.",
     "epidemiologia": "Incidencia de 4-8 episodios/1000 pacientes con DM1/ano. Mortalidad < 1% con tratamiento adecuado. Principal causa de muerte en niños y jovenes con DM1. Precipitante más frecuente: infección (40%), omision de insulina (25%).",
     "factoresRiesgo": [
       "Omision de insulina o dosis insuficiente",
@@ -10475,19 +10475,31 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por severidad",
+      "nombre": "Clasificación ADA 2024: severidad de CAD + variantes (euglucémica, HHS, overlap)",
       "tipos": [
         {
           "nombre": "CAD leve",
-          "descripcion": "Glucemia > 250, pH 7.25-7.30, bicarbonato 15-18, consciente"
+          "descripcion": "pH arterial 7.25-7.30 O bicarbonato 15-18 mEq/L. Anion gap > 10. Paciente alerta. Puede manejarse en sala general con insulina SC c/1-2h en muchos centros."
         },
         {
           "nombre": "CAD moderada",
-          "descripcion": "pH 7.00-7.24, bicarbonato 10-15, somnolencia"
+          "descripcion": "pH 7.00-7.24 O bicarbonato 10-14 mEq/L. Anion gap > 12. Somnolencia. Manejo hospitalario con monitorización estrecha (sala/intermedios)."
         },
         {
-          "nombre": "CAD grave",
-          "descripcion": "pH < 7.0, bicarbonato < 10, estupor/coma, anion gap > 20"
+          "nombre": "CAD severa",
+          "descripcion": "pH < 7.00 O bicarbonato < 10 mEq/L. Anion gap > 12. Estupor/coma. Requiere UCI con insulina IV en perfusión y monitorización continua."
+        },
+        {
+          "nombre": "CAD euglucémica (~10% de casos)",
+          "descripcion": "Glucemia < 200 mg/dL con cetosis (β-OHB ≥ 3) + acidosis metabólica (pH < 7.3 o HCO3 < 18). MAYOR causa actual: uso de SGLT2i (empagliflozin, dapagliflozin, canagliflozin) en DM1 y DM2. Otros desencadenantes: ayuno prolongado, embarazo, restricción de carbohidratos extrema, cirugía. Diagnóstico desafiante porque la glucemia 'normal' puede retrasar la sospecha — medir cetonemia ante cualquier acidosis inexplicada en paciente con SGLT2i."
+        },
+        {
+          "nombre": "HHS (Estado Hiperglucémico Hiperosmolar)",
+          "descripcion": "ADA 2024: glucemia > 600 mg/dL, osmolaridad sérica efectiva > 320 mOsm/kg, deshidratación severa, cetonas mínimas o ausentes, bicarbonato > 15 mEq/L (bajado desde 18 en ADA 2024 para permitir acidosis leve por insulinopenia), pH > 7.3. Más frecuente en DM2 ancianos. Mortalidad 10-20% (mayor que CAD). Manejo: hidratación más cautelosa + insulina + manejo del precipitante."
+        },
+        {
+          "nombre": "Overlap CAD/HHS (~27% de los casos)",
+          "descripcion": "Hasta 27% de las crisis hiperglucémicas presentan criterios mixtos de CAD + HHS: hiperglucemia severa + cetoacidosis + hiperosmolaridad. ADA 2024 lo reconoce explícitamente como entidad. Manejo combinado con prioridad sobre la complicación dominante."
         }
       ]
     },
@@ -10524,65 +10536,142 @@
           ]
         },
         {
-          "nombre": "Potasio serico",
-          "descripcion": "CRITICO: la insulinoterapia desplaza K+ al interior celular, produciendo hipopotasemia grave",
-          "valoresReferencia": "Normal 3.5-5.0 mEq/L. En CAD puede estar falsamente normal o alto al inicio por acidosis",
+          "nombre": "Potasio sérico",
+          "descripcion": "CRÍTICO: la insulinoterapia desplaza K+ al interior celular, produciendo hipopotasemia grave incluso desde valores 'normales'. El K+ corporal total siempre está deplecionado en CAD aunque el sérico inicial parezca normal o alto (por acidosis y desplazamiento extracelular).",
+          "valoresReferencia": "Normal 3.5-5.0 mEq/L. En CAD: si K < 3.3 SUSPENDER insulina y reponer agresivo; K 3.3-5.0 reponer 20-40 mEq/L en fluidos + iniciar insulina; K > 5.0 iniciar insulina sin reposición inicial.",
           "cuidadosEnfermeria": [
-            "NO iniciar insulina hasta potasio > 3.3 mEq/L",
+            "NO iniciar insulina hasta potasio > 3.3 mEq/L (regla fundamental)",
             "Reposición de potasio ANTES de insulina si K < 3.5",
-            "Monitorizar K+ cada 1-2h en primeras horas"
+            "Monitorizar K+ cada 1-2h en primeras 4-6h, luego cada 4h",
+            "ECG continuo: vigilar onda T picuda (hiperkalemia) u onda U + QT prolongado (hipokalemia)"
+          ]
+        },
+        {
+          "nombre": "Osmolaridad sérica efectiva + sodio corregido",
+          "descripcion": "Útil para diferenciar CAD pura de HHS u overlap. La osmolaridad efectiva > 320 mOsm/kg + glucemia > 600 + cetonas mínimas sugiere HHS. Calcular sodio corregido: Na medido + 1.6 × (glucemia - 100) / 100.",
+          "valoresReferencia": "Osmolaridad sérica efectiva = 2 × Na + glucosa/18. Normal: 280-295 mOsm/kg. > 320: hiperosmolaridad significativa.",
+          "cuidadosEnfermeria": [
+            "Solicitar al ingreso para clasificar el tipo de crisis",
+            "Hiponatremia 'aparente' es típica en CAD por hiperglucemia — calcular Na corregido antes de tomar decisiones"
+          ]
+        },
+        {
+          "nombre": "Búsqueda del factor precipitante",
+          "descripcion": "Mayoría de los CAD tienen un desencadenante identificable. ADA 2024 enfatiza la búsqueda sistemática.",
+          "valoresReferencia": "Precipitantes más frecuentes: infección 40% (especialmente respiratoria, urinaria, pie diabético), omisión de insulina 25%, debut de DM1, IAM/ACV/pancreatitis, alcoholismo/cocaína, glucocorticoides, SGLT2i en DM2 (euglucémica).",
+          "cuidadosEnfermeria": [
+            "Hemograma + PCR + procalcitonina si sospecha infección",
+            "Hemocultivos x 2 + urocultivo + Rx tórax + sedimento urinario",
+            "ECG urgente: descartar IAM silente (especialmente en ancianos diabéticos)",
+            "Troponina si dolor torácico, disnea, hipotensión",
+            "Lipasa si dolor abdominal persistente post-hidratación (pancreatitis aguda)",
+            "Test de embarazo en mujeres en edad fértil",
+            "Anamnesis dirigida: adherencia a insulina, enfermedad reciente, medicaciones, uso de SGLT2i"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Resolución de la cetosis y acidosis",
-        "Normalización de la glucemia de forma gradual",
-        "Identificar y tratar el factor precipitante"
+        "Resolución de la cetoacidosis (objetivo: β-OHB < 0.6 mmol/L, pH > 7.30, HCO3 > 18, anion gap normalizado) — la cetonemia es el marcador primario de resolución, NO la glucemia",
+        "Reducción GRADUAL de la glucemia: 50-75 mg/dL/h (no más rápido — riesgo de edema cerebral, especialmente en niños y jóvenes)",
+        "Reposición hidroelectrolítica controlada con cristaloides; ADA 2024 sugiere cristaloides BALANCEADOS (Ringer lactato, Plasma-Lyte) sobre SF 0.9% por menos acidosis hiperclorémica y mejor outcome renal",
+        "Restauración del potasio corporal total (siempre deplecionado en CAD); NO iniciar insulina si K < 3.3",
+        "Identificar y tratar el factor precipitante (infección, omisión de insulina, IAM, SGLT2i, etc.)",
+        "Prevenir hipoglucemia: agregar glucosa al 5-10% cuando glucemia < 200 mg/dL, manteniendo insulina IV hasta resolver cetosis",
+        "Prevenir edema cerebral (especialmente en pediatría): evitar reducción rápida de osmolaridad, no exceder reposición de fluidos calculada",
+        "Profilaxis de TVP con HBPM (enoxaparina 40 mg SC) en hospitalización prolongada o factores de riesgo adicionales",
+        "Transición correcta a insulina SC ANTES de suspender la perfusión IV: superponer 1-2h con basal SC para evitar rebote cetoacidótico (error frecuente)"
       ],
       "farmacologico": [
         {
-          "nombre": "Insulina regular IV en perfusión",
-          "grupo": "Insulina de acción rápida IV - tratamiento específico de CAD",
-          "mecanismo": "Suprime la lipolisis y la cetogenesis; permite la captación de glucosa; revierte la acidosis",
-          "dosis": "0.1 UI/kg/h en perfusión continua IV (no se recomienda bolo inicial segun guias actuales)",
+          "nombre": "Insulina regular IV en perfusión continua (CAD moderada-severa)",
+          "grupo": "Insulina de acción rápida IV — tratamiento de elección en CAD moderada y severa, alternativa SC en CAD leve",
+          "mecanismo": "Suprime la lipólisis y la cetogénesis; permite la captación de glucosa; revierte la acidosis. El objetivo terapéutico primario es la resolución de la cetoacidosis (no normalizar glucemia rápido).",
+          "dosis": "0.1 UI/kg/h en perfusión continua IV. NO bolo inicial (sin beneficio adicional según ensayos modernos). Si glucemia no baja al menos 10% en la primera hora, doblar tasa de infusión. Al alcanzar glucemia 200-250: bajar a 0.02-0.05 UI/kg/h Y agregar glucosa 5-10% para mantener glucemia 150-200 hasta resolución de cetosis.",
           "cuidadosEnfermeria": [
-            "Preparar: 50 UI insulina regular en 500 mL SF = 0.1 UI/mL",
-            "Glucemia HORARIA: reducir glucemia no más de 50-75 mg/dL/h",
-            "NO bajar glucemia a < 200 hasta que cetonemia < 0.6",
-            "Al llegar a 200: agregar glucosa 5% + reducir infusion de insulina",
-            "Riesgo de hipopotasemia: potasio cada 1-2h"
+            "Preparar: 50 UI insulina regular en 500 mL SF = 0.1 UI/mL (verificar dilución y bomba 2 enfermeros)",
+            "Glucemia HORARIA con tira reactiva mientras dure la infusión",
+            "Reducir glucemia no más de 50-75 mg/dL/h (objetivo, no máximo) — descenso más rápido aumenta riesgo de edema cerebral",
+            "NO suspender insulina al normalizar glucemia: la cetonemia es lo que define el fin del tratamiento (< 0.6 mmol/L, pH > 7.30)",
+            "Riesgo de hipopotasemia inducida por insulina: K cada 1-2h en primeras 4-6h",
+            "Transición a SC: superponer 1-2h con basal SC (glargina/degludec/NPH) ANTES de suspender la IV, evitar 'gap' que precipita rebote cetoacidótico"
           ]
         },
         {
-          "nombre": "Solución salina fisiológica 0.9%",
-          "grupo": "Cristaloide - resucitación hidroelectrolitica",
-          "mecanismo": "Repone el volumen circulante perdido por diuresis osmótica severa",
-          "dosis": "Primeras 2h: 1000 mL/h o segun estado hemodinamico; luego 500 mL/h; reducir a 250 mL/h segun respuesta",
+          "nombre": "Insulina SC c/1-2h (alternativa en CAD leve sin perfusión periférica comprometida)",
+          "grupo": "Insulina análoga ultra-rápida SC — alternativa segura a IV en CAD leve seleccionada",
+          "mecanismo": "Análogos rápidos (aspart, lispro, glulisina) administrados SC c/1-2h logran control comparable a la perfusión IV en CAD leve. Reduce la necesidad de UCI, monitorización invasiva y costos.",
+          "dosis": "Bolo inicial 0.3 UI/kg SC, luego 0.1 UI/kg c/1h o 0.2 UI/kg c/2h. Reducir a 0.05-0.1 UI/kg al alcanzar glucemia < 250 + agregar glucosa.",
           "cuidadosEnfermeria": [
-            "Resucitación vigorosa en primeras 2h",
-            "Monitorizar diuresis cada hora (objetivo > 0.5 mL/kg/h)",
-            "Vigilar sobrecarga de liquidos en cardíaco o renal"
+            "ADA 2024 reconoce esta vía en CAD LEVE en pacientes con perfusión periférica adecuada (NO en shock, hipoperfusión, edema)",
+            "Reduce carga operativa: no requiere UCI, monitorización menos invasiva",
+            "Misma vigilancia de glucemia horaria y K seriado",
+            "Evitar en CAD moderada-severa, gestación, niños < 18 años (preferir IV)"
           ]
         },
         {
-          "nombre": "Cloruro de potasio (KCl)",
-          "grupo": "Electrolito - reposición de potasio",
-          "mecanismo": "Repone el deficit de potasio que se desarrolla con la insulinoterapia",
-          "dosis": "Si K+ 3.3-5.0: agregar 20-40 mEq/L de suero. Si K < 3.3: SUSPENDER INSULINA y reponer 40-60 mEq/h",
+          "nombre": "Cristaloides — Solución balanceada (Ringer lactato, Plasma-Lyte) preferida sobre SF 0.9% (ADA 2024)",
+          "grupo": "Resucitación hidroelectrolítica — pilar inicial del manejo",
+          "mecanismo": "Restaura el volumen circulante perdido por diuresis osmótica severa (déficit típico 6-9 L en adultos). Las soluciones balanceadas evitan la acidosis hiperclorémica iatrogénica que el SF 0.9% produce (Cl 154 mEq/L) y aceleran la resolución de la acidosis (PLUS, BaSICS, SMART trials).",
+          "dosis": "Primera hora: 15-20 mL/kg (o 1000-1500 mL) de cristaloide balanceado. Luego 250-500 mL/h según estado hemodinámico, diuresis y sodio corregido. Si Na corregido alto: cambiar a SF 0.45%. Reducir tasa al alcanzar euvolemia.",
           "cuidadosEnfermeria": [
-            "NUNCA IV DIRECTO (mortal)",
-            "Diluir y administrar por bomba de perfusión",
-            "ECG continuo para detectar hiperpotasemia o hipopotasemia",
-            "Potasio cada 1-2h en primeras horas"
+            "ADA 2024 sugiere preferir Ringer lactato o Plasma-Lyte sobre SF 0.9% — menor acidosis hiperclorémica, menor estancia, posible mejor outcome renal",
+            "Resucitación vigorosa en la PRIMERA HORA (déficit típico 6-9 L)",
+            "Monitorizar diuresis horaria (objetivo > 0.5 mL/kg/h)",
+            "Vigilar sobrecarga en cardíaco/renal — auscultación cada 2h",
+            "En pediatría: cálculo más cauto (10 mL/kg en 30-60 min, luego déficit en 48h) para reducir riesgo de edema cerebral"
+          ]
+        },
+        {
+          "nombre": "Cloruro de potasio (KCl) — reposición CRÍTICA",
+          "grupo": "Electrolito — reposición obligatoria con la insulinoterapia",
+          "mecanismo": "El potasio corporal total siempre está deplecionado en CAD (3-6 mEq/kg) aunque el sérico inicial parezca normal o alto. La insulina desplaza K al intracelular rápidamente → hipokalemia severa si no se repone.",
+          "dosis": "Si K < 3.3: SUSPENDER INSULINA, reponer 20-40 mEq/h IV hasta K > 3.3, luego reiniciar insulina. Si K 3.3-5.2: 20-30 mEq/L de fluido (puede empezar insulina simultáneamente). Si K > 5.2: NO reponer inicialmente, iniciar insulina, reevaluar K cada 1-2h.",
+          "cuidadosEnfermeria": [
+            "NUNCA IV DIRECTO (paro cardíaco por hiperkalemia aguda)",
+            "Diluir SIEMPRE y administrar por bomba de perfusión (max 10-20 mEq/h por vía periférica; 40 mEq/h por vía central con monitorización)",
+            "ECG continuo: ondas T picudas (hiperkalemia), onda U + QT prolongado (hipokalemia)",
+            "Potasio cada 1-2h en primeras 4-6h, luego cada 4h hasta estabilizar"
+          ]
+        },
+        {
+          "nombre": "Bicarbonato de sodio IV — uso EXCEPCIONAL (solo pH < 6.9)",
+          "grupo": "Alcalinizante — uso restringido en acidosis extrema",
+          "mecanismo": "Corrige la acidosis profunda que puede deteriorar contractilidad miocárdica, vasodilatar pero comprometer perfusión cerebral.",
+          "dosis": "Indicación: pH < 6.9 confirmado en gasometría. Dosis: 100 mEq NaHCO3 en 400 mL agua destilada + 20 mEq KCl en 2h, repetir hasta pH > 7.0. NO usar si pH > 6.9.",
+          "cuidadosEnfermeria": [
+            "ADA 2024: NO recomendado de rutina (puede empeorar acidosis intracelular, hipokalemia, edema cerebral por descenso rápido de osmolaridad)",
+            "Usar SOLO con pH < 6.9 documentado",
+            "Si se administra: SIEMPRE acompañar con KCl (agudiza la hipokalemia)",
+            "Monitorizar gasometría cada 1-2h durante la administración"
+          ]
+        },
+        {
+          "nombre": "Manitol o Salina hipertónica 3% — edema cerebral pediátrico (ISPAD 2022)",
+          "grupo": "Agente osmótico — emergencia neurológica en CAD pediátrica",
+          "mecanismo": "Reducción osmótica de la presión intracraneal en edema cerebral inducido por CAD (mortalidad 20-40%, secuelas neurológicas en sobrevivientes).",
+          "dosis": "Manitol 0.5-1 g/kg IV en 20-30 min, repetible a 1h. Alternativa: salina hipertónica 3% 5-10 mL/kg IV en 30 min, repetible a 1h.",
+          "cuidadosEnfermeria": [
+            "INDICACIÓN urgente: deterioro neurológico súbito en pediátrico con CAD (cefalea + bradicardia + HTA = tríada de Cushing); convulsiones; pupilas no reactivas; alteración del patrón respiratorio",
+            "Administrar al SOSPECHAR (NO esperar TC) — el tratamiento precoz mejora outcomes",
+            "Tras dosis de rescate: derivar a neurocirugía + TC cerebral",
+            "Reducir tasa de fluidos y considerar cabecera 30°",
+            "Mortalidad por edema cerebral 20-40%; principal causa de muerte en CAD pediátrica"
           ]
         }
       ],
       "noFarmacologico": [
-        "Ayuno y sonda nasogastrica si vomitos o nivel de conciencia reducido",
-        "Cateter urinario para diuresis horaria",
-        "Tratar factor precipitante (antibioticos si infección)"
+        "Ayuno inicial; SNG si vómitos persistentes, gastroparesia o nivel de conciencia reducido (riesgo de aspiración)",
+        "Catéter urinario permanente para diuresis horaria (objetivo > 0.5 mL/kg/h)",
+        "Doble acceso venoso periférico de grueso calibre + vía exclusiva para insulina IV",
+        "Tratar el factor precipitante: antibiótico empírico si sospecha infección (tras cultivos), reperfusión coronaria urgente si IAM, evaluar suspensión de SGLT2i si CAD euglucémica",
+        "Profilaxis de TVP con HBPM (enoxaparina 40 mg SC/día) en hospitalización prolongada o factores de riesgo (HHS, encamamiento, obesidad, antecedente de TVP)",
+        "Transición a insulina SC al cumplir criterios de resolución (β-OHB < 0.6, pH > 7.30, HCO3 > 18, anion gap normal, paciente capaz de comer): superponer 1-2h con basal SC ANTES de suspender la IV (regla fundamental para evitar rebote)",
+        "Educación pre-alta sobre 'sick day rules': nunca suspender insulina basal en enfermedad intercurrente, aumentar frecuencia de glucemia y cetonemia, hidratación, cuándo consultar urgente",
+        "Identificación de causas evitables: revisar adherencia, problemas con bomba/CGM, acceso a insulina, depresión/distrés diabético, trastornos alimentarios (diabulimia en adolescentes)",
+        "Coordinación con diabetología pre-alta: ajuste del régimen, refuerzo de educación, plan de seguimiento ambulatorio en 1-2 semanas",
+        "En CAD euglucémica por SGLT2i: suspender el SGLT2i, no reintroducir sin reevaluación; educar sobre riesgo en futuros episodios de ayuno/cirugía"
       ],
       "quirurgico": []
     },
@@ -10719,7 +10808,13 @@
       "pat_dm1",
       "pat_dm2"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ADA Hyperglycemic Crises in Adults With Diabetes: A Consensus Report 2024 (Diabetes Care 2024;47:1257-1275)",
+      "ISPAD Clinical Practice Consensus Guidelines 2022 — Diabetic Ketoacidosis and Hyperglycemic Hyperosmolar State",
+      "Ensayos clave: PLUS-AKI, BaSICS, SMART (cristaloides balanceados); BSPED Guideline for Children and Young People with DKA"
+    ]
   },
   {
     "id": "pat_addison",

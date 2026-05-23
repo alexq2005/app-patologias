@@ -4,6 +4,54 @@
 
 ---
 
+## 2026-05-22 — Sesion 30: Revisión clínica de pat_cetoacidosis a ADA 2024 hyperglycemic crises + ISPAD 2022
+
+### Resumen
+Segunda iteración del segundo lote. La entry `pat_cetoacidosis` (CAD) tenía 10 gaps significativos vs ADA 2024 consensus: criterio de glucemia desactualizado ("> 250 mg/dL" cuando ADA 2024 lo simplificó a ≥ 200 o historia DM); CAD euglucémica solo mencionada en factores de riesgo, no como entidad ni como ~10% de casos (mayoría por SGLT2i); HHS y overlap CAD/HHS ausentes (overlap = 27% de los casos); soluciones balanceadas (Ringer/Plasma-Lyte) no contempladas — entry usa solo SF 0.9% (ADA 2024 sugiere preferencia por balanceadas tras PLUS/BaSICS/SMART); insulina SC c/1-2h como alternativa en CAD leve ausente; bicarbonato no aclarado (solo si pH < 6.9); manitol/salina hipertónica para edema cerebral pediátrico no listados; transición IV → SC sin overlap explícito (error frecuente que causa rebote); HBPM profiláctica ausente; búsqueda sistemática de precipitante no detallada como prueba.
+
+Cross-check: ADA Hyperglycemic Crises Consensus 2024 (Diabetes Care 2024;47:1257-1275), ISPAD 2022 DKA/HHS guidelines, BSPED 2021 pediatric DKA, ensayos PLUS-AKI/BaSICS/SMART para cristaloides. Edición quirúrgica de 6 secciones; el bloque farmacológico se duplicó (3→6).
+
+### Cambios en pat_cetoacidosis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Criterios actualizados a ADA 2024: glucemia ≥ 200 (no > 250); 3 pilares (hiperglucemia + cetonas + acidosis); CAD euglucémica explicitada |
+| `clasificacion` | De 3 a 6 tipos: severidad CAD leve/moderada/severa actualizada + agregadas CAD euglucémica + HHS (con bicarbonato < 15) + overlap CAD/HHS (27%) |
+| `diagnostico.pruebas.K` | Refinado con valores umbral por estratos (3.3 / 3.3-5.2 / >5.2) + ECG continuo para alteraciones |
+| `diagnostico.pruebas` (NUEVAS) | +Osmolaridad sérica efectiva + sodio corregido (diferenciar CAD/HHS); +Búsqueda sistemática del precipitante (40% infección, 25% omisión, IAM silente, SGLT2i euglucémica) |
+| `tratamientoMedico.objetivos` | De 3 a 9: cetonemia como marcador primario de resolución, reducción gradual de glucemia (50-75 mg/dL/h), cristaloides balanceados ADA 2024, evitar hipoglucemia con glucosa 5-10% a partir de glucemia < 200, prevenir edema cerebral, HBPM profiláctica, transición SC con overlap obligatorio |
+| `farmacologico.Insulina IV` | Refinada: sin bolo inicial (alineado), doblar tasa si glucemia no baja 10% primera hora, reducir + glucosa al alcanzar 200-250, transición SC con overlap 1-2h |
+| `farmacologico.Insulina SC` (NUEVA) | Análogo rápido SC c/1-2h en CAD LEVE sin hipoperfusión — reduce necesidad de UCI; bolo 0.3 UI/kg + 0.1 UI/kg c/h |
+| `farmacologico.Cristaloides` | Reposicionada como "Balanceada (Ringer/Plasma-Lyte) preferida sobre SF 0.9%" (ADA 2024); cambio a SF 0.45% si Na corregido alto; cálculo pediátrico cauto |
+| `farmacologico.KCl` | Refinada con tabla por estratos (< 3.3 suspender insulina y reponer; 3.3-5.2 reponer + insulina; > 5.2 insulina sin reponer); detalles de administración periférica vs central |
+| `farmacologico.Bicarbonato` (NUEVO) | Indicación restrictiva: SOLO si pH < 6.9; dosis 100 mEq + 20 KCl en 2h; advertencia ADA 2024 sobre NO uso rutinario |
+| `farmacologico.Manitol / Salina hipertónica 3%` (NUEVO) | ISPAD 2022 para edema cerebral pediátrico: manitol 0.5-1 g/kg en 30 min o salina 3% 5-10 mL/kg; iniciar AL SOSPECHAR sin esperar TC; mortalidad 20-40% por edema |
+| `noFarmacologico` (3→10) | Doble acceso + vía exclusiva insulina; sonda vesical; tratar precipitante (incluida suspensión de SGLT2i si euglucémica); HBPM; transición SC con overlap; sick day rules pre-alta; identificación de causas evitables (adherencia, bomba, diabulimia); coordinación diabetología |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 3 entradas: ADA 2024 + ISPAD 2022 + ensayos clave de cristaloides + BSPED |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `quirurgico`: correctamente vacío (CAD no tiene cirugía)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **13 frescas** (era 12; +pat_cetoacidosis), 138 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 2/10 completo
+1. ✅ pat_eap (sesión 29) — commit `71e45b6`
+2. ✅ pat_cetoacidosis (sesión 30) — pendiente commit
+3. pat_tep, 4. pat_endocarditis, 5. pat_neumotorax, 6. pat_meningitis, 7. pat_epilepsia, 8. pat_tuberculosis, 9. pat_cirrosis, 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_cetoacidosis): align with ADA 2024 hyperglycemic crises + ISPAD 2022`
+
+---
+
 ## 2026-05-22 — Sesion 29: Revisión clínica de pat_eap a ESC 2021/2023 HF — inicio del segundo lote
 
 ### Resumen
