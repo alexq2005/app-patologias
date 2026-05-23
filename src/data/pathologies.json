@@ -8978,19 +8978,23 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Estadios de la DM1 (ADA 2022)",
+      "nombre": "Estadios de la DM1 (ADA 2025 + ISPAD 2024)",
       "tipos": [
         {
-          "nombre": "Estadio 1",
-          "descripcion": "Autoinmunidad positiva (anticuerpos) sin hiperglucemia. Normoglucemia"
+          "nombre": "Estadio 1 — Autoinmunidad sin disglucemia",
+          "descripcion": "Al menos 2 autoanticuerpos positivos (anti-GAD65, anti-IA2, anti-insulina, anti-ZnT8) con NORMOGLUCEMIA. Riesgo de progresar a estadio 3 ~44% a 5 años y ~70% a 10 años. ISPAD 2024 recomienda screening en familiares de primer grado y en niños con riesgo genético elevado."
         },
         {
-          "nombre": "Estadio 2",
-          "descripcion": "Autoinmunidad + disglucemia (prediabetes). Asintomático"
+          "nombre": "Estadio 2 — Autoinmunidad + disglucemia (asintomático)",
+          "descripcion": "Autoanticuerpos positivos + prediabetes (HbA1c 5.7-6.4%, glucemia ayunas 100-125, SOG 2h 140-199). Aún asintomático pero con beta-celularidad deteriorada. TEPLIZUMAB (Tzield) está APROBADO FDA 2022 para esta etapa en > 8 años: retrasa la progresión a estadio 3 una mediana de 2 años (una sola infusión IV de 14 días)."
         },
         {
-          "nombre": "Estadio 3",
-          "descripcion": "Inicio clínico con hiperglucemia sintomatica. Diagnóstico clasico"
+          "nombre": "Estadio 3 — DM1 clínica",
+          "descripcion": "Inicio sintomático con poliuria/polidipsia/polifagia, pérdida de peso, hiperglucemia franca y cetosis. Cumple criterios diagnósticos de DM. Es el momento del diagnóstico clásico. Insulina exógena indispensable."
+        },
+        {
+          "nombre": "Estadio 4 — DM1 de larga duración (concepto emergente)",
+          "descripcion": "DM1 establecida con complicaciones micro/macrovasculares o desafíos específicos (hipoglucemia unawareness, brittle diabetes, deterioro renal/retiniano). Foco en tecnología avanzada (CGM + AID) y prevención CV."
         }
       ]
     },
@@ -9008,80 +9012,161 @@
       ],
       "pruebas": [
         {
-          "nombre": "Glucemia en ayunas y HbA1c",
-          "descripcion": "Glucemia >= 126 mg/dL en 2 ocasiones o HbA1c >= 6.5% diagnóstica DM",
-          "valoresReferencia": "Objetivo de tratamiento: HbA1c < 7% (< 6.5% en seleccionados); Glucemia ayunas 80-130 mg/dL; 2h post-prandial < 180 mg/dL",
+          "nombre": "Criterios diagnósticos de diabetes (ADA 2025) — cualquiera confirma",
+          "descripcion": "Cualquiera de los criterios confirma DM si se repite en otra ocasión (excepto crisis hiperglucémica con síntomas inequívocos). En DM1 sospechosa, no demorar el inicio de insulina por esperar confirmación serológica.",
+          "valoresReferencia": "Glucemia ayunas (>= 8h) >= 126 mg/dL; o glucemia a 2h en SOG con 75g >= 200; o HbA1c >= 6.5%; o glucemia al azar >= 200 mg/dL con síntomas clásicos. Targets terapéuticos DM1: HbA1c < 7% (< 6.5% si bajo riesgo de hipoglucemia); glucemia preprandial 80-130; 2h postprandial < 180.",
           "cuidadosEnfermeria": [
-            "Ayuno de 8-12h para glucemia basal",
-            "HbA1c: no requiere ayuno, refleja glucemia media de los 3 meses previos"
+            "Ayuno de 8-12h para glucemia basal o SOG",
+            "HbA1c: cualquier momento; afectada por anemia, hemoglobinopatías y embarazo",
+            "En DM1 sospechosa: NO demorar insulina por esperar autoanticuerpos — el diagnóstico es clínico-bioquímico inicial"
           ]
         },
         {
-          "nombre": "Anticuerpos anti-GAD65, anti-IA2, anti-insulina",
-          "descripcion": "Confirman etiologia autoinmune de la diabetes (DM1 vs DM2)",
+          "nombre": "Monitoreo Continuo de Glucosa (CGM)",
+          "descripcion": "ADA 2025 + ISPAD 2024: CGM es ESTÁNDAR de cuidado en TODOS los DM1 (Class A), independientemente de edad o HbA1c. Sistemas FDA-aprobados: Dexcom G6/G7, FreeStyle Libre 2 Plus / 3 Plus, Eversense E3. La métrica TIR (Time in Range 70-180 mg/dL) complementa o supera a la HbA1c puntual y predice mejor las complicaciones microvasculares.",
+          "valoresReferencia": "Objetivos en CGM (consenso ATTD 2019, refrendados ADA 2025): TIR 70-180 mg/dL > 70% del tiempo; TBR < 70 mg/dL < 4%; TBR < 54 mg/dL < 1%; TAR > 180 < 25%; coeficiente de variación < 36%. En niños, embarazo y anciano frágil los targets se individualizan.",
           "cuidadosEnfermeria": [
-            "Muestra venosa estandar",
-            "Resultado tarda 1-2 semanas; no condiciona el tratamiento inicial"
+            "Educar colocación del sensor, calibración si requerida, interpretación del AGP (Ambulatory Glucose Profile)",
+            "Configurar alarmas de hipoglucemia/hiperglucemia personalizadas",
+            "Revisar descarga de datos cada visita; ajustes basados en patrones, no en valores aislados",
+            "TIR > 70% se correlaciona con HbA1c ~6.7%; cada 10% adicional de TIR reduce ~10% el riesgo de complicaciones microvasculares"
           ]
         },
         {
-          "nombre": "Cetonemia (cuerpos cetonicos en sangre)",
-          "descripcion": "Beta-hidroxibutirato: rápido y cuantitativo. Diagnóstica cetoacidosis",
-          "valoresReferencia": "< 0.6 mmol/L normal; 0.6-1.5 riesgo; > 3 cetoacidosis",
+          "nombre": "Anticuerpos anti-islotes (anti-GAD65, anti-IA2, anti-insulina, anti-ZnT8)",
+          "descripcion": "Confirman etiología autoinmune (DM1 vs DM2 vs MODY). >=2 anticuerpos positivos definen estadios 1-2 ADA. Útil para clasificación etiológica y para identificar candidatos a teplizumab en estadio 2.",
           "cuidadosEnfermeria": [
-            "Medición en lanceta (glucometro que mide cetones)",
-            "En todo diabetico tipo 1 con hiperglucemia > 250 mg/dL o síntomas"
+            "Muestra venosa estándar; resultado en 1-2 semanas",
+            "NO condicionar el inicio de insulina al resultado (la decisión clínica inicial es por presentación)",
+            "Solicitar cascada de cribado en familiares de primer grado si DM1 confirmada (ISPAD 2024)"
+          ]
+        },
+        {
+          "nombre": "Cetonemia capilar (β-hidroxibutirato)",
+          "descripcion": "Medición de cuerpos cetónicos en sangre con lanceta. Más sensible y temprana que cetonuria. ADA: medir en TODO DM1 con glucemia > 250 mg/dL, vómitos, enfermedad intercurrente o síntomas de CAD.",
+          "valoresReferencia": "β-OH-butirato < 0.6 mmol/L normal; 0.6-1.0 riesgo elevado (manejar con insulina + hidratación); 1.0-3.0 hipercetonemia significativa (riesgo CAD inminente, consulta urgente); > 3.0 cetoacidosis diabética establecida.",
+          "cuidadosEnfermeria": [
+            "Glucómetro con cetonemia disponible para el paciente (Glucomen LX, FreeStyle Optium Neo)",
+            "Educar 'sick day rules': aumentar frecuencia de monitoreo + insulina + cetonas en enfermedad intercurrente, vómitos, fiebre o glucemia > 250",
+            "Si cetonas > 1.0 y vómitos persistentes: consultar urgente (riesgo CAD)"
+          ]
+        },
+        {
+          "nombre": "Cribado de comorbilidades autoinmunes",
+          "descripcion": "ADA 2025 e ISPAD 2024: en todo paciente con DM1 cribar enfermedad celíaca (anti-transglutaminasa IgA + IgA total), tiroiditis autoinmune (TSH + anti-TPO) al diagnóstico y periódicamente; considerar Addison si hipoglucemias inexplicadas o requerimientos de insulina decrecientes.",
+          "valoresReferencia": "Anti-transglutaminasa IgA: cribado celíaco. TSH normal 0.4-4.0 mUI/L con anti-TPO. Cortisol basal matinal < 5 μg/dL sugiere insuficiencia suprarrenal; confirmar con test de ACTH.",
+          "cuidadosEnfermeria": [
+            "Cribado al diagnóstico + cada 1-2 años en niños/adolescentes, según riesgo en adultos",
+            "Hipoglucemias frecuentes inexplicadas + hiperpigmentación + hiponatremia → sospechar Addison (urgente)",
+            "Celiaquía no tratada empeora el control glucémico (malabsorción variable)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Control glucemico con HbA1c objetivo < 7%",
-        "Prevenir hipoglucemias severas",
-        "Prevenir complicaciones microvasculares y macrovasculares"
+        "HbA1c < 7% en la mayoría de adultos (< 6.5% si bajo riesgo de hipoglucemia; < 8% si anciano frágil, hipoglucemia unawareness o expectativa de vida limitada)",
+        "Time in Range (TIR 70-180 mg/dL) > 70% con TBR < 4% en CGM — métrica primaria paralela a HbA1c",
+        "CGM como ESTÁNDAR de cuidado en todos los DM1 desde el diagnóstico (ADA 2025 Class A)",
+        "AID (Automated Insulin Delivery / sistema híbrido cerrado) como estándar emergente — iniciar dentro de 21 días del diagnóstico mejora outcomes (+10% TIR a 12 meses)",
+        "Prevenir hipoglucemias clasificadas por nivel: Nivel 1 (54-70 mg/dL, alerta), Nivel 2 (< 54, clínicamente significativa), Nivel 3 (requiere asistencia de tercero, INDEPENDIENTE del valor)",
+        "Cribado activo de hipoglucemia unawareness: si presente, relajar temporalmente targets para restaurar awareness",
+        "Considerar TEPLIZUMAB en estadio 2 (> 8 años con autoinmunidad + disglucemia) para retrasar progresión a estadio 3",
+        "Prevención CV en DM1 adulto: estatina si >= 40 años o factor de riesgo CV; IECA/ARA-II si HTA o albuminuria; aspirina solo en prevención secundaria (NO primaria)",
+        "Vacunación: influenza anual, neumococo (PCV20 o PCV21 desde 50a, antes si comorbilidad), SARS-CoV-2 según calendario, RSV >= 60 años con comorbilidad, herpes zóster >= 50 años, Tdap cada 10 años",
+        "Cribado anual de complicaciones: fondo de ojo, microalbuminuria (UACR), perfil lipídico, pie diabético, comorbilidades autoinmunes",
+        "Prevenir complicaciones microvasculares (retina, riñón, neuropatía) y macrovasculares (riesgo CV en DM1 antes subestimado)"
       ],
       "farmacologico": [
         {
-          "nombre": "Insulina glargina (basal)",
-          "grupo": "Insulina analogica de acción prolongada",
-          "mecanismo": "Cubre las necesidades basales de insulina durante 24h con perfil sin pico, mimificando la secreción basal del páncreas normal",
-          "dosis": "0.2-0.4 UI/kg/dia SC en dosis unica, ajustar segun glucemia basal",
+          "nombre": "Insulina basal análoga (Glargina U100/U300, Degludec, Detemir)",
+          "grupo": "Insulina basal — cubre necesidades interprandiales y nocturnas, 50-60% de la dosis total diaria",
+          "mecanismo": "Glargina U100: 24h, perfil casi sin pico. Glargina U300 (Toujeo): mayor concentración, ~36h, menor variabilidad y menor hipoglucemia nocturna que U100. Degludec (Tresiba): >42h, perfil ultra-estable, máxima flexibilidad horaria. Detemir: 12-18h, requiere 2 dosis/día en mayoría.",
+          "dosis": "Total diaria de insulina DM1 ~0.4-0.6 UI/kg/día (50% basal + 50% prandial en MDI). Basal típica: 10-15 UI inicial, titular cada 3 días según glucemia basal target 80-130. Glargina U100/Detemir: 1-2 dosis/día. Glargina U300 y Degludec: 1 dosis/día.",
           "cuidadosEnfermeria": [
-            "Administrar a la MISMA HORA cada dia (cualquier hora, consistente)",
-            "Rotar zonas de inyección (abdomen, muslo, brazo, gluteo)",
-            "No agitar (solo glargina: no mezclar con otras insulinas)",
-            "Conservar en nevera hasta abrir, luego temperatura ambiente max 28 dias"
+            "Administrar a la MISMA HORA cada día (Degludec permite ±8h de variación sin perder efecto)",
+            "Rotar zonas de inyección: abdomen (más rápida absorción), muslo (más lenta), brazo, glúteo. Evitar zonas con lipohipertrofia (variabilidad de absorción)",
+            "NUNCA mezclar análogos basales con otras insulinas en la misma jeringa",
+            "Conservar en nevera hasta apertura; tras apertura temperatura ambiente máx 28-42 días según fármaco (verificar ficha)",
+            "Glargina U300 y Degludec: menor riesgo de hipoglucemia nocturna que NPH y Glargina U100 — preferir en pacientes con hipoglucemia nocturna recurrente"
           ]
         },
         {
-          "nombre": "Insulina asparta/lispro (prandial)",
-          "grupo": "Insulina analogica de acción ultra-rápida",
-          "mecanismo": "Cubre el pico de glucosa postprandial con inicio rápido (10-15 min) y duración 3-4h",
-          "dosis": "0.1-0.2 UI/kg por comida o 1 UI por 15 g de carbohidratos (conteo de CH)",
+          "nombre": "Insulina prandial ultra-rápida (Aspart, Lispro, Glulisina, Fiasp, Lyumjev)",
+          "grupo": "Insulina prandial — cubre la excursión postprandial, ~50% de la dosis total diaria distribuida en comidas",
+          "mecanismo": "Aspart, Lispro, Glulisina: inicio 10-15 min, pico 30-90 min, duración 3-5h. Fiasp (aspart fórmula faster) y Lyumjev (lispro fórmula faster): inicio aún más rápido (~5 min), permiten inyección en o post-comida, mejor control postprandial.",
+          "dosis": "Bolus pre-comida basado en conteo de carbohidratos (CHO) y factor de sensibilidad (FS). Ratio típico inicial: 1 UI por 10-15 g CHO (individual, puede variar 1/5 a 1/30). Corrección: 1 UI baja glucemia ~30-50 mg/dL (factor individual = 1800/dosis total diaria con análogos).",
           "cuidadosEnfermeria": [
-            "Administrar 10-15 min antes de comer o inmediatamente antes",
-            "Vigilar que el paciente vaya a comer después (hipoglucemia si no come)",
-            "Refrigerar hasta abrir, luego temperatura ambiente max 28 dias"
+            "Aspart/Lispro/Glulisina estándar: administrar 10-15 min ANTES de comer",
+            "Fiasp/Lyumjev (faster): pueden administrarse al inicio o hasta 20 min DESPUÉS de comer — ventaja en niños erráticos o adultos con gastroparesia",
+            "VIGILAR que el paciente coma efectivamente: si no come, riesgo de hipoglucemia",
+            "Smart pens (NovoPen Echo Plus, InPen) registran dosis automáticamente — útil para detectar olvidos o dosis duplicadas",
+            "Bolus calculators en apps móviles facilitan cálculo de ratios CHO/I + factor de sensibilidad"
           ]
         },
         {
-          "nombre": "Glucagon inyectable (hipoglucemia grave)",
-          "grupo": "Antagonista de insulina - emergencia hipoglucemia",
-          "mecanismo": "Estimula la glucogenolisis hepática, elevando la glucemia en paciente inconsciente",
-          "dosis": "1 mg IM o SC (adultos); 0.5 mg en < 25 kg",
+          "nombre": "Bomba de insulina + Sistema Híbrido Cerrado (AID — Automated Insulin Delivery)",
+          "grupo": "Tecnología de administración — estándar emergente en DM1 según ADA 2025 + ISPAD 2024",
+          "mecanismo": "Bomba CSII (Continuous Subcutaneous Insulin Infusion): suministro continuo de insulina ultra-rápida (basal programable + bolos manuales). Sistema AID/Híbrido cerrado: bomba conectada a CGM con algoritmo que AJUSTA AUTOMÁTICAMENTE la basal en tiempo real (y, en algunos, parte de los bolos). Sistemas FDA-aprobados: Tandem t:slim X2 con Control-IQ, Medtronic 780G con SmartGuard, Omnipod 5, iLet (Beta Bionics).",
+          "dosis": "Dosis total diaria ~0.5-0.7 UI/kg/día (similar a MDI). Distribución típica: 40-50% basal + 50-60% bolos. Sistemas AID ajustan basal en tiempo real según CGM (cada 5 min).",
           "cuidadosEnfermeria": [
-            "Kit de glucagon disponible en casa del paciente y colegio/trabajo",
-            "Enseñar a familiares la técnica de administración",
-            "Girar al paciente lateral post-administración (riesgo de vomito)"
+            "ADA 2025 + ISPAD 2024: AID es el estándar emergente — iniciar dentro de 21 días del diagnóstico mejora outcomes a 12 meses",
+            "Educar al paciente y familia: cambio de set de infusión cada 2-3 días, inserción correcta, troubleshooting de oclusión y desconexión",
+            "Hipoglucemia se reduce significativamente con AID, pero NO se elimina — mantener kit de hipoglucemia",
+            "En caso de falla de la bomba: tener insulinas inyectables (basal + prandial) como backup; conocer dosis de transición",
+            "Open-source closed loop (DIY-loop, AndroidAPS, Loop): cada vez más usados; ADA 2025 los reconoce como 'open-source' (preferido sobre 'DIY') — el paciente asume responsabilidad"
+          ]
+        },
+        {
+          "nombre": "Teplizumab (Tzield) — retraso de progresión Stage 2 → Stage 3",
+          "grupo": "Anticuerpo monoclonal anti-CD3 — modificador inmunológico aprobado FDA 2022 para DM1 preclínica",
+          "mecanismo": "Anti-CD3 que altera la función de linfocitos T autorreactivos contra las células beta, preservando la beta-celularidad y retrasando la progresión a hiperglucemia clínica.",
+          "dosis": "14 días consecutivos de infusión IV en hospital de día. Dosis escalonada por superficie corporal. Una sola tanda en la vida (no se repite).",
+          "cuidadosEnfermeria": [
+            "INDICACIÓN: > 8 años con DM1 estadio 2 (autoanticuerpos + disglucemia) — NO en DM1 ya clínica",
+            "Premedicar con antipirético, antihistamínico y antiemético para reducir reacciones por liberación de citoquinas",
+            "Vigilar linfopenia (típica y autolimitada), reactivación de EBV/CMV (descartar pre-tratamiento), reacciones de hipersensibilidad",
+            "Retraso de progresión: mediana ~2 años hacia DM1 clínica (no es cura)",
+            "Coordinar derivación a centro especializado en inmunoterapia"
+          ]
+        },
+        {
+          "nombre": "Glucagón de rescate (Nasal Baqsimi, Dasiglucagón Zegalogue, inyectable clásico)",
+          "grupo": "Antagonista de insulina — primera línea en hipoglucemia severa (Nivel 3) con pérdida de conciencia o imposibilidad de tragar",
+          "mecanismo": "Estimula glucogenólisis hepática. Eleva la glucemia en 5-15 min. Las formulaciones nuevas (nasal y dasiglucagón pen) tienen MUCHA mayor tasa de administración exitosa por terceros sin entrenamiento médico vs el kit clásico (que requiere reconstitución).",
+          "dosis": "Baqsimi nasal: 3 mg dosis única (>= 4 años, sin diferencia por peso). Zegalogue (dasiglucagón) pen: 0.6 mg SC, ready-to-use (>= 6 años). Glucagón clásico inyectable: 1 mg IM/SC adultos; 0.5 mg si < 25 kg (requiere reconstituir polvo + diluyente).",
+          "cuidadosEnfermeria": [
+            "Tener kit en casa, colegio/trabajo, mochila — verificar fecha de caducidad cada 6 meses",
+            "Enseñar a TODOS los convivientes y compañeros (no solo familiares directos) — los kits nuevos son fáciles incluso para personas sin entrenamiento",
+            "Tras administración: girar al paciente en decúbito lateral (riesgo alto de vómito), llamar emergencias",
+            "Glucagón es transitorio: 5-15 min de elevación. Al recuperar conciencia, dar CHO de absorción rápida + lenta",
+            "Nasal y dasiglucagón son MÁS RECOMENDADOS para uso por terceros sin entrenamiento (ISPAD 2024) — preferir si disponibles"
+          ]
+        },
+        {
+          "nombre": "Estatina + IECA/ARA-II (prevención CV en DM1 adulto)",
+          "grupo": "Prevención cardiovascular — ADA 2025 reconoce el riesgo CV en DM1 antes subestimado",
+          "mecanismo": "Estatina reduce LDL y eventos CV. IECA/ARA-II protege riñón si albuminuria o HTA.",
+          "dosis": "Estatina alta intensidad (atorvastatina 40-80 o rosuvastatina 20-40) si >= 40 años o factor de riesgo CV; LDL < 70 con riesgo, < 55 muy alto riesgo. IECA/ARA-II si HTA o UACR > 30 mg/g.",
+          "cuidadosEnfermeria": [
+            "ADA 2025: aspirina NO recomendada en prevención primaria en DM1 (igual que DM2); SÍ en prevención secundaria",
+            "Cribado anual de microalbuminuria y perfil lipídico desde la pubertad o tras 5 años del diagnóstico",
+            "Vigilar mialgias con estatina, función renal y potasio con IECA/ARA-II"
           ]
         }
       ],
       "noFarmacologico": [
-        "Automonitoreo de glucemia capilar (4-8 veces/dia o sensor continuo de glucosa)",
-        "Conteo de carbohidratos para ajuste de insulina prandial",
-        "Actividad fisica adaptada con ajuste de insulina y carbohidratos",
-        "Educación diabetologica estructurada"
+        "CGM como estándar de cuidado en TODOS los DM1 (Class A ADA 2025); automonitoreo capilar reservado para confirmación o ante falla de sensor",
+        "Bomba de insulina y AID (sistema híbrido cerrado) como tecnología preferida; iniciar dentro de 21 días del diagnóstico si disponible mejora outcomes a 12 meses",
+        "Conteo de carbohidratos para ajuste de insulina prandial; ratios CHO/I y factor de sensibilidad individualizados",
+        "Educación diabetológica estructurada (DSME — Diabetes Self-Management Education) al diagnóstico, anualmente y ante eventos vitales relevantes",
+        "Actividad física adaptada con plan de ajuste de insulina pre/durante/post ejercicio y CHO de protección; reducir basal 50-80% durante ejercicio prolongado (en bomba) o reducir bolus previo",
+        "Sick day rules (manejo en enfermedad intercurrente): NUNCA suspender insulina basal, aumentar frecuencia de monitoreo, medir cetonas si glucemia > 250 o síntomas, hidratación abundante, consultar urgente si vómitos persistentes o cetonas > 1.0",
+        "Identificación médica visible (pulsera/colgante/tarjeta) con 'diabético insulinodependiente' y datos de contacto de emergencia",
+        "Vacunación ADA 2025: influenza anual; PCV20 o PCV21 (desde 50 años o antes con comorbilidad); SARS-CoV-2 según calendario; RSV >= 60 años con comorbilidad; herpes zóster >= 50 años; Tdap cada 10 años",
+        "Apoyo psicosocial: la DM1 conlleva carga psicológica significativa — cribar depresión, distrés diabetológico y trastornos alimentarios (diabulimia), especialmente en adolescentes",
+        "Plan de transición pediatría → adultos: período crítico de empeoramiento de control entre los 18-25 años; protocolizar la transición",
+        "Apps de manejo (mySugr, One Drop, etc.) y bolus calculators integrados; las apps de los sistemas AID centralizan datos"
       ],
       "quirurgico": [
         "Trasplante pancreático (curación definitiva, pero riesgo de inmunosupresion crónica)",
@@ -9211,18 +9296,30 @@
       "Lipodistrofia por inyecciones"
     ],
     "criteriosAlarma": [
-      "Glucemia < 54 mg/dL con síntomas o < 70 mg/dL sin síntomas (hipoglucemia)",
-      "Glucemia > 300 mg/dL",
-      "Cetonemia > 1.5 mmol/L",
-      "Vomitos con incapacidad de comer (cetoacidosis inminente)",
-      "Confusion o pérdida de conciencia"
+      "Hipoglucemia Nivel 1 (alerta): glucemia 54-70 mg/dL — tratar con regla 15-15",
+      "Hipoglucemia Nivel 2 (clínicamente significativa): glucemia < 54 mg/dL — riesgo cognitivo, atención inmediata",
+      "Hipoglucemia Nivel 3 (severa): requiere asistencia de tercero o pérdida de conciencia, INDEPENDIENTEMENTE del valor numérico — glucagón de rescate y emergencias",
+      "Hipoglucemia unawareness: pérdida de síntomas adrenérgicos de alarma — relajar targets temporalmente para restaurar awareness",
+      "Glucemia > 250 mg/dL con cetonas — riesgo de CAD inminente",
+      "Cetonemia > 1.0 mmol/L (riesgo CAD), > 3.0 (CAD establecida)",
+      "Vómitos persistentes con incapacidad de tolerar líquidos o medicación VO",
+      "Confusión, alteración del estado mental, taquipnea de Kussmaul o aliento cetósico",
+      "Imposibilidad de mantener insulinoterapia por causa logística (extravío de bomba, falla de sets, falta de insulina) — buscar atención sin demora"
     ],
     "emergencyLevel": "leve",
     "relatedPathologyIds": [
       "pat_cetoacidosis",
       "pat_dm2"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ADA Standards of Care in Diabetes—2025 (Diabetes Care 2025;48 Suppl 1) — secciones 6 (Glycemic Targets), 7 (Diabetes Technology), 9 (Pharmacologic Approaches)",
+      "ISPAD Clinical Practice Consensus Guidelines 2024 — Screening, Staging, and Strategies to Preserve Beta-Cell Function; Diabetes Technologies: Insulin Delivery",
+      "ISPAD 2022 — Assessment and Management of Hypoglycemia in Children and Adolescents with Diabetes",
+      "Teplizumab (Tzield) FDA approval 2022 para retraso de progresión Stage 2 → Stage 3 DM1",
+      "Targets CGM consenso ATTD 2019 (Time in Range)"
+    ]
   },
   {
     "id": "pat_dm2",

@@ -4,6 +4,52 @@
 
 ---
 
+## 2026-05-22 — Sesion 27: Revisión clínica de pat_dm1 a ADA 2025 + ISPAD 2024
+
+### Resumen
+Novena iteración. La entry `pat_dm1` tenía gaps importantes vs guidelines vigentes en el campo de tecnología y nuevas terapias (área de evolución acelerada): CGM como "alternativa" cuando ADA 2025 lo posiciona como ESTÁNDAR Class A en TODOS los DM1; sin métrica TIR (Time in Range) que ahora es paralela a HbA1c; ausencia total de bombas de insulina y sistemas híbridos cerrados (AID), siendo el estándar emergente desde 2023 con sistemas FDA-aprobados (Tandem Control-IQ, Medtronic 780G, Omnipod 5, iLet); ausencia de teplizumab (Tzield, FDA 2022) para retrasar progresión Stage 2 → Stage 3; insulinas limitadas a glargina y aspart/lispro estándar (faltaban degludec, glargina U300/Toujeo, Fiasp, Lyumjev); glucagón solo inyectable (faltan formulaciones nasal Baqsimi y dasiglucagón Zegalogue más fáciles para terceros); sin clasificación de hipoglucemia por niveles ADA 2025 (Nivel 1/2/3); sin concepto de hypoglycemia unawareness; cribado de comorbilidades autoinmunes solo mencionado en factores de riesgo (no como acción de cribado activo); ausencia total de prevención CV (estatina, IECA/ARA-II) en DM1 adulto (el riesgo CV en DM1 ahora se reconoce más temprano); sin vacunación específica.
+
+Cross-check: ADA Standards of Care 2025 (Diabetes Care Vol 48 Suppl 1) secciones 6/7/9; ISPAD 2024 (screening + insulin delivery); ISPAD 2022 hypoglycemia management; consenso ATTD 2019 para TIR. Edición quirúrgica de 6 secciones; el bloque farmacológico se duplicó (3→6) con reorganización completa por familias modernas.
+
+### Cambios en pat_dm1 (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 3 a 4 estadios: mantiene 1-3 (autoinmunidad / disglucemia / clínica) + agregado Estadio 4 emergente (DM1 larga duración con complicaciones/tecnología avanzada); estadio 2 menciona teplizumab |
+| `diagnostico.pruebas` (reorganización) | Criterios diagnósticos completos ADA 2025; NUEVA: CGM como prueba/estándar con targets ATTD; NUEVA: cribado de comorbilidades autoinmunes (celíaca, tiroides, Addison); anticuerpos expandidos (+ZnT8); cetonemia con sick day rules |
+| `tratamientoMedico.objetivos` | De 3 a 11: HbA1c estratificada, TIR > 70%, CGM Class A, AID como estándar, niveles de hipoglucemia 1-3, hypoglycemia unawareness, teplizumab en Stage 2, prevención CV con estatina/IECA-ARA, vacunación específica, cribado anual de complicaciones |
+| `farmacologico.Insulina basal` | Expandida de "glargina" a familia completa: Glargina U100/U300, Degludec, Detemir; perfiles farmacocinéticos y elección por hipoglucemia nocturna |
+| `farmacologico.Insulina prandial` | Expandida de "aspart/lispro" a familia ultra-rápida + ultra-ultra-rápida (Fiasp, Lyumjev); smart pens y bolus calculators |
+| `farmacologico.Bomba + AID` (NUEVA) | Sistemas FDA-aprobados (Tandem Control-IQ, Medtronic 780G, Omnipod 5, iLet); open-source closed loop reconocido por ADA 2025; backup con MDI |
+| `farmacologico.Teplizumab` (NUEVA) | Anti-CD3, FDA 2022, en Stage 2 > 8 años; 14 días IV una vez en la vida; vigilar linfopenia y reactivación viral |
+| `farmacologico.Glucagón` | Expandido: nasal Baqsimi 3 mg (>=4a), dasiglucagón Zegalogue 0.6 mg pen (>=6a) preferidos sobre inyectable clásico para terceros sin entrenamiento |
+| `farmacologico.Estatina + IECA/ARA-II` (NUEVA) | Prevención CV en DM1 adulto >= 40 años; aspirina NO en prevención primaria |
+| `noFarmacologico` (expandido) | De 4 a 11: CGM estándar, AID dentro de 21 días del Dx, conteo CHO, sick day rules detalladas, identificación médica, vacunación ADA 2025, apoyo psicosocial (depresión, distrés, diabulimia), transición pediatría→adultos, apps de manejo |
+| `criteriosAlarma` | De 5 a 9: hipoglucemia clasificada por Niveles 1/2/3 ADA + hypoglycemia unawareness + cetonas con thresholds 1.0/3.0 + sospecha CAD + falla logística de insulina |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 5 entradas: ADA 2025 + ISPAD 2024 + ISPAD 2022 hypo + teplizumab FDA + ATTD 2019 TIR |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`: mecanismos vigentes
+- `signosYSintomas`: clínica clásica vigente
+- `anamnesis`, `examenFisico`: vigentes
+- `quirurgico`: trasplante pancreático y de islotes siguen siendo opciones limitadas
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`: vigentes (complicaciones podría incluir hypoglycemia unawareness pero está en criteriosAlarma)
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → 10 frescas (era 9; +pat_dm1), 141 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Delta del review queue
+`docs/CLINICAL_REVIEW_PLAN.md`: pat_dm1 movido a "Sesiones cerradas". Queda 1 patología priorizada: pat_angina (última).
+
+### Commits esperados
+- `content(pat_dm1): align with ADA 2025 + ISPAD 2024 — CGM standard + AID + teplizumab`
+
+---
+
 ## 2026-05-22 — Sesion 26: Revisión clínica de pat_neumonia a ATS/IDSA 2019 CAP + 2016 HAP/VAP + actualizaciones 2023-2024
 
 ### Resumen
