@@ -4,6 +4,54 @@
 
 ---
 
+## 2026-05-23 — Sesion 31: Revisión clínica de pat_tep a ESC 2019 PE + DOAC en cáncer
+
+### Resumen
+Tercera iteración del segundo lote. La entry `pat_tep` (Tromboembolismo Pulmonar) tenía 15 gaps importantes vs ESC 2019 PE Guidelines (vigentes en 2024) + actualizaciones DOAC: clasificación con nomenclatura AHA 2011 antigua ("masivo/submasivo/no masivo") cuando ESC 2019 usa el esquema de 4 categorías de riesgo (alto/intermedio-alto/intermedio-bajo/bajo); ausencia de PESI/sPESI (Class I para estratificación a 30 días); algoritmo diagnóstico sin D-dímero ajustado por edad ni YEARS; HBPM y fondaparinux ausentes (ESC 2019 los prefiere sobre HNF en TEP no alto riesgo); DOACs limitados a 2 (faltan edoxaban y dabigatrán); DOAC en cáncer ausente (Hokusai-VTE Cancer, SELECT-D, Caravaggio cambiaron la práctica); CDT y trombectomía mecánica percutánea (FlowTriever) ausentes; PERT ausente; anticoagulación empírica precoz no mencionada; duración estratificada por etiología no detallada; HFNC ausente; filtro VCI sin criterios restrictivos ESC; tratamiento ambulatorio de TEP bajo riesgo no contemplado; cribado de HTPC post-TEP solo mencionado como complicación.
+
+Cross-check: ESC 2019 PE Guidelines (Eur Heart J 2019;41:543-603), ACCP CHEST 2021 Update, ensayos AMPLIFY/EINSTEIN-PE/Hokusai-VTE/RE-COVER (DOAC en TEP), Hokusai-VTE Cancer/SELECT-D/Caravaggio (DOAC en cáncer), PEITHO (tenecteplase intermedio-alto), HERDOO2 (recurrencia). Edición quirúrgica de 6 secciones; el bloque farmacológico se duplicó (3→6).
+
+### Cambios en pat_tep (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 3 a 5 tipos: actualizada a esquema ESC 2019 (alto / intermedio-alto / intermedio-bajo / bajo) + agregado PESI/sPESI con componentes y umbrales explícitos |
+| `diagnostico.pruebas.D-dímero` | Refinado con cutoff ajustado por edad (edad×10 si >50a — aumenta exclusión de 6% a 30% en >75a) y algoritmo YEARS (3 ítems + cutoffs 1000/500) |
+| `diagnostico.pruebas.Biomarcadores` | Refundidos como troponina hs + BNP/NT-proBNP combinados — orientan subclasificación intermedio-alto vs bajo |
+| `diagnostico.pruebas.Ecocardiograma` | Refinado con signos específicos VD (McConnell, TAPSE<17, signo 60/60, relación VD/VI>1, trombo en tránsito) |
+| `diagnostico.pruebas.PESI/sPESI` (NUEVA) | sPESI explicado con 6 variables binarias y umbrales (0=bajo riesgo, ≥1=no bajo) |
+| `tratamientoMedico.objetivos` | De 4 a 10: anticoagulación empírica precoz, PESI/sPESI obligatorio, trombolisis RESCATE en intermedio-alto (PEITHO), bajo riesgo ambulatorio con criterios Hestia, PERT, duración estratificada, cribado HTPC |
+| `farmacologico.HBPM/Fondaparinux` (NUEVA) | Primera línea ESC 2019 en TEP no alto riesgo; enoxaparina/dalteparina/tinzaparina/fondaparinux con dosis y ajustes renales |
+| `farmacologico.HNF` | Reposicionada como reserva para alto riesgo + trombolisis + ERC severa; antídoto protamina; vigilancia HIT |
+| `farmacologico.Alteplasa` | Refinada: TEP alto riesgo primera línea, RESCATE en intermedio-alto si deterioro (NO sistemática post-PEITHO), tenecteplase como alternativa bolo único |
+| `farmacologico.DOACs` (expandida) | 4 DOACs completos (Apixaban, Rivaroxaban, Edoxaban, Dabigatrán) — single-drug vs lead-in con HBPM; reducción de dosis para extensión post-6 meses; antídotos (idarucizumab, andexanet, PCC); duración estratificada por etiología |
+| `farmacologico.DOAC en cáncer` (NUEVA) | Apixaban/Rivaroxaban/Edoxaban como alternativa o reemplazo de HBPM (Hokusai-VTE Cancer, SELECT-D, Caravaggio); Apixaban con perfil de sangrado más favorable |
+| `farmacologico.Norepinefrina + Dobutamina` (NUEVA) | ESC 2019: norepinefrina primera línea para shock obstructivo (NO dopamina); precaución con bolos grandes que distienden VD; dobutamina si bajo gasto |
+| `noFarmacologico` (3→11) | HFNC; precaución con fluidos en VD dilatado; PERT activado en intermedio-alto/alto; tratamiento ambulatorio con criterios Hestia; profilaxis recurrencia; cribado HTPC a 3-6 meses con disnea persistente; trombofilia solo en casos seleccionados; cribado oncológico básico en TEP no provocado |
+| `quirurgico` (2→6) | CDT con catéteres específicos (EkoSonic, FlowTriever); trombectomía mecánica percutánea; embolectomía quirúrgica de emergencia; FVCI con criterios restrictivos ESC 2019 (recuperables, retirar 1-3 meses); tromboendarterectomía pulmonar para HTPC; ECMO V-A como puente |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 5 entradas: ESC 2019 PE + CHEST 2021 + ensayos clave DOAC + DOAC en cáncer + PEITHO |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **14 frescas** (era 13; +pat_tep), 137 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 3/10 completo
+1. ✅ pat_eap | 2. ✅ pat_cetoacidosis | 3. ✅ pat_tep (sesión 31)
+4. pat_endocarditis | 5. pat_neumotorax | 6. pat_meningitis | 7. pat_epilepsia | 8. pat_tuberculosis | 9. pat_cirrosis | 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_tep): align with ESC 2019 PE + DOAC expansion + cancer-DOAC`
+
+---
+
 ## 2026-05-22 — Sesion 30: Revisión clínica de pat_cetoacidosis a ADA 2024 hyperglycemic crises + ISPAD 2022
 
 ### Resumen
