@@ -72,10 +72,21 @@ Usar exactamente estos strings en el campo `fuentes` para mantener consistencia 
 
 Las 10 patologías de mayor prevalencia + impacto clínico están revisadas y alineadas a guidelines 2022-2025. Más pat_icc (sesión 17 previa) = **11 entries con `revisadoEn` y `fuentes` completos** sobre 151 totales.
 
-**Próximos pasos sugeridos para el contenido clínico**:
-1. Definir un nuevo lote de 10 entries de segunda prioridad (sugerencias: pat_eap, pat_endocarditis, pat_tep, pat_ira, pat_tuberculosis, pat_epilepsia, pat_meningitis, pat_cirrosis, pat_pancreatitis, pat_apendicitis)
-2. Cribado de neumonías especiales (pat_neumotorax, pat_tep)
-3. Patologías neurológicas (pat_parkinson, pat_alzheimer, pat_meningitis)
-4. Emergencias (pat_cetoacidosis, pat_eap, pat_shock_cardiogenico)
+## Segundo lote priorizado (en progreso)
+
+Iniciado 2026-05-22 tras completar top-10. Orden por impacto clínico + prevalencia + criticidad.
+
+| Prioridad | ID | Patología | Guideline objetivo | Estado |
+|---|---|---|---|---|
+| 1 | `pat_eap` | Edema Agudo de Pulmón | ESC 2021/2023 HF + ADVOR + EMPULSE | ✅ `pendiente commit` |
+| 2 | `pat_cetoacidosis` | Cetoacidosis Diabética | ADA 2024 hyperglycemic crises + ISPAD 2022 | pendiente |
+| 3 | `pat_tep` | Tromboembolismo Pulmonar | ESC 2019/2024 PE + DOACs | pendiente |
+| 4 | `pat_endocarditis` | Endocarditis Infecciosa | ESC 2023 IE | pendiente |
+| 5 | `pat_neumotorax` | Neumotórax | BTS 2023 + ACEP guideline | pendiente |
+| 6 | `pat_meningitis` | Meningitis | IDSA + ESCMID 2024 | pendiente |
+| 7 | `pat_epilepsia` | Epilepsia | ILAE 2017 + AES 2024 status epilepticus | pendiente |
+| 8 | `pat_tuberculosis` | Tuberculosis | WHO 2022 + ATS/CDC/IDSA 2024 | pendiente |
+| 9 | `pat_cirrosis` | Cirrosis Hepática | AASLD 2024 + Baveno VII | pendiente |
+| 10 | `pat_pancreatitis` | Pancreatitis Aguda | AGA 2018 + ACG 2024 + revised Atlanta | pendiente |
 
 (actualizar esta tabla en cada sesión clínica nueva)

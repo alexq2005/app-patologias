@@ -4,6 +4,64 @@
 
 ---
 
+## 2026-05-22 — Sesion 29: Revisión clínica de pat_eap a ESC 2021/2023 HF — inicio del segundo lote
+
+### Resumen
+Primera iteración del segundo lote priorizado tras cerrar el top-10. La entry `pat_eap` (Edema Agudo de Pulmón) tenía gaps importantes vs ESC 2021 HF + ESC 2023 Focused Update + ensayos recientes: no contextualizaba EAP como subtipo de Insuficiencia Cardíaca Aguda (ICA); clasificación solo con Killip-Kimball (que es exclusiva para contexto IAM) sin perfiles hemodinámicos Stevenson (warm/cold-dry/wet) que orientan el tratamiento en ICA en general; sin acetazolamida como add-on a furosemida (ADVOR 2022); sin tiazida en resistencia diurética; sin SGLT2i de inicio precoz (EMPULSE — dapagliflozin/empagliflozin < 72h del ingreso); sin nitroprusiato para crisis HTA con EAP; sin norepinefrina para shock cardiogénico asociado (ESC 2021 preferida sobre dopamina por SOAP II); morfina sin clarificar la NO-recomendación ESC 2023; sin POCUS pulmonar (líneas B difusas) como herramienta diagnóstica; SpO2 target sin techo (ESC 2023: 92-96%, no hiperoxigenar); sin HFNC como alternativa a VNI; sin anticoagulación profiláctica; sin mención del inicio precoz de la terapia 4-pilares post-estabilización.
+
+Cross-check: ESC 2021 HF Guidelines (Eur Heart J 2021), ESC 2023 Focused Update (Eur J Heart Fail 2024), ADVOR trial (NEJM 2022), EMPULSE trial (Nat Med 2022), CARRESS-HF, SOAP II, ACVC/ESC Scientific Statement 2022. Edición quirúrgica de 6 secciones; el bloque farmacológico se casi triplicó (3→8).
+
+### Cambios en pat_eap (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Contextualizada como presentación clínica de ICA (entre ADHF, shock cardiogénico, falla derecha aislada); diferencia cardiogénico vs no-cardiogénico (SDRA, neurogénico, post-obstructivo) |
+| `clasificacion` | De 4 a 8 tipos: agregados 4 perfiles hemodinámicos Stevenson (Warm-Dry/Wet, Cold-Dry/Wet) que orientan tratamiento + mantenida Killip-Kimball pero contextualizada como específica de IAM |
+| `diagnostico.pruebas.BNP` | Refinado con valores de corte por edad (NT-proBNP), zona gris, falsos positivos y negativos |
+| `diagnostico.pruebas` (NUEVAS) | +POCUS pulmonar (líneas B difusas — confirma edema más rápido que Rx, repetible para evaluar respuesta al diurético); +ECG urgente en los primeros 10 min (clave para identificar IAM como causa) |
+| `tratamientoMedico.objetivos` | De 4 a 9: SpO2 92-96% (no hiperoxigenar), descongestión rápida con reevaluación 2-6h, SGLT2i precoz (EMPULSE < 72h), HBPM profiláctica, inicio 4-pilares pre-alta, manejo de Cold-Wet con inotrópicos/vasopresores |
+| `farmacologico.Furosemida` | Refinada con estrategia ESC 2023: dosis IV = 1-2.5x dosis oral diaria, reevaluación 2-6h, escalado a doble dosis o infusión continua según respuesta |
+| `farmacologico.Acetazolamida` (NUEVA) | 500 mg IV/día x 3 días como add-on a furosemida (ADVOR 2022) — mejora descongestión y reduce estancia ~1 día |
+| `farmacologico.Tiazida` (NUEVA) | HCTZ o metolazone para resistencia diurética; bloqueo segmentario secuencial; vigilancia estricta de electrolitos |
+| `farmacologico.Nitroprusiato` (NUEVA) | 0.3-10 mcg/kg/min IV en crisis HTA con EAP o regurgitación mitral aguda; vigilar toxicidad cianide |
+| `farmacologico.Norepinefrina` (NUEVA) | 0.05-1 mcg/kg/min IV en shock cardiogénico asociado (Cold-Wet); preferida sobre dopamina (SOAP II); acceso central obligatorio |
+| `farmacologico.SGLT2i` (NUEVA) | Dapa/Empa 10 mg VO/día iniciados < 72h del ingreso (EMPULSE) — continuar al alta como parte del 4-pilares |
+| `farmacologico.Morfina` | Refundida con la NO-recomendación rutinaria de ESC 2023; alternativas (VNI calma al mejorar disnea) |
+| `noFarmacologico` (4→13) | Posición + O2 titulado SpO2 92-96% + VNI con presiones específicas + HFNC + intubación con criterios + accesos + sonda vesical + reperfusión coronaria urgente + soporte mecánico (BCIA/Impella/ECMO) + ultrafiltración como rescate + HBPM profiláctica + educación post-estabilización |
+| `quirurgico` (2→6) | Reperfusión + reparación de complicaciones mecánicas IAM (rotura papilar/tabique/pared libre) + cirugía valvular urgente (RM aguda, EAo crítica) + soporte mecánico + pericardiocentesis si taponamiento + cierre CIV post-IAM |
+| `revisadoEn` | `"2026-05-22"` |
+| `fuentes` | 4 entradas: ESC 2021 HF + 2023 Focused Update + ensayos ADVOR/EMPULSE/CARRESS-HF/SOAP II + ACVC Statement 2022 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes (criteriosAlarma cubre lo esencial)
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **12 frescas** (era 11; +pat_eap), 139 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote priorizado (definido en CLINICAL_REVIEW_PLAN.md)
+
+10 patologías propuestas, en orden de prioridad:
+1. ✅ pat_eap (ESC 2021/2023 HF + ADVOR + EMPULSE) — sesión 29
+2. pat_cetoacidosis (ADA 2024 hyperglycemic crises + ISPAD 2022)
+3. pat_tep (ESC 2019/2024 PE + DOACs)
+4. pat_endocarditis (ESC 2023 IE)
+5. pat_neumotorax (BTS 2023 + ACEP guideline)
+6. pat_meningitis (IDSA + ESCMID 2024)
+7. pat_epilepsia (ILAE 2017 + AES 2024 status epilepticus)
+8. pat_tuberculosis (WHO 2022 + ATS/CDC/IDSA 2024)
+9. pat_cirrosis (AASLD 2024 + Baveno VII)
+10. pat_pancreatitis (AGA 2018 + ACG 2024 + revised Atlanta)
+
+### Commits esperados
+- `content(pat_eap): align with ESC 2021/2023 HF + ADVOR + EMPULSE — opens second priority queue`
+
+---
+
 ## 2026-05-22 — Sesion 28: Revisión clínica de pat_angina a ESC 2024 Chronic Coronary Syndromes 🎯 MILESTONE: TOP-10 COMPLETO
 
 ### Resumen
