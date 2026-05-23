@@ -4874,7 +4874,7 @@
     "id": "pat_neumotorax",
     "nombre": "Neumotorax",
     "bodySystemId": "respiratorio",
-    "definicion": "Presencia de aire en el espacio pleural que colapsa total o parcialmente el pulmón ipsilateral, comprometiendo la función respiratoria. Puede ser espontaneo, traumático o yatrogeno.",
+    "definicion": "Presencia de aire en el espacio pleural que colapsa total o parcialmente el pulmón ipsilateral, comprometiendo la función respiratoria. Puede ser espontáneo (primario sin enfermedad subyacente o secundario con patología pulmonar), traumático o iatrogénico. BTS 2023 introdujo cambio paradigmático: la decisión terapéutica se basa en SÍNTOMAS (no en tamaño radiológico) — pacientes asintomáticos/mínimamente sintomáticos pueden ir a manejo CONSERVADOR independientemente del tamaño (RCT Brown NEJM 2020 demostró no-inferioridad vs drenaje).",
     "epidemiologia": "Neumotorax espontaneo primario: 7-18/100.000 hombres y 1-6/100.000 mujeres/ano. Predomina en hombres jovenes, altos y delgados. El 30-50% recurrencia en primeros 2 años sin tratamiento definitivo.",
     "factoresRiesgo": [
       "Habito marfanoide (alto, delgado) para espontaneo primario",
@@ -4903,27 +4903,39 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por causa y severidad",
+      "nombre": "Clasificación dual: por etiología + por síntomas (BTS 2023)",
       "tipos": [
         {
-          "nombre": "Espontaneo primario",
-          "descripcion": "Sin enfermedad pulmonar subyacente conocida. Blebs en apex. Benigno en la mayoria"
+          "nombre": "Etiología — Espontáneo Primario (PSP)",
+          "descripcion": "Sin enfermedad pulmonar subyacente conocida. Rotura de blebs/bullas apicales subpleurales. Típicamente hombres jóvenes (15-35 años), altos, delgados, fumadores. Recurrencia 30-50% en 2 años sin tratamiento definitivo (ipsilateral o contralateral)."
         },
         {
-          "nombre": "Espontaneo secundario",
-          "descripcion": "Con enfermedad pulmonar previa (EPOC, TB, fibrosis). Más grave por menor reserva"
+          "nombre": "Etiología — Espontáneo Secundario (SSP)",
+          "descripcion": "Con enfermedad pulmonar subyacente (EPOC con bullas, fibrosis pulmonar, TB, fibrosis quística, asma severa, neumonía necrotizante, neoplasia pulmonar, neumocistosis en VIH). MÁS GRAVE por menor reserva respiratoria; tratamiento más agresivo independientemente del tamaño."
         },
         {
-          "nombre": "Traumático",
-          "descripcion": "Por trauma torácico penetrante o cerrado. Frecuentemente asociado a hemotorax"
+          "nombre": "Etiología — Catamenial (mujeres en edad reproductiva)",
+          "descripcion": "Asociado al ciclo menstrual (24-72h pre o post-menstrual), típicamente derecho, por endometriosis pleurodiafragmática. Recurrente. Considerar en mujer joven con neumotórax derecho recurrente; tratamiento incluye supresión hormonal (anticonceptivos) además de cirugía."
         },
         {
-          "nombre": "Yatrogeno",
-          "descripcion": "Por punción pleural, biopsia pulmonar, ventilación mecánica (barotrauma)"
+          "nombre": "Etiología — Traumático",
+          "descripcion": "Por trauma torácico penetrante (arma de fuego, blanca) o cerrado (accidente, fractura costal). Frecuentemente asociado a hemotórax → hemoneumotórax. Requiere drenaje pleural y manejo del trauma asociado."
         },
         {
-          "nombre": "A tensión",
-          "descripcion": "Emergencia vital: presión creciente colapsa pulmón y mediastino. Requiere descompresion urgente"
+          "nombre": "Etiología — Iatrogénico",
+          "descripcion": "Por procedimientos invasivos: vía central subclavia/yugular (1-3% de las CVC), biopsia pulmonar (TC-guiada 15-25%), toracocentesis (5%), broncoscopia con biopsia transbronquial, ventilación mecánica con presiones altas (barotrauma especialmente en SDRA y EPOC ventilado)."
+        },
+        {
+          "nombre": "Estado clínico — Neumotórax A TENSIÓN",
+          "descripcion": "EMERGENCIA VITAL. Mecanismo de válvula unidireccional: el aire entra en cada inspiración pero no sale, aumentando progresivamente la presión intrapleural. Colapsa el pulmón ipsilateral, desvía el mediastino al contralateral, comprime el VCI con shock obstructivo (caída del retorno venoso). DIAGNÓSTICO CLÍNICO (NO esperar Rx): hipotensión + ingurgitación yugular + ausencia de murmullo + hipersonoridad + desviación traqueal contralateral. TRATAMIENTO INMEDIATO: descompresión con aguja gruesa (14-16G) en 2° EIC LMC o 4-5° EIC LAA seguida de drenaje torácico."
+        },
+        {
+          "nombre": "BTS 2023 — Asintomático / Mínimamente sintomático",
+          "descripcion": "Sin disnea significativa, sin dolor torácico severo, hemodinámicamente estable. INDEPENDIENTEMENTE del tamaño radiológico: candidato a manejo CONSERVADOR (observación) con seguimiento ambulatorio en 2-4 semanas (cambio paradigmático BTS 2023 basado en RCT Brown NEJM 2020)."
+        },
+        {
+          "nombre": "BTS 2023 — Sintomático significativo",
+          "descripcion": "Disnea marcada, dolor pleurítico severo, taquipnea, taquicardia. Independientemente del tamaño: requiere INTERVENCIÓN — aspiración con aguja (NA), drenaje con catéter pequeño (8-14 Fr) ambulatorio con válvula Heimlich (Hallows trial Lancet 2020) o tubo intercostal."
         }
       ]
     },
@@ -4942,59 +4954,105 @@
       ],
       "pruebas": [
         {
-          "nombre": "Radiografia de torax PA",
-          "descripcion": "Visualiza linea pleural del pulmón colapsado, ausencia de trama vascular periférica, desviación de mediastino en tensión",
+          "nombre": "Radiografía de tórax PA en bipedestación",
+          "descripcion": "Primera línea diagnóstica. Visualiza la línea pleural del pulmón colapsado (línea visceral con ausencia de trama vascular más allá de ella), profundización del receso costofrénico (signo del surco profundo en supino), desviación mediastinal contralateral en neumotórax a tensión, descenso del diafragma ipsilateral. BTS 2023 ya NO usa el corte ≥ 2 cm como umbral de intervención — la decisión es CLÍNICA por síntomas.",
+          "valoresReferencia": "Cuantificación opcional BTS (Collins): distancia desde el ápex pulmonar al ápex torácico interno + suma de distancia interpleural a nivel del hilio + a nivel basal, dividido entre 3. Ya no marca decisión terapéutica. La Rx en espiración NO se recomienda rutinariamente (no mejora diagnóstico y aumenta dosis).",
           "cuidadosEnfermeria": [
-            "En neumotorax a tensión: NO esperar Rx, descomprimir primero si diagnóstico clínico claro",
-            "Radiografia en espiración maximiza la visibilidad del neumotorax pequeño"
+            "En neumotórax A TENSIÓN: NO esperar Rx — diagnóstico clínico, descomprimir INMEDIATAMENTE",
+            "BTS 2023 abandonó el % de colapso como driver terapéutico — informar al médico el % pero priorizar síntomas",
+            "Repetir Rx tras intervención (aspiración, drenaje) y a las 2-4h para vigilar reexpansión",
+            "Rx de control siempre en bipedestación si paciente lo tolera (más sensible que supino)"
           ]
         },
         {
-          "nombre": "Ecografia pleural (POCUS)",
-          "descripcion": "Rápida en urgencias. Ausencia de deslizamiento pleural y ausencia de lineas B confirman neumotorax",
+          "nombre": "Ecografía pleural a pie de cama (POCUS)",
+          "descripcion": "ESTÁNDAR moderno en urgencias. Más sensible que Rx supina para neumotórax (sensibilidad ~90% vs 50%). Permite diagnóstico inmediato sin trasladar al paciente.",
+          "valoresReferencia": "Hallazgos positivos: AUSENCIA de deslizamiento pleural (lung sliding); ausencia de líneas B; presencia del 'lung point' (transición entre pulmón aireado y ausencia, PATOGNOMÓNICO de neumotórax). Patrón B-line normal o sliding presente excluye neumotórax con NPV > 99%.",
           "cuidadosEnfermeria": [
-            "Aplicable a pie de cama en tiempo real",
-            "Sensibilidad superior a Rx en decubito"
+            "Operador-dependiente — requiere entrenamiento (curva de aprendizaje corta)",
+            "Especialmente útil en paciente inestable, ventilado, traumatizado, o cuando no puede hacerse Rx en bipedestación",
+            "Combinada con eFAST en trauma torácico-abdominal"
+          ]
+        },
+        {
+          "nombre": "TC torácica de baja dosis",
+          "descripcion": "NO es de rutina. Indicaciones específicas: neumotórax secundario (cuantificar enfermedad subyacente — EPOC, fibrosis, blebs/bullas), evaluación pre-quirúrgica de bullas para VATS, sospecha de complicación (hemoneumotórax, neumotórax loculado), fallo de re-expansión con drenaje correcto. La TC también detecta neumotórax muy pequeños no visibles en Rx (clínicamente irrelevantes en la mayoría).",
+          "valoresReferencia": "Hallazgos: blebs/bullas subpleurales, enfisema, lesiones fibrosas, tabicaciones pleurales, derrame asociado.",
+          "cuidadosEnfermeria": [
+            "Solicitar tras estabilización inicial — NO en emergencia",
+            "Útil para planificar VATS con bullectomía si recurrencia o factor anatómico modificable",
+            "Cribado de blebs en familiares de pacientes con PSP recurrente o catamenial — discutible"
+          ]
+        },
+        {
+          "nombre": "Gasometría arterial",
+          "descripcion": "Útil en SSP, paciente inestable, hipoxemia significativa, o sospecha de complicación. NO de rutina en PSP estable.",
+          "valoresReferencia": "Hipoxemia variable según tamaño y reserva pulmonar. En SSP con EPOC: hipercapnia con acidosis respiratoria puede aparecer rápidamente.",
+          "cuidadosEnfermeria": [
+            "En PSP estable con SpO2 > 92%: la gasometría suele ser innecesaria",
+            "En SSP siempre obtenerla — guía intensidad de oxigenoterapia y necesidad de VNI/intubación"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Eliminar el aire del espacio pleural",
-        "Re-expansion pulmonar",
-        "Prevenir recurrencias"
+        "Descomprimir INMEDIATAMENTE el neumotórax a TENSIÓN (aguja 14-16G en 2° EIC LMC o 4-5° EIC LAA — NO esperar Rx)",
+        "Identificar pacientes asintomáticos/mínimamente sintomáticos candidatos a manejo CONSERVADOR (BTS 2023, RCT Brown NEJM 2020) independientemente del tamaño",
+        "Eliminar el aire del espacio pleural en pacientes sintomáticos: aspiración con aguja (NA), drenaje con catéter pequeño (8-14 Fr) ambulatorio con válvula Heimlich, o tubo intercostal según contexto",
+        "Lograr reexpansión pulmonar completa con riesgo mínimo (evitar edema por reexpansión rápida en neumotórax > 72h)",
+        "Prevenir recurrencias en pacientes seleccionados (PSP recurrente, primer episodio con factor de riesgo profesional como aviación/buceo, neumotórax bilateral, SSP) mediante VATS con bullectomía + pleurodesis",
+        "Cesación tabáquica obligatoria (reduce recurrencia 40%)",
+        "Educar sobre restricciones específicas: vuelos comerciales (esperar 1 semana post-resolución radiológica), BUCEO contraindicado de por vida tras PSP (excepto post-pleurodesis bilateral con autorización experta)",
+        "Manejo psicosocial: el PSP en adultos jóvenes genera ansiedad por la recurrencia — explicar tasas reales (30-50% sin cirugía)"
       ],
       "farmacologico": [
         {
-          "nombre": "Oxigeno a alto flujo",
-          "grupo": "Terapia de soporte",
-          "mecanismo": "La hiperoxia acelera la reabsorción del nitrogen del aire pleural (hasta 4x más rápida)",
-          "dosis": "O2 al 100% via mascarilla con reservorio 10-15 L/min",
+          "nombre": "Oxigenoterapia titulada (rol de soporte)",
+          "grupo": "O2 para tratar hipoxemia, NO ya como terapia primaria de reabsorción",
+          "mecanismo": "La hiperoxia teóricamente acelera la reabsorción del nitrógeno pleural (~4x) pero BTS 2023 no la endorsa como tratamiento primario — los beneficios son modestos. Indicar O2 según SpO2 real, no por el neumotórax per se.",
+          "dosis": "Titular para mantener SpO2 92-96% (88-92% si EPOC concomitante). Mascarilla Venturi o cánula nasal según necesidad.",
           "cuidadosEnfermeria": [
-            "En EPOC: cuidado con hipercapnia por O2 excesivo",
-            "Monitorizar SpO2 continuamente"
+            "BTS 2023: el O2 ya NO es 'tratamiento del neumotórax' sino soporte cuando hay hipoxemia",
+            "En SSP por EPOC: evitar hiperoxigenación por riesgo de hipercapnia y depresión respiratoria",
+            "Monitorizar SpO2 continuamente",
+            "Reservar O2 al 100% para neumotórax a tensión en estabilización inicial o periprocedimiento"
           ]
         },
         {
-          "nombre": "Analgesicos (Ketorolac, Morfina)",
-          "grupo": "Analgesicos para dolor pleuritico",
-          "mecanismo": "Control del dolor para permitir respiración adecuada",
-          "dosis": "Ketorolac 30 mg IV; Morfina 2-4 mg IV si dolor severo",
+          "nombre": "Analgésicos para dolor pleurítico (Paracetamol + AINE, opioide si severo)",
+          "grupo": "Manejo del dolor — permite respiración profunda y reduce atelectasia",
+          "mecanismo": "Paracetamol y AINE como primera línea; opioide IV si dolor severo o pre-procedimiento.",
+          "dosis": "Paracetamol 1 g IV/VO c/6h. Ibuprofeno 400-600 mg VO c/8h o ketorolaco 30 mg IV c/8h. Opioide si severo: morfina 2-4 mg IV o tramadol 50-100 mg VO. Anestesia local con lidocaína 1-2% en sitio de drenaje pleural.",
           "cuidadosEnfermeria": [
-            "Valorar el dolor con EVA antes y después",
-            "Morfina: vigilar FR y SpO2"
+            "Evaluar dolor con EVA antes y 30-60 min después de cada dosis",
+            "Morfina/tramadol: vigilar FR, SpO2 y nivel de conciencia",
+            "AINE: precaución en ERC, antecedente de úlcera, anticoagulación",
+            "Premedicar 30 min antes de procedimientos pleurales (drenaje, pleurodesis) — procedimientos dolorosos"
           ]
         }
       ],
       "noFarmacologico": [
-        "Observación y reposo en neumotorax pequeño (< 2 cm en Rx)",
-        "Aspiración simple con aguja (neumotorax espontaneo primario moderado-grande)",
-        "Drenaje toracico con tubo intercostal conectado a trampa de agua o valvula de Heimlich"
+        "MANEJO CONSERVADOR (BTS 2023, RCT Brown NEJM 2020): observación con seguimiento ambulatorio en PSP asintomático/mínimamente sintomático INDEPENDIENTEMENTE del tamaño. Re-evaluación clínica + Rx a las 2-4 semanas; alta del ED si estable, sin neumotórax progresivo y soporte familiar adecuado",
+        "ASPIRACIÓN CON AGUJA (NA): catéter pleural pequeño (16-18G) conectado a llave de 3 vías + jeringa; aspirar hasta resistencia o 2.5 L. Indicación: PSP sintomático sin signos de inestabilidad. Tasa de éxito ~50-60%; si falla → drenaje",
+        "DRENAJE PLEURAL CON CATÉTER PEQUEÑO AMBULATORIO + VÁLVULA HEIMLICH (Hallows trial, Lancet 2020): catéter pigtail 8-14 Fr + válvula unidireccional Heimlich; permite alta el mismo día con seguimiento ambulatorio. Indicación: PSP sintomático grande tras NA fallida, o como primera línea en centros con experiencia",
+        "TUBO INTERCOSTAL TRADICIONAL (sello de agua) 14-24 Fr: reservado para SSP, neumotórax a tensión post-descompresión, hemoneumotórax, ventilación mecánica con neumotórax, fallo de catéter pequeño. Conectado a sistema de sello bajo agua (Pleur-evac) con o sin aspiración",
+        "DESCOMPRESIÓN URGENTE EN TENSIÓN: aguja 14-16G en 2° EIC línea medioclavicular (clásico) o 4-5° EIC línea axilar anterior (ATLS 2018 actualizó por menor pared torácica) — INMEDIATA al diagnóstico clínico, seguida sin demora de tubo intercostal definitivo",
+        "Posición de Fowler 30-45° para mejorar mecánica respiratoria",
+        "Monitorización del tubo: fluctuación con respiración (confirma permeabilidad), burbujeo (fuga aérea activa — si persiste > 24h: fuga aérea persistente o broncopleural), débito y aspecto del líquido",
+        "Aspiración con presión negativa (-20 cmH2O) si fuga persistente o pulmón no expande; NO de rutina",
+        "Retirada del tubo: criterios: sin burbujeo > 24h, pulmón expandido en Rx, sin débito significativo",
+        "Cesación tabáquica activa post-episodio (reduce recurrencia 40%) — derivar a programa de deshabituación",
+        "Restricciones post-resolución: NO vuelos comerciales hasta documentar resolución radiológica completa + 1 semana; BUCEO CONTRAINDICADO DE POR VIDA tras PSP (excepción: post-pleurodesis bilateral con clearance experta); evitar instrumentos de viento y actividades con cambios bruscos de presión las primeras semanas"
       ],
       "quirurgico": [
-        "Videotoracoscopia (VATS) con bullectomia + pleurodesis para prevenir recurrencias",
-        "Toracotomia en casos complejos o fallo de VATS"
+        "VATS (Videotoracoscopia) con bullectomía + pleurodesis: tratamiento de elección para prevenir recurrencias. Indicaciones: 1er episodio con factor profesional (piloto, buzo), neumotórax bilateral, hemoneumotórax, fuga aérea persistente > 5-7 días, recurrencia ipsilateral, primer episodio contralateral, todos los SSP",
+        "Pleurodesis: opciones — TALCO (insuflación intraoperatoria, más eficaz), abrasión pleural mecánica (con gasa), pleurectomía parcial (apical). Eficacia 95-99% para prevenir recurrencia",
+        "Pleurodesis química (talco en suspensión, bleomicina, doxiciclina) por tubo intercostal: alternativa menos invasiva pero menos eficaz que VATS; reservada para no candidatos a cirugía",
+        "Toracotomía: solo en casos complejos (fuga aérea masiva no controlada, fallo de VATS, hemoneumotórax masivo, infección pleural concomitante)",
+        "Cirugía en NEUMOTÓRAX CATAMENIAL: VATS con bullectomía + pleurodesis + extirpación de focos endometriósicos + plicatura diafragmática si lesiones diafragmáticas + supresión hormonal con anticonceptivos/análogos GnRH",
+        "Cirugía precoz en SSP con persistencia: el SSP tiene tasa de fuga prolongada mucho mayor; considerar VATS más precoz (3-5 días vs 5-7 en PSP)",
+        "Trasplante pulmonar — consideración futura en pacientes con SSP recurrente por enfermedad pulmonar terminal (no es tratamiento del neumotórax per se)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -5127,7 +5185,14 @@
       "pat_ira",
       "pat_tep"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "BTS 2023 Pleural Disease and Procedures Statement (Thorax 2023)",
+      "Brown SGA et al — Conservative versus Interventional Treatment for Spontaneous Pneumothorax (NEJM 2020;382:405-415) — RCT no-inferioridad",
+      "Hallows et al — Ambulatory management of primary spontaneous pneumothorax (Lancet 2020;396:39-49) — RCT pigtail + Heimlich",
+      "ATLS 10ª edición (2018) — actualización del sitio de descompresión por aguja en neumotórax a tensión"
+    ]
   },
   {
     "id": "pat_ira",
