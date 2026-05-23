@@ -6202,7 +6202,7 @@
     "id": "pat_epilepsia",
     "nombre": "Epilepsia",
     "bodySystemId": "neurologico",
-    "definicion": "Trastorno neurológico crónico caracterizado por predisposición persistente a generar crisis epilepticas (descargas electricas neuronales excesivas, sincronas y autolimitadas), con consecuencias neurobiologicas, cognitivas, psicologicas y sociales.",
+    "definicion": "Trastorno neurológico crónico caracterizado por predisposición persistente a generar crisis epilépticas (descargas eléctricas neuronales excesivas, sincrónas y autolimitadas), con consecuencias neurobiológicas, cognitivas, psicológicas y sociales. Definición OPERACIONAL ILAE 2014 (vigente): se diagnostica epilepsia si cumple UNO de los criterios — (1) al menos 2 crisis no provocadas separadas > 24h; o (2) 1 crisis no provocada + probabilidad de recurrencia ≥ 60% en los siguientes 10 años (típicamente por lesión estructural en imagen, EEG con actividad epileptiforme clara, antecedente neurológico); o (3) diagnóstico de un síndrome epiléptico. Distinción CRÍTICA: una crisis aislada NO equivale a epilepsia.",
     "epidemiologia": "Prevalencia del 0.5-1% de la población mundial (50-70 millones). En Argentina, prevalencia del 1.2%. 30% de los pacientes son refractarios al tratamiento farmacológico.",
     "factoresRiesgo": [
       "Trauma craneoencefalico severo",
@@ -6233,23 +6233,47 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación ILAE 2017",
+      "nombre": "Clasificación ILAE 2017 — Tres niveles diagnósticos + etiología transversal + Status Epilepticus (ILAE 2015)",
       "tipos": [
         {
-          "nombre": "Crisis de inicio focal",
-          "descripcion": "Comienzan en una red neuronal limitada a un hemisferio. Pueden ser con o sin alteración de conciencia"
+          "nombre": "NIVEL 1 — Tipo de crisis: Inicio FOCAL",
+          "descripcion": "Comienzan en una red neuronal limitada a un hemisferio. Subclasificar por: (a) conciencia — focal con conciencia retenida (antiguo 'parcial simple') vs focal con alteración de la conciencia (antiguo 'parcial complejo'); (b) semiología — motora (automatismos, atónica, clónica, mioclónica, tónica, hipercinética, espasmos epilépticos) vs no-motora (autonómica, detención del comportamiento, cognitiva, emocional, sensorial); (c) evolución a CRISIS TONICOCLÓNICA BILATERAL (antigua 'generalización secundaria')."
         },
         {
-          "nombre": "Crisis de inicio generalizado",
-          "descripcion": "Inicio en redes neuronales bilaterales simultaneamente. Tonico-clonica, ausencia, mioclonica"
+          "nombre": "NIVEL 1 — Tipo de crisis: Inicio GENERALIZADO",
+          "descripcion": "Inicio en redes neuronales bilaterales simultáneamente. Subtipos motores: tonicoclónica, mioclónica, atónica, tónica, clónica, mioclónica-atónica, mioclónica-tonicoclónica, espasmos epilépticos. Subtipos NO-motores (ausencias): típica (3 Hz), atípica, mioclónica, con mioclonías palpebrales."
         },
         {
-          "nombre": "Crisis de inicio desconocido",
-          "descripcion": "Cuando no puede clasificarse por información insuficiente"
+          "nombre": "NIVEL 1 — Tipo de crisis: Inicio DESCONOCIDO o NO CLASIFICABLE",
+          "descripcion": "Cuando no hay información suficiente sobre el inicio. Puede reclasificarse al disponer de más datos (testigo, video, EEG)."
         },
         {
-          "nombre": "Status epilepticus",
-          "descripcion": "Crisis que dura > 5 min o dos crisis sin recuperación intercrisis. EMERGENCIA NEUROLOGICA"
+          "nombre": "NIVEL 2 — Tipo de epilepsia",
+          "descripcion": "Tras determinar el tipo de crisis, clasificar como: epilepsia FOCAL, GENERALIZADA, COMBINADA generalizada y focal, o DESCONOCIDA. Esta clasificación guía el AED inicial y las decisiones diagnósticas posteriores."
+        },
+        {
+          "nombre": "NIVEL 3 — Síndrome epiléptico",
+          "descripcion": "Diagnóstico de un síndrome específico cuando hay constelación característica de tipo de crisis + edad de inicio + hallazgos EEG/imagen + pronóstico + respuesta a tratamiento. Ejemplos: epilepsia con ausencias infantil, epilepsia mioclónica juvenil, síndrome de West (espasmos infantiles), síndrome de Lennox-Gastaut, síndrome de Dravet, epilepsia del lóbulo temporal mesial con esclerosis hipocampal."
+        },
+        {
+          "nombre": "ETIOLOGÍA TRANSVERSAL (presente en cualquier nivel)",
+          "descripcion": "Investigar SIEMPRE: ESTRUCTURAL (esclerosis hipocampal, malformación cortical, ACV, tumor, post-trauma), GENÉTICA (canalopatías SCN1A/Dravet, KCNQ2, mutaciones síndromicas), INFECCIOSA (neurocisticercosis, post-encefalitis), METABÓLICA (errores innatos del metabolismo, deficiencia GLUT1), INMUNE (encefalitis autoinmunes: anti-NMDA, anti-LGI1), DESCONOCIDA. Cada etiología tiene implicancias terapéuticas específicas."
+        },
+        {
+          "nombre": "Status Epilepticus (ILAE 2015) — tiempos t1 y t2",
+          "descripcion": "Tiempo t1 (CUÁNDO TRATAR como SE): convulsivo tonicoclónico > 5 min; focal con alteración conciencia > 10 min; ausencia > 10-15 min. Tiempo t2 (RIESGO de daño neuronal IRREVERSIBLE): convulsivo > 30 min; focal con alteración conciencia > 60 min; ausencia no establecido. La intervención agresiva entre t1 y t2 previene secuelas a largo plazo."
+        },
+        {
+          "nombre": "Status Epilepticus convulsivo tonicoclónico generalizado",
+          "descripcion": "EMERGENCIA NEUROLÓGICA. Mortalidad 10-20% (mayor en SE refractario). Definición: crisis convulsiva continua > 5 min O dos crisis sin recuperación de conciencia entre ellas. Manejo en 4 fases (inicial 0-5 min, primario 5-20 min, secundario 20-40 min, refractario > 40 min)."
+        },
+        {
+          "nombre": "Status Epilepticus NO convulsivo (SENC)",
+          "descripcion": "Subdiagnosticado. Alteración del estado mental persistente sin convulsiones evidentes; el EEG continuo lo confirma. Frecuente en post-anóxico, ACV, sepsis, post-quirúrgico. Requiere EEG continuo en UCI para detección y monitoreo de respuesta al tratamiento."
+        },
+        {
+          "nombre": "Status Epilepticus REFRACTARIO y SUPER-REFRACTARIO",
+          "descripcion": "Refractario: persiste tras benzodiazepina + AED de 2ª línea. Requiere anestésicos generales con intubación (midazolam, propofol, pentobarbital). Super-refractario: persiste > 24h o recurre al destete del anestésico. Considerar ketamina, dieta cetogénica IV, hipotermia, inmunoterapia."
         }
       ]
     },
@@ -6268,100 +6292,196 @@
       ],
       "pruebas": [
         {
-          "nombre": "Electroencefalograma (EEG)",
-          "descripcion": "Registro de actividad eléctrica cerebral; detecta foco epileptico, tipo de epilepsia, patron ictual",
-          "valoresReferencia": "Normal: sin actividad epileptiforme. Anomalias: descargas, punta-onda, foco",
+          "nombre": "Electroencefalograma (EEG) estándar de superficie",
+          "descripcion": "Registro de actividad eléctrica cerebral durante 20-40 min. Detecta foco epileptógeno, patrón ictal o interictal, tipo de epilepsia. Sensibilidad de un EEG aislado para epilepsia: 25-50% (un EEG normal NO descarta epilepsia). Aumentar rendimiento con: privación de sueño previa, hiperventilación, fotoestimulación, EEG seriados.",
+          "valoresReferencia": "Normal: ritmo de base apropiado a edad, sin actividad epileptiforme. Anormal interictal: descargas epileptiformes (puntas, polipuntas, punta-onda), focales o generalizadas. Ictal: cambio brusco al inicio de la crisis (orienta foco).",
           "cuidadosEnfermeria": [
-            "Instruir sobre privación de sueno si es EEG de sueno",
-            "Limpieza del cabello (sin gominas)",
-            "Puede requerir hiperventilación y fotoestimulación durante el estudio"
+            "EEG de privación de sueño: paciente debe haber dormido < 4-5h la noche previa",
+            "Lavar el cabello sin gomina/laca/grasas (interfiere con electrodos)",
+            "El paciente colaborará con hiperventilación y fotoestimulación durante el estudio (activadores)",
+            "Suspender alguna medicación AED puede ser indicado para mejor rendimiento (decisión médica)"
           ]
         },
         {
-          "nombre": "RMN cerebral con protocolo epilepsia",
-          "descripcion": "Detecta causas estructurales: esclerosis hipocampal, tumor, malformación, ACV, encefalitis",
+          "nombre": "Video-EEG prolongado / Monitorización en Unidad de Epilepsia",
+          "descripcion": "Registro simultáneo de EEG + video continuo durante días, en hospitalización. ESTÁNDAR para: clasificación precisa del tipo de crisis, diferenciar crisis epilépticas de psicógenas no-epilépticas (PNES — frecuente confusión), evaluación pre-quirúrgica (localizar foco). Suelen reducirse AEDs para precipitar crisis.",
+          "valoresReferencia": "Registro de al menos una crisis típica para clasificación precisa. Diferencia clave: PNES tienen EEG ictal normal, semiología fluctuante, mejoría con sugestión.",
           "cuidadosEnfermeria": [
-            "Verificar contraindicaciones",
-            "Protocolos especiales (FLAIR, T2, IR) para epilepsia"
+            "Paciente monitorizado 24/7 en unidad de epilepsia con personal entrenado",
+            "Botón de evento: activar al iniciar crisis para marcar el registro",
+            "Vigilancia estricta de seguridad (acolchado, barras laterales) — reducción de AED predispone a crisis",
+            "Estudio típico 3-7 días; alta tras documentar crisis suficientes para diagnóstico"
           ]
         },
         {
-          "nombre": "Niveles plasmaticos de antiepilépticos",
-          "descripcion": "Controla efectividad y toxicidad del tratamiento farmacológico",
-          "valoresReferencia": "Fenitoina: 10-20 mcg/mL; Ácido valproico: 50-100 mcg/mL; Carbamazepina: 4-12 mcg/mL",
+          "nombre": "EEG continuo en UCI — detección de status no convulsivo",
+          "descripcion": "Monitorización continua > 24h en UCI para diagnóstico de Status Epilepticus NO convulsivo y guía del tratamiento. Indicaciones: alteración de conciencia inexplicada post-crisis, post-paro anóxico, ACV con deterioro neurológico, sepsis con alteración mental, sospecha clínica de SE refractario.",
+          "valoresReferencia": "Patrón ictal en EEG (descargas rítmicas, periódicas > 2.5 Hz, evolución espacial/temporal). Brote-supresión deseado en SE refractario tratado con anestésicos.",
           "cuidadosEnfermeria": [
-            "Muestra pre-dosis (nivel valle) para valorar si es suficiente",
-            "Extraer en el momento correcto del ciclo farmacológico"
+            "Coordinar con neurofisiólogo para interpretación periódica",
+            "Reposicionar electrodos cada 24h (mantener buena impedancia)",
+            "Documentar cambios clínicos (movimientos sutiles, cambios pupilares) para correlación con EEG"
+          ]
+        },
+        {
+          "nombre": "RMN cerebral con protocolo epilepsia (3T preferida)",
+          "descripcion": "Detecta causas estructurales: esclerosis del hipocampo (causa más frecuente en epilepsia del lóbulo temporal), displasia cortical focal, tumor, malformación cavernomatosa, ACV crónico, encefalitis previa. RMN 3T con cortes específicos > 1.5T para lesiones sutiles. SIEMPRE en epilepsia focal de inicio en adulto.",
+          "valoresReferencia": "Secuencias clave: FLAIR coronal del hipocampo (esclerosis), T2 alta resolución, doble inversión-recuperación, SWI (susceptibilidad — cavernomas).",
+          "cuidadosEnfermeria": [
+            "Verificar contraindicaciones (marcapasos no compatible, claustrofobia)",
+            "Protocolos especiales son más largos (45-60 min) — preparar al paciente",
+            "Si paciente con crisis frecuentes: monitorizar y tener protocolo de manejo de crisis en sala de RMN"
+          ]
+        },
+        {
+          "nombre": "Niveles plasmáticos de AED — solo con indicación específica",
+          "descripcion": "ILAE actual: NO monitorización rutinaria de niveles. Indicaciones específicas: sospecha de toxicidad, falta de respuesta con dosis aparentemente adecuadas, sospecha de no-adherencia, embarazo (aclaramiento aumentado de lamotrigina), interacciones medicamentosas, ajuste de fenitoína (cinética no-lineal).",
+          "valoresReferencia": "Fenitoína 10-20 µg/mL (cinética saturable — pequeños cambios de dosis = grandes cambios de nivel). Ácido valproico 50-100 µg/mL. Carbamazepina 4-12 µg/mL. Lamotrigina 3-15 µg/mL. Levetiracetam 12-46 µg/mL (rango amplio, monitoreo de poco valor). Los AEDs nuevos (perampanel, lacosamida, brivaracetam, cenobamate) rara vez requieren niveles.",
+          "cuidadosEnfermeria": [
+            "Muestra pre-dosis (nivel VALLE) — refleja el mínimo del intervalo",
+            "Documentar hora de última dosis y hora de extracción",
+            "Indicar al paciente NO modificar dosis sin evaluación médica del nivel + clínica"
+          ]
+        },
+        {
+          "nombre": "Evaluación pre-quirúrgica integrada (centros especializados)",
+          "descripcion": "Para epilepsia refractaria (falla a ≥ 2 AED bien seleccionados y tolerados — definición ILAE 2010 de refractariedad). Combina: video-EEG monitorización, RMN 3T epilepsia, PET-FDG (hipometabolismo interictal), SPECT ictal e interictal con coregistro (SISCOM), magnetoencefalografía (MEG), test de Wada o RMN funcional para lateralización de lenguaje/memoria, EEG intracraneal (sEEG o subdural) si fase 1 no concluyente.",
+          "cuidadosEnfermeria": [
+            "Derivar a centro de cirugía de epilepsia tras documentar refractariedad (no esperar años con > 2 AEDs)",
+            "Coordinación con equipo multidisciplinario: neurólogo epileptólogo + neurocirujano + neurofisiólogo + neuropsicólogo + neurorradiólogo",
+            "Educar paciente y familia sobre proceso (etapas, expectativas, riesgos)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Controlar las crisis sin afectar la calidad de vida",
-        "Evitar el status epilepticus",
-        "Tratar la causa subyacente si existe"
+        "Controlar las crisis sin afectar calidad de vida con el AED apropiado para tipo de crisis/síndrome",
+        "Iniciar AED en MONOTERAPIA y titular hasta la dosis efectiva o máxima tolerada antes de cambiar/agregar",
+        "Si falla a 2 AED bien seleccionados y tolerados → epilepsia REFRACTARIA (ILAE 2010): derivar a centro de cirugía de epilepsia, NO esperar más AEDs en monoterapia",
+        "Evitar Status Epilepticus con adherencia + control de factores precipitantes (privación de sueño, alcohol, no suspensión brusca)",
+        "Manejo de Status Epilepticus en 4 FASES con tiempos definidos (AES 2016 + ESETT 2020): inicial (0-5 min), primario (5-20 min benzodiazepina), secundario (20-40 min AED), refractario (> 40 min anestésicos con intubación)",
+        "Distinguir crisis epilépticas de pseudocrisis (PNES — psicógenas no-epilépticas): video-EEG es definitivo; PNES requiere tratamiento psiquiátrico, no AEDs",
+        "En embarazo: PREFERIR lamotrigina o levetiracetam; EVITAR ácido valproico (teratogenicidad mayor — espina bífida 2-3%, déficit cognitivo); usar dosis MÍNIMA EFECTIVA + suplemento de ácido fólico 5 mg/día",
+        "Identificar y tratar etiología (estructural, genética, infecciosa, metabólica, inmune): inmunoterapia en encefalitis autoinmune (anti-NMDA, anti-LGI1)",
+        "Educación sobre SUDEP (Sudden Unexpected Death in Epilepsy): control de crisis tonicoclónicas reduce el riesgo; precauciones nocturnas en pacientes con crisis nocturnas",
+        "Restricciones de conducción según legislación local (típicamente 6-12 meses sin crisis); evaluar trabajo, deportes, embarazo, etc."
       ],
       "farmacologico": [
         {
-          "nombre": "Ácido valproico (VPA)",
-          "grupo": "Antiepiléptico de amplio espectro",
-          "mecanismo": "Aumenta GABA cerebral, inhibe canales de sodio. Eficaz en crisis generalizadas y focales",
-          "dosis": "15-30 mg/kg/dia en 2-3 tomas; iniciar 200-300 mg c/12h",
+          "nombre": "Ácido valproico (VPA) — amplio espectro, EVITAR en mujeres edad fértil",
+          "grupo": "Antiepiléptico de amplio espectro — eficaz en crisis generalizadas y focales",
+          "mecanismo": "Aumenta GABA cerebral, inhibe canales de sodio y T-cálcicos. Eficaz en epilepsia mioclónica juvenil, ausencias, generalizadas tonicoclónicas, focales.",
+          "dosis": "15-30 mg/kg/día en 2-3 tomas (1000-3000 mg/día en adultos); iniciar 200-300 mg c/12h y titular cada 3-5 días.",
           "cuidadosEnfermeria": [
-            "Monitorizar nivel plasmatico y función hepática",
-            "Teratogenico: mujeres en edad fértil requieren anticoncepción",
-            "Aumento de peso frecuente",
-            "Trombocitopenia: monitorizar plaquetas"
+            "CONTRAINDICADO en mujeres en edad fértil sin método anticonceptivo eficaz documentado (teratogenicidad mayor: espina bífida 2-3%, déficit cognitivo en hijos: 8-10 puntos de CI menos)",
+            "Hepatotoxicidad: vigilar transaminasas mensuales primeros 6 meses, luego trimestral",
+            "Trombocitopenia: hemograma cada 3-6 meses",
+            "Aumento de peso frecuente; alopecia; temblor postural",
+            "Hiperamonemia con encefalopatía: vigilar amonio si confusión inexplicada",
+            "Pancreatitis aguda: vigilar dolor abdominal"
           ]
         },
         {
-          "nombre": "Levetiracetam",
-          "grupo": "Antiepiléptico nueva generación",
-          "mecanismo": "Se une a proteina SV2A de la vesicula sinaptica, modulando la liberación de neurotransmisores",
-          "dosis": "250-1500 mg c/12h",
+          "nombre": "Levetiracetam (LEV) — primera línea moderna, IV en SE",
+          "grupo": "AED de nueva generación — primera elección por buen perfil de seguridad y mínimas interacciones",
+          "mecanismo": "Se une a proteína SV2A de la vesícula sináptica, modulando la liberación de neurotransmisores. Eficaz en crisis focales, generalizadas tonicoclónicas, mioclónicas. Formulaciones VO e IV.",
+          "dosis": "Mantenimiento: 500-1500 mg c/12h (titular desde 250-500 c/12h). En SE: CARGA 60 mg/kg IV (máx 4500 mg) en 5-15 min — ESETT trial 2019 demostró equivalencia con fosfenitoína y valproato + mejor perfil de seguridad.",
           "cuidadosEnfermeria": [
-            "Bien tolerado, pocas interacciones",
-            "Irritabilidad y cambios de humor frecuentes: informar al paciente y familia",
-            "No requiere monitoreo de niveles rutinario",
-            "Reducir dosis en insuficiencia renal"
+            "Bien tolerado en general; pocas interacciones medicamentosas",
+            "Efectos conductuales en 10-20%: irritabilidad, agresividad, depresión — informar paciente y familia, derivar si severo",
+            "Brivaracetam como alternativa con menos efectos conductuales",
+            "NO requiere monitoreo rutinario de niveles plasmáticos",
+            "Reducir dosis en insuficiencia renal (TFG < 50)",
+            "Preferido en embarazo junto con lamotrigina (perfil teratogénico más favorable)"
           ]
         },
         {
-          "nombre": "Diazepam IV (Status epilepticus)",
-          "grupo": "Benzodiacepina - tratamiento de primera linea del status",
-          "mecanismo": "Potencia GABA-A, produce rápida inhibición neuronal y termina la crisis en > 50% de casos",
-          "dosis": "0.15-0.20 mg/kg IV a 5 mg/min; máximo 20 mg",
+          "nombre": "Lamotrigina — preferida en embarazo + epilepsia focal/generalizada",
+          "grupo": "AED amplio espectro — primera línea en embarazo y como monoterapia inicial en muchos pacientes",
+          "mecanismo": "Bloquea canales de sodio voltaje-dependientes, estabiliza membrana neuronal. Eficaz en crisis focales, generalizadas tonicoclónicas, ausencias atípicas. Sin interacciones hormonales.",
+          "dosis": "Titulación LENTA OBLIGATORIA por riesgo de rash: iniciar 25 mg/día x 2 sem → 50 mg/día x 2 sem → 100 mg/día x 1 sem → mantenimiento 150-400 mg/día en 2 tomas. Dosis reducida a la mitad si toma valproato (que aumenta nivel de lamotrigina ~2x).",
           "cuidadosEnfermeria": [
-            "Preparar equipo de via aerea antes de administrar (depresion respiratoria)",
-            "Tener flumazenil como antidoto",
-            "Monitorizar SpO2 y PA continuamente",
-            "Si no IV: diazepam rectal 0.5 mg/kg (hasta 20 mg)"
+            "RASH cutáneo: 10% leve, 0.1-1% Stevens-Johnson o necrólisis epidérmica tóxica (NET) — SUSPENDER ante cualquier rash + fiebre/mucositis; titulación lenta minimiza riesgo",
+            "Embarazo: AED PREFERIDO con levetiracetam — perfil teratogénico favorable; aclaramiento aumenta durante embarazo (niveles caen) → puede requerir aumentar dosis 30-50%, monitorizar con niveles si crisis",
+            "Anticonceptivos orales: ESTRÓGENOS reducen el nivel de lamotrigina ~50% — ajustar dosis al iniciar/suspender ACO",
+            "Insomnio frecuente"
           ]
         },
         {
-          "nombre": "Fenitoina / Fosfenitoina IV (Status 2° linea)",
-          "grupo": "Antiepiléptico - bloquea canales de sodio",
-          "mecanismo": "Estabiliza la membrana neuronal bloqueando canales de sodio voltaje-dependientes",
-          "dosis": "Fosfenitoina 20 mg EFP/kg IV a 150 mg/min",
+          "nombre": "Lacosamida (LCM) — AED de 3ª generación",
+          "grupo": "AED de tercera generación — primera línea o complementario en crisis focales",
+          "mecanismo": "Mejora la INACTIVACIÓN LENTA de canales de sodio (mecanismo distinto a fenitoína/carbamazepina). Aprobado para crisis focales en adultos y niños; cada vez más usada en monoterapia.",
+          "dosis": "Iniciar 50 mg c/12h → 100 mg c/12h → 200 mg c/12h (mantenimiento 200-400 mg/día). Disponible IV para SE: 200-400 mg IV en 15 min como AED de 2ª línea alternativo.",
           "cuidadosEnfermeria": [
-            "Monitorizar ECG durante infusion (arritmias, hipotensión)",
-            "No mezclar con glucosa (precipita)",
-            "Velocidad de infusion máxima: no superar",
-            "Sindrome del guante purpura con fenitoina IV periférico: usar central"
+            "Mareo, diplopía, ataxia dosis-dependientes (mejoran reduciendo dosis)",
+            "Prolongación de PR: precaución con bloqueo AV de 2°-3° grado; ECG basal en pacientes con cardiopatía",
+            "Pocas interacciones (no induce ni inhibe CYP450)",
+            "Bien tolerada en ancianos y politerapia"
+          ]
+        },
+        {
+          "nombre": "BENZODIAZEPINAS — primera línea SE (Fase 5-20 min): Lorazepam IV, Midazolam IM/IN/bucal, Diazepam IV",
+          "grupo": "Tratamiento primario del Status Epilepticus — termina ~60% de las crisis",
+          "mecanismo": "Potencian GABA-A, producen rápida inhibición neuronal y terminan la crisis. Lorazepam tiene vida media activa más larga que diazepam, por eso es PREFERIDO en SE.",
+          "dosis": "**LORAZEPAM IV 0.1 mg/kg** (máx 4 mg/dosis), puede repetirse en 5-10 min — PRIMERA ELECCIÓN si acceso venoso (más eficaz que diazepam por menor redistribución). **MIDAZOLAM IM 10 mg** si peso ≥ 40 kg (5 mg si < 40 kg) — preferido SI NO HAY acceso venoso (RAMPART trial: tan efectivo como lorazepam IV en SE prehospitalario). Alternativas: midazolam IN 0.2 mg/kg (máx 10 mg), midazolam bucal 10 mg, diazepam IV 0.15-0.2 mg/kg (máx 20 mg) a 5 mg/min, diazepam rectal 0.5 mg/kg.",
+          "cuidadosEnfermeria": [
+            "Preparar equipo de vía aérea ANTES de administrar (depresión respiratoria)",
+            "Flumazenil como antídoto disponible (precaución: revertir BZ en epiléptico crónico puede desencadenar SE)",
+            "Monitorizar SpO2, PA y FC continuamente; pulse oximeter y bolsa-máscara al lado de la cama",
+            "Midazolam IM (autoinyectable) es ahora el estándar prehospitalario sin acceso venoso",
+            "Si la primera dosis no termina la crisis en 5 min: REPETIR + iniciar AED de 2ª línea simultáneamente"
+          ]
+        },
+        {
+          "nombre": "ANTIEPILÉPTICO de 2ª LÍNEA SE (Fase 20-40 min): Levetiracetam IV / Fosfenitoína / Ácido valproico IV",
+          "grupo": "AED de carga para SE post-benzodiazepina (ESETT trial Lancet 2020: tres equivalentes en eficacia ~47%)",
+          "mecanismo": "Diferentes mecanismos pero eficacia similar. Levetiracetam: SV2A, mejor perfil de seguridad (sin hipotensión, sin arritmias, sin nefrotoxicidad). Fosfenitoína: bloqueo sodio. Ácido valproico: aumento GABA + bloqueo sodio.",
+          "dosis": "**Levetiracetam 60 mg/kg IV** en 5-15 min (máx 4500 mg) — preferido por seguridad. **Fosfenitoína 20 mg EFP/kg IV** a máx 150 mg/min (ajustar por nivel a las 2-4h). **Ácido valproico 40 mg/kg IV** en 10 min (máx 3000 mg) — más rápido en terminación (mediana 7 min).",
+          "cuidadosEnfermeria": [
+            "ESETT (Lancet 2020): los 3 son equivalentes (~47% terminación de crisis); elegir según contexto",
+            "Levetiracetam: mejor perfil para paciente con cardiopatía, ERC severa, embarazo, hepatopatía",
+            "Fosfenitoína: SIEMPRE monitor ECG (arritmias, prolongación QT) y PA (hipotensión); evitar mezcla con glucosa (precipita); puede causar 'síndrome del guante púrpura' por vía periférica → preferir central; NO usar en bradiarritmia o bloqueo AV de 2°-3°",
+            "Ácido valproico: evitar en hepatopatía, mitocondriopatías, embarazo",
+            "Si crisis persiste tras AED de 2ª línea: pasar a anestésicos generales + intubar"
+          ]
+        },
+        {
+          "nombre": "ANESTÉSICOS GENERALES — SE REFRACTARIO (Fase > 40 min): Midazolam infusión, Propofol, Pentobarbital",
+          "grupo": "Tratamiento del SE refractario con intubación + ventilación mecánica + EEG continuo en UCI",
+          "mecanismo": "Inducir brote-supresión EEG (o cesación ictal) durante 24-48h, luego destete gradual mientras se mantiene AED de mantenimiento. Cada agente tiene perfil hemodinámico distinto.",
+          "dosis": "**Midazolam**: bolo 0.2 mg/kg + infusión 0.1-2 mg/kg/h (preferido por hemodinamia estable). **Propofol**: bolo 1-2 mg/kg + infusión 1-10 mg/kg/h (vigilar PROPOFOL INFUSION SYNDROME si > 4-5 mg/kg/h o > 48h: rabdomiolisis, acidosis láctica, IR). **Pentobarbital/Tiopental**: bolo 5 mg/kg + 1-5 mg/kg/h (mayor depresión hemodinámica, requiere vasopresores).",
+          "cuidadosEnfermeria": [
+            "Paciente intubado y ventilado en UCI con EEG continuo guiando ajustes",
+            "Vasopresores frecuentemente necesarios (norepinefrina) por hipotensión inducida",
+            "Mantener AED de mantenimiento (LEV, FOS, VPA) IV simultáneamente para prevenir recurrencia al destete",
+            "Destete del anestésico 24-48h después de cesación ictal; reactivar EEG ante deterioro",
+            "Profilaxis de TVP, úlcera de estrés, infecciones nosocomiales en UCI prolongada"
           ]
         }
       ],
       "noFarmacologico": [
-        "Dieta cetogenica en epilepsia refractaria pediatrica",
-        "Evitar desencadenantes: privación de sueno, alcohol, estres",
-        "Estimulación del nervio vago (VNS) en refractarios",
-        "Neurocirugia de epilepsia si foco resecable"
+        "Identificación de factores desencadenantes: privación de sueño, consumo de alcohol/drogas, estrés, fotosensibilidad, fiebre — evitar para reducir frecuencia",
+        "Adherencia ESTRICTA al AED (no suspender brusca o erráticamente — el 30% de SE es por suspensión de AED)",
+        "Dieta cetogénica clásica o modificada (Atkins): eficaz especialmente en epilepsia refractaria pediátrica (Lennox-Gastaut, Dravet, deficiencia de GLUT1), creciente uso en adultos refractarios; reduce > 50% crisis en ~50% de los pacientes seleccionados",
+        "Cannabidiol (CBD / Epidiolex): FDA aprobó 2018 para síndromes específicos — Dravet, Lennox-Gastaut, esclerosis tuberosa con crisis refractarias. NO confundir con cannabis/THC recreacional. Dosis 5-20 mg/kg/día",
+        "Estimulación del nervio vago (VNS): dispositivo implantable cervical que estimula el vago izquierdo intermitentemente; reduce ~30-50% las crisis en refractarios no candidatos a resección. Sin necesidad de cirugía cerebral abierta",
+        "Estimulación cerebral responsiva (RNS — NeuroPace): dispositivo intracraneal que detecta y aborta crisis en tiempo real con estímulos eléctricos; útil en pacientes con 1-2 focos no resecables, especialmente en áreas elocuentes",
+        "Estimulación cerebral profunda (DBS) del tálamo anterior: aprobada 2018 para epilepsia focal refractaria sin foco resecable claro; reduce ~40% crisis a 5 años",
+        "Termoablación láser (LITT — laser interstitial thermal therapy) guiada por RMN: mínimamente invasiva (trépano pequeño) para esclerosis hipocampal, displasias profundas, hamartoma hipotalámico; menor morbilidad que craneotomía abierta",
+        "Educación intensiva al paciente y familia sobre identificación de crisis, primeros auxilios (NO meter objetos en boca, posición lateral, cronometrar duración, llamar emergencias si > 5 min)",
+        "Identificación visible (pulsera/colgante de 'epilepsia' + AED tomado + tipo de crisis + contacto de emergencia)",
+        "Restricciones legales: NO conducir hasta 6-12 meses sin crisis según legislación local; restricciones laborales (alturas, maquinaria pesada, conducción profesional); evaluar deportes acuáticos",
+        "Cribado y manejo de comorbilidades psiquiátricas: depresión (50-60%), ansiedad, déficits cognitivos — derivar a psiquiatría/neuropsicología",
+        "Prevención de SUDEP (Sudden Unexpected Death in Epilepsy): control óptimo de crisis tonicoclónicas (principal factor de riesgo); precauciones nocturnas (compartir habitación, almohada antisofoco); educación sobre el riesgo y signos prodrómicos"
       ],
       "quirurgico": [
-        "Resección del foco epileptogeno (temporal, frontal)",
-        "Hemisferectomia funcional en epilepsias hemisfericas graves",
-        "Cuerpo calloso: callosotomia en crisis atonicas refractarias"
+        "Indicación de cirugía: epilepsia refractaria a 2 AED bien seleccionados y tolerados (ILAE 2010), tras evaluación pre-quirúrgica integrada en centro especializado — NO esperar años con más AEDs en monoterapia",
+        "RESECCIÓN del foco epileptógeno — opciones según localización: LOBECTOMÍA TEMPORAL ANTEROMESIAL (gold standard en epilepsia del lóbulo temporal con esclerosis hipocampal — 60-80% libertad de crisis a 1 año); RESECCIÓN LESIONAL (tumor, malformación cavernomatosa, displasia focal); RESECCIÓN FRONTAL/PARIETAL/OCCIPITAL guiada por mapeo EEG y funcional",
+        "TERMOABLACIÓN LÁSER (LITT) guiada por RMN: alternativa mínimamente invasiva a la lobectomía en esclerosis hipocampal y lesiones profundas — recuperación más rápida, menor morbilidad cognitiva",
+        "DESCONEXIONES: hemisferectomía funcional (en epilepsias hemisféricas graves de la infancia — Sturge-Weber, Rasmussen, hemimegalencefalia); callosotomía (sección del cuerpo calloso) en crisis atónicas refractarias y síndromes con caídas (drop attacks)",
+        "NEUROMODULACIÓN: estimulación del nervio vago (VNS) implantable; estimulación responsiva cortical (RNS — NeuroPace); estimulación cerebral profunda del tálamo anterior (DBS); útiles cuando el foco es no resecable o está en área elocuente",
+        "Implante de electrodos intracraneales (sEEG o subdurales) como fase 2 de evaluación pre-quirúrgica cuando la fase 1 (no invasiva) no localiza el foco con suficiente certeza"
       ]
     },
     "cuidadosEnfermeria": {
@@ -6493,7 +6613,16 @@
       "pat_tce",
       "pat_meningitis"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "ILAE 2017 Classification of the Epilepsies (Scheffer IE et al, Epilepsia 2017;58:512-521)",
+      "ILAE 2017 Operational Classification of Seizure Types (Fisher RS et al, Epilepsia 2017;58:522-530)",
+      "ILAE 2014 Operational Definition of Epilepsy (Fisher RS et al, Epilepsia 2014;55:475-482)",
+      "ILAE 2015 Status Epilepticus Definition + AES 2016 Treatment Guideline (Epilepsy Currents 2016)",
+      "ESETT Trial — Levetiracetam vs Fosfenitoína vs Valproato en SE (Lancet 2020;395:1217-1224)",
+      "RAMPART Trial — Midazolam IM en SE prehospitalario (NEJM 2012)"
+    ]
   },
   {
     "id": "pat_meningitis",
