@@ -4,6 +4,46 @@
 
 ---
 
+## 2026-05-23 — Sesion 36: Revisión clínica de pat_tuberculosis a WHO 2022 + ATS/CDC/IDSA 2022 + BPaLM + 3HP
+
+### Resumen
+Octava iteración del segundo lote. La entry `pat_tuberculosis` tenía 11 gaps mayores vs WHO 2022 + ATS/CDC/IDSA 2022 + Xpert Ultra: clasificación incompleta (faltaban TB pre-XDR, XDR, RR-TB, formas extrapulmonares específicas — meningitis con régimen propio, pericarditis, mal de Pott, miliar); régimen corto 4 meses HPMZ (rifapentina + isoniazida + moxifloxacino + pirazinamida — Study 31/A5349) ausente; BPaLM/BPaL para MDR/RR/Pre-XDR todo-oral 6 meses (WHO 2022 cambio paradigmático que reemplaza esquemas inyectables 18-24 meses) ausente; bedaquilina, pretomanid, linezolid totalmente ausentes; ITBL con esquemas cortos preferidos (3HP semanal x 12 dosis, 4R, 3HR — sobre 9H clásico) ausente; Xpert MTB/RIF Ultra y Xpert XDR para diagnóstico molecular rápido ausentes; IGRAs (QuantiFERON, T-SPOT.TB) sin diferenciar de PPD; VDOT (Video-DOT) ausente; manejo coinfección TB-VIH (TARV precoz, IRIS) ausente; TB en embarazo no detallada; vacunación BCG sin precisar.
+
+Cross-check: WHO Consolidated Guidelines on TB Module 4 — drug-resistant treatment 2022 update, ATS/CDC/IDSA 2022 — 4-month HPMZ regimen guideline, WHO Operational Handbook on TB Module 1 — Prevention 2020, ensayos Nix-TB / ZeNix / TB-PRACTECAL (BPaL/BPaLM) / Study 31/A5349 (HPMZ). Edición quirúrgica de 6 secciones; los bloques se triplicaron en general.
+
+### Cambios en pat_tuberculosis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 4 a 13 tipos: ITBL refinada (PPD/IGRA thresholds); TB pulmonar BAARr (+) vs (−); 5 formas extrapulmonares específicas (ganglionar, pleural, meningea con régimen Thwaites, pericarditis con corticoides controvertidos, mal de Pott); TB miliar con descartar meningitis; resistencia desglosada (mono-resistente / RR-TB / MDR / Pre-XDR / XDR) |
+| `diagnostico.pruebas` (3→8) | +Xpert MTB/RIF Ultra (WHO 2021 prueba diagnóstica inicial preferida sobre baciloscopia, mayor sensibilidad paucibacilar); +Xpert XDR para resistencias extendidas; +IGRAs (QuantiFERON, T-SPOT) con indicaciones específicas; +Cultivo MGIT (sustituye Löwenstein clásico); refinado Rx + TC con cribado de cáncer post-secuelas; +Cribado VIH/HBV/HCV basal obligatorio + TARV precoz si VIH |
+| `tratamientoMedico.objetivos` | De 3 a 12: régimen estándar 6 meses HRZE+HR + régimen corto 4 meses HPMZ alternativo (Study 31/A5349); BPaLM/BPaL para MDR/Pre-XDR; ITBL con 3HP/4R/3HR; TARV precoz en TB-VIH; VDOT como estándar moderno |
+| `farmacologico` (4→7) | Isoniazida con piridoxina obligatoria; **Rifampicina + Rifapentina** unificadas (rifapentina permite dosificación semanal); Pirazinamida; Etambutol con monitorización ocular; **+Moxifloxacino** (régimen corto y BPaLM); **+BPaLM/BPaL** TODO-ORAL para MDR (cambio paradigmático WHO 2022 con monitorización estricta de QT/linezolid/transaminasas); **+Esquemas ITBL cortos** (3HP preferido con completion ~87%, 4R, 3HR sobre 9H) |
+| `noFarmacologico` (5→15) | Aislamiento detallado (presión negativa, ≥6-12 cambios/h, criterios de fin de aislamiento); EPP correcto (FFP2/N95 con fit-testing, NO mascarilla quirúrgica para personal); +VDOT (Video-DOT) post-COVID; +BCG en recién nacidos áreas alta endemicidad; +Soporte nutricional; +Manejo TB-VIH con TARV precoz e IRIS; +TB en embarazo (HRE seguro, evitar estreptomicina/bedaquilina/pretomanid, piridoxina); +TB pediátrica con FDC dispersibles; +Reincorporación social criterios |
+| `quirurgico` (2→6) | Resección pulmonar con indicaciones específicas; drenaje empiema; +Pericardiectomía en constrictiva post-TB; +Cirugía descompresiva Pott; +DVE en hidrocefalia post-meningitis TB; +Manejo de escrofuloderma |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 5 entradas: WHO 2022 MDR + ATS/CDC/IDSA 2022 HPMZ + WHO 2020 ITBL + ensayos clave + WHO 2021 Xpert Ultra |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **19 frescas** (era 18; +pat_tuberculosis), 132 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 8/10 completo
+1-7. ✅ pat_eap → pat_epilepsia | 8. ✅ pat_tuberculosis (sesión 36)
+9. pat_cirrosis | 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_tuberculosis): align with WHO 2022 BPaLM + ATS/CDC/IDSA 2022 HPMZ + 3HP/4R`
+
+---
+
 ## 2026-05-23 — Sesion 35: Revisión clínica de pat_epilepsia a ILAE 2017 + AES SE + ESETT 2020
 
 ### Resumen

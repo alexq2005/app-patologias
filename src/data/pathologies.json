@@ -5510,23 +5510,59 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por estado y localización",
+      "nombre": "Clasificación por estado, localización y resistencia (WHO 2022)",
       "tipos": [
         {
           "nombre": "Infección tuberculosa latente (ITBL)",
-          "descripcion": "PPD/IGRA positivo sin síntomas ni evidencia de enfermedad activa. Riesgo de reactivación 10% de por vida"
+          "descripcion": "Inmunidad ante M. tuberculosis sin enfermedad activa: PPD ≥ 5 mm (alto riesgo) o ≥ 10 mm (riesgo intermedio) o ≥ 15 mm (bajo riesgo), o IGRA positivo (QuantiFERON, T-SPOT.TB), SIN síntomas ni hallazgos radiológicos activos. Riesgo de reactivación: 5-10% de por vida en inmunocompetentes, hasta 7-10%/año en VIH. Indicada terapia preventiva (3HP, 4R, 3HR o 6-9H) en pacientes seleccionados."
         },
         {
-          "nombre": "TB pulmonar activa",
-          "descripcion": "Bacilos en esputo. Forma más frecuente y contagiosa"
+          "nombre": "TB pulmonar activa BAARr (+) — alta contagiosidad",
+          "descripcion": "Forma más frecuente. Bacilos detectables en esputo por baciloscopia (carga bacilar alta, ALTA contagiosidad). Aislamiento respiratorio obligatorio hasta 2 semanas de tratamiento efectivo y baciloscopia negativa en muestras seriadas."
         },
         {
-          "nombre": "TB extrapulmonar",
-          "descripcion": "Ganglionar, pleural, meningea, osea, renal. Más frecuente en VIH+"
+          "nombre": "TB pulmonar activa BAARr (−) con cultivo (+) o PCR (+)",
+          "descripcion": "Baja carga bacilar pero cultivo o PCR (Xpert MTB/RIF Ultra) positivos. Contagiosidad menor pero existente. Diagnóstico molecular es clave para no pasar por alto."
+        },
+        {
+          "nombre": "TB extrapulmonar — Ganglionar (escrofulosis)",
+          "descripcion": "Más frecuente en VIH+. Adenopatías cervicales, supraclaviculares o axilares, indoloras, evolutivas. Biopsia con PCR + cultivo. Mismo régimen de 6 meses que TB pulmonar."
+        },
+        {
+          "nombre": "TB extrapulmonar — Pleural",
+          "descripcion": "Derrame pleural exudativo unilateral, predominio linfocitario, ADA > 40 U/L, glucosa baja. Biopsia pleural ciega o por toracoscopia con granulomas + cultivo positivo en 75-90%. Tratamiento estándar."
+        },
+        {
+          "nombre": "TB extrapulmonar — Meningitis tuberculosa",
+          "descripcion": "Forma MÁS GRAVE: mortalidad 20-40% con tratamiento. LCR linfocitario, proteínas muy altas, glucosa baja, ADA elevada, PCR (+) o cultivo. Régimen: RIPE 2 meses + RH 7-10 meses + DEXAMETASONA prolongada (Thwaites NEJM 2004). Considerar TB Team multidisciplinario."
+        },
+        {
+          "nombre": "TB extrapulmonar — Pericarditis",
+          "descripcion": "Derrame pericárdico con exudado linfocitario, ADA elevada, riesgo de pericarditis constrictiva. Tratamiento ATB estándar + corticoides (controversia — IMPI trial 2014 no benefició mortalidad pero redujo constrictiva) + drenaje si taponamiento."
+        },
+        {
+          "nombre": "TB extrapulmonar — Osteoarticular (mal de Pott)",
+          "descripcion": "Espondilitis tuberculosa: dolor dorsolumbar, deformidad (giba), compresión medular si avanzada. RMN característica. Tratamiento prolongado 9-12 meses + cirugía si compresión neurológica o deformidad severa."
+        },
+        {
+          "nombre": "TB miliar (diseminada)",
+          "descripcion": "Diseminación hematógena con compromiso multisistémico (pulmón, hígado, bazo, médula, meninges). Rx con patrón miliar (micronódulos < 2 mm bilaterales). Mortalidad alta sin tratamiento. Régimen RIPE + investigar siempre meningitis concomitante (PL obligatoria) — si meningitis, agregar dexametasona."
+        },
+        {
+          "nombre": "TB monorresistente / TB resistente a Rifampicina (RR-TB)",
+          "descripcion": "Resistencia a un solo fármaco principal (típicamente isoniazida — TB-Hr — o rifampicina — RR-TB). RR-TB se maneja como MDR-TB por la importancia de la rifampicina."
         },
         {
           "nombre": "TB multidrogorresistente (MDR-TB)",
-          "descripcion": "Resistente a Isoniacida + Rifampicina. Tratamiento largo y tóxico"
+          "descripcion": "Resistencia simultánea a Isoniazida + Rifampicina. WHO 2022 cambió el paradigma: ahora el régimen preferido es BPaLM (Bedaquilina + Pretomanid + Linezolid + Moxifloxacino) 6 meses TODO-ORAL, en lugar de regímenes inyectables de 18-24 meses."
+        },
+        {
+          "nombre": "TB pre-XDR (Pre-Extensively Drug-Resistant)",
+          "descripcion": "MDR-TB + resistencia a fluoroquinolonas. WHO 2022: BPaLM con sustitución de moxifloxacino → BPaL (sin la M) por 6 meses si DST confirma resistencia."
+        },
+        {
+          "nombre": "TB XDR (Extensively Drug-Resistant)",
+          "descripcion": "MDR + resistencia a fluoroquinolonas + a bedaquilina o linezolid. Tratamiento individualizado con DST extendida; régimen prolongado. Mortalidad significativa."
         }
       ]
     },
@@ -5565,87 +5601,200 @@
           ]
         },
         {
-          "nombre": "PCR/GeneXpert MTB/RIF",
-          "descripcion": "Diagnóstico molecular rápido (2h). Detecta M. tuberculosis y resistencia a rifampicina",
+          "nombre": "Xpert MTB/RIF Ultra — PRUEBA DIAGNÓSTICA INICIAL (WHO 2017+)",
+          "descripcion": "PCR molecular automatizada que detecta M. tuberculosis y resistencia a rifampicina en ~90 min. Xpert MTB/RIF ULTRA (2ª generación) tiene mayor sensibilidad que la versión clásica, especialmente en TB paucibacilar, pediátrica, extrapulmonar y en VIH+. WHO 2021 recomendó Ultra como prueba diagnóstica inicial preferida sobre baciloscopia.",
+          "valoresReferencia": "Sensibilidad ~85-90% (mayor que baciloscopia ~50-70%); especificidad ~98%. Detecta resistencia a rifampicina (mutaciones rpoB) con sensibilidad 95%. Categorías: 'trace' (sospecha en paucibacilar — interpretar con clínica), 'very low', 'low', 'medium', 'high'.",
           "cuidadosEnfermeria": [
-            "Muestra de esputo o biopsias",
-            "Resultado en 2h orienta tratamiento y aislamiento urgente"
+            "Muestra: esputo espontáneo o inducido, lavado broncoalveolar, aspirado gástrico (pediatría), LCR, líquido pleural, biopsia",
+            "Resultado en 90 min orienta tratamiento Y aislamiento sin esperar baciloscopia/cultivo",
+            "Si Xpert + con resistencia a rifampicina detectada: TRATAR como MDR-TB hasta confirmar con DST extendida",
+            "WHO 2021 prefiere Ultra para diagnóstico inicial; 'trace' positivo requiere correlación clínica"
           ]
         },
         {
-          "nombre": "Radiografia de torax",
-          "descripcion": "Infiltrados en lobulos superiores con o sin cavernas, adenopatias, derrame pleural",
+          "nombre": "Xpert MTB/XDR — detección rápida de resistencias extendidas",
+          "descripcion": "Prueba molecular complementaria que detecta resistencia adicional a fluoroquinolonas (gyrA, gyrB), aminoglucósidos inyectables (amikacina, kanamicina, capreomicina), etionamida e isoniazida (inhA, katG). Útil cuando Xpert MTB/RIF detecta resistencia a rifampicina.",
+          "valoresReferencia": "Resultado en 90 min. Detecta MDR vs pre-XDR vs XDR sin esperar DST fenotípica (4-8 semanas).",
           "cuidadosEnfermeria": [
-            "Guardar para comparación evolutiva",
-            "Rx normal no descarta TB extrapulmonar"
+            "Solicitar tras Xpert MTB/RIF positivo con resistencia a rifampicina",
+            "Resultado orienta régimen MDR-TB inmediatamente (BPaLM vs BPaL vs individualizado)"
+          ]
+        },
+        {
+          "nombre": "IGRAs (QuantiFERON-TB Gold Plus, T-SPOT.TB) para infección latente",
+          "descripcion": "Pruebas en sangre que miden liberación de IFN-γ por linfocitos T en respuesta a antígenos específicos de M. tuberculosis (ESAT-6, CFP-10). Sin reactividad cruzada con BCG y la mayoría de NTM. WHO/CDC PREFIEREN IGRAs sobre PPD en: vacunados con BCG (especialmente repetidos), seguimiento serial en personal sanitario, edad ≥ 5 años, dificultad de retorno a lectura del PPD.",
+          "valoresReferencia": "Resultado: positivo, negativo, indeterminado. NO distingue ITBL de TB activa. Sensibilidad y especificidad ~80-90% (mejor que PPD en vacunados BCG).",
+          "cuidadosEnfermeria": [
+            "Extracción única de sangre venosa (3 tubos para QuantiFERON-TB Gold Plus)",
+            "Resultado en 24-48h sin requerir segunda visita (ventaja vs PPD que requiere lectura 48-72h)",
+            "Si positivo: descartar TB activa con Rx tórax + síntomas antes de tratar como ITBL",
+            "Embarazo: seguro; pediatría < 5 años: PPD aún preferido por algunas guías"
+          ]
+        },
+        {
+          "nombre": "Cultivo de M. tuberculosis en medio líquido (MGIT) o sólido (Löwenstein-Jensen)",
+          "descripcion": "STANDARD DE ORO para diagnóstico definitivo y antibiograma fenotípico (DST). MGIT (medio líquido automatizado) reduce tiempo de cultivo a 2-4 semanas vs 4-8 semanas de Löwenstein-Jensen. Imprescindible para detectar resistencias completas y monitorizar respuesta al tratamiento.",
+          "cuidadosEnfermeria": [
+            "Muestra obtenida ANTES de iniciar tratamiento (al menos 1 muestra cultivo siempre)",
+            "MGIT: mayor sensibilidad y rapidez que Löwenstein, hoy estándar en países desarrollados",
+            "Cultivos seriados mensuales hasta negativización (criterio de respuesta y de fin de aislamiento)",
+            "DST extendida para todos los MDR-TB confirmados"
+          ]
+        },
+        {
+          "nombre": "Radiografía y TC de tórax",
+          "descripcion": "Rx: infiltrados en lóbulos superiores con o sin cavernas, adenopatías mediastinales, derrame pleural, patrón miliar. TC torácica de alta resolución más sensible para lesiones cavitarias pequeñas, árbol en brote (diseminación endobronquial), adenopatías necróticas.",
+          "cuidadosEnfermeria": [
+            "Rx al diagnóstico, a 2 meses y al final del tratamiento",
+            "Rx normal NO descarta TB extrapulmonar; TC útil en sospecha alta con Rx normal",
+            "Comparación evolutiva obligatoria",
+            "Cribado de cáncer de pulmón en exfumadores con secuelas TB (riesgo aumentado)"
+          ]
+        },
+        {
+          "nombre": "VIH + test rápidos en TB",
+          "descripcion": "TODO paciente con TB debe ser testeado para VIH (coinfección dramática en outcomes). Glucemia, función hepática y renal basales antes de tratamiento (planificación de dosificación y toxicidad).",
+          "cuidadosEnfermeria": [
+            "Test de VIH al diagnóstico de TB (asesoramiento + consentimiento)",
+            "Si VIH+: iniciar TARV PRECOZMENTE — < 2 semanas si CD4 < 50; < 8 semanas si CD4 ≥ 50",
+            "Basal: HBV/HCV, transaminasas, creatinina, ácido úrico, glucemia",
+            "Cribado de cumplimiento de vacunación, alcohol, drogas, salud mental"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Curar la enfermedad",
-        "Prevenir la transmision a contactos",
-        "Prevenir el desarrollo de resistencias"
+        "Curar la enfermedad con régimen apropiado según resistencia + localización",
+        "TB pulmonar sensible — RÉGIMEN ESTÁNDAR 6 MESES: 2 meses HRZE (intensiva) + 4 meses HR (consolidación) — vigente, eficaz",
+        "TB pulmonar sensible — RÉGIMEN CORTO 4 MESES (alternativa ATS/CDC/IDSA 2022, Study 31/A5349): 2 meses HPMZ (rifapentina dosis alta + isoniazida + moxifloxacino + pirazinamida) + 2 meses HPM — no inferior al RIPE 6 meses en adultos seleccionados ≥ 12 años con TB pulmonar sensible",
+        "MDR/RR-TB — RÉGIMEN PREFERIDO WHO 2022 BPaLM 6 meses TODO-ORAL: Bedaquilina + Pretomanid + Linezolid + Moxifloxacino — reemplaza esquemas inyectables prolongados 18-24 meses",
+        "Pre-XDR-TB (MDR + resistencia a fluoroquinolonas): BPaL (sin moxifloxacino) 6 meses",
+        "XDR-TB: régimen individualizado con DST extendida + consulta con centro especializado",
+        "Infección Tuberculosa Latente (ITBL) — esquemas cortos PREFERIDOS sobre 9H clásico: 3HP (isoniazida + rifapentina semanal x 12 sem, completion ~87%) o 4R (rifampicina diaria x 4 meses) o 3HR (isoniazida + rifampicina x 3 meses)",
+        "TB extrapulmonar — duración prolongada según localización: meningitis y osteoarticular 9-12 meses; resto generalmente 6 meses",
+        "Coinfección TB-VIH: iniciar TARV PRECOZMENTE — < 2 semanas si CD4 < 50, < 8 semanas si CD4 ≥ 50 (estudios SAPiT, STRIDE, CAMELIA — reduce mortalidad)",
+        "TDO presencial o VDOT (Video-DOT) para asegurar adherencia y prevenir resistencias (estándar moderno post-COVID)",
+        "Prevención de transmisión: aislamiento respiratorio, EPP, notificación obligatoria, estudio y tratamiento preventivo de contactos",
+        "Cribado y manejo de comorbilidades: VIH, hepatitis B/C, DM, alcohol, drogas, malnutrición, salud mental"
       ],
       "farmacologico": [
         {
-          "nombre": "Isoniacida (H)",
-          "grupo": "Antituberculoso de primera linea",
-          "mecanismo": "Inhibe la sintesis del ácido micolico de la pared de M. tuberculosis (bactericida)",
-          "dosis": "5 mg/kg/dia (max 300 mg) VO junto a piridoxina",
+          "nombre": "Isoniazida (H) — pilar de primera línea",
+          "grupo": "Antituberculoso de primera línea — bactericida intracelular y extracelular",
+          "mecanismo": "Inhibe la síntesis del ácido micólico de la pared de M. tuberculosis. Bactericida muy potente sobre bacilos en multiplicación activa.",
+          "dosis": "5 mg/kg/día VO (máx 300 mg) en RIPE clásico. En 3HP semanal: 15 mg/kg + rifapentina 15 mg/kg semanalmente x 12 dosis. En 3HR: 5 mg/kg/día. SIEMPRE asociar piridoxina (vit B6) 25-50 mg/día.",
           "cuidadosEnfermeria": [
-            "Administrar en ayunas para mejor absorción",
-            "Dar SIEMPRE con piridoxina (vit B6) 25-50 mg/dia para prevenir neuropatia periférica",
-            "Monitorizar función hepática mensualmente",
-            "Hepatotoxicidad: suspender si transaminasas > 3-5x el limite superior"
+            "Administrar en ayunas (1h antes o 2h después de comidas) para mejor absorción",
+            "PIRIDOXINA 25-50 mg/día SIEMPRE — previene neuropatía periférica (especial riesgo: VIH, DM, ERC, alcohólicos, embarazo, desnutridos)",
+            "Hepatotoxicidad: transaminasas mensuales primeros 6 meses; suspender si ALT > 3-5x LSN con síntomas o > 5x asintomático",
+            "Lupus inducido (raro), rash, anemia hemolítica si deficiencia G6PD",
+            "Interacciones: aumenta niveles de fenitoína (toxicidad), carbamazepina"
           ]
         },
         {
-          "nombre": "Rifampicina (R)",
-          "grupo": "Antituberculoso de primera linea - bactericida potente",
-          "mecanismo": "Inhibe la ARN polimerasa dependiente de DNA bacteriana",
-          "dosis": "10 mg/kg/dia (max 600 mg) VO en ayunas",
+          "nombre": "Rifampicina (R) y Rifapentina (P, en regímenes cortos)",
+          "grupo": "Rifamicinas — bactericidas potentes de primera línea (R) y para regímenes acortados (P)",
+          "mecanismo": "Inhiben la ARN polimerasa dependiente de DNA bacteriana. Activos contra bacilos en multiplicación activa y semilatentes. Rifapentina tiene vida media más larga (permite dosificación semanal).",
+          "dosis": "Rifampicina 10 mg/kg/día VO (máx 600 mg) en ayunas. Rifapentina 1200 mg en régimen corto 4 meses HPMZ, o 900 mg semanal en 3HP de ITBL.",
           "cuidadosEnfermeria": [
-            "Tine de rojo-anaranjado orina, lagrimas, sudor (ADVERTIR al paciente)",
-            "Puede decolorar lentes de contacto",
-            "Muchas interacciones medicamentosas (reduce niveles de anticonceptivos, warfarina, antirretrovirales)",
-            "Hepatotoxicidad: monitorizar transaminasas"
+            "ADVERTIR al paciente: tiñe orina, sudor, lágrimas y otros fluidos de rojo-anaranjado (esperado, no tóxico)",
+            "Puede decolorar PERMANENTEMENTE lentes de contacto",
+            "MUCHAS interacciones: induce CYP3A4 — reduce niveles de ACO (usar método alternativo), warfarina (ajustar INR), antirretrovirales (inhibidores de proteasa, dolutegravir), corticoides, antiarrítmicos",
+            "En coinfección VIH: rifabutina puede reemplazar a rifampicina (menos interacción con inhibidores de proteasa)",
+            "Hepatotoxicidad: similar vigilancia que isoniazida",
+            "Trombocitopenia, hemólisis, rash"
           ]
         },
         {
           "nombre": "Pirazinamida (Z)",
-          "grupo": "Antituberculoso primera linea - bactericida en pH ácido",
-          "mecanismo": "Actua en el medio ácido de los macrofagos, matando bacilos intracelulares",
-          "dosis": "25 mg/kg/dia (max 2 g) VO",
+          "grupo": "Antituberculoso de primera línea — bactericida en pH ácido intracelular",
+          "mecanismo": "Pirazinamidasa bacteriana la convierte en ácido pirazinoico, activo en el medio ácido de los macrófagos, matando bacilos intracelulares semilatentes. Acción única e insustituible.",
+          "dosis": "25 mg/kg/día VO (máx 2 g) durante los PRIMEROS 2 MESES del RIPE; mantenida en régimen corto 4 meses HPMZ.",
           "cuidadosEnfermeria": [
-            "Puede elevar ácido urico (artritis gotosa)",
-            "Hepatotoxicidad: más frecuente que Isoniacida",
-            "Solo los primeros 2 meses en regimen HRZE"
+            "Eleva ácido úrico (inhibe excreción renal): hiperuricemia asintomática frecuente; crisis de gota rara — vigilar",
+            "Hepatotoxicidad: más frecuente que isoniazida o rifampicina",
+            "Artralgias no gotosas (50% pacientes), rash, fotosensibilidad",
+            "Solo 2 primeros meses en RIPE (fase intensiva); evitar en embarazo (controversia — en regiones de alta endemicidad sí se usa)"
           ]
         },
         {
           "nombre": "Etambutol (E)",
-          "grupo": "Antituberculoso primera linea - bacteriostatico",
-          "mecanismo": "Inhibe la sintesis del arabinogalactano de la pared micobacteriana",
-          "dosis": "15-20 mg/kg/dia (max 1.6 g) VO",
+          "grupo": "Antituberculoso de primera línea — bacteriostático, previene resistencias",
+          "mecanismo": "Inhibe la síntesis del arabinogalactano de la pared micobacteriana. Su rol principal es prevenir la emergencia de resistencias durante la fase intensiva del RIPE.",
+          "dosis": "15-20 mg/kg/día VO (máx 1.6 g) durante los primeros 2 meses. Ajustar por TFG (1/2 dosis si TFG 10-50).",
           "cuidadosEnfermeria": [
-            "Neuritis optica retrobulbar: monitorizar agudeza visual y vision de colores mensualmente",
-            "Contraindicado si no puede reportar cambios visuales (niños pequeños)",
-            "Solo 2 primeros meses en regimen HRZE"
+            "NEURITIS ÓPTICA RETROBULBAR (efecto adverso característico, dosis-dependiente): monitorizar AGUDEZA VISUAL y VISIÓN DE COLORES mensualmente (test de Ishihara)",
+            "Contraindicado en pacientes que no pueden reportar cambios visuales (niños pequeños < 5 años, paciente con demencia)",
+            "Suspender de inmediato ante cualquier alteración visual (puede ser irreversible si se mantiene)",
+            "Ajustar dosis en insuficiencia renal"
+          ]
+        },
+        {
+          "nombre": "Moxifloxacino — quinolona en régimen corto 4 meses y en MDR/pre-XDR",
+          "grupo": "Fluoroquinolona — componente del régimen corto HPMZ (Study 31/A5349) y del BPaLM (WHO 2022)",
+          "mecanismo": "Inhibe la DNA girasa y topoisomerasa IV bacterianas. Bactericida con buena penetración tisular.",
+          "dosis": "400 mg/día VO en régimen corto 4 meses (HPMZ) y en BPaLM 6 meses para MDR/RR-TB.",
+          "cuidadosEnfermeria": [
+            "Vigilar PROLONGACIÓN del QT (ECG basal y si síntomas); evitar combinación con otros QT-prolongadores (bedaquilina, clofazimina aumentan riesgo)",
+            "Tendinopatía y rotura tendinosa, especialmente Aquiles (riesgo aumentado: corticoides, > 60 años)",
+            "Disglucemia (hipo o hiperglucemia) en diabéticos",
+            "FDA: black-box warning por neuropatía periférica, aneurisma aórtico, hipoglucemia severa, efectos psiquiátricos",
+            "Evitar antiácidos, hierro, calcio simultáneamente (reduce absorción)"
+          ]
+        },
+        {
+          "nombre": "Bedaquilina (B) + Pretomanid (Pa) + Linezolid (L) — BPaLM/BPaL para MDR/Pre-XDR-TB (WHO 2022)",
+          "grupo": "Combinación TODO-ORAL — cambio paradigmático WHO 2022 que reemplaza los regímenes inyectables 18-24 meses por 6 meses orales",
+          "mecanismo": "Bedaquilina: inhibe la ATP sintasa micobacteriana (mecanismo único). Pretomanid: nitroimidazol que actúa en medio anaerobio y aerobio. Linezolid: inhibe la síntesis proteica bacteriana (50S ribosomal).",
+          "dosis": "BPaLM 6 meses: Bedaquilina 400 mg/día x 2 sem → 200 mg 3x/sem x 22 sem. Pretomanid 200 mg/día. Linezolid 600 mg/día (reducible a 300 mg por toxicidad). Moxifloxacino 400 mg/día (omitir si resistencia a quinolonas).",
+          "cuidadosEnfermeria": [
+            "ECG basal y mensual: bedaquilina + moxifloxacino + clofazimina pueden prolongar QT (vigilar > 500 ms)",
+            "Linezolid: vigilar TROMBOCITOPENIA, ANEMIA, NEUROPATÍA periférica y óptica (frecuente con uso > 4-8 sem) — hemograma cada 2 sem, examen neurológico y oftalmológico mensual; reducir o discontinuar si toxicidad",
+            "Pretomanid: solo aprobado en combinación; vigilar transaminasas",
+            "BPaLM/BPaL son tratamientos altamente efectivos pero con monitorización ESTRECHA — coordinar con centro especializado en TB resistente",
+            "Tasa de curación 90%+ en MDR-TB sensible al régimen, comparado con 50-60% del régimen inyectable clásico"
+          ]
+        },
+        {
+          "nombre": "ITBL — esquemas preventivos cortos (3HP, 4R, 3HR preferidos sobre 6-9H)",
+          "grupo": "Terapia preventiva de infección tuberculosa latente — esquemas cortos con mejor adherencia",
+          "mecanismo": "Erradica la población bacilar latente en macrófagos antes de su reactivación.",
+          "dosis": "**3HP**: Isoniazida 15 mg/kg + Rifapentina 15 mg/kg (900 mg si ≥ 50 kg) SEMANAL x 12 dosis (completion ~87% — el mejor). **4R**: Rifampicina 10 mg/kg/día VO x 4 meses (completion ~70%). **3HR**: Isoniazida 5 mg/kg/día + Rifampicina 10 mg/kg/día x 3 meses. **6-9H**: Isoniazida sola 5 mg/kg/día x 6-9 meses (ya NO preferido, menor adherencia y mayor hepatotoxicidad).",
+          "cuidadosEnfermeria": [
+            "3HP semanal es la opción PREFERIDA en adultos y niños ≥ 2 años con buena adherencia documentada (CDC, WHO)",
+            "VDOT (Video-Directly Observed Therapy) facilita 3HP en práctica moderna",
+            "4R o 3HR: mejor para pacientes con interacciones de rifapentina o intolerancia",
+            "Cribar TB ACTIVA antes de iniciar terapia preventiva (siempre): síntomas + Rx tórax — si TB activa, requiere régimen completo",
+            "Vigilar hepatotoxicidad con cualquier régimen (más alta en > 35 años, alcoholismo, hepatopatía previa)",
+            "9H ya no es de elección — solo si las otras opciones contraindicadas"
           ]
         }
       ],
       "noFarmacologico": [
-        "Aislamiento respiratorio: habitación individual con presión negativa o ventilación forzada al exterior",
-        "Mascarilla quirúrgica para el paciente al salir de la habitación",
-        "FFP2 para el personal sanitario",
-        "Tratamiento directamente observado (TDO) para asegurar adherencia",
-        "Estudio de contactos y quimioprofilaxis"
+        "AISLAMIENTO RESPIRATORIO de transmisión aérea (no solo gotas): habitación individual con presión NEGATIVA y ≥ 6-12 cambios de aire/hora; si no disponible, habitación con ventilación al exterior y puerta cerrada",
+        "MASCARILLA QUIRÚRGICA para el paciente al salir de la habitación (estudios diagnósticos, traslados)",
+        "RESPIRADOR FFP2/N95 ajustado al rostro del personal sanitario y visitas (fit-testing periódico); NO mascarilla quirúrgica para el personal en contacto con TB activa",
+        "Duración del aislamiento: hasta cumplir TRES criterios — (a) ≥ 2 semanas de tratamiento efectivo apropiado, (b) mejoría clínica significativa, (c) 3 baciloscopias seriadas negativas en muestras separadas. En MDR-TB el aislamiento puede prolongarse hasta cultivos negativos",
+        "TDO (Tratamiento Directamente Observado) tradicional o VDOT (Video-DOT): observación de cada toma por personal sanitario para asegurar adherencia y prevenir resistencias. VDOT (videollamada o video asincrónico) es estándar moderno post-COVID, alta aceptación y reduce barreras de acceso",
+        "Estudio sistemático de contactos: identificar contactos íntimos (convivientes) y casuales con exposición prolongada → cribado con clínica + Rx + IGRA/PPD → tratamiento ITBL si infectados sin enfermedad activa",
+        "Vacunación BCG: indicada en RECIÉN NACIDOS en países con alta endemicidad (no en adultos ni en países de baja prevalencia). Eficacia ~70-80% contra TB miliar y meningitis tuberculosa en niños, eficacia variable en adultos",
+        "Soporte NUTRICIONAL: la TB activa es estado hipercatabólico — suplemento proteico-calórico, vitamina D, B6 (con isoniazida), control de peso mensual",
+        "Manejo de comorbilidades: cribado y manejo agresivo de VIH (TARV precoz), DM (control glucémico estricto — la DM duplica riesgo de TB y reduce respuesta al tratamiento), alcoholismo, drogas, salud mental",
+        "Educación al paciente sobre HIGIENE RESPIRATORIA: cubrirse boca y nariz al toser/estornudar con pañuelo desechable o codo, descartar en bolsa cerrada, lavado de manos frecuente, no escupir en lugares públicos",
+        "Notificación OBLIGATORIA a salud pública (enfermedad de notificación inmediata en la mayoría de jurisdicciones) — habilita estudio de contactos y vigilancia epidemiológica",
+        "En coinfección TB-VIH: iniciar TARV PRECOZMENTE post-inicio de antifímicos (< 2 semanas si CD4 < 50; < 8 semanas si CD4 ≥ 50) — reduce mortalidad. Vigilar IRIS (Síndrome de Reconstitución Inmune Inflamatoria) en primeros 3 meses tras TARV — empeoramiento paradójico que puede confundirse con falla terapéutica",
+        "TB en EMBARAZO: HRE seguros; pirazinamida permitida en regiones de alta endemicidad (datos limitados pero sin teratogenicidad clara); EVITAR estreptomicina (ototoxicidad fetal), bedaquilina y pretomanid no recomendados (datos limitados); SUPLEMENTO de piridoxina obligatorio; lactancia compatible con HRE",
+        "TB pediátrica: dosis adaptadas por peso; formulaciones dispersibles FDC (fixed-dose combinations) disponibles; régimen estándar 6 meses (4 meses HPMZ pediátrico aún en validación); cribado de contactos del hogar obligatorio",
+        "Reincorporación social y laboral progresiva tras 2 semanas de tratamiento efectivo + clínica estable; restricciones específicas en trabajo sanitario, escuelas, instituciones cerradas hasta cumplir criterios completos de no contagiosidad"
       ],
       "quirurgico": [
-        "Lobectomia o segmentectomia en TB MDR localizada con fallo terapéutico",
-        "Drenaje quirúrgico de empiema tuberculoso"
+        "Resección pulmonar (lobectomía, segmentectomía o neumonectomía): indicada en TB MDR/XDR localizada con fallo terapéutico documentado, lesiones residuales con hemoptisis recurrente, aspergilomas en cavidades residuales, bronquiectasias post-TB sintomáticas. Decisión multidisciplinaria",
+        "Drenaje quirúrgico de empiema tuberculoso o derrame loculado refractario al tratamiento médico",
+        "Pericardiectomía en pericarditis constrictiva post-TB (secuela tardía a pesar de tratamiento efectivo)",
+        "Cirugía descompresiva en mal de Pott con compresión medular o deformidad espinal severa (decisión con neurocirugía/ortopedia/infectología)",
+        "Derivación ventrículo-peritoneal en hidrocefalia post-meningitis tuberculosa (complicación frecuente)",
+        "Aspiración o biopsia de adenopatías necróticas con drenaje espontáneo (escrofuloderma); tratamiento antibiótico continúa"
       ]
     },
     "cuidadosEnfermeria": {
@@ -5780,7 +5929,15 @@
       "pat_ira",
       "pat_neumonia"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "WHO Consolidated Guidelines on Tuberculosis Module 4: Treatment — drug-resistant tuberculosis treatment, 2022 update (BPaLM regimen)",
+      "ATS/CDC/IDSA 2022 — Treatment of Drug-Susceptible Tuberculosis: Guidelines for the 4-month rifapentine-moxifloxacin regimen (HPMZ — Study 31/A5349)",
+      "WHO Operational Handbook on Tuberculosis Module 1: Prevention 2020 — TB preventive treatment regimens (3HP, 4R)",
+      "Ensayos clave: Nix-TB y ZeNix (BPaL/BPaLM); Study 31/A5349 (4-month HPMZ); TB-PRACTECAL (BPaLM)",
+      "WHO 2021 — Use of Xpert MTB/RIF Ultra for diagnosis of tuberculosis and rifampicin resistance"
+    ]
   },
   {
     "id": "pat_acv",
