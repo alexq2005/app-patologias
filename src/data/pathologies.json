@@ -2777,7 +2777,7 @@
     "id": "pat_endocarditis",
     "nombre": "Endocarditis Infecciosa",
     "bodySystemId": "cardiovascular",
-    "definicion": "Infección del endocardio, principalmente de las valvulas cardiacas, causada por microorganismos (bacterias, hongos), que produce vegetaciones trombóticas infectadas y puede destruir estructuras valvulares.",
+    "definicion": "Infección del endocardio (principalmente válvulas nativas o protésicas, pero también dispositivos cardíacos implantables como marcapasos/CDI) causada por microorganismos (bacterias mayormente, hongos en huéspedes especiales). Produce vegetaciones trombóticas infectadas que destruyen estructuras valvulares y embolizan a distancia. ESC 2023 + Duke-ISCVID 2023 actualizaron los criterios diagnósticos integrando imagen avanzada (TC cardíaca, PET-TC con FDG) y nuevos métodos microbiológicos.",
     "epidemiologia": "Incidencia de 3-10 casos por 100,000 habitantes/ano. Mortalidad hospitalaria del 15-25%. El Staphylococcus aureus es el agente más frecuente actualmente, seguido de Streptococcus viridans.",
     "factoresRiesgo": [
       "Uso de drogas intravenosas (UDIV)",
@@ -2812,19 +2812,47 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Criterios de Duke (modificados)",
+      "nombre": "Clasificación dual: Criterios Duke-ISCVID 2023 (probabilidad diagnóstica) + tipo clínico ESC 2023",
       "tipos": [
         {
-          "nombre": "EI definitiva",
-          "descripcion": "2 criterios mayores, o 1 mayor + 3 menores, o 5 menores"
+          "nombre": "Duke-ISCVID 2023 — EI Definitiva",
+          "descripcion": "Criterio patológico (cultivo o histología de tejido valvular/embolia) O 2 criterios MAYORES O 1 mayor + 3 menores O 5 menores. Mayor sensibilidad (~84%) que Duke 2000 (~70%) tras inclusión de TC cardíaca y PET-TC con FDG como criterios mayores."
         },
         {
-          "nombre": "EI posible",
-          "descripcion": "1 mayor + 1 menor, o 3 menores"
+          "nombre": "Duke-ISCVID 2023 — EI Posible",
+          "descripcion": "1 mayor + 1 menor O 3 menores. Requiere continuar evaluación e iniciar tratamiento empírico mientras se completa el algoritmo."
         },
         {
-          "nombre": "EI rechazada",
-          "descripcion": "Diagnóstico alternativo o resolución con antibioticos < 4 dias"
+          "nombre": "Duke-ISCVID 2023 — EI Rechazada",
+          "descripcion": "Diagnóstico alternativo confirmado O resolución de síntomas con < 4 días de antibiótico O ausencia de evidencia patológica en cirugía/autopsia."
+        },
+        {
+          "nombre": "Criterios MAYORES Duke-ISCVID 2023",
+          "descripcion": "1) Microbiológicos: hemocultivos con microorganismos típicos (≥2 positivos separados o ≥1 para S. aureus, S. lugdunensis); serología o PCR para Coxiella, Bartonella, T. whipplei. 2) Imagen: ecocardiograma (vegetación, absceso, perforación, nueva dehiscencia de prótesis); TC cardíaca multidetector (absceso, pseudoaneurisma, dehiscencia); PET-TC con 18F-FDG (captación anormal en prótesis > 3 meses). 3) Quirúrgico: inspección/cirugía con evidencia macroscópica de EI."
+        },
+        {
+          "nombre": "Criterios MENORES Duke-ISCVID 2023",
+          "descripcion": "Predisposición (cardiopatía + UDIV); fiebre > 38°C; fenómenos vasculares (embolia arterial, infartos sépticos, aneurismas micóticos, hemorragia conjuntival/Janeway); fenómenos inmunológicos (glomerulonefritis, Osler, Roth, FR+); microbiología compatible que no cumple mayor; hallazgos de imagen como FDG-PET periférica (esplénica, ósea) sugestiva de embolia séptica."
+        },
+        {
+          "nombre": "Tipo clínico — EI sobre válvula nativa (NVE)",
+          "descripcion": "Sin prótesis ni dispositivo. Patógenos típicos: S. aureus (más frecuente), Streptococcus viridans, Enterococcus. Cirugía con menor mortalidad operatoria que en prótesis."
+        },
+        {
+          "nombre": "Tipo clínico — EI sobre válvula protésica precoz (PVE < 12 meses)",
+          "descripcion": "Adquisición intrahospitalaria o perioperatoria. Patógenos: S. aureus (incluyendo MRSA), Staphylococcus coagulasa-negativo (S. epidermidis), bacilos gram-negativos, hongos. Mortalidad alta, requiere casi siempre cirugía."
+        },
+        {
+          "nombre": "Tipo clínico — EI sobre válvula protésica tardía (PVE > 12 meses)",
+          "descripcion": "Espectro similar a NVE; estreptococos orales más frecuentes. PET-TC con FDG es criterio mayor diagnóstico."
+        },
+        {
+          "nombre": "Tipo clínico — EI asociada a dispositivos cardíacos (CIED: marcapasos, CDI)",
+          "descripcion": "Infección sobre electrodos o generador. Patógenos: estafilococos predominantes. Extracción completa del sistema OBLIGATORIA (ESC 2023 Class I) + antibioticoterapia prolongada."
+        },
+        {
+          "nombre": "Tipo clínico — EI en usuarios de drogas IV (UDIV)",
+          "descripcion": "Predominio de válvula tricúspide; S. aureus es el agente principal. Hemoptisis y embolia pulmonar séptica como presentación. Riesgo alto de recurrencia."
         }
       ]
     },
@@ -2857,78 +2885,175 @@
           ]
         },
         {
-          "nombre": "Ecocardiograma transesofagico (TEE)",
-          "descripcion": "Estudio de elección para detectar vegetaciones, abscesos y complicaciones valvulares",
-          "valoresReferencia": "Vegetación: masa ecogenica móvil en valvula; sensibilidad TEE > 90%, ETT ~75%",
+          "nombre": "Ecocardiograma: TTE primero, TEE si negativo o protésica/CIED",
+          "descripcion": "Pilar de la imagen ESC 2023. TTE (transtorácico) como primer paso. TEE (transesofágico) indicado si: TTE no diagnóstico con sospecha alta, válvula protésica, CIED, sospecha de complicación (absceso, fístula), bacteriemia por S. aureus persistente, o reevaluación. Buscar: vegetaciones, abscesos, perforación valvular, dehiscencia de prótesis, fístulas, pseudoaneurismas.",
+          "valoresReferencia": "Vegetación: masa ecogénica móvil adherida a estructura valvular. Sensibilidad TTE 50-75%; TEE 90-95%. Vegetación > 10 mm = mayor riesgo embólico (indicación quirúrgica relativa con embolia previa o > 30 mm).",
           "cuidadosEnfermeria": [
-            "Ayuno 6h previo",
-            "Sedación consciente segun protocolo",
-            "Explicar procedimiento",
-            "Monitorizar post-procedimiento"
+            "TTE: no requiere preparación especial — realizar al ingreso si sospecha",
+            "TEE: ayuno 6h, consentimiento informado, sedación consciente, monitorización SpO2 y PA continuas",
+            "Repetir ecocardiograma a los 5-7 días si TTE/TEE iniciales negativos pero alta sospecha",
+            "Ecocardiograma seriado durante tratamiento: detectar progresión, abscesos nuevos, deterioro de función VI"
           ]
         },
         {
-          "nombre": "PCR y Velocidad de Eritrosedimentación",
-          "descripcion": "Marcadores de inflamación; elevados pero inespecificos",
-          "valoresReferencia": "PCR > 5 mg/L; VES > 20 mm/h en hombres, > 30 en mujeres",
+          "nombre": "TC cardíaca multidetector (TCMD) — criterio MAYOR Duke-ISCVID 2023",
+          "descripcion": "Detecta abscesos perivalvulares, pseudoaneurismas, dehiscencia de prótesis y permite planificación quirúrgica con visualización de coronarias. ESC 2023 + Duke-ISCVID 2023 lo elevaron a CRITERIO MAYOR, especialmente útil cuando el eco es subóptimo.",
+          "valoresReferencia": "Hallazgos diagnósticos: nueva dehiscencia perivalvular, absceso, pseudoaneurisma, perforación. También evalúa anatomía coronaria pre-cirugía valvular (sustituye coronariografía invasiva en muchos casos).",
           "cuidadosEnfermeria": [
-            "Obtener junto a hemocultivos al ingreso",
-            "Monitorizar evolución bajo tratamiento"
+            "Verificar función renal y alergia al contraste yodado",
+            "Hidratación pre y post contraste",
+            "Premedicar con betabloqueante si FC > 70 para mejorar calidad de imagen",
+            "Resultado en 30-60 min — orienta decisión quirúrgica urgente si absceso o dehiscencia"
+          ]
+        },
+        {
+          "nombre": "PET-TC con 18F-FDG — criterio MAYOR Duke-ISCVID 2023 en prótesis > 3 meses",
+          "descripcion": "Detecta inflamación activa por captación de glucosa marcada en sitios de infección. Especialmente valioso en EI protésica > 3 meses (pasada la inflamación posquirúrgica fisiológica), donde la ecocardiografía suele ser limitada por artefactos protésicos. También detecta embolias sépticas periféricas (esplénicas, óseas).",
+          "valoresReferencia": "Captación anómala focal sobre prótesis o estructuras perivalvulares = criterio mayor. Sensibilidad ~86%, especificidad ~84% para EI protésica. NO usar en prótesis < 3 meses (inflamación postoperatoria normal).",
+          "cuidadosEnfermeria": [
+            "Ayuno 6h y dieta cetogénica/baja en CHO 24h previas (suprime captación miocárdica fisiológica)",
+            "Glucemia capilar pre-estudio (< 200 mg/dL); si descontrolada postergar",
+            "Hidratación post-estudio para eliminar trazador",
+            "Resultado en 90-120 min — alta utilidad en PVE de difícil diagnóstico"
+          ]
+        },
+        {
+          "nombre": "RMN cerebral / TC cerebral — cribado de embolia séptica",
+          "descripcion": "ESC 2023 recomienda imagen cerebral en EI por S. aureus o con signos neurológicos, incluso sutiles. Hasta 60% de los pacientes tienen ACV silente que puede modificar la decisión quirúrgica (riesgo de transformación hemorrágica con bypass cardiopulmonar).",
+          "valoresReferencia": "Detecta: infartos isquémicos (a menudo múltiples y embólicos), hemorragia intracraneal, aneurismas micóticos (angiografía si sospecha). RMN más sensible que TC para microinfartos.",
+          "cuidadosEnfermeria": [
+            "Indicación: EI por S. aureus, signos neurológicos, decisión quirúrgica pendiente",
+            "RMN preferida sobre TC salvo contraindicación (marcapasos no compatible, agitación)",
+            "Si HIC documentada: postergar cirugía 4 semanas si posible (riesgo de transformación con bypass); cirugía precoz aceptable si sin HIC (ESC 2023 cambió el dogma antiguo de 'esperar 4 sem post-ACV')"
+          ]
+        },
+        {
+          "nombre": "PCR y VSG + marcadores inflamatorios",
+          "descripcion": "Marcadores de inflamación elevados pero inespecíficos; útiles para monitorizar respuesta al tratamiento.",
+          "valoresReferencia": "PCR > 5 mg/L; VSG > 20 mm/h en hombres, > 30 en mujeres. Procalcitonina elevada en bacteriemia.",
+          "cuidadosEnfermeria": [
+            "Obtener al ingreso y seriadamente cada 3-5 días",
+            "Tendencia descendente bajo ATB efectivo; persistencia o aumento sugiere falla terapéutica o complicación"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Erradicar la infección con antibioticos bactericidas",
-        "Prevenir complicaciones embolicas y valvulares",
-        "Indicación quirúrgica si falla médica o complicaciones"
+        "Erradicar la infección con antibióticos BACTERICIDAS dirigidos por antibiograma (no solo empíricos)",
+        "Tratamiento prolongado IV: 4-6 semanas según patógeno y tipo de válvula; posibilidad de TRANSICIÓN ORAL parcial tras 10-14 días de estabilización (POET trial 2019; ESC 2023 lo endorsa en pacientes seleccionados)",
+        "OPAT (Outpatient Parenteral Antibiotic Therapy) en pacientes estabilizados con apoyo domiciliario adecuado",
+        "Activar el ENDOCARDITIS TEAM multidisciplinario (Class I ESC 2023): cardiólogo, infectólogo, cirujano cardiovascular, especialista en imagen, microbiólogo, y según caso neurólogo/nefrólogo/odontólogo",
+        "Identificar y manejar la PUERTA DE ENTRADA: foco dental (limpieza/extracción tras estabilización), catéter vascular (retirar), CIED (extracción completa OBLIGATORIA), foco digestivo (colonoscopia si Streptococcus gallolyticus/bovis)",
+        "Evaluar indicación QUIRÚRGICA precoz: 50% de los pacientes requieren cirugía. Estratificar como emergente (< 24h), urgente (días) o electiva",
+        "Cribado de complicaciones: embolia (imagen cerebral en S. aureus); abscesos esplénicos/cerebrales; aneurismas micóticos; nefritis por inmunocomplejos",
+        "Prevenir recurrencia: higiene oral estricta como PILAR primario (más efectivo que profilaxis ATB ocasional); profilaxis ATB ESC 2023 solo en alto riesgo + procedimientos dentales con manipulación gingival"
       ],
       "farmacologico": [
         {
-          "nombre": "Penicilina G + Gentamicina",
-          "grupo": "Betalactamico + Aminoglucosido - antibioticos bactericidas",
-          "mecanismo": "Penicilina G inhibe sintesis de pared bacteriana; Gentamicina tiene efecto sinergico bactericida",
-          "dosis": "Penicilina G 12-18 MU/dia IV en 6 dosis; Gentamicina 3 mg/kg/dia en 3 dosis",
+          "nombre": "Tratamiento empírico (cultivos pendientes, sospecha clínica alta)",
+          "grupo": "Cobertura empírica amplia mientras se completa diagnóstico microbiológico",
+          "mecanismo": "Cubre los patógenos más frecuentes (S. aureus + estreptococos + enterococo) y según contexto MRSA y bacilos gram-negativos.",
+          "dosis": "NVE comunitaria: Ampicilina 12 g/día IV + Cloxacilina 12 g/día IV + Gentamicina 3 mg/kg/día (regimen tradicional); o Ampicilina-sulbactam + Vancomicina si alto riesgo de MRSA. PVE o nosocomial: Vancomicina + Gentamicina + Rifampicina (si prótesis).",
           "cuidadosEnfermeria": [
-            "Administrar IV estricto (penicilina G inestable)",
-            "Monitorizar función renal y auditiva con gentamicina (nefrotoxicidad, ototoxicidad)",
-            "Niveles pico y valle de aminoglucosido",
-            "Tratamiento 4-6 semanas en Streptococcus viridans"
+            "Iniciar SOLO después de obtener 3 sets de hemocultivos (si paciente no séptico inestable)",
+            "En sepsis severa/shock: iniciar tras 1 set de cultivos sin demora",
+            "Ajustar a antibiograma EN CUANTO esté disponible (de-escalation) — NO mantener empírico de rutina",
+            "Sin S. aureus en hemocultivos a 48h con tratamiento adecuado: reevaluar diagnóstico"
           ]
         },
         {
-          "nombre": "Oxacilina / Cloxacilina",
-          "grupo": "Penicilina antiestafilococica",
-          "mecanismo": "Inhibe sintesis de pared de Staphylococcus sensible a meticilina (SAMS)",
-          "dosis": "2 g IV cada 4h (12 g/dia)",
+          "nombre": "Streptococcus viridans / grupo D sensibles: Penicilina G o Ceftriaxona ± Gentamicina",
+          "grupo": "Beta-lactámico ± aminoglucósido — tratamiento dirigido",
+          "mecanismo": "Penicilina G y ceftriaxona inhiben síntesis de pared. Gentamicina solo si ciclo corto (2 sem) en EI no complicada sobre válvula nativa.",
+          "dosis": "Penicilina G 12-18 MU/día IV dividida c/4h. Ceftriaxona 2 g/día IV monodosis (favorita para OPAT). Gentamicina 3 mg/kg/día IV monodosis si protocolo corto. Duración: 4 semanas (NVE); 6 semanas (PVE); o ESQUEMA CORTO 2 semanas si NVE sensible + Gent + sin complicaciones.",
           "cuidadosEnfermeria": [
-            "Via venosa periférica de buen calibre o central",
-            "Vigilar flebitis",
-            "Función hepática periodica"
+            "Ceftriaxona favorita para OPAT (monodosis diaria, vía periférica)",
+            "Gentamicina sólo en regimen corto 2 sem: monitorizar nefrotoxicidad y ototoxicidad",
+            "Niveles pico/valle de gentamicina; suspender si Cr aumenta > 30%",
+            "Streptococcus gallolyticus (bovis) en hemocultivo → colonoscopia obligatoria (alta incidencia de cáncer colorrectal asociado)"
           ]
         },
         {
-          "nombre": "Vancomicina",
-          "grupo": "Glucopeptido - antibiotico activo frente a SAMR",
-          "mecanismo": "Inhibe la sintesis de la pared celular de grampositivos, incluyendo Staphylococcus aureus meticilino-resistente",
-          "dosis": "30-45 mg/kg/dia IV en 2-3 dosis",
+          "nombre": "S. aureus meticilino-sensible (MSSA): Cefazolina o Cloxacilina/Oxacilina",
+          "grupo": "Beta-lactámico antiestafilocócico — primera elección en MSSA",
+          "mecanismo": "Cefazolina (cefalosporina 1ª gen) o cloxacilina/oxacilina (penicilinas antiestafilocócicas) inhiben PBP. ESC 2023 valida cefazolina como primera elección (mejor tolerancia, menos flebitis y nefrotoxicidad que cloxacilina).",
+          "dosis": "Cefazolina 2 g IV c/8h (más cómodo, mejor perfil). Cloxacilina 2 g IV c/4h (12 g/día — más flebitis). Duración: 4-6 semanas NVE; 6 semanas PVE (+ rifampicina + gentamicina las primeras 2 semanas en PVE).",
           "cuidadosEnfermeria": [
-            "Infundir LENTAMENTE en > 60 min (sindrome del hombre rojo)",
-            "Monitorizar niveles traje (objetivo AUC/MIC)",
-            "Nefrotoxicidad: vigilar creatinina cada 48h",
-            "Red Man Syndrome: rubor, hipotensión si infusion rápida"
+            "Cefazolina es la PRIMERA elección preferida (ESC 2023 + meta-análisis recientes): igual eficacia, menor toxicidad, menos suspensiones",
+            "Acceso central preferido por la duración (4-6 semanas IV)",
+            "Vigilar flebitis (especialmente cloxacilina), hepatotoxicidad",
+            "Si alergia a penicilina con anafilaxia: vancomicina o daptomicina"
+          ]
+        },
+        {
+          "nombre": "S. aureus meticilino-resistente (MRSA): Vancomicina o Daptomicina",
+          "grupo": "Glicopéptido o lipopéptido — para MRSA y para alergia a beta-lactámicos",
+          "mecanismo": "Vancomicina inhibe síntesis de pared (D-Ala-D-Ala). Daptomicina disrumpe membrana bacteriana — ESC 2023 la valida especialmente en EI tricuspídea por MRSA y como alternativa en intolerancia a vancomicina.",
+          "dosis": "Vancomicina 30-45 mg/kg/día IV en 2-3 dosis (ajustar por niveles, target AUC/MIC 400-600). Daptomicina 10-12 mg/kg/día IV monodosis (dosis altas en EI; bajas asociadas a fallo). Duración 4-6 semanas (NVE); 6 semanas + rifampicina + gentamicina (PVE).",
+          "cuidadosEnfermeria": [
+            "Vancomicina: infundir en > 60 min (riesgo 'red man syndrome' si más rápida); monitorizar niveles (valle 15-20 mg/L o AUC); creatinina cada 48h",
+            "Daptomicina: monitorizar CPK semanal (miopatía); evitar en EI izquierda complicada por neumonía concomitante (surfactante inactiva el fármaco)",
+            "Si fallo terapéutico o resistencia emergente: considerar combinación con beta-lactámico (sinergia probada en bacteriemia persistente)"
+          ]
+        },
+        {
+          "nombre": "Enterococcus faecalis/faecium: Ampicilina + Ceftriaxona (NO gentamicina rutinaria)",
+          "grupo": "Doble beta-lactámico — cambio paradigmático ESC 2023",
+          "mecanismo": "Ampicilina + ceftriaxona producen efecto sinérgico ('Mainardi effect') con bloqueo de múltiples PBPs en Enterococcus. ESC 2023 lo prefiere sobre ampicilina + gentamicina por menor nefrotoxicidad y eficacia comparable.",
+          "dosis": "Ampicilina 12 g/día IV en 4-6 dosis + Ceftriaxona 4 g/día IV en 2 dosis. Duración: 6 semanas. Si E. faecium resistente a ampicilina: vancomicina o linezolid o daptomicina.",
+          "cuidadosEnfermeria": [
+            "ESC 2023 cambio paradigmático: ampi + CEFTRIAXONA (no gentamicina) es ahora el régimen preferido — reduce nefrotoxicidad sin sacrificar eficacia",
+            "Gentamicina solo se mantiene si cepa es vancomicina-resistente Y susceptible a aminoglucósido",
+            "Vigilar diarrea por C. difficile (uso prolongado de beta-lactámicos)",
+            "VRE (vancomicina-resistente): linezolid o daptomicina + consulta infectológica"
+          ]
+        },
+        {
+          "nombre": "HACEK y gram-negativos: Ceftriaxona",
+          "grupo": "Cefalosporina 3ª generación — para Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella",
+          "mecanismo": "Cobertura amplia gram-negativa, monodosis diaria favorable para OPAT.",
+          "dosis": "Ceftriaxona 2 g/día IV. Duración 4 semanas (NVE); 6 semanas (PVE). Alternativas: ampicilina-sulbactam, ciprofloxacino.",
+          "cuidadosEnfermeria": [
+            "HACEK son causa de EI con hemocultivo NEGATIVO clásico (requieren incubación prolongada)",
+            "Bacilos gram-negativos no-HACEK: combinación dirigida por antibiograma, consulta infectológica",
+            "Vigilar reacciones alérgicas; ajustar en colestasis"
+          ]
+        },
+        {
+          "nombre": "Endocarditis fúngica (Candida, Aspergillus): Equinocandina + Anfotericina liposomal",
+          "grupo": "Antifúngicos — EI fúngica es rara pero de muy alta mortalidad",
+          "mecanismo": "Equinocandinas (caspofungina, micafungina) inhiben síntesis de glucano de pared fúngica. Anfotericina liposomal forma poros en membrana ergosterol.",
+          "dosis": "Anfotericina B liposomal 3-5 mg/kg/día IV. Caspofungina 70 mg carga → 50 mg/día. Duración: prolongada (≥ 6 semanas) + casi siempre CIRUGÍA + supresión oral con azol (fluconazol o voriconazol) a largo plazo, incluso indefinida.",
+          "cuidadosEnfermeria": [
+            "EI fúngica: cirugía PRÁCTICAMENTE OBLIGATORIA (la mortalidad solo con ATB es > 70%)",
+            "Anfotericina liposomal: monitorizar función renal, electrolitos (K, Mg), escalofríos al inicio (premedicar)",
+            "Equinocandinas: bien toleradas, monitorizar función hepática",
+            "Supresión oral prolongada con azol — vigilar interacciones (P450)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Reposo relativo con movilización progresiva",
-        "Higiene oral rigurosa",
-        "Profilaxis antibiotica en procedimientos invasivos futuros"
+        "Endocarditis Team multidisciplinario (Class I ESC 2023): cardiólogo + infectólogo + cirujano CV + especialista en imagen + microbiólogo; añadir neurólogo, nefrólogo, odontólogo según caso. Reduce mortalidad y mejora outcomes por consenso experto",
+        "Reposo relativo en fase aguda con movilización progresiva precoz para prevenir descondicionamiento y TVP",
+        "Higiene oral RIGUROSA como medida preventiva primaria (ESC 2023 enfatiza más que profilaxis ATB): cepillado 2x/día con cepillo suave, hilo dental diario, control odontológico cada 6 meses, tratar focos infecciosos crónicos",
+        "Profilaxis antibiótica RESTRINGIDA (ESC 2023): SOLO en pacientes de ALTO RIESGO (prótesis valvular, EI previa, cardiopatía congénita cianótica con shunt/conduit, post-trasplante cardíaco con valvulopatía) y SOLO antes de procedimientos dentales con manipulación de mucosa gingival o periapical. Régimen: amoxicilina 2 g VO 30-60 min antes (clindamicina si alergia: ya NO recomendada en algunas guías por C. difficile; preferir azitromicina o doxiciclina). NO indicada profilaxis en procedimientos GI, GU, respiratorios ni dermatológicos rutinarios",
+        "Manejo del catéter central de larga duración (PICC, port-a-cath) para antibioticoterapia prolongada IV: técnica estéril estricta en cada manipulación, cambio de apósito según protocolo, vigilar signos de infección de salida o tunelización",
+        "OPAT (Outpatient Parenteral Antibiotic Therapy): en pacientes estabilizados, ATB sensible a monodosis (ceftriaxona, daptomicina, ertapenem) o infusión continua. Reduce hospitalización y costos sin aumentar mortalidad — requiere soporte domiciliario y seguimiento estrecho",
+        "Transición parcial a TERAPIA ORAL (POET trial 2019, validado ESC 2023): tras 10-14 días de IV con hemocultivos negativos, paciente estable y vía oral funcional, se puede continuar con régimen oral combinado (típicamente 2 antibióticos con diferentes mecanismos). NO indicado en EI fúngica, S. aureus complicada o falta de seguimiento",
+        "Identificación y manejo de la PUERTA DE ENTRADA: dental (panorámica + valoración odontológica obligatoria), cutánea (UDIV, catéteres), digestiva (colonoscopia si Streptococcus gallolyticus), urológica si bacteriuria",
+        "Manejo psicosocial del UDIV con EI: estabilización médica + derivación a tratamiento de adicción (riesgo de recurrencia 30-50% si no se trata la adicción)",
+        "Educación pre-alta: signos de recurrencia (fiebre, escalofríos, embolia), cuándo consultar urgente, cuidado del catéter si TADE/OPAT, profilaxis ATB futura solo en escenarios específicos"
       ],
       "quirurgico": [
-        "Cirugia valvular urgente si: IC refractaria, absceso perivalvular, embolias recurrentes, infección fúngica, fallo del tratamiento médico",
-        "Reemplazo valvular (biológico o mecánico)"
+        "INDICACIÓN EMERGENTE (< 24h) ESC 2023: IC severa con shock cardiogénico por regurgitación aguda; obstrucción valvular grave",
+        "INDICACIÓN URGENTE (días) ESC 2023: IC sin shock pero con regurgitación severa; infección no controlada (absceso perivalvular, pseudoaneurisma, fístula, vegetación creciente con ATB adecuado); hemocultivos persistentemente positivos > 5-7 días con ATB correcto; EI por hongos o microorganismos multirresistentes; PVE precoz por S. aureus o gram-negativos no-HACEK",
+        "INDICACIÓN ELECTIVA tras tratamiento ATB completo: regurgitación valvular severa residual sintomática",
+        "Prevención de embolia: vegetación > 10 mm + embolia previa con ATB adecuado, o vegetación > 30 mm sola — considerar cirugía precoz (ESC 2023 Class IIa)",
+        "Reemplazo valvular: biológico (sin anticoagulación crónica, recambio en 10-15 años) vs mecánico (anticoagulación crónica obligatoria). Reparación valvular preferida sobre reemplazo si técnicamente factible",
+        "Cirugía precoz tras ACV embólico: ESC 2023 NO la contraindica salvo HIC documentada (cambio del dogma antiguo de 'esperar 4 semanas'); se basa en ausencia de HIC + déficit no severo + necesidad clínica urgente",
+        "EXTRACCIÓN COMPLETA del sistema CIED (Class I ESC 2023): obligatoria en EI sobre marcapasos/CDI, incluyendo electrodos. Vía percutánea preferida; quirúrgica si fracaso o electrodos antiguos",
+        "Cirugía de aneurisma micótico cerebral si no resuelve con ATB y/o crecimiento progresivo"
       ]
     },
     "cuidadosEnfermeria": {
@@ -3064,7 +3189,14 @@
       "pat_icc",
       "pat_acv"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "ESC 2023 Guidelines for the management of endocarditis (Eur Heart J 2023;44:3948-4042)",
+      "2023 Duke-ISCVID Criteria for Infective Endocarditis (Fowler VG et al, Clin Infect Dis 2023;77:518-526)",
+      "Ensayo POET (NEJM 2019) — transición parcial a terapia oral en EI estabilizada",
+      "EACTS / EANM endorsement of 2023 ESC IE Guidelines"
+    ]
   },
   {
     "id": "pat_epoc",

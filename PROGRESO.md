@@ -4,6 +4,48 @@
 
 ---
 
+## 2026-05-23 — Sesion 32: Revisión clínica de pat_endocarditis a ESC 2023 IE + Duke-ISCVID 2023 + POET
+
+### Resumen
+Cuarta iteración del segundo lote. La entry `pat_endocarditis` (Endocarditis Infecciosa) tenía 14 gaps significativos vs ESC 2023 IE Guidelines + criterios diagnósticos Duke-ISCVID 2023: criterios Duke "modificados" (2000) desactualizados — Duke-ISCVID 2023 incorpora TC cardíaca y PET-TC con FDG como criterios mayores adicionales; TC cardíaca multidetector ausente (CRITERIO MAYOR ahora); PET-TC con 18F-FDG ausente (criterio mayor en EI protésica > 3 meses); régimen para MSSA solo con cloxacilina (ESC 2023 valida cefazolina como primera elección preferida); régimen para enterococo con gentamicina sinérgica (ESC 2023 cambió a ampicilina + ceftriaxona — menos nefrotóxico, igual eficacia, ensayo Hokusai); daptomicina ausente como alternativa a vancomicina en MRSA y EI tricuspídea; OPAT (terapia parenteral ambulatoria) y transición oral POET (NEJM 2019) ausentes; Endocarditis Team multidisciplinario no mencionado (Class I ESC 2023); profilaxis antibiótica sin criterios restrictivos ESC 2023 (solo alto riesgo + procedimientos dentales con manipulación gingival/periapical); higiene oral como pilar primario subestimada; indicaciones quirúrgicas sin estratificación temporal emergente/urgente/electiva; cirugía precoz post-ACV embólico no contemplada (ESC 2023 cambió el dogma del "esperar 4 semanas" salvo HIC); RMN cerebral de cribado en S. aureus ausente; EI sobre dispositivos cardíacos (CIED) con extracción obligatoria del sistema no mencionada.
+
+Cross-check: ESC 2023 IE Guidelines (Eur Heart J 2023;44:3948-4042), Duke-ISCVID 2023 (Fowler VG et al, Clin Infect Dis 2023;77:518-526), ensayo POET (NEJM 2019), EACTS/EANM endorsements 2024. Edición quirúrgica de 6 secciones; los bloques pruebas (3→6), farmacológico (3→7) y quirúrgico (2→8) se duplicaron o triplicaron.
+
+### Cambios en pat_endocarditis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Actualizada a nomenclatura ESC 2023 — incluye dispositivos cardíacos; menciona Duke-ISCVID 2023 |
+| `clasificacion` | De 3 a 10 tipos: criterios Duke-ISCVID 2023 (definitiva/posible/rechazada) + listas explícitas de criterios MAYORES (incluyendo TC, PET-TC, inspección quirúrgica) y MENORES + 5 tipos clínicos por contexto (NVE, PVE precoz, PVE tardía, CIED, UDIV) |
+| `diagnostico.pruebas.Ecocardiograma` | Refinado: TTE primero, TEE si negativo o protésica/CIED/S. aureus; criterios de repetición a 5-7 días |
+| `diagnostico.pruebas` (NUEVAS) | +TC cardíaca multidetector (CRITERIO MAYOR Duke-ISCVID 2023 + planificación quirúrgica); +PET-TC con 18F-FDG (criterio mayor en PVE > 3 meses, dieta cetogénica previa); +RMN cerebral cribado (ESC 2023 en S. aureus, cambia decisión quirúrgica) |
+| `tratamientoMedico.objetivos` | De 3 a 8: tratamiento dirigido por antibiograma, OPAT y transición oral POET, Endocarditis Team Class I, manejo de puerta de entrada, evaluación quirúrgica precoz, cribado de complicaciones embolicas, higiene oral pilar primario |
+| `farmacologico` (reorganización 3→7) | Empírico inicial con cobertura amplia; **Streptococcus**: penicilina/ceftriaxona ± gentamicina (corto 2 sem si bajo riesgo); **MSSA**: cefazolina PRIMERA elección (preferida sobre cloxacilina ESC 2023); **MRSA**: vancomicina o daptomicina (dosis altas, no en EI izquierda con neumonía); **Enterococo**: ampicilina + ceftriaxona (NO gentamicina rutinaria); **HACEK**: ceftriaxona OPAT-friendly; **fúngica**: anfo liposomal + equinocandina + cirugía casi obligatoria + supresión oral indefinida |
+| `noFarmacologico` (3→10) | Endocarditis Team Class I; higiene oral rigurosa como pilar primario; profilaxis ATB ESC 2023 RESTRINGIDA (solo alto riesgo + procedimientos dentales específicos); cuidado de catéter central; OPAT criterios; transición oral POET; identificación de puerta de entrada (colonoscopia si S. gallolyticus); manejo psicosocial del UDIV con derivación a adicciones |
+| `quirurgico` (2→8) | Indicaciones estratificadas EMERGENTE (<24h shock), URGENTE (días, infección no controlada/embolia/PVE precoz), ELECTIVA; prevención de embolia con vegetación > 10 mm + embolia previa o > 30 mm sola; reparación valvular preferida sobre reemplazo; cirugía precoz post-ACV embólico (ESC 2023 NO la contraindica salvo HIC — cambio paradigmático); extracción COMPLETA del sistema CIED obligatoria (Class I); cirugía de aneurisma micótico cerebral |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 4 entradas: ESC 2023 IE + Duke-ISCVID 2023 + POET + EACTS/EANM endorsements |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes (lesiones de Osler/Janeway/Roth ya estaban)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **15 frescas** (era 14; +pat_endocarditis), 136 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 4/10 completo
+1. ✅ pat_eap | 2. ✅ pat_cetoacidosis | 3. ✅ pat_tep | 4. ✅ pat_endocarditis (sesión 32)
+5. pat_neumotorax | 6. pat_meningitis | 7. pat_epilepsia | 8. pat_tuberculosis | 9. pat_cirrosis | 10. pat_pancreatitis
+
+### Commits esperados
+- `content(pat_endocarditis): align with ESC 2023 IE + Duke-ISCVID 2023 + POET`
+
+---
+
 ## 2026-05-23 — Sesion 31: Revisión clínica de pat_tep a ESC 2019 PE + DOAC en cáncer
 
 ### Resumen
