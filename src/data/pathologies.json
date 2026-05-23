@@ -4390,19 +4390,27 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por riesgo hemodinamico (ESC 2019)",
+      "nombre": "Clasificación de riesgo ESC 2019 (4 categorías) + scoring PESI/sPESI",
       "tipos": [
         {
-          "nombre": "TEP masivo (alto riesgo)",
-          "descripcion": "Shock o hipotensión PA < 90 mmHg. Mortalidad > 15%. Requiere trombólisis o embolectomia"
+          "nombre": "TEP de ALTO RIESGO",
+          "descripcion": "Inestabilidad hemodinámica: paro cardíaco, shock obstructivo (PAS < 90 + signos de hipoperfusión + requiere vasopresores) o hipotensión persistente (PAS < 90 o caída ≥ 40 mmHg > 15 min sin otra causa). Mortalidad a 30 días > 15%. Indicación absoluta de reperfusión inmediata (trombolisis sistémica primera línea; CDT/embolectomía si contraindicación o falla)."
         },
         {
-          "nombre": "TEP submasivo (riesgo intermedio)",
-          "descripcion": "Sin hipotensión pero con disfunción de VD y/o troponina elevada. Mortalidad 3-15%"
+          "nombre": "TEP de RIESGO INTERMEDIO-ALTO",
+          "descripcion": "Hemodinámicamente estable PERO con: PESI clase III-V o sPESI ≥ 1 + disfunción VD en imagen (eco/TC) + biomarcadores cardíacos elevados (troponina + BNP/NT-proBNP). Mortalidad 7-15%. Considerar monitorización en UCI; trombolisis de rescate si deterioro hemodinámico (PEITHO trial). Discutir con PERT."
         },
         {
-          "nombre": "TEP no masivo (bajo riesgo)",
-          "descripcion": "Sin signos de disfunción de VD ni hipotensión. Mortalidad < 1%"
+          "nombre": "TEP de RIESGO INTERMEDIO-BAJO",
+          "descripcion": "Estable + PESI III-V o sPESI ≥ 1 + UNO solo de los dos marcadores (disfunción VD imagen O biomarcadores), o ninguno con score elevado. Mortalidad 3-7%. Manejo hospitalario con anticoagulación estándar."
+        },
+        {
+          "nombre": "TEP de BAJO RIESGO",
+          "descripcion": "Estable + PESI clase I-II o sPESI = 0 + sin disfunción VD + biomarcadores normales. Mortalidad < 1%. Candidato a tratamiento ambulatorio domiciliario en pacientes seleccionados (criterios Hestia o sPESI = 0)."
+        },
+        {
+          "nombre": "Score PESI / sPESI (estratificación a 30 días)",
+          "descripcion": "PESI completo: 11 variables (edad, sexo, cáncer, IC, EPOC, FC, PAS, FR, temperatura, conciencia, SpO2) — clases I-V. sPESI (simplificado, ESC 2019 Class I): 6 variables binarias (edad>80, cáncer, IC/EPOC, FC≥110, PAS<100, SpO2<90%). sPESI = 0: bajo riesgo (mortalidad 1%). sPESI ≥ 1: no bajo riesgo (mortalidad ~10%)."
         }
       ]
     },
@@ -4433,86 +4441,157 @@
           ]
         },
         {
-          "nombre": "Dimero-D",
-          "descripcion": "Alta sensibilidad, baja especificidad. Negativo en baja probabilidad descarta TEP",
-          "valoresReferencia": "< 500 ng/mL descarta TEP en baja probabilidad clínica",
+          "nombre": "Dímero-D (con ajuste por edad y algoritmo YEARS)",
+          "descripcion": "Alta sensibilidad (98%), baja especificidad. Negativo descarta TEP en baja-intermedia probabilidad. ESC 2019 recomienda CUTOFFS AJUSTADOS para reducir falsos positivos: por edad (> 50 años) y por YEARS algorithm. Aumenta la exclusión de TEP del 6% al 30% en > 75 años sin agregar falsos negativos.",
+          "valoresReferencia": "Cutoff estándar: < 500 ng/mL (FEU). Ajustado por edad (> 50a): edad × 10 µg/L (ej. paciente de 75 → 750). Algoritmo YEARS: 3 ítems (signos TVP, hemoptisis, 'TEP más probable que diagnóstico alternativo'); si 0 ítems → cutoff < 1000; si ≥ 1 ítem → cutoff < 500. Falsamente elevado en: embarazo, cirugía reciente, cáncer, infección, edad, hospitalización.",
           "cuidadosEnfermeria": [
-            "No retrasa la anticoagulación si clínica compatible",
-            "Elevado en: embarazo, cirugía, cancer, infección (inespecífico)"
+            "NO retrasa anticoagulación empírica si probabilidad clínica alta",
+            "Comunicar el resultado contextualizado (no solo el valor, sino respecto al cutoff ajustado)",
+            "En cáncer y embarazo el D-dímero pierde utilidad — pasar directamente a imagen",
+            "Combinar siempre con probabilidad clínica (Wells/Geneva/YEARS) — el valor aislado no significa nada"
           ]
         },
         {
-          "nombre": "Troponina I o T",
-          "descripcion": "Marcador de disfunción y daño del VD por sobrecarga de presión",
-          "valoresReferencia": "Troponina elevada = TEP de riesgo intermedio-alto (mayor mortalidad)",
+          "nombre": "Troponina hs + BNP/NT-proBNP — biomarcadores cardíacos",
+          "descripcion": "Marcadores de daño y sobrecarga del VD. Ambos elevados + disfunción VD imagen + paciente estable = TEP riesgo intermedio-ALTO (mortalidad 7-15%, candidato a vigilancia UCI y trombolisis de rescate).",
+          "valoresReferencia": "Troponina > p99 del laboratorio. BNP > 100 pg/mL o NT-proBNP > 600 pg/mL sugieren disfunción VD significativa.",
           "cuidadosEnfermeria": [
-            "Obtener junto a otros marcadores al ingreso",
-            "Orienta la decision de trombolisis en TEP submasivo"
+            "Obtener AL INGRESO junto con otros marcadores",
+            "Determina la subclasificación de riesgo intermedio (alto vs bajo) y orienta intensidad de monitorización",
+            "Repetir a las 6-12h para detectar deterioro biomarcador"
           ]
         },
         {
-          "nombre": "Ecocardiograma urgente",
-          "descripcion": "Evalua disfunción del VD, signo de McConnel, trombo en VD, excluye otras causas de shock",
+          "nombre": "Ecocardiograma transtorácico urgente (signos de disfunción VD)",
+          "descripcion": "Evalúa disfunción del VD, presiones pulmonares y excluye otras causas de shock. Signos específicos de TEP: dilatación VD (relación VD/VI > 1.0), hipocinesia de pared libre VD con apex conservado (signo de McConnell — específico de TEP), TAPSE < 17 mm, signo 60/60 (tiempo de aceleración pulmonar < 60 ms + gradiente tricúspide < 60 mmHg), trombo en tránsito en cavidades derechas (raro pero diagnóstico).",
           "cuidadosEnfermeria": [
-            "En TEP masivo con shock: ecografía a pie de cama (FOCUS)",
-            "No debe retrasar anticoagulación ni trombolisis"
+            "En TEP de ALTO riesgo (shock): ecografía POCUS a pie de cama (FOCUS) por intensivista — confirma sobrecarga VD aguda y orienta trombolisis sin esperar angio-TC",
+            "NO debe retrasar la anticoagulación empírica ni la trombolisis en TEP alto riesgo",
+            "TAPSE < 17 mm sugiere disfunción VD significativa"
+          ]
+        },
+        {
+          "nombre": "Score PESI / sPESI (estratificación a 30 días)",
+          "descripcion": "ESC 2019 Class I: aplicar a TODO paciente con TEP confirmado para estratificar riesgo de muerte a 30 días y decidir nivel de cuidado.",
+          "valoresReferencia": "sPESI (simplificado, 1 punto cada uno): edad > 80, cáncer, IC/EPOC crónica, FC ≥ 110, PAS < 100, SpO2 < 90%. sPESI = 0 → bajo riesgo (mortalidad ~1%); sPESI ≥ 1 → no bajo riesgo (~10%).",
+          "cuidadosEnfermeria": [
+            "Calcular al ingreso y documentar — guía decisión de hospitalización vs ambulatorio",
+            "sPESI = 0 + sin disfunción VD + sin biomarcadores elevados + criterios Hestia favorables → candidato a manejo ambulatorio con DOAC",
+            "Reevaluar cada 24h si cambia el estado clínico"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Anticoagulación para prevenir propagación y recurrencia",
-        "Reperfusion en TEP masivo (trombolisis)",
-        "Soporte hemodinamico",
-        "Prevenir muerte"
+        "Anticoagulación EMPÍRICA precoz al sospechar TEP de probabilidad clínica alta (NO esperar confirmación con angio-TC para iniciar HBPM/HNF/fondaparinux)",
+        "Reperfusión INMEDIATA en TEP de ALTO RIESGO (shock/inestabilidad): trombolisis sistémica primera línea; CDT o embolectomía si contraindicación o falla",
+        "Estratificación con PESI/sPESI + disfunción VD + biomarcadores en TODOS los TEP confirmados estables para decidir nivel de cuidado",
+        "Riesgo intermedio-alto: monitorizar en UCI/intermedios + trombolisis de RESCATE si deterioro hemodinámico (PEITHO trial — no trombolisis sistemática en intermedio-alto estable)",
+        "Riesgo bajo (sPESI = 0 + sin disfunción VD + sin biomarcadores elevados + criterios Hestia): considerar manejo AMBULATORIO con DOAC desde el inicio",
+        "Soporte hemodinámico: cautela con fluidos (max 500 mL si VD dilatado), norepinefrina como vasopresor preferido, dobutamina si bajo gasto",
+        "Activar PERT (Pulmonary Embolism Response Team) en TEP intermedio-alto y alto para decisiones complejas multidisciplinarias",
+        "Duración de la anticoagulación estratificada por etiología: 3 meses si factor reversible; 6+ meses si no provocado (decisión individualizada); INDEFINIDO si recurrente, cáncer activo, trombofilia mayor, SAF",
+        "Cribado a 3-6 meses post-TEP de Hipertensión Pulmonar Crónica Tromboembólica (HTPC) en pacientes con disnea persistente",
+        "Prevenir muerte y morbilidad a largo plazo (HTPC, síndrome post-trombótico, recurrencia)"
       ],
       "farmacologico": [
         {
-          "nombre": "Heparina no fraccionada IV",
-          "grupo": "Anticoagulante parenteral - de elección en TEP masivo o riesgo de trombolisis",
-          "mecanismo": "Potencia antitrombina III, inhibe factores IIa y Xa; rapidamente reversible",
-          "dosis": "80 UI/kg bolo IV, luego infusion 18 UI/kg/h; ajustar segun APTT (objetivo 50-70 seg)",
+          "nombre": "HBPM (Enoxaparina, Dalteparina, Tinzaparina) o Fondaparinux SC — anticoagulación inicial PREFERIDA en TEP no alto riesgo",
+          "grupo": "Anticoagulante parenteral — primera línea ESC 2019 en TEP estable",
+          "mecanismo": "HBPM: inhibe factor Xa > IIa por activación de antitrombina. Fondaparinux: inhibidor selectivo del factor Xa. Más predecible que HNF, no requiere control de APTT, menor riesgo de HIT.",
+          "dosis": "Enoxaparina 1 mg/kg c/12h SC (1.5 mg/kg/día en monodosis aceptable). Dalteparina 100 UI/kg c/12h. Tinzaparina 175 UI/kg/día. Fondaparinux 5 mg/día si < 50 kg; 7.5 mg si 50-100 kg; 10 mg si > 100 kg.",
           "cuidadosEnfermeria": [
-            "Control de APTT cada 6h en primeras 24h",
-            "Protamina como antidoto",
-            "Vigilar trombocitopenia inducida por heparina (HIT) con plaquetas cada 2-3 dias",
-            "Via venosa exclusiva para heparina"
+            "ESC 2019: HBPM o fondaparinux PREFERIDOS sobre HNF en TEP no alto riesgo (más predecibles, sin monitoreo de APTT, menos HIT)",
+            "Reducir dosis y monitorizar anti-Xa si TFG < 30 mL/min (enoxaparina); contraindicado fondaparinux si TFG < 20",
+            "Vigilar sangrado, hematomas en sitio SC, plaquetas semanal (HIT más rara que con HNF pero posible)",
+            "Antídotos: protamina parcial para HBPM (50-60% reversión); no hay antídoto específico para fondaparinux"
           ]
         },
         {
-          "nombre": "Alteplasa (rtPA)",
-          "grupo": "Trombolítico - activador del plasminogeno",
-          "mecanismo": "Convierte plasminogeno en plasmina que destruye el trombo de fibrina; reduce rapidamente la obstrucción pulmonar",
-          "dosis": "100 mg IV en 2h (TEP masivo)",
+          "nombre": "Heparina no fraccionada (HNF) IV — reservada para alto riesgo o falla renal severa",
+          "grupo": "Anticoagulante parenteral — opción cuando se anticipa trombolisis o ERC severa",
+          "mecanismo": "Inhibe factores IIa y Xa por activación de antitrombina; vida media corta (1.5h), rápidamente reversible con protamina, útil cuando se prevé procedimiento o trombolisis.",
+          "dosis": "Bolo 80 UI/kg + infusión 18 UI/kg/h; ajustar por APTT objetivo 1.5-2.5x basal (50-70 seg).",
           "cuidadosEnfermeria": [
-            "Contraindicaciones absolutas: ACV hemorrágico previo, sangrado activo",
-            "Monitorizar PA cada 15 min durante la infusion",
-            "Riesgo de sangrado mayor 13-20% (incluyendo intracraneal 1-2%)",
-            "Comprimir todos los sitios de punción al menos 30 min",
-            "No extraer sangre ni canalizar nuevas vias durante la infusion si posible"
+            "Indicaciones específicas: TEP alto riesgo candidato a trombolisis; TFG < 30 mL/min (sin acumulación); inestabilidad hemodinámica; alto riesgo de sangrado donde se necesita reversión rápida",
+            "Control APTT cada 6h primeras 24h, luego cada 12-24h",
+            "Antídoto: protamina (1 mg neutraliza 100 UI HNF)",
+            "Plaquetas cada 2-3 días: vigilar HIT (caída > 50% o < 100k) — suspender HNF y cambiar a anticoagulante no-heparínico (argatroban, bivalirudina)"
           ]
         },
         {
-          "nombre": "Rivaroxaban / Apixaban",
-          "grupo": "Anticoagulante oral directo - tratamiento a largo plazo",
-          "mecanismo": "Inhibición directa del factor Xa",
-          "dosis": "Rivaroxaban: 15 mg c/12h x 21 dias, luego 20 mg/dia; Apixaban: 10 mg c/12h x 7 dias, luego 5 mg c/12h",
+          "nombre": "Alteplasa (rtPA) IV — trombolisis sistémica en TEP de ALTO RIESGO",
+          "grupo": "Trombolítico — primera línea en TEP con shock o hipotensión persistente",
+          "mecanismo": "Activador del plasminógeno: convierte plasminógeno en plasmina que lisa el trombo de fibrina; reduce rápidamente la obstrucción pulmonar y la sobrecarga del VD.",
+          "dosis": "100 mg IV en 2 horas (10 mg bolo + 90 mg en 2h). Régimen acelerado en paro: 50 mg en bolo. Tenecteplase 30-50 mg IV bolo según peso (PEITHO trial — alternativa con bolo único).",
           "cuidadosEnfermeria": [
-            "Administrar con comida (Rivaroxaban)",
-            "Vigilar sangrado",
-            "Duración mínima 3 meses; indefinido si factor de riesgo persistente"
+            "Indicación absoluta: TEP de ALTO RIESGO (shock o hipotensión persistente)",
+            "Trombolisis de RESCATE en intermedio-alto si deterioro hemodinámico (NO sistemática — PEITHO mostró exceso de sangrado mayor sin reducción de mortalidad)",
+            "Contraindicaciones absolutas: ACV hemorrágico previo, ACV isquémico < 6 meses, neoplasia intracraneal, TCE < 3 semanas, sangrado activo, cirugía mayor < 14 días",
+            "Monitorizar PA cada 15 min durante infusión y primeras 2h post; vigilar deterioro neurológico (hemorragia intracraneal 1-3%)",
+            "Sangrado mayor 13-20%; comprimir todos los sitios de punción ≥ 30 min",
+            "NO extraer sangre ni canalizar nuevas vías durante la infusión si es posible"
+          ]
+        },
+        {
+          "nombre": "DOACs (Apixaban, Rivaroxaban, Edoxaban, Dabigatrán) — tratamiento a largo plazo PREFERIDO",
+          "grupo": "Anticoagulantes orales directos — primera línea para tratamiento a largo plazo del TEP (ESC 2019)",
+          "mecanismo": "Apixaban, Rivaroxaban, Edoxaban: inhibidores directos del factor Xa. Dabigatrán: inhibidor directo de la trombina. No requieren monitorización rutinaria; menor sangrado intracraneal que warfarina; misma eficacia.",
+          "dosis": "Apixaban 10 mg c/12h x 7 días → 5 mg c/12h (puede reducirse a 2.5 mg c/12h tras 6 meses si tratamiento extendido). Rivaroxaban 15 mg c/12h x 21 días con comida → 20 mg/día (10 mg/día tras 6 meses si extendido). Edoxaban 60 mg/día (30 si peso ≤60 kg, TFG 15-50, P-gp) — TRAS al menos 5-10 días de HBPM/HNF. Dabigatrán 150 mg c/12h (110 si edad ≥80) — TRAS 5-10 días de HBPM/HNF.",
+          "cuidadosEnfermeria": [
+            "Apixaban y Rivaroxaban se pueden iniciar DESDE EL DÍA 1 (single-drug approach); Edoxaban y Dabigatrán requieren puente de 5-10 días con HBPM/HNF",
+            "Vigilar sangrado: hematuria, melena, epistaxis recurrente, equimosis, cefalea persistente",
+            "Función renal cada 6-12 meses; ajustar o evitar si TFG < 15-30 (umbral varía por fármaco)",
+            "Antídotos: idarucizumab para dabigatrán; andexanet alfa para anti-Xa (apixaban/rivaroxaban/edoxaban). PCC como alternativa",
+            "Duración: 3 meses si factor provocador reversible; 6+ meses si no provocado (decisión individualizada con HERDOO2 o riesgo de sangrado); INDEFINIDO si recurrente o factor permanente"
+          ]
+        },
+        {
+          "nombre": "DOAC en TEP asociado a CÁNCER (Edoxaban, Rivaroxaban, Apixaban) — desplazó a HBPM",
+          "grupo": "DOAC en cáncer activo — alternativa o reemplazo de HBPM",
+          "mecanismo": "Mismo mecanismo. Ensayos Hokusai-VTE Cancer (edoxaban), SELECT-D (rivaroxaban) y Caravaggio (apixaban) demostraron no-inferioridad o superioridad vs HBPM (dalteparina) en pacientes oncológicos.",
+          "dosis": "Apixaban 10/c12h x 7d → 5 mg c/12h (Caravaggio: menor sangrado mayor que rivaroxaban en cáncer). Edoxaban 60 mg/día tras 5 días HBPM. Rivaroxaban 15 mg c/12h x 21d → 20 mg/día.",
+          "cuidadosEnfermeria": [
+            "DOAC ya es PREFERIDO en cáncer en muchos contextos (excepto cáncer luminal GI o GU con alto sangrado donde HBPM puede preferirse)",
+            "Apixaban tiene perfil de sangrado más favorable en cáncer (Caravaggio)",
+            "Vigilar interacciones medicamentosas con quimioterapia (especialmente azoles, tirosín-quinasa inhibidores que afectan P-gp/CYP3A4)",
+            "Tratamiento mientras cáncer activo + 3-6 meses tras remisión completa"
+          ]
+        },
+        {
+          "nombre": "Norepinefrina (+ dobutamina) — shock en TEP alto riesgo",
+          "grupo": "Vasopresor + inotrópico — soporte hemodinámico en falla VD aguda",
+          "mecanismo": "Norepinefrina: vasoconstricción periférica + leve inotropismo (mejora PA sin aumentar excesivamente postcarga VD). Dobutamina: inotrópico beta-1 + vasodilatación leve — mejora gasto cardíaco si bajo flujo persiste.",
+          "dosis": "Norepinefrina 0.05-1 mcg/kg/min IV (objetivo PAM ≥ 65). Dobutamina 2-20 mcg/kg/min IV si bajo gasto.",
+          "cuidadosEnfermeria": [
+            "ESC 2019: norepinefrina PRIMERA línea para hipotensión en TEP (NO dopamina — más arritmias)",
+            "PRECAUCIÓN con bolos grandes de fluidos: el VD ya dilatado puede empeorar; limitar a 500 mL prueba",
+            "Acceso CENTRAL obligatorio (necrosis tisular por extravasación)",
+            "Monitorización PA arterial invasiva; gasto cardíaco si disponible (Swan-Ganz o no invasivo)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Oxigenoterapia para mantener SpO2 > 94%",
-        "Soporte hemodinamico con fluidos IV con precaución (riesgo de sobrecarga VD)",
-        "Vasopresores (norepinefrina) si shock a pesar de fluidos"
+        "Oxigenoterapia titulada con objetivo SpO2 > 94% (88-92% si EPOC concomitante); cánula nasal estándar primero, escalar a Venturi o reservorio según hipoxemia",
+        "Cánula nasal de alto flujo (HFNC) si hipoxemia significativa sin hipercapnia y sin necesidad inmediata de intubación",
+        "VNI/intubación si fatiga respiratoria o insuficiencia respiratoria severa con conciencia preservada (cuidado: VNI puede empeorar precarga VD)",
+        "Soporte hemodinámico con CAUTELA: bolo de prueba 250-500 mL de cristaloide; si VD ya dilatado en imagen, NO sobrecargar — el VD distendido empeora",
+        "Vasopresores: norepinefrina primera línea (ESC 2019 — NO dopamina); dobutamina si bajo gasto persistente",
+        "Reposo en cama estricto solo en TEP masivo o las primeras 24h post-trombolisis; movilización temprana en TEP estable reduce riesgo de descondicionamiento y eventos",
+        "Activación de PERT (Pulmonary Embolism Response Team): equipo multidisciplinario (intensivista + cardiólogo + neumonólogo + cirujano CV + hemodinamista) que discute en tiempo real los TEP intermedio-alto y alto — mejora outcomes por decisión consensuada",
+        "Tratamiento ambulatorio (manejo domiciliario con DOAC) en TEP de BAJO RIESGO seleccionado: sPESI = 0 + sin disfunción VD + sin biomarcadores elevados + criterios Hestia (sin necesidad de O2, sin coagulopatía, social adecuado, soporte familiar) → alta precoz con seguimiento estricto",
+        "Profilaxis de TEP recurrente: medias de compresión gradual postaguda; movilización en viajes prolongados (> 4-6h); educación en signos de alarma",
+        "Cribado de Hipertensión Pulmonar Crónica Tromboembólica (HTPC) a los 3-6 meses post-TEP: ecocardiograma si disnea persistente o limitación al ejercicio inexplicable; derivar a centro especializado si confirmada (tratamiento: tromboendarterectomía pulmonar o riociguat)",
+        "Identificación de causas: estudio de trombofilia solo en pacientes seleccionados (TEP < 50 años no provocado, historia familiar fuerte, sitios atípicos); cribado oncológico básico (anamnesis + examen + edad-apropiado) en TEP no provocado"
       ],
       "quirurgico": [
-        "Embolectomia quirúrgica o percutanea en TEP masivo con contraindicación a trombolisis",
-        "Filtro de vena cava inferior si anticoagulación contraindicada"
+        "Trombolisis dirigida por catéter (CDT — Catheter-Directed Thrombolysis): rt-PA local en dosis bajas a través de catéter pulmonar (EkoSonic, FlowTriever). Indicada en TEP de ALTO riesgo con contraindicación a trombolisis sistémica o falla; emergente para TEP intermedio-alto refractario.",
+        "Trombectomía mecánica percutánea (FlowTriever, Inari, Penumbra) — alternativa a trombolisis sin riesgo hemorrágico sistémico; útil en pacientes con alto riesgo de sangrado",
+        "Embolectomía quirúrgica de emergencia: TEP de alto riesgo con contraindicación absoluta a trombolisis y a CDT, o trombo en tránsito en cavidades derechas",
+        "Filtro de vena cava inferior (FVCI): indicación RESTRINGIDA ESC 2019 — solo si contraindicación absoluta a anticoagulación o recurrencia documentada con anticoagulación adecuada. NO usar profilácticamente. Preferir filtros RECUPERABLES y retirar a los 1-3 meses cuando sea seguro reanudar anticoagulación",
+        "Tromboendarterectomía pulmonar: tratamiento curativo de la HTPC en pacientes seleccionados con enfermedad accesible quirúrgicamente; derivar a centro especializado",
+        "Soporte mecánico extracorpóreo (ECMO V-A): puente en TEP masivo con shock refractario, mientras se decide trombolisis/embolectomía"
       ]
     },
     "cuidadosEnfermeria": {
@@ -4649,7 +4728,15 @@
       "pat_ira",
       "pat_iam"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "ESC 2019 Guidelines for the diagnosis and management of acute pulmonary embolism (Eur Heart J 2019;41:543-603) — vigentes",
+      "ACCP CHEST 2021 Update Guideline on Antithrombotic Therapy for VTE Disease",
+      "Ensayos clave DOAC en TEP: AMPLIFY (apixaban), EINSTEIN-PE (rivaroxaban), Hokusai-VTE (edoxaban), RE-COVER (dabigatrán)",
+      "Ensayos clave DOAC en cáncer: Hokusai-VTE Cancer, SELECT-D, Caravaggio",
+      "Ensayo clave trombolisis: PEITHO (tenecteplase en intermedio-alto)"
+    ]
   },
   {
     "id": "pat_neumotorax",
