@@ -4,6 +4,47 @@
 
 ---
 
+## 2026-05-23 — Sesion 37: Revisión clínica de pat_cirrosis a Baveno VII + AASLD 2021/2024 + MASH 2023
+
+### Resumen
+Novena iteración del segundo lote. La entry `pat_cirrosis` tenía 13 gaps significativos vs Baveno VII (2022) + AASLD 2021/2024 + nomenclatura MASH/MASLD 2023: clasificación solo con Child-Pugh sin MELD 3.0 (UNOS 2023, agrega sexo femenino y albúmina), sin Baveno VII cACLD/CSPH conceptos centrales (LSM ≥15 cACLD; LSM ≥20+plt ≤150k para CSPH), sin regla de exclusión endoscópica (NO EGD si LSM<20 + plt>150k), carvedilol mencionado pero no como PREFERIDO sobre propranolol (Baveno VII por mejor reducción HVPG, PREDESCI RCT), sin elastografía hepática (FibroScan) como pilar diagnóstico no invasivo, sin HVPG, sin nomenclatura MASH/MASLD 2023 (NAFLD/NASH ya obsoletos), sin resmetirom (FDA marzo 2024 para MASH F2-F3 no cirrótica), sin terlipresina para HRS-AKI (FDA septiembre 2022 — cambio paradigmático), sin TIPS precoz post-HDA variceal (Garcia-Pagán NEJM 2010), sin ACLF (EASL-CLIF) ni NACSELD, sin cribado sistemático de sarcopenia (presente 30-70%, impacta mortalidad), vacunación específica ausente.
+
+Cross-check: Baveno VII Consensus (J Hepatol 2022), AASLD 2021 Practice Guidance ascitis/PBE/HRS, AASLD/EASL/ALEH 2023 nomenclatura MASLD/MASH, MELD 3.0 (Gastroenterology 2021), ensayos PREDESCI (carvedilol cACLD) + CONFIRM/REVERSE (terlipresina) + MAESTRO-NASH (resmetirom) + Garcia-Pagán (TIPS precoz). Edición quirúrgica de 6 secciones.
+
+### Cambios en pat_cirrosis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Agregada nomenclatura cACLD (Baveno VII 2022) + MASH/MASLD (AASLD/EASL/ALEH 2023) |
+| `clasificacion` | De 3 a 10 tipos: Child-Pugh A/B/C refinados + MELD 3.0 con sexo femenino + albúmina (UNOS 2023) + Baveno VII cACLD + CSPH (regla de los 5) + regla de exclusión endoscópica + descompensada con eventos definitorios + ACLF EASL-CLIF + estadios D'Amico |
+| `diagnostico.pruebas` (3→7) | +Elastografía transitoria (FibroScan/LSM) como pilar no invasivo; +HVPG gold standard; +EGD con criterios Baveno VII restringidos; MELD reemplazado por MELD 3.0; +Cribado HCC semestral con RMN/TC si eco subóptima |
+| `tratamientoMedico.objetivos` | De 3 a 9: enfoque por estadio (cACLD/descompensada/ACLF), tratar causa subyacente como pilar (alcohol/VHC/VHB/MASH), carvedilol Baveno VII, vacunación específica, sarcopenia, derivación precoz trasplante, ACLF intensivo |
+| `farmacologico` (4→7) | Carvedilol PREFERIDO sobre propranolol (Baveno VII + PREDESCI); +Albúmina IV con dosis específicas por indicación (paracentesis, PBE, HRS); +Terlipresina (FDA 2022) primera línea HRS-AKI; rifaximina+lactulosa con clasificación West Haven y búsqueda de precipitante; PBE con albúmina obligatoria; +Resmetirom (FDA marzo 2024) para MASH F2-F3 sin cirrosis (contraindicado en cirrosis) |
+| `noFarmacologico` (5→13) | +Vacunación específica (HAV/HBV/influenza/PCV20/COVID/RSV/zoster); +Cribado HCC semestral con eco/AFP; +Cribado y manejo SARCOPENIA con TC L3 SMI + nutrición intensiva + BCAA; +Manejo DOACs vs warfarina; +Apoyo psicosocial; +Cuidados paliativos en Child C; AINES contraindicados; paracetamol máx 2-3 g/d |
+| `quirurgico` (2→7) | +TIPS PRECOZ post-HDA (24-72h en alto riesgo, Garcia-Pagán NEJM 2010); contraindicaciones TIPS detalladas; trasplante con criterios MELD 3.0 + Milán para HCC; +Tratamiento HCC por BCLC (resección/ablación/TACE/atezo-beva/trasplante); manejo perioperatorio en cirrosis no hepática |
+| `revisadoEn` | `"2026-05-23"` |
+| `fuentes` | 5 entradas: Baveno VII + AASLD 2021 + MASH 2023 + MELD 3.0 + ensayos clave (PREDESCI/CONFIRM/MAESTRO-NASH/Garcia-Pagán) |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **20 frescas** (era 19; +pat_cirrosis), 131 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### Segundo lote: 9/10 completo
+1-8. ✅ pat_eap → pat_tuberculosis | 9. ✅ pat_cirrosis (sesión 37)
+10. pat_pancreatitis (último del segundo lote)
+
+### Commits esperados
+- `content(pat_cirrosis): align with Baveno VII + AASLD 2021/2024 + MASH 2023 + MELD 3.0`
+
+---
+
 ## 2026-05-23 — Sesion 36: Revisión clínica de pat_tuberculosis a WHO 2022 + ATS/CDC/IDSA 2022 + BPaLM + 3HP
 
 ### Resumen

@@ -8311,7 +8311,7 @@
     "id": "pat_cirrosis",
     "nombre": "Cirrosis Hepática",
     "bodySystemId": "digestivo",
-    "definicion": "Estadio final de las hepatopatias crónicas caracterizado por fibrosis difusa del parénquima hepático con formación de nodulos de regeneración, que produce disfunción hepática e hipertensión portal, con multiples complicaciones sistemicas.",
+    "definicion": "Estadio final (F4 METAVIR) de las hepatopatías crónicas caracterizado por fibrosis difusa del parénquima hepático con formación de nódulos de regeneración, que produce disfunción hepática e HIPERTENSIÓN PORTAL con múltiples complicaciones sistémicas. Baveno VII (2022) introdujo el concepto operacional de cACLD (compensated Advanced Chronic Liver Disease) que incluye cirrosis y fibrosis avanzada (F3-F4) ya que comparten manejo. AASLD/EASL/ALEH 2023 renombraron NAFLD → MASLD (Metabolic dysfunction-Associated Steatotic Liver Disease) y NASH → MASH (Metabolic dysfunction-Associated Steatohepatitis), reflejando la importancia de los factores metabólicos como motor de la enfermedad.",
     "epidemiologia": "Prevalencia de 0.3% en la población general de paises desarrollados. Principal causa: alcohol (30-40%) y virus hepatitis C (25%) en Argentina. Mortalidad elevada en estadios avanzados (30-50% a 5 años en Child-Pugh C).",
     "factoresRiesgo": [
       "Alcoholismo crónico",
@@ -8344,19 +8344,47 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación de Child-Pugh",
+      "nombre": "Clasificación multidimensional: Child-Pugh + MELD 3.0 + Baveno VII + ACLF",
       "tipos": [
         {
-          "nombre": "Child-Pugh A (5-6 puntos)",
-          "descripcion": "Cirrosis compensada. Supervivencia a 1 ano > 95%"
+          "nombre": "Child-Pugh A (5-6 puntos) — Cirrosis compensada",
+          "descripcion": "Cinco variables: bilirrubina, albúmina, INR, ascitis, encefalopatía. Supervivencia a 1 año > 95%. Manejo ambulatorio con cribado de complicaciones."
         },
         {
-          "nombre": "Child-Pugh B (7-9 puntos)",
-          "descripcion": "Cirrosis con deterioro funcional moderado. Supervivencia a 1 ano ~80%"
+          "nombre": "Child-Pugh B (7-9 puntos) — Disfunción moderada",
+          "descripcion": "Supervivencia a 1 año ~80%. Mayor riesgo de descompensación; intensificar vigilancia y profilaxis."
         },
         {
-          "nombre": "Child-Pugh C (10-15 puntos)",
-          "descripcion": "Cirrosis descompensada. Supervivencia a 1 ano ~45%. Candidato a trasplante"
+          "nombre": "Child-Pugh C (10-15 puntos) — Cirrosis descompensada",
+          "descripcion": "Supervivencia a 1 año ~45%. Candidato a evaluación de TRASPLANTE HEPÁTICO. Foco en manejo de complicaciones múltiples."
+        },
+        {
+          "nombre": "MELD 3.0 (2023) — predicción de mortalidad a 90 días",
+          "descripcion": "Reemplazó al MELD-Na clásico (UNOS 2023). Variables: creatinina, bilirrubina, INR, sodio, albúmina, sexo femenino (+1.33). Mejor discriminación, especialmente en mujeres (corrige sesgo histórico). MELD 3.0 > 15: evaluar trasplante; > 25: alta mortalidad sin trasplante; el score se actualiza cada 7 días en lista de trasplante."
+        },
+        {
+          "nombre": "Baveno VII — cACLD (compensated Advanced Chronic Liver Disease)",
+          "descripcion": "Concepto operacional que incluye fibrosis F3-F4 compartiendo manejo. Diagnóstico no invasivo con elastografía hepática transitoria (LSM por FibroScan): LSM ≥ 15 kPa sugiere cACLD; LSM ≥ 20 kPa con plaquetas ≤ 150k sugiere CSPH."
+        },
+        {
+          "nombre": "Baveno VII — CSPH (Clinically Significant Portal Hypertension)",
+          "descripcion": "Gradiente de presión venosa hepática (HVPG) ≥ 10 mmHg, O sustitutos no invasivos: LSM ≥ 25 kPa (alta probabilidad CSPH, sensibilidad > 60%); LSM 20-25 + plaquetas < 150k; LSM 15-20 + plaquetas < 110k. CSPH marca el riesgo de descompensación y la indicación de betabloqueante no selectivo (NSBB) — CARVEDILOL preferido sobre propranolol."
+        },
+        {
+          "nombre": "Baveno VII — REGLA DE EXCLUSIÓN ENDOSCÓPICA",
+          "descripcion": "Cambio paradigmático: NO se requiere endoscopia digestiva alta (EGD) de cribado de varices si LSM < 20 kPa Y plaquetas > 150 × 10⁹/L (riesgo de varices con sangrado < 5%). Esto evita endoscopias innecesarias en cACLD seleccionado."
+        },
+        {
+          "nombre": "Cirrosis DESCOMPENSADA — primer evento definitorio",
+          "descripcion": "Aparición de uno o más eventos definitorios: ascitis (más frecuente y precoz), hemorragia variceal, encefalopatía hepática manifiesta, ictericia clínica significativa. Cambio dramático de pronóstico — supervivencia mediana ~2-4 años. Indicación de derivación a centro de trasplante."
+        },
+        {
+          "nombre": "ACLF (Acute-on-Chronic Liver Failure) — EASL-CLIF",
+          "descripcion": "Deterioro agudo de cirrosis con fallo multiorgánico (hepático + ≥1 órgano extrahepático: renal, cerebral, coagulación, circulatorio, respiratorio). Mortalidad 30-90% a 28 días según número de órganos fallidos. Graduación CLIF-SOFA / NACSELD. Manejo en UCI hepatológica + trasplante urgente si elegible."
+        },
+        {
+          "nombre": "Estadios pronósticos D'Amico (en CSPH)",
+          "descripcion": "Estadio 1: sin varices, sin ascitis (mortalidad 1%/año). Estadio 2: varices sin sangrado (3.4%/año). Estadio 3: ascitis ± varices sin sangrado (20%/año). Estadio 4: HDA por varices (57%/año). Estadio 5: sepsis (67%/año). Cada decompensación cambia el estadio y la mortalidad."
         }
       ]
     },
@@ -8393,78 +8421,188 @@
           ]
         },
         {
-          "nombre": "MELD score",
-          "descripcion": "Modelo predictivo de mortalidad en hepatopatia terminal: 3.78 x loge(bilirrubina) + 11.2 x loge(INR) + 9.57 x loge(creatinina) + 6.43",
-          "valoresReferencia": "MELD > 15: considerar trasplante; MELD > 25: alta mortalidad sin trasplante",
+          "nombre": "MELD 3.0 — predicción de mortalidad y priorización para trasplante (UNOS 2023)",
+          "descripcion": "Reemplazó al MELD-Na clásico desde 2023. Variables: creatinina, bilirrubina, INR, sodio, ALBÚMINA, y SEXO FEMENINO (+1.33 — corrige sesgo histórico contra mujeres). Mejor discriminación de mortalidad a 90 días.",
+          "valoresReferencia": "MELD 3.0 > 15: evaluar trasplante hepático; > 20: alta urgencia; > 25: alta mortalidad sin trasplante; > 30: mortalidad ~70% a 3 meses. Actualizar cada 7 días en lista de trasplante.",
           "cuidadosEnfermeria": [
-            "Calcular en cada hospitalización para evaluar urgencia de trasplante"
+            "Calcular en cada hospitalización Y en cada consulta de seguimiento",
+            "Si MELD 3.0 > 15 + sin contraindicación: derivar a centro de trasplante",
+            "MELD-Na clásico aún se usa en algunas regiones — confirmar versión local"
+          ]
+        },
+        {
+          "nombre": "Elastografía hepática transitoria (FibroScan / LSM) + plaquetas",
+          "descripcion": "Pilar diagnóstico no invasivo Baveno VII para fibrosis y CSPH. La rigidez hepática (LSM en kPa) + plaquetas predicen el estadio de fibrosis y la presencia de hipertensión portal clínicamente significativa, evitando biopsia hepática y/o endoscopia en muchos pacientes.",
+          "valoresReferencia": "LSM < 10 kPa: descarta cACLD. LSM ≥ 15 kPa: sugiere cACLD. LSM ≥ 20 kPa con plaquetas ≤ 150k: sugiere CSPH; ≥ 25 kPa muy sugestivo. REGLA DE EXCLUSIÓN ENDOSCÓPICA: LSM < 20 kPa + plaquetas > 150k → NO requiere EGD de cribado de varices.",
+          "cuidadosEnfermeria": [
+            "Paciente en ayunas 2-3h previas (evitar postprandial — falso positivo)",
+            "Sondas adaptadas: M (estándar) para no obesos; XL para IMC ≥ 30; S pediátrico",
+            "Decúbito supino con brazo derecho en máxima abducción",
+            "Se requieren ≥ 10 mediciones válidas, IQR/mediana < 30%, tasa de éxito > 60%",
+            "Causas de falso elevado: alimentación reciente, congestión cardíaca, hepatitis aguda, colestasis severa, ascitis"
+          ]
+        },
+        {
+          "nombre": "Gradiente de presión venosa hepática (HVPG) — gold standard de hipertensión portal",
+          "descripcion": "Cateterización transyugular para medir presión wedged y libre de venas hepáticas. HVPG = WHVP − FHVP. Diagnóstico definitivo de hipertensión portal y CSPH. Indicado en centros especializados cuando los métodos no invasivos no son concluyentes o se evalúa respuesta a NSBB.",
+          "valoresReferencia": "HVPG normal: 1-5 mmHg. HVPG 6-9: hipertensión portal subclínica. HVPG ≥ 10: CSPH (riesgo de desarrollo de varices, ascitis, descompensación). HVPG ≥ 12: riesgo de hemorragia variceal. HVPG ≥ 16-20: alta mortalidad. Respuesta hemodinámica a NSBB: reducción de HVPG ≥ 20% basal o < 12 mmHg final → reduce riesgo de hemorragia.",
+          "cuidadosEnfermeria": [
+            "Procedimiento invasivo en sala de hemodinamia con anestesia local",
+            "Vigilancia post-procedimiento: sangrado en sitio de punción yugular, hematoma cervical",
+            "Reposo 4-6h post; explicar al paciente sobre molestia leve cervical"
+          ]
+        },
+        {
+          "nombre": "Endoscopia digestiva alta (EGD) — Baveno VII criterios actualizados",
+          "descripcion": "Búsqueda de varices esofágicas y gástricas + úlceras + gastropatía hipertensiva. Baveno VII RESTRINGIÓ indicación: NO de rutina en cACLD si LSM < 20 kPa + plaquetas > 150k.",
+          "valoresReferencia": "Varices: pequeñas (< 5 mm) vs grandes (≥ 5 mm). Signos de alto riesgo: red wale marks, cherry-red spots, hematocystic spots, signos de sangrado reciente. Varices gástricas (clasificación Sarin): GOV1, GOV2, IGV1, IGV2.",
+          "cuidadosEnfermeria": [
+            "Ayuno 6-8h pre-EGD; consentimiento informado",
+            "Sedación consciente o profunda según contexto",
+            "Si se documentan varices grandes O signos de alto riesgo: iniciar profilaxis primaria con CARVEDILOL (preferido Baveno VII) o ligadura endoscópica con bandas (LVB)",
+            "Repetir EGD según estadio y profilaxis (2-3 años si sin varices, 1-2 años si varices pequeñas, individual si en profilaxis)"
+          ]
+        },
+        {
+          "nombre": "Cribado de carcinoma hepatocelular (HCC) — ecografía ± AFP cada 6 meses",
+          "descripcion": "Todo paciente con cirrosis (Child A-B y C en lista de trasplante) debe tener cribado semestral. Ecografía + alfa-fetoproteína (AFP) cada 6 meses. Si ecografía SUBÓPTIMA (obesidad, hígado heterogéneo): RMN abdominal o TC trifásica como alternativa.",
+          "valoresReferencia": "Nódulo hepático > 1 cm en cribado: caracterización con RMN o TC trifásica con criterios LI-RADS. AFP > 200 ng/mL sugestiva (especificidad alta, sensibilidad baja). Diagnóstico de HCC en cirrosis NO requiere biopsia si imagen LI-RADS 5 (patrón vascular típico: realce arterial + lavado venoso).",
+          "cuidadosEnfermeria": [
+            "Recordatorios para ecografía semestral — la adherencia es bajísima (~20-30% en mundo real)",
+            "AFP elevada con eco normal: completar con RMN/TC",
+            "Si HCC detectado: estratificar BCLC (Barcelona Clinic Liver Cancer) — orienta entre resección, ablación, TACE, terapia sistémica (atezolizumab+bevacizumab 1ª línea avanzado) o trasplante (criterios Milán)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Tratar la causa subyacente",
-        "Prevenir y tratar complicaciones",
-        "Preparación para trasplante hepático si indicado"
+        "Tratar la causa subyacente (factor que MÁS impacta en outcomes): abstinencia ALCOHOLISMO; AAD para VHC (cura > 95%); antivirales para VHB; control metabólico para MASH; resmetirom en MASH F2-F3 sin cirrosis (NO en cirrosis)",
+        "Prevenir DESCOMPENSACIÓN en cACLD con CSPH: CARVEDILOL preferido sobre propranolol (Baveno VII) — reduce descompensación 36% (PREDESCI trial)",
+        "Manejo de complicaciones por sistema: ascitis (diuréticos + paracentesis + albúmina si voluminosa); HDA variceal (NSBB profilaxis + ligadura + TIPS precoz); encefalopatía (lactulosa + rifaximina + búsqueda precipitante); PBE (ceftriaxona + albúmina); HRS-AKI (terlipresina + albúmina)",
+        "Vacunación: VHA y VHB (si no inmune); influenza anual; neumococo PCV20; SARS-CoV-2; RSV ≥ 60a; herpes zóster ≥ 50a — la inmunosupresión funcional de la cirrosis aumenta riesgo de infecciones",
+        "Cribado SEMESTRAL de HCC con ecografía ± AFP en TODOS los pacientes con cirrosis y candidatos a tratamiento",
+        "Cribado y manejo de SARCOPENIA (presente en 30-70% de cirrosis): TC L3 SMI ideal; intervención nutricional intensiva con 1.2-1.5 g/kg/día de proteínas + calorías + ejercicio + leucina/BCAA",
+        "Derivación PRECOZ a centro de trasplante hepático: MELD 3.0 > 15, primera descompensación, HCC dentro de criterios Milán",
+        "Evaluación de ACLF (EASL-CLIF) en deterioro agudo — manejo intensivo en UCI hepatológica + trasplante urgente si elegible",
+        "Manejo MULTIDISCIPLINARIO: hepatólogo + nutricionista + psiquiatra (alcohol) + trabajador social + enfermería especializada"
       ],
       "farmacologico": [
         {
-          "nombre": "Espironolactona + Furosemida",
-          "grupo": "Diureticos - tratamiento de ascitis",
-          "mecanismo": "Espironolactona bloquea aldosterona (excess en cirrosis); furosemida aumenta la diuresis",
-          "dosis": "Espironolactona 100-400 mg/dia + Furosemida 40-160 mg/dia; relación 100:40",
+          "nombre": "Carvedilol (Baveno VII PREFERIDO) o Propranolol — NSBB para prevención de descompensación y profilaxis variceal",
+          "grupo": "Betabloqueantes no selectivos (NSBB) — pilar del manejo de hipertensión portal en cACLD con CSPH",
+          "mecanismo": "Reducen flujo esplácnico (bloqueo β2 esplacnomesentérico) y mejoran resistencia intrahepática (carvedilol — α1 + β1 + β2). Carvedilol reduce HVPG 19-27% vs 12-15% del propranolol. PREDESCI RCT 2019: carvedilol previene descompensación en cACLD con CSPH (Class I Baveno VII).",
+          "dosis": "Carvedilol 6.25-12.5 mg/día VO en 1-2 dosis (titular). Propranolol 40-160 mg/día en 2-3 dosis (titular hasta FC 55-60 o reducción 25%). Nadolol como alternativa.",
           "cuidadosEnfermeria": [
-            "Peso diario (objetivo: pérdida de 500 g/dia en ascitis sola o 1 kg/dia con edema)",
-            "Electrolitos cada 3-5 dias inicialmente (hipo/hiperpotasemia)",
-            "No perder más de 1 kg/dia (precipita encefalopatia y sindrome hepatorrenal)",
-            "Balance hidrico diario"
+            "Baveno VII PREFIERE carvedilol sobre propranolol en cACLD con CSPH (mejor reducción HVPG, mayor adherencia, una toma diaria posible)",
+            "Medir FC y PA antes de cada dosis; objetivo FC 55-60 lpm o reducción 25%",
+            "CONTRAINDICACIONES: PA sistólica < 90 mmHg (suspender), broncoespasmo activo, bloqueo AV 2°-3°, ascitis refractaria con hiponatremia severa Na < 130",
+            "Riesgo de PRECIPITAR sd. hepatorrenal en ascitis refractaria + hipotensión: vigilar función renal mensualmente; suspender si Cr aumenta",
+            "Si PBE: SUSPENDER NSBB durante el episodio (asociado a peor outcome con NSBB en PBE — controversia)"
           ]
         },
         {
-          "nombre": "Propranolol / Carvedilol",
-          "grupo": "Betabloqueante no selectivo - profilaxis de hemorragia variceal",
-          "mecanismo": "Reduce el flujo esplacnico y la presión portal, disminuyendo el riesgo de hemorragia por varices esofagicas",
-          "dosis": "Propranolol 40-160 mg/dia; Carvedilol 6.25-12.5 mg/dia",
+          "nombre": "Espironolactona + Furosemida — manejo de ascitis",
+          "grupo": "Diuréticos — pilar de manejo de ascitis no a tensión (no refractaria)",
+          "mecanismo": "Espironolactona: antagonista de aldosterona (alta en cirrosis por hiperaldosteronismo secundario). Furosemida: diurético de asa, sinérgico. Mantener ratio 100:40 (espironolactona:furosemida) para preservar potasio.",
+          "dosis": "Iniciar espironolactona 100 mg/día + furosemida 40 mg/día; titular cada 3-5 días según peso y balance, hasta espironolactona 400 mg + furosemida 160 mg. Ascitis refractaria: paracentesis evacuadora + albúmina + TIPS.",
           "cuidadosEnfermeria": [
-            "Medir FC y PA antes de administrar",
-            "Objetivo: FC 55-60 lpm o reducción del 25%",
-            "Contraindicado: PA < 90 mmHg, broncoespasmo, bloqueo AV"
+            "Peso diario en mismas condiciones (objetivo pérdida 500 g/día sin edema; 1 kg/día con edema)",
+            "NO superar pérdida 1 kg/día — precipita hipovolemia, encefalopatía, síndrome hepatorrenal",
+            "Electrolitos cada 3-5 días inicialmente (hiperkalemia con espironolactona; hipokalemia con furosemida); creatinina y BUN",
+            "Ginecomastia con espironolactona crónica (15-30%): considerar eplerenona como alternativa (menos antiandrogénico)",
+            "Restricción de sodio < 2 g/día complementaria — sin restricción hídrica salvo Na < 125"
           ]
         },
         {
-          "nombre": "Rifaximina + Lactulosa",
-          "grupo": "Antibiotico intestinal + laxante osmótico - encefalopatia hepática",
-          "mecanismo": "Rifaximina reduce bacterias intestinales productoras de amoniaco; Lactulosa reduce absorción de amoniaco por acidificar el colon",
-          "dosis": "Rifaximina 550 mg c/12h; Lactulosa 15-30 mL c/8-12h (objetivo 2-3 deposiciones blandas/dia)",
+          "nombre": "Albúmina humana IV — pilar en paracentesis voluminosa, PBE y HRS",
+          "grupo": "Coloide — previene disfunción circulatoria postparacentesis y soporta hemodinamia en complicaciones",
+          "mecanismo": "Restaura presión oncótica plasmática, expande volumen efectivo circulante, modula respuesta inflamatoria, reduce activación del sistema renina-angiotensina.",
+          "dosis": "**Paracentesis evacuadora > 5 L**: 6-8 g de albúmina por cada litro extraído. **PBE**: 1.5 g/kg día 1 + 1 g/kg día 3 (reduce HRS y mortalidad ~40%). **HRS-AKI**: 1 g/kg día 1 (máx 100 g) + 25-50 g/día durante terlipresina.",
           "cuidadosEnfermeria": [
-            "Evaluar número y consistencia de deposiciones con lactulosa",
-            "No dar en exceso (acidosis lactica por diarrea severa)",
-            "Explicar al cuidador sobre la encefalopatia"
+            "Infundir albúmina al 20% en 30-60 min según volumen",
+            "Vigilar sobrecarga hídrica si paciente con disfunción cardíaca",
+            "Pilar OBLIGATORIO en PBE y en HRS-AKI — no es opcional",
+            "Documentar volumen exacto extraído en paracentesis para calcular dosis de albúmina"
           ]
         },
         {
-          "nombre": "Ceftriaxona / Norfloxacino",
-          "grupo": "Antibiotico - profilaxis y tratamiento de peritonitis bacteriana espontanea (PBE)",
-          "mecanismo": "Elimina microorganismos responsables de la PBE (E. coli, Klebsiella)",
-          "dosis": "PBE: Ceftriaxona 2 g/dia IV x 5 dias. Profilaxis: Norfloxacino 400 mg/dia VO",
+          "nombre": "Terlipresina (Lucassin) — TRATAMIENTO DE ELECCIÓN para HRS-AKI (FDA 2022)",
+          "grupo": "Análogo de vasopresina con selectividad V1 — vasoconstricción esplacnomesentérica que mejora perfusión renal en HRS",
+          "mecanismo": "Vasoconstrictor esplácnico selectivo que reduce el flujo esplacnomesentérico, redistribuye volumen al lecho sistémico, mejora la perfusión renal y revierte el síndrome hepatorrenal. FDA aprobó en septiembre 2022 (Lucassin) tras ensayos CONFIRM y REVERSE.",
+          "dosis": "Bolos IV: 0.5-2 mg c/4-6h (máx 12 mg/día) hasta resolución de HRS-AKI (creatinina basal o < 1.5) o máximo 14 días. Alternativa: infusión continua 2-4 mg/día. SIEMPRE con albúmina IV concomitante (1 g/kg día 1 + 25-50 g/día).",
           "cuidadosEnfermeria": [
-            "Paracentesis diagnóstica ante ascitis nueva o deterioro clínico",
-            "LCR ascítico: PMN > 250 cel/mL diagnóstica PBE",
-            "Albumina IV junto a antibiotico (1.5 g/kg dia 1, 1 g/kg dia 3) para prevenir sindrome hepatorrenal"
+            "Cambio paradigmático en HRS-AKI (antes solo midodrina + octreotide en EE.UU. — eficacia limitada)",
+            "Vigilar EVENTOS ISQUÉMICOS (raros pero graves): cardiopatía isquémica, isquemia mesentérica, isquemia periférica — anamnesis vascular antes",
+            "Vigilar sobrecarga hídrica e hiponatremia",
+            "Suspender si no respuesta a 4 días (creatinina sin caer ≥ 25%) o resolución completa",
+            "Alternativa donde no disponible: noradrenalina IV en UCI (eficacia comparable en algunos estudios)"
+          ]
+        },
+        {
+          "nombre": "Rifaximina + Lactulosa — encefalopatía hepática",
+          "grupo": "Antibiótico intestinal no absorbible + disacárido no absorbible — manejo agudo y profilaxis secundaria",
+          "mecanismo": "Lactulosa: acidifica el colon, atrapa amonio (NH3 → NH4+ no absorbible), aumenta la motilidad. Rifaximina: reduce bacterias intestinales productoras de amonio y otras neurotoxinas; reduce recurrencia 50% (ensayo Bass NEJM 2010).",
+          "dosis": "**Lactulosa**: 30-45 mL VO o por SNG c/1-2h hasta defecación; mantenimiento 15-30 mL c/8-12h (objetivo 2-3 deposiciones blandas/día). En coma hepático: enemas con 300 mL lactulosa + 700 mL agua. **Rifaximina**: 550 mg c/12h VO — agregar a lactulosa tras un primer episodio de encefalopatía manifiesta para profilaxis secundaria.",
+          "cuidadosEnfermeria": [
+            "Clasificación West Haven (0-IV): identificar y graduar — desde alteraciones cognitivas sutiles (encefalopatía mínima) hasta coma",
+            "BUSCAR PRECIPITANTE en cada episodio: infección (PBE), HDA, deshidratación/diuréticos excesivos, estreñimiento, sedantes, hiponatremia, hipokalemia, alcalosis, transgresión dietética",
+            "Lactulosa: vigilar diarrea profusa con deshidratación e hipernatremia — ajustar dosis",
+            "Rifaximina: bien tolerada, mínima absorción sistémica; añadir a lactulosa tras 1er episodio para reducir recurrencia",
+            "NO restringir proteínas a largo plazo — empeora sarcopenia; sí transitoriamente en episodio agudo severo",
+            "Educar a CUIDADORES (no al paciente solo): cambios sutiles de conducta son signos de encefalopatía"
+          ]
+        },
+        {
+          "nombre": "Ceftriaxona / Norfloxacino — profilaxis y tratamiento de PBE",
+          "grupo": "Antibióticos — manejo de peritonitis bacteriana espontánea (PBE)",
+          "mecanismo": "Cobertura empírica de bacilos gram-negativos entéricos (E. coli, Klebsiella) que translocan a líquido ascítico.",
+          "dosis": "**PBE establecida**: Ceftriaxona 2 g/día IV x 5-7 días + ALBÚMINA IV (1.5 g/kg día 1 + 1 g/kg día 3) — reduce HRS y mortalidad. PBE nosocomial: piperacilina-tazobactam o meropenem (mayor resistencia). **Profilaxis SECUNDARIA tras PBE**: Norfloxacino 400 mg/día VO indefinido (alternativas: ciprofloxacino, TMP-SMX). **Profilaxis PRIMARIA** en HDA variceal: ceftriaxona 1 g/día IV x 7 días o norfloxacino 400 mg c/12h x 7 días.",
+          "cuidadosEnfermeria": [
+            "PARACENTESIS DIAGNÓSTICA al ingreso de TODO paciente con cirrosis + ascitis (PBE asintomática en hasta 30%)",
+            "Criterio diagnóstico de PBE: PMN > 250/mm³ en líquido ascítico (con o sin cultivo positivo)",
+            "Iniciar ATB empírico SIN ESPERAR cultivo si PMN > 250 — cada hora de retraso aumenta mortalidad",
+            "Albúmina IV es PILAR — no opcional",
+            "Profilaxis secundaria indefinida tras 1er episodio de PBE (recurrencia 70% al año sin profilaxis)"
+          ]
+        },
+        {
+          "nombre": "Resmetirom (MASH F2-F3 SIN cirrosis) — FDA marzo 2024",
+          "grupo": "Agonista selectivo del receptor de hormona tiroidea β (THR-β) — primer tratamiento específico para MASH",
+          "mecanismo": "Estimula la β-oxidación hepática de ácidos grasos y reduce esteatosis + inflamación + fibrosis hepática. Aprobado FDA marzo 2024 para MASH con fibrosis F2-F3 — primer fármaco específico para MASH.",
+          "dosis": "80 mg/día VO si peso < 100 kg; 100 mg/día si ≥ 100 kg.",
+          "cuidadosEnfermeria": [
+            "INDICACIÓN: MASH con fibrosis F2-F3 NO cirrótica + cribado de TFT (corregir hiper o hipotiroidismo antes de iniciar)",
+            "CONTRAINDICADO en cirrosis COMPENSADA o DESCOMPENSADA — datos insuficientes y posible toxicidad",
+            "Vigilar transaminasas (puede aumentar), perfil tiroideo, diarrea, prurito",
+            "Interacciones con estatinas: ajustar rosuvastatina y otras",
+            "Es un avance histórico — durante décadas no había tratamiento específico para MASH; pero su uso en cirrosis aún no está validado"
           ]
         }
       ],
       "noFarmacologico": [
-        "Abstinencia de alcohol ABSOLUTA (unico tratamiento que puede estabilizar la cirrosis alcoholica)",
-        "Dieta hipoproteica moderada NO necesaria (salvo encefalopatia activa)",
-        "Restricción de sodio < 2 g/dia en ascitis",
-        "Paracentesis terapéutica en ascitis a tensión",
-        "Banda elastica de varices esofagicas endoscopica"
+        "ABSTINENCIA ABSOLUTA de alcohol — único tratamiento que estabiliza la cirrosis alcohólica; combinar con farmacoterapia (naltrexona, acamprosato) + apoyo psicosocial (AA, terapia)",
+        "Manejo de la causa subyacente: AAD (antivirales acción directa) para VHC, antivirales para VHB, control metabólico para MASH (peso, DM, dislipemia)",
+        "Restricción de sodio < 2 g/día en ascitis; restricción HÍDRICA solo si Na < 125 mEq/L (no rutinaria)",
+        "Soporte NUTRICIONAL INTENSIVO con 1.2-1.5 g/kg/día de proteínas + 30-35 kcal/kg/día — NO restringir proteínas (empeora sarcopenia que se asocia a mayor mortalidad); colación nocturna recomendada (200-300 kcal con BCAA) para reducir gluconeogénesis muscular",
+        "Cribado y manejo de SARCOPENIA: TC L3 SMI ideal; intervención multimodal con nutrición + ejercicio + suplementación de BCAA/leucina; impacta directamente en mortalidad y outcomes de trasplante",
+        "Paracentesis terapéutica evacuadora en ascitis a tensión: extraer hasta normalizar abdomen + ALBÚMINA IV 6-8 g/L extraído si > 5 L",
+        "Ligadura endoscópica de varices esofágicas (LVB) con bandas — profilaxis primaria si varices grandes sin contraindicación a NSBB o profilaxis secundaria tras HDA. Sesiones cada 2-4 semanas hasta erradicación",
+        "Vacunación específica (importante por inmunosupresión funcional): VHA (si seronegativo), VHB (si no inmune — pauta acelerada 0-1-2-12 meses); influenza ANUAL; neumococo PCV20 (preferida); SARS-CoV-2 según calendario; RSV ≥ 60 años; herpes zóster ≥ 50 años",
+        "Cribado SEMESTRAL de HCC: ecografía hepática + AFP cada 6 meses en todos los Child A-B; RMN/TC trifásica si eco subóptima por obesidad/hígado heterogéneo",
+        "Evitar fármacos hepatotóxicos: paracetamol máx 2-3 g/día en cirrosis (NO 4 g como en sano); AINES contraindicados en descompensados (precipitan ascitis, sangrado, HRS); benzodiacepinas con cautela (encefalopatía)",
+        "Manejo de DOACs vs warfarina en pacientes cirróticos con FA u otras indicaciones: tendencia actual a preferir DOACs en Child A-B (perfil de sangrado mejor que warfarina); evitar en Child C (datos limitados)",
+        "Apoyo PSICOSOCIAL: depresión y ansiedad en > 40% de cirróticos; cribado y derivación a salud mental; grupos de apoyo (AA si alcohol); intervención familiar",
+        "Plan anticipado de cuidados en Child C / ACLF / pacientes no candidatos a trasplante — cuidados paliativos integrados, no excluyentes con tratamiento activo"
       ],
       "quirurgico": [
-        "TIPS (shunt portosistemico intrahepático transyugular) en ascitis refractaria o HDA variceal",
-        "Trasplante hepático en cirrosis descompensada (MELD > 15)"
+        "TIPS (Shunt Portosistémico Intrahepático Transyugular) — RESCATE: ascitis refractaria a diuréticos, HDA variceal refractaria, hidrotórax hepático refractario",
+        "TIPS PRECOZ (pre-emptive TIPS) post-HDA variceal: dentro de 24-72h del sangrado en alto riesgo (Child B con sangrado activo en endoscopia, Child C ≤ 13) — Garcia-Pagán NEJM 2010 mostró reducción de re-sangrado y mortalidad",
+        "Contraindicaciones de TIPS: IC derecha severa, HAP severa, sepsis activa no controlada, obstrucción biliar, lesiones múltiples hepáticas, encefalopatía severa refractaria",
+        "Trasplante hepático ortotópico: indicación en cirrosis descompensada (MELD 3.0 > 15), ACLF severo elegible, HCC dentro de criterios de Milán (1 nódulo ≤ 5 cm o ≤ 3 nódulos cada uno ≤ 3 cm sin invasión vascular ni extrahepática), insuficiencia hepática fulminante",
+        "Contraindicaciones absolutas de trasplante: cáncer extrahepático activo, sepsis no controlada, enfermedad cardiopulmonar avanzada, abuso de alcohol/drogas no estabilizado, falta de soporte psicosocial",
+        "Tratamiento del HCC según BCLC: resección (BCLC 0-A), ablación por radiofrecuencia o microondas (BCLC A-B), TACE/TARE (BCLC B), terapia sistémica (atezolizumab + bevacizumab 1ª línea en BCLC C avanzado), trasplante (BCLC A con criterios de Milán)",
+        "Cirugía abdominal en cirrosis: alto riesgo perioperatorio (mortalidad correlaciona con MELD y Child) — cirugía ELECTIVA solo si MELD < 15 e indicación clara; cirugía urgente con manejo perioperatorio agresivo (albúmina, factores de coagulación, antibióticos)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -8601,7 +8739,15 @@
       "pat_hemorragia_digestiva",
       "pat_ulcera_peptica"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-23",
+    "fuentes": [
+      "Baveno VII Consensus Workshop on Portal Hypertension (J Hepatol 2022;76:959-974)",
+      "AASLD 2021 Practice Guidance — Diagnosis, Evaluation and Management of Ascites, SBP and HRS in Cirrhosis (Hepatology 2021;74:1014-1048)",
+      "AASLD/EASL/ALEH 2023 — Nomenclatura MASLD/MASH (Rinella ME et al, Hepatology 2023)",
+      "MELD 3.0 (Kim WR et al, Gastroenterology 2021) — UNOS implementación 2023",
+      "Ensayos clave: PREDESCI (carvedilol en cACLD); CONFIRM/REVERSE (terlipresina en HRS-AKI, FDA 2022); MAESTRO-NASH (resmetirom, FDA 2024); Garcia-Pagán (TIPS precoz post-HDA, NEJM 2010)"
+    ]
   },
   {
     "id": "pat_pancreatitis",
