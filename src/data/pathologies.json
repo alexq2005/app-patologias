@@ -2340,7 +2340,7 @@
     "id": "pat_eap",
     "nombre": "Edema Agudo de Pulmón",
     "bodySystemId": "cardiovascular",
-    "definicion": "Sindrome de insuficiencia respiratoria aguda grave por acumulación rápida de liquido en el intersticio y alveolos pulmonares, generalmente de origen cardiogenico, que representa una emergencia médica.",
+    "definicion": "Síndrome de insuficiencia respiratoria aguda grave por acumulación rápida de líquido en el intersticio y alvéolos pulmonares. Es una presentación clínica de Insuficiencia Cardíaca Aguda (ICA) — junto con ADHF (Acute Decompensated HF), shock cardiogénico y falla derecha aislada. La causa más frecuente es cardiogénica (aumento de la presión capilar pulmonar por disfunción VI o sobrecarga aguda); las causas no cardiogénicas (SDRA, neurogénico, post-obstructivo) tienen manejo distinto. Emergencia con mortalidad hospitalaria 10-20%.",
     "epidemiologia": "Complicación grave de la IC descompensada. Mortalidad hospitalaria del 10-20%. Es causa frecuente de ingreso en urgencias en pacientes con ICC conocida.",
     "factoresRiesgo": [
       "Insuficiencia cardíaca preexistente",
@@ -2373,23 +2373,39 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación de Killip-Kimball (en contexto de IAM)",
+      "nombre": "Clasificación combinada: perfil hemodinámico Stevenson (ESC 2021) + Killip (solo en IAM)",
       "tipos": [
         {
-          "nombre": "Killip I",
-          "descripcion": "Sin IC: sin crepitantes ni tercer ruido. Mortalidad ~6%"
+          "nombre": "Stevenson — Caliente y seco (Warm-Dry)",
+          "descripcion": "Sin congestión ni hipoperfusión. Paciente compensado. NO es ICA; manejo ambulatorio con optimización de terapia oral."
         },
         {
-          "nombre": "Killip II",
-          "descripcion": "IC leve: crepitantes en < 50% del campo pulmonar. Mortalidad ~17%"
+          "nombre": "Stevenson — Caliente y húmedo (Warm-Wet) — MÁS FRECUENTE",
+          "descripcion": "Con congestión (crepitantes, ingurgitación yugular, ortopnea) pero perfusión adecuada (extremidades tibias, PA normal). Representa > 80% de las presentaciones de ICA. Manejo: DIURÉTICO IV de asa + vasodilatador (NTG, nitroprusiato). El EAP cardiogénico clásico se incluye aquí."
         },
         {
-          "nombre": "Killip III",
-          "descripcion": "Edema agudo de pulmón: crepitantes en > 50%. Mortalidad ~38%"
+          "nombre": "Stevenson — Frío y seco (Cold-Dry)",
+          "descripcion": "Sin congestión pero con hipoperfusión (extremidades frías, hipotensión, oliguria). Bajo gasto. Manejo: cautela con diuréticos (pueden empeorar), considerar inotrópicos."
         },
         {
-          "nombre": "Killip IV",
-          "descripcion": "Shock cardiogenico: hipotensión + signos de hipoperfusion. Mortalidad ~81%"
+          "nombre": "Stevenson — Frío y húmedo (Cold-Wet) — MAYOR MORTALIDAD",
+          "descripcion": "Congestión + hipoperfusión = shock cardiogénico clínico. Manejo: inotrópicos (dobutamina, levosimendán), vasopresores (norepinefrina) si hipotensión refractaria, considerar soporte mecánico (balón intra-aórtico, ECMO)."
+        },
+        {
+          "nombre": "Killip-Kimball — Clase I (en contexto de IAM)",
+          "descripcion": "Sin IC: sin crepitantes ni tercer ruido. Mortalidad ~6%."
+        },
+        {
+          "nombre": "Killip-Kimball — Clase II (en contexto de IAM)",
+          "descripcion": "IC leve: crepitantes en < 50% del campo pulmonar. Mortalidad ~17%."
+        },
+        {
+          "nombre": "Killip-Kimball — Clase III = Edema Agudo de Pulmón (en contexto de IAM)",
+          "descripcion": "Crepitantes en > 50% bilateral. Mortalidad ~38%. Es la categoría que define EAP en SCA."
+        },
+        {
+          "nombre": "Killip-Kimball — Clase IV = Shock cardiogénico (en contexto de IAM)",
+          "descripcion": "Hipotensión + signos de hipoperfusión + congestión. Mortalidad ~81%. Requiere reperfusión coronaria urgente + soporte mecánico."
         }
       ]
     },
@@ -2440,69 +2456,174 @@
         },
         {
           "nombre": "BNP / NT-proBNP urgente",
-          "descripcion": "Confirma origen cardiogenico; niveles muy elevados en EAP",
+          "descripcion": "Péptidos natriuréticos liberados por estiramiento ventricular. Confirma origen cardiogénico vs no cardiogénico (SDRA, neumonía bilateral). Útil cuando el diagnóstico clínico es incierto.",
+          "valoresReferencia": "BNP: < 100 pg/mL descarta IC aguda (NPV alto); > 400 sugiere fuertemente IC. NT-proBNP por edad: < 50 años > 450 pg/mL; 50-75 años > 900; > 75 años > 1800. Valores intermedios = zona gris (considerar contexto). Falsamente bajo en obesidad y falla edge.",
           "cuidadosEnfermeria": [
-            "Obtener junto a otras muestras urgentes",
-            "No retrasar tratamiento esperando resultado"
+            "Obtener junto a otras muestras urgentes; resultado < 30 min en hospital",
+            "NO retrasar tratamiento esperando resultado — el diagnóstico inicial es clínico",
+            "Falsamente elevado en: edad avanzada, ERC, FA, sepsis, TEP, isquemia",
+            "Comparar con basal del paciente si tiene IC crónica (cambio > 30% es significativo)"
+          ]
+        },
+        {
+          "nombre": "Ecografía pulmonar a pie de cama (POCUS pulmonar)",
+          "descripcion": "ESC 2023 reconoce su utilidad: detecta edema pulmonar con mayor rapidez y sensibilidad que la Rx clásica. El hallazgo característico son las LÍNEAS B difusas bilaterales (más de 3 por campo). Sin radiación, repetible, evalúa respuesta al tratamiento. También evalúa función VI cualitativa y derrame pleural.",
+          "valoresReferencia": "Patrón A (líneas A horizontales): pulmón aireado normal. Patrón B (>= 3 líneas B verticales por campo, bilateral y difuso): síndrome intersticial — en contexto de IC sugiere edema cardiogénico. Líneas B focales: pueden ser neumonía o atelectasia.",
+          "cuidadosEnfermeria": [
+            "Realización al lado del paciente sin trasladar a radiología",
+            "Permite reevaluación seriada cada pocas horas para valorar respuesta al diurético",
+            "Operador-dependiente — requiere entrenamiento básico (curva de aprendizaje corta)",
+            "Combinada con ecografía cardíaca (POCUS cardio) orienta a fracción de eyección y signos de sobrecarga"
+          ]
+        },
+        {
+          "nombre": "ECG de 12 derivaciones",
+          "descripcion": "Identifica el desencadenante: IAM (SCAEST que requiere cateterismo urgente), arritmia rápida (FA con respuesta ventricular alta), bloqueo AV, crisis hipertensiva con sobrecarga, miopericarditis. Es OBLIGATORIO en TODO EAP en los primeros 10 minutos.",
+          "valoresReferencia": "Buscar: elevación ST (IAM), depresión ST/inversión T (isquemia), FA rápida, taquicardia ventricular, HVI con sobrecarga sistólica, BRIHH nuevo.",
+          "cuidadosEnfermeria": [
+            "Realizar en los primeros 10 min del ingreso — el manejo del desencadenante es prioritario",
+            "Si STEMI o equivalente: activar código IAM y derivar a hemodinamia urgente",
+            "Si FA rápida: control de frecuencia o cardioversión según estabilidad hemodinámica"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Restaurar oxigenación (SpO2 > 94%)",
-        "Reducir precarga y congestion pulmonar",
-        "Tratar causa desencadenante",
-        "Prevenir muerte"
+        "Restaurar oxigenación: SpO2 target 92-96% (ESC 2023 — NO hiperoxigenar; la hiperoxia causa vasoconstricción coronaria y reduce perfusión miocárdica)",
+        "Descongestión rápida con diurético IV de asa: monitorizar respuesta a 2-6h y escalar a estrategia combinada si insuficiente",
+        "Reducir precarga y postcarga con vasodilatadores IV si PAS > 110 mmHg (NTG; nitroprusiato en crisis HTA)",
+        "Tratar causa desencadenante: SCAEST → cateterismo urgente (< 2h); FA rápida → control FC/cardioversión; crisis HTA → bajar PA; infección → antibiótico",
+        "Iniciar SGLT2i (dapagliflozin o empagliflozin) precozmente tras estabilización (EMPULSE: < 72h del ingreso reduce mortalidad y rehospitalización)",
+        "Anticoagulación profiláctica con HBPM (enoxaparina 40 mg SC/día) durante la hospitalización por riesgo de TVP",
+        "Tras estabilización: iniciar/optimizar terapia 4-pilares HF (BB + IECA/ARA-II/sacubitril-valsartán + MRA + SGLT2i) antes del alta — reduce reingreso y mortalidad",
+        "Prevenir intubación con VNI/CPAP si SpO2 no mejora con O2 convencional",
+        "Identificar y manejar shock cardiogénico (perfil Cold-Wet de Stevenson) con inotrópicos + vasopresores + considerar soporte mecánico"
       ],
       "farmacologico": [
         {
-          "nombre": "Furosemida IV",
-          "grupo": "Diuretico de asa",
-          "mecanismo": "Rápida venodilación y luego diuresis potente; reduce precarga en minutos",
-          "dosis": "40-80 mg IV en bolo lento; puede repetirse o usar infusion continua 5-40 mg/h",
+          "nombre": "Furosemida IV (diurético de asa de primera línea)",
+          "grupo": "Diurético de asa — pilar de la descongestión en ICA/EAP",
+          "mecanismo": "Inhibe el cotransportador Na-K-2Cl en el asa de Henle. Acción dual: venodilatación inicial en 5-15 min (reduce precarga) y diuresis potente a partir de los 30-60 min. Reduce congestión pulmonar y peso corporal.",
+          "dosis": "Naive (sin furosemida previa): 20-40 mg IV en bolo. Paciente con furosemida crónica: dosis IV = dosis oral diaria total x 1-2.5 (ej. 80 mg/día VO → 80-200 mg IV bolo). Si diuresis insuficiente a 2-6h: doblar dosis o pasar a infusión continua 5-20 mg/h. Objetivo: diuresis >= 3-5 mL/kg/h en las primeras 6h.",
           "cuidadosEnfermeria": [
-            "Administrar IV lento (max 4 mg/min)",
-            "Diuresis horaria rigurosa",
-            "Electrolitos cada 6-8h",
-            "Balance hidrico estricto negativo",
-            "Objetivo: diuresis 100-200 mL/h"
+            "Administrar IV lento (max 4 mg/min para evitar ototoxicidad, especialmente con dosis altas)",
+            "Diuresis HORARIA con sonda vesical permanente",
+            "Electrolitos (K, Mg, Na, creatinina) cada 6-8h en fase aguda — riesgo de hipokalemia, hiponatremia, aumento de creatinina",
+            "Balance hídrico estricto negativo objetivo 1-2 L/día en EAP",
+            "Reevaluar respuesta a 2-6h: si diuresis < 100 mL/h o congestión persiste, escalar dosis o asociar acetazolamida/tiazida"
           ]
         },
         {
-          "nombre": "Nitroglicerina IV",
-          "grupo": "Nitrato - vasodilatador venoso y arterial",
-          "mecanismo": "Reduce drasticamente precarga (vasodilatación venosa) y postcarga, mejorando función cardíaca",
-          "dosis": "Iniciar 5-10 mcg/min; titular hasta 200 mcg/min segun respuesta y PA",
+          "nombre": "Acetazolamida IV — add-on a furosemida (ADVOR 2022)",
+          "grupo": "Inhibidor de la anhidrasa carbónica — mejora la descongestión cuando se agrega a furosemida",
+          "mecanismo": "Inhibe la reabsorción de bicarbonato en el túbulo proximal, sumando un sitio de acción al efecto de furosemida en el asa de Henle. Reduce la alcalosis metabólica por diurético y mejora descongestión.",
+          "dosis": "500 mg IV una vez al día durante los primeros 3 días del ingreso por ICA (régimen ADVOR).",
           "cuidadosEnfermeria": [
-            "Monitorizar PA continua (arterial si posible)",
-            "No administrar si PA sistolica < 90 mmHg",
-            "Contraindicada con sildenafil",
-            "Usar bomba de infusion precisa",
-            "Tolerancia a las 24-48h: escalonar dosis"
+            "ADVOR trial (NEJM 2022): la combinación acetazolamida + furosemida mejora descongestión exitosa y reduce estancia hospitalaria en ~1 día",
+            "ESC 2023 lo reconoce pero aún sin clase de recomendación firme (más datos de outcomes pendientes)",
+            "Vigilar acidosis metabólica leve (es esperable y deseable — contrarresta alcalosis del diurético de asa)",
+            "Monitorizar bicarbonato sérico"
           ]
         },
         {
-          "nombre": "Morfina IV",
-          "grupo": "Opiaceo - ansiolítico y venodilator",
-          "mecanismo": "Reduce ansiedad, disminuye frecuencia respiratoria, produce vasodilatación venosa leve",
-          "dosis": "2-4 mg IV lento, repetir segun respuesta",
+          "nombre": "Tiazida (Hidroclorotiazida o Metolazone) — combinación en resistencia diurética",
+          "grupo": "Diurético tiazídico — bloqueo segmentario secuencial agregado a furosemida si respuesta insuficiente",
+          "mecanismo": "Inhibe la reabsorción de Na en el túbulo distal, agregando un sitio de acción al efecto de furosemida en el asa.",
+          "dosis": "HCTZ 25-50 mg VO/día. Metolazone 5-10 mg VO una vez al día (más potente, mejor en filtrado glomerular bajo). Administrar 30 min antes de furosemida.",
           "cuidadosEnfermeria": [
-            "Monitorizar FR y SpO2 post-dosis",
-            "Antidoto naloxona disponible",
-            "Usada con precaución en EAP cardiogenico actual (evidencia cuestionada)"
+            "Indicación: resistencia a furosemida (diuresis insuficiente con dosis máxima de furosemida)",
+            "VIGILAR cercanamente potasio y magnesio (combinación causa hipokalemia/hipomagnesemia severa)",
+            "Vigilar hiponatremia (combinación tiazida + asa la favorece marcadamente)",
+            "Suspender al alcanzar euvolemia"
+          ]
+        },
+        {
+          "nombre": "Nitroglicerina IV (vasodilatador venoso/coronario)",
+          "grupo": "Nitrato IV — pilar en EAP con PAS > 110 mmHg",
+          "mecanismo": "Libera NO: venodilatación (reduce precarga) > arteriodilatación (reduce postcarga); dilata coronarias mejorando isquemia subendocárdica.",
+          "dosis": "Iniciar 10-20 mcg/min; titular cada 5 min hasta máx 200 mcg/min, según respuesta y PA. Objetivo: reducir PAS 10-15% sin bajar < 100 mmHg.",
+          "cuidadosEnfermeria": [
+            "Monitorizar PA CONTINUA (preferiblemente arterial invasiva)",
+            "NO administrar si PAS < 100 mmHg o sospecha de IAM de VD (precarga-dependiente)",
+            "CONTRAINDICACIÓN ABSOLUTA: uso de PDE5 (sildenafil 24h, tadalafil 48h)",
+            "Bomba de infusión precisa; tubuladura de PVC adsorbe NTG (usar set específico)",
+            "Tolerancia a las 24-48h (taquifilaxia): si persiste descongestión incompleta, considerar nitroprusiato"
+          ]
+        },
+        {
+          "nombre": "Nitroprusiato de sodio IV — crisis hipertensiva con EAP",
+          "grupo": "Vasodilatador mixto potente (arterial > venoso)",
+          "mecanismo": "Libera NO con efecto sobre arterias y venas. Acción inmediata y titulable; reduce pre y postcarga rápidamente. Especialmente útil en EAP por crisis HTA o regurgitación mitral aguda.",
+          "dosis": "0.3-10 mcg/kg/min IV, titular cada 5 min. Iniciar bajo (0.3) y subir.",
+          "cuidadosEnfermeria": [
+            "PA arterial invasiva OBLIGATORIA por su potencia",
+            "Frasco protegido de la luz (sensible a fotodegradación; envolver con papel aluminio)",
+            "Vigilar toxicidad por tiocianato (uso > 48h o dosis > 2 mcg/kg/min en ERC): confusión, debilidad, acidosis láctica",
+            "Antídoto: hidroxocobalamina, tiosulfato de sodio si toxicidad cianide",
+            "Cambiar solución cada 24h"
+          ]
+        },
+        {
+          "nombre": "Norepinefrina IV — shock cardiogénico asociado (perfil Cold-Wet)",
+          "grupo": "Vasopresor de PRIMERA línea en shock cardiogénico (ESC 2021/2023)",
+          "mecanismo": "Agonista alfa-1 predominante con efecto beta-1 leve: vasoconstricción + soporte inotrópico modesto.",
+          "dosis": "0.05-1 mcg/kg/min IV (titular cada 5 min). Objetivo: PAM >= 65 mmHg.",
+          "cuidadosEnfermeria": [
+            "ESC 2021: norepinefrina PREFERIDA sobre dopamina en shock cardiogénico (SOAP II trial — menor mortalidad y arritmias)",
+            "Acceso CENTRAL obligatorio (extravasación causa necrosis tisular severa)",
+            "PA arterial invasiva continua",
+            "Combinar con dobutamina o levosimendán si bajo gasto persistente (ejes alfa + beta)",
+            "Considerar soporte mecánico (balón intra-aórtico, ECMO, Impella) si shock refractario"
+          ]
+        },
+        {
+          "nombre": "SGLT2i (Dapagliflozin o Empagliflozin) — inicio precoz (EMPULSE)",
+          "grupo": "Inhibidor del cotransportador sodio-glucosa tipo 2 — pilar moderno de IC, iniciar en hospitalización por ICA",
+          "mecanismo": "Inhibe reabsorción de glucosa renal; efecto natriurético, reducción de precarga, mejora hemodinámica y de outcomes en HFrEF y HFpEF.",
+          "dosis": "Dapagliflozin 10 mg VO/día o Empagliflozin 10 mg VO/día. Iniciar dentro de las primeras 72h del ingreso una vez estabilizado (EMPULSE protocol).",
+          "cuidadosEnfermeria": [
+            "EMPULSE trial: inicio precoz (< 72h) seguro y mejora outcome compuesto (muerte, rehospitalización, QoL) a 90 días",
+            "Continuar al alta como parte del régimen 4-pilares de IC",
+            "Vigilar infecciones genitourinarias (candidiasis), depleción de volumen, cetoacidosis euglucémica (rara)",
+            "Suspender 3-4 días pre-cirugía mayor o ayuno prolongado"
+          ]
+        },
+        {
+          "nombre": "Morfina IV — uso RESTRINGIDO en ESC 2023",
+          "grupo": "Opioide — ya NO recomendado de rutina en EAP cardiogénico",
+          "mecanismo": "Reduce ansiedad y frecuencia respiratoria; mínima vasodilatación venosa.",
+          "dosis": "Si se usa (excepcional): 2-4 mg IV lento. Reservar para ansiedad extrema o dolor torácico isquémico con disnea.",
+          "cuidadosEnfermeria": [
+            "ESC 2023 NO recomienda morfina de rutina en EAP/ICA (registro ADHERE y otros mostraron mayor mortalidad asociada — probable confusión por gravedad)",
+            "Si se administra: vigilar FR, SpO2, nivel de conciencia; tener naloxona disponible",
+            "Riesgo de depresión respiratoria que puede precipitar intubación",
+            "Alternativas para ansiedad: VNI bien tolerada calma al paciente al mejorar disnea"
           ]
         }
       ],
       "noFarmacologico": [
-        "Posición sentada con piernas colgando (reduce retorno venoso)",
-        "Oxigenoterapia de alto flujo (mascarilla Venturi o de reservorio)",
-        "CPAP o VNI si hipoxemia refractaria a O2 convencional",
-        "Intubación si VNI falla o hay paro respiratorio inminente"
+        "POSICIONAR sentado con piernas colgando INMEDIATAMENTE (reduce retorno venoso y mejora ventilación de bases pulmonares) — primera maniobra antes de cualquier medicación",
+        "Oxigenoterapia titulada con objetivo SpO2 92-96% (ESC 2023: NO hiperoxigenar — la hiperoxia causa vasoconstricción coronaria); preferir Venturi para titulación precisa; mascarilla con reservorio 15 L/min si hipoxemia severa",
+        "VNI/CPAP en EAP cardiogénico con hipoxemia que no mejora con O2 convencional (ESC 2023 Class IIa, evidencia robusta): CPAP 7.5-12.5 cmH2O o BiPAP IPAP 12-20/EPAP 5-10. Reduce intubación, mortalidad y estancia hospitalaria",
+        "Cánula nasal de alto flujo (HFNC): alternativa cuando VNI no se tolera o hipoxemia sin hipercapnia; flujos 40-60 L/min con FiO2 titulada",
+        "Intubación + ventilación mecánica invasiva: si VNI falla, fatiga respiratoria, alteración de conciencia, paro respiratorio inminente o necesidad de procedimiento (cateterismo en SCA)",
+        "Acceso venoso GRUESO inmediato (2 vías de 18G o central si hipotensión); idealmente acceso central si requiere vasoactivos o nitroprusiato",
+        "Sonda vesical permanente para medición horaria de diuresis (esencial para evaluar respuesta a diurético)",
+        "Monitorización continua: ECG, SpO2, PA (arterial invasiva si vasoactivos), FR; balance hídrico horario",
+        "Reperfusión coronaria urgente si IAM como causa: ICP primaria objetivo < 90 min (preferida) o fibrinólisis si no disponible",
+        "Soporte circulatorio mecánico en shock cardiogénico refractario: balón de contrapulsación intra-aórtico (BCIA), Impella, ECMO veno-arterial — coordinar con UCI cardiovascular",
+        "Ultrafiltración: considerar en resistencia diurética refractaria documentada (CARRESS-HF mostró resultados mixtos; reservar como opción de rescate)",
+        "Anticoagulación profiláctica para TVP: enoxaparina 40 mg SC/día durante toda la hospitalización (paciente encamado + congestion + estado proinflamatorio)",
+        "Educación post-estabilización: pesaje diario, restricción de sodio (< 2 g/día) e hídrica (< 1.5-2 L/día), reconocimiento de signos de descompensación, adherencia"
       ],
       "quirurgico": [
-        "Reperfusion coronaria urgente si causa es IAM",
-        "Soporte circulatorio mecánico en shock cardiogenico"
+        "Reperfusión coronaria urgente (ICP primaria preferida; fibrinólisis si ICP no disponible en 120 min) si IAM es la causa del EAP",
+        "Reparación quirúrgica urgente de complicaciones mecánicas del IAM: rotura de músculo papilar (regurgitación mitral aguda), rotura de tabique interventricular, rotura de pared libre",
+        "Cirugía valvular urgente si EAP por regurgitación mitral aguda (endocarditis con perforación valvular, rotura de cuerda) o estenosis aórtica crítica con descompensación",
+        "Soporte circulatorio mecánico (BCIA, Impella, ECMO V-A) como puente a recuperación, trasplante o decisión en shock cardiogénico refractario (Killip IV / Stevenson Cold-Wet)",
+        "Pericardiocentesis urgente si EAP por taponamiento cardíaco (raro pero crítico)",
+        "Cierre percutáneo o quirúrgico de comunicación interventricular post-IAM en pacientes seleccionados"
       ]
     },
     "cuidadosEnfermeria": {
@@ -2643,7 +2764,14 @@
       "pat_iam",
       "pat_hta"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-22",
+    "fuentes": [
+      "ESC 2021 Guidelines for the diagnosis and treatment of acute and chronic heart failure (Eur Heart J 2021;42:3599-3726)",
+      "ESC 2023 Focused Update of the 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure (Eur J Heart Fail 2024)",
+      "Ensayos clave: ADVOR (NEJM 2022 — acetazolamida); EMPULSE (Nat Med 2022 — empagliflozin precoz); CARRESS-HF (ultrafiltración); SOAP II (norepinefrina vs dopamina)",
+      "ACVC/ESC Scientific Statement 2022 — Acute Heart Failure (Stevenson hemodynamic profiles)"
+    ]
   },
   {
     "id": "pat_endocarditis",
