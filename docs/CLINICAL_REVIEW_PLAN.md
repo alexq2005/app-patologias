@@ -86,7 +86,7 @@ Iniciado 2026-05-22 tras completar top-10. Orden por impacto clínico + prevalen
 | 6 | `pat_meningitis` | Meningitis | ESCMID + IDSA + Thwaites NEJM 2004 + BioFire ME | ✅ `pendiente commit` |
 | 7 | `pat_epilepsia` | Epilepsia | ILAE 2017 + AES 2016 SE + ESETT Lancet 2020 + RAMPART | ✅ `pendiente commit` |
 | 8 | `pat_tuberculosis` | Tuberculosis | WHO 2022 BPaLM + ATS/CDC/IDSA 2022 4-mo HPMZ + 3HP/4R ITBL + Xpert Ultra | ✅ `pendiente commit` |
-| 9 | `pat_cirrosis` | Cirrosis Hepática | AASLD 2024 + Baveno VII | pendiente |
+| 9 | `pat_cirrosis` | Cirrosis Hepática | Baveno VII 2022 + AASLD 2021/2024 + MASH 2023 + MELD 3.0 + Terlipresina/Resmetirom | ✅ `pendiente commit` |
 | 10 | `pat_pancreatitis` | Pancreatitis Aguda | AGA 2018 + ACG 2024 + revised Atlanta | pendiente |
 
 (actualizar esta tabla en cada sesión clínica nueva)
