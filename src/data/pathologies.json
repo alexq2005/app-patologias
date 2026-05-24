@@ -8783,19 +8783,43 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación de Atlanta 2012",
+      "nombre": "Clasificación dual: Atlanta revisada 2012 (severidad + morfología) + Determinant-Based Classification (DBC) 2012",
       "tipos": [
         {
-          "nombre": "Pancreatitis leve",
-          "descripcion": "Sin necrosis, sin fallo organico, resolución en 3-7 dias. Mortalidad < 1%"
+          "nombre": "Atlanta 2012 — SEVERIDAD: Leve",
+          "descripcion": "SIN fallo orgánico (Marshall modificado < 2 en ningún sistema) y SIN complicaciones locales o sistémicas. Resolución habitual 3-7 días con tratamiento estándar. Mortalidad < 1%. La mayoría (80%) de los casos."
         },
         {
-          "nombre": "Pancreatitis moderada",
-          "descripcion": "Fallo organico transitorio (< 48h) o complicaciones locales sin necrosis"
+          "nombre": "Atlanta 2012 — SEVERIDAD: Moderadamente severa",
+          "descripcion": "Fallo orgánico TRANSITORIO (resuelve en ≤ 48h) y/o complicaciones locales (colecciones líquidas, necrosis) o sistémicas (exacerbación de comorbilidad como EPOC, ICC). Mortalidad ~10%."
         },
         {
-          "nombre": "Pancreatitis severa",
-          "descripcion": "Fallo organico persistente > 48h (FALLA respiratoria, renal, cardiovascular). Mortalidad 20-40%"
+          "nombre": "Atlanta 2012 — SEVERIDAD: Severa",
+          "descripcion": "Fallo orgánico PERSISTENTE (> 48h) en uno o más sistemas (respiratorio, renal, cardiovascular — Marshall modificado ≥ 2). Mortalidad 30-50%. Manejo en UCI con soporte multiorgánico."
+        },
+        {
+          "nombre": "Atlanta 2012 — MORFOLOGÍA: Edematosa intersticial",
+          "descripcion": "80-90% de los casos. Inflamación con aumento del realce pancreático en TC contrastada, sin áreas no perfundidas (sin necrosis). Pronóstico favorable."
+        },
+        {
+          "nombre": "Atlanta 2012 — MORFOLOGÍA: Necrotizante",
+          "descripcion": "5-10% de los casos. Áreas pancreáticas y/o peripancreáticas con falta de realce en TC contrastada (necrosis). Mayor mortalidad y complicaciones. Subtipos: parenquimatosa pura, peripancreática pura, mixta."
+        },
+        {
+          "nombre": "Atlanta 2012 — COLECCIONES en pancreatitis edematosa",
+          "descripcion": "**APFC** (Acute Peripancreatic Fluid Collection): colección líquida sin pared en primeras 4 semanas, generalmente reabsorbe espontáneamente. **PSEUDOQUISTE**: colección líquida con pared definida tras > 4 semanas, sin material sólido."
+        },
+        {
+          "nombre": "Atlanta 2012 — COLECCIONES en pancreatitis necrotizante",
+          "descripcion": "**ANC** (Acute Necrotic Collection): colección con contenido líquido + sólido (necrosis) en primeras 4 semanas, sin pared definida. **WON** (Walled-Off Necrosis): colección de necrosis encapsulada con pared definida tras > 4 semanas, candidata a drenaje con LAMS (Lumen-Apposing Metal Stents) o necrosectomía step-up."
+        },
+        {
+          "nombre": "DBC (Determinant-Based Classification) 2012 — clasificación alternativa de 4 categorías",
+          "descripcion": "Basada en dos determinantes: necrosis (infectada o estéril) + fallo orgánico (transitorio o persistente). Categorías: LEVE (sin necrosis ni fallo orgánico), MODERADA (necrosis estéril o fallo orgánico transitorio), SEVERA (necrosis infectada O fallo orgánico persistente), CRÍTICA (necrosis infectada Y fallo orgánico persistente — mortalidad > 50%, la categoría CRÍTICA es la principal aportación del DBC sobre Atlanta)."
+        },
+        {
+          "nombre": "Necrosis infectada",
+          "descripcion": "Complicación grave: presencia de gas en TC en colección necrótica, o cultivo positivo en aspirado guiado, o deterioro clínico con fiebre persistente > 7-10 días + leucocitosis. Indica drenaje step-up + antibióticos dirigidos."
         }
       ]
     },
@@ -8833,67 +8857,140 @@
           ]
         },
         {
-          "nombre": "Score de Ranson (al ingreso y 48h)",
-          "descripcion": "Predice severidad con 11 criterios clínicos y laboratorio",
-          "valoresReferencia": "< 3 criterios = leve; 3-5 = moderada; > 5 = grave (mortalidad > 40%)",
+          "nombre": "BISAP (Bedside Index for Severity in Acute Pancreatitis) — score preferido moderno",
+          "descripcion": "Score de 5 variables calculable a las 24h del ingreso. ACG preferido sobre Ranson (más simple, equivalente o superior en predicción de mortalidad).",
+          "valoresReferencia": "1 punto cada uno: BUN > 25 mg/dL, alteración del estado mental (Glasgow < 15), SIRS (≥2 criterios), edad > 60 años, derrame Pleural en imagen. Score 0-2: mortalidad < 2%; 3: ~5%; 4: ~13%; 5: ~22%. BISAP ≥ 3 sugiere severa.",
           "cuidadosEnfermeria": [
-            "Calcular al ingreso y a las 48h",
-            "Documentar para escalada del nivel de cuidados si necesario"
+            "Calcular a las 24h del ingreso (más precoz y simple que Ranson, que requiere reevaluación a 48h)",
+            "BISAP ≥ 3 → considerar UCI/intermedios + intensificar vigilancia",
+            "Combinar con SIRS persistente > 48h y hematocrito como predictores adicionales"
+          ]
+        },
+        {
+          "nombre": "Score de Ranson (al ingreso y 48h) — score clásico",
+          "descripcion": "11 criterios clínicos y de laboratorio (5 al ingreso + 6 a 48h). Vigente pero más engorroso que BISAP; valor histórico y aún usado en algunos centros.",
+          "valoresReferencia": "< 3 criterios = mortalidad < 1%; 3-4 = ~15%; 5-6 = ~40%; > 6 = ~100%. NO se puede calcular antes de 48h del ingreso (limita su utilidad temprana).",
+          "cuidadosEnfermeria": [
+            "Calcular al ingreso y a las 48h si BISAP no disponible",
+            "Documentar para escalada del nivel de cuidados si > 3"
+          ]
+        },
+        {
+          "nombre": "Ecografía abdominal — primera línea para etiología biliar",
+          "descripcion": "Cribado inicial OBLIGATORIO en TODA pancreatitis aguda para evaluar litiasis biliar, dilatación de la vía biliar, esteatosis hepática. Sensibilidad reducida en obesos / por gas intestinal.",
+          "cuidadosEnfermeria": [
+            "Realizar al ingreso en TODO paciente con pancreatitis aguda",
+            "Si litiasis biliar + dilatación de colédoco + transaminasas elevadas: considerar colangitis o coledocolitiasis → CPRE urgente",
+            "Si ecografía no concluyente con sospecha biliar: ecoendoscopia o colangio-RMN"
+          ]
+        },
+        {
+          "nombre": "Ecoendoscopia (USE) o colangio-RMN — sospecha de coledocolitiasis",
+          "descripcion": "Pruebas no invasivas de alta sensibilidad para coledocolitiasis residual o microlitiasis. Permiten seleccionar pacientes que realmente necesitan CPRE terapéutica (evitando CPRE diagnóstica con riesgo de pancreatitis post-CPRE 5%).",
+          "cuidadosEnfermeria": [
+            "Ecoendoscopia: ayuno 6-8h, sedación; precisión cercana al 95% para coledocolitiasis",
+            "Colangio-RMN: sin radiación, no invasiva; verificar contraindicaciones (marcapasos no compatible)",
+            "Si confirma coledocolitiasis con obstrucción/colangitis: CPRE terapéutica posterior"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Reposo pancreático y ayuno inicial",
-        "Resucitación con fluidos IV agresiva",
-        "Control del dolor",
-        "Prevenir y tratar complicaciones"
+        "Hidratación MODERADA con Ringer Lactato (WATERFALL NEJM 2022): la resucitación agresiva tradicional fue desafiada — moderada es MEJOR (menos sobrecarga sin aumento de complicaciones)",
+        "Control del dolor con analgesia multimodal (paracetamol IV + opioide si severo)",
+        "Alimentación enteral PRECOZ (24-72h si tolera, no esperar 5 días — cambio paradigmático ACG 2024)",
+        "Estratificar severidad temprano con BISAP + Marshall modificado + lactato + hematocrito",
+        "Identificar y tratar etiología: CPRE en colangitis aguda u obstrucción biliar persistente; insulina+plasmaféresis si hipertrigliceridemia > 1000; colecistectomía precoz (APEC 2015) si pancreatitis biliar LEVE",
+        "NO antibióticos profilácticos (ACG 2024): solo si necrosis infectada documentada o sepsis sistémica",
+        "Manejo step-up de complicaciones locales (PANTER NEJM 2010, TENSION 2018): drenaje percutáneo o endoscópico LAMS → necrosectomía endoscópica → quirúrgica solo si falla",
+        "Profilaxis de pancreatitis post-CPRE: indometacina o diclofenaco rectal 100 mg pre-procedimiento (ESGE 2020) en pacientes de riesgo",
+        "Manejo de fallo orgánico en UCI (severa): soporte respiratorio (VNI o intubación), hemodinamia, función renal (TRR si necesario)",
+        "Educación pre-alta: abstinencia de alcohol si causa alcohólica; colecistectomía si biliar; dieta baja en grasas progresiva; control de TG y DM secundaria"
       ],
       "farmacologico": [
         {
-          "nombre": "Solución de Ringer Lactato",
-          "grupo": "Cristaloide IV - resucitación hidroelectrolitica",
-          "mecanismo": "Repone el volumen intravascular perdido por edema retroperitoneal y terceros espacios",
-          "dosis": "250-500 mL/h inicialmente; ajustar segun respuesta (diuresis, FC, PA)",
+          "nombre": "Ringer Lactato — hidratación MODERADA (WATERFALL NEJM 2022)",
+          "grupo": "Cristaloide IV — pilar inicial con estrategia MODERADA (no agresiva)",
+          "mecanismo": "Restaura el volumen intravascular perdido por edema retroperitoneal y terceros espacios. Ringer Lactato superior al SF 0.9% (menor acidosis hiperclorémica y menor mortalidad en algunos estudios).",
+          "dosis": "WATERFALL (de Madaria NEJM 2022) — estrategia MODERADA: bolo 10 mL/kg SOLO si hipovolemia (NO de rutina); mantenimiento 1.5 mL/kg/h. La estrategia AGRESIVA (bolo 20 mL/kg + 3 mL/kg/h) AUMENTÓ sobrecarga (20.5% vs 6.3%) sin reducir mortalidad — ensayo detenido por seguridad. ACG 2024 endorsa estrategia moderada.",
           "cuidadosEnfermeria": [
-            "Resucitación agresiva en primeras 24-48h (evidencia: Ringer Lactato mejor que SF 0.9%)",
-            "Monitorizar diuresis > 0.5 mL/kg/h",
-            "Balance hidrico estricto",
-            "Vigilar sobrecarga de liquidos en pancreatitis severa (edema pulmonar)"
+            "Cambio paradigmático: la resucitación 'agresiva' clásica (250-500 mL/h) está siendo abandonada — WATERFALL favoreció la estrategia moderada",
+            "Monitorizar diuresis > 0.5 mL/kg/h como target",
+            "Balance hídrico estricto + peso diario",
+            "VIGILAR sobrecarga (especialmente edema pulmonar, sd compartimental abdominal) en pancreatitis severa — más frecuente con resucitación agresiva",
+            "Ringer Lactato CONTRAINDICADO si hipercalcemia severa o hiperlactacidemia preexistente"
           ]
         },
         {
-          "nombre": "Morfina / Ketamina IV",
-          "grupo": "Analgesicos - control del dolor severo",
-          "mecanismo": "Morfina: agonista opiode. Ketamina: antagonista NMDA con efecto analgesico y menor efecto en esfinter de Oddi",
-          "dosis": "Morfina: 2-4 mg IV cada 4-6h; Ketamina: 0.1-0.3 mg/kg IV",
+          "nombre": "Analgesia multimodal: Paracetamol IV + Opioide (Morfina/Tramadol) ± Ketamina",
+          "grupo": "Control del dolor — pilar del manejo sintomático",
+          "mecanismo": "Paracetamol IV de base + opioide IV si dolor severo. El antiguo mito del 'espasmo del esfínter de Oddi con morfina' NO es clínicamente relevante en dosis analgésicas — usar el opioide que esté disponible.",
+          "dosis": "Paracetamol 1 g IV c/6h (máx 4 g/día en sano; 2-3 g si hepatopatía). Morfina 2-4 mg IV c/4-6h o infusión continua. Tramadol 50-100 mg IV/VO c/6-8h (alternativa de menor potencia). Ketamina 0.1-0.3 mg/kg IV (adyuvante en dolor refractario, especialmente con tolerancia opioide).",
           "cuidadosEnfermeria": [
-            "El miedo al opiode (espasmo de Oddi) no es clinicamente relevante en dosis analgesicas",
-            "Monitorizar FR y SpO2",
-            "Tramadol como alternativa de menor potencia"
+            "Evaluar dolor con EVA antes y 30-60 min post-dosis",
+            "Morfina/tramadol: vigilar FR, SpO2, nivel de conciencia, naloxona disponible",
+            "El miedo histórico al 'espasmo de Oddi' con morfina NO está clínicamente sustentado",
+            "AINE NO son primera línea por riesgo de fallo renal en paciente con hipovolemia"
           ]
         },
         {
-          "nombre": "Ceftriaxona + Metronidazol (antibioticos)",
-          "grupo": "Antibioticoterapia - solo en necrosis infectada o sepsis",
-          "mecanismo": "NO deben usarse profilacticamente. Solo indicados en necrosis pancreática infectada (aislamientos polimicrobianos)",
-          "dosis": "Ceftriaxona 2 g IV + Metronidazol 500 mg IV c/8h",
+          "nombre": "Insulina IV ± Plasmaféresis — hipertrigliceridemia severa (TG > 1000)",
+          "grupo": "Tratamiento etiológico — pancreatitis por hipertrigliceridemia",
+          "mecanismo": "Insulina IV activa la lipoproteinlipasa endotelial, reduciendo TG rápidamente. Plasmaféresis remueve lípidos directamente del plasma (uso si TG persistentemente > 1000 con pancreatitis activa severa).",
+          "dosis": "Insulina IV: 0.1-0.3 UI/kg/h en infusión continua + glucosa 5-10% para mantener glucemia 150-200 (evitar hipoglucemia). Plasmaféresis: 1-1.5 volumen plasmático/sesión hasta TG < 500. Heparina IV (10000-20000 UI/día) puede agregar.",
           "cuidadosEnfermeria": [
-            "NO administrar antibioticos profilacticamente (no reduce complicaciones infecciosas)",
-            "Indicar solo ante signos de infección: fiebre persistente > 7-10 dias, deterioro"
+            "Indicación: TG > 1000 mg/dL en contexto de pancreatitis activa",
+            "Monitorizar glucemia capilar cada 1-2h con insulina IV",
+            "Plasmaféresis requiere acceso vascular adecuado y centro especializado",
+            "Tras estabilización: fibratos (gemfibrozilo, fenofibrato), omega-3, dieta hipograsa, control de DM, abstinencia de alcohol"
+          ]
+        },
+        {
+          "nombre": "Indometacina/Diclofenaco rectal — PROFILAXIS de pancreatitis post-CPRE (ESGE 2020)",
+          "grupo": "AINE rectal — profilaxis pre-procedimiento",
+          "mecanismo": "Reduce la respuesta inflamatoria pancreática post-CPRE. Reducción de pancreatitis post-CPRE del 13% al 6% (RCT NEJM 2012).",
+          "dosis": "Indometacina 100 mg vía rectal o diclofenaco 100 mg vía rectal, 30-90 min ANTES del procedimiento CPRE en pacientes de riesgo (mujer joven, disfunción del esfínter de Oddi sospechada, pancreatitis post-CPRE previa, canulación difícil).",
+          "cuidadosEnfermeria": [
+            "ESGE 2020 recomienda en TODOS los pacientes que se someten a CPRE (no solo de alto riesgo)",
+            "Administrar 30-90 min pre-procedimiento",
+            "Contraindicaciones: ERC con TFG < 30, alergia AINE, embarazo 3er trimestre",
+            "Hidratación IV con Ringer Lactato peri-procedimiento es complementaria"
+          ]
+        },
+        {
+          "nombre": "Antibióticos (Piperacilina-tazobactam o carbapenem) — SOLO necrosis infectada",
+          "grupo": "Antibioticoterapia — uso restringido por ACG 2024",
+          "mecanismo": "Cobertura empírica de flora entérica (gram-negativos, anaerobios) que coloniza la necrosis pancreática infectada. Piperacilina-tazobactam o carbapenem por buena penetración pancreática.",
+          "dosis": "Piperacilina-tazobactam 4.5 g IV c/6-8h. Meropenem 1 g IV c/8h (cobertura amplia, reservar para MDR o falla a pip-tazo). Duración: 14 días hasta control de la fuente con drenaje.",
+          "cuidadosEnfermeria": [
+            "ACG 2024 + Atlanta 2012: NO administrar antibióticos profilácticos en pancreatitis severa o necrosis estéril — no reduce mortalidad y favorece resistencias",
+            "Indicar SOLO ante: signos clínicos de sepsis + necrosis (fiebre > 7-10 días, leucocitosis, deterioro), gas en TC en colección necrótica, cultivo positivo en aspirado guiado",
+            "Ajustar a cultivo cuando disponible (de-escalation)",
+            "Cobertura empírica clásica ceftriaxona + metronidazol es subóptima vs pip-tazo o carbapenem en necrosis infectada"
           ]
         }
       ],
       "noFarmacologico": [
-        "Ayuno en las primeras 24-48h (reducir la estimulación pancreática)",
-        "Nutrición enteral precoz (si > 5 dias de ayuno: SNG postpilórica es preferible a parenteral)",
-        "Manejo del dolor multimodal",
-        "Endoscopia urgente (CPRE) si coledocolitiasis con colangitis o ictericia obstructiva"
+        "Alimentación ENTERAL PRECOZ (cambio paradigmático ACG 2024): iniciar dieta oral en 24-72h si paciente tolera (no esperar 5 días como en el pasado); progresar de líquidos claros → blanda baja en grasas; si íleo o intolerancia, sonda nasoyeyunal con nutrición enteral; nutrición parenteral solo si enteral imposible > 5-7 días",
+        "Hidratación moderada IV (estrategia WATERFALL) — reemplaza la histórica 'agresiva 250-500 mL/h'",
+        "Manejo del dolor multimodal sin restringir morfina por el mito del 'espasmo de Oddi'",
+        "Sonda nasogástrica SOLO si vómitos persistentes incoercibles o íleo significativo — NO de rutina",
+        "Movilización temprana cuando hemodinámicamente estable (reduce TVP, atelectasias, descondicionamiento)",
+        "CPRE urgente (< 24h): SOLO en colangitis aguda asociada a pancreatitis biliar O obstrucción biliar persistente con ictericia progresiva. NO en pancreatitis biliar sin colangitis ni obstrucción mantenida",
+        "Colecistectomía PRECOZ en pancreatitis biliar LEVE (APEC trial 2015): durante el MISMO ingreso una vez resuelto el episodio agudo — reduce recurrencias y readmisiones. Diferida (a las 4-6 semanas) solo en pancreatitis biliar moderada-severa con colecciones",
+        "Profilaxis de TVP con HBPM (enoxaparina 40 mg SC/día) en pancreatitis severa o encamamiento prolongado",
+        "Manejo de comorbilidades agudas: glucemia (DM transitoria o de novo frecuente en pancreatitis severa); insuficiencia respiratoria (oxígeno, considerar VNI/HFNC antes de intubación); fallo renal (TRR si AKI persistente)",
+        "Educación pre-alta: ABSTINENCIA absoluta de alcohol si causa alcohólica + derivación a tratamiento de adicciones; dieta progresiva baja en grasas y luego normal; control ambulatorio con imagen y función pancreática (exocrina/endocrina); cribado de DM y esteatorrea post-pancreatitis severa"
       ],
       "quirurgico": [
-        "Necrosectomia (percutanea, endoscópica o quirúrgica) en necrosis infectada",
-        "Colecistectomia diferida en pancreatitis biliar leve (previene recurrencias)"
+        "STEP-UP APPROACH (PANTER NEJM 2010, TENSION 2018) — estándar moderno para necrosis pancreática infectada o sintomática: PASO 1 drenaje percutáneo radiológico O drenaje endoscópico transluminal con LAMS (Lumen-Apposing Metal Stents) → PASO 2 necrosectomía endoscópica o videoasistida retroperitoneal si persiste sepsis → PASO 3 cirugía abierta solo si todos los pasos previos fallan. Reduce mortalidad, complicaciones, diabetes post-pancreatitis e incidencia de hernia incisional vs cirugía abierta primaria",
+        "Timing del drenaje/necrosectomía: DEMORAR cuanto sea posible (≥ 4 semanas desde inicio para que la necrosis se encapsule como WON — Walled-Off Necrosis) salvo deterioro séptico que obligue intervención más precoz; la encapsulación reduce mortalidad operatoria",
+        "Drenaje endoscópico transluminal con LAMS (Lumen-Apposing Metal Stents): estándar moderno para WON y pseudoquistes con comunicación gástrica; permite necrosectomía endoscópica directa a través del stent si necesario; menor morbilidad que abordajes quirúrgicos",
+        "Colecistectomía laparoscópica PRECOZ (en mismo ingreso) en pancreatitis biliar LEVE (APEC trial 2015) — reduce recurrencias hasta 50%",
+        "Colecistectomía DIFERIDA (4-6 semanas) en pancreatitis biliar MODERADA-SEVERA con colecciones — permite resolución de colecciones primero",
+        "CPRE con esfinterotomía + extracción de cálculo: solo en colangitis aguda asociada o coledocolitiasis con obstrucción confirmada por imagen",
+        "Manejo de complicaciones tardías: fístulas pancreáticas (drenaje + somatostatina + endoscópicos), pseudoquistes sintomáticos (drenaje endoscópico LAMS > quirúrgico), trombosis de la vena esplénica con varices gástricas (esplenectomía si sangrado)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -9030,7 +9127,15 @@
       "pat_cirrosis",
       "pat_dm2"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "Atlanta Classification Revised 2012 (Banks PA et al, Gut 2013;62:102-111)",
+      "ACG 2024 Acute Pancreatitis Guideline + Determinant-Based Classification (DBC) 2012",
+      "WATERFALL Trial — de-Madaria et al, Aggressive vs Moderate Fluid Resuscitation (NEJM 2022;387:989-1000)",
+      "Ensayos clave: PANTER (NEJM 2010 step-up vs cirugía abierta); TENSION (Lancet 2018 step-up endoscópico vs quirúrgico); APEC (Lancet 2015 colecistectomía precoz)",
+      "ESGE 2020 — Profilaxis de pancreatitis post-CPRE con indometacina/diclofenaco rectal"
+    ]
   },
   {
     "id": "pat_eii",

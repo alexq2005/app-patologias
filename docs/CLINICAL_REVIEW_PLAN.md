@@ -87,6 +87,18 @@ Iniciado 2026-05-22 tras completar top-10. Orden por impacto clínico + prevalen
 | 7 | `pat_epilepsia` | Epilepsia | ILAE 2017 + AES 2016 SE + ESETT Lancet 2020 + RAMPART | ✅ `pendiente commit` |
 | 8 | `pat_tuberculosis` | Tuberculosis | WHO 2022 BPaLM + ATS/CDC/IDSA 2022 4-mo HPMZ + 3HP/4R ITBL + Xpert Ultra | ✅ `pendiente commit` |
 | 9 | `pat_cirrosis` | Cirrosis Hepática | Baveno VII 2022 + AASLD 2021/2024 + MASH 2023 + MELD 3.0 + Terlipresina/Resmetirom | ✅ `pendiente commit` |
-| 10 | `pat_pancreatitis` | Pancreatitis Aguda | AGA 2018 + ACG 2024 + revised Atlanta | pendiente |
+| 10 | `pat_pancreatitis` | Pancreatitis Aguda | Atlanta 2012 + ACG 2024 + WATERFALL + PANTER/TENSION step-up | ✅ `pendiente commit` |
+
+---
+
+## 🎯 Milestone: SEGUNDO LOTE COMPLETO (21/151 entries revisadas)
+
+Cardiovascular (6): pat_icc, pat_hta, pat_iam, pat_fa, pat_angina, pat_eap, pat_endocarditis
+Endocrino (3): pat_dm2, pat_dm1, pat_cetoacidosis
+Respiratorio (5): pat_epoc, pat_asma, pat_neumonia, pat_neumotorax, pat_tep, pat_tuberculosis
+Neurológico (3): pat_acv, pat_meningitis, pat_epilepsia
+Digestivo (2): pat_cirrosis, pat_pancreatitis
+
+**Total: 21/151 entries (~14% de la base)** con `revisadoEn` y `fuentes` completos. Cobertura amplia de las patologías más prevalentes en enfermería médico-quirúrgica de adultos.
 
 (actualizar esta tabla en cada sesión clínica nueva)
