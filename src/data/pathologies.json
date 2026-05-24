@@ -10461,23 +10461,39 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por mecanismo y localización",
+      "nombre": "WSES Bologna 2017/2024 + topografía + mecanismo + estado vascular",
       "tipos": [
         {
-          "nombre": "Obstrucción de intestino delgado (OID)",
-          "descripcion": "Causa más frecuente: adherencias. Vomitos precoces, distension moderada"
+          "nombre": "Obstrucción de intestino delgado (SBO) — ADHESIVA simple",
+          "descripcion": "Causa #1 (60-75% en países occidentales). Adherencias post-quirúrgicas previas. Vómitos precoces biliosos, distensión moderada, dolor cólico, niveles hidroaéreos centrales. WSES Bologna 2017/2024: candidato a manejo conservador con NGT + IVF + Gastrografin challenge si NO hay signos de complicación. ~60-85% resuelve sin cirugía"
         },
         {
-          "nombre": "Obstrucción de intestino grueso (OIG)",
-          "descripcion": "Causas: cancer colorrectal, volvulo. Distension pronunciada, vomitos tardios"
+          "nombre": "SBO con compromiso vascular (estrangulación / closed-loop)",
+          "descripcion": "EMERGENCIA QUIRÚRGICA. Signos en TAC: closed-loop, swirl sign (whirl), target sign, neumatosis intestinal, gas en sistema porta, ausencia de realce mural, edema mesentérico, líquido libre. Clínica: dolor intenso continuo (no cólico), defensa, taquicardia, leucocitosis >18000, acidosis láctica. NO probar conservador — cirugía en <6h"
         },
         {
-          "nombre": "Obstrucción con estrangulación",
-          "descripcion": "Compromiso vascular + obstrucción. Urgencia absoluta: isquemia progresa a necrosis"
+          "nombre": "SBO no adhesiva (hernia complicada, neoplasia, EII, intususcepción)",
+          "descripcion": "Hernia incarcerada/estrangulada (inguinal, crural, ventral, interna) requiere reducción/cirugía. Neoplasia primaria intestinal o metástasis (carcinomatosis peritoneal). EII con estenosis (Crohn). Intususcepción ileocólica en adultos (sospechar tumor como punto guía)"
         },
         {
-          "nombre": "Ileo paralitico (funcional)",
-          "descripcion": "Ausencia de obstrucción mecánica: postoperatorio, peritonitis, hipokalemia"
+          "nombre": "Obstrucción de intestino grueso (LBO) — neoplásica",
+          "descripcion": "Causa #1 en LBO (cáncer colorrectal izquierdo). Distensión pronunciada (válvula ileocecal competente: gran riesgo de perforación cecal cuando diámetro >12 cm), vómitos tardíos fecaloideos, dolor menos prominente, pérdida de peso. Considerar SEMS (stent metálico autoexpansible) como puente a cirugía o paliación"
+        },
+        {
+          "nombre": "Vólvulo sigmoide",
+          "descripcion": "Torsión del sigmoide redundante sobre su eje mesentérico. Edad >70, sedentarios, estreñimiento crónico, residentes de institución. RX: signo del 'grano de café'. TRATAMIENTO ESCALONADO: 1º detorsión endoscópica (rectosigmoidoscopio + tubo rectal) — éxito 80%; 2º sigmoidectomía electiva en MISMO INGRESO (recurrencia 50% si solo detorsión)"
+        },
+        {
+          "nombre": "Vólvulo cecal",
+          "descripcion": "Torsión del ciego con mesenterio largo. CIRUGÍA URGENTE — la detorsión endoscópica NO es efectiva (a diferencia de sigmoide). Opciones: cecopexia (recurrencia alta), cecostomía o hemicolectomía derecha (preferida por evidencia)"
+        },
+        {
+          "nombre": "Pseudoobstrucción colónica aguda (síndrome de Ogilvie)",
+          "descripcion": "Dilatación masiva colónica sin obstrucción mecánica. Pacientes hospitalizados graves (post-cirugía, sepsis, trauma, opioides). Riesgo perforación si diámetro cecal >12 cm. Tratamiento: corregir factores precipitantes, neostigmina IV (Ponec NEJM 1999) o descompresión colonoscópica si persiste >48-72h"
+        },
+        {
+          "nombre": "Íleo paralítico (funcional)",
+          "descripcion": "Ausencia de obstrucción mecánica con interrupción del peristaltismo. Postoperatorio (más frecuente), peritonitis, isquemia, hipokalemia, hipomagnesemia, opioides, anticolinérgicos, sepsis. Manejo: corregir causa, ERAS, alvimopan en postop si elegible"
         }
       ]
     },
@@ -10496,61 +10512,187 @@
       ],
       "pruebas": [
         {
-          "nombre": "Radiografia de abdomen de pie y en decubito",
-          "descripcion": "Primer estudio: asas distendidas, niveles hidroaereos, signo del intestino en asas de U",
+          "nombre": "TAC abdominopélvico CON contraste IV (estudio de elección WSES 2017/2024)",
+          "descripcion": "Sensibilidad >95% / especificidad >95% para SBO. Identifica: nivel de transición, causa (adherencia, hernia, tumor, intususcepción, vólvulo), grado, y CRÍTICO signos de estrangulación / isquemia: closed-loop sign, swirl/whirl sign, target sign, neumatosis intestinal, gas portal, ausencia de realce mural, edema mesentérico, líquido libre. La presencia de cualquiera = cirugía urgente",
           "cuidadosEnfermeria": [
-            "Dos posiciones: decubito supino + bipedestación o decubito lateral",
-            "En bipedestación: visualiza mejor los niveles hidroaereos"
+            "Verificar función renal (creatinina, eGFR) y alergia a contraste antes de administrar yodado IV",
+            "NO administrar contraste oral (vómitos, riesgo aspiración) — el TAC sin contraste oral es diagnóstico",
+            "Reportar AL RADIÓLOGO sospecha clínica de estrangulación para que busque signos específicos",
+            "Si SBO confirmada sin signos de complicación: el TAC inicial sirve como baseline para comparar tras Gastrografin challenge"
           ]
         },
         {
-          "nombre": "TAC abdominal con contraste",
-          "descripcion": "Identifica causa, localización de la obstrucción, y signos de estrangulación o isquemia",
+          "nombre": "Gastrografin Challenge (water-soluble contrast challenge) — diagnóstico Y terapéutico",
+          "descripcion": "100 mL de Gastrografin (diatrizoato) por SNG tras descompresión, seguimiento con RX abdominal a las 8-24h. Si llega a colon en <24h: predice resolución sin cirugía con >96% VPP (Branco BJS 2010). Si NO llega a colon en 24h: alta probabilidad de necesitar cirugía. Efecto terapéutico: hiperosmolar moviliza el contenido intestinal — REDUCE necesidad de cirugía y acorta estancia hospitalaria. Recomendado en SBO adhesiva SIN signos de complicación (WSES 2017/2024)",
           "cuidadosEnfermeria": [
-            "No administrar contraste oral en obstrucción (riesgo de aspiración)",
-            "Verificar función renal para contraste IV"
+            "Pre-requisito: SNG descompresiva en aspiración 4-6h previa (vaciar estómago para permitir progresión)",
+            "Administrar 100 mL Gastrografin diluido en 50 mL agua por SNG, pinzar SNG 4-6h post-administración (permite progresión)",
+            "RX simple abdomen a las 8h y 24h evaluando progresión a colon",
+            "Hidratación IV adecuada — el contraste hiperosmolar puede causar deshidratación, hipotensión",
+            "Vigilar respuesta clínica: paso de gases/heces, disminución distensión, mejora dolor — son criterios de resolución",
+            "CONTRAINDICACIONES: signos de estrangulación, peritonitis, hemorragia activa, alteración nivel de conciencia (riesgo aspiración), perforación sospechada"
+          ]
+        },
+        {
+          "nombre": "Ecografía abdominal POCUS (Point-of-Care)",
+          "descripcion": "Útil en cabecera para evaluación inicial: asas distendidas con peristalsis aumentada o ausente (íleo paralítico), líquido libre, posición/contenido. Especialmente en embarazadas, pediátricos o cuando TAC no disponible. Sensibilidad 92% en operador entrenado para SBO",
+          "cuidadosEnfermeria": [
+            "Útil en triaje rápido y embarazo (sin radiación)",
+            "Limitado por gas intraluminal e imagen del operador",
+            "NO sustituye TAC para evaluación de estrangulación/causa exacta",
+            "Permite seguimiento sin radiación adicional durante manejo conservador"
+          ]
+        },
+        {
+          "nombre": "RX simple de abdomen (decúbito + bipedestación o decúbito lateral)",
+          "descripcion": "Estudio de cribado rápido (no de elección desde 2017): asas distendidas (SBO: pliegues haustrales en escalera, posición central; LBO: haustras, posición periférica), niveles hidroaéreos en escalera. Limitaciones: 30% de SBO con RX normal; no identifica causa ni complicaciones. WSES 2024 dice TAC desde el inicio si hay sospecha — RX solo útil si TAC no disponible o como seguimiento del Gastrografin",
+          "cuidadosEnfermeria": [
+            "Dos posiciones: decúbito supino + bipedestación o decúbito lateral izquierdo (si paciente no tolera bipe)",
+            "Si RX normal pero clínica persistente → solicitar TAC siempre",
+            "Útil para seguimiento del Gastrografin challenge"
+          ]
+        },
+        {
+          "nombre": "Laboratorio: hemograma, bioquímica, lactato, gasometría, lipasa",
+          "descripcion": "Hemograma: leucocitosis >15-18000 + desviación izquierda → sospecha de estrangulación. Lactato arterial >2 mmol/L: predictor independiente de isquemia/perforación (especificidad alta, sensibilidad moderada). Gasometría: acidosis metabólica con anion gap aumentado en isquemia. Bioquímica: ionograma (hipokalemia, hiponatremia, hipocloremia por vómitos), creatinina (deshidratación), lipasa (descartar pancreatitis, también elevada en isquemia intestinal). PCR seriada útil en seguimiento",
+          "cuidadosEnfermeria": [
+            "Solicitar al ingreso: hemograma + bioquímica + ionograma + creatinina + gasometría arterial con lactato + lipasa + PCR + coagulación + grupo y reservar (anticipar cirugía)",
+            "Repetir lactato cada 4-6h en SBO con sospecha de complicación — ascenso = isquemia progresiva",
+            "Reponer K+, Mg2+ y Cl- guiado por ionograma (perdidas por vómitos)",
+            "Vigilar deterioro: leucos ascendentes, lactato >4, acidosis progresiva = cirugía urgente independiente de imagen"
+          ]
+        },
+        {
+          "nombre": "Endoscopia digestiva (rectosigmoidoscopia o colonoscopia)",
+          "descripcion": "INDICACIÓN TERAPÉUTICA en vólvulo sigmoide (detorsión endoscópica con éxito 80%), pseudoobstrucción colónica (descompresión si neostigmina falla) y colocación de SEMS (stent metálico autoexpansible) en obstrucción maligna izquierda como puente a cirugía o paliación. DIAGNÓSTICA + biopsia en sospecha de neoplasia tras resolver obstrucción aguda",
+          "cuidadosEnfermeria": [
+            "Vólvulo sigmoide: preparación intestinal ligera o ninguna (cuadro agudo); colocar tubo rectal post-detorsión exitosa para descompresión continua y plan de cirugía electiva en el mismo ingreso",
+            "SEMS en LBO maligna: requiere endoscopista experto + fluoroscopia; vigilar perforación (3-5%), migración, oclusión por crecimiento tumoral, hemorragia",
+            "Pseudoobstrucción: descompresión colonoscópica con bajas insuflaciones de aire (evita perforación de ciego dilatado); colocar tubo de descompresión",
+            "Post-procedimiento: NPO 4h, vigilar dolor, fiebre, sangrado y signos de perforación"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Descompresion intestinal",
-        "Resolución del obstaculo",
-        "Corrección hidroelectrolitica"
+        "Estratificar precozmente como SBO/LBO + simple vs complicada (estrangulación, closed-loop, perforación) — TAC con contraste IV + lactato + clínica son determinantes",
+        "Reanimación inicial con cristaloides balanceados (Ringer lactato preferido) — restaurar volumen circulante y corregir hipokalemia/hipocloremia/acidosis ANTES de cualquier intervención",
+        "Descompresión gastrointestinal con SNG en aspiración intermitente o continua — alivia distensión, reduce náuseas/vómitos, previene aspiración, facilita Gastrografin challenge",
+        "En SBO ADHESIVA simple sin signos de complicación: TRIAL CONSERVADOR 24-72h con NGT + IVF + Gastrografin challenge (WSES 2017/2024) — 60-85% resuelve sin cirugía. Cirugía si no progresa a colon en 24h o deterioro clínico",
+        "En SBO con signos de complicación (estrangulación, closed-loop, peritonitis, lactato >4, deterioro): CIRUGÍA URGENTE en <6h — cada hora de demora aumenta morbimortalidad",
+        "En LBO neoplásica: descompresión + SEMS como puente a cirugía electiva (mejora preparación, permite estadiaje) o paliación si irresecable; cirugía urgente si perforación inminente (ciego >12 cm) o peritonitis",
+        "En vólvulo sigmoide: detorsión endoscópica urgente + sigmoidectomía ELECTIVA en el mismo ingreso (recurrencia 50% si solo detorsión). En vólvulo cecal: cirugía urgente (no endoscopia)",
+        "En pseudoobstrucción colónica (Ogilvie) sin perforación: corregir desencadenantes (electrolitos, opioides, sepsis) + neostigmina IV (2-2.5 mg con monitorización ECG por bradicardia/asistolia, atropina disponible) — éxito 70-90% (Ponec NEJM 1999); si falla, descompresión colonoscópica",
+        "Antibioticoterapia empírica si signos de translocación bacteriana, estrangulación, perforación o sepsis: cobertura gram-negativos entéricos + anaerobios (piperacilina-tazobactam, ertapenem o ceftriaxona + metronidazol). Profilaxis quirúrgica dosis única si cirugía programada sin complicación",
+        "Analgesia multimodal NO contraindicada — el viejo dogma de 'no opioides para no enmascarar' está superado; preferir multimodal opioid-sparing (paracetamol + AINE si no contraindicación + opioides bajos PRN) y considerar TAP block o catéter epidural post-laparotomía",
+        "Prevención de íleo postoperatorio (POI) y adherencias: protocolo ERAS (movilización precoz, nutrición oral precoz, evitar sobrecarga hídrica), alvimopan VO (antagonista μ-opioide periférico, FDA-aprobado para POI post-resección intestinal), barreras antiadherentes (Seprafilm, hialuronato) — reducen adherencias 30-50%",
+        "Soporte nutricional: si íleo o ayuno >5-7 días previsto → nutrición parenteral total (NPT) periférica o central. Reintroducir vía oral progresiva desde caldos a dieta blanda baja en residuo cuando peristaltismo presente + paso de gases/heces"
       ],
       "farmacologico": [
         {
-          "nombre": "Solución de Ringer Lactato o Suero fisiológico",
-          "grupo": "Cristaloide IV - resucitación hidroelectrolitica",
-          "mecanismo": "Repone las perdidas masivas de liquido al tercer espacio (intestino obstruido) y por vomitos",
-          "dosis": "500 mL/h inicialmente; ajustar segun diuresis y signos vitales",
+          "nombre": "Reanimación con cristaloides BALANCEADOS (Ringer lactato preferido)",
+          "grupo": "Fluidoterapia de resucitación — SMART (NEJM 2018) + BaSICS (JAMA 2021) muestran menor injuria renal vs salino al 0.9%",
+          "mecanismo": "Repone pérdidas masivas al tercer espacio (intestino obstruido) y por vómitos. Ringer lactato preferido sobre suero fisiológico (evita acidosis hiperclorémica por SF al 0.9% en grandes volúmenes). Plasma-Lyte si lactato sérico ya elevado",
+          "dosis": "Bolo inicial 20-30 mL/kg en 30-60 min si hipovolemia/sepsis (típico 1500-2000 mL en adulto); luego 100-200 mL/h ajustado a diuresis (objetivo >0.5 mL/kg/h) y signos clínicos. Reevaluar cada 6h; añadir vasopresor (noradrenalina) si hipotensión persiste tras 30 mL/kg",
           "cuidadosEnfermeria": [
-            "Dos vias venosas perifericas de grueso calibre",
-            "Monitorizar diuresis horaria",
-            "Reponer potasio (hipokalemia por vomitos)"
+            "DOS vías venosas periféricas calibre grueso (14-16 G) o vía central si shock — vasopresor requiere central",
+            "Monitorización: TA c/15 min, FC, SpO2, diuresis HORARIA (sonda vesical si shock o inestable), nivel de conciencia",
+            "Reponer K+ guiado por ionograma (perdidas por vómitos y SNG; objetivo K+ 4-4.5 mEq/L), Mg2+, Cl-",
+            "Vigilar sobrecarga (estertores, ingurgitación yugular, edema agudo de pulmón) — especialmente en ancianos con cardiopatía/IRC",
+            "Lactato sérico cada 4-6h como marcador de perfusión y respuesta a reanimación"
           ]
         },
         {
-          "nombre": "Morfina IV",
-          "grupo": "Analgesico opioide",
-          "mecanismo": "Control del dolor abdominal; NO contraindicado (no enmascara el diagnóstico)",
-          "dosis": "2-4 mg IV cada 4-6h segun EVA",
+          "nombre": "Gastrografin (diatrizoato meglumina/sódico) — diagnóstico y terapéutico",
+          "grupo": "Contraste hidrosoluble hiperosmolar — herramienta clave WSES 2017/2024 en SBO adhesivo",
+          "mecanismo": "Hiperosmolaridad arrastra agua al lumen intestinal, diluye contenido y promueve peristaltismo — efecto laxante osmótico que moviliza la obstrucción. Simultáneamente sirve para imagen seriada (predice resolución si llega a colon en 24h con VPP 96% — Branco BJS 2010)",
+          "dosis": "100 mL puros o diluidos 1:1 con agua, por SNG tras descompresión 4-6h. Pinzar SNG 4-6h post-administración. RX abdomen a las 8h y 24h",
           "cuidadosEnfermeria": [
-            "Vigilar FR y SpO2",
-            "Monitorizar nivel de conciencia"
+            "PRE-requisito: SNG descompresiva en aspiración 4-6h previa (vaciar estómago)",
+            "Hidratación IV ADECUADA antes y durante — el contraste hiperosmolar deshidrata; vigilar TA",
+            "Monitorizar respuesta clínica: paso de gases/heces, mejora del dolor y distensión = resolución (suspender SNG, dieta progresiva)",
+            "Si no progresión a colon en 24h: cirugía indicada (alta probabilidad de fallo conservador)",
+            "CONTRAINDICACIONES: signos de estrangulación, peritonitis, hemorragia activa, alteración nivel conciencia, perforación, embarazo (riesgo teratogénico no establecido)"
+          ]
+        },
+        {
+          "nombre": "Neostigmina IV — para pseudoobstrucción colónica (Ogilvie)",
+          "grupo": "Inhibidor acetilcolinesterasa — primera línea farmacológica en Ogilvie sin perforación (Ponec NEJM 1999)",
+          "mecanismo": "Aumenta acetilcolina en sinapsis muscarínicas, estimula peristaltismo colónico, resuelve dilatación. Éxito 70-90% en una dosis",
+          "dosis": "2-2.5 mg IV lenta en 3-5 min, con monitorización ECG continua y atropina (1 mg) disponible al lado. Puede repetirse a las 3h si fracasa primera dosis",
+          "cuidadosEnfermeria": [
+            "MONITORIZACIÓN ECG OBLIGATORIA — riesgo de bradicardia severa, asistolia, broncoespasmo",
+            "Atropina 1 mg IV cargada y lista para administrar si bradicardia <40 lpm o síntomas",
+            "CONTRAINDICACIONES: obstrucción mecánica (descartar primero por TAC), perforación, isquemia, embarazo, asma severo, bradicardia <60 lpm",
+            "Posición decúbito lateral izquierdo durante administración (facilita paso de gases y heces)",
+            "Tener cerca de cama: monitor, oxígeno, atropina, broncodilatadores",
+            "Si fracasa neostigmina x2 dosis o contraindicada: descompresión colonoscópica"
+          ]
+        },
+        {
+          "nombre": "Antibioticoterapia empírica si sospecha translocación, isquemia, perforación o sepsis",
+          "grupo": "Cobertura intra-abdominal (SIS-IDSA 2017) — gram-negativos entéricos + anaerobios",
+          "mecanismo": "Translocación bacteriana en obstrucción prolongada o estrangulación; tratamiento empírico de sepsis abdominal con escalation/de-escalation por cultivos",
+          "dosis": "Bajo riesgo/comunitario: piperacilina-tazobactam 4.5 g IV c/8h, o ceftriaxona 2 g/d + metronidazol 500 mg c/8h, o ertapenem 1 g/d. Riesgo alto/nosocomial/BLEE: meropenem 1 g c/8h o piperacilina-tazobactam extensión; añadir vancomicina si MRSA factor de riesgo, equinocandina si candida en cultivo. Duración: STOP-IT 4 días si control de fuente adecuado, 7-10 días si bacteriemia o control subóptimo",
+          "cuidadosEnfermeria": [
+            "Hemocultivos x2 + cultivo líquido peritoneal antes de antibiótico (si no retrasa)",
+            "Iniciar antibiótico en primera hora si sepsis (Surviving Sepsis bundle)",
+            "Step-down IV a oral cuando: afebril 24-48h, tolerando dieta, parámetros inflamatorios en descenso",
+            "Educar sobre completar el curso ambulatorio si alta antes"
+          ]
+        },
+        {
+          "nombre": "Analgesia multimodal opioid-sparing + antiemesis",
+          "grupo": "Manejo del dolor + náuseas — NO contraindicada antes del diagnóstico (dogma superado)",
+          "mecanismo": "Estrategia opioid-sparing reduce íleo postoperatorio, náuseas, sedación. Antiemesis con ondansetrón seguro en obstrucción (no procinético — no usar metoclopramida)",
+          "dosis": "Paracetamol 1 g IV c/6h fijo. Metamizol 2 g IV c/6-8h. Opioides PRN: morfina 2-4 mg IV c/4h o tramadol 50-100 mg IV. EVITAR AINEs si IRA por deshidratación, úlcera, sangrado activo. Ondansetrón 4-8 mg IV c/8h. EVITAR metoclopramida/procinéticos (pueden empeorar obstrucción)",
+          "cuidadosEnfermeria": [
+            "Valorar EVA cada 4h, ajustar plan según respuesta",
+            "Vigilar FR, SpO2 y nivel de conciencia con opioides — naloxona disponible si depresión respiratoria",
+            "Ondansetrón ECG basal si QT-prolongado conocido o ≥75 años",
+            "Si dolor desproporcionado, continuo, severo + lactato elevado = ALERTA isquemia/perforación — cirugía urgente"
+          ]
+        },
+        {
+          "nombre": "Alvimopan VO — prevención de íleo postoperatorio",
+          "grupo": "Antagonista μ-opioide periférico (no cruza BHE) — FDA-aprobado para POI tras resección intestinal",
+          "mecanismo": "Bloquea efectos opioides en intestino (estasis, distensión) sin antagonizar analgesia central. Reduce tiempo a primera deposición y estancia hospitalaria en 1-2 días",
+          "dosis": "12 mg VO 30 min antes de cirugía + 12 mg c/12h post-cirugía hasta deposición o máximo 7 días o 15 dosis",
+          "cuidadosEnfermeria": [
+            "USO INTRAHOSPITALARIO EXCLUSIVO (Black Box: ↑ riesgo infarto miocárdico con uso prolongado >7 días)",
+            "Contraindicado si uso crónico de opioides previos (>7 días continuos)",
+            "Asociado a protocolos ERAS — sinérgico con movilización precoz, alimentación oral temprana",
+            "Vigilar dispepsia, hipokalemia (efectos adversos más frecuentes)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Sonda nasogastrica (SNG) para descompresion gástrica",
-        "Ayuno absoluto",
-        "Reposo intestinal"
+        "Estabilización inicial ABCDE + dos vías periféricas calibre grueso o vía central si shock + monitorización continua TA/FC/SpO2/diuresis",
+        "SNG de descompresión en aspiración intermitente (Salem) o continua: alivia distensión, reduce vómitos, previene aspiración, facilita Gastrografin challenge — colocar precozmente",
+        "AYUNO ABSOLUTO desde el inicio + reposo intestinal hasta resolución o tratamiento definitivo",
+        "Sonda vesical para monitorización HORARIA de diuresis (objetivo >0.5 mL/kg/h) — clave en reanimación con grandes volúmenes y en shock",
+        "Reanimación volémica con cristaloides BALANCEADOS (Ringer lactato preferido — SMART/BaSICS NEJM 2018/JAMA 2021); reposición HIDROELECTROLÍTICA dirigida (K+, Mg2+, Cl-)",
+        "Gastrografin challenge en SBO adhesivo SIMPLE como herramienta diagnóstico-terapéutica — 100 mL por SNG + RX a las 8-24h (WSES 2017/2024)",
+        "Profilaxis de TVP/TEP con HBPM (enoxaparina 40 mg SC/d) o heparina no fraccionada — ALTO RIESGO por inmovilización + sepsis intra-abdominal. Iniciar cuando sangrado controlado (post-cirugía 6-12h)",
+        "Profilaxis de úlcera de estrés con IBP IV (omeprazol 40 mg/d, pantoprazol 40 mg/d) — recomendado si ventilación mecánica, coagulopatía o shock prolongado",
+        "Soporte nutricional: si ayuno >5-7 días previsto, iniciar NPT periférica (osmolaridad <800 mOsm) o central (>800 mOsm); reintroducir VO progresiva desde caldos a dieta blanda baja en residuo cuando peristaltismo y paso de gases/heces",
+        "Movilización precoz desde primer día (no encamamiento absoluto si no contraindicado) — reduce neumonía, TVP, atrofia muscular, e íleo postoperatorio",
+        "Protocolo ERAS (Enhanced Recovery After Surgery) postoperatorio: anestesia con bloqueos regionales (TAP, epidural), evitar sobrecarga hídrica intraoperatoria, movilización <12h, nutrición oral precoz desde 6-24h, retiro precoz de SNG/SV, alvimopan si elegible",
+        "Educación al paciente y familia: signos de alarma postoperatorios (fiebre, vómitos, dolor en aumento, ausencia de tránsito, sangrado), cuidado de heridas, profilaxis de TVP ambulatoria, dieta progresiva, control en 1-2 semanas",
+        "Prevención secundaria de adherencias: barreras antiadherentes intraoperatorias (Seprafilm — hialuronato sódico/carboximetilcelulosa, Adept) — reducen adherencias 30-50% en cirugía abierta o laparoscópica selectiva"
       ],
       "quirurgico": [
-        "Cirugia urgente en estrangulación o isquemia",
-        "Cirugia diferida en parciales por adherencias si no mejoran en 24-48h con tratamiento conservador",
-        "Colonoscopia descompresiva en volvulo sigmoide no complicado"
+        "LAPAROSCOPIA preferida en SBO adhesiva (WSES 2017/2024) si: paciente estable, sin peritonitis difusa, sin asas masivamente distendidas, cirujano experto. Ventajas: menor dolor, menor íleo postop, menor adherencias futuras, alta más rápida. Conversión a abierta si visibilidad limitada o lesión",
+        "LAPAROTOMÍA media en: peritonitis difusa, inestabilidad hemodinámica, asas masivamente distendidas (>4 cm), múltiples cirugías previas con adherencias densas, sospecha de isquemia extensa que requiere resección",
+        "Cirugía URGENTE (<6h) en signos de complicación: closed-loop, estrangulación, isquemia, peritonitis, perforación, lactato elevado persistente, deterioro clínico bajo manejo conservador",
+        "Cirugía SEMI-URGENTE (24-72h) en SBO adhesiva SIMPLE sin progresión: si Gastrografin no llega a colon en 24h o paciente no mejora clínicamente, decidir cirugía sin más demora (no esperar 5+ días como práctica antigua)",
+        "Manejo de hernia incarcerada/estrangulada: hernioplastia + revisión del contenido herniado + resección intestinal si isquemia/necrosis confirmada. Refuerzo con malla controvertido si contaminación (preferir reparación primaria con tejido o malla biológica)",
+        "Manejo de LBO neoplásica: opciones según localización y estado del paciente:\n - LBO IZQUIERDA (sigmoide/recto): SEMS endoscópico como PUENTE a cirugía electiva (mejora preparación, permite estadiaje) o paliación si irresecable. Alternativa: resección urgente con colostomía (Hartmann) o resección + anastomosis primaria + ileostomía protectora.\n - LBO DERECHA (ciego/colon ascendente): hemicolectomía derecha urgente con anastomosis primaria (factible por mejor irrigación cecal)\n - Cirugía urgente si perforación inminente (ciego >12 cm) o peritonitis",
+        "Vólvulo SIGMOIDE: 1º DETORSIÓN ENDOSCÓPICA (rectosigmoidoscopio rígido o flexible + tubo rectal post-detorsión); 2º SIGMOIDECTOMÍA ELECTIVA en MISMO INGRESO (recurrencia 50% si solo detorsión). Cirugía urgente si: detorsión fallida, isquemia mucosa visible, perforación",
+        "Vólvulo CECAL: cirugía urgente — NO endoscopia (no funcional). Opciones: hemicolectomía derecha (preferida, evita recurrencia), cecopexia (alta recurrencia), cecostomía",
+        "Pseudoobstrucción colónica (Ogilvie): descompresión colonoscópica con tubo de descompresión si fracaso de neostigmina o contraindicada; cecostomía percutánea como último recurso antes de cirugía (alta mortalidad si llega a perforación)",
+        "Cirugía de revisión por adherencias recurrentes: laparoscopia adhesiolítica selectiva si síntomas frecuentes incapacitantes; balance riesgo-beneficio (puede generar más adherencias)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -10668,7 +10810,15 @@
     "relatedPathologyIds": [
       "pat_apendicitis"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "WSES Bologna Guidelines for diagnosis and management of adhesive small bowel obstruction (Ten Broek RPG et al, World Journal of Emergency Surgery 2018;13:24) y actualización 2024 (Coccolini F et al)",
+      "Gastrografin challenge — eficacia diagnóstica y terapéutica: Branco BC et al (BJS 2010;97:470-478); Abbas SM et al (BJS 2007;94:404-411); Ceresoli M et al meta-análisis (Am J Surg 2016;211:1114-1125)",
+      "Neostigmina para pseudoobstrucción colónica aguda (Ogilvie): Ponec RJ et al (NEJM 1999;341:137-141); ACG Clinical Guideline on colonic pseudo-obstruction 2022",
+      "Ensayos clave de reanimación: SMART balanced crystalloids vs saline (Semler MW et al, NEJM 2018;378:829-839); BaSICS (Zampieri FG et al, JAMA 2021;326:1-12). STOP-IT cIAI (Sawyer RG et al, NEJM 2015;372:1996-2005); SIS-IDSA Complicated Intra-abdominal Infection Guidelines 2017 (Mazuski JE et al, Surg Infect 18:1-76)",
+      "ACG/ASCRS Practice Guidelines for the Management of Colon Obstruction (2024); WSES classification of malignant LBO + SEMS bridge to surgery; barreras antiadherentes Seprafilm meta-análisis (Ten Broek BJS 2014); alvimopan postoperative ileus aprobado FDA"
+    ]
   },
   {
     "id": "pat_dm1",
