@@ -2,6 +2,62 @@
 
 > **Nota de versionado**: las entradas `[2.0.0]`, `[2.0.1]`, `[Unreleased]` listadas debajo corresponden al **versionado interno de desarrollo** (jamás publicado a Play Store). Para alinear con el lanzamiento público del ecosistema, todo el trabajo acumulado se compila como **v1.0.0 — Public ecosystem launch**. Las entradas internas se conservan como referencia histórica del proceso de construcción.
 
+## [Unreleased] — 2026-05-24 (Clinical content milestone + repo público)
+
+Trabajo entre el 21 y el 24 de mayo de 2026 — sin nuevo AAB todavía, pero entrega significativa de contenido clínico que justifica próxima versión (probablemente v1.0.1 o v1.1.0).
+
+### 🎯 Milestone — Revisión clínica de 21/151 entries (sesiones 17, 19-38)
+
+Veintiuna patologías de mayor prevalencia en enfermería médico-quirúrgica adulta alineadas a guidelines 2022-2025, con metadata `revisadoEn` + `fuentes` completos. Cribado `node scripts/check-stale.js` reporta 21 frescas (era 1 al inicio de mayo).
+
+**Cobertura por sistema**:
+- **Cardiovascular (7)**: pat_icc, pat_hta, pat_iam, pat_fa, pat_angina, pat_eap, pat_endocarditis
+- **Endocrino (3)**: pat_dm2, pat_dm1, pat_cetoacidosis
+- **Respiratorio (6)**: pat_epoc, pat_asma, pat_neumonia, pat_neumotorax, pat_tep, pat_tuberculosis
+- **Neurológico (3)**: pat_acv, pat_meningitis, pat_epilepsia
+- **Digestivo (2)**: pat_cirrosis, pat_pancreatitis
+
+**Cambios paradigmáticos incorporados** (no penetrados aún en muchos materiales hispanohablantes):
+- **HTA**: ESC 2024 categoría "PA elevada" 120-139; SPC como primer paso terapéutico (no rescate)
+- **IAM**: P2Y12 pretreatment degradado a Class III en NSTE-ACS (ESC 2023, post-ATLANTIC trial)
+- **DM2**: SGLT2i/GLP-1 RA inicial en ASCVD/IC/ERC, independiente de HbA1c o metformina previa (ADA 2025)
+- **ACV**: trombectomía 6-24h Class 1 + ASPECTS 3-5 "large core" elegible (SELECT2/ANGEL-ASPECT 2023)
+- **EPOC**: clasificación ABE reemplaza ABCD; LABA+LAMA dual como primer paso en B/E (GOLD 2025)
+- **Asma**: SABA-only proscrito desde GINA 2019; Track 1 (ICS-formoterol PRN/MART) preferido
+- **FA**: CHA₂DS₂-VA reemplaza VASc (sin sexo femenino, ESC 2024)
+- **Neumonía**: MRSA y Pseudomonas SOLO con factores de riesgo; PCV20/21 ACIP 2024 desde 50 años
+- **DM1**: CGM Class A en todos; AID (sistemas híbridos cerrados) como estándar emergente; teplizumab Stage 2
+- **Angina**: CCS reemplaza "angina estable"; CCTA primera línea no invasiva
+- **Pancreatitis**: hidratación MODERADA (WATERFALL NEJM 2022, no agresiva); step-up approach (PANTER/TENSION); alimentación enteral precoz
+- **Cirrosis**: Baveno VII cACLD/CSPH; carvedilol > propranolol; MELD 3.0 con sexo femenino; terlipresina HRS-AKI; resmetirom MASH
+- **Tuberculosis**: BPaLM 6 meses todo-oral para MDR (WHO 2022); 4-month HPMZ para sensible; 3HP semanal para ITBL
+
+**Fuentes (>30 documentos)**: ESC 2023-2024, AHA/ACC 2024-2025, AHA/ASA 2024, ADA 2025, ISPAD 2024, GOLD 2025, GINA 2024-2025, ATS/IDSA 2019-2022, KDIGO 2024, BTS 2023, ESCMID, ILAE 2017, WHO 2022, Baveno VII, AASLD 2021/2024, Atlanta 2012, ACG 2024, ESGE 2020, Duke-ISCVID 2023, Fourth Universal Definition of MI + ~30 ensayos clave (ESETT, RAMPART, PEITHO, IMPACT, ETHOS, BOREAS, ADVOR, EMPULSE, WATERFALL, PANTER, TENSION, APEC, CASTLE-AF, EAST-AFNET 4, Brown NEJM 2020, Hallows Lancet 2020, etc.)
+
+### 🌐 Repo público en GitHub
+
+- Repo publicado en **https://github.com/alexq2005/app-patologias** el 2026-05-24
+- Antes del push: `git filter-repo --replace-text` para scrubbear `PatologiasEnf2026` y `patologias-upload` del historial completo (passwords del keystore que estaban en commits anteriores a la auditoría de sesión 18)
+- Todos los SHAs de commits cambiaron post-scrub; backup pre-scrub conservado en `F:/programas/Patologias-backup-pre-scrub-2026-05-24` por seguridad
+- Referencias a SHAs en `PROGRESO.md`, `docs/CLINICAL_REVIEW_PLAN.md` y archivos de memoria actualizadas a hashes post-scrub mediante mapeo automatizado (47 reemplazos, 0 refs huérfanas)
+- CI (GitHub Actions) corre verde en cada push (workflow `.github/workflows/ci.yml`)
+
+### 🔐 Hardening de seguridad (sesión 18 — auditoría 12 niveles)
+
+- **Hallazgo crítico**: passwords del keystore release commiteadas en `android/gradle.properties` desde primeros commits del proyecto
+- **Mitigación**: passwords movidas a `~/.gradle/gradle.properties` (user-level, fuera del repo); template `android/gradle.properties.example` para nuevos devs
+- **Limpieza de basura**: 6 dumps `ui*.xml` de uiautomator eliminados + regla `.gitignore`
+- **AAB v1.0.0 (versionCode 4)** verificado con `jarsigner`: firmado correctamente con alias `***scrubbed***`, RSA-2048/SHA-384
+
+### Pendientes para próxima versión publicable (v1.0.1 / v1.1.0)
+
+- Rebuild AAB con el contenido clínico actualizado (versionCode incrementar a 5)
+- Smoke test visual UI de las 21 entries revisadas — las listas largas (clasificación, farmacológico) pueden requerir ajustes de scroll/formato
+- Decisión sobre tercer lote de revisión clínica (10 entries más sugeridas: pat_ira, pat_parkinson, pat_alzheimer, pat_apendicitis, etc.)
+- LICENSE para el repo público (actualmente sin definir)
+
+---
+
 ## [1.0.0] — 2026-05-06 (Lanzamiento público — Ecosistema v1)
 
 Primera versión pública en Play Store. Compila todo el trabajo de desarrollo interno (anteriores 2.0.0 + 2.0.1 + post-2.0.1 work — ver historial debajo) en un release coherente.
