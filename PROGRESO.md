@@ -4,6 +4,68 @@
 
 ---
 
+## 2026-05-24 — Sesion 38: Revisión clínica de pat_pancreatitis a Atlanta 2012 + ACG 2024 + WATERFALL 🎯 MILESTONE 2do LOTE COMPLETO
+
+### Resumen
+Décima y última iteración del segundo lote priorizado. La entry `pat_pancreatitis` tenía 12 gaps importantes vs Atlanta 2012 revisada + ACG 2024 + WATERFALL NEJM 2022 + step-up approach: clasificación Atlanta solo con severidad sin componente morfológico (edematosa intersticial vs necrotizante) ni colecciones específicas (APFC/ANC/pseudoquiste/WON); sin clasificación DBC (Determinant-Based 2012) con categoría "crítica"; hidratación con estrategia AGRESIVA tradicional (250-500 mL/h) — WATERFALL NEJM 2022 lo desafió completamente (moderada es mejor: menos sobrecarga, igual eficacia); ayuno prolongado 5 días — ACG 2024 enfatiza alimentación enteral PRECOZ en 24-72h; BISAP score (preferido moderno) ausente; CPRE indicada genéricamente "si coledocolitiasis" — solo indicada en colangitis u obstrucción persistente; profilaxis pancreatitis post-CPRE con AINE rectal ausente; necrosectomía mencionada sin step-up approach (PANTER NEJM 2010 + TENSION 2018: drenaje percutáneo o LAMS → endoscópica → quirúrgica solo si falla); colecistectomía "diferida" en biliar leve — APEC 2015 demostró que precoz en mismo ingreso es mejor; ecoendoscopia/colangio-RMN ausentes; insulina+plasmaféresis para hipertrigliceridemia severa ausentes.
+
+Cross-check: Atlanta Classification Revised 2012 (Banks PA Gut 2013), ACG 2024 Acute Pancreatitis Guideline, WATERFALL Trial (de-Madaria NEJM 2022), PANTER (NEJM 2010), TENSION (Lancet 2018), APEC (Lancet 2015), ESGE 2020 (profilaxis post-CPRE). Edición quirúrgica de 6 secciones.
+
+### Cambios en pat_pancreatitis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` | De 3 a 9 tipos: severidad Atlanta (leve/moderadamente severa/severa) + MORFOLOGÍA (edematosa vs necrotizante) + COLECCIONES (APFC, pseudoquiste, ANC, WON) + DBC con categoría CRÍTICA + necrosis infectada como entidad |
+| `diagnostico.pruebas` (3→6) | +BISAP score (preferido moderno, 24h del ingreso); Ranson refinado como score clásico; +Ecografía abdominal como primera línea para etiología biliar; +Ecoendoscopia/colangio-RMN para coledocolitiasis |
+| `tratamientoMedico.objetivos` | De 4 a 10: hidratación MODERADA WATERFALL (no agresiva); alimentación enteral PRECOZ 24-72h; CPRE solo en colangitis/obstrucción; NO ATB profilácticos (ACG 2024); step-up approach PANTER/TENSION; profilaxis post-CPRE; colecistectomía precoz APEC |
+| `farmacologico` (3→5) | Ringer Lactato MODERADO (WATERFALL); analgesia multimodal con eliminación del mito 'espasmo de Oddi'; +Insulina IV + plasmaféresis para hipertrigliceridemia > 1000; +AINE rectal profilaxis post-CPRE (ESGE 2020); ATB con cobertura específica para necrosis infectada (pip-tazo, no ceftri+metro) |
+| `noFarmacologico` (4→10) | Alimentación enteral PRECOZ 24-72h (cambio paradigmático ACG 2024); hidratación moderada WATERFALL; SNG solo si íleo/vómitos; movilización temprana; CPRE solo en colangitis/obstrucción; colecistectomía PRECOZ en mismo ingreso (APEC 2015); HBPM profilaxis TVP; manejo DM transitoria post-pancreatitis severa |
+| `quirurgico` (2→7) | STEP-UP APPROACH detallado (PANTER + TENSION): drenaje percutáneo o endoscópico LAMS → necrosectomía endoscópica → quirúrgica solo si falla; timing demorado ≥4 sem para WON; colecistectomía precoz en biliar leve vs diferida en moderada-severa; manejo de complicaciones tardías |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: Atlanta 2012 + ACG 2024 + WATERFALL + ensayos PANTER/TENSION/APEC + ESGE 2020 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes
+- `anamnesis`, `examenFisico`: vigentes (Grey-Turner, Cullen ya estaban)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **21 frescas** (era 20; +pat_pancreatitis), 130 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passed
+
+### 🎯 MILESTONE: SEGUNDO LOTE PRIORIZADO COMPLETO
+
+Las 10 patologías del segundo lote están ahora revisadas y alineadas a guidelines 2020-2024. Sumando las 11 del primer milestone (top-10 + pat_icc), el total es **21/151 entries con `revisadoEn` y `fuentes` completos**.
+
+Trabajo realizado en 10 sesiones del segundo lote (sesiones 29-38):
+- Cardiovascular extendido: pat_eap, pat_endocarditis (2)
+- Endocrino: pat_cetoacidosis (1)
+- Respiratorio extendido: pat_neumotorax, pat_tep, pat_tuberculosis (3)
+- Neurológico extendido: pat_meningitis, pat_epilepsia (2)
+- Digestivo: pat_cirrosis, pat_pancreatitis (2)
+
+Cobertura total tras los 2 lotes:
+- **Cardiovascular (7)**: pat_icc, pat_hta, pat_iam, pat_fa, pat_angina, pat_eap, pat_endocarditis
+- **Endocrino (3)**: pat_dm2, pat_dm1, pat_cetoacidosis
+- **Respiratorio (6)**: pat_epoc, pat_asma, pat_neumonia, pat_neumotorax, pat_tep, pat_tuberculosis
+- **Neurológico (3)**: pat_acv, pat_meningitis, pat_epilepsia
+- **Digestivo (2)**: pat_cirrosis, pat_pancreatitis
+
+**21/151 entries (~14% de la base)** con guidelines actualizadas. Cubre patologías de mayor prevalencia en enfermería médico-quirúrgica adulta.
+
+### Commits esperados
+- `content(pat_pancreatitis): align with Atlanta 2012 + ACG 2024 + WATERFALL + step-up approach`
+
+### Próximos pasos sugeridos (post-milestone)
+1. Decidir si continuar con un tercer lote (10 entries más de prioridad media — sugerencias: pat_ira, pat_parkinson, pat_alzheimer, pat_apendicitis, pat_obstrucción_intestinal, pat_hemorragia_digestiva, pat_eii, pat_ulcera_peptica, etc.)
+2. Smoke test visual de las 21 entries actualizadas en la app (las listas largas pueden necesitar ajuste UI)
+3. CHANGELOG.md y README pueden mencionar este segundo milestone
+4. Considerar rebuild del bundle JS + AAB si se planea publicación con esta cobertura
+
+---
+
 ## 2026-05-23 — Sesion 37: Revisión clínica de pat_cirrosis a Baveno VII + AASLD 2021/2024 + MASH 2023
 
 ### Resumen
