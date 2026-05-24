@@ -167,4 +167,22 @@ Todos los documentos están en `playstore/`:
 
 ## Licencia
 
-Todos los derechos reservados. Software propietario.
+**[PolyForm Noncommercial License 1.0.0](LICENSE)** — licencia source-available (NO open-source según OSI).
+
+El código y el contenido clínico están publicados públicamente en GitHub para fines de **transparencia, estudio personal, investigación y uso por organizaciones no comerciales** (hospitales públicos, universidades, escuelas de enfermería, ONG de salud).
+
+**Permitido**:
+- Clonar para estudio personal o académico
+- Uso en instituciones educativas / hospitales públicos / ONG
+- Forks y Pull Requests para contribuir mejoras al repositorio original
+- Cita académica con atribución
+
+**Prohibido**:
+- Publicar versiones comerciales en tiendas de apps
+- Embebcer el código o contenido en aplicaciones de pago de terceros
+- Vender suscripciones, licencias o copias
+- Ofrecer el software como servicio comercial competidor
+
+Para usos comerciales o escenarios no cubiertos por la licencia, contactar al autor por email.
+
+Ver [LICENSE](LICENSE) para el texto completo (inglés legalmente vinculante + aclaración en español).
