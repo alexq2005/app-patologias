@@ -10111,23 +10111,39 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Estadios anatomopatologicos",
+      "nombre": "WSES 2020 (clínica/quirúrgica) + AAST EGS grade + estadios histológicos",
       "tipos": [
         {
-          "nombre": "Apendicitis catarral (grado I)",
-          "descripcion": "Inflamación leve, sin exudado. Tratamiento: antibioticos o cirugia"
+          "nombre": "Apendicitis aguda NO COMPLICADA (WSES 2020)",
+          "descripcion": "Apéndice inflamado SIN perforación, gangrena, absceso ni plastrón en imagen o intraoperatorio. Subsidiaria de NOT (Non-Operative Treatment con antibióticos) en pacientes seleccionados (sin fecalito, sin signos peritoneales, sin Alvarado ≥9, sin >7 días evolución, consentimiento informado) — CODA NEJM 2020 + APPAC NEJM 2018"
         },
         {
-          "nombre": "Apendicitis flegmonosa (grado II)",
-          "descripcion": "Inflamación purulenta, sin perforación. Cirugia"
+          "nombre": "Apendicitis aguda COMPLICADA (WSES 2020)",
+          "descripcion": "Perforación, gangrena, absceso periapendicular, plastrón inflamatorio o peritonitis difusa. Requiere cirugía + antibioticoterapia terapéutica 3-7 días. Si plastrón/absceso organizado >3-5 cm: drenaje percutáneo + antibióticos + apendicectomía diferida (interval appendectomy) controversial (no rutinaria si <40 años sin riesgo neoplásico)"
         },
         {
-          "nombre": "Apendicitis gangrenosa (grado III)",
-          "descripcion": "Necrosis de la pared, perforación inminente. Cirugia urgente"
+          "nombre": "AAST EGS Grade I (apendicitis aguda no complicada)",
+          "descripcion": "Apéndice agudamente inflamado, intacto. American Association for the Surgery of Trauma Emergency General Surgery grading — predice morbilidad postoperatoria"
         },
         {
-          "nombre": "Apendicitis perforada (grado IV)",
-          "descripcion": "Perforación con peritonitis localizada o difusa. Cirugia + antibioticos"
+          "nombre": "AAST EGS Grade II (apendicitis gangrenosa)",
+          "descripcion": "Apéndice gangrenoso pero intacto, sin perforación"
+        },
+        {
+          "nombre": "AAST EGS Grade III (apendicitis perforada con peritonitis localizada)",
+          "descripcion": "Perforación con contaminación local, sin colección organizada"
+        },
+        {
+          "nombre": "AAST EGS Grade IV (absceso periapendicular)",
+          "descripcion": "Perforación con absceso/colección organizada. Candidato a drenaje percutáneo + antibióticos + cirugía diferida según condición clínica"
+        },
+        {
+          "nombre": "AAST EGS Grade V (peritonitis generalizada)",
+          "descripcion": "Perforación con peritonitis difusa de 4 cuadrantes. Sepsis abdominal — laparotomía urgente, lavado peritoneal, antibioticoterapia de amplio espectro"
+        },
+        {
+          "nombre": "Estadios histológicos (clasificación clásica)",
+          "descripcion": "Catarral (I) — congestión y edema; flegmonosa (II) — exudado purulento; gangrenosa (III) — necrosis transmural; perforada (IV) — solución de continuidad. Útil para anatomía patológica pero la decisión clínica/quirúrgica se basa en WSES/AAST, no en el grado microscópico"
         }
       ]
     },
@@ -10147,58 +10163,148 @@
       ],
       "pruebas": [
         {
-          "nombre": "Score de Alvarado",
-          "descripcion": "Sistema de puntuación para diagnóstico de apendicitis: Migración dolor +1, Anorexia +1, Nauseas +1, Sensibilidad FID +2, Dolor rebote +1, Temp >37.3+1, Leucocitosis+2, Desviación izquierda+1",
-          "valoresReferencia": "7-10: alta probabilidad (cirugia); 5-6: probable (TAC o eco); < 5: baja (observación)",
+          "nombre": "Adult Appendicitis Score (AAS) — Sammalkorpi 2014, preferido WSES 2020 sobre Alvarado",
+          "descripcion": "Score validado con mejor performance que Alvarado. Incluye: dolor FID + migración + signos peritoneales + sexo + edad + leucocitos + PCR (porcentaje neutrófilos). AUC 0.86 vs 0.78 Alvarado",
+          "valoresReferencia": "≥16: alta probabilidad (apendicectomía o imagen); 11-15: probabilidad intermedia (imagen obligatoria); ≤10: baja (alta segura con seguimiento)",
           "cuidadosEnfermeria": [
-            "Calcular al ingreso",
-            "Guia para decision de TAC vs cirugia directa"
+            "Calcular al ingreso con CBC + PCR + datos demográficos",
+            "Estratifica directamente para imagen o alta — reduce TAC innecesarios",
+            "Recalcular tras observación 4-6h si dudas (puede modificarse con evolución sintomática)"
           ]
         },
         {
-          "nombre": "Ecografia abdominal",
-          "descripcion": "Primer estudio de imagen en niños y embarazadas (sin radiación). Visualiza apendice no compresible > 6mm",
+          "nombre": "Pediatric Appendicitis Score (PAS — Samuel) y Alvarado",
+          "descripcion": "PAS para <18 años: dolor en salto/tos, anorexia, náusea, FID dolor, FID rebote, fiebre >38°C, leucocitosis >10000, neutrofilia (0-10 puntos). Alvarado sigue siendo útil en adultos como segunda opción tras AAS, conocido como 'MANTRELS'",
+          "valoresReferencia": "PAS ≥7: alta probabilidad pediátrica (cirugía/imagen); 4-6: observación + imagen; ≤3: baja. Alvarado 7-10: alta; 5-6: probable (imagen); <5: baja",
           "cuidadosEnfermeria": [
-            "Ayuno",
-            "Puede no visualizarse el apendice en adultos obesos o con gas intestinal"
+            "PAS de elección en pediatría — evita radiación innecesaria",
+            "Si PAS intermedio: ecografía como primera línea, RM si dudas (no TAC)",
+            "Documentar progresión sintomática cada 2-4h durante observación"
           ]
         },
         {
-          "nombre": "TAC abdominal con contraste",
-          "descripcion": "Alta sensibilidad y especificidad en adultos. Detecta apendice inflamado, periapendicular, plastron",
+          "nombre": "Ecografía abdominal (primera línea en niños, embarazadas y mujeres jóvenes WSES 2020)",
+          "descripcion": "Primera línea en pediatría/embarazo/mujer joven (sin radiación). Hallazgos: apéndice no compresible >6 mm con pared engrosada, líquido periapendicular, fecalito. Sensibilidad 86% / especificidad 81% en operador experto. Limitada en obesos, gas intestinal y posición retrocecal",
           "cuidadosEnfermeria": [
-            "Contraindicado en embarazo si posible alternativa",
-            "Verificar función renal antes del contraste"
+            "Ayuno previo (mejor visualización por colon vacío)",
+            "Sedoanalgesia ligera en niños pequeños si necesario",
+            "Documentar limitaciones técnicas (BMI, gas) — si ecografía no concluyente y persiste sospecha, escalar a RM (embarazada) o TAC (adulto no embarazada)"
+          ]
+        },
+        {
+          "nombre": "TAC abdominal con contraste IV (gold standard en adultos no embarazadas)",
+          "descripcion": "Sensibilidad 94% / especificidad 95%. Detecta apéndice >6 mm con realce mural, grasa periapendicular inflamada, fecalito, abscesos, perforación, plastrón. Permite además graduación AAST EGS y diferenciar no complicada vs complicada — clave para decidir NOT vs cirugía. TC LOW-DOSE (Kim NEJM 2012) con dosis equivalente a Rx tórax muestra rendimiento equivalente al TAC estándar — debe preferirse en jóvenes",
+          "cuidadosEnfermeria": [
+            "Verificar función renal (creatinina, eGFR) — contraste yodado contraindicado en eGFR <30; precaución 30-45 (hidratación pre/post)",
+            "Cribado alergia contraste; si previa: premedicación con corticoides + antihistamínico o evitar",
+            "Solicitar TAC low-dose (LDCT) en pacientes <50 años o ante sospecha en imagen seriada",
+            "Embarazo: PREFERIR RM o ecografía; TAC solo si beneficio supera riesgo (1er trimestre evitar)"
+          ]
+        },
+        {
+          "nombre": "RM abdominal SIN contraste (gadolinio evitable) — embarazo",
+          "descripcion": "Estudio de elección en embarazada con ecografía no concluyente (WSES 2020 + ACR Appropriateness Criteria). Sin radiación ionizante, sin gadolinio rutinario en embarazo. Sensibilidad >90% en centros con experiencia",
+          "cuidadosEnfermeria": [
+            "Verificar contraindicación RM (marcapasos, implantes)",
+            "Posición decúbito lateral izquierdo en 3er trimestre (evita compresión cava)",
+            "Coordinar con obstetricia — registrar FCF antes/después si >24 semanas",
+            "Si RM no disponible y eco no concluyente: TAC low-dose con escudo abdominal es alternativa aceptable en 2-3er trimestre con consentimiento informado"
+          ]
+        },
+        {
+          "nombre": "Biomarcadores: PCR, leucocitos, hiperbilirrubinemia (predictor de perforación)",
+          "descripcion": "PCR >50 mg/L + leucocitosis >15000 + neutrofilia >75% asociados a apendicitis complicada. HIPERBILIRRUBINEMIA TOTAL >1.0 mg/dL: específico (>85%) para perforación apendicular (Sand BJS 2009 + meta-análisis 2024) — predictor independiente de cirugía urgente. Procalcitonina menos validada que PCR",
+          "cuidadosEnfermeria": [
+            "Solicitar siempre: hemograma completo con diferencial + PCR + bilirrubina total + química básica + lipasa (descartar pancreatitis) + sedimento urinario + βHCG en mujer fértil",
+            "Bilirrubina elevada + clínica sugestiva = alta sospecha de perforación: priorizar cirugía sobre NOT",
+            "Repetir PCR + leucos a las 6-12h si manejo conservador o dudas — empeoramiento sugiere progresión"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Apendectomia quirúrgica urgente antes de la perforación",
-        "Antibioticos perioperatorios"
+        "Estratificar como NO COMPLICADA vs COMPLICADA (WSES 2020) por TAC/RM/ecografía — base de toda la decisión terapéutica posterior",
+        "En NO COMPLICADA sin fecalito: ofrecer SHARED DECISION-MAKING entre apendicectomía laparoscópica (resolución inmediata, sin recurrencia) y NOT con antibióticos (evita cirugía 7/10 casos a 90 días, 6/10 a 5 años; CODA NEJM 2020 + APPAC 5-year NEJM 2018). NOT contraindicada si fecalito, signos peritoneales, embarazo, inmunosupresión severa",
+        "En COMPLICADA con peritonitis difusa o paciente inestable: cirugía URGENTE (≤8-12h) + antibioticoterapia terapéutica + reanimación de sepsis abdominal (Surviving Sepsis bundle)",
+        "En COMPLICADA con absceso/plastrón organizado >3-5 cm: drenaje percutáneo guiado por imagen + antibióticos IV (5-7 días) → oral + observación. Apendicectomía diferida (interval appendectomy) NO rutinaria <40 años; SÍ recomendada si >40 años (riesgo neoplasia subyacente ~10-15%) o síntomas persistentes/recurrentes",
+        "Antibioticoterapia perioperatoria: PROFILAXIS dosis única IV 30-60 min preincisión en NO COMPLICADA (cefazolina+metronidazol o cefoxitina o ampicilina-sulbactam). En COMPLICADA: TERAPÉUTICA 3-5 días si control de fuente adecuado (Sawyer NEJM 2015 — STOP-IT trial: 4 días no inferior a duración prolongada); ajustar por cultivos si peritonitis difusa",
+        "Analgesia multimodal: AINEs si no contraindicación + paracetamol + opioides bajos a demanda. No demorar analgesia por miedo a 'enmascarar' diagnóstico — evidencia clara (Manterola Cochrane) de que NO altera precisión diagnóstica",
+        "En embarazada: apendicectomía laparoscópica segura en cualquier trimestre (preferida en 1er-2do; abierta en 3er por dificultad técnica). NO retrasar cirugía si confirmada — perforación duplica riesgo de pérdida fetal",
+        "Manejo post-operatorio precoz (ERAS): movilización en <12h, alimentación oral progresiva desde 6-12h post-laparoscopia, retiro de sonda y catéteres precoz, alta en 24-48h en no complicada"
       ],
       "farmacologico": [
         {
-          "nombre": "Cefazolina + Metronidazol (profilaxis antibiotica perioperatoria)",
-          "grupo": "Antibioticos perioperatorios",
-          "mecanismo": "Reducen riesgo de infección quirúrgica del sitio; en perforada: tratamiento terapéutico",
-          "dosis": "Cefazolina 2 g IV + Metronidazol 500 mg IV, 30 min antes de cirugia",
+          "nombre": "Profilaxis antibiótica perioperatoria — DOSIS ÚNICA en apendicitis NO complicada",
+          "grupo": "Profilaxis quirúrgica (SIS-IDSA 2017, WSES 2020) — cobertura para gram-negativos entéricos + anaerobios",
+          "mecanismo": "Reduce infección del sitio quirúrgico (ISQ) de ~10% a 3-4%. Dosis ÚNICA es suficiente en NO complicada — NO prolongar postoperatorio (evidencia clara)",
+          "dosis": "Cefazolina 2 g IV (3 g si >120 kg) + metronidazol 500 mg IV, 30-60 min PRE-incisión. Alternativas: cefoxitina 2 g IV; ampicilina-sulbactam 3 g IV; ertapenem 1 g IV (si riesgo BLEE). Alergia β-lactámicos: clindamicina 900 mg + gentamicina 5 mg/kg o ciprofloxacino 400 mg + metronidazol",
           "cuidadosEnfermeria": [
-            "Administrar en los 30-60 min previos a la incision",
-            "Prolongar si apendice perforado (5-7 dias de antibioticos terapeuticos)"
+            "Administrar EXACTAMENTE 30-60 min antes de la incisión (eficacia depende de niveles plasmáticos en tejido al corte)",
+            "Re-dosificar intraoperatorio si cirugía >3-4 horas o pérdida sanguínea >1500 mL",
+            "En NO complicada: NO continuar tras cierre — solo prolongar si intraoperatorio se objetiva complicación",
+            "Registrar alergias y EA previos (anafilaxia, reacciones graves) antes de administrar"
+          ]
+        },
+        {
+          "nombre": "Antibioticoterapia TERAPÉUTICA — apendicitis COMPLICADA con control de fuente",
+          "grupo": "Tratamiento de infección intraabdominal (cIAI) — SIS-IDSA 2017 + STOP-IT NEJM 2015",
+          "mecanismo": "Cubre Enterobacterales (E. coli, Klebsiella), enterococo (en algunos casos), Bacteroides spp. Duración: 4 días post-cirugía si control de fuente adecuado (no inferior a 8 días — STOP-IT); prolongar a 7-10 días si bacteriemia persistente, control de fuente subóptimo, inmunosupresión o sepsis severa",
+          "dosis": "Riesgo bajo/comunitario: piperacilina-tazobactam 4.5 g IV c/8h o ceftriaxona 2 g/d + metronidazol 500 mg c/8h o ertapenem 1 g/d. Riesgo alto/nosocomial/BLEE: meropenem 1 g c/8h o piperacilina-tazobactam extensión; añadir vancomicina si MRSA factor de riesgo, equinocandina si candida en cultivo o factores de riesgo",
+          "cuidadosEnfermeria": [
+            "Tomar hemocultivos x2 y cultivo de líquido peritoneal antes de iniciar antibiótico (si posible y no retrasa terapia)",
+            "Escalation/de-escalation guiada por cultivos en 48-72h",
+            "STEP-DOWN IV a oral cuando: afebril 24-48h, tolerando dieta, parámetros inflamatorios en descenso. Antibióticos orales: amoxi-clavulánico, ciprofloxacino + metronidazol",
+            "Educar al paciente sobre completar el curso, signos de fallo (fiebre persistente >72h, leucocitosis ascendente, dolor — sospecha de absceso residual: solicitar TAC)"
+          ]
+        },
+        {
+          "nombre": "NOT (Non-Operative Treatment) — antibioticoterapia exclusiva en NO complicada seleccionada",
+          "grupo": "Régimen alternativo a cirugía (CODA NEJM 2020, APPAC NEJM 2018) — shared decision-making",
+          "mecanismo": "Resuelve apendicitis no complicada sin cirugía en ~70% a 90 días, ~60% a 5 años (recurrencia 10-20% en primer año). Mejor opción si paciente quiere evitar cirugía, alto riesgo quirúrgico o comorbilidad",
+          "dosis": "Régimen CODA: ertapenem 1 g IV/d x1-3 días → step-down a amoxi-clavulánico 875/125 mg c/12h o ciprofloxacino 500 mg c/12h + metronidazol 500 mg c/8h x7-10 días totales. Régimen APPAC: ertapenem 1 g IV x3 días → levofloxacino + metronidazol 7 días",
+          "cuidadosEnfermeria": [
+            "Criterios de exclusión NOT: fecalito en imagen, signos peritoneales, perforación, absceso, embarazo, inmunosupresión severa, edad >75 años, sepsis, choque",
+            "Hospitalización 24-48h para vigilancia clínica + segunda dosis IV antes de step-down oral",
+            "Educar signos de fallo (debe consultar de urgencia): fiebre persistente >24h, dolor en aumento, vómitos, leucocitosis ascendente — tasa de fallo del tratamiento ~10% en primeras 48h, requiere cirugía",
+            "Seguimiento ambulatorio a los 7 días + 30 días + 90 días + 1 año (consulta de control con cirugía; informar tasa de recurrencia 20-40% a 5 años)",
+            "En >40 años post-NOT: considerar colonoscopia electiva en 6-12 sem para descartar neoplasia subyacente (apendicitis puede ser síntoma de tumor cecal)"
+          ]
+        },
+        {
+          "nombre": "Analgesia multimodal perioperatoria",
+          "grupo": "Manejo del dolor — NO contraindicada antes del diagnóstico (Manterola Cochrane)",
+          "mecanismo": "Estrategia opioid-sparing: paracetamol + AINE + opioide a demanda. Reduce dolor postoperatorio, náuseas, íleo, estancia hospitalaria. ERAS protocol",
+          "dosis": "Paracetamol 1 g IV/oral c/6h fijo. AINE (ketorolaco 30 mg IV c/8h máx 5 días, ibuprofeno 400 mg c/8h) — precaución si IRC, úlcera, anciano, sangrado activo. Opioides PRN: morfina 2-4 mg IV c/4h o tramadol 50-100 mg si dolor moderado-severo. Anestesia local en sitio quirúrgico (TAP block para laparoscopia) reduce opioide postoperatorio",
+          "cuidadosEnfermeria": [
+            "NO retrasar analgesia por miedo a 'enmascarar' diagnóstico — evidencia clase IA",
+            "Valorar dolor con EVA cada 4h, ajustar plan según respuesta",
+            "Antiemético sistemático (ondansetrón 4-8 mg IV) post-laparoscopia y con opioides",
+            "Educar plan analgésico al alta: paracetamol fijo + AINE + opioide débil si necesario; reevaluar en 48-72h"
           ]
         }
       ],
       "noFarmacologico": [
-        "Ayuno prequirurgico",
-        "Hidratación IV",
-        "Analgesia (no contraindicada antes del diagnóstico)"
+        "Estabilización inicial: ABCDE, monitorización continua, vías periféricas amplias, fluidoterapia con cristaloides balanceados (Ringer lactato preferido sobre suero fisiológico — SMART, BaSICS) 20-30 mL/kg bolo inicial si signos de hipovolemia/sepsis",
+        "Ayuno preoperatorio: sólidos ≥6h, líquidos claros ≥2h (ASA guidelines 2017). Si cirugía retrasada, mantener fluidoterapia de mantenimiento + electrolitos",
+        "Sonda nasogástrica solo si íleo, vómitos persistentes o peritonitis difusa con distensión — NO rutinaria en apendicectomía laparoscópica no complicada",
+        "Sonda vesical solo si cirugía prolongada, peritonitis difusa o necesidad de monitorización estrecha de diuresis — retirar precozmente",
+        "Analgesia multimodal NO contraindicada antes del diagnóstico (evidencia Cochrane) — administrar mientras se completa workup diagnóstico",
+        "Antiemesis profiláctica (ondansetrón) y procinéticos solo si íleo establecido",
+        "TAP block (Transversus Abdominis Plane) intraoperatorio: bloqueo anestésico que reduce dolor postop y consumo de opioides en apendicectomía laparoscópica",
+        "Protocolo ERAS (Enhanced Recovery After Surgery) postoperatorio: movilización en <12h, alimentación oral desde 6-12h post-laparoscopia (incluso con peristalsis no audible), retiro de catéteres precoz, alta en 24-48h en NO complicada",
+        "Educación al alta: signos de alarma (fiebre, dolor en aumento, vómitos, signos de infección de herida), cuidado de heridas laparoscópicas (sin apósito a las 24h, ducha desde 48h), reposo relativo 1-2 sem, evitar levantar >5 kg x4-6 sem, reinicio gradual de actividad",
+        "Seguimiento ambulatorio: control en 1-2 sem en NO complicada; 4-6 sem en complicada; en >40 años post-NOT considerar colonoscopia electiva en 6-12 sem (riesgo neoplasia cecal subyacente)"
       ],
       "quirurgico": [
-        "Apendectomia laparoscopica (preferida): menor dolor postoperatorio, menor tasa de infección",
-        "Apendectomia abierta (McBurney o Rocky-Davis) si laparoscopia no disponible o peritonitis difusa",
-        "Drenaje de absceso periapendicular si plastron organizado > 3 cm antes de cirugia diferida"
+        "Apendicectomía laparoscópica (PREFERIDA — WSES 2020, EAES recomendación fuerte): menor dolor postoperatorio, menor tasa de infección de herida, menor estancia hospitalaria, mejor cosmesis. Indicación de elección en TODOS los grupos (incluyendo obesos, ancianos, embarazadas en cualquier trimestre, complicada con peritonitis difusa)",
+        "Single-Incision Laparoscopic Surgery (SILS) o por puerto único: alternativa cosmética, sin diferencia significativa en outcomes vs laparoscopia clásica; mayor curva de aprendizaje",
+        "Apendicectomía abierta (incisión de McBurney, Rocky-Davis o laparotomía media): reservada para inestabilidad hemodinámica que impide neumoperitoneo, falla técnica de laparoscopia, peritonitis difusa con dificultad técnica laparoscópica, hospitales sin disponibilidad de laparoscopia. Mayor dolor, mayor infección de herida, mayor estancia",
+        "Drenaje percutáneo guiado por imagen (TAC o ecografía) para absceso periapendicular organizado >3-5 cm: + antibioticoterapia IV → oral 5-7 días + manejo del catéter de drenaje (irrigación, retirada cuando débito <20 mL/d y trayecto colapsado en imagen)",
+        "Apendicectomía diferida (interval appendectomy) tras drenaje de absceso/plastrón: NO RUTINARIA en <40 años sin síntomas recurrentes (tasa de recurrencia 5-20% en 5 años). RECOMENDADA en >40 años (riesgo neoplasia cecal/apendicular hasta 15%) o síntomas persistentes; alternativa en >40: colonoscopia electiva en 6-12 sem para descartar tumor",
+        "Manejo de hallazgos histopatológicos: neuroendocrino apendicular (tumor carcinoide) — si <1 cm en punta, apendicectomía suficiente; 1-2 cm o invasión vascular/mesoapendicular, considerar hemicolectomía derecha; >2 cm, hemicolectomía derecha. Mucocele apendicular o pseudomyxoma peritonei — derivar a cirugía oncológica especializada (cirugía citorreductora + HIPEC en centro de referencia)",
+        "Apendicitis en embarazo: laparoscopia segura en cualquier trimestre (SAGES 2017); técnica 'open' Hasson para neumoperitoneo, presión intraabdominal baja (10-12 mmHg), posición lateral izquierda si >24 sem, monitorización fetal intraoperatoria si feto viable. NO retrasar cirugía por embarazo — perforación duplica pérdida fetal",
+        "Apendicitis en inmunocomprometidos (oncológicos, trasplantados, VIH): clínica atípica, retraso diagnóstico frecuente, mayor morbimortalidad — bajo umbral para imagen + cirugía precoz; ajustar antibioticoterapia a flora institucional y estado inmune"
       ]
     },
     "cuidadosEnfermeria": {
@@ -10314,7 +10420,15 @@
     "relatedPathologyIds": [
       "pat_obstrucción_intestinal"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "WSES Jerusalem Guidelines for the diagnosis and treatment of acute appendicitis: 2020 update (Di Saverio S et al, World Journal of Emergency Surgery 2020;15:27)",
+      "Ensayos pivotales NOT (Non-Operative Treatment): CODA Collaborative — A Randomized Trial Comparing Antibiotics with Appendectomy for Appendicitis (Flum DR et al, NEJM 2020;383:1907-1919); APPAC trial 5-year follow-up (Salminen P et al, NEJM 2018;320:1259-1265); APPAC II (Sippola JAMA 2021)",
+      "Surgical Infection Society — IDSA: Revised guidelines for the management of complicated intra-abdominal infections (Mazuski JE et al, Surg Infect 2017;18:1-76)",
+      "STOP-IT trial — Trial of short-course antimicrobial therapy for intraabdominal infection (Sawyer RG et al, NEJM 2015;372:1996-2005). Adult Appendicitis Score (Sammalkorpi HE et al, BMC Gastroenterol 2014;14:114; validación Sammalkorpi 2019)",
+      "ACR Appropriateness Criteria — Right Lower Quadrant Pain (2018 + 2024 update); SAGES Guidelines for Diagnosis, Treatment, and Use of Laparoscopy for Surgical Problems during Pregnancy (2017); TC low-dose Kim K et al, NEJM 2012;366:1596-1605"
+    ]
   },
   {
     "id": "pat_obstrucción_intestinal",
