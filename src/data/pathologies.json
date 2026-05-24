@@ -5198,7 +5198,7 @@
     "id": "pat_ira",
     "nombre": "Insuficiencia Respiratoria Aguda",
     "bodySystemId": "respiratorio",
-    "definicion": "Incapacidad aguda del sistema respiratorio para mantener una adecuada oxigenación (PaO2 < 60 mmHg) y/o eliminar CO2 (PaCO2 > 50 mmHg con pH < 7.35), requiriendo soporte ventilatorio urgente.",
+    "definicion": "Incapacidad aguda del sistema respiratorio para mantener una adecuada oxigenación (PaO2 < 60 mmHg con FiO2 ≥ 21%) y/o eliminar CO2 (PaCO2 > 50 mmHg con pH < 7.35), requiriendo soporte respiratorio urgente. El espectro va desde oxigenoterapia convencional hasta ventilación mecánica invasiva, pasando por HFNC (cánula nasal de alto flujo) y VNI. El SDRA (Síndrome de Distrés Respiratorio Agudo) es la forma más grave de IRA hipoxémica y, según la nueva Global Definition of ARDS (2023, AJRCCM), ya NO requiere intubación para diagnóstico — puede definirse en pacientes con HFNC ≥ 30 L/min usando la relación SpO2/FiO2 cuando la gasometría arterial no está disponible.",
     "epidemiologia": "Causa frecuente de ingreso en UCI (20-30% de los ingresos criticos). El SDRA (forma más grave de IRA hipoxemica) tiene mortalidad del 30-45%. La hipercapnia aguda en EPOC exacerbado tiene mortalidad del 10-15%.",
     "factoresRiesgo": [
       "EPOC exacerbado",
@@ -5231,19 +5231,43 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por mecanismo fisiopatológico",
+      "nombre": "Clasificación dual: mecanismo fisiopatológico + severidad de SDRA (Berlin 2012 + Global Definition 2023)",
       "tipos": [
         {
-          "nombre": "IRA tipo I (hipoxemica)",
-          "descripcion": "PaO2 < 60 mmHg con PaCO2 normal o baja. Causa: SDRA, neumonia, EAP, TEP"
+          "nombre": "IRA tipo I — Hipoxémica pura",
+          "descripcion": "PaO2 < 60 mmHg con PaCO2 normal o baja (hiperventilación compensatoria). Mecanismos: alteraciones V/Q (neumonía), shunt intrapulmonar (SDRA, EAP), alteración de difusión (intersticialopatía), baja FiO2. Causas: SDRA, neumonía, EAP cardiogénico, TEP masivo, atelectasia masiva."
         },
         {
-          "nombre": "IRA tipo II (hipercapnica)",
-          "descripcion": "PaCO2 > 50 mmHg con acidosis respiratoria. Causa: EPOC exacerbado, depresion SNC, fatiga muscular"
+          "nombre": "IRA tipo II — Hipercápnica (ventilatoria)",
+          "descripcion": "PaCO2 > 50 mmHg con acidosis respiratoria (pH < 7.35). Mecanismo: hipoventilación alveolar por falla en bomba ventilatoria. Causas: EPOC exacerbado (más frecuente), depresión del SNC (opioides, sedantes), fatiga muscular respiratoria, enfermedades neuromusculares (Guillain-Barré, miastenia, ELA), cifoescoliosis severa."
+        },
+        {
+          "nombre": "IRA tipo III — Perioperatoria",
+          "descripcion": "Combinación de atelectasia + alteración de la pared torácica post-cirugía. Frecuente en obesidad, cirugía toracoabdominal, sedoanalgesia residual. Profilaxis: ventilación protectora intraoperatoria + movilización precoz."
+        },
+        {
+          "nombre": "IRA tipo IV — Shock",
+          "descripcion": "Hipoperfusión muscular respiratoria por shock séptico, cardiogénico u obstructivo. La intubación reduce la demanda de O2 del trabajo respiratorio (que en shock puede ser 25-40% del consumo total)."
         },
         {
           "nombre": "IRA mixta",
-          "descripcion": "Hipoxemia + hipercapnia: EPOC grave, status asmaticus"
+          "descripcion": "Hipoxemia + hipercapnia simultáneas: EPOC severo descompensado, status asmaticus en fase tardía, sepsis con SDRA + fatiga muscular."
+        },
+        {
+          "nombre": "SDRA — Global Definition 2023 (Matthay et al, AJRCCM 2024)",
+          "descripcion": "Nueva definición amplía Berlin 2012: ya NO requiere ventilación mecánica invasiva para diagnóstico. Criterios: (1) inicio agudo (< 1 semana de evento desencadenante); (2) infiltrados bilaterales en imagen (Rx, TC, ecografía pulmonar); (3) edema pulmonar no explicado solo por falla cardíaca/sobrecarga; (4) hipoxemia evaluada con cualquiera de: PaO2/FiO2, SpO2/FiO2 (si SpO2 ≤ 97%), o paciente bajo HFNC ≥ 30 L/min. Categorías de severidad: leve P/F 200-300, moderado P/F 100-200, severo P/F ≤ 100 (con PEEP ≥ 5 cmH2O o HFNC ≥ 30 L/min)."
+        },
+        {
+          "nombre": "SDRA leve (Berlin 2012)",
+          "descripcion": "PaO2/FiO2 200-300 mmHg con PEEP ≥ 5. Mortalidad ~27%. Manejo: VNI o HFNC + ventilación protectora si VM."
+        },
+        {
+          "nombre": "SDRA moderado (Berlin 2012)",
+          "descripcion": "PaO2/FiO2 100-200 con PEEP ≥ 5. Mortalidad ~32%. Indicación de PRONO TEMPRANO ≥ 16h/día (PROSEVA NEJM 2013, indicado si P/F < 150)."
+        },
+        {
+          "nombre": "SDRA severo (Berlin 2012)",
+          "descripcion": "PaO2/FiO2 ≤ 100 con PEEP ≥ 5. Mortalidad ~45%. Prono + considerar ECMO V-V si refractario (CESAR/EOLIA: P/F < 80 + ventilación mecánica protectora optimizada)."
         }
       ]
     },
@@ -5275,62 +5299,144 @@
           ]
         },
         {
-          "nombre": "Rx de torax urgente",
-          "descripcion": "Identifica causa de IRA: EAP, neumonia, neumotorax, derrame, SDRA",
+          "nombre": "Rx tórax + ecografía pulmonar a pie de cama",
+          "descripcion": "Imagen para identificar causa: EAP cardiogénico (líneas B difusas en eco), neumonía (consolidación), neumotórax (ausencia de lung sliding), derrame, SDRA (patrón intersticial bilateral). Ecografía POCUS es más rápida y sensible que Rx en muchos contextos.",
           "cuidadosEnfermeria": [
-            "Portable/AP en cama si paciente critico",
-            "No retrasar otras intervenciones urgentes"
+            "Rx portable AP en cama si paciente crítico — no diferir maniobras urgentes",
+            "Ecografía pulmonar identifica neumotórax (sin lung sliding) en < 2 min — útil pre-intubación",
+            "Combinada con ecocardiografía POCUS: distingue EAP cardiogénico de SDRA en minutos"
+          ]
+        },
+        {
+          "nombre": "ROX index — predicción de éxito de HFNC",
+          "descripcion": "Índice respiratorio-oxigenación calculable a pie de cama para predecir el éxito o fallo de la cánula nasal de alto flujo (HFNC) en IRA hipoxémica. Permite identificar precozmente al paciente que va a fallar y necesitará intubación, evitando demoras peligrosas.",
+          "valoresReferencia": "ROX = (SpO2 / FiO2) / FR. Medir a las 2h, 6h y 12h del inicio de HFNC. ROX ≥ 4.88 a 12h predice éxito de HFNC. ROX < 4.88 sostenido sugiere fallo y considerar intubación. ROX-HR (incorpora FC): > 6.80 a 10h predice menor fallo.",
+          "cuidadosEnfermeria": [
+            "Documentar ROX cada 2h en primeras 12h de HFNC",
+            "ROX descendente progresivo o < 4.88 sostenido → comunicar al médico y preparar intubación",
+            "La 'demora de intubación' tras fallo de HFNC se asocia a mayor mortalidad — no postergar"
+          ]
+        },
+        {
+          "nombre": "CAM-ICU (Confusion Assessment Method for ICU)",
+          "descripcion": "Cribado de delirium en UCI en pacientes ventilados. Recomendado al menos cada 8h en todo paciente con VM o sedoanalgesia (ICU-LIBERATION / PADIS bundle). Delirium en VM se asocia con mayor mortalidad, días de UCI y secuelas cognitivas a largo plazo.",
+          "valoresReferencia": "CAM-ICU positivo: presencia de (1) cambio agudo del estado mental + (2) inatención + (3) pensamiento desorganizado O (4) nivel de conciencia alterado. RASS (Richmond Agitation-Sedation Scale): objetivo 0 a -2 en la mayoría (sedación ligera, despertable).",
+          "cuidadosEnfermeria": [
+            "Aplicar CAM-ICU al menos cada turno (8h) en paciente con VM",
+            "RASS antes de CAM-ICU: si RASS -4 o -5 (sedación profunda), CAM-ICU no aplicable; revaluar tras despertar",
+            "Si CAM-ICU positivo: identificar y tratar causas (sedación excesiva, dolor, infección, retención urinaria, deshidratación), promover orientación, ciclo sueño-vigilia, movilización"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Corregir hipoxemia (SpO2 > 90%)",
-        "Tratar la causa subyacente",
-        "Soporte ventilatorio segun gravedad"
+        "Corregir hipoxemia con targets DIFERENCIADOS: SpO2 88-92% en EPOC e hipercapnia crónica (evitar hiperoxia que reduce drive hipóxico); SpO2 92-96% en hipoxemia aguda sin retención de CO2; SpO2 88-92% si SDRA (estrategia conservadora — LOCO2 sugiere balance entre hipoxemia e hiperoxia)",
+        "Tratar la causa subyacente: broncodilatadores en EPOC/asma; antibióticos en neumonía/sepsis; diuréticos en EAP; trombolisis en TEP masivo; naloxona en opioides; tratamiento del SDRA según severidad",
+        "Soporte respiratorio ESCALONADO: O2 convencional → HFNC → VNI → ventilación mecánica invasiva. Decisión basada en clínica + ROX index para HFNC + criterios de fallo de VNI (FR > 35, acidosis empeora, alteración conciencia, intolerancia)",
+        "Ventilación protectora si VM: volumen tidal 6 mL/kg de PESO IDEAL (no real), presión meseta (Pplateau) < 30 cmH2O, driving pressure (Pplateau − PEEP) ≤ 15 cmH2O (Amato NEJM 2015 — predictor independiente de mortalidad en SDRA)",
+        "PRONO TEMPRANO ≥ 16h/día en SDRA moderado-severo con PaO2/FiO2 < 150 (PROSEVA NEJM 2013 — reduce mortalidad 28% a 16% a 90 días)",
+        "Sedoanalgesia mínima objetivada (ICU-LIBERATION / PADIS bundle): RASS -2 a 0, escala dolor (BPS/CPOT), CAM-ICU para delirium cada 8h; despertar diario (SAT) + prueba de respiración espontánea (SBT) cuando criterios cumplidos",
+        "Movilización PRECOZ en UCI desde día 1-2 si hemodinámicamente estable — reduce ICU-acquired weakness, días de VM y secuelas",
+        "Prevención NAVM (bundle): cabecera 30-45°, higiene oral con clorhexidina, SAT-SBT diaria, profilaxis úlcera y TVP, presión cuff endotraqueal 20-30 cmH2O",
+        "Considerar ECMO V-V si SDRA severo refractario (P/F < 80 con ventilación protectora optimizada + prono — CESAR Lancet 2009, EOLIA NEJM 2018) — derivar a centro ECMO antes que el deterioro impida traslado seguro"
       ],
       "farmacologico": [
         {
-          "nombre": "Naloxona",
-          "grupo": "Antagonista opiode - en IRA por sobredosis",
-          "mecanismo": "Revierte rapidamente la depresion respiratoria por opioides",
-          "dosis": "0.4-2 mg IV cada 2-3 min; puede repetirse",
+          "nombre": "Naloxona — antídoto en IRA por opioides",
+          "grupo": "Antagonista opioide — emergencia de sobredosis con depresión respiratoria",
+          "mecanismo": "Antagonista competitivo de receptores μ; revierte rápidamente depresión respiratoria por opioides. Inicio en 1-2 min IV, duración 30-90 min (más CORTO que la mayoría de opioides — riesgo de re-narcotización).",
+          "dosis": "0.04-0.4 mg IV en bolos pequeños (titulación) hasta restaurar ventilación adecuada sin precipitar abstinencia. Repetir cada 2-3 min. Alternativa intranasal 4 mg (Narcan IN) si no acceso venoso. Infusión continua si reversión sostenida necesaria (especialmente metadona, fentanilo, oxicodona de liberación prolongada).",
           "cuidadosEnfermeria": [
-            "Efecto dura 30-90 min (más corto que el opiode): vigilar re-narcotización",
-            "Puede precipitar sindrome de abstinencia agudo",
-            "Preparar reanimación por si acaso"
+            "Efecto MÁS CORTO que la mayoría de opioides — vigilar re-narcotización 1-2h después; considerar infusión continua",
+            "Titular con bolos pequeños (0.04-0.4 mg) — dosis altas precipitan abstinencia aguda con agitación, taquicardia, HTA, edema pulmonar",
+            "En adictos crónicos: aún más cauto con dosis para evitar abstinencia severa",
+            "Preparar reanimación: arritmias, edema pulmonar agudo no cardiogénico raros pero descritos"
           ]
         },
         {
-          "nombre": "Flumazenil",
-          "grupo": "Antagonista de benzodiacepinas",
-          "mecanismo": "Revierte sedación y depresion respiratoria por benzodiacepinas",
-          "dosis": "0.2 mg IV cada 60 seg hasta 1 mg",
+          "nombre": "Flumazenil — antídoto de benzodiacepinas (uso restringido)",
+          "grupo": "Antagonista de benzodiacepinas — uso muy selectivo",
+          "mecanismo": "Antagonista competitivo del receptor GABA-A. Revierte sedación y depresión respiratoria por BZ en 1-2 min, duración 30-60 min.",
+          "dosis": "0.2 mg IV en bolo, repetir cada 60 seg hasta 1 mg total (máx 3 mg/h). Considerar infusión 0.1-0.4 mg/h si re-sedación.",
           "cuidadosEnfermeria": [
-            "Efecto corto: riesgo de re-sedación (mayor duración de BZD)",
-            "Puede precipitar convulsiones en epilepticos tratados con BZD"
+            "USO MUY RESTRINGIDO: NO usar de rutina; reservar para sobredosis pura de BZ confirmada (sin co-ingesta) en paciente NO epiléptico crónico ni dependiente de BZ",
+            "RIESGOS: precipita convulsiones en epilépticos tratados con BZ, sd. de abstinencia agudo en dependientes",
+            "Efecto más corto que la mayoría de BZ — vigilar re-sedación; en BZ de vida media larga (diazepam, clonazepam) puede requerir infusión continua",
+            "Preferible: soporte ventilatorio + observación hasta eliminación natural"
           ]
         },
         {
-          "nombre": "Broncodilatadores (Salbutamol + Ipratropio nebulizados)",
-          "grupo": "Broncodilatadores - en IRA por EPOC o asma",
-          "mecanismo": "Reducen obstrucción bronquial mejorando flujo aereo y trabajo respiratorio",
-          "dosis": "Salbutamol 2.5 mg + Ipratropio 0.5 mg en nebulización cada 20 min",
+          "nombre": "Broncodilatadores nebulizados (Salbutamol + Ipratropio)",
+          "grupo": "Broncodilatadores — IRA por EPOC exacerbado o asma severa",
+          "mecanismo": "Salbutamol: β2-agonista de acción corta. Ipratropio: anticolinérgico, sinergia. Reducen obstrucción bronquial, mejoran flujo aéreo y trabajo respiratorio.",
+          "dosis": "Salbutamol 2.5-5 mg + Ipratropio 0.5 mg nebulizados cada 20 min × 3 dosis en la primera hora; luego cada 2-4h. En VM: nebulización intercalada con MDI + cámara espaciadora.",
           "cuidadosEnfermeria": [
-            "Vigilar taquicardia e hipokalemia",
-            "O2 impulsor de la nebulización en hipoxemicos",
-            "Aire comprimido en hipercapnicos (EPOC)"
+            "Impulsor de nebulización: aire comprimido en EPOC hipercápnico (O2 puede empeorar retención de CO2); O2 en hipoxémico puro",
+            "Vigilar taquicardia (FC > 130), temblor, hipokalemia con dosis altas",
+            "Si tolera: preferir MDI + cámara espaciadora sobre nebulizador (igual eficacia, menos aerosolización — relevante en COVID/TB)"
+          ]
+        },
+        {
+          "nombre": "Sedoanalgesia para VM (Fentanilo + Propofol o Dexmedetomidina) — ICU-LIBERATION",
+          "grupo": "Sedoanalgesia objetivada — pilar del manejo del paciente con VM",
+          "mecanismo": "ICU-LIBERATION / PADIS bundle: ABCDEF (Awakening + Breathing Coordination, Choice of analgesia/sedation, Delirium monitoring, Early mobility, Family). Sedación LIGERA objetivada (RASS 0 a -2) con interrupciones diarias.",
+          "dosis": "Analgesia FIRST: Fentanilo 0.5-2 mcg/kg/h IV. Sedación adicional si necesaria: Propofol 0.5-3 mg/kg/h (cuidado infusion syndrome si > 4 mg/kg/h × 48h) o Dexmedetomidina 0.2-1.4 mcg/kg/h (preferida si delirium o destete — no causa depresión respiratoria). Evitar BZ continuas en > 24-48h (aumentan delirium).",
+          "cuidadosEnfermeria": [
+            "Sedación LIGERA OBJETIVADA con RASS — sedación profunda innecesaria aumenta días de VM, delirium, mortalidad",
+            "Despertar diario (SAT — Spontaneous Awakening Trial): pausar sedación una vez por día para evaluar conciencia y necesidad de continuar",
+            "Combinado con SBT (Spontaneous Breathing Trial) reduce 1-2 días de VM y mortalidad (ABC trial Lancet 2008)",
+            "Dexmedetomidina preferida sobre BZ y propofol prolongado: menor delirium, facilita destete, sin depresión respiratoria",
+            "Evitar midazolam y otras BZ en infusión > 24-48h (aumenta delirium y días de VM)"
+          ]
+        },
+        {
+          "nombre": "Dexametasona en SDRA moderado-severo (DEXA-ARDS Lancet Resp Med 2020)",
+          "grupo": "Corticoide sistémico — reduce mortalidad en SDRA moderado-severo establecido",
+          "mecanismo": "Modula respuesta inflamatoria pulmonar y sistémica, reduce edema y fibrosis. DEXA-ARDS RCT: dexametasona en SDRA moderado-severo redujo mortalidad a 60 días y aumentó días libres de VM.",
+          "dosis": "Dexametasona 20 mg IV/día × 5 días, luego 10 mg IV/día × 5 días (total 10 días o hasta extubación). Iniciar dentro de las primeras 24-48h de SDRA moderado-severo establecido.",
+          "cuidadosEnfermeria": [
+            "Indicación: SDRA moderado-severo (P/F < 200) con ventilación mecánica < 48h del diagnóstico",
+            "Cribar y tratar comorbilidades: hiperglucemia (insulinoterapia), riesgo de infección oportunista, miopatía esteroidea con bloqueo neuromuscular concomitante",
+            "En SDRA por COVID-19: dexametasona 6 mg/día × 10 días (RECOVERY trial NEJM 2021) — protocolo diferente, indicación específica",
+            "NO indicada en SDRA leve (P/F > 200) o exposición prolongada (> 14 días)"
+          ]
+        },
+        {
+          "nombre": "Bloqueo neuromuscular (Cisatracurio) en SDRA — uso restringido tras ROSE 2019",
+          "grupo": "Bloqueante neuromuscular — uso muy selectivo en SDRA severo con dissincronía persistente",
+          "mecanismo": "Elimina actividad muscular respiratoria, facilita ventilación protectora estricta, reduce barotrauma y consumo de O2. ACURASYS NEJM 2010 sugirió beneficio en SDRA severo precoz; ROSE NEJM 2019 NO confirmó beneficio rutinario.",
+          "dosis": "Cisatracurio: bolo 15 mg IV + infusión 37.5 mg/h × 48h máximo (ACURASYS protocol). Solo en SDRA severo con dissincronía marcada a pesar de sedoanalgesia óptima.",
+          "cuidadosEnfermeria": [
+            "Cambio paradigmático tras ROSE 2019: NO se usa de rutina en todos los SDRA moderado-severo",
+            "Reservar para SDRA severo (P/F < 100-150) con DISSINCRONÍA persistente a pesar de sedación profunda óptima — primera intentar profundizar sedación",
+            "Requiere SEDACIÓN PROFUNDA concomitante (RASS -5) — el paciente paralizado consciente vive una experiencia traumática",
+            "Vigilar miopatía del paciente crítico (especialmente combinado con corticoides): movilización imposible mientras paralizado",
+            "Tren de cuatro (TOF) cada 4h para titular bloqueo: target TOF 1-2/4"
           ]
         }
       ],
       "noFarmacologico": [
-        "Oxigenoterapia controlada (objetivo SpO2 88-92% en EPOC, 94-98% en otros)",
-        "VNI (CPAP/BiPAP): de elección en IRA hipercapnica por EPOC y EAP cardiogenico",
-        "Intubación orotraqueal y ventilación mecánica invasiva si falla VNI o hipoxemia refractaria",
-        "Posición prono en SDRA grave (mejora oxigenación)"
+        "ESCALADA RESPIRATORIA: O2 nasal/máscara → HFNC → VNI → VM invasiva. Decisión por tipo de IRA, gravedad y comorbilidad",
+        "Oxigenoterapia titulada por objetivo SpO2: 88-92% en EPOC e hipercapnia crónica; 92-96% en hipoxemia aguda no EPOC; 88-92% en SDRA (estrategia conservadora, LOCO2 sugiere balance vs hiperoxia)",
+        "HFNC (Cánula Nasal de Alto Flujo): 40-60 L/min con FiO2 0.21-1.0; PRIMERA línea moderna en IRA hipoxémica no severa (FLORALI NEJM 2015: mejor mortalidad y días libres de VM vs O2 estándar y VNI en pneumonía/SDRA). Monitorizar ROX index cada 2h en primeras 12h",
+        "VNI (BiPAP/CPAP): PRIMERA elección en EAP cardiogénico (CPAP) y EPOC exacerbado con hipercapnia + acidosis (BiPAP). Contraindicaciones: alteración de conciencia, vómitos, secreciones abundantes, inestabilidad hemodinámica. Reevaluar a 1-2h: si no mejora pH y FR, intubar sin demora",
+        "Intubación orotraqueal + ventilación mecánica invasiva: indicada si falla VNI, hipoxemia refractaria, alteración de conciencia (Glasgow < 9), inestabilidad hemodinámica, fatiga muscular o riesgo de aspiración",
+        "VENTILACIÓN PROTECTORA en VM: Vt 6 mL/kg PESO IDEAL (no real); Pplateau < 30 cmH2O; driving pressure (Pplateau − PEEP) ≤ 15 cmH2O — predictor independiente de mortalidad en SDRA (Amato NEJM 2015); PEEP titulada (tablas ARDSNet o PEEP-FiO2)",
+        "PRONO TEMPRANO ≥ 16h/día en SDRA moderado-severo (PaO2/FiO2 < 150): PROSEVA NEJM 2013 redujo mortalidad a 90 días de 41% a 24%. Equipo de 4-5 personas; ojo con tubos/líneas/úlceras cara y axila; posición cíclica supina-prona cada 16h",
+        "NAVM bundle (Ventilator-Associated Pneumonia): cabecera 30-45° permanente, higiene oral con clorhexidina 0.12% c/8h, despertar diario + SBT, profilaxis úlcera de estrés con IBP/sucralfato, profilaxis TVP, presión cuff endotraqueal 20-30 cmH2O continuamente verificada, aspiración subglótica si tubo lo permite",
+        "ICU-LIBERATION / PADIS bundle ABCDEF: Awakening + Breathing Coordination (SAT-SBT diario), Choice of analgesia/sedation (analgesia first, sedación ligera, evitar BZ continuas), Delirium (CAM-ICU c/8h), Early mobility (movilización desde día 1-2), Family engagement",
+        "Movilización PRECOZ en UCI: pasiva en sedados → activa con apoyo cuando colabore → bipedestación → marcha. Reduce ICU-acquired weakness, días de VM, días de UCI, secuelas funcionales a largo plazo",
+        "Reorientación y ritmo circadiano: relojes visibles, ventanas con luz natural, reducir ruidos nocturnos, presencia familiar liberalizada — reducen delirium",
+        "Manejo de secreciones: aspiración endotraqueal con técnica estéril (sistema cerrado preferido), humidificación activa (cámara con calentador) o pasiva (HME — heat-moisture exchanger), fisioterapia respiratoria",
+        "Nutrición enteral precoz < 48h vía SNG/transpilórica si tolera (reduce traslocación bacteriana, atrofia mucosa, mejora outcomes)"
       ],
-      "quirurgico": []
+      "quirurgico": [
+        "ECMO V-V (Veno-Venosa): SDRA SEVERO REFRACTARIO con P/F < 80 a pesar de ventilación protectora optimizada + PEEP adecuada + prono ≥ 16h/día (CESAR Lancet 2009, EOLIA NEJM 2018). Derivar a centro ECMO ANTES de que el deterioro impida traslado seguro — la mortalidad sin ECMO en este escenario es > 60%",
+        "Contraindicaciones de ECMO V-V: ventilación mecánica > 7 días con parámetros extremos, falla multiorgánica avanzada, expectativa de vida limitada por enfermedad de base, contraindicación para anticoagulación sistémica",
+        "Traqueostomía precoz (7-14 días) si se prevé VM prolongada > 14 días: facilita destete, reduce sedación, mejora confort y movilización",
+        "Toracotomía o drenaje en complicaciones de VM: neumotórax barotraumático, hemotórax, empiema"
+      ]
     },
     "cuidadosEnfermeria": {
       "valoracion": [
@@ -5470,7 +5576,15 @@
       "pat_neumonia",
       "pat_tep"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "Global Definition of ARDS 2023 (Matthay MA et al, AJRCCM 2024;209:37-47)",
+      "Berlin Definition of ARDS (Ranieri VM et al, JAMA 2012;307:2526-2533)",
+      "ESICM 2023 Guidelines on Acute Respiratory Distress Syndrome",
+      "Ensayos clave: PROSEVA (NEJM 2013 — prono temprano); FLORALI (NEJM 2015 — HFNC); ROX index (Roca et al, AJRCCM 2019); ROSE (NEJM 2019 — bloqueo neuromuscular); DEXA-ARDS (Lancet Respir Med 2020 — dexametasona); Amato (NEJM 2015 — driving pressure); EOLIA (NEJM 2018 — ECMO V-V); CESAR (Lancet 2009 — ECMO)",
+      "ICU-LIBERATION (SCCM PADIS Guidelines 2018) — Bundle ABCDEF para sedoanalgesia, delirium y movilización precoz"
+    ]
   },
   {
     "id": "pat_tuberculosis",

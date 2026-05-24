@@ -99,6 +99,25 @@ Respiratorio (5): pat_epoc, pat_asma, pat_neumonia, pat_neumotorax, pat_tep, pat
 Neurológico (3): pat_acv, pat_meningitis, pat_epilepsia
 Digestivo (2): pat_cirrosis, pat_pancreatitis
 
+---
+
+## Tercer lote priorizado (en progreso desde 2026-05-24)
+
+10 entries más de prioridad media — patologías frecuentes en pacientes hospitalizados con manejo evolutivo en últimos años.
+
+| Prioridad | ID | Patología | Guideline objetivo | Estado |
+|---|---|---|---|---|
+| 1 | `pat_ira` | Insuficiencia Respiratoria Aguda | Global Definition ARDS 2023 + ESICM 2023 + FLORALI/PROSEVA/EOLIA + ICU-LIBERATION | ✅ `pendiente commit` |
+| 2 | `pat_parkinson` | Enfermedad de Parkinson | MDS clinical criteria 2015 + AAN 2024 | pendiente |
+| 3 | `pat_alzheimer` | Enfermedad de Alzheimer | NIA-AA 2024 + lecanemab/donanemab anti-amyloid | pendiente |
+| 4 | `pat_apendicitis` | Apendicitis Aguda | WSES 2020 + non-operative trials (CODA NEJM 2020) | pendiente |
+| 5 | `pat_obstrucción_intestinal` | Obstrucción Intestinal | WSES 2018 + Bologna criteria | pendiente |
+| 6 | `pat_hemorragia_digestiva` | Hemorragia Digestiva | BSG 2024 + AGA 2021 + Glasgow-Blatchford | pendiente |
+| 7 | `pat_eii` | Enfermedad Inflamatoria Intestinal | ECCO 2024 + ACG 2024 + biológicos modernos | pendiente |
+| 8 | `pat_ulcera_peptica` | Úlcera Péptica | ACG 2024 H. pylori + Maastricht VI/Florence | pendiente |
+| 9 | `pat_hipotiroidismo` | Hipotiroidismo | ATA 2014 + actualizaciones; levotiroxina dosing | pendiente |
+| 10 | `pat_hipertiroidismo` | Hipertiroidismo / Graves | ATA 2016 + 2024 updates; metimazol vs PTU | pendiente |
+
 **Total: 21/151 entries (~14% de la base)** con `revisadoEn` y `fuentes` completos. Cobertura amplia de las patologías más prevalentes en enfermería médico-quirúrgica de adultos.
 
 (actualizar esta tabla en cada sesión clínica nueva)
