@@ -4,6 +4,48 @@
 
 ---
 
+## 2026-05-24 — Sesion 39: Inicio TERCER LOTE — revisión clínica de pat_ira a Global Definition ARDS 2023 + ESICM 2023 + ICU-LIBERATION + PROSEVA
+
+### Resumen
+Primera iteración del tercer lote priorizado (10 entries de patologías frecuentes en pacientes hospitalizados con evolución relevante en últimos 3 años). La entry `pat_ira` (Insuficiencia Respiratoria Aguda) tenía gaps importantes vs Global Definition of ARDS 2023 (AJRCCM 2024;209:37-47) + ESICM 2023 guidelines + ensayos clave 2013-2020: clasificación 3-tipos sin Berlin 2012 severity (P/F leve/moderado/severo); sin Global Definition 2023 (criterio expandido HFNC ≥30 L/min + SpO2/FiO2 si no hay GSA); sin IRA tipo III (perioperatoria) / tipo IV (shock); pruebas sin ROX index ni ecografía pulmonar ni CAM-ICU para delirium; objetivos sin escalation O2→HFNC→VNI→VM, sin ventilación protectora ARDSNet (Vt 4-8 mL/kg PBW, Pplat<30, driving pressure<15), sin prono temprano PROSEVA, sin ICU-LIBERATION bundle, sin NAVM bundle, sin ECMO V-V; farmacológico sin sedoanalgesia ICU-LIBERATION (analgesia first, RASS 0/-1, evitar BZD), sin dexametasona DEXA-ARDS, sin bloqueo neuromuscular post-ROSE (solo PaO2/FiO2<150 + asincronía); no farmacológico sin HFNC detallado (FLORALI NEJM 2015), sin VNI con criterios estrictos, sin prono ≥16h temprano, sin movilización precoz, sin nutrición enteral 24-48h; quirúrgico ausente (sin ECMO V-V criterios EOLIA, sin traqueostomía precoz).
+
+Cross-check: Global Definition ARDS 2023 (Matthay AJRCCM 2024), Berlin 2012 (Ranieri JAMA), ESICM 2023, PROSEVA (NEJM 2013), FLORALI (NEJM 2015), ROX (Roca AJRCCM 2019), ROSE (NEJM 2019), DEXA-ARDS (Lancet Respir Med 2020), Amato driving pressure (NEJM 2015), EOLIA (NEJM 2018), CESAR (Lancet 2009), SCCM PADIS Guidelines / ICU-LIBERATION 2018.
+
+### Cambios en pat_ira (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `definicion` | Referencia explícita a Global Definition ARDS 2023 con criterios expandidos (HFNC ≥30 L/min, SpO2/FiO2 sin GSA) |
+| `clasificacion` (3→9) | Tipos I-IV (hipoxémica, hipercápnica, perioperatoria, shock) + SDRA por Berlin 2012 severity (leve P/F 200-300, moderado 100-200, severo <100) + Global Definition 2023 + ARDS no intubado |
+| `diagnostico.pruebas` (2→4) | +ROX index (predictor falla HFNC, <4.88 a 12h = intubar); +Ecografía pulmonar (BLUE protocol, A/B-lines); +CAM-ICU para delirium (ICU-LIBERATION bundle) |
+| `tratamientoMedico.objetivos` (3→9) | Escalation O2→HFNC→VNI→VM; ventilación protectora ARDSNet (Vt 4-8 mL/kg PBW, Pplat<30, DP<15, PEEP open lung); prono temprano ≥16h (PROSEVA mortalidad NNT≈11); ICU-LIBERATION bundle ABCDEF; NAVM bundle (HOB 30-45°, clorhexidina, sedación liviana); ECMO V-V si refractario (criterios EOLIA) |
+| `farmacologico` (3→6) | Naloxona refinada (titular 0.04 mg, no bolo); flumazenil restringido (riesgo convulsiones); +broncodilatadores; +sedoanalgesia ICU-LIBERATION (analgesia first fentanilo, RASS 0/-1, evitar BZD); +dexametasona DEXA-ARDS (6 mg/d x 10d si SDRA moderado-severo P/F<200); +bloqueo neuromuscular post-ROSE (solo cisatracurio 48h si P/F<150 + asincronía) |
+| `noFarmacologico` (4→13) | HFNC con criterios (FLORALI); VNI estricta (EPOC, EAP, post-extubación; NO usar en SDRA moderado-severo); PRONO TEMPRANO ≥16h consecutivas; NAVM bundle completo; ICU-LIBERATION ABCDEF; SBT diario; SAT antes de SBT; movilización precoz; nutrición enteral 24-48h; cabecera 30-45°; cuidados ojo/piel/profilaxis TVP/UPP; aspiración subglótica continua |
+| `quirurgico` (0→4) | ECMO V-V criterios EOLIA (P/F<50 x3h o <80 x6h o pH<7.25 + PaCO2≥60); traqueostomía precoz (10-14 días si VM prolongada); broncoscopia terapéutica; toracotomía/drenaje |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: Global Definition 2023 + Berlin 2012 + ESICM 2023 + ensayos PROSEVA/FLORALI/ROX/ROSE/DEXA-ARDS/Amato/EOLIA/CESAR + ICU-LIBERATION 2018 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`, `fisiopatologia`, `signosYSintomas`: vigentes (clínica clásica)
+- `anamnesis`, `examenFisico`: vigentes (taquipnea, tiraje, cianosis ya estaban)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **22 frescas** (era 21; +pat_ira), 129 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151 (integridad preservada)
+
+### Documentación actualizada
+- `docs/CLINICAL_REVIEW_PLAN.md` → agregada tabla de tercer lote priorizado (10 entries), pat_ira marcada como `pendiente commit`
+- `PROGRESO.md` → esta entrada (sesión 39)
+
+### Próximos pasos del tercer lote (9 restantes)
+pat_parkinson → pat_alzheimer → pat_apendicitis → pat_obstrucción_intestinal → pat_hemorragia_digestiva → pat_eii → pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 38: Revisión clínica de pat_pancreatitis a Atlanta 2012 + ACG 2024 + WATERFALL 🎯 MILESTONE 2do LOTE COMPLETO
 
 ### Resumen
