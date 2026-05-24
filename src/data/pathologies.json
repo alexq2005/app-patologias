@@ -7791,31 +7791,43 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Estadios segun GDS (Global Deterioration Scale)",
+      "nombre": "Marco biológico NIA-AA 2018/2024 (ATN) + estadios clínicos GDS/CDR",
       "tipos": [
         {
-          "nombre": "GDS 1-2",
-          "descripcion": "Normal o olvidos subjetivos benignos. Sin deterioro funcional"
+          "nombre": "Marco biológico NIA-AA 2018 (ATN)",
+          "descripcion": "Alzheimer redefinido como entidad BIOLÓGICA basada en biomarcadores: A (Aβ, positivo si PET o CSF Aβ42/40 patológico), T (tau, positivo si CSF p-tau o tau-PET), N (neurodegeneración por RM hipocampal, FDG-PET o CSF t-tau). A+T+ = Alzheimer biológicamente confirmado, independiente de síntomas. Actualización 2024 (Jack Alzheimers Dement) integra biomarcadores plasmáticos como aceptables si validados"
         },
         {
-          "nombre": "GDS 3",
-          "descripcion": "Defecto cognitivo leve. Dificultad laboral y social leve. Aun independiente"
+          "nombre": "Continuum biológico-clínico Alzheimer",
+          "descripcion": "Fase 1 — preclínica (A+ asintomático); Fase 2 — Deterioro Cognitivo Leve (MCI) debido a Alzheimer (A+ + queja cognitiva sin pérdida de funcionalidad); Fase 3 — Demencia leve, moderada y grave por Alzheimer. Permite intervención farmacológica modificadora (lecanemab, donanemab) en fase MCI/demencia leve"
         },
         {
-          "nombre": "GDS 4",
-          "descripcion": "Demencia leve. Dificultad para actividades instrumentales (finanzas, viajes)"
+          "nombre": "GDS 1-2 (normal / olvidos subjetivos)",
+          "descripcion": "Sin deterioro funcional. Si A+T+ por biomarcadores: fase preclínica del continuum Alzheimer (criterio de inclusión en ensayos de prevención secundaria)"
         },
         {
-          "nombre": "GDS 5",
-          "descripcion": "Demencia moderada. Necesita asistencia para elegir ropa y otras AVD"
+          "nombre": "GDS 3 (Deterioro Cognitivo Leve — MCI)",
+          "descripcion": "Defecto cognitivo objetivo (MMSE ~24-26, MoCA <26) sin pérdida de AVD instrumentales/básicas. Si A+T+: MCI debido a Alzheimer — VENTANA TERAPÉUTICA principal para anti-amyloid mAbs (lecanemab, donanemab requieren MCI o demencia leve con confirmación biológica)"
         },
         {
-          "nombre": "GDS 6",
-          "descripcion": "Demencia moderada-grave. Incontinencia, asistencia para higiene"
+          "nombre": "GDS 4 — Demencia leve (CDR 1)",
+          "descripcion": "MMSE ~18-26. Dificultad para actividades instrumentales (finanzas, viajes, medicación). Conserva higiene básica. Indicación de IACE (donepezilo, galantamina, rivastigmina). Si A+T+ y candidato: anti-amyloid mAb"
         },
         {
-          "nombre": "GDS 7",
-          "descripcion": "Demencia grave. Pérdida del lenguaje, incapacidad de caminar, total dependencia"
+          "nombre": "GDS 5 — Demencia moderada (CDR 2)",
+          "descripcion": "MMSE ~10-17. Necesita asistencia para elegir ropa, AVD básicas parcialmente afectadas. Indicación de añadir memantina al IACE. NO indicación de anti-amyloid mAb (no aprobado en moderado-grave por riesgo/beneficio desfavorable)"
+        },
+        {
+          "nombre": "GDS 6 — Demencia moderada-grave (CDR 2-3)",
+          "descripcion": "MMSE <10. Incontinencia, asistencia para higiene y vestido, alteraciones conductuales (BPSD) prominentes. Manejo de síntomas (brexpiprazole agitación, sueño, depresión), optimización entorno, planificación cuidados de larga duración"
+        },
+        {
+          "nombre": "GDS 7 — Demencia grave / terminal (CDR 3)",
+          "descripcion": "Pérdida del lenguaje, incapacidad de caminar, disfagia severa, dependencia total. Cuidados paliativos, evitar terapias agresivas (no PEG en demencia avanzada — sin evidencia de beneficio), centro de día u hospice"
+        },
+        {
+          "nombre": "CDR (Clinical Dementia Rating)",
+          "descripcion": "Escala alternativa a GDS: CDR 0 (normal), 0.5 (cuestionable/MCI), 1 (leve), 2 (moderado), 3 (severo). Suma de cajas (CDR-SB) usada como endpoint primario en ensayos modernos (lecanemab CLARITY-AD: CDR-SB diferencia 0.45 puntos vs placebo a 18 meses)"
         }
       ]
     },
@@ -7835,77 +7847,183 @@
       ],
       "pruebas": [
         {
-          "nombre": "MMSE / MoCA",
-          "descripcion": "Test neuropsicologico breve. MMSE: 0-30, < 24 sugiere deterioro. MoCA más sensible para deterioro leve",
-          "valoresReferencia": "MMSE: 24-30 normal, 18-23 deterioro leve, 10-17 moderado, < 10 grave",
+          "nombre": "MMSE / MoCA / cribado cognitivo",
+          "descripcion": "MMSE 0-30: <24 sugiere deterioro (corregir por edad/educación). MoCA 0-30: <26 sugiere MCI (más sensible que MMSE para MCI y demencias frontotemporales). Mini-Cog (3 ítems + reloj) y test del informador (AD-8) útiles en atención primaria",
+          "valoresReferencia": "MMSE: 24-30 normal, 18-23 leve, 10-17 moderado, <10 grave | MoCA: 26-30 normal, 18-25 MCI, <18 demencia",
           "cuidadosEnfermeria": [
-            "Aplicar en ambiente tranquilo",
-            "Ajustar por nivel educativo",
-            "Aplicar siempre a la misma hora del dia"
+            "Aplicar en ambiente tranquilo, sin presencia del cuidador",
+            "Ajustar por nivel educativo (sumar 1 punto si <8 años escolaridad en MoCA)",
+            "Aplicar siempre a misma hora (preferible mañana, sin fármacos sedantes recientes)",
+            "Documentar visión, audición, idioma materno — pueden invalidar el test"
           ]
         },
         {
-          "nombre": "RMN cerebral",
-          "descripcion": "Detecta atrofia hipocampal y cortical, descarta causas tratables (hematoma, tumor, hidrocefalia)",
+          "nombre": "Biomarcadores plasmáticos: p-tau217, p-tau181 y Aβ42/40",
+          "descripcion": "CAMBIO DE PARADIGMA 2023-2024 (Janelidze Nat Med 2023; Palmqvist JAMA 2024): plasma p-tau217 alcanza precisión >90% para Alzheimer biológico confirmado vs PET amiloide. Aprobado para uso clínico en EE.UU. (Lumipulse 2025). PERMITE cribar Alzheimer en consulta sin LCR ni PET. Especialmente útil para seleccionar candidatos a anti-amyloid mAb",
           "cuidadosEnfermeria": [
-            "Verificar si el paciente puede colaborar o necesita sedación leve",
-            "Acompanar al paciente con demencia durante el estudio"
+            "Extracción sanguínea estándar (suero o plasma EDTA según ensayo)",
+            "Conservar a 4°C y procesar en <4h o congelar a -80°C",
+            "Educar al paciente y familia: resultado positivo NO equivale a diagnóstico definitivo — siempre interpretado por especialista junto a clínica",
+            "Costo significativamente menor que PET amiloide (~5-10% del precio)"
+          ]
+        },
+        {
+          "nombre": "Punción lumbar — biomarcadores CSF (Aβ42, Aβ42/40, p-tau181, t-tau)",
+          "descripcion": "Estándar de oro previo a era plasmática. Patrón Alzheimer: Aβ42 BAJO + ratio Aβ42/40 BAJO + p-tau181 ALTO + t-tau ALTO. Indicación: confirmar Alzheimer en MCI antes de iniciar anti-amyloid mAb si plasma no concluyente o no disponible; descartar Alzheimer en demencias atípicas (frontotemporal, cuerpos de Lewy)",
+          "cuidadosEnfermeria": [
+            "Procedimiento estándar de punción lumbar: posición fetal o sentado, asepsia, anestésico local",
+            "Volumen LCR ≥10-12 mL (los primeros 1-2 mL para análisis rutinario; tubos siguientes para biomarcadores)",
+            "Tubos de polipropileno (NO vidrio — Aβ se adsorbe a vidrio falseando resultado)",
+            "Post-punción: decúbito 1-2h, hidratación oral, vigilar cefalea post-punción durante 24-72h"
+          ]
+        },
+        {
+          "nombre": "PET amiloide (florbetapir, flutemetamol, florbetaben) y PET tau (flortaucipir)",
+          "descripcion": "PET amiloide: visualiza depósitos de Aβ in vivo (positivo en Alzheimer y ~30% ancianos asintomáticos). PET tau (flortaucipir aprobado FDA 2020): visualiza ovillos neurofibrilares, mejor correlación con clínica y predictor de progresión. Indicaciones (criterios IDEAS): MCI o demencia atípica donde el conocimiento del status amiloide cambiaría manejo (sobre todo selección para anti-amyloid mAb)",
+          "cuidadosEnfermeria": [
+            "Inyección IV de radiofarmaco; espera 30-90 min según trazador antes de adquisición",
+            "Educar sobre dosis baja de radiación; hidratación post-procedimiento para eliminación renal",
+            "Evitar contacto cercano con embarazadas/niños 24h",
+            "Resultados expresados como SUVR o lectura visual + Centiloid scale para cuantificación estandarizada"
+          ]
+        },
+        {
+          "nombre": "RM cerebral (3T preferible) — volumetría y descartar causas tratables",
+          "descripcion": "Atrofia hipocampal (escala Scheltens MTA), atrofia cortical posterior (Koedam), microsangrados y siderosis superficial (T2*/SWI) — críticos antes de iniciar anti-amyloid mAb (excluyen pacientes con >4 microsangrados o cualquier hemorragia macroscópica). Descarta causas reversibles: hematoma subdural crónico, tumor frontal, hidrocefalia normotensiva (paso ancho, incontinencia urinaria, demencia)",
+          "cuidadosEnfermeria": [
+            "Verificar compatibilidad RM (marcapasos, implantes metálicos)",
+            "Si demencia avanzada: valorar sedación ligera + acompañante; preparar previo con simulación si fobia",
+            "Solicitar específicamente secuencias T2*, SWI y FLAIR si se plantea anti-amyloid mAb (para baseline de microsangrados)",
+            "Monitorizar incontinencia, hipoacusia, ansiedad durante el estudio"
+          ]
+        },
+        {
+          "nombre": "Evaluación neuropsicológica completa + funcional + BPSD",
+          "descripcion": "Neuropsicología detallada: memoria episódica (RAVLT, FCSRT), lenguaje (BNT), función ejecutiva (TMT, Stroop), praxias y gnosias — útil para diferenciar Alzheimer de demencia frontotemporal, cuerpos de Lewy, vascular. Funcional: FAQ, Barthel, Lawton-Brody. BPSD: inventario neuropsiquiátrico (NPI) para agitación, depresión, psicosis, apatía",
+          "cuidadosEnfermeria": [
+            "Coordinar derivación a neuropsicología — sesión 2-3h, programar con descansos",
+            "Aplicar Lawton-Brody con cuidador principal (no paciente — anosognosia frecuente)",
+            "NPI guía decisión farmacológica de BPSD: si depresión ISRS, si psicosis pimavanserin/risperidona dosis muy baja, si agitación brexpiprazole",
+            "Cribado de depresión con GDS-15 (no Hamilton — más complejo)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Enlentener el deterioro cognitivo",
-        "Manejar síntomas conductuales",
-        "Apoyar al cuidador principal",
-        "Mantener la máxima funcionalidad e independencia"
+        "Confirmar diagnóstico biológico (NIA-AA 2024) antes de iniciar tratamiento modificador: plasma p-tau217 o CSF Aβ42/p-tau o PET amiloide POSITIVO + clínica de MCI o demencia leve",
+        "Tratamiento sintomático con IACE (donepezilo, galantamina, rivastigmina) en demencia leve-moderada y memantina en moderada-grave (sola o combinada con IACE) — beneficio modesto sintomático sin modificar curso natural",
+        "Tratamiento MODIFICADOR de enfermedad con anti-amyloid mAb (lecanemab Leqembi FDA traditional approval 2023; donanemab Kisunla FDA 2024) en MCI o demencia leve con A+T+ confirmado, APOE ε4 evaluado, RM basal sin contraindicación: enlentece progresión 25-35% en escalas CDR-SB e iADRS",
+        "Monitorizar Anomalías de Imagen Relacionadas con Amiloide (ARIA): ARIA-E (edema/effusion) y ARIA-H (microsangrados/siderosis) durante terapia anti-amyloid — RM control antes de la 5ª, 7ª y 14ª dosis (lecanemab) o 1, 2, 3, 4 y 7 infusiones (donanemab). Estratificar por APOE ε4 (homocigotos triple riesgo de ARIA)",
+        "Manejar síntomas conductuales y psicológicos de la demencia (BPSD): primera línea SIEMPRE intervenciones NO farmacológicas (análisis ABC del comportamiento, descartar dolor/infección/constipación/retención, estructurar ambiente); farmacológica con brexpiprazole (Rexulti — primer fármaco FDA-aprobado 2023 para agitación en Alzheimer), pimavanserin (psicosis), ISRS (depresión, irritabilidad), evitar BZD",
+        "Apoyar al cuidador principal: educación, grupos de apoyo, evaluación de carga (Zarit), respiro, derivación a Trabajo Social — la sobrecarga del cuidador es factor crítico de institucionalización y mortalidad",
+        "Optimizar factores modificables del riesgo (12 factores Lancet Commission 2024 — añadió pérdida de visión no tratada y colesterol LDL): HTA, diabetes, obesidad, tabaco, alcohol, depresión, aislamiento social, inactividad física, baja educación, contaminación aérea, traumatismo craneal, hipoacusia, baja visión, hiperLDL. Hasta 45% de riesgo atribuible — base de prevención primaria y secundaria",
+        "Tratar comorbilidades que empeoran cognición: corregir déficit B12/folato/D, ajustar hipoglucemiantes (evitar hipoglucemias), tratar SAHS (CPAP mejora cognición), polifarmacia (criterios STOPP/START — quitar anticolinérgicos, BZD, fármacos sedantes)",
+        "Planificación anticipada de cuidados (advance care planning) precoz: voluntades anticipadas, designación de representante legal, decisiones sobre alimentación artificial (PEG no recomendada en demencia avanzada — sin evidencia de beneficio sobre aspiración, sí riesgo de complicaciones), RCP/UCI/hospitalización",
+        "Mantener funcionalidad e independencia con terapia ocupacional, estimulación cognitiva, ejercicio físico estructurado (intervención FINGER NEJM 2015 multidominio reduce declive cognitivo), dieta MIND/Mediterránea, sueño adecuado, vida socialmente activa"
       ],
       "farmacologico": [
         {
-          "nombre": "Donepezilo",
-          "grupo": "Inhibidor de la acetilcolinesterasa (IACE) - primera linea",
-          "mecanismo": "Inhibe la degradación de acetilcolina en la sinapsis, mejorando la transmision colinergica en la corteza",
-          "dosis": "5 mg/noche por 4-6 semanas, luego aumentar a 10 mg/noche",
+          "nombre": "Lecanemab (Leqembi) — anticuerpo monoclonal anti-amiloide",
+          "grupo": "TRATAMIENTO MODIFICADOR DE ENFERMEDAD — primer mAb anti-amyloid con aprobación tradicional FDA (julio 2023, EMA 2024). Indicado en MCI o demencia leve por Alzheimer con A+ confirmado biológicamente",
+          "mecanismo": "IgG1 humanizada dirigida contra protofibrillas solubles de Aβ — promueve su aclaramiento. Ensayo CLARITY-AD (NEJM 2023): reduce CDR-SB 27% a 18 meses, retrasa progresión ~5-6 meses, reduce amiloide PET hasta negativizar en muchos pacientes",
+          "dosis": "10 mg/kg IV cada 2 semanas. Duración: indefinida mientras haya beneficio (en discusión criterios para suspender si amyloid PET negativo)",
           "cuidadosEnfermeria": [
-            "Administrar por la noche (reduce nauseas y efectos colinergicos)",
-            "Nauseas, diarrea, insomnia como efectos adversos frecuentes",
-            "Bradicardia: medir FC antes de administrar",
-            "No descontinuar abruptamente (deterioro agudo de cognición)"
+            "ANTES DE INICIAR: confirmar A+ biológico (CSF, PET amiloide o plasma p-tau217), genotipo APOE ε4 (homocigotos 32% ARIA-E vs 11% no portadores), RM con T2*/SWI (excluir si >4 microsangrados, hemorragia macroscópica o siderosis superficial), revisar anticoagulación (contraindicación relativa por riesgo ARIA-H)",
+            "Premedicación NO requerida rutinariamente; preparar para reacción infusional (presente en ~25%: escalofríos, fiebre, cefalea — generalmente en primera infusión)",
+            "MONITORIZACIÓN ARIA: RM ANTES de la 5ª, 7ª y 14ª infusión y ante cualquier síntoma nuevo (cefalea, confusión, convulsiones, focalidad). ARIA-E (edema/effusión) suele asintomática y reversible; ARIA-H (microsangrados) puede ser grave",
+            "Manejo de ARIA: leve asintomática → continuar; moderada o sintomática → suspender, reanudar tras resolución; severa o macrohemorragia → suspender permanentemente",
+            "Educación: información de riesgos (1 muerte por ARIA-H severa en CLARITY-AD); plan de acción ante síntomas neurológicos; evitar tPA si ACV agudo (interacción documentada con riesgo hemorragia)",
+            "Coste elevado (~26,500 USD/año) y requiere infraestructura (RM seriadas, equipo de neurología y enfermería entrenado)"
+          ]
+        },
+        {
+          "nombre": "Donanemab (Kisunla) — anticuerpo monoclonal anti-amiloide",
+          "grupo": "TRATAMIENTO MODIFICADOR DE ENFERMEDAD — aprobado FDA julio 2024. Indicado en MCI o demencia leve por Alzheimer con A+ confirmado",
+          "mecanismo": "IgG1 humanizada dirigida contra placas amiloides establecidas (epítopo piroglutamato Aβ N3pE). Ensayo TRAILBLAZER-ALZ 2 (JAMA 2023): reduce iADRS 35% a 76 semanas en pacientes con tau intermedio. Permite suspender una vez negativizado el PET amiloide (~50% pacientes a 1 año)",
+          "dosis": "Inducción: 700 mg IV mensual x3 dosis; luego mantenimiento: 1400 mg IV mensual. Suspender al negativizar PET amiloide",
+          "cuidadosEnfermeria": [
+            "Mismas precauciones que lecanemab: confirmación biológica A+, APOE ε4, RM basal",
+            "Reacciones infusionales más frecuentes que lecanemab (~9%) por ser dosis altas — premedicar con paracetamol/antihistamínico si reacción previa",
+            "Monitorización RM antes de infusiones 2, 3, 4 y 7 (más frecuente las primeras meses — pico ARIA temprano)",
+            "Incidencia ARIA total ~24-37% (mayor en homocigotos APOE ε4 — 57%); ARIA-E sintomática 6%; mortalidad ARIA <0.5%",
+            "VENTAJA: posibilidad de suspender al negativizar amyloid PET — coste finito en lugar de indefinido"
+          ]
+        },
+        {
+          "nombre": "Donepezilo / Galantamina / Rivastigmina (IACE)",
+          "grupo": "Inhibidores de acetilcolinesterasa — primera línea sintomática en demencia leve-moderada (MMSE 10-26)",
+          "mecanismo": "Inhiben la degradación de acetilcolina en la sinapsis. Donepezilo: AChE selectiva, vida media larga (1 toma/d). Galantamina: AChE + modulador nicotínico alostérico. Rivastigmina: AChE + butirilcolinesterasa, único en parche (mejor adherencia, menos GI)",
+          "dosis": "Donepezilo 5 mg/noche x4-6 sem, luego 10 mg/noche (23 mg en moderada-grave). Galantamina LP 8 mg/d, escalar a 16-24 mg/d. Rivastigmina parche 4.6 mg/24h escalar a 9.5-13.3 mg/24h o cápsulas 1.5 mg c/12h escalar a 6 mg c/12h",
+          "cuidadosEnfermeria": [
+            "Administrar con comida (galantamina, rivastigmina cápsulas) para reducir GI; donepezilo nocturno reduce náuseas",
+            "Efectos adversos colinérgicos: náuseas (>20% al inicio), diarrea, anorexia, pérdida de peso (vigilar IMC), insomnio (donepezilo nocturno), pesadillas, calambres musculares",
+            "BRADICARDIA y síncope: ECG basal, medir FC antes de cada incremento, suspender si <55 lpm o bloqueos. Vigilar caídas",
+            "Aumentan secreciones — precaución asma/EPOC, riesgo broncoespasmo",
+            "NO suspender abruptamente — declive cognitivo agudo en 1-2 semanas. Si suspensión necesaria: reducción gradual",
+            "Parche rivastigmina: rotar sitios cada 24h (espalda, brazo, tórax), reacción cutánea hasta 30%; mejor tolerancia digestiva, útil en disfagia o sospecha de mala adherencia",
+            "Aclaración prescriptiva: no son fármacos modificadores — beneficio sintomático modesto (MMSE +1-2 puntos a 6 meses); reevaluar a 6-12 meses y suspender si declive rápido sin beneficio aparente"
           ]
         },
         {
           "nombre": "Memantina",
-          "grupo": "Antagonista del receptor NMDA - moderada/grave",
-          "mecanismo": "Bloquea receptores NMDA del glutamato reduciendo la excitotoxicidad, indicado en demencia moderada-grave",
-          "dosis": "5 mg/dia, escalar 5 mg/semana hasta 20 mg/dia",
+          "grupo": "Antagonista no competitivo del receptor NMDA — demencia moderada-grave (MMSE <17), sola o combinada con IACE",
+          "mecanismo": "Bloquea receptor NMDA reduciendo excitotoxicidad por glutamato sin interferir transmisión fisiológica. Combinación IACE + memantina (Namzaric: donepezilo + memantina) muestra beneficio aditivo modesto",
+          "dosis": "5 mg/d, escalar 5 mg/semana hasta 20 mg/d (10 mg c/12h o 20 mg LP 1 vez/d). Ajustar a 10 mg/d si ClCr 5-29",
           "cuidadosEnfermeria": [
-            "Bien tolerada",
-            "Vigilar agitación paradójica al inicio",
-            "Puede combinarse con donepezilo"
+            "Generalmente bien tolerada (preferida a IACE si intolerancia GI/bradicardia)",
+            "Efectos adversos: cefalea, mareo, confusión, somnolencia, agitación paradójica al inicio",
+            "Ajuste por función renal — eliminación renal predominante",
+            "Sin interacción significativa con anti-amyloid mAb — puede continuarse"
           ]
         },
         {
-          "nombre": "Risperidona (dosis bajas)",
-          "grupo": "Antipsícotico atípico - para síntomas conductuales severos",
-          "mecanismo": "Bloqueo de receptores D2 y 5HT2, reduce agitación, alucinaciones y agresividad",
-          "dosis": "0.25-1 mg/dia en dosis bajas",
+          "nombre": "Brexpiprazole (Rexulti) y otros antipsicóticos en agitación",
+          "grupo": "PRIMER fármaco con indicación FDA específica (mayo 2023) para agitación asociada a demencia tipo Alzheimer",
+          "mecanismo": "Agonista parcial D2/5-HT1A + antagonista 5-HT2A. Ensayos pivotales: reducción CMAI (escala de agitación) significativa vs placebo en pacientes con demencia AD moderada-severa",
+          "dosis": "0.5 mg/d, escalar 1 mg/d a la semana, máximo 3 mg/d (objetivo 2-3 mg/d). Ajustar por función hepática/renal",
           "cuidadosEnfermeria": [
-            "Usar solo si no hay respuesta a medidas no farmacologicas",
-            "Riesgo aumentado de ACV y muerte en demencia",
-            "Vigilar sedación excesiva, caidas, extrapiramidalismo",
-            "Obtener consentimiento informado del familiar"
+            "BLACK BOX WARNING DE TODOS LOS ANTIPSICÓTICOS EN DEMENCIA: aumento de mortalidad (~1.5-1.7x) y eventos cerebrovasculares — informar y documentar consentimiento del representante legal",
+            "Indicar solo tras fallo de medidas no farmacológicas; reevaluar necesidad cada 4-12 semanas con plan de retirada",
+            "Vigilar somnolencia, hipotensión ortostática (caídas), parkinsonismo, aumento peso, dislipidemia, hiperglucemia",
+            "Risperidona dosis muy bajas (0.25-1 mg/d) sigue siendo alternativa común en Europa para agitación/psicosis severa, especialmente si pimavanserin no disponible; haloperidol SOLO en delirium agudo refractario y a corto plazo",
+            "Quetiapina muy usada off-label pese a evidencia débil; útil si hay coexistencia con Parkinson o cuerpos de Lewy (menos parkinsonismo)"
+          ]
+        },
+        {
+          "nombre": "Pimavanserin (psicosis), trazodona/mirtazapina (sueño/depresión), ISRS (depresión, irritabilidad)",
+          "grupo": "Manejo dirigido de BPSD específicos cuando no farmacológico insuficiente",
+          "mecanismo": "Pimavanserin: agonista inverso selectivo 5-HT2A — para psicosis sin empeorar cognición/motor (off-label en Alzheimer; aprobado solo para psicosis Parkinson). Trazodona: 5-HT2A antagonista + SARI — sueño y agitación nocturna. Mirtazapina: NaSSA — depresión + sueño + apetito. ISRS (citalopram, sertralina): depresión, ansiedad, irritabilidad. Suvorexant aprobado FDA 2020 para insomnio en Alzheimer",
+          "dosis": "Trazodona 25-100 mg al acostarse. Mirtazapina 7.5-30 mg al acostarse. Citalopram máx 20 mg/d en >65a (riesgo QT). Sertralina 25-100 mg/d. Suvorexant 10 mg al acostarse",
+          "cuidadosEnfermeria": [
+            "EVITAR BENZODIAZEPINAS para sueño/ansiedad en demencia: empeoran cognición, riesgo de caídas, fracturas, paradójica desinhibición — usar trazodona, mirtazapina o suvorexant",
+            "EVITAR ANTICOLINÉRGICOS (difenhidramina, oxibutinina, antiparkinsonianos): empeoran cognición, riesgo de delirium, asociados a mayor incidencia de demencia (Gray JAMA Intern Med 2015)",
+            "Citalopram >20 mg en ancianos: riesgo QT prolongado — preferir sertralina o escitalopram",
+            "Trazodona: hipotensión ortostática, sedación residual diurna, raramente priapismo",
+            "Vigilar interacciones (warfarina + ISRS aumenta INR; ISRS + lecanemab teóricamente aumentaría riesgo hemorragia ARIA — sin datos firmes)"
           ]
         }
       ],
       "noFarmacologico": [
-        "Estimulación cognitiva y reminiscencia",
-        "Actividad fisica adaptada",
-        "Musicoterapia",
-        "Ambiente estructurado y predecible",
-        "Apoyo al cuidador (grupos de apoyo, descanso del cuidador)"
+        "Manejo en unidad de demencia / equipo multidisciplinar: neurólogo o geriatra + enfermería entrenada + neuropsicólogo + terapeuta ocupacional + trabajador social + nutricionista. Asociado a mejor calidad de vida y retraso en institucionalización",
+        "Modificación de los 12-14 factores de riesgo modificables (Lancet Commission 2024): control HTA (objetivo <130/80 en cognitivamente intactos según SPRINT-MIND), control DM, abandono tabáquico, reducción alcohol (<14 unidades/sem), tratamiento depresión, manejo audífonos en hipoacusia (relación causal con declive cognitivo), corregir baja visión, actividad física aeróbica regular, estimulación cognitiva, vida social activa, evitar contaminación aérea, prevenir TCE, control LDL",
+        "Dieta MIND o Mediterránea: combinación de Mediterránea + DASH con énfasis en vegetales de hoja verde, bayas, frutos secos, aceite oliva, pescado, granos integrales, vino limitado — reduce riesgo Alzheimer hasta 53% (Morris Alzheimers Dement 2015)",
+        "Intervención multidominio tipo FINGER (NEJM 2015): combinación de dieta + ejercicio + entrenamiento cognitivo + control vascular en ancianos en riesgo — efecto modesto pero significativo en cognición global. POINTER (resultados 2024) confirma viabilidad en EE.UU.",
+        "Ejercicio físico aeróbico (caminar 150 min/sem) + ejercicios de fuerza 2x/sem + equilibrio (tai chi) — reduce declive cognitivo, mejora estado funcional y reduce caídas. Programas tipo 'Otago' validados",
+        "Estimulación cognitiva estructurada (CST — Cognitive Stimulation Therapy de Spector): 14 sesiones grupales, evidencia más sólida en demencia leve-moderada. Reminiscencia, terapia de orientación a la realidad",
+        "Musicoterapia personalizada: reduce agitación, mejora estado de ánimo (efecto memoria autobiográfica preservada por mucho tiempo). Programa 'Music & Memory'",
+        "Terapia ocupacional centrada en AVD: programa COTID (Community Occupational Therapy for Dementia, Graff BMJ 2006) — mejora desempeño y reduce sobrecarga cuidador. Adaptación del hogar, simplificación de tareas",
+        "Ambiente estructurado y predecible: rutinas consistentes, luz natural diurna (reduce agitación nocturna y sundowning), reducir estímulos por la tarde, etiquetas/pictogramas en armarios y baños, evitar cambios bruscos",
+        "Higiene del sueño rigurosa: horarios fijos, no siestas largas, exposición a luz brillante AM, evitar cafeína PM, tratar SAHS coexistente (CPAP mejora cognición en estudios)",
+        "Apoyo al cuidador: programa REACH II (NEJM 2003 — evidencia clase A para reducir carga), grupos de apoyo, evaluación con escala Zarit, centros de día con respiro, planificación de descansos del cuidador (5+ horas/semana mínimo)",
+        "Prevención de delirium superpuesto en hospital: protocolo HELP (Hospital Elder Life Program) — orientación frecuente, evitar deprivación sensorial (gafas, audífonos), movilización temprana, hidratación, evitar sondas innecesarias, sueño protegido",
+        "Planificación anticipada y cuidados paliativos: discusión precoz mientras paciente conserva capacidad — directivas anticipadas, designación representante, decisión sobre PEG (NO recomendada en demencia avanzada — sin beneficio sobre aspiración o supervivencia), evitar hospitalizaciones innecesarias en fase terminal"
       ],
-      "quirurgico": []
+      "quirurgico": [
+        "Estimulación cerebral profunda (DBS) del fórnix: en estudio fase III (ADvance-2 trial). Hipotético rescate de circuitos de memoria. Resultados mixtos hasta 2025 — NO indicación clínica establecida",
+        "Apertura focalizada de barrera hematoencefálica con ultrasonido (FUS-BBB): técnica emergente (Lipsman Nat Commun 2018) para mejorar entrega de anticuerpos anti-amyloid; ensayos clínicos en curso con aducanumab y lecanemab. NO uso clínico estándar todavía",
+        "Derivación ventriculoperitoneal SOLO si hidrocefalia normotensiva confirmada (no es Alzheimer pero entra en diagnóstico diferencial — triada de Hakim: paso ancho, incontinencia urinaria, deterioro cognitivo subagudo + ventriculomegalia con índice de Evans >0.3 + respuesta a tap test)"
+      ]
     },
     "cuidadosEnfermeria": {
       "valoracion": [
@@ -8038,7 +8156,15 @@
       "pat_acv",
       "pat_epilepsia"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "NIA-AA Research Framework (Jack CR et al, Alzheimers Dement 2018;14:535-562) y revisión 2024: Revised criteria for diagnosis and staging of Alzheimer's disease (Jack CR et al, Alzheimers Dement 2024;20:5143-5169)",
+      "Lancet Commission on dementia prevention, intervention, and care: 2024 report (Livingston G et al, Lancet 2024;404:572-628) — 14 factores modificables (45% riesgo atribuible)",
+      "Ensayos pivotales anti-amiloide: CLARITY-AD lecanemab (van Dyck CH et al, NEJM 2023;388:9-21) y TRAILBLAZER-ALZ 2 donanemab (Sims JR et al, JAMA 2023;330:512-527). Aprobaciones FDA: lecanemab traditional approval julio 2023, donanemab julio 2024; brexpiprazole agitación mayo 2023",
+      "Biomarcadores plasmáticos p-tau217: Janelidze S et al (Nat Med 2023;29:374-385); Palmqvist S et al (JAMA Neurol 2024;81:69-78) — Lumipulse aprobado FDA 2025",
+      "Ensayos no farmacológicos: FINGER (Ngandu T et al, Lancet 2015;385:2255-2263); SPRINT-MIND HTA (NEJM 2018); REACH II caregivers (Belle SH et al, NEJM 2003)"
+    ]
   },
   {
     "id": "pat_guillain_barre",
