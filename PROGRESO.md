@@ -4,6 +4,43 @@
 
 ---
 
+## 2026-05-24 — Sesion 42: Revisión clínica de pat_apendicitis a WSES 2020 + CODA NEJM 2020 + APPAC + SIS-IDSA 2017 + STOP-IT
+
+### Resumen
+Cuarta iteración del tercer lote. La entry `pat_apendicitis` era muy escueta (2 objetivos, 1 fármaco, 3 noFarm, 3 quirúrgico) y NO contemplaba el cambio paradigmático 2015-2020 del manejo: la apendicitis NO complicada ya no es indicación quirúrgica automática — APPAC (NEJM 2018) y CODA (NEJM 2020) demostraron que ~70% resuelve con antibióticos solos (NOT — Non-Operative Treatment), y la decisión actual es shared decision-making, no algoritmo unidireccional. Gaps detectados: clasificación solo histológica (sin WSES 2020 simple vs complicada — clave para decisión NOT vs cirugía; sin AAST EGS grade); Alvarado como único score (AAS de Sammalkorpi 2014 superior validada por WSES); sin PAS pediátrico; sin RM como elección en embarazo (ACR 2024); sin TC low-dose (Kim NEJM 2012); sin biomarcadores predictores de perforación (hiperbilirrubinemia); objetivos sin estratificación WSES, sin shared decision-making NOT, sin manejo de absceso con drenaje percutáneo + interval appendectomy controversial; farmacológico con un solo régimen (sin SIS-IDSA 2017, sin STOP-IT 4 días, sin NOT detalle, sin analgesia multimodal); no farmacológico mínimo (sin ERAS, sin TAP block, sin educación al alta); quirúrgico sin SAGES 2017 para embarazo, sin manejo de hallazgos histológicos (carcinoide, mucocele, pseudomyxoma), sin manejo de inmunocomprometidos.
+
+Cross-check: WSES Jerusalem 2020 (Di Saverio WJES 15:27), CODA (Flum NEJM 2020 383:1907), APPAC 5-year (Salminen NEJM 2018), APPAC II (Sippola JAMA 2021), SIS-IDSA 2017 cIAI (Mazuski), STOP-IT (Sawyer NEJM 2015), AAS Sammalkorpi 2014 + validación 2019, TC low-dose Kim NEJM 2012, SAGES 2017 embarazo, ACR Appropriateness 2018/2024, hiperbilirrubinemia Sand BJS 2009 + meta-análisis 2024. 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_apendicitis (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (4→8) | WSES 2020 NO complicada vs COMPLICADA (decisión NOT vs cirugía) + AAST EGS Grade I-V + estadios histológicos clásicos como categoría secundaria |
+| `pruebas` (3→6) | +Adult Appendicitis Score Sammalkorpi (preferido WSES sobre Alvarado) + PAS pediátrico + ecografía refinada + TAC con TC LOW-DOSE (Kim NEJM 2012) + RM en embarazo (preferida ACR 2024) + biomarcadores con hiperbilirrubinemia predictor de perforación |
+| `objetivos` (2→8) | Estratificación WSES + shared decision-making NOT (CODA/APPAC) + criterios para cirugía urgente + drenaje percutáneo + STOP-IT 4 días + analgesia multimodal pre-diagnóstico + embarazo cualquier trimestre + ERAS postoperatorio |
+| `farmacologico` (1→4) | Profilaxis DOSIS ÚNICA (no prolongar en NO complicada) + antibioticoterapia TERAPÉUTICA SIS-IDSA 2017 con STOP-IT 4 días + NOT detallado con ertapenem→step-down oral y criterios exclusión + analgesia multimodal opioid-sparing con TAP block |
+| `noFarmacologico` (3→10) | Estabilización con cristaloides balanceados (SMART/BaSICS) + ayuno ASA + SNG/SV solo si indicación + analgesia pre-diagnóstico + antiemesis + TAP block + protocolo ERAS + educación al alta con colonoscopia en >40 años post-NOT |
+| `quirurgico` (3→8) | Laparoscopia PREFERIDA en todos los grupos (WSES/EAES) + SILS + abierta criterios estrictos + drenaje percutáneo absceso + interval appendectomy controversial >40a por riesgo neoplasia + manejo histológico (carcinoide/mucocele/pseudomyxoma) + embarazo SAGES 2017 + inmunocomprometidos |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: WSES Jerusalem 2020 + ensayos CODA/APPAC 5-year/APPAC II + SIS-IDSA 2017 + STOP-IT + AAS Sammalkorpi + ACR/SAGES/TC low-dose |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`, `fisiopatologia`: vigentes (mecanismo de obstrucción luminal correcto)
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes (signos clásicos cubiertos)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **25 frescas** (era 24; +pat_apendicitis), 126 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (6 restantes)
+pat_obstrucción_intestinal → pat_hemorragia_digestiva → pat_eii → pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 41: Revisión clínica de pat_alzheimer a NIA-AA 2024 + lecanemab/donanemab + p-tau217 + Lancet Commission 2024
 
 ### Resumen
