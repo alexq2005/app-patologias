@@ -7347,27 +7347,55 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Estadificación de Hoehn & Yahr",
+      "nombre": "Diagnóstico (MDS 2015) + Estadificación H&Y + Subtipos motores",
       "tipos": [
         {
-          "nombre": "Estadio I",
-          "descripcion": "Síntomas unilaterales sin alteración funcional"
+          "nombre": "MDS Clinical Diagnostic Criteria 2015 — Parkinson clínicamente establecido",
+          "descripcion": "Bradicinesia + al menos uno (temblor de reposo 4-6 Hz o rigidez) + ≥2 criterios de apoyo (respuesta sostenida a levodopa, discinesias inducidas por levodopa, temblor de reposo de una extremidad, MIBG cardíaca anormal o pérdida olfatoria) + 0 criterios de exclusión absolutos + 0 banderas rojas. Reemplaza criterios UK Brain Bank"
         },
         {
-          "nombre": "Estadio II",
-          "descripcion": "Síntomas bilaterales sin inestabilidad postural"
+          "nombre": "MDS — Parkinson clínicamente probable",
+          "descripcion": "Criterios diagnósticos + sin criterios de exclusión absolutos + número de banderas rojas contrabalanceadas por igual número de criterios de apoyo"
         },
         {
-          "nombre": "Estadio III",
-          "descripcion": "Inicio de inestabilidad postural, funcionalmente independiente"
+          "nombre": "MDS Research Criteria for Prodromal PD (2015, revisado 2019)",
+          "descripcion": "Identifica fase prodrómica (años-décadas antes de síntomas motores) usando factores de riesgo (edad, varón, exposición pesticidas, no tabaquismo) + marcadores prodrómicos (RBD por PSG, hiposmia/anosmia, hipotensión ortostática, constipación, depresión, αSyn-SAA+). Probabilidad ≥80% = prodromal PD"
         },
         {
-          "nombre": "Estadio IV",
-          "descripcion": "Discapacidad severa, pero puede caminar o estar de pie sin ayuda"
+          "nombre": "Subtipo motor: Tremor-Dominant (TD)",
+          "descripcion": "Predominio del temblor de reposo, progresión más lenta, menor riesgo de demencia, mejor respuesta a anticolinérgicos en jóvenes y mejor candidato a HIFU/talamotomía"
         },
         {
-          "nombre": "Estadio V",
-          "descripcion": "En silla de ruedas o cama sin ayuda, cuidado constante"
+          "nombre": "Subtipo motor: PIGD (Postural Instability and Gait Disorder)",
+          "descripcion": "Predominio inestabilidad postural, freezing, marcha festinante; progresión más rápida, mayor riesgo de demencia y caídas, peor respuesta sintomática a levodopa en ítem postural"
+        },
+        {
+          "nombre": "Subtipo motor: Indeterminado / mixto",
+          "descripcion": "Ratio TD/PIGD intermedio; muchos pacientes evolucionan de TD a PIGD con la progresión"
+        },
+        {
+          "nombre": "Estadio H&Y I (unilateral)",
+          "descripcion": "Síntomas unilaterales sin alteración funcional. Suele coincidir con MDS clínicamente establecido al diagnóstico"
+        },
+        {
+          "nombre": "Estadio H&Y II (bilateral)",
+          "descripcion": "Síntomas bilaterales sin inestabilidad postural; independiente para AVD"
+        },
+        {
+          "nombre": "Estadio H&Y III (postural)",
+          "descripcion": "Inicio de inestabilidad postural (pull test positivo), funcionalmente independiente pero limitado. Frontera con enfermedad avanzada"
+        },
+        {
+          "nombre": "Estadio H&Y IV (severo)",
+          "descripcion": "Discapacidad severa pero puede caminar o estar de pie sin ayuda. Generalmente fluctuaciones motoras y/o discinesias presentes"
+        },
+        {
+          "nombre": "Estadio H&Y V (terminal)",
+          "descripcion": "Silla de ruedas o cama sin ayuda, cuidado constante. Riesgo alto de demencia, neumonía aspirativa y úlceras por presión"
+        },
+        {
+          "nombre": "Parkinson de inicio temprano (Early-Onset PD, EOPD)",
+          "descripcion": "Inicio <50 años (juvenil <21). Sugiere causa genética (LRRK2, PRKN, PINK1, DJ-1, GBA1). Progresión más lenta, mayor frecuencia de distonías, mejor respuesta a levodopa, mayor riesgo de discinesias precoces"
         }
       ]
     },
@@ -7388,76 +7416,195 @@
       ],
       "pruebas": [
         {
-          "nombre": "DaTscan (DAT-SPECT)",
-          "descripcion": "Gammagrafia con FP-CIT que detecta la pérdida de neuronas dopaminergicas presinápticas en estriado",
+          "nombre": "Diagnóstico clínico MDS 2015 (estándar de oro)",
+          "descripcion": "El diagnóstico de Parkinson sigue siendo CLÍNICO según criterios MDS 2015: bradicinesia + temblor reposo o rigidez + criterios apoyo - banderas rojas - exclusiones. Ningún test sustituye al examen experto. La respuesta sostenida a levodopa (≥6 meses) es uno de los criterios de apoyo más fuertes",
           "cuidadosEnfermeria": [
-            "Informar al paciente sobre el procedimiento de medicina nuclear",
-            "Suspender medicación que interfiere con DAT 5 dias antes",
-            "Proteger tiroides con ioduro potasico previo a la inyección del radiofarmaco"
+            "Asistir al neurólogo durante MDS-UPDRS parte III (examen motor) en estado OFF (≥12h sin levodopa) y ON",
+            "Documentar respuesta a desafío con levodopa: dosis-test 200-300 mg + carbidopa con MDS-UPDRS pre y post 60-90 min",
+            "Derivar a unidad de trastornos del movimiento si dudas (no etiquetar parkinsonismo atípico precozmente)"
           ]
         },
         {
-          "nombre": "Escala UPDRS (Unified Parkinson's Disease Rating Scale)",
-          "descripcion": "Cuantifica la severidad y evolución del Parkinson en aspectos motores y no motores",
+          "nombre": "MDS-UPDRS (Movement Disorder Society — UPDRS revisada)",
+          "descripcion": "Versión revisada de UPDRS, estándar actual para cuantificar síntomas. 4 partes: I (no motor experiencias diarias), II (motor experiencias diarias), III (examen motor), IV (complicaciones motoras: fluctuaciones, discinesias, distonía OFF)",
           "cuidadosEnfermeria": [
-            "Aplicar al ingreso y en cada visita para monitorizar progresion y respuesta al tratamiento"
+            "Aplicar al ingreso y cada 6-12 meses para monitorizar progresión",
+            "Partes I y II son auto-reportadas por paciente/cuidador; parte III requiere examen profesional entrenado",
+            "Documentar siempre en qué estado (ON/OFF) se aplicó parte III"
+          ]
+        },
+        {
+          "nombre": "α-Sinucleína Seed Amplification Assay (αSyn-SAA) en LCR",
+          "descripcion": "Biomarcador molecular (Siderowf Lancet Neurol 2023, cohorte PPMI): sensibilidad ≥87% para Parkinson clínico, ≥99% en RBD prodrómico. Detecta agregados patológicos de α-sinucleína amplificados in vitro. Confirma diagnóstico biológico antes de fase motora — base del marco SynNeurGe / NSD-ISS 2024",
+          "cuidadosEnfermeria": [
+            "Procedimiento: punción lumbar estándar (volumen ≥1-2 mL LCR) — preparar al paciente y asistir",
+            "Posición decúbito post-punción 1-2h, hidratación, vigilar cefalea post-punción",
+            "Interpretación: + (agregados detectados) altamente específico de sinucleinopatía; - no excluye PD atípico/temprano"
+          ]
+        },
+        {
+          "nombre": "DaTscan (DAT-SPECT con FP-CIT / Ioflupano-I-123)",
+          "descripcion": "Imagen funcional del transportador presináptico de dopamina (DAT) en estriado. ÚTIL para diferenciar Parkinson de temblor esencial o parkinsonismos vasculares/farmacológicos, NO diferencia Parkinson de parkinsonismos atípicos (AMS, PSP, DCB también muestran déficit DAT). Indicación: dudas diagnósticas tras evaluación clínica",
+          "cuidadosEnfermeria": [
+            "Bloqueo tiroideo con ioduro potásico (Lugol 10 gotas) 1h antes y 24h después del radiofarmaco",
+            "Suspender fármacos que interfieren con DAT 5-7 días antes: bupropion, anfetaminas, metilfenidato, modafinilo, cocaína, fentermina",
+            "Educar: NO interfieren levodopa, agonistas dopaminérgicos, IMAO-B (no suspender Parkinson tx)",
+            "Hidratación post-procedimiento para eliminar radiofarmaco; evitar contacto cercano con embarazadas/niños 24h"
+          ]
+        },
+        {
+          "nombre": "Polisomnografía con vídeo-EEG para trastorno conducta sueño REM (RBD)",
+          "descripcion": "RBD idiopático tiene >80% conversión a sinucleinopatía (Parkinson, demencia con cuerpos de Lewy, AMS) en 10-14 años. Su detección permite estratificar riesgo prodrómico y enrolar en estudios neuroprotección",
+          "cuidadosEnfermeria": [
+            "Preparar paciente para PSG: noche en laboratorio del sueño, sin alcohol/café 24h previas",
+            "Indagar: anamnesis con la pareja (conductas violentas durante sueño, vocalizaciones, sueños vívidos)",
+            "Si RBD confirmado: derivar para αSyn-SAA y evaluación de marcadores prodrómicos"
+          ]
+        },
+        {
+          "nombre": "Pruebas no motoras complementarias (MoCA, UPSIT, ortostatismo)",
+          "descripcion": "Cribado de síntomas no motores: MoCA (deterioro cognitivo, PD-MCI predictor de demencia), UPSIT-40 o Sniffin' Sticks (hiposmia presente en ≥90%), prueba de ortostatismo activa (caída TAS ≥20 o TAD ≥10 mmHg al ponerse de pie sin taquicardia compensadora sugiere disautonomía)",
+          "cuidadosEnfermeria": [
+            "MoCA al diagnóstico y anual (puntuación <26 sugiere PD-MCI; <21 demencia)",
+            "Prueba de ortostatismo: decúbito 5 min, registrar TA/FC; bipedestación 1-3-5-10 min con monitorización continua",
+            "Caídas y síncope: derivar a evaluación de hipotensión ortostática neurogénica (midodrina, droxidopa, medias compresivas)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Controlar los síntomas motores y mejorar la calidad de vida",
-        "Prevenir complicaciones de la inmovilidad",
-        "Tratar síntomas no motores (depresion, demencia)"
+        "Controlar síntomas motores cardinales y preservar funcionalidad (AAN 2021): elegir agente inicial según edad, severidad y comorbilidad — levodopa primera línea si >65 años o discapacidad funcional significativa; agonistas o IMAO-B razonables si <65 años con síntomas leves",
+        "Minimizar fluctuaciones motoras y discinesias inducidas por levodopa (LID): usar dosis efectiva más baja, fraccionar, agregar COMT-i (entacapone, opicapone) o IMAO-B, considerar amantadina LP para discinesias y istradefylline o safinamida para reducir tiempo OFF",
+        "Tratar agresivamente síntomas no motores (frecuentemente subdiagnosticados y de mayor impacto en calidad de vida que motores): depresión, ansiedad, apatía, RBD, hiposmia, constipación, hipotensión ortostática, disfunción urogenital, dolor, fatiga, deterioro cognitivo, psicosis",
+        "Detectar y manejar RBD: clonazepam 0.25-0.5 mg o melatonina 3-12 mg al acostarse + medidas de seguridad en dormitorio (cama baja, sin objetos punzantes, pareja en cama separada si conductas violentas)",
+        "Preservar función cognitiva: cribado MoCA anual; rivastigmina (parche o vía oral) para demencia asociada a Parkinson (PDD); evitar anticolinérgicos en >70 años (riesgo cognitivo)",
+        "Tratar psicosis (alucinaciones visuales, delirio): primero reducir agentes ofensores (anticolinérgicos > amantadina > agonistas > IMAO-B > COMT-i > levodopa); si persiste — pimavanserin (5-HT2A inverso, aprobado FDA 2016) o quetiapina/clozapina. EVITAR haloperidol y antipsicóticos típicos (empeoran parkinsonismo, riesgo SNM)",
+        "Prevenir caídas y complicaciones de inmovilidad: programa de ejercicio multimodal supervisado, evaluación domiciliaria, calzado adecuado, ayudas técnicas",
+        "Optimizar nutrición y deglución: derivación temprana a logopedia/SLP ante disfagia; modificar consistencia; gastrostomía si disfagia severa con aspiración recurrente",
+        "Planificar transición a terapias avanzadas en Parkinson avanzado con fluctuaciones refractarias (criterios 5-2-1: ≥5 dosis levodopa/día, ≥2h OFF/día, ≥1h discinesias incapacitantes/día): DBS, apomorfina infusión SC continua, LCIG (Duodopa), foslevodopa-foscarbidopa SC (Vyalev/Produodopa, aprobada 2024), HIFU MRgFUS para tremor refractario",
+        "Cuidados de fin de vida: directivas anticipadas precoces (mientras cognición preservada); planificar manejo de PEG, infecciones recurrentes, decisiones de no resucitación"
       ],
       "farmacologico": [
         {
-          "nombre": "Levodopa + Carbidopa (Sinemet)",
-          "grupo": "Precursor de dopamina - farmaco más eficaz en Parkinson",
-          "mecanismo": "La levodopa cruza la BHE y se convierte en dopamina en neuronas estriatales. La carbidopa inhibe la descarboxilación periférica, reduciendo efectos adversos y aumentando la disponibilidad central",
-          "dosis": "Iniciar 100/25 mg c/8h, ajustar segun respuesta",
+          "nombre": "Levodopa + Carbidopa (Sinemet, Madopar con benserazida)",
+          "grupo": "Precursor de dopamina — fármaco más eficaz en síntomas motores (AAN 2021 recomienda como tratamiento inicial preferido si discapacidad funcional)",
+          "mecanismo": "Levodopa cruza la BHE y se descarboxila a dopamina en neuronas estriatales. Carbidopa/benserazida (inhibidor descarboxilasa periférica) impide conversión sistémica, reduce efectos adversos digestivos y triplica disponibilidad central. ELLDOPA (NEJM 2004) descartó la vieja creencia de que la levodopa acelera neurodegeneración",
+          "dosis": "Inicio: 100/25 mg 3 veces/día con escalada lenta. Mantenimiento típico 300-1200 mg levodopa/día divididos. Formulaciones: liberación inmediata (IR), liberación prolongada (CR/LP), liberación dual (Rytary/IPX066 — picos sostenidos), gel intestinal (Duodopa), foslevodopa SC (Vyalev 2024). Polvo inhalado (Inbrija) como rescate OFF",
           "cuidadosEnfermeria": [
-            "Administrar 30-60 min ANTES de las comidas (absorción reducida por proteinas)",
-            "Nauseas frecuentes al inicio: puede tomar con galleta de sal",
-            "Vigilar hipotensión ortostática (riesgo de caidas)",
-            "Discinesias tardias: movimientos involuntarios por uso crónico",
-            "NUNCA suspender abruptamente (sindrome de hiperpirexia maligna)"
+            "ADMINISTRAR EN HORARIO EXACTO (cada 30-60 min de retraso puede precipitar OFF severo) — protocolo PD-CALM en hospitalizados",
+            "Tomar 30-60 min ANTES de comidas o 2h después: las proteínas de la dieta compiten con el transportador LAT-1 en intestino y BHE",
+            "Náuseas iniciales: agregar carbidopa extra o trimetobenzamida (NO metoclopramida, NO ondansetrón en altas dosis si IMAO-B — riesgo serotoninérgico)",
+            "Hipotensión ortostática frecuente: educar levantarse lento, medias compresivas, sal y agua si no contraindicado, midodrina o droxidopa si severa",
+            "Discinesias por pico de dosis (LID): considerar amantadina LP, opicapone, safinamida, fraccionar dosis, o derivar a DBS/HIFU",
+            "Fenómeno wearing-OFF: agregar IMAO-B, COMT-i (entacapone/opicapone), istradefylline, apomorfina rescate o cambiar a LP/Rytary",
+            "NUNCA suspender abruptamente: riesgo de Síndrome Neuroléptico Maligno-like (hipertermia, rigidez, alteración conciencia). Si paciente NPO: usar parche de rotigotina como puente o LCIG/apomorfina SC",
+            "Orina/sudor pueden teñirse rojizo-marrón (oxidación de levodopa) — informar para evitar alarma"
           ]
         },
         {
-          "nombre": "Pramipexol / Ropinirol",
-          "grupo": "Agonista dopaminergico",
-          "mecanismo": "Activa directamente los receptores dopaminergicos D2/D3 en el estriado sin necesidad de conversion",
-          "dosis": "Pramipexol: iniciar 0.125 mg c/8h, escalar lentamente",
+          "nombre": "Agonistas dopaminérgicos: Pramipexol, Ropinirol, Rotigotina (parche), Apomorfina (rescate)",
+          "grupo": "Agonistas D2/D3 — alternativa inicial AAN 2021 si <65 años con síntomas leves (retrasa discinesias pero más efectos adversos cognitivos/conductuales)",
+          "mecanismo": "Activan directamente receptores D2/D3 en estriado. Rotigotina transdérmica 24h: estimulación dopaminérgica continua (útil si NPO, disfagia o fluctuaciones). Apomorfina SC: agonista pan-D potente, inicio en 5-10 min, duración 60-90 min — rescate OFF agudo; también infusión continua en avanzados",
+          "dosis": "Pramipexol IR: 0.125 mg c/8h, escalar a 1.5-4.5 mg/d. Pramipexol LP: 0.375 mg/d una vez, escalar. Ropinirol LP: 2 mg/d, escalar a 8-24 mg/d. Rotigotina: 2 mg/24h parche, escalar 2 mg/sem hasta 8 mg/24h (16 mg en avanzados). Apomorfina inyección: 2-6 mg SC PRN (premedicar con domperidona o trimetobenzamida 3 días)",
           "cuidadosEnfermeria": [
-            "Somnolencia diurna excesiva: no conducir",
-            "Ataques de sueno subito: advertir al paciente",
-            "Trastornos de control de impulsos: juego compulsivo, hipersexualidad (informar a la familia)",
-            "Edemas perifericos",
-            "Alucinaciones en ancianos"
+            "VIGILAR TRASTORNOS DEL CONTROL DE IMPULSOS (ICD): juego patológico, hipersexualidad, compras compulsivas, atracones — pregunta dirigida al paciente Y CUIDADOR cada visita; aparecen en 15-20%, retiran/reducen dosis si presentes",
+            "Ataques de sueño súbito sin pródromos: advertir riesgo de accidentes de tráfico — NO conducir en titulación; usar escala Epworth de somnolencia",
+            "Edema periférico: hasta 30% pacientes — diferenciar de insuficiencia cardíaca",
+            "Alucinaciones visuales (especialmente en >70 años o demencia): reducir dosis, retirar si persisten",
+            "Rotigotina: rotar sitio de parche cada 24h, reacciones cutáneas frecuentes; útil periópera/disfagia",
+            "Apomorfina: irritación local en sitio inyección (rotar); náuseas/vómitos casi universales sin antiemético; bostezos como signo de respuesta dopaminérgica adecuada",
+            "Síndrome de retirada de agonistas dopaminérgicos (DAWS): ansiedad, dolor, disforia al suspender — retirar lentamente"
           ]
         },
         {
-          "nombre": "Rasagilina / Selegilina",
-          "grupo": "Inhibidor MAO-B - neuroprotector y sinergico",
-          "mecanismo": "Inhibe la MAO-B que degrada la dopamina, aumentando su disponibilidad en la sinapsis",
-          "dosis": "Rasagilina 1 mg/dia en dosis unica",
+          "nombre": "Inhibidores MAO-B: Rasagilina, Selegilina, Safinamida",
+          "grupo": "Modificadores enzimáticos — monoterapia precoz (AAN 2021 razonable como inicial) o adyuvante en OFF",
+          "mecanismo": "Inhiben selectivamente MAO-B (degrada dopamina) aumentando disponibilidad sináptica. Safinamida (aprobada 2017): además inhibe canales Na+/Ca++ y modula liberación de glutamato — útil específicamente para reducir tiempo OFF en pacientes con fluctuaciones",
+          "dosis": "Rasagilina: 1 mg/d (única dosis matutina). Selegilina: 5 mg desayuno y almuerzo (evitar pm — metabolitos anfetamínicos producen insomnio). Safinamida: 50 mg/d, escalar a 100 mg/d como adyuvante de levodopa",
           "cuidadosEnfermeria": [
-            "Interacción con serotonina: no combinar con ISRS/IRSN (sindrome serotoninergico)",
-            "Selegilina puede causar insomnio: dar en la mañana"
+            "RIESGO SÍNDROME SEROTONINÉRGICO: precaución con ISRS/IRSN/tramadol/meperidina/dextrometorfano/triptanes/MDMA — coadministración común en práctica pero requiere vigilancia (rigidez, hiperreflexia, mioclonus, hipertermia, autonomic instability)",
+            "Crisis hipertensiva con tiramina solo riesgo teórico a dosis altas: dieta libre normalmente (a diferencia de IMAO no selectivos)",
+            "Selegilina vespertina causa insomnio (metabolitos L-anfetamina, L-metanfetamina)",
+            "Safinamida: vigilar deterioro hepático (ajustar Child-Pugh B; contraindicado en C), cefalea, caídas, somnolencia",
+            "Rasagilina/Selegilina: NO requieren suspensión preoperatoria (a diferencia de IMAO no selectivos)"
+          ]
+        },
+        {
+          "nombre": "Inhibidores COMT: Entacapone, Opicapone, Tolcapone",
+          "grupo": "Potenciadores periféricos de levodopa — siempre coadministrados con levodopa para reducir wearing-OFF",
+          "mecanismo": "Bloquean catecol-O-metiltransferasa periférica, prolongan vida media de levodopa y aumentan AUC sin elevar pico (reduce fluctuaciones). Opicapone (Ongentys 2020): vida media >100h, una vez al día al acostarse, sin hepatotoxicidad. Tolcapone: requiere monitoreo hepático (riesgo fallo hepático fulminante) — segunda línea",
+          "dosis": "Entacapone: 200 mg con cada dosis de levodopa (máx 1600 mg/d) — disponible combinado en Stalevo (levodopa/carbidopa/entacapone). Opicapone: 50 mg/d al acostarse ≥1h después de última dosis de levodopa. Tolcapone: 100 mg c/8h con monitoreo ALT/AST quincenal x6 meses",
+          "cuidadosEnfermeria": [
+            "Diarrea de inicio tardío (semanas-meses) con entacapone — puede requerir suspensión",
+            "Orina marrón-anaranjada inocua",
+            "Aumentan efectos de levodopa: pueden agravar discinesias (reducir levodopa 15-30% al iniciar)",
+            "Opicapone: tomar SIN COMIDA, ≥1h post levodopa, al acostarse — mejor adherencia que entacapone",
+            "Tolcapone: monitorear hepatograma estricto, contraindicado si hepatopatía previa"
+          ]
+        },
+        {
+          "nombre": "Amantadina (IR y LP) e Istradefylline",
+          "grupo": "Adyuvantes con mecanismos no dopaminérgicos para discinesias y tiempo OFF",
+          "mecanismo": "Amantadina: antagonista NMDA + amantadina liberación prolongada (Gocovri/Osmolex ER) es el único agente con indicación FDA específica para discinesias inducidas por levodopa (reduce 25-50%). Istradefylline (Nourianz, FDA 2019): antagonista selectivo de receptores adenosina A2A — reduce tiempo OFF en pacientes con fluctuaciones",
+          "dosis": "Amantadina IR: 100 mg 2-3 veces/día. Amantadina LP (Gocovri): 137-274 mg al acostarse. Istradefylline: 20-40 mg/d (una toma)",
+          "cuidadosEnfermeria": [
+            "Amantadina: livedo reticularis (mancha violácea en piernas) no requiere suspensión; edema periférico, alucinaciones, confusión en ancianos",
+            "Amantadina: efectos anticolinérgicos (boca seca, retención urinaria) — precaución >70 años",
+            "Amantadina: ajustar dosis por función renal (eliminación renal 90%); contraindicada si ClCr <15",
+            "NUNCA suspender amantadina abruptamente — riesgo de empeoramiento parkinsonismo y delirium",
+            "Istradefylline: discinesias, náuseas, insomnio; potenciado por inhibidores CYP3A4 (claritro, ketoconazol)"
+          ]
+        },
+        {
+          "nombre": "Anticolinérgicos: Trihexifenidilo, Biperideno",
+          "grupo": "Antiguo arsenal — actualmente uso muy restringido a temblor en jóvenes sin alternativa",
+          "mecanismo": "Bloquean receptores muscarínicos M1 estriatales, equilibrando exceso colinérgico relativo en Parkinson. Eficacia sobre temblor, escasa sobre bradicinesia",
+          "dosis": "Trihexifenidilo: 1 mg/d inicio, máx 6-15 mg/d divididos. Biperideno: 2 mg c/8-12h",
+          "cuidadosEnfermeria": [
+            "CONTRAINDICADO en >65-70 años: alteración cognitiva, demencia, delirio, alucinaciones",
+            "Efectos anticolinérgicos: boca seca, visión borrosa, retención urinaria, constipación, taquicardia, glaucoma de ángulo cerrado",
+            "Retirar SIEMPRE de forma gradual (riesgo rebote parkinsonismo, delirium colinérgico)",
+            "Limitado a Parkinson juvenil con temblor predominante refractario en consenso geriátrico actual"
+          ]
+        },
+        {
+          "nombre": "Pimavanserin y Rivastigmina (síntomas no motores: psicosis y demencia)",
+          "grupo": "Tratamiento de complicaciones cognitivo-conductuales del Parkinson",
+          "mecanismo": "Pimavanserin: agonista inverso selectivo 5-HT2A (NO afinidad dopaminérgica — único antipsicótico aprobado FDA 2016 para psicosis asociada a Parkinson sin empeorar parkinsonismo). Rivastigmina: inhibidor acetilcolinesterasa + butirilcolinesterasa, único aprobado FDA para Demencia Asociada a Parkinson (PDD)",
+          "dosis": "Pimavanserin: 34 mg/d una vez. Rivastigmina: parche 4.6 mg/24h escalar a 9.5-13.3 mg/24h o cápsulas 1.5 mg c/12h escalar a 6 mg c/12h",
+          "cuidadosEnfermeria": [
+            "Pimavanserin: vigilar prolongación QT (ECG basal); inicio lento de efecto (4-6 semanas); contraindicado con otros prolongadores QT",
+            "EVITAR antipsicóticos típicos (haloperidol, risperidona, olanzapina) y atípicos potentes en Parkinson — riesgo SNM, empeoramiento motor severo. Alternativa segunda línea: clozapina (vigilancia hematológica) o quetiapina baja dosis",
+            "Rivastigmina parche: rotar sitios (cada 24h), reacciones cutáneas frecuentes; menos náuseas que vía oral",
+            "Rivastigmina: bradicardia, síncope (vigilar FC, suspender si <55 lpm); aumenta secreciones (broncopulmonares, salivales — atención si EPOC/asma)",
+            "Memantina puede usarse off-label en PDD avanzada moderada-severa"
           ]
         }
       ],
       "noFarmacologico": [
-        "Fisioterapia específica para Parkinson (LSVT Big para movimientos grandes)",
-        "Logopedia (LSVT Loud para hipofonia)",
-        "Terapia ocupacional para AVD",
-        "Ejercicio regular (tai chi, baile, marcha nordica)",
-        "Nutrición: dieta rica en fibra para constipación"
+        "Manejo en Unidad Multidisciplinaria de Trastornos del Movimiento: neurólogo experto + enfermería especializada + fisio + terapeuta ocupacional + logopeda + nutricionista + psicólogo + trabajador social — evidencia de mejor control y menor mortalidad (Bloem Lancet Neurol 2020)",
+        "Ejercicio aeróbico vigoroso: 30-40 min, 3-5x/semana, 60-85% FCmáx (Park-in-Shape NEJM Neurol 2019: cicloergómetro de alta intensidad reduce progresión MDS-UPDRS-III). Boxing sin contacto (Rock Steady), tango, ciclismo, marcha nórdica con evidencia",
+        "LSVT BIG (Lee Silverman Voice Treatment — Body): protocolo intensivo 16 sesiones/mes, movimientos de gran amplitud — mejora velocidad, equilibrio, marcha y AVD",
+        "LSVT LOUD: protocolo análogo para hipofonia y disartria — mejora intensidad vocal y comunicación",
+        "Logopedia y SLP para disfagia: VFSS (videofluoroscopia) o FEES si sospecha aspiración; modificar consistencia (espesar líquidos, alimentos triturados); maniobras (deglución supraglótica, postura barbilla al pecho); decisión sobre PEG si aspiraciones recurrentes",
+        "Terapia ocupacional: evaluación domiciliaria, adaptaciones (cubiertos con peso/grip, abotonadores, calzado sin cordones), entrenamiento en estrategias compensatorias para AVD",
+        "Fisioterapia con técnicas de cueing externo: marcas visuales en suelo (líneas, láser portátil), señales auditivas (metrónomo, música ritmada), entrenamiento en transferencias y giros para combatir freezing",
+        "Manejo no farmacológico de la constipación (presente en 60-80% prodrómica): hidratación 1.5-2 L/d, dieta rica en fibra (25-35 g/d), ejercicio, macrogol como primera línea farmacológica si dieta insuficiente",
+        "Hipotensión ortostática: educación sobre maniobras (contracción musculatura piernas, cruce de piernas, dormir cabecera 30°), aumentar sal y agua (si no contraindicado), medias compresivas hasta cintura, evitar fármacos vasodilatadores innecesarios",
+        "Manejo RBD: seguridad en dormitorio (cama baja, retirar mesilla con objetos punzantes, cinturón al colchón si conductas severas, pareja en cama separada), clonazepam o melatonina (preferida si demencia o riesgo de apnea)",
+        "Apoyo psicológico y grupos de apoyo: depresión y ansiedad presentes en 30-50%; TCC efectiva; vinculación con asociaciones de pacientes (Federación Española Parkinson, Michael J. Fox Foundation)",
+        "Educación al cuidador y prevención de burnout: programa de respiro, evaluación de carga (Zarit), grupos de cuidadores",
+        "Higiene del sueño: tratar somnolencia diurna excesiva con modafinilo si persiste tras optimizar tx; valorar SAHS coexistente"
       ],
       "quirurgico": [
-        "Estimulación cerebral profunda (DBS) del nucleo subtalamico: para pacientes con respuesta a levodopa pero con fluctuaciones y discinesias"
+        "Estimulación Cerebral Profunda (DBS) del Núcleo Subtalámico (STN) o Globo Pálido interno (GPi): GOLD STANDARD en Parkinson avanzado con fluctuaciones/discinesias refractarias a tratamiento médico óptimo. Criterios candidato (5-2-1 + Core Assessment for Surgical Therapies CAPSIT-PD): respuesta sostenida a levodopa (≥30% mejora MDS-UPDRS-III ON vs OFF), edad <70 (relativa, hasta 75 si excelente estado), sin demencia (MoCA >24), sin psicosis activa, sin depresión severa no tratada, RM cerebral sin lesiones significativas. EARLYSTIM (NEJM 2013) demostró beneficio en pacientes más jóvenes (50-60a) con fluctuaciones precoces (<3 años). STN: reduce más fármacos pero más efectos cognitivos/conductuales; GPi: mejor para discinesias y pacientes frágiles cognitivamente",
+        "Ultrasonido Focalizado Guiado por RM (MRgFUS, HIFU) — talamotomía VIM unilateral: aprobado FDA 2018 para Parkinson temporal-dominante refractario unilateral; sin craneotomía, sin implantes. Indicación: temblor incapacitante asimétrico que no responde a fármacos. Talamotomía VIM bilateral en estudio (riesgo disartria); palidotomía HIFU para discinesias",
+        "Infusión continua de Levodopa-Carbidopa Gel Intestinal (LCIG, Duodopa): catéter PEG-J (PEG con extensión yeyunal) conectado a bomba portátil que infunde gel 16h/día. Indicado en avanzados con fluctuaciones refractarias que NO son candidatos a DBS (>75a, deterioro cognitivo leve, comorbilidades). Cuidados de gastrostomía y monitoreo de neuropatía por déficit B12/folato (vigilar y suplementar)",
+        "Infusión subcutánea continua de Foslevodopa/Foscarbidopa (Vyalev, FDA y EMA 2024): profármaco soluble que se infunde 24h por bomba SC — ventaja sobre Duodopa al no requerir PEG-J; cubre fluctuaciones nocturnas; alternativa para pacientes que rechazan cirugía abdominal",
+        "Infusión subcutánea continua de Apomorfina: bomba portátil 16h/día, requiere premedicación antiemética inicial; útil en fluctuaciones severas no candidatos a otras terapias avanzadas; cuidados: rotación de sitios de inyección, nódulos cutáneos (incidir, masajear, infiltración local con corticoides), educación al paciente/cuidador en manejo de bomba",
+        "Estimulación medular para freezing y dolor refractario (en estudio, no estándar)",
+        "Trasplante de células dopaminérgicas (terapia con células madre, p.ej. iPSC) — en ensayos clínicos fase I-II (Kyoto, BlueRock); no estándar clínico"
       ]
     },
     "cuidadosEnfermeria": {
@@ -7595,7 +7742,15 @@
       "pat_alzheimer",
       "pat_fractura_cadera"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "MDS Clinical Diagnostic Criteria for Parkinson's Disease (Postuma RB et al, Movement Disorders 2015;30:1591-1601)",
+      "MDS Research Criteria for Prodromal Parkinson's Disease (Berg D et al, Movement Disorders 2015; update 2019;34:1464-1470)",
+      "AAN Practice Guideline Update: Initial Pharmacological Treatment of Parkinson Disease (Pringsheim T et al, Neurology 2021;97:942-957)",
+      "Alpha-synuclein seed amplification assay para diagnóstico biológico — PPMI cohort (Siderowf A et al, Lancet Neurology 2023;22:407-417) y marco SynNeurGe/NSD-ISS 2024 (Höglinger GU et al, Lancet Neurology 2024)",
+      "Ensayos clave: EARLYSTIM DBS temprana (Schuepbach NEJM 2013); ELLDOPA seguridad levodopa (NEJM 2004); LEAP early vs delayed levodopa (NEJM 2019); PD MED (Lancet 2014); Park-in-Shape ejercicio aeróbico (Neurology 2019). Pimavanserin aprobado FDA 2016, Istradefylline FDA 2019, Opicapone EMA 2020, MRgFUS FDA 2018, Foslevodopa-foscarbidopa (Vyalev) FDA y EMA 2024"
+    ]
   },
   {
     "id": "pat_alzheimer",

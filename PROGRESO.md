@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-05-24 — Sesion 40: Revisión clínica de pat_parkinson a MDS 2015 + AAN 2021 + αSyn-SAA 2023 + farmacología 2019-2024
+
+### Resumen
+Segunda iteración del tercer lote. La entry `pat_parkinson` (Enfermedad de Parkinson) usaba criterios UK Brain Bank implícitos (obsoletos desde 2015), arsenal terapéutico de hace 15 años (sin entacapone/opicapone, sin amantadina LP para LID, sin istradefylline, sin safinamida, sin foslevodopa-foscarbidopa SC, sin pimavanserin, sin rivastigmina para PDD), DBS único acercamiento quirúrgico (sin HIFU, sin LCIG, sin apomorfina SC), sin biomarcador molecular (αSyn-SAA 2023), sin marco diagnóstico prodrómico (MDS 2015 + 2019), sin subtipos motores (TD vs PIGD), sin manejo activo de síntomas no motores (RBD, hiposmia, ortostatismo).
+
+Cross-check: MDS Clinical Diagnostic Criteria (Postuma Mov Disord 2015), MDS Prodromal Criteria 2015/2019 (Berg), AAN Initial Pharmacological Treatment Guideline (Pringsheim Neurology 2021), αSyn-SAA biomarker (Siderowf Lancet Neurol 2023, PPMI cohort), marco SynNeurGe/NSD-ISS 2024 (Höglinger Lancet Neurol), EARLYSTIM (Schuepbach NEJM 2013), ELLDOPA (NEJM 2004), LEAP (NEJM 2019), Park-in-Shape (Neurology 2019). 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_parkinson (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (5→12) | MDS Clinical Diagnostic Criteria 2015 (establecido/probable) + MDS Prodromal Criteria 2015/2019 + subtipos motores TD/PIGD/mixto + H&Y I-V + Parkinson de inicio temprano (EOPD) |
+| `pruebas` (2→6) | Diagnóstico clínico MDS 2015 + MDS-UPDRS (reemplaza UPDRS) + αSyn-SAA en LCR (biomarcador 2023) + DaTscan refinado (qué NO diferencia) + polisomnografía RBD + pruebas no motoras (MoCA, UPSIT, ortostatismo) |
+| `objetivos` (3→10) | AAN 2021 inicio (levodopa >65, agonistas/IMAO-B <65) + manejo fluctuaciones + síntomas no motores (RBD, depresión, autonómicos, cognitivos) + criterio 5-2-1 para terapias avanzadas + cuidados fin de vida |
+| `farmacologico` (3→7) | Levodopa con Rytary/Vyalev/Inbrija; agonistas + apomorfina rescate; IMAO-B con safinamida; +COMT-i (entacapone/opicapone); +amantadina LP (Gocovri única indicación LID FDA) e istradefylline; anticolinérgicos restringidos; +pimavanserin (psicosis) y rivastigmina (PDD) |
+| `noFarmacologico` (5→13) | Unidad multidisciplinar (Bloem); ejercicio vigoroso (Park-in-Shape); LSVT BIG/LOUD; logopedia/SLP disfagia; cueing externo; manejo constipación, ortostatismo, RBD; apoyo cuidador; higiene del sueño |
+| `quirurgico` (1→7) | DBS STN/GPi con criterios CAPSIT-PD y EARLYSTIM; HIFU MRgFUS unilateral (FDA 2018); LCIG/Duodopa PEG-J; foslevodopa-foscarbidopa SC (Vyalev FDA y EMA 2024); apomorfina SC continua; estimulación medular (en estudio); terapia celular iPSC (fase I-II) |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: MDS 2015 + MDS Prodromal + AAN 2021 + αSyn-SAA Lancet Neurol 2023 + ensayos clave (EARLYSTIM, ELLDOPA, LEAP, Park-in-Shape) + drogas FDA/EMA 2016-2024 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `epidemiologia`, `factoresRiesgo`: vigentes (LRRK2/PINK1/Parkin ya estaban; añadir GBA1 marginal aquí)
+- `fisiopatologia`: vigente (Braak staging mencionado; podría enriquecerse con SynNeurGe pero excede scope)
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes (signos cardinales ya bien cubiertos)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **23 frescas** (era 22; +pat_parkinson), 128 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (8 restantes)
+pat_alzheimer → pat_apendicitis → pat_obstrucción_intestinal → pat_hemorragia_digestiva → pat_eii → pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 39: Inicio TERCER LOTE — revisión clínica de pat_ira a Global Definition ARDS 2023 + ESICM 2023 + ICU-LIBERATION + PROSEVA
 
 ### Resumen
