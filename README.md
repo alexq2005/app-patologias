@@ -2,11 +2,13 @@
 
 Aplicación móvil de referencia clínica para profesionales y estudiantes de enfermería. Contiene 151 patologías organizadas por 12 sistemas corporales, con información detallada de diagnósticos NANDA-NIC-NOC, cuidados de enfermería, farmacología y protocolos de emergencia.
 
-**Versión actual**: v1.0.0 (versionCode 4) — primer lanzamiento público del ecosistema. Ver [ROADMAP.md](ROADMAP.md)
+**Versión actual**: v1.0.0 (versionCode 4) — primer lanzamiento público del ecosistema. Ver [ROADMAP.md](ROADMAP.md) y [CHANGELOG.md](CHANGELOG.md).
+
+**🩺 Cobertura clínica revisada (mayo 2026)**: 21/151 entries actualizadas a guidelines 2022-2025 (ESC, AHA, ADA, GOLD, GINA, WHO, ATS/IDSA, Baveno VII, ILAE, etc.) con metadata `revisadoEn` + `fuentes` verificables. Cubre cardiovascular (7), endocrino (3), respiratorio (6), neurológico (3), digestivo (2) — las patologías de mayor prevalencia en enfermería médico-quirúrgica adulta. Ver [docs/CLINICAL_REVIEW_PLAN.md](docs/CLINICAL_REVIEW_PLAN.md).
 
 ## Características
 
-- **151 patologías** con información clínica completa
+- **151 patologías** con información clínica completa (21 revisadas a guidelines 2022-2025; resto en seed inicial pendiente de revisión por sesiones)
 - **12 sistemas corporales** con fotos médicas reales
 - **17 escalas clínicas** interactivas con calculadora (Glasgow, NEWS2, Norton, etc.)
 - **Quiz educativo** con 8 tipos de preguntas + revisión de errores con explicaciones enriquecidas
