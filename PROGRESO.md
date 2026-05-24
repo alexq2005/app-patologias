@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-05-24 — Sesion 41: Revisión clínica de pat_alzheimer a NIA-AA 2024 + lecanemab/donanemab + p-tau217 + Lancet Commission 2024
+
+### Resumen
+Tercera iteración del tercer lote. La entry `pat_alzheimer` tenía el GAP MÁS GRANDE de toda la revisión hasta ahora: clasificación solo con GDS (sin marco biológico NIA-AA ATN); arsenal terapéutico SIN anti-amyloid mAbs (cambio paradigmático 2023-2024: lecanemab FDA traditional approval julio 2023, donanemab FDA julio 2024 — primera vez en 20 años hay tratamiento modificador); biomarcadores diagnósticos sin plasma p-tau217 (Lumipulse FDA 2025 — cribado en consulta sin LCR/PET); sin PET amiloide/tau; sin punción lumbar para Aβ42/p-tau; sin neuropsicología completa; objetivos sin ARIA monitoring; sin brexpiprazole para agitación (FDA mayo 2023 — primer fármaco específico); sin pimavanserin/suvorexant; ausencia de Lancet Commission 2024 con 14 factores modificables (45% riesgo atribuible); sin FINGER trial; sin REACH II para cuidadores; sin DBS fórnix; sin FUS-BBB.
+
+Cross-check: NIA-AA Research Framework 2018 + Revised criteria 2024 (Jack Alzheimers Dement), Lancet Commission 2024 (Livingston Lancet 404:572), CLARITY-AD lecanemab (van Dyck NEJM 2023), TRAILBLAZER-ALZ 2 donanemab (Sims JAMA 2023), Janelidze Nat Med 2023 (p-tau217), Palmqvist JAMA Neurol 2024, FINGER (Ngandu Lancet 2015), SPRINT-MIND (NEJM 2018), REACH II (Belle NEJM 2003), aprobaciones FDA brexpiprazole mayo 2023 y suvorexant 2020. 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_alzheimer (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (6→9) | Marco biológico NIA-AA 2018/2024 (ATN) + continuum preclínico/MCI/demencia + GDS 1-7 refinado con indicaciones farmacológicas + CDR (CDR-SB como endpoint CLARITY-AD) + EOPD |
+| `pruebas` (2→6) | MMSE/MoCA refinado + plasma p-tau217 (cambio paradigmático 2023-2024) + punción lumbar Aβ42/p-tau + PET amiloide (florbetapir/flutemetamol/florbetaben) y PET tau (flortaucipir) + RM con T2*/SWI para baseline anti-amyloid + neuropsicología completa con BPSD (NPI) |
+| `objetivos` (4→10) | Confirmación biológica antes de modificador + IACE/memantina sintomático + anti-amyloid mAb + ARIA monitoring + BPSD no farmacológico primero + cuidador + 14 factores Lancet 2024 + comorbilidades + planificación anticipada + funcionalidad FINGER |
+| `farmacologico` (3→6) | +LECANEMAB (Leqembi, CLARITY-AD NEJM 2023) con criterios elegibilidad, APOE ε4, monitorización ARIA-E/H, manejo; +DONANEMAB (Kisunla, TRAILBLAZER-ALZ 2) con posibilidad suspender; IACE expandido (donepezilo/galantamina/rivastigmina parche); memantina detallada; +BREXPIPRAZOLE (Rexulti, FDA mayo 2023 primer fármaco específico agitación AD); +pimavanserin/trazodona/mirtazapina/suvorexant/ISRS para BPSD específicos con EVITAR BZD y anticolinérgicos |
+| `noFarmacologico` (5→13) | Unidad multidisciplinar; 14 factores Lancet 2024 (LDL y baja visión añadidos); dieta MIND/Mediterránea; FINGER multidominio; ejercicio Otago; CST Spector; musicoterapia 'Music & Memory'; COTID Graff BMJ 2006; ambiente estructurado; higiene sueño + SAHS; REACH II cuidadores; HELP delirium intrahospitalario; planificación anticipada anti-PEG |
+| `quirurgico` (0→3) | DBS fórnix (ADvance-2 en estudio); FUS-BBB Lipsman 2018; derivación VP solo si hidrocefalia normotensiva (Hakim) |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: NIA-AA 2018/2024 + Lancet Commission 2024 + ensayos CLARITY-AD/TRAILBLAZER-ALZ 2 + p-tau217 Janelidze/Palmqvist + ensayos no farmacológicos FINGER/SPRINT-MIND/REACH II |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`: vigente (capta amiloide + tau, base biológica adecuada)
+- `epidemiologia`, `factoresRiesgo`: vigentes (Lancet 2024 ya en `noFarmacologico`)
+- `fisiopatologia`: vigente (acumulación Aβ + tau ya cubierto; podría enriquecerse con cascada inflamatoria pero excede scope)
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **24 frescas** (era 23; +pat_alzheimer), 127 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (7 restantes)
+pat_apendicitis → pat_obstrucción_intestinal → pat_hemorragia_digestiva → pat_eii → pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 40: Revisión clínica de pat_parkinson a MDS 2015 + AAN 2021 + αSyn-SAA 2023 + farmacología 2019-2024
 
 ### Resumen
