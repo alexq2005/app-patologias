@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-05-24 — Sesion 43: Revisión clínica de pat_obstrucción_intestinal a WSES Bologna 2018/2024 + Gastrografin Branco 2010 + neostigmina Ogilvie + SMART
+
+### Resumen
+Quinta iteración del tercer lote. La entry `pat_obstrucción_intestinal` era esquemática (2 pruebas, 3 objetivos, 2 fármacos, 3 noFarm, 3 quirúrgico) y NO contemplaba el manejo moderno: clasificación primitiva (sin WSES Bologna 2018/2024 simple vs complicada, sin AAST EGS, sin entidades específicas como Ogilvie, vólvulo sigmoide vs cecal); RX como estudio principal (TAC con contraste IV es el de elección actual con signos de estrangulación específicos: closed-loop, swirl, target, neumatosis, gas portal); SIN Gastrografin challenge (Branco BJS 2010 — herramienta diagnóstico-terapéutica clave que reduce 30-50% cirugías innecesarias); SIN neostigmina para Ogilvie (Ponec NEJM 1999 — 70-90% éxito); reanimación con suero fisiológico sin distinguir balanceado (SMART/BaSICS muestran menor IRA con Ringer); manejo quirúrgico básico (sin SEMS en LBO maligna, sin distinción vólvulo sigmoide vs cecal, sin protocolo escalonado, sin barreras antiadherentes Seprafilm, sin alvimopan); ausencia de protocolo ERAS, profilaxis TVP/úlcera de estrés, soporte nutricional.
+
+Cross-check: WSES Bologna 2018 (Ten Broek WJES 13:24) + 2024 update (Coccolini), Gastrografin Branco BJS 2010 + Abbas BJS 2007 + Ceresoli Am J Surg 2016, Ponec NEJM 1999 (Ogilvie), SMART (Semler NEJM 2018) + BaSICS (Zampieri JAMA 2021), STOP-IT (Sawyer NEJM 2015), SIS-IDSA 2017 (Mazuski), ACG colonic pseudo-obstruction 2022, ACG/ASCRS LBO 2024, Seprafilm meta-análisis (Ten Broek BJS 2014), alvimopan FDA. 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_obstrucción_intestinal (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (4→8) | WSES Bologna 2018/2024 SBO adhesiva simple vs estrangulada + signos TAC closed-loop/swirl/target/neumatosis + LBO neoplásica + vólvulo sigmoide vs cecal (manejo distinto) + Ogilvie + íleo paralítico |
+| `pruebas` (2→6) | TAC con contraste IV como elección + Gastrografin challenge diagnóstico-terapéutico (Branco) + POCUS + RX simple en segundo plano + laboratorio con lactato/leucos/PCR predictores estrangulación + endoscopia terapéutica (vólvulo/Ogilvie/SEMS) |
+| `objetivos` (3→12) | Estratificación SBO/LBO simple vs complicada + reanimación cristaloides balanceados + SNG descompresiva + trial conservador 24-72h con Gastrografin + cirugía urgente <6h si complicada + SEMS en LBO maligna + protocolo escalonado vólvulo + neostigmina Ogilvie + antibiótico + analgesia multimodal + ERAS + soporte nutricional |
+| `farmacologico` (2→6) | Cristaloides balanceados Ringer (SMART/BaSICS) + Gastrografin detallado + neostigmina con monitorización ECG/atropina (Ogilvie) + antibioticoterapia SIS-IDSA + analgesia multimodal con EVITAR metoclopramida + alvimopan ERAS |
+| `noFarmacologico` (3→13) | Estabilización ABCDE + SNG + ayuno + SV + reanimación + Gastrografin + profilaxis TVP/úlcera estrés + soporte nutricional NPT/oral progresiva + movilización precoz + ERAS + educación al alta + barreras antiadherentes Seprafilm |
+| `quirurgico` (3→10) | Laparoscopia preferida WSES + laparotomía criterios + urgente <6h estrangulación + semi-urgente 24-72h si fallo conservador + hernia + LBO neoplásica con SEMS bridge + vólvulo sigmoide escalonado detorsión+sigmoidectomía electiva + vólvulo cecal hemicolectomía + Ogilvie descompresión colonoscópica + revisión por adherencias |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: WSES Bologna 2018/2024 + Gastrografin Branco/Abbas/Ceresoli + Ponec NEJM 1999 + SMART/BaSICS/STOP-IT/SIS-IDSA + ACG/ASCRS/Seprafilm/alvimopan |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`: vigentes (mecanismos correctos)
+- `fisiopatologia`: vigente (acumulación gas/líquido proximal, tercer espacio cubierto)
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes (cuádruple clásico cubierto)
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **26 frescas** (era 25; +pat_obstrucción_intestinal), 125 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (5 restantes)
+pat_hemorragia_digestiva → pat_eii → pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 42: Revisión clínica de pat_apendicitis a WSES 2020 + CODA NEJM 2020 + APPAC + SIS-IDSA 2017 + STOP-IT
 
 ### Resumen

@@ -110,8 +110,8 @@ Digestivo (2): pat_cirrosis, pat_pancreatitis
 | 1 | `pat_ira` | Insuficiencia Respiratoria Aguda | Global Definition ARDS 2023 + ESICM 2023 + FLORALI/PROSEVA/EOLIA + ICU-LIBERATION | ✅ `8be1b85` |
 | 2 | `pat_parkinson` | Enfermedad de Parkinson | MDS 2015 + AAN 2021 + αSyn-SAA 2023 + farmacología 2019-2024 | ✅ `6594784` |
 | 3 | `pat_alzheimer` | Enfermedad de Alzheimer | NIA-AA 2024 + lecanemab/donanemab + p-tau217 + Lancet Commission 2024 | ✅ `cca36af` |
-| 4 | `pat_apendicitis` | Apendicitis Aguda | WSES 2020 + CODA NEJM 2020 + APPAC NEJM 2018 + SIS-IDSA 2017 + STOP-IT | ✅ `pendiente commit` |
-| 5 | `pat_obstrucción_intestinal` | Obstrucción Intestinal | WSES 2018 + Bologna criteria | pendiente |
+| 4 | `pat_apendicitis` | Apendicitis Aguda | WSES 2020 + CODA NEJM 2020 + APPAC NEJM 2018 + SIS-IDSA 2017 + STOP-IT | ✅ `454f969` |
+| 5 | `pat_obstrucción_intestinal` | Obstrucción Intestinal | WSES Bologna 2018/2024 + Gastrografin Branco 2010 + neostigmina Ogilvie + SMART | ✅ `pendiente commit` |
 | 6 | `pat_hemorragia_digestiva` | Hemorragia Digestiva | BSG 2024 + AGA 2021 + Glasgow-Blatchford | pendiente |
 | 7 | `pat_eii` | Enfermedad Inflamatoria Intestinal | ECCO 2024 + ACG 2024 + biológicos modernos | pendiente |
 | 8 | `pat_ulcera_peptica` | Úlcera Péptica | ACG 2024 H. pylori + Maastricht VI/Florence | pendiente |
