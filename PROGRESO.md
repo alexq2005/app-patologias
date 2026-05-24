@@ -409,7 +409,7 @@ Cross-check: ADA Hyperglycemic Crises Consensus 2024 (Diabetes Care 2024;47:1257
 - `npm test` → 60/60 passed
 
 ### Segundo lote: 2/10 completo
-1. ✅ pat_eap (sesión 29) — commit `71e45b6`
+1. ✅ pat_eap (sesión 29) — commit `52df188`
 2. ✅ pat_cetoacidosis (sesión 30) — pendiente commit
 3. pat_tep, 4. pat_endocarditis, 5. pat_neumotorax, 6. pat_meningitis, 7. pat_epilepsia, 8. pat_tuberculosis, 9. pat_cirrosis, 10. pat_pancreatitis
 
@@ -942,7 +942,7 @@ Cross-check contra fuentes primarias (`escardio.org`, `ahajournals.org`, `jacc.o
 ## 2026-05-21 — Sesion 18: Auditoría 12-niveles + hardening de release signing
 
 ### Resumen
-Auditoría integral del proyecto (12 niveles). Score 10/12 PASS + 1 WARN + 1 FAIL. Único hallazgo crítico: **passwords del keystore de release commiteados en `android/gradle.properties`** desde el commit `4831d64`. Limpieza completa: secrets movidos a user-level (`~/.gradle/gradle.properties`), template para devs futuros, AAB v1.0.0 verificado y listo para upload. Plus: limpieza de 6 dumps `ui*.xml` de uiautomator y plan estructurado de revisión clínica.
+Auditoría integral del proyecto (12 niveles). Score 10/12 PASS + 1 WARN + 1 FAIL. Único hallazgo crítico: **passwords del keystore de release commiteados en `android/gradle.properties`** desde el commit `d47cb71`. Limpieza completa: secrets movidos a user-level (`~/.gradle/gradle.properties`), template para devs futuros, AAB v1.0.0 verificado y listo para upload. Plus: limpieza de 6 dumps `ui*.xml` de uiautomator y plan estructurado de revisión clínica.
 
 ### Cambios
 
@@ -1152,7 +1152,7 @@ Usuario pregunto "el contenido esta actualizado a 2026?". Respuesta honesta: fue
 ## 2026-05-06 — Sesion 13: Release v2.0.1 — bundle + AAB con fixes de hooks
 
 ### Resumen
-Bump a `2.0.1` (versionCode 3) y rebuild del AAB para llevar a produccion los 4 fixes de hook bugs de Sesion 12. El bundle anterior commiteado en `c2c7add` no incluia esos fixes — los usuarios actuales tienen los crashes latentes hasta que se republique en Play Store.
+Bump a `2.0.1` (versionCode 3) y rebuild del AAB para llevar a produccion los 4 fixes de hook bugs de Sesion 12. El bundle anterior commiteado en `15a0cf0` no incluia esos fixes — los usuarios actuales tienen los crashes latentes hasta que se republique en Play Store.
 
 ### Cambios
 
@@ -1409,7 +1409,7 @@ Distincion clave: "verificado" significa "pegamos al server, no hay nada nuevo".
 
 ### Detalle de proceso
 
-Hubo un commit que mezclo refactor + feature por error (`38e3087` en historia local). Detectado antes de push: `git reset --soft HEAD~1` y splitteo en commits atomicos. Sin riesgo (los cambios estaban preservados en el index).
+Hubo un commit que mezclo refactor + feature por error (`7671e20` en historia local). Detectado antes de push: `git reset --soft HEAD~1` y splitteo en commits atomicos. Sin riesgo (los cambios estaban preservados en el index).
 
 ### Pendiente
 
@@ -1576,9 +1576,9 @@ Limpieza preparatoria para futuras releases: working tree depurado, screenshots 
 
 | # | Hash | Tipo | Descripcion |
 |---|------|------|-------------|
-| 1 | `d61dae2` | feat | Transformar quiz en herramienta educativa con feedback enriquecido |
-| 2 | `f21736f` | chore | Rebuild del bundle Android |
-| 3 | `92a1cab` | docs | Actualizar PROGRESO.md y CHANGELOG con quiz learning feature |
+| 1 | `144c2da` | feat | Transformar quiz en herramienta educativa con feedback enriquecido |
+| 2 | `5827adc` | chore | Rebuild del bundle Android |
+| 3 | `fb8f5fe` | docs | Actualizar PROGRESO.md y CHANGELOG con quiz learning feature |
 
 ### Cambios detallados
 
@@ -1632,13 +1632,13 @@ Limpieza preparatoria para futuras releases: working tree depurado, screenshots 
 
 | # | Hash | Tipo | Descripcion |
 |---|------|------|-------------|
-| 1 | `589c6d2` | feat | Enriquecer pathologies.json con campo videoUrl + actualizar body_systems.json y lab_values.json |
-| 2 | `48a1b3b` | feat | Actualizar 4 fotos de sistemas corporales (inmunologico, reproductivo, tegumentario, traumatologico) |
-| 3 | `1ecc48f` | feat | Visual upgrade masivo: reemplazar iconos vectoriales por fotos clinicas en Home, Onboarding, Quiz, Tabs, Scales, Tools y mas |
-| 4 | `ba4564e` | feat | Agregar pantalla de diagnostico diferencial interactivo (DifferentialScreen + useDifferentialDiagnosis hook) |
-| 5 | `26e377f` | test | Agregar mocks de Jest para modulos nativos + 12 tests unitarios de quiz |
-| 6 | `8db6c9c` | chore | Agregar scripts de utilidad (enrich_nanda.js, fix_tildes.js) |
-| 7 | `057a2bc` | chore | Rebuild del bundle Android con todos los cambios |
+| 1 | `dd90661` | feat | Enriquecer pathologies.json con campo videoUrl + actualizar body_systems.json y lab_values.json |
+| 2 | `9980a6d` | feat | Actualizar 4 fotos de sistemas corporales (inmunologico, reproductivo, tegumentario, traumatologico) |
+| 3 | `77d7293` | feat | Visual upgrade masivo: reemplazar iconos vectoriales por fotos clinicas en Home, Onboarding, Quiz, Tabs, Scales, Tools y mas |
+| 4 | `c22a86e` | feat | Agregar pantalla de diagnostico diferencial interactivo (DifferentialScreen + useDifferentialDiagnosis hook) |
+| 5 | `71077ec` | test | Agregar mocks de Jest para modulos nativos + 12 tests unitarios de quiz |
+| 6 | `71c6dd8` | chore | Agregar scripts de utilidad (enrich_nanda.js, fix_tildes.js) |
+| 7 | `47a940d` | chore | Rebuild del bundle Android con todos los cambios |
 
 ### Cambios detallados
 
@@ -1707,8 +1707,8 @@ Limpieza preparatoria para futuras releases: working tree depurado, screenshots 
 - Quiz dark mode readability fix + mostrar respuesta correcta al fallar
 
 ### Commits principales
-- `591e0c3` feat: improve splash screen and app icon design
-- `9f5e08d` fix: correct missing ñ in legal screens
-- `6b22118` fix: add missing accents/tildes across all visible UI text
-- `c0bc00b` fix: complete accent/tilde corrections across entire app and docs
-- `c4a490c` fix: quiz dark mode readability + show correct answer on wrong
+- `6214607` feat: improve splash screen and app icon design
+- `3c83493` fix: correct missing ñ in legal screens
+- `cb14803` fix: add missing accents/tildes across all visible UI text
+- `f8c309f` fix: complete accent/tilde corrections across entire app and docs
+- `decd226` fix: quiz dark mode readability + show correct answer on wrong
