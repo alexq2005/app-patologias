@@ -9850,27 +9850,63 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación de Forrest (para HDA por ulcera peptica)",
+      "nombre": "Topografía (HDA vs HDB vs HD media) + etiología + Forrest endoscópico + scores de riesgo",
       "tipos": [
         {
-          "nombre": "Forrest Ia",
-          "descripcion": "Sangrado arterial activo en chorro. Riesgo de recidiva > 90%. Hemostasia endoscópica urgente"
+          "nombre": "HDA — Hemorragia Digestiva Alta (proximal al ángulo de Treitz)",
+          "descripcion": "Causas: úlcera péptica (50%), varices esofágicas (10-20% en hospital), Mallory-Weiss, esofagitis/gastritis erosiva, lesión de Dieulafoy, neoplasia, angiodisplasia. Clínica: hematemesis, vómitos en posos de café, melena (puede ocurrir hasta en HDB derecha)"
         },
         {
-          "nombre": "Forrest Ib",
-          "descripcion": "Sangrado en babeo activo. Riesgo alto. Hemostasia"
+          "nombre": "HDB — Hemorragia Digestiva Baja (distal al ángulo de Treitz)",
+          "descripcion": "Causas: diverticulosis (40%), angiodisplasia, neoplasia colorrectal, EII, colitis isquémica, hemorroides/fisura. Clínica: hematoquecia (rectorragia + heces); 15% de HDA masiva puede presentarse como hematoquecia por tránsito acelerado"
         },
         {
-          "nombre": "Forrest IIa",
-          "descripcion": "Vaso visible sin sangrado activo. Riesgo 50%. Hemostasia"
+          "nombre": "HD Media (intestino delgado, entre ángulo de Treitz y válvula ileocecal)",
+          "descripcion": "5-10% de HD. Causas: angiodisplasia (más frecuente en >40 años), tumores (GIST, neuroendocrino), divertículo de Meckel (jóvenes), EII (Crohn), AINEs. Requiere VCE (videocápsula endoscópica) o enteroscopia tras EDA + colonoscopia negativas"
         },
         {
-          "nombre": "Forrest IIb",
-          "descripcion": "Coagulo adherido. Riesgo 30%. Tratamiento médico + endoscopia"
+          "nombre": "Forrest Ia — Sangrado arterial activo en chorro",
+          "descripcion": "Riesgo de recidiva sin tratamiento ~90% / mortalidad ~10%. Hemostasia endoscópica URGENTE con técnica DUAL (inyección + térmica o clip) + IBP IV alta dosis post-EDA"
         },
         {
-          "nombre": "Forrest IIc-III",
-          "descripcion": "Base negra / ulcera de base limpia. Riesgo bajo. Tratamiento médico"
+          "nombre": "Forrest Ib — Sangrado en babeo activo",
+          "descripcion": "Riesgo de recidiva ~50%. Hemostasia endoscópica DUAL"
+        },
+        {
+          "nombre": "Forrest IIa — Vaso visible sin sangrado activo",
+          "descripcion": "Riesgo de recidiva ~40-50%. Hemostasia endoscópica DUAL (inyección + térmica o clip)"
+        },
+        {
+          "nombre": "Forrest IIb — Coágulo adherido",
+          "descripcion": "Riesgo de recidiva ~25-30%. Lavado vigoroso para desprender coágulo; si vaso visible debajo → tratamiento como IIa; si base limpia → IIc. AGA 2021 sugiere tratamiento endoscópico en ciertos casos"
+        },
+        {
+          "nombre": "Forrest IIc — Pigmento plano (hematina)",
+          "descripcion": "Riesgo de recidiva ~5-10%. Tratamiento médico (IBP oral)"
+        },
+        {
+          "nombre": "Forrest III — Base limpia, sin estigmas",
+          "descripcion": "Riesgo de recidiva <3%. Tratamiento médico (IBP oral) + alta precoz si estable"
+        },
+        {
+          "nombre": "Glasgow-Blatchford Score (GBS) — preendoscópico",
+          "descripcion": "Validado para predecir necesidad de intervención. GBS 0-1: alta segura ambulatoria (Stanley Lancet 2017). GBS ≥7: alto riesgo, requiere endoscopia <12h. Incluye: urea, Hb, TAS, FC, presentación (melena/síncope), comorbilidad hepática/cardíaca"
+        },
+        {
+          "nombre": "AIMS65 — preendoscópico simplificado",
+          "descripcion": "5 variables fáciles: Albúmina <3 g/dL, INR >1.5, alteración Mental, TAS ≤90, edad >65. Cada criterio = 1 punto. ≥2 = alto riesgo de mortalidad intrahospitalaria"
+        },
+        {
+          "nombre": "Rockall Score — post-endoscópico",
+          "descripcion": "Predice resangrado y mortalidad. Variables: edad, shock, comorbilidad, diagnóstico endoscópico, estigmas de sangrado reciente. Score completo 0-11; >5 alto riesgo"
+        },
+        {
+          "nombre": "Oakland Score para HDB (BSG 2019)",
+          "descripcion": "Predice safe discharge en HDB: edad, sexo, ingreso por HDB previo, TR (sangre fresca/coágulo), FC, TAS, Hb. Score ≤8 = alta segura ambulatoria. Score >8 = ingreso"
+        },
+        {
+          "nombre": "Child-Pugh + MELD para hemorragia variceal (predictores Baveno VII)",
+          "descripcion": "Child-Pugh A (5-6): bajo riesgo. Child B (7-9): considerar TIPS preemptivo si sangrado activo. Child C (10-14): TIPS preemptivo precoz <72h fuerte recomendación. MELD ≥19 también marca alto riesgo y candidato a TIPS preemptivo"
         }
       ]
     },
@@ -9889,74 +9925,192 @@
       ],
       "pruebas": [
         {
-          "nombre": "Hemograma urgente, coagulación e ionograma",
-          "descripcion": "Evalua gravedad de la anemia, coagulopatia y metabolismo para transfusión y reposición",
-          "valoresReferencia": "Hemoglobina < 7 g/dL = transfusión; Plaquetas < 50.000 en sangrado activo = riesgo",
+          "nombre": "Laboratorio urgente: hemograma, coagulación, ionograma, función renal y hepática, BIC, grupo y reservar",
+          "descripcion": "Hb inicial puede infravalorar pérdida real en HDA aguda (hasta 24h para equilibrarse — hemodilución). Urea elevada con creatinina normal sugiere HDA (digestión proteínas en intestino). INR/APTT para evaluar coagulopatía. Lactato como predictor de hipoperfusión. Bilirrubina/AST/ALT/albúmina/plaquetas para Child-Pugh si sospecha cirrosis",
+          "valoresReferencia": "TRANSFUSIÓN GRE: Hb <7 g/dL en estable (Villanueva NEJM 2013 — estrategia restrictiva), <8 g/dL si cardiopatía isquémica conocida. Plaquetas: transfundir si <50 000 en sangrado activo o pre-EDA. INR: revertir si >2.5 con vitamina K + CCP (no esperar PFC). Fibrinógeno: reponer con crioprecipitado si <1.5 g/L en sangrado masivo",
           "cuidadosEnfermeria": [
-            "Extraer URGENTE junto a grupo y factores para reserva de sangre",
-            "Repetir cada 4-6h en sangrado activo para monitorizar descenso de Hb"
+            "Extracción URGENTE con grupo y reservar 2-4 unidades GRE; cruzar si hipotensión",
+            "Repetir hemograma cada 4-6h en sangrado activo + tras transfusión (1 unidad GRE = +1 g/dL Hb)",
+            "Glasgow-Blatchford y AIMS65 con los primeros resultados",
+            "Notificar al banco de sangre antes de la EDA en pacientes Forrest I-IIa esperable o varices conocidas"
           ]
         },
         {
-          "nombre": "Endoscopia digestiva alta urgente (EDA < 24h)",
-          "descripcion": "Diagnóstica el origen, estadifica el riesgo (Forrest) y permite hemostasia endoscópica",
+          "nombre": "Endoscopia Digestiva Alta (EDA) urgente — <12h en variceal, <24h en no variceal",
+          "descripcion": "ESTUDIO DIAGNÓSTICO Y TERAPÉUTICO DE ELECCIÓN. Variceal: EDA <12h tras estabilización hemodinámica (Baveno VII). No variceal: EDA <24h en estables y <12h en alto riesgo (GBS ≥12, hematemesis activa, inestabilidad pese a reanimación). EDA MUY URGENTE (<6h) NO ha demostrado beneficio sobre <24h (Lau NEJM 2020) — priorizar estabilización primero. Permite Forrest, hemostasia con dual therapy, banding/escleroterapia, Hemospray, clips OTSC",
           "cuidadosEnfermeria": [
-            "Ayuno",
-            "Estabilización hemodinamica PREVIA (no esperar si inestable sin acceso endoscópico)",
-            "Acceso venoso de grueso calibre",
-            "Sonda nasogastrica puede ayudar a lavar el estómago antes",
-            "Consentimiento informado si posible"
+            "ESTABILIZACIÓN HEMODINÁMICA PREVIA OBLIGATORIA — no urgencia sin reanimación",
+            "Eritromicina 250 mg IV 30-90 min pre-EDA: procinético que mejora visualización gástrica (BSG/ESGE recomendación) — reduce necesidad de second-look",
+            "Ayuno ≥6h sólidos / 2h líquidos claros si situación lo permite (priorizar EDA si sangrado activo)",
+            "Doble vía periférica grueso calibre (14-16G) + sonda urinaria + monitorización completa",
+            "Consentimiento informado del paciente o familiar (urgencia diferida si inconsciente)",
+            "Preparar: equipo de hemostasia (adrenalina, clips, sondas térmicas, bandas), aspirador, oxígeno, intubación disponible si riesgo aspiración masiva",
+            "Anestesia: sedación profunda con propofol controlada por anestesia; valorar IOT pre-EDA si HDA masiva con bajo nivel conciencia, vómitos hemáticos copiosos o cirrosis con encefalopatía"
           ]
         },
         {
-          "nombre": "Score de Glasgow-Blatchford",
-          "descripcion": "Predice la necesidad de intervención (transfusión, endoscopia hemostática) en HDA",
-          "valoresReferencia": "Score 0: manejo ambulatorio; > 0: ingreso y endoscopia",
+          "nombre": "Glasgow-Blatchford Score (GBS) + AIMS65 + Rockall",
+          "descripcion": "ESTRATIFICACIÓN PRE-ENDOSCÓPICA. GBS 0-1: alta segura ambulatoria sin EDA urgente (Stanley Lancet 2017). GBS ≥7: alto riesgo. AIMS65 ≥2: alta mortalidad. Rockall completo post-EDA predice resangrado y mortalidad. NO usar para HDB (usar Oakland)",
+          "valoresReferencia": "GBS 0-1: alta ambulatoria + EDA programada. GBS 2-6: ingreso + EDA <24h. GBS ≥7-12: alto riesgo, EDA <12h. AIMS65 0-1 mortalidad <1% / ≥2 mortalidad 8-25%. Rockall ≥5 alto riesgo resangrado",
           "cuidadosEnfermeria": [
-            "Calcular al ingreso para decidir nivel de cuidados"
+            "Calcular GBS al ingreso (urea, Hb, TAS, FC, comorbilidad)",
+            "Si GBS 0-1 + paciente estable: gestión ambulatoria — coordinar EDA <72h",
+            "Repetir scores si deterioro o sangrado evidente",
+            "Documentar score + decisión tomada en historia clínica"
+          ]
+        },
+        {
+          "nombre": "Colonoscopia (HDB) — con preparación intestinal previa",
+          "descripcion": "ESTUDIO DE ELECCIÓN en HDB tras estabilización. Tiempo: 24h tras preparación con PEG 4 L oral o por SNG (estudios COLOSEAL y CODA muestran que <24h no supera a 72h en outcomes). Sensibilidad ~85-90% para identificar fuente; permite hemostasia con clips, banding, coagulación argón plasma (APC), inyección adrenalina",
+          "cuidadosEnfermeria": [
+            "Preparación intestinal con PEG 4 L oral en 4-6h (si tolerancia) o por SNG en intolerantes — esencial para visualización",
+            "Hidratación IV abundante durante preparación (PEG puede causar hipovolemia)",
+            "Monitorización continua durante preparación: TA, FC, SatO2",
+            "Si HDB masiva con inestabilidad: NO esperar preparación → angio-TC o angiografía urgente",
+            "Educar sobre proceso (largo, incómodo) — la preparación es la clave del éxito diagnóstico"
+          ]
+        },
+        {
+          "nombre": "Angio-TC abdominal trifásica (CTA) — para HD masiva con inestabilidad o EDA/colonoscopia negativas",
+          "descripcion": "Detecta extravasación activa de contraste con tasa de sangrado tan baja como 0.3 mL/min. Sensibilidad 85-90% / especificidad >95%. PRIMERA línea en HDB masiva con inestabilidad hemodinámica antes de colonoscopia (no requiere preparación). Permite roadmap para arteriografía/embolización inmediata",
+          "cuidadosEnfermeria": [
+            "Verificar función renal (creatinina, eGFR) y alergia a contraste — pero en sangrado activo el riesgo de no hacer estudio supera al de nefropatía por contraste",
+            "Doble vía periférica + reanimación volémica adecuada antes",
+            "Coordinar con radiología intervencionista — si angio-TC positiva, paso directo a angiografía + embolización",
+            "Embarazo: limitar dosis, escudo abdominal; no contraindicado en sangrado activo grave"
+          ]
+        },
+        {
+          "nombre": "Videocápsula endoscópica (VCE) y enteroscopia de doble balón — HD media oscura",
+          "descripcion": "Indicación: HD recurrente con EDA + colonoscopia negativas. VCE primera línea (no invasiva, alta sensibilidad para angiodisplasias y tumores). Enteroscopia de doble balón si VCE positiva y se requiere biopsia/hemostasia. Diagnóstico de divertículo de Meckel: gammagrafía con Tc99-pertecnetato (capta mucosa gástrica ectópica) en <40 años",
+          "cuidadosEnfermeria": [
+            "VCE: ayuno 12h, simeticona pre-procedimiento, registro 8h continuo con grabadora externa",
+            "Verificar ausencia de estenosis intestinal antes (riesgo retención cápsula) — patency capsule o TC enterografía si sospecha Crohn",
+            "Enteroscopia doble balón: anestesia profunda, procedimiento largo (3-5h), vía anterógrada (oral) o retrógrada (anal) según sospecha de localización"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Estabilización hemodinamica",
-        "Hemostasia endoscópica del sangrado",
-        "Prevenir recidiva"
+        "Reanimación inicial PROTOCOLIZADA con cristaloides balanceados (Ringer lactato preferido — SMART NEJM 2018) — restaurar perfusión SIN sobre-resucitar (la sobrehidratación en HDA empeora resangrado, hemodilución y mortalidad)",
+        "TRANSFUSIÓN RESTRICTIVA: GRE si Hb <7 g/dL en hemodinámicamente estable (Villanueva NEJM 2013 — reduce mortalidad y resangrado vs liberal). Umbral 8 g/dL en cardiopatía isquémica conocida. Plaquetas si <50 000 en sangrado activo. PFC/CCP si INR >2.5 con sangrado activo (no rutinario por INR aislado en cirrótico). Fibrinógeno si <1.5 g/L. Protocolo de transfusión masiva si pérdida >40% volumen",
+        "Estratificación con GBS + AIMS65 + posteriormente Rockall (HDA) o Oakland (HDB) para decisión: alta ambulatoria, ingreso planta, ingreso UCI, EDA emergente vs <12h vs <24h",
+        "Manejo de anticoagulantes/antiplaquetarios: revertir warfarina con CCP de 4 factores + vitamina K 10 mg IV (no esperar PFC). Dabigatran: idarucizumab 5 g IV. Inhibidores Factor Xa (apixabán, rivaroxabán, edoxabán): andexanet alfa o CCP 50 U/kg. Antiplaquetarios: NO suspender AAS si prevención secundaria cardiovascular salvo HDA grave (riesgo cardiovascular > beneficio hemostático en post-IAM/stent reciente). Plan de reanudación POST-EDA en 24-72h coordinado con cardiología/hematología",
+        "Profilaxis con IBP IV en HDA sospechosa de origen péptico ANTES y DESPUÉS de la EDA. AGA 2021 recomienda bolus + infusión continua 72h tras Forrest Ia/b, IIa, IIb (no rutinario en Forrest III). Step-down a oral cuando estable + sin sangrado nuevo",
+        "Pre-EDA: ERITROMICINA 250 mg IV 30-90 min antes de EDA mejora visualización gástrica (BSG/ESGE) — reduce necesidad de repetir EDA",
+        "Hemorragia VARICEAL: protocolo agresivo Baveno VII — terlipresina o somatostatina/octreotide IV desde sospecha + profilaxis ATB (ceftriaxona 1 g/d 5-7 días, no quinolonas por resistencia) + EDA <12h con BAND LIGATION (esofágicas) o adhesivos tisulares N-butil-cianoacrilato (gástricas) + IBP IV. PREEMPTIVE TIPS <72h en Child B con sangrado activo o Child C ≤14 (Garcia-Pagán NEJM 2010, Baveno VII — duplica supervivencia)",
+        "Hemorragia NO VARICEAL: tras hemostasia endoscópica DUAL (inyección adrenalina + térmica o clip) + IBP IV alta dosis 72h. Si refractario: second-look EDA en 24h, Hemospray/TC-325 como puente, OTSC (over-the-scope clip), angiografía con embolización o cirugía",
+        "Hemorragia DIGESTIVA BAJA: estabilización + colonoscopia <24h tras preparación con PEG; si masiva con inestabilidad → angio-TC + arteriografía con embolización. Hemorroides masivas: ligadura/cirugía. Diverticular: 70% cede espontáneamente",
+        "Búsqueda y tratamiento de H. pylori en TODA HDA por úlcera péptica — biopsia gástrica durante EDA O test de aliento/antígeno fecal AL ALTA si no biopsia (reduce resangrado a largo plazo). Si positivo: triple terapia OBPC (omeprazol + amoxicilina + claritromicina) o cuádruple con bismuto",
+        "Prevención secundaria de sangrado variceal post-alta: BETABLOQUEANTE NO SELECTIVO (carvedilol preferido en Baveno VII por reducción mayor del gradiente venoso hepático vs propranolol; o propranolol/nadolol) + ligadura programada cada 2-4 semanas hasta erradicación variceal completa + IBP largo plazo. Evaluación de trasplante hepático en cirrosis avanzada",
+        "Manejo de comorbilidades: encefalopatía hepática (lactulosa + rifaximina), ascitis (espironolactona + furosemida), hipoglucemia, insuficiencia renal aguda (síndrome hepatorrenal: terlipresina + albúmina). Tromboprofilaxis con HBPM cuando sangrado controlado >24h"
       ],
       "farmacologico": [
         {
-          "nombre": "Omeprazol 80 mg IV en bolo + perfusión",
-          "grupo": "IBP IV en dosis alta - HDA por ulcera peptica",
-          "mecanismo": "Reduce la secreción acida, alcaliniza el estómago, estabiliza el coagulo del vaso sangrante",
-          "dosis": "80 mg IV en bolo, luego perfusión 8 mg/h durante 72h (pre y post-endoscopia)",
+          "nombre": "IBP IV alta dosis (omeprazol, pantoprazol, esomeprazol) — HDA por úlcera péptica",
+          "grupo": "Inhibidor de bomba de protones — bolus + infusión continua 72h post-EDA en Forrest I-IIb (AGA 2021)",
+          "mecanismo": "Reduce secreción ácida, eleva pH gástrico >6 (estabiliza coágulo, reduce fibrinólisis), promueve agregación plaquetaria, reduce resangrado y mortalidad en úlcera de alto riesgo",
+          "dosis": "Bolus 80 mg IV + infusión 8 mg/h x 72h tras hemostasia endoscópica de Forrest I-IIb. Step-down a 40 mg IV c/12h luego oral 40 mg c/12h x 2-8 sem según úlcera. En PRE-EDA puede iniciarse infusión empíricamente (controversial — AGA 2021 sí, ESGE más débil)",
           "cuidadosEnfermeria": [
-            "Administrar INMEDIATAMENTE al ingreso de HDA",
-            "Bomba de infusion precisa",
-            "Revertir a via oral cuando tolerancia mejore"
+            "Iniciar INMEDIATAMENTE al ingreso de HDA (no esperar EDA)",
+            "Bomba de infusión precisa — diluir según protocolo institucional (típico 40 mg + 250 mL SF a 50 mL/h = 8 mg/h)",
+            "Monitorizar interacciones: clopidogrel (omeprazol inhibe CYP2C19 — preferir pantoprazol en pacientes con stent reciente)",
+            "Step-down a oral cuando: estable >24h, dieta oral tolerada, sin signos de resangrado",
+            "Educar al alta sobre adherencia al IBP (4-8 semanas para curación úlcera; suspender solo si H. pylori erradicado + sin AAS/AINEs)"
           ]
         },
         {
-          "nombre": "Terlipresina / Somatostatina IV",
-          "grupo": "Vasoconstrictor esplacnico - HDA variceal",
-          "mecanismo": "Reduce el flujo esplacnico y la presión portal, disminuyendo el sangrado de varices",
-          "dosis": "Terlipresina: 2 mg IV cada 4h x 5 dias. Somatostatina/octreotide: bolo + infusion",
+          "nombre": "Terlipresina / Somatostatina / Octreotide IV — HDA VARICEAL",
+          "grupo": "Vasoconstrictores esplácnicos — reducen presión portal 5-7 días desde sospecha de hemorragia variceal (Baveno VII)",
+          "mecanismo": "Vasoconstricción esplácnica selectiva → reducción del flujo y presión portal → disminución del sangrado variceal y mejora de la hemostasia endoscópica. Terlipresina: análogo sintético de vasopresina con menor riesgo isquémico que vasopresina. Somatostatina/Octreotide: inhibición de péptidos vasodilatadores esplácnicos",
+          "dosis": "TERLIPRESINA: 2 mg IV bolus c/4h x 24-48h → 1 mg c/4h hasta 5 días total. SOMATOSTATINA: bolus 250 μg IV + infusión 250-500 μg/h x 3-5 días. OCTREOTIDE: bolus 50 μg IV + infusión 50 μg/h x 3-5 días",
           "cuidadosEnfermeria": [
-            "Administrar junto a profilaxis antibiotica",
-            "Vigilar isquemia (terlipresina es vasoconstrictora)",
-            "NO usar en embarazo o cardiopatia isquémica grave"
+            "INICIAR ANTES DE LA EDA ante cualquier sospecha de hemorragia variceal en cirrótico",
+            "Monitorización continua: TA (terlipresina puede causar HTA), FC (bradicardia), ECG (isquemia)",
+            "Vigilar HIPONATREMIA con terlipresina (efecto antidiurético) — Na+ diario, restricción hídrica si <130 mmol/L",
+            "Vigilar isquemia distal (extremidades, mesentérica) — palidez/dolor extremidades, dolor abdominal con isquemia mesentérica",
+            "CONTRAINDICACIONES terlipresina: cardiopatía isquémica conocida, arteriopatía periférica severa, embarazo (categoría D)",
+            "Octreotide opción más segura cardio-vascularmente si terlipresina contraindicada",
+            "Combinar SIEMPRE con profilaxis antibiótica + EDA <12h"
+          ]
+        },
+        {
+          "nombre": "Profilaxis antibiótica en cirrótico con HDA — Ceftriaxona IV",
+          "grupo": "Cefalosporina 3ª generación — profilaxis OBLIGATORIA en cirrótico con HDA (Baveno VII)",
+          "mecanismo": "Reduce infección bacteriana, peritonitis bacteriana espontánea (PBE), resangrado y mortalidad en cirróticos con HDA. Cefalosporina preferida sobre quinolonas por resistencia creciente",
+          "dosis": "Ceftriaxona 1 g IV cada 24h x 5-7 días",
+          "cuidadosEnfermeria": [
+            "Administrar AL INGRESO en TODO cirrótico con HDA, sin esperar fiebre ni cultivos",
+            "Continuar 5-7 días o hasta hemostasia + estabilidad",
+            "Vigilar reacción alérgica (alergia a betalactámicos: alternativa ciprofloxacino IV con precaución)",
+            "Cultivos pre-antibiótico: hemocultivos x2 + ascitis si presente (PBE)"
+          ]
+        },
+        {
+          "nombre": "Eritromicina pre-endoscópica (procinético) — mejora visualización",
+          "grupo": "Macrólido con efecto procinético — agonista motilina",
+          "mecanismo": "Estimula motilina, vacía estómago de sangre y coágulos, mejora visibilidad endoscópica y aumenta tasa de identificación de lesión sangrante. Recomendación BSG/ESGE (no AGA 2021 que la considera opcional)",
+          "dosis": "250 mg IV en 5-30 min, 30-90 min antes de EDA",
+          "cuidadosEnfermeria": [
+            "Monitorización ECG durante administración — riesgo de prolongación QT (vigilar QT basal)",
+            "Administrar diluida lentamente para reducir flebitis y náuseas",
+            "Alternativa procinética si contraindicada: metoclopramida (menos eficaz para evacuación gástrica masiva)",
+            "Útil especialmente si hematemesis activa, posos de café masivos o sangre fresca en SNG"
+          ]
+        },
+        {
+          "nombre": "Reversión de anticoagulantes en sangrado activo",
+          "grupo": "Antídotos específicos + CCP — coordinación con hematología y servicio prescriptor",
+          "mecanismo": "Revertir anticoagulación para permitir hemostasia. Warfarina: CCP de 4 factores (Beriplex/Kcentra) + vitamina K IV. Dabigatran: idarucizumab (Praxbind) 5 g IV. Inhibidores Factor Xa (apixabán, rivaroxabán, edoxabán): andexanet alfa (Andexxa) o CCP 50 U/kg",
+          "dosis": "Warfarina: CCP 4F 25-50 U/kg según INR + vitamina K 10 mg IV lenta. Dabigatran: idarucizumab 5 g IV (2 viales 2.5 g cada uno). Factor Xa: andexanet alfa bolus 400-800 mg + infusión 480-960 mg/2h",
+          "cuidadosEnfermeria": [
+            "INR de control 30 min post-CCP (objetivo <1.5 para EDA)",
+            "Monitorización post-reversión por riesgo de TROMBOSIS REBOTE — especialmente si ACO por FA, prótesis valvular, TEP reciente",
+            "Plan de reanudación de anticoagulación post-EDA en 24-72h coordinado con hematología y cardiología",
+            "PFC NO es de primera elección para reversión rápida — volumen alto, dilución de factores, demora",
+            "Idarucizumab/andexanet: muy costosos pero efectivos en 15-30 min"
+          ]
+        },
+        {
+          "nombre": "Tratamiento de H. pylori post-HDA por úlcera péptica",
+          "grupo": "Triple/cuádruple terapia — reduce resangrado a 1 año del 12% al 1% si erradicación exitosa",
+          "mecanismo": "Erradicación de Helicobacter pylori cura la úlcera, reduce recurrencia y resangrado. Test pre-tratamiento OBLIGATORIO durante EDA (biopsia gástrica) o test de aliento/antígeno fecal al alta si no biopsia",
+          "dosis": "Triple OAC (resistencia claritromicina <15%): omeprazol 20 mg + amoxicilina 1 g + claritromicina 500 mg cada 12h x 14 días. Cuádruple con bismuto (resistencia >15%): omeprazol 20 mg c/12h + bismuto subcitrato 120 mg c/6h + tetraciclina 500 mg c/6h + metronidazol 500 mg c/8h x 14 días",
+          "cuidadosEnfermeria": [
+            "Educar sobre adherencia ESTRICTA — pilar del éxito; comer 30 min después de tomar",
+            "Efectos adversos: claritromicina (disgeusia metálica, GI), metronidazol (intolerancia alcohol — efecto disulfiram), bismuto (heces negras inocuas)",
+            "Test de control a las 4-8 semanas POST-tratamiento (sin IBP ≥2 semanas previas, sin ATB ≥4 semanas) — antígeno fecal o test de aliento",
+            "Si fallo de primera línea: cuádruple terapia con bismuto o levofloxacino — referir a digestivo"
           ]
         }
       ],
       "noFarmacologico": [
-        "Resucitación con cristaloides IV y transfusión de GRE si Hb < 7-8 g/dL",
-        "Endoscopia hemostática (inyección de adrenalina, coagulación, clips hemostáticos)",
-        "Ligadura elastica de varices en HDA variceal",
-        "TIPS si hemorragia variceal refractaria"
+        "Estabilización inicial ABCDE — vía aérea segura (IOT si vómitos hemáticos masivos, encefalopatía, baja conciencia), monitorización completa (TA, FC, SpO2, ECG, diuresis horaria)",
+        "DOS vías periféricas calibre grueso (14-16 G) o vía central si shock — vasopresor requiere central. Línea arterial si TAM <65 mantenida pese a reanimación",
+        "Reanimación con cristaloides balanceados (Ringer lactato preferido — SMART/BaSICS): bolus 250-500 mL repetido según respuesta; EVITAR sobre-resucitación (objetivos: TAS 90-100, no normalizar TA en sangrado activo no controlado — hipotensión permisiva)",
+        "Sonda vesical para diuresis HORARIA (objetivo >0.5 mL/kg/h) — fundamental para guiar reanimación",
+        "Sonda nasogástrica: utilidad debatida — útil para descartar HDA en hematoquecia (lavado +), administración de eritromicina pre-EDA, lavado con suero a temperatura ambiente si gran cantidad de coágulos. NO usar para diagnóstico (lavado negativo no descarta HDA)",
+        "Transfusión RESTRICTIVA (Villanueva NEJM 2013): GRE si Hb <7 g/dL estable o <8 g/dL si cardiopatía isquémica. Plaquetas si <50 000 + sangrado activo. PFC/CCP si INR >2.5 + sangrado. Crioprecipitado si fibrinógeno <1.5 g/L. Activar protocolo transfusión masiva si pérdida >40% volumen",
+        "Endoscopia hemostática DUAL: inyección adrenalina (1:10 000, 1-2 mL por punto, 4 cuadrantes) + segunda modalidad (térmica con sonda BiCAP/coagulación, mecánica con clips hemostáticos through-the-scope o OTSC, banding en várices). La dual therapy reduce resangrado y mortalidad vs monoterapia",
+        "Hemospray / TC-325: pulverización de polvo hemostático sobre lesión sangrante difusa, neoplásica o cuando otra técnica falla — temporal (24h) como puente a tratamiento definitivo",
+        "Ligadura endoscópica con bandas (BAND LIGATION) en várices esofágicas — superior a escleroterapia (menor estenosis y úlceras). N-butil-cianoacrilato (Histoacryl) en várices gástricas",
+        "Balón de Sengstaken-Blakemore (esofágicas) o Linton-Nachlas (gástricas): PUENTE temporal (≤24h) en hemorragia variceal masiva incontrolada hasta TIPS o EDA definitiva. RIESGO de necrosis esofágica, neumonía aspirativa, asfixia",
+        "Stent esofágico autoexpansible cubierto (SX-Ella Danis): alternativa al balón en hemorragia variceal masiva — menor morbilidad, hasta 7 días",
+        "Profilaxis TVP/TEP con HBPM cuando hemostasia estable >24h — el cirrótico TIENE riesgo trombótico pese a coagulopatía aparente",
+        "Profilaxis de aspiración: cabecera 30°, lavado bucal, considerar IOT preventiva si conciencia alterada",
+        "Educación al alta + plan de seguimiento: medicación (IBP 4-8 sem, betabloqueante en variceal), test de H. pylori, evitar AINEs/AAS si no esencial, control en consulta digestivo 2-4 sem, EDA de control en úlceras gástricas (descartar malignidad), ligadura programada en variceal"
       ],
       "quirurgico": [
-        "Cirugia urgente si endoscopia falla en hemostasia",
-        "Cirugia en HDB masiva sin origen identificado por endoscopia ni arteriografia"
+        "TIPS (Transjugular Intrahepatic Portosystemic Shunt) PREEMPTIVO — Baveno VII: en Child B (7-9) con sangrado activo o Child C ≤14, realizar TIPS en <72h post-control inicial. Duplica supervivencia vs manejo estándar (Garcia-Pagán NEJM 2010). Contraindicaciones: encefalopatía severa refractaria, IC derecha severa, hipertensión pulmonar, neoplasia hepática extensa",
+        "TIPS de RESCATE: hemorragia variceal refractaria a EDA + tratamiento farmacológico (típicamente >2 episodios de sangrado en 24h)",
+        "Trasplante hepático: opción definitiva en Child C avanzado / MELD alto con sangrado variceal recurrente — evaluar precozmente en candidatos",
+        "Arteriografía visceral con embolización selectiva: ARTERIOGRAFÍA + EMBOLIZACIÓN como alternativa a cirugía en HDA refractaria a EDA (arteria gastroduodenal) o HDB con angio-TC positiva. Riesgo isquemia intestinal (especialmente intestino delgado, menor en colon)",
+        "Cirugía URGENTE en HDA: indicaciones limitadas en era endoscópica — falla de EDA + arteriografía, sangrado masivo incontrolable, perforación asociada. Opciones: sutura del vaso sangrante (úlcera), vagotomía + piloroplastia (raramente), gastrectomía",
+        "Cirugía URGENTE en HDB: hemicolectomía dirigida si fuente identificada por colonoscopia/angiografía; colectomía subtotal si origen no identificado y sangrado masivo persistente (alta morbimortalidad — última opción)",
+        "Cirugía electiva tras estabilización: resección segmentaria de divertículo de Meckel sangrante, tumor identificado, resección de segmento con angiodisplasias múltiples sintomáticas",
+        "Hemorroidectomía urgente en hemorroides grado IV con sangrado masivo (raro); ligadura con banda o esclerosis si grado I-III",
+        "Reparación quirúrgica de fístula aortoentérica: emergencia vital — prótesis aórtica con erosión a duodeno (sospechar en paciente con prótesis aórtica + HDA masiva)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -10077,7 +10231,15 @@
       "pat_ulcera_peptica",
       "pat_cirrosis"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "Baveno VII — Renewing consensus in portal hypertension (de Franchis R et al, J Hepatol 2022;76:959-974) — preemptive TIPS, carvedilol, profilaxis antibiótica con ceftriaxona",
+      "AGA Clinical Practice Update — Endoscopic Management of Acute UGI Bleeding (Laine L et al, Gastroenterology 2021;160:1772-1785). ESGE Guidelines: Diagnosis and management of nonvariceal upper GI hemorrhage (Gralnek IM et al, Endoscopy 2021;53:300-332) y actualización 2024",
+      "BSG Guidelines for the management of acute lower GI bleeding (Oakland K et al, Gut 2019;68:776-789); Oakland score validation 2024 update",
+      "Ensayos pivotales: Transfusion restrictive strategy in acute UGI bleeding (Villanueva C et al, NEJM 2013;368:11-21); Preemptive TIPS for variceal bleeding (Garcia-Pagan JC et al, NEJM 2010;362:2370-2379); Timing of endoscopy in UGI bleeding (Lau JYW et al, NEJM 2020;382:1299-1308); Glasgow-Blatchford validation (Stanley AJ et al, Lancet 2017;390:175-176); SMART balanced crystalloids (Semler NEJM 2018)",
+      "ACG Clinical Guideline for Treatment of H. pylori infection (Chey WD et al, Am J Gastroenterol 2024); Maastricht VI/Florence consensus 2022. Reversión anticoagulantes: idarucizumab (Pollack NEJM 2017), andexanet (Connolly NEJM 2019)"
+    ]
   },
   {
     "id": "pat_apendicitis",

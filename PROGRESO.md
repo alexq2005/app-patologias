@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-05-24 — Sesion 44: Revisión clínica de pat_hemorragia_digestiva a Baveno VII + AGA 2021 + ESGE 2021/2024 + BSG 2019 + Villanueva + preemptive TIPS
+
+### Resumen
+Sexta iteración del tercer lote. La entry `pat_hemorragia_digestiva` tenía buena base (Forrest + GBS + IBP + terlipresina ya presentes) pero faltaba TODO el manejo moderno post-2020: clasificación sin Oakland para HDB (BSG 2019), sin AIMS65, sin Rockall completo, sin Child-Pugh/MELD para variceal; pruebas con énfasis equivocado en RX/EDA básica sin angio-TC, sin VCE/enteroscopia HD media, sin colonoscopia con preparación PEG; objetivos sin transfusión RESTRICTIVA Villanueva NEJM 2013 (umbral 7 g/dL, no 7-8), sin eritromicina pre-EDA, sin preemptive TIPS Baveno VII (Garcia-Pagán NEJM 2010 — duplica supervivencia en Child B/C), sin manejo de anticoagulantes (CCP, idarucizumab, andexanet); farmacológico sin profilaxis antibiótica ceftriaxona OBLIGATORIA en cirrótico (Baveno VII), sin eritromicina, sin reversión ACO, sin H. pylori detallado; noFarmacológico básico (sin hipotensión permisiva, sin protocolo transfusión masiva, sin Sengstaken/Linton, sin SX-Ella stent esofágico, sin Hemospray, sin OTSC); quirúrgico vagamente formulado (sin TIPS preemptivo, sin arteriografía + embolización, sin fístula aortoentérica, sin algoritmo HDB).
+
+Cross-check: Baveno VII (de Franchis J Hepatol 2022), AGA 2021 (Laine Gastroenterology), ESGE 2021/2024 (Gralnek Endoscopy), BSG HDB 2019 (Oakland Gut), Villanueva NEJM 2013 (restrictiva), Garcia-Pagán NEJM 2010 (preemptive TIPS), Lau NEJM 2020 (timing EDA), Stanley Lancet 2017 (GBS), SMART (Semler NEJM 2018), ACG H. pylori 2024 + Maastricht VI/Florence 2022, Pollack NEJM 2017 (idarucizumab), Connolly NEJM 2019 (andexanet). 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_hemorragia_digestiva (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (5→14) | Topografía HDA/HDB/HD media con causas + Forrest Ia-III completo + Glasgow-Blatchford preendoscópico + AIMS65 + Rockall postendoscópico + Oakland HDB (BSG 2019) + Child-Pugh/MELD para variceal Baveno VII |
+| `pruebas` (3→6) | Laboratorio completo con transfusión RESTRICTIVA (Villanueva 7 g/dL) + EDA <12h variceal / <24h no variceal (Lau NEJM 2020) + scores estratificación + colonoscopia con preparación PEG + ANGIO-TC para HDB masiva + VCE/enteroscopia HD media |
+| `objetivos` (3→12) | Reanimación cristaloides balanceados SMART + transfusión restrictiva + estratificación scores + manejo ACO con CCP/idarucizumab/andexanet + IBP bolus+infusión 72h AGA 2021 + ERITROMICINA pre-EDA + variceal Baveno VII (terlipresina + ceftriaxona + TIPS preemptivo Child B/C) + no variceal dual therapy + HDB colonoscopia o angio-TC + H. pylori + prevención secundaria carvedilol Baveno VII + comorbilidades |
+| `farmacologico` (2→6) | IBP bolus+infusión AGA 2021 con step-down + terlipresina/octreotide/somatostatina con monitorización ECG + CEFTRIAXONA OBLIGATORIA cirrótico (Baveno VII) + ERITROMICINA pre-EDA + reversión ACO (CCP/vit K, idarucizumab, andexanet) + H. pylori triple/cuádruple con Maastricht VI 2022 |
+| `noFarmacologico` (4→14) | ABCDE con IOT si masivo + 2 vías + Ringer balanceado con HIPOTENSIÓN PERMISIVA + SV + SNG controvertida + transfusión restrictiva + protocolo transfusión masiva + endoscopia DUAL + Hemospray + banding/cianoacrilato + Sengstaken/Linton + SX-Ella stent + profilaxis TVP + cabecera 30° + educación al alta |
+| `quirurgico` (2→9) | TIPS PREEMPTIVO Baveno VII Child B/C <72h (Garcia-Pagán) + TIPS rescate + trasplante hepático + ARTERIOGRAFÍA + embolización + cirugía urgente HDA limitada + cirugía urgente HDB (hemicolectomía dirigida vs subtotal) + electiva resección segmentaria + hemorroidectomía + reparación fístula aortoentérica |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: Baveno VII + AGA 2021 + ESGE 2021/2024 + BSG 2019 + ensayos pivotales Villanueva/Garcia-Pagán/Lau/Stanley/SMART + ACG H. pylori 2024/Maastricht VI + reversión idarucizumab/andexanet |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`: vigentes (etiologías clásicas cubiertas)
+- `fisiopatologia`: vigente
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **27 frescas** (era 26; +pat_hemorragia_digestiva), 124 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (4 restantes)
+pat_eii → pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 43: Revisión clínica de pat_obstrucción_intestinal a WSES Bologna 2018/2024 + Gastrografin Branco 2010 + neostigmina Ogilvie + SMART
 
 ### Resumen
