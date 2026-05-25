@@ -114,8 +114,8 @@ Digestivo (2): pat_cirrosis, pat_pancreatitis
 | 5 | `pat_obstrucción_intestinal` | Obstrucción Intestinal | WSES Bologna 2018/2024 + Gastrografin Branco 2010 + neostigmina Ogilvie + SMART | ✅ `d0183d7` |
 | 6 | `pat_hemorragia_digestiva` | Hemorragia Digestiva | Baveno VII + AGA 2021 + ESGE 2021/2024 + BSG 2019 + Villanueva NEJM 2013 + preemptive TIPS | ✅ `8de5532` |
 | 7 | `pat_eii` | Enfermedad Inflamatoria Intestinal | ECCO 2022/2024 + ACG 2024 + STRIDE-II + Montreal + biológicos 2020-2024 (anti-IL-23, JAK, S1P) | ✅ `f9e7e10` |
-| 8 | `pat_ulcera_peptica` | Úlcera Péptica | ACG 2024 + Maastricht VI/Florence 2022 + vonoprazán FDA 2022 + WSES perforación 2020 | ✅ `pendiente commit` |
-| 9 | `pat_hipotiroidismo` | Hipotiroidismo | ATA 2014 + actualizaciones; levotiroxina dosing | pendiente |
+| 8 | `pat_ulcera_peptica` | Úlcera Péptica | ACG 2024 + Maastricht VI/Florence 2022 + vonoprazán FDA 2022 + WSES perforación 2020 | ✅ `9124402` |
+| 9 | `pat_hipotiroidismo` | Hipotiroidismo | ATA 2014 + 2017 embarazo + TRUST NEJM 2017 + checkpoint immunotherapy + síndrome poliglandular | ✅ `pendiente commit` |
 | 10 | `pat_hipertiroidismo` | Hipertiroidismo / Graves | ATA 2016 + 2024 updates; metimazol vs PTU | pendiente |
 
 **Total: 21/151 entries (~14% de la base)** con `revisadoEn` y `fuentes` completos. Cobertura amplia de las patologías más prevalentes en enfermería médico-quirúrgica de adultos.

@@ -12045,19 +12045,47 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por grado",
+      "nombre": "Por origen (primario/central) + severidad bioquímica + etiología + contextos especiales",
       "tipos": [
         {
-          "nombre": "Hipotiroidismo subclínico",
-          "descripcion": "TSH elevada con T4L normal. Generalmente asintomático. Tratamiento controversial"
+          "nombre": "Hipotiroidismo PRIMARIO (95%) — origen tiroideo",
+          "descripcion": "Hipofunción tiroidea con eje hipófiso-tiroideo respondiendo normalmente. Bioquímica: TSH ELEVADA + T4L NORMAL O BAJA. Causas: TIROIDITIS DE HASHIMOTO (autoinmune — más frecuente en países desarrollados, anti-TPO + en 90%), iatrogénico (post-tiroidectomía total/parcial, post-radioyodo, post-radioterapia cervical), por fármacos (amiodarona, litio, interferón, inhibidores de checkpoint inmunes — pembrolizumab/nivolumab), déficit de yodo (mundial #1, países en desarrollo), congénito (cribado neonatal universal), tiroiditis subaguda (De Quervain — fase hipotiroidea tras tirotoxicosis)"
         },
         {
-          "nombre": "Hipotiroidismo clínico (manifiesto)",
-          "descripcion": "TSH elevada con T4L baja. Síntomas presentes. Tratamiento indicado"
+          "nombre": "Hipotiroidismo CENTRAL (secundario/terciario) — origen hipotálamo-hipofisario",
+          "descripcion": "Hipofunción tiroidea por falla del estímulo TSH/TRH. Bioquímica: TSH NORMAL O BAJA + T4L BAJA (patrón discordante). Causas: tumor hipofisario (adenoma macroprolactinoma, craneofaringioma), Sheehan (necrosis hipofisaria postparto), hipofisitis (autoinmune, IgG4, post-checkpoint), apoplejía hipofisaria, TCE, radioterapia cerebral, sarcoidosis, hemocromatosis. REQUIERE evaluación de TODO eje (ACTH/cortisol, FSH/LH/testosterona/estradiol, GH/IGF-1, prolactina) y RM hipofisaria. CRÍTICO: tratar primero insuficiencia adrenal antes de levotiroxina (evita crisis adrenal)"
         },
         {
-          "nombre": "Coma mixedematoso",
-          "descripcion": "Hipotiroidismo severo con: hipotermia, bradicardia, confusion, hipoventilación. Mortalidad > 20%"
+          "nombre": "Hipotiroidismo SUBCLÍNICO LEVE (TSH 4-10 mUI/L + T4L normal)",
+          "descripcion": "TSH ligeramente elevada (límite superior - 10) con T4L NORMAL. Mayoría asintomática. DECISIÓN INDIVIDUALIZADA: tratar si síntomas + persistente >3-6 meses, embarazo o planificación, anti-TPO+, mujer <65 con bocio, dislipidemia. NO TRATAR rutinariamente en >65-70 años con TSH 4-10 sin otra indicación (TRUST trial NEJM 2017 mostró ausencia de beneficio sintomático + riesgo de sobre-tratamiento)"
+        },
+        {
+          "nombre": "Hipotiroidismo SUBCLÍNICO SEVERO (TSH >10 + T4L normal)",
+          "descripcion": "TSH >10 mUI/L con T4L NORMAL. TRATAR SIEMPRE — alto riesgo de progresión a hipotiroidismo clínico, eventos cardiovasculares, dislipidemia, insuficiencia cardíaca. Iniciar LT4 con seguimiento TSH a 6-8 semanas"
+        },
+        {
+          "nombre": "Hipotiroidismo CLÍNICO MANIFIESTO (TSH elevada + T4L BAJA)",
+          "descripcion": "TSH ELEVADA + T4L FRANCAMENTE BAJA + síntomas. TRATAR SIEMPRE con levotiroxina. Objetivo TSH 0.5-2.5 (joven sano), 4-6 (>70 años), <2.5 1er trimestre embarazo / <3.0 2do-3er trimestre"
+        },
+        {
+          "nombre": "COMA MIXEDEMATOSO — emergencia endocrinológica",
+          "descripcion": "Hipotiroidismo severo descompensado con: HIPOTERMIA <35.5°C, hipoventilación con hipercapnia, BRADICARDIA, hipotensión, hiponatremia, hipoglucemia, alteración del nivel de consciencia hasta coma, edema generalizado (mixedema). Desencadenantes: infección, IAM, ACV, frío extremo, sedantes/opioides, cirugía. MORTALIDAD 20-40% incluso con tratamiento. Requiere UCI"
+        },
+        {
+          "nombre": "Hipotiroidismo en EMBARAZO",
+          "descripcion": "Crítico por neurodesarrollo fetal. RANGOS DIAGNÓSTICOS ESPECÍFICOS: TSH ≥2.5 1er trimestre con anti-TPO+ = tratar; TSH >4.0 = tratar siempre. REQUERIMIENTOS DE LT4 aumentan 40-50% desde semana 4-6 (escalar dosis 25-30% al confirmar embarazo SIN esperar TSH). Objetivo: TSH <2.5 1er trim, <3.0 2do-3er trim. Cribado universal vs alto riesgo controvertido — sociedades médicas internacionales recomiendan al menos cribado de alto riesgo"
+        },
+        {
+          "nombre": "Tiroiditis POSTPARTO",
+          "descripcion": "5-10% de mujeres en primer año postparto. Patrón típico: fase TIROTÓXICA transitoria (1-3 meses postparto, beta-blockers si síntomas) → fase HIPOTIROIDEA (3-6 meses, levotiroxina si síntomas o planeando embarazo) → recuperación espontánea en 80% en 1 año. 20-30% evoluciona a hipotiroidismo permanente. Recurrencia 70% en próximos embarazos"
+        },
+        {
+          "nombre": "Hipotiroidismo CONGÉNITO",
+          "descripcion": "1:2000-1:4000 RN. Causas: disgenesia tiroidea (85%), dishormonogénesis, hipotálamo-hipofisaria. CRIBADO NEONATAL UNIVERSAL en todos los países desarrollados (talón de Aquiles, TSH en sangre seca día 2-5 de vida). Tratamiento INMEDIATO (idealmente <2 semanas de vida) con levotiroxina 10-15 μg/kg/d — previene retraso mental irreversible"
+        },
+        {
+          "nombre": "Hipotiroidismo IATROGÉNICO por inmunoterapia (inhibidores checkpoint)",
+          "descripcion": "Endocrinopatía emergente con uso creciente de pembrolizumab, nivolumab, ipilimumab. Hasta 5-10% pacientes. Puede presentarse como tiroiditis (fase tirotóxica → hipotiroidea) o hipotiroidismo primario directo. Manejo: levotiroxina si síntomas o TSH >10, mantener inmunoterapia (no es contraindicación). Riesgo asociado de HIPOFISITIS por checkpoint (descartar)"
         }
       ]
     },
@@ -12078,50 +12106,165 @@
       ],
       "pruebas": [
         {
-          "nombre": "TSH (primera linea) + T4 libre",
-          "descripcion": "TSH elevada + T4L baja = hipotiroidismo primario confirmado. TSH normal + T4L baja = hipotiroidismo central (hipofisario, raro)",
-          "valoresReferencia": "TSH: 0.4-4.0 mUI/L normal. T4L: 0.8-1.8 ng/dL. Hipotiroidismo: TSH > 4.0 + T4L < 0.8",
+          "nombre": "TSH ultrasensible (primera línea) + T4 libre",
+          "descripcion": "ALGORITMO DIAGNÓSTICO: 1) TSH inicial (cribado); 2) si TSH alterada → confirmar con T4L. PATRONES: TSH ELEVADA + T4L BAJA = hipotiroidismo PRIMARIO clínico (tratar); TSH ELEVADA + T4L NORMAL = subclínico (estratificar por TSH 4-10 vs >10); TSH NORMAL O BAJA + T4L BAJA = CENTRAL (estudiar hipófisis con RM + eje hipófiso suprarrenal); TSH baja + T4L alta = tirotoxicosis (otra entidad)",
+          "valoresReferencia": "TSH: 0.4-4.0 mUI/L (4.5 según algunos laboratorios). T4L: 0.8-1.8 ng/dL (10-23 pmol/L). En EMBARAZO: TSH 1er trim 0.1-2.5, 2do trim 0.2-3.0, 3er trim 0.3-3.0. En >65 años: límite superior ~6-7 mUI/L. Cáncer tiroideo en supresión: TSH <0.1",
           "cuidadosEnfermeria": [
-            "No requiere ayuno",
-            "Extraer antes de tomar la levotiroxina del dia (si ya en tratamiento, la T4L puede estar elevada artificialmente)"
+            "NO requiere ayuno (TSH no se afecta significativamente con comida)",
+            "Extraer ANTES de tomar la levotiroxina del día (la T4L puede elevarse 1-3h postoma — interpretar con cuidado)",
+            "Hora de extracción ideal: mañana (TSH tiene ritmo circadiano — pico nocturno, valle vespertino, pero rango analítico aceptado todo el día)",
+            "Si paciente con dolor agudo, hospitalización, enfermedad sistémica: 'sick euthyroid' puede dar TSH y T4L bajos falsamente — reevaluar al alta clínica",
+            "Documentar todas las medicaciones (amiodarona, litio, IBP, biotina suplementaria interfiere con TSH a dosis >5 mg/d — suspender 48h antes)"
           ]
         },
         {
-          "nombre": "Anticuerpos anti-TPO y anti-tiroglobulina",
-          "descripcion": "Confirman etiologia autoinmune (Hashimoto); positivos en > 90% de los casos",
+          "nombre": "Anti-TPO (peroxidasa tiroidea) y anti-Tiroglobulina (anti-Tg)",
+          "descripcion": "Confirman etiología AUTOINMUNE (tiroiditis de Hashimoto). Anti-TPO+ en >90% de Hashimoto, anti-Tg+ en 50-70%. Su POSITIVIDAD predice progresión de subclínico a clínico y guía decisión terapéutica. NO requiere repetir tras confirmación inicial (no monitorizan respuesta)",
+          "valoresReferencia": "Anti-TPO: <34 UI/mL negativo (varía por laboratorio). Anti-Tg: <115 UI/mL negativo. Títulos altos (>100x normal) sugieren autoinmunidad activa pero NO correlacionan con severidad de hipofunción",
           "cuidadosEnfermeria": [
-            "Muestra venosa estandar",
-            "Resultado no modifica el tratamiento inicial"
+            "Muestra venosa estándar",
+            "Resultado no modifica el tratamiento inicial pero CAMBIA la decisión en subclínico (tratar más fácilmente si TPO+)",
+            "Si TPO+ en mujer fértil: vigilar tiroides en embarazo (riesgo tiroiditis postparto)",
+            "Cribado de comorbilidades autoinmunes (síndrome poliglandular autoinmune): celiaquía (anti-transglutaminasa), DM1 (HbA1c, anti-GAD), Addison (cortisol, ACTH), vitíligo, anemia perniciosa (B12)"
+          ]
+        },
+        {
+          "nombre": "Cortisol matinal basal — descartar insuficiencia adrenal antes de iniciar LT4",
+          "descripcion": "CRÍTICO en hipotiroidismo CENTRAL o sospecha de síndrome poliglandular autoinmune (Hashimoto + Addison): iniciar levotiroxina SIN cubrir insuficiencia adrenal coexistente puede PRECIPITAR CRISIS ADRENAL (mortal). Solicitar cortisol basal AM + considerar test de estimulación con ACTH si dudas",
+          "valoresReferencia": "Cortisol basal AM (8:00 AM): >18 μg/dL = excluye insuf adrenal; <3 μg/dL = confirma; 3-18 = test de ACTH (Synacthen) — pico cortisol >18 a los 30-60 min descarta",
+          "cuidadosEnfermeria": [
+            "OBLIGATORIO en hipotiroidismo CENTRAL antes de iniciar LT4",
+            "Obligatorio si sospecha PGA (vitíligo, candidiasis, hiperpigmentación, hiponatremia, hiperkalemia, hipoglucemia, hipotensión postural)",
+            "Si insuficiencia adrenal confirmada: iniciar HIDROCORTISONA 15-25 mg/d (dividida en 2-3 dosis) ANTES o simultáneamente con LT4",
+            "Educar al paciente sobre la necesidad de dosis de estrés (triplicar hidrocortisona si fiebre, infección, cirugía, parto)"
+          ]
+        },
+        {
+          "nombre": "Ecografía tiroidea (NO rutinaria — selectivo)",
+          "descripcion": "INDICADA cuando: BOCIO palpable o visible (caracterizar tamaño, simetría, nodularidad), NÓDULOS palpables (TIRADS para riesgo de malignidad y decisión de PAAF), Hashimoto con ECO característica heterogénea hipoecoica con pseudonódulos, sospecha de transformación a LINFOMA MALT (Hashimoto + crecimiento rápido + síntomas compresivos). NO usar para diagnóstico de hipofunción (es funcional, no anatómico)",
+          "cuidadosEnfermeria": [
+            "Educar al paciente: técnica indolora, no invasiva, sin radiación",
+            "Si nódulos encontrados: clasificación TIRADS (1-5) determina necesidad de PAAF",
+            "PAAF (Punción Aspiración con Aguja Fina) si TIRADS 4-5 o tamaño >1-1.5 cm"
+          ]
+        },
+        {
+          "nombre": "Laboratorio complementario: hemograma + perfil lipídico + función renal + ionograma + cortisol",
+          "descripcion": "Hipotiroidismo causa: anemia (normocítica más común, pero también ferropénica por menorragia, megaloblástica por anemia perniciosa coexistente), DISLIPIDEMIA (LDL elevado — reversible con LT4, NO iniciar estatina hasta euthyroideo y revaluar), HIPONATREMIA (dilucional), elevación CPK (miopatía), elevación transaminasas. Hipertirotropinemia puede acompañarse de hiponatremia, hiperprolactinemia leve",
+          "valoresReferencia": "LDL frecuentemente >130 en hipotiroideo (reversible); revisar 6 sem post-tratamiento antes de iniciar estatina. Na+ <135 en severo. CPK elevada en hipotiroidismo severo",
+          "cuidadosEnfermeria": [
+            "Solicitar al diagnóstico para baseline",
+            "NO INICIAR ESTATINA basal en hipotiroideo no tratado — la dislipidemia es 2ria; reevaluar perfil lipídico 6-8 sem post-eutiroideo",
+            "Si anemia: descartar ferropenia (ferritina), B12, fólico — autoinmunidad asociada frecuente",
+            "Cribado de DM si historia familiar (HbA1c)"
+          ]
+        },
+        {
+          "nombre": "Cribado de hipotiroidismo en EMBARAZO + cribado neonatal universal",
+          "descripcion": "EMBARAZO: cribado de HIGH-RISK (historia personal/familiar tiroides, DM1, autoinmunidad, infertilidad, abortos recurrentes, edad >30, IMC >40, RT cervical previa, residencia en zona deficitaria de yodo) — ATA 2017. Muchos países hacen cribado universal. Solicitar TSH idealmente PRE-CONCEPCIÓN o en primera visita prenatal. NEONATAL: cribado universal con TSH en sangre seca día 2-5 de vida (talón) — detección precoz crítica para neurodesarrollo",
+          "cuidadosEnfermeria": [
+            "Pre-concepción en mujer con factor de riesgo: TSH + ajustar LT4 si previa hipotiroidea (objetivo TSH <2.5 antes de concepción)",
+            "Confirmar embarazo + escalar LT4 25-30% el primer día sin esperar TSH (40-50% más requeridos)",
+            "Monitorizar TSH cada 4 semanas en 1er-2do trimestre, cada 6 semanas en 3er, postparto volver a dosis pre-embarazo + control 6-8 sem",
+            "Cribado neonatal: educar a la madre sobre importancia de la prueba del talón"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Normalizar la TSH (objetivo 0.5-2.5 mUI/L en la mayoria)",
-        "Aliviar síntomas",
-        "Prevenir coma mixedematoso"
+        "Normalizar la TSH al rango ESPECÍFICO POR CONTEXTO (no es un único objetivo universal): adulto joven sano objetivo 0.5-2.5 mUI/L; >65-70 años permitir 4-6 mUI/L (evitar sobre-tratamiento — TRUST trial NEJM 2017); pre-concepción y embarazo <2.5 (1er trim) y <3.0 (2do-3er trim); cáncer tiroideo en supresión <0.1",
+        "Estratificar a SUBCLÍNICO LEVE (TSH 4-10) vs SEVERO (TSH >10) antes de iniciar tratamiento. Subclínico leve: tratar solo si síntomas + persistente, anti-TPO+, embarazo o planificación, dislipidemia, bocio, joven con riesgo CV. Subclínico SEVERO: tratar siempre",
+        "DESCARTAR insuficiencia adrenal coexistente ANTES de iniciar levotiroxina en hipotiroidismo central o sospecha de síndrome poliglandular autoinmune: cortisol basal AM + ACTH; si IA confirmada → iniciar hidrocortisona ANTES o simultánea con LT4 (evita crisis adrenal)",
+        "Iniciar dosis adecuada según edad y comorbilidad: ADULTO SANO <60: dosis plena 1.6 μg/kg/d. >60 años o cardiopatía isquémica: iniciar 25-50 μg/d y escalar cada 4-6 sem (riesgo de angina, IAM, arritmia con escalada rápida). Pediátrico congénito: 10-15 μg/kg/d",
+        "Educar al paciente sobre TOMA CORRECTA: en AYUNAS estricto 30-60 min antes del desayuno, con agua (NO café, NO leche, NO zumo); separar 4h de calcio, hierro, antiácidos, sucralfato, colestiramina, IBP (controvertido); alternativa toma al acostarse 3h después de la última comida (igual eficacia, mejor adherencia)",
+        "Monitorizar TSH a las 6-8 semanas tras CADA ajuste de dosis (vida media T4 = 7 días; equilibrio en 4-6 semanas). Una vez en rango estable: control anual o si síntomas/embarazo/cambio de medicación",
+        "Evitar SOBRE-TRATAMIENTO (TSH suprimida): mayor riesgo de fibrilación auricular, osteoporosis, fracturas, mortalidad cardiovascular (especialmente en >65 años). Si TSH <0.4 sin indicación: REDUCIR dosis",
+        "Manejo del COMA MIXEDEMATOSO en UCI: 1) hidrocortisona 100 mg IV INMEDIATA (cubrir insuf adrenal coexistente); 2) levotiroxina IV 200-400 μg bolus → 50-100 μg/d hasta vía oral disponible; 3) calentamiento PASIVO (manta, no activo — riesgo vasodilatación); 4) corregir hiponatremia LENTO (riesgo mielinólisis); 5) ventilación mecánica si hipercapnia; 6) tratar desencadenante (infección, IAM); 7) evitar sedantes/opioides. Mortalidad 20-40%",
+        "MANEJO EN EMBARAZO: confirmar embarazo + ESCALAR LT4 25-30% el primer día sin esperar TSH (requerimientos aumentan 40-50% desde semana 4-6). Monitorizar TSH cada 4 sem 1er-2do trim, cada 6 sem 3er trim. Objetivo: <2.5 (1er), <3.0 (2do-3er). Postparto: volver a dosis pre-embarazo + control en 6-8 sem",
+        "Cribado de COMORBILIDADES AUTOINMUNES en Hashimoto (síndrome poliglandular autoinmune): celiaquía (anti-transglutaminasa), DM1 (HbA1c, anti-GAD), Addison (cortisol, ACTH), anemia perniciosa (B12, anti-FI), vitíligo, alopecia areata",
+        "Manejo del HIPOTIROIDISMO POR INMUNOTERAPIA (checkpoint inhibitors): levotiroxina si TSH >10 o síntomas; mantener inmunoterapia (no contraindicación); descartar HIPOFISITIS coexistente (panhipopituitarismo — cortisol, FSH/LH, prolactina)",
+        "Educar al paciente sobre tratamiento DE POR VIDA (en mayoría) — adherencia es pilar. Plan ante olvido de dosis: tomar al recordar el mismo día; si pasó el día, doble dosis al día siguiente o saltar (no triplicar). Signos de SUBDOSIFICACIÓN (fatiga, frío, estreñimiento, ganancia peso) y SOBREDOSIFICACIÓN (palpitaciones, ansiedad, insomnio, pérdida peso, calor, diarrea)"
       ],
       "farmacologico": [
         {
-          "nombre": "Levotiroxina sodica (LT4)",
-          "grupo": "Hormona tiroidea sintetica - reposición hormonal",
-          "mecanismo": "Sustituto exogeno de la T4 natural; se convierte perifericamente en T3 activa",
-          "dosis": "1.6 mcg/kg/dia; iniciar 25-50 mcg/dia en ancianos/cardiacos, ajustar cada 6-8 semanas",
+          "nombre": "Levotiroxina sódica (LT4) — comprimido, líquido (Tirosint Sol), gel cápsula (Tirosint)",
+          "grupo": "Hormona tiroidea sintética T4 — TRATAMIENTO ESTÁNDAR de hipotiroidismo (ATA 2014)",
+          "mecanismo": "Sustituto exógeno de tiroxina (T4) natural; se convierte periféricamente en T3 activa por desyodinasas tipo 1 y 2. Vida media 7 días — equilibrio en 4-6 semanas. Una toma diaria suficiente. Formulaciones: comprimido (estándar, requiere medio ácido para absorción); LÍQUIDO (Tirosint Sol — preferido si gastritis atrófica, post-bypass gástrico, celiaco, intolerancia a excipientes); GEL CÁPSULA (Tirosint — sin excipientes problemáticos)",
+          "dosis": "ADULTO SANO <60a: 1.6 μg/kg/d (PESO IDEAL — no usar peso real en obesos). Típico 75-200 μg/d. >60-70 años o cardiopatía isquémica: INICIAR 25-50 μg/d, escalar 12.5-25 μg cada 4-6 sem según TSH y tolerancia. EMBARAZO: aumentar 25-30% al confirmar (no esperar TSH). CONGÉNITO neonatal: 10-15 μg/kg/d. COMA MIXEDEMATOSO: 200-400 μg IV bolus → 50-100 μg/d IV hasta vía oral",
           "cuidadosEnfermeria": [
-            "Administrar en AYUNAS, 30-60 min antes del desayuno",
-            "Separar 4h de calcio, hierro, antiácidos (reducen absorción)",
-            "No mezclar con soja o fibra (reducen absorción)",
-            "TSH de control a las 6-8 semanas de cada ajuste de dosis",
-            "En cardíaco: iniciar con dosis muy baja (12.5-25 mcg) y escalar lento (riesgo de angina)"
+            "Administrar en AYUNAS ESTRICTO 30-60 min antes del desayuno, con agua (NO café, NO leche, NO zumo de naranja, NO café con leche)",
+            "Alternativa: TOMA NOCTURNA al acostarse 3h después de la última comida — igual eficacia, frecuentemente mejor adherencia (Bolk Arch Intern Med 2010)",
+            "Separar ≥4h de: calcio, hierro, magnesio, antiácidos con aluminio, sucralfato, colestiramina/colesevelam, raloxifeno, suplementos de soja, fibra dietética excesiva",
+            "IBP: efecto variable (gastritis atrófica reduce absorción) — si TSH inestable bajo IBP, valorar formulación líquida o gel cápsula",
+            "Biotina suplementaria >5 mg/d INTERFIERE con análisis de TSH (falso normal o bajo) — suspender 48h antes de extracción",
+            "TSH de control a las 6-8 semanas tras cada ajuste de dosis",
+            "EN CARDIÓPATA: iniciar 12.5-25 μg/d y escalar 12.5 μg cada 4-8 sem (escalada rápida puede precipitar angina, IAM, arritmia)",
+            "Educar sobre tratamiento DE POR VIDA en mayoría — adherencia es pilar; plan ante olvido",
+            "Signos de sobredosis (palpitaciones, ansiedad, insomnio, pérdida peso, calor, diarrea, dolor torácico): reducir dosis",
+            "Signos de subdosis (fatiga, frío, estreñimiento, ganancia peso, depresión): aumentar dosis tras confirmar TSH alta",
+            "Cambios entre marcas/genéricos: pueden alterar bioequivalencia — recomendar mantener misma marca, repetir TSH 6-8 sem tras cambio"
+          ]
+        },
+        {
+          "nombre": "Combinación LT4 + LT3 (liotironina) — uso muy limitado, NO rutinario",
+          "grupo": "Tratamiento combinado — NO RECOMENDADO RUTINARIAMENTE por ATA 2014",
+          "mecanismo": "Añade T3 directa (vida media 1 día, requiere 2-3 tomas/día) a LT4. Hipotético beneficio en pacientes con polimorfismo del gen DIO2 que reduce conversión T4→T3. Evidencia META-ANALÍTICA NO muestra superioridad clara sobre LT4 sola en cohorte general",
+          "dosis": "Si se prueba (raro, individualizado): reducir LT4 a 70-80% de dosis equivalente y añadir liotironina 5-12.5 μg/d dividida en 2 dosis. Mantener ratio T4:T3 13:1 a 16:1",
+          "cuidadosEnfermeria": [
+            "Reservar para pacientes con SÍNTOMAS PERSISTENTES pese a TSH normal en LT4 óptima, tras descartar otras causas (anemia, déficit Fe/B12/D, depresión, SAHS, fatiga crónica)",
+            "NO en >65 años, cardiopatía o embarazo (riesgo arritmia, sobre-tratamiento)",
+            "Monitorización más frecuente: TSH + T4L + T3L + síntomas",
+            "Si no mejora síntomas en 3-6 meses: volver a LT4 monoterapia",
+            "Decisión por endocrinólogo experto — no iniciar en atención primaria"
+          ]
+        },
+        {
+          "nombre": "Tiroides desecada (Armour Thyroid, Nature-Throid) — NO RECOMENDADA por ATA",
+          "grupo": "Extracto de tiroides porcina/bovina — uso histórico, popularidad en redes sociales sin sustento científico",
+          "mecanismo": "Contiene T4 + T3 + restos de tiroglobulina. RATIO T4:T3 ~4:1 (no fisiológico humano 13:1) — sobre-aporte de T3 con riesgo de tirotoxicosis facticia",
+          "dosis": "1 grano (60-65 mg) ≈ 100 μg LT4 — equivalencia variable según lote",
+          "cuidadosEnfermeria": [
+            "NO RECOMENDADA por ATA 2014 + ETA + sociedades internacionales — variabilidad lote a lote, ratio T3 supra-fisiológico",
+            "Riesgo de SOBRE-TRATAMIENTO con T3 excesiva (palpitaciones, ansiedad, FA, pérdida peso, osteoporosis)",
+            "Si paciente la solicita: discutir riesgos y beneficios, optimizar LT4 primero, valorar combinación LT4+LT3 controlada si justificable",
+            "NUNCA en embarazo, cardiopatía, >65 años"
+          ]
+        },
+        {
+          "nombre": "Hidrocortisona IV — emergencia previa a LT4 en coma mixedematoso o hipotiroidismo central",
+          "grupo": "Glucocorticoide — cobertura empírica de insuficiencia adrenal coexistente",
+          "mecanismo": "Cubre posible insuficiencia adrenal NO diagnosticada antes de iniciar LT4 (que aumenta metabolismo de cortisol y precipita crisis adrenal si glándula adrenal insuficiente)",
+          "dosis": "Coma mixedematoso: 100 mg IV bolus + 50-100 mg c/8h x 24-48h. Hipotiroidismo central recién diagnosticado: 15-25 mg/d oral hasta confirmar/descartar insuf adrenal con cortisol basal + ACTH",
+          "cuidadosEnfermeria": [
+            "DAR ANTES O SIMULTÁNEA con primera dosis de levotiroxina si: hipotiroidismo central, sospecha PGA, coma mixedematoso",
+            "Una vez descartada insuf adrenal con cortisol basal >18 + Synacthen normal: suspender hidrocortisona",
+            "Si insuf adrenal CONFIRMADA: continuar hidrocortisona 15-25 mg/d + fludrocortisona 50-100 μg/d si componente mineralocorticoide; educar sobre dosis de estrés",
+            "Vigilar hiperglucemia, hipertensión, edema con corticoide en agudo"
           ]
         }
       ],
       "noFarmacologico": [
-        "No requiere modificación de dieta específica",
-        "Si bocio por deficit de yodo: sal yodada"
+        "Educación sobre TOMA CORRECTA de levotiroxina — pilar terapéutico. En ayunas estricto 30-60 min antes del desayuno o al acostarse 3h post-cena, con agua, sin café/leche/zumo",
+        "Educar sobre INTERACCIONES medicamentosas y dietéticas: separar 4h de calcio, hierro, antiácidos, sucralfato, colestiramina, raloxifeno, soja, fibra excesiva",
+        "Importancia de mantener MISMA MARCA de LT4 (genérico vs marca tiene bioequivalencia variable — TSH puede alterarse 6-8 sem post-cambio). Si cambio inevitable: TSH de control",
+        "NO requiere dieta específica — desmitificar 'dietas para hipotiroidismo' (sin evidencia). Solo controlar consumo excesivo de bociógenos (col, brócoli, mandioca, mijo) en grandes cantidades (raro causar problema en consumo normal)",
+        "YODO: asegurar ingesta adecuada (150 μg/d adultos, 250 μg/d embarazo/lactancia) — sal yodada estándar suele cubrir necesidad. EVITAR exceso (>500-1000 μg/d) que puede EMPEORAR tiroiditis autoinmune o causar tirotoxicosis (Jod-Basedow). NO suplementar yodo sin indicación (especialmente en Hashimoto)",
+        "SELENIO (200 μg/d): evidencia DÉBIL para reducir títulos anti-TPO en Hashimoto sin clínica clara — no recomendado rutinariamente",
+        "Cesación TABÁQUICA: el tabaco puede empeorar oftalmopatía si Graves coexistente (raro en hipo) y aumenta riesgo CV; intervención sistemática",
+        "Cribado de COMORBILIDADES AUTOINMUNES en Hashimoto: anti-transglutaminasa (celiaquía), HbA1c + anti-GAD (DM1), B12 (anemia perniciosa), cortisol/ACTH si sospecha Addison, vitíligo, alopecia areata",
+        "Cribado FAMILIAR de hipotiroidismo en familiares de 1er grado de paciente con Hashimoto — anual TSH",
+        "Manejo de SÍNTOMAS PERSISTENTES tras eutiroidismo bioquímico: descartar otras causas (anemia ferropénica, déficit B12/folato/vit D, SAHS, depresión, fibromialgia, perimenopausia, fatiga crónica)",
+        "Ejercicio físico aeróbico regular + entrenamiento de fuerza: mejora síntomas residuales, perfil lipídico, peso, estado de ánimo",
+        "Apoyo psicológico si depresión asociada (frecuente en hipotiroidismo no tratado o subclínico) — ISRS si necesario",
+        "EDUCAR sobre embarazo: pre-concepción optimizar TSH <2.5, escalar 25-30% al confirmar embarazo, control TSH cada 4 sem 1er-2do trim"
       ],
-      "quirurgico": []
+      "quirurgico": [
+        "Tiroidectomía total o casi total: indicada SOLO si BOCIO GRANDE COMPRESIVO (síntomas de compresión traqueal, esofágica, vasos), NÓDULOS sospechosos (TIRADS 4-5 con PAAF positiva o no concluyente), sospecha de LINFOMA MALT (Hashimoto con crecimiento rápido + síntomas B), motivos cosméticos relevantes",
+        "NOTA: la tiroidectomía CAUSA HIPOTIROIDISMO (no es tratamiento del hipotiroidismo). Tras cirugía: levotiroxina sustitutiva indefinida + ajuste post-quirúrgico inmediato a dosis plena 1.6 μg/kg/d (vs escalada en hipotiroideo primario)",
+        "Cuidados postoperatorios: vigilar HEMATOMA cervical (compresión vía aérea — urgencia), HIPOCALCEMIA por daño paratiroideo (calcio + PTH 24h post, suplementar Ca + vit D activa si Ca <8 mg/dL), LESIÓN RECURRENCIAL (disfonía — laringoscopia si persistente), CRISIS TIROTÓXICA postquirúrgica (raro en hipotiroideo, más en Graves)",
+        "Trasplante de tiroides: en investigación, no estándar clínico"
+      ]
     },
     "cuidadosEnfermeria": {
       "valoracion": [
@@ -12243,7 +12386,15 @@
       "pat_fa",
       "pat_dm2"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "American Thyroid Association (ATA) Guidelines for the Treatment of Hypothyroidism (Jonklaas J et al, Thyroid 2014;24:1670-1751) — y actualizaciones ETA/BTA 2022-2024",
+      "ATA Guidelines for the Diagnosis and Management of Thyroid Disease During Pregnancy and the Postpartum (Alexander EK et al, Thyroid 2017;27:315-389)",
+      "TRUST trial — Thyroid Hormone Therapy for Older Adults with Subclinical Hypothyroidism (Stott DJ et al, NEJM 2017;376:2534-2544); IEMO trial confirma ausencia de beneficio en >80 años",
+      "ENDO Society Clinical Practice Guideline — Treatment of Hyperprolactinemia (relacionado central). Endocrine Society Clinical Practice Guideline on Diagnosis and Treatment of Primary Adrenal Insufficiency (Bornstein SR et al, J Clin Endocrinol Metab 2016) — relevante para hipotiroidismo central + PGA",
+      "European Thyroid Association Guidelines on Iodine Deficiency and Pregnancy (Lazarus J et al, Eur Thyroid J 2014); ATA Statement on Use of Liothyronine + Levothyroxine Combination 2021 — sigue NO recomendando rutinariamente. Inmunoterapia checkpoint endocrinopathies (Chang LS Endocr Rev 2019)"
+    ]
   },
   {
     "id": "pat_hipertiroidismo",
