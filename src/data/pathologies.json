@@ -8464,27 +8464,43 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación de Johnson (ulcera gástrica) y por localización",
+      "nombre": "Localización (duodenal/gástrica) + Johnson + etiología + Forrest endoscópico",
       "tipos": [
         {
-          "nombre": "Ulcera duodenal",
-          "descripcion": "70-80% de los casos. Bulbo duodenal. H. pylori 90%"
+          "nombre": "Úlcera duodenal (UD)",
+          "descripcion": "60-70% de las úlceras pépticas. Localización típica: bulbo duodenal cara anterior. H. pylori en 70-90% (etiología dominante). Hipersecreción ácida frecuente. Dolor epigástrico que MEJORA con la comida (alivio ácido por alimento) y reaparece 2-3h tras comer. Riesgo malignidad MUY bajo (no requiere biopsia rutinaria)"
         },
         {
-          "nombre": "Ulcera gástrica tipo I",
-          "descripcion": "Curvatura menor, incisura angularis. Baja secreción acida. H. pylori frecuente"
+          "nombre": "Úlcera gástrica — Johnson Tipo I (la más común)",
+          "descripcion": "55-60% de las úlceras gástricas. Curvatura menor, incisura angularis (unión cuerpo-antro). BAJA secreción ácida (incluso normo/hipoacidez). H. pylori frecuente. SIEMPRE BIOPSIAR (4-6 muestras del borde) — riesgo de carcinoma gástrico ulcerado hasta 5%. EDA de control en 6-12 sem para confirmar cicatrización completa"
         },
         {
-          "nombre": "Ulcera gástrica tipo II",
-          "descripcion": "Gástrica + duodenal asociada. Hipersecreción acida"
+          "nombre": "Úlcera gástrica — Johnson Tipo II",
+          "descripcion": "Úlcera GÁSTRICA + DUODENAL asociadas. Hipersecreción ácida (similar a duodenal). Frecuentemente H. pylori. Mismas precauciones de biopsia que tipo I"
         },
         {
-          "nombre": "Ulcera gástrica tipo III",
-          "descripcion": "Prepilórica. Similar a duodenal en patogenia"
+          "nombre": "Úlcera gástrica — Johnson Tipo III",
+          "descripcion": "PREPILÓRICA (≤3 cm del píloro). Patogenia similar a úlcera duodenal — hipersecreción ácida. Riesgo malignidad bajo pero biopsiar igualmente"
         },
         {
-          "nombre": "Ulcera por AINEs",
-          "descripcion": "Cualquier localización. Frecuentemente silente hasta hemorragia"
+          "nombre": "Úlcera gástrica — Johnson Tipo IV",
+          "descripcion": "Alta en curvatura menor cerca de la unión esofagogástrica (cardial). Baja acidez. ALTO riesgo de malignidad. Manejo quirúrgico complejo si requiere resección"
+        },
+        {
+          "nombre": "Úlcera gástrica — Johnson Tipo V",
+          "descripcion": "Cualquier localización inducida por AINEs/AAS (no relacionada con H. pylori ni hipersecreción). Frecuentemente SILENTES hasta complicación (hemorragia, perforación). Requieren manejo dual: suspender AINE/AAS + IBP a largo plazo"
+        },
+        {
+          "nombre": "Etiologías específicas",
+          "descripcion": "HELICOBACTER PYLORI (70% UD, 60% UG); AINEs/AAS (segunda causa); SÍNDROME DE ZOLLINGER-ELLISON (gastrinoma — úlceras múltiples, refractarias, en yeyuno + diarrea); estrés (Cushing en lesión SNC, Curling en quemados — úlceras agudas de estrés); idiopática (10-15% sin H. pylori ni AINE — descartar Crohn, sarcoidosis, CMV/HIV en inmunodeprimidos); secundaria a quimioterapia o radioterapia; eosinofílica"
+        },
+        {
+          "nombre": "Lesiones de Cameron",
+          "descripcion": "Úlceras lineales en saco de hernia hiatal grande, en pliegues por trauma mecánico contra el hiato. Causa frecuente de anemia ferropénica crónica de origen oscuro. Tratamiento: IBP + considerar reparación hernia si refractaria"
+        },
+        {
+          "nombre": "Clasificación Forrest endoscópica (HDA por úlcera)",
+          "descripcion": "Ia sangrado arterial activo en chorro (recidiva sin tx 90%) — Ib babeo activo (50%) — IIa vaso visible sin sangrado (40-50%) — IIb coágulo adherido (25-30%) — IIc pigmento plano hematina (5-10%) — III base limpia sin estigmas (<3%). Guía decisión de hemostasia endoscópica DUAL + IBP IV alta dosis 72h post-EDA"
         }
       ]
     },
@@ -8502,83 +8518,206 @@
       ],
       "pruebas": [
         {
-          "nombre": "Endoscopia digestiva alta (EDA)",
-          "descripcion": "Estudio de elección: visualiza la ulcera, toma biopsia para H. pylori y descarta malignidad",
+          "nombre": "Endoscopia digestiva alta (EDA) con biopsias múltiples — gold standard",
+          "descripcion": "Estudio de elección: visualiza la úlcera, caracteriza Forrest si sangrante, permite hemostasia endoscópica y toma BIOPSIAS para H. pylori + descartar malignidad. En úlcera GÁSTRICA: 4-6 biopsias del borde + repetir EDA en 6-12 semanas para confirmar cicatrización completa (descartar carcinoma ulcerado hasta 5%). En úlcera DUODENAL: biopsia rutinaria NO requerida (riesgo malignidad muy bajo)",
           "cuidadosEnfermeria": [
-            "Ayuno de 8h",
-            "Retirar protesis dentales",
-            "Acceso venoso para sedación",
-            "Vigilar signos vitales durante la sedación",
-            "Post-procedimiento: nada VO hasta recuperar el reflejo nauseoso"
+            "Ayuno de 6-8h sólidos / 2h líquidos claros",
+            "Retirar prótesis dentales removibles, gafas, anillos",
+            "Acceso venoso periférico para sedación con propofol (anestesia)",
+            "Monitorizar TA/FC/SpO2 durante la sedación",
+            "En HDA por úlcera: estabilización hemodinámica PREVIA + eritromicina 250 mg IV 30-90 min antes (mejor visualización gástrica)",
+            "Post-procedimiento: nada VO 1-2h hasta recuperar el reflejo nauseoso; vigilar dolor, sangrado, fiebre (perforación)",
+            "Si biopsias tomadas: educar que resultado en 3-7 días + retest de H. pylori post-tratamiento"
           ]
         },
         {
-          "nombre": "Test del aliento con urea-C13",
-          "descripcion": "Detecta H. pylori activo con alta sensibilidad y especificidad (> 95%). Indica tratamiento y confirma erradicación",
-          "valoresReferencia": "Positivo: H. pylori activo. Negativo: sin H. pylori activo",
+          "nombre": "Diagnóstico de H. pylori — métodos NO invasivos (cribado, retest)",
+          "descripcion": "TEST DEL ALIENTO con urea-C13 o C14: sensibilidad >95% / especificidad >95%, detecta infección ACTIVA, útil para diagnóstico y CONFIRMACIÓN DE ERRADICACIÓN. ANTÍGENO FECAL: similar rendimiento, más barato, no requiere ayuno especial. SEROLOGÍA IgG: solo útil en epidemiología o si baja prevalencia local — NO distingue infección activa vs pasada y NO sirve para retest (puede mantenerse + años post-erradicación)",
+          "valoresReferencia": "Test aliento positivo / antígeno fecal positivo = H. pylori activo (tratar). Test post-erradicación 4-8 sem post-fin de antibiótico + sin IBP ≥2 sem previas",
           "cuidadosEnfermeria": [
-            "Suspender IBPs 2 semanas antes",
-            "Suspender antibioticos 4 semanas antes",
-            "Ayuno de 4h previo",
-            "El paciente exhala en tubos antes y 30 min después de tomar la capsula marcada"
+            "Para diagnóstico Y retest: suspender IBPs ≥2 semanas antes (preferible 4 sem), suspender antibióticos y bismuto ≥4 semanas antes",
+            "Test aliento: ayuno 4h previo. Paciente exhala en tubo basal + tras tomar cápsula marcada C13 + ácido cítrico (acelera vaciamiento gástrico) + segunda muestra 30 min después",
+            "Antígeno fecal: muestra de heces (no diarrea acuosa), refrigerar si demora >24h",
+            "EVITAR serología para diagnóstico/seguimiento — solo útil en investigación epidemiológica",
+            "RETEST POST-TRATAMIENTO OBLIGATORIO en TODA úlcera péptica tratada — confirmar erradicación (curativa)"
+          ]
+        },
+        {
+          "nombre": "Diagnóstico de H. pylori — métodos INVASIVOS durante EDA",
+          "descripcion": "TEST RÁPIDO DE UREASA (CLO-test): biopsia antral colocada en gel con urea + indicador pH — cambio de color en 5 min-24h si H. pylori (sensibilidad 90% / especificidad 95%). Falsos negativos con IBP, antibiótico, bismuto, sangrado activo. HISTOLOGÍA con tinción Giemsa/Warthin-Starry: gold standard, identifica gastritis crónica activa + H. pylori, permite valoración de displasia/metaplasia/atrofia. CULTIVO: solo si fallo de tratamiento (antibiograma para guiar tratamiento de rescate)",
+          "cuidadosEnfermeria": [
+            "Durante EDA: tomar 2 biopsias antrales (test rápido ureasa) + 2 antrales y 2 corpus (histología)",
+            "Suspender IBP ≥2 sem antes si posible para mejorar rendimiento (mover infección desde corpus hacia antro)",
+            "Si paciente con HDA activa y EDA urgente: el sangrado puede dar FALSO NEGATIVO para test ureasa y histología — repetir tests 4-8 sem post-evento si negativos iniciales",
+            "Si fallo de segunda línea: solicitar CULTIVO + antibiograma (esquema personalizado)"
+          ]
+        },
+        {
+          "nombre": "Gastrina sérica en ayunas + test de estimulación con secretina — Síndrome de Zollinger-Ellison",
+          "descripcion": "Sospechar gastrinoma en: úlceras múltiples, refractarias a IBP, en localizaciones atípicas (yeyuno), recurrentes tras erradicación H. pylori, asociadas a diarrea, MEN-1. Gastrina sérica >1000 pg/mL + pH gástrico <2 confirma diagnóstico. Si gastrina 100-1000: test de estimulación con secretina (aumento >120 pg/mL = positivo). Localización con octreoscan, RM, ecoendoscopia",
+          "cuidadosEnfermeria": [
+            "Suspender IBPs ≥1-2 semanas antes (elevación falsamente positiva de gastrina)",
+            "Si no se puede suspender IBP (enfermedad severa): valorar gastrina solo si >1000 pg/mL (más allá del falso positivo por IBP)",
+            "Ayuno 10-12h previo",
+            "Coordinación con endocrinología/oncología si confirmado — descartar MEN-1 (hiperparatiroidismo, prolactinoma)"
+          ]
+        },
+        {
+          "nombre": "Laboratorio: hemograma, ferritina, función renal y hepática, lipasa",
+          "descripcion": "Hb baja + ferritina baja: anemia ferropénica crónica (sangrado oculto crónico — sospechar úlcera Cameron, neoplasia, AINE crónico). Lipasa: descartar pancreatitis como diferencial de dolor epigástrico. Función renal pre-AINE/contraste, hepática pre-medicación. Pre-EDA en HDA: grupo y reservar GRE, INR, plaquetas",
+          "valoresReferencia": "Ferritina <30 ng/mL en hombre o <15 en mujer = déficit de hierro; Hb <12 mujer o <13 hombre = anemia (sangrado crónico debe ir a EDA)",
+          "cuidadosEnfermeria": [
+            "Anemia ferropénica inexplicada en adulto + sin pérdida obvia = EDA OBLIGATORIA (también colonoscopia para descartar cáncer colorrectal)",
+            "Reponer hierro: oral si tolerancia + leve; IV (carboximaltosa) si severa, intolerancia oral o EII activa",
+            "Si lipasa elevada: descartar pancreatitis (TAC abdominal)"
+          ]
+        },
+        {
+          "nombre": "Test de detección de AINE / AAS (anamnesis estructurada)",
+          "descripcion": "Anamnesis EXHAUSTIVA de uso de AINEs/AAS — paciente frecuentemente NO los considera 'medicación' (ibuprofeno, paracetamol-codeína, productos OTC para resfriado, AAS en cardiopatía). Cuantificar: dosis, duración, indicación, posibilidad de cambio (paracetamol, COX-2 selectivo con IBP, suspensión)",
+          "cuidadosEnfermeria": [
+            "Preguntar específicamente por: ibuprofeno, naproxeno, diclofenaco, AAS, productos OTC, suplementos herbales (Ginkgo, ajo aumentan sangrado)",
+            "Repasar TODOS los medicamentos del paciente — incluir comprimidos efervescentes, gotas, parches",
+            "Si AAS prevención secundaria CV: NO suspender automáticamente (riesgo IAM/ACV) — coordinar con cardiología, mantener bajo IBP indefinido",
+            "Si AINE no esencial: suspender; alternativa paracetamol + medidas no farmacológicas; si imprescindible (artritis): COX-2 selectivo (celecoxib) + IBP"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Aliviar el dolor",
-        "Cicatrizar la ulcera",
-        "Erradicar H. pylori",
-        "Prevenir recidivas y complicaciones"
+        "Aliviar el dolor con IBP a dosis estándar mientras se completa diagnóstico y se inicia tratamiento etiológico",
+        "Erradicar Helicobacter pylori en TODA úlcera péptica H. pylori positiva (curativa — reduce recurrencia del 60% al <5% a 1 año, ACG 2024 + Maastricht VI/Florence 2022)",
+        "Selección de esquema de erradicación según resistencia local a claritromicina: si <15% → triple terapia OAC (omeprazol + amoxicilina + claritromicina) 14 días sigue siendo válida; si ≥15% (mayoría de países occidentales hoy) → CUÁDRUPLE CON BISMUTO empírica 10-14 días (omeprazol + bismuto + tetraciclina + metronidazol) como PRIMERA LÍNEA. Vonoprazán-based emergente con eficacia superior",
+        "Cicatrizar la úlcera: 8 semanas de IBP (úlcera duodenal) o 12 semanas (úlcera gástrica). Si gigante (>2 cm) o complicada: hasta 16-24 semanas. Repetir EDA a las 6-12 sem en úlcera gástrica para CONFIRMAR cicatrización (descartar carcinoma ulcerado)",
+        "RETEST de H. pylori OBLIGATORIO a las 4-8 semanas post-fin de antibiótico + sin IBP ≥2 semanas previas. Si retest +: tratamiento de RESCATE (cuádruple con bismuto si primera fue triple OAC; levofloxacino-amoxi-IBP si primera fue cuádruple; rifabutina-amoxi-IBP como tercera línea); idealmente con cultivo + antibiograma",
+        "Manejo de úlcera por AINE / AAS: SUSPENDER el AINE si posible (la causa). Si AAS imprescindible (cardiopatía isquémica, stent reciente, ACV): MANTENER + IBP indefinido (ACG/ACC: no suspender AAS de prevención secundaria por riesgo IAM/ACV — coordinar con cardiología). Cambiar AINE a paracetamol + medidas físicas; si AINE imprescindible (artritis activa): COX-2 selectivo (celecoxib) + IBP indefinido",
+        "Prevención PRIMARIA de úlcera por AINE en pacientes de riesgo (>65 años, úlcera previa, anticoagulante, corticoide, AAS, dosis altas, comorbilidad severa): IBP cohabitante + considerar COX-2 + erradicación H. pylori antes de iniciar AINE crónico",
+        "Manejo de HDA por úlcera péptica (FORREST Ia-IIb): reanimación + transfusión restrictiva (Hb <7 g/dL — Villanueva NEJM 2013) + IBP IV alta dosis (omeprazol 80 mg bolus + 8 mg/h infusión 72h) + EDA <24h con hemostasia DUAL (inyección adrenalina + térmica o clip) + biopsia para H. pylori (puede ser falso negativo si sangrado activo — retest 4-8 sem post-evento)",
+        "Manejo de PERFORACIÓN de úlcera péptica: emergencia quirúrgica — sutura simple + parche de epiplon (Graham patch) por laparoscopia. Boey score predice riesgo (shock + comorbilidad severa + perforación >24h). Triple antibioticoterapia perioperatoria. EDA diferida + erradicación H. pylori post-recuperación",
+        "Manejo de OBSTRUCCIÓN gastric outlet (estenosis pilórica por úlcera crónica): descompresión NGT + IBP + dilatación endoscópica con balón (TTS) → segunda elección cirugía (piloroplastia o gastroyeyunostomía si refractaria)",
+        "Cribado de Síndrome de Zollinger-Ellison en úlceras MÚLTIPLES, REFRACTARIAS, ATÍPICAS (yeyuno) o RECURRENTES tras erradicación: gastrina sérica + secretina test + localización (octreoscan, RM, ecoendoscopia)",
+        "Educación al paciente y seguimiento estructurado: adherencia al tratamiento, signos de alarma (HDA, perforación, obstrucción, pérdida de peso, vómitos persistentes — alertar cáncer gástrico), evitar AINEs, cesación tabáquica, reducción alcohol, retest H. pylori, EDA de control si gástrica"
       ],
       "farmacologico": [
         {
-          "nombre": "Omeprazol / Pantoprazol (IBP)",
-          "grupo": "Inhibidor de la bomba de protones",
-          "mecanismo": "Inhibe irreversiblemente la bomba H+/K+-ATPasa en las células parietales, reduciendo la secreción acida",
-          "dosis": "Omeprazol 20-40 mg/dia, 30 min antes del desayuno",
+          "nombre": "Inhibidores de bomba de protones (IBP): Omeprazol, Pantoprazol, Esomeprazol, Lansoprazol, Rabeprazol",
+          "grupo": "Pilar del tratamiento — cicatrización, control sintomático, profilaxis AINE, co-tratamiento erradicación",
+          "mecanismo": "Inhibición IRREVERSIBLE de la H+/K+-ATPasa (bomba de protones) en células parietales gástricas. Pro-fármaco activado en medio ácido. Reduce secreción ácida basal y estimulada por 18-24h con dosis estándar",
+          "dosis": "CICATRIZACIÓN: omeprazol 20-40 mg/d (o equivalente — pantoprazol 40 mg, esomeprazol 20-40 mg, lansoprazol 30 mg, rabeprazol 20 mg) durante 4-8 sem (UD) o 8-12 sem (UG). HDA: 80 mg IV bolus + 8 mg/h x 72h. PROFILAXIS AINE: dosis estándar mientras dure AINE. MANTENIMIENTO indefinido si AAS/AINE crónico, úlcera complicada previa o factores de riesgo",
           "cuidadosEnfermeria": [
-            "Administrar ANTES de las comidas (no después)",
-            "Uso prolongado: vigilar hipomagnesemia, deficit de B12, osteoporosis",
-            "No triturar capsulas de liberación retardada (usar granulos del interior)"
+            "Administrar 30-60 min ANTES del desayuno (necesario que llegue a célula parietal en presencia de comida que estimula bomba)",
+            "NO triturar cápsulas de liberación retardada — abrir y administrar los gránulos en yogur/manzana o por SNG en suspensión específica",
+            "Pantoprazol IV preferido si interacción con clopidogrel (omeprazol/esomeprazol inhiben CYP2C19 — reducen efecto antiplaquetario)",
+            "Uso prolongado (>1 año): vigilar HIPOMAGNESEMIA (parestesias, calambres, arritmias — Mg+ sérico anual), déficit de B12 (mensual si malabsorción), riesgo osteoporosis y fracturas (DEXA + Ca + vit D), riesgo de infección entérica (C. difficile), gastritis atrófica, riesgo asociado pero NO PROBADO de demencia/IRC",
+            "DESPRESCRIBIR cuando ya no exista indicación — uso indefinido injustificado en muchos pacientes (revisar indicación anual)"
           ]
         },
         {
-          "nombre": "Amoxicilina + Claritromicina + Omeprazol (triple terapia)",
-          "grupo": "Antibioticos + IBP - erradicación H. pylori",
-          "mecanismo": "Eliminación de H. pylori para curar y prevenir recidiva de la ulcera",
-          "dosis": "Omeprazol 20 mg + Amoxicilina 1 g + Claritromicina 500 mg, todo c/12h x 14 dias",
+          "nombre": "VONOPRAZÁN (Voquezna) — P-CAB inhibidor potasio-competitivo de bomba de protones",
+          "grupo": "Antisecretor de nueva generación — supresión ácida más rápida y profunda que IBP. FDA aprobado 2022 para erradicación H. pylori y úlcera péptica",
+          "mecanismo": "Bloqueo COMPETITIVO REVERSIBLE de K+ en H+/K+-ATPasa. Ventajas vs IBP: no requiere activación ácida previa (eficaz desde primera dosis), inicio en horas (no días), supresión ácida >90% en 24h, no requiere ayuno, eficaz contra cepas H. pylori resistentes",
+          "dosis": "ERRADICACIÓN H. pylori (régimen Voquezna Dual o Triple Pak): vonoprazán 20 mg + amoxicilina 1 g c/8h x 14 días (dual) O + claritromicina 500 mg c/12h (triple) x 14 días. ÚLCERA DUODENAL: 20 mg/d x 4 sem. ÚLCERA GÁSTRICA: 20 mg/d x 8 sem. HDA: en estudio (no aprobado IV aún)",
           "cuidadosEnfermeria": [
-            "Enfatizar cumplimiento completo de los 14 dias",
-            "Tomar todas las pastillas juntas en cada toma",
-            "Interacción de claritromicina con muchos medicamentos",
-            "Verificar alergia a penicilina (alternativa: Metronidazol)"
+            "Disponibilidad limitada en muchos países — costo elevado vs IBP genérico",
+            "Mejor adherencia (toma única diaria sin restricción de comidas)",
+            "Efectos adversos similares a IBP — hipergastrinemia más marcada (relevancia clínica incierta)",
+            "Indicación principal hoy: ALTA resistencia local a claritromicina + erradicación H. pylori; segunda línea tras fallo IBP",
+            "Monitorización a largo plazo igual que IBP (datos de seguridad <5 años)"
           ]
         },
         {
-          "nombre": "Sucralfato",
-          "grupo": "Protector de mucosa gástrica",
-          "mecanismo": "Forma una barrera protectora sobre la ulcera, estimula la producción de moco y prostaglandinas",
-          "dosis": "1 g c/6h en ayunas, 1h antes de las comidas",
+          "nombre": "Cuádruple terapia con BISMUTO — PRIMERA LÍNEA empírica (Maastricht VI/Florence 2022, ACG 2024)",
+          "grupo": "Régimen empírico de elección donde resistencia a claritromicina ≥15% (mayoría de países) — eficacia 85-95%",
+          "mecanismo": "IBP/Vonoprazán (supresión ácida) + BISMUTO (efecto antibacteriano directo + protección mucosa) + TETRACICLINA (bactericida) + METRONIDAZOL (bactericida, eficaz aun con resistencia parcial cuando se combina con bismuto)",
+          "dosis": "IBP a doble dosis c/12h (omeprazol 40 mg, esomeprazol 40 mg) + bismuto subcitrato/subsalicilato 120 mg c/6h + tetraciclina 500 mg c/6h + metronidazol 500 mg c/8h, x 10-14 días. Pylera (preparado combinado): 3 cápsulas c/6h con IBP",
           "cuidadosEnfermeria": [
-            "Tomar en AYUNAS estricto",
-            "No administrar junto a IBPs (inactiva el sucralfato)",
-            "Constipación frecuente como efecto adverso",
-            "Reducción de absorción de otros medicamentos: separar 2h"
+            "Adherencia ESTRICTA — pilar del éxito; régimen complejo (16 cápsulas/día) reduce adherencia",
+            "Efectos adversos GASTROINTESTINALES frecuentes: náuseas, sabor metálico, dispepsia, lengua negra (bismuto — inocua y reversible)",
+            "Bismuto: heces negras inocuas (NO confundir con melena durante seguimiento)",
+            "Metronidazol: efecto antabús — EVITAR ALCOHOL durante y 48h post-tratamiento (vómitos, taquicardia, hipotensión severas)",
+            "Tetraciclina: NO en embarazo, lactancia, niños <8 años (manchas dentarias permanentes); evitar lácteos/antiácidos próximos (quelan tetraciclina)",
+            "Fotosensibilidad con tetraciclina: SPF 50+, ropa cubriente",
+            "Retest a las 4-8 sem post-fin antibiótico + sin IBP ≥2 sem"
+          ]
+        },
+        {
+          "nombre": "Triple terapia OAC — segunda elección donde resistencia a claritromicina <15%",
+          "grupo": "Esquema clásico que está siendo desplazado — solo si resistencia local documentada baja",
+          "mecanismo": "IBP + Amoxicilina (bactericida no susceptible a resistencia) + Claritromicina (bactericida; resistencia creciente >15% en muchos países lo invalida)",
+          "dosis": "Omeprazol 20-40 mg + amoxicilina 1 g + claritromicina 500 mg, todo c/12h x 14 días",
+          "cuidadosEnfermeria": [
+            "Verificar resistencia local a claritromicina (mapa epidemiológico) antes de prescribir",
+            "Alergia a penicilina: sustituir amoxi por metronidazol 500 mg c/12h (triple OMC) — menor eficacia",
+            "Claritromicina: muchas INTERACCIONES farmacológicas (estatinas — riesgo rabdomiolisis con simvastatina/atorvastatina; warfarina — aumenta INR; benzodiazepinas — sedación; antiarritmicos — prolongación QT)",
+            "Sabor metálico común con claritromicina + metronidazol",
+            "Adherencia 14 días completa — pilar del éxito"
+          ]
+        },
+        {
+          "nombre": "Esquemas de RESCATE: cuádruple con bismuto, levofloxacino-amoxi-IBP, rifabutina-amoxi-IBP",
+          "grupo": "Tratamiento de SEGUNDA Y TERCERA LÍNEA tras fallo de erradicación",
+          "mecanismo": "Cambiar antibióticos para evitar resistencias del primer ciclo. Idealmente con cultivo + antibiograma (especialmente tercera línea)",
+          "dosis": "TRAS FALLO triple OAC: cuádruple con bismuto 10-14 días. TRAS FALLO cuádruple: levofloxacino 500 mg/d + amoxicilina 1 g c/12h + IBP doble dosis x 10-14 días. TERCERA LÍNEA: rifabutina 150 mg c/12h + amoxicilina 1 g c/8h + IBP/vonoprazán doble dosis x 10-14 días",
+          "cuidadosEnfermeria": [
+            "Levofloxacino: prolongación QT (ECG basal si riesgo), tendinopatía/rotura tendón (especialmente Aquiles, >60 años, esteroides), evitar exposición solar",
+            "Rifabutina: toxicidad hematológica (hemograma semanal), hepatotoxicidad, coloración naranja de orina/sudor/lágrimas (inocua), múltiples interacciones (anticonceptivos, antirretrovirales, anticoagulantes)",
+            "Tras 2-3 fallos: considerar cultivo + antibiograma (esquema personalizado)",
+            "Evaluar adherencia previa y resistencia local antes de escalar"
+          ]
+        },
+        {
+          "nombre": "Misoprostol — análogo de prostaglandina E1 (prevención y co-tratamiento)",
+          "grupo": "Citoprotector — alternativa a IBP en profilaxis de úlcera por AINE",
+          "mecanismo": "Análogo de PGE1 — reemplaza prostaglandinas inhibidas por AINEs. Estimula moco, bicarbonato, flujo sanguíneo mucoso. Único fármaco PROBADO para REVERTIR el daño AINE-inducido (no solo prevenir)",
+          "dosis": "200 μg c/6h durante el uso del AINE (efecto profiláctico). Disponible combinado con diclofenaco (Arthrotec)",
+          "cuidadosEnfermeria": [
+            "DIARREA y dolor abdominal frecuentes (30-40%) — principal causa de abandono. Reducir a 200 μg c/12h si intolerancia",
+            "CONTRAINDICADO en EMBARAZO — efecto abortivo (estimula contracciones uterinas)",
+            "Anticoncepción estricta en mujeres fértiles durante tratamiento",
+            "Uso actual limitado a casos donde IBP contraindicado o no eficaz — IBP es estándar",
+            "Test embarazo antes de iniciar en mujer fértil"
+          ]
+        },
+        {
+          "nombre": "Sucralfato — protector de mucosa (rol limitado actual)",
+          "grupo": "Polímero de aluminio + sacarosa — barrera mecánica + estimulación de defensas mucosas",
+          "mecanismo": "Forma gel viscoso adherente a la úlcera en medio ácido, estimula producción de moco, bicarbonato, prostaglandinas y EGF locales. NO antisecretor",
+          "dosis": "1 g c/6h en AYUNAS, 1h antes de comidas",
+          "cuidadosEnfermeria": [
+            "Tomar en AYUNAS estricto (medio ácido necesario para formar gel)",
+            "NO administrar junto a IBPs (el medio menos ácido reduce eficacia)",
+            "Constipación, sequedad de boca, malestar gástrico",
+            "INTERACCIONES: reduce absorción de muchos fármacos (digoxina, ciprofloxacino, warfarina, levotiroxina, fenitoína) — separar 2h",
+            "PRECAUCIÓN en insuficiencia renal — acumulación de aluminio (osteomalacia, encefalopatía)",
+            "Rol actual: limitado a profilaxis de úlcera de estrés en UCI sin IBP disponible o esofagitis por radio/quimioterapia"
           ]
         }
       ],
       "noFarmacologico": [
-        "Suspension de AINEs si es posible; si no: usar COX-2 selectivos + IBP",
-        "Cese del tabaquismo",
-        "Evitar alcohol",
-        "No tomar AINEs con estómago vacio"
+        "Suspensión de AINEs si es posible — la medida no farmacológica más eficaz para curar y prevenir recidiva en úlcera AINE-asociada",
+        "Si AINE imprescindible (artritis activa, dolor crónico no controlable con paracetamol): cambiar a COX-2 selectivo (celecoxib 200 mg/d) + IBP cohabitante INDEFINIDO. NO usar AINE crónico sin IBP en paciente con úlcera previa",
+        "Si AAS prevención secundaria CV: NO suspender (riesgo IAM/ACV > riesgo HDA en mayoría) — coordinar con cardiología, mantener con IBP indefinido; si AAS solo prevención primaria de bajo riesgo: re-evaluar indicación (mucha sobreprescripción)",
+        "Cesación TABÁQUICA — el tabaco retrasa cicatrización, aumenta recurrencia y reduce eficacia de erradicación de H. pylori. Intervención breve + sustitutos de nicotina + bupropión/vareniclina",
+        "Reducción del CONSUMO DE ALCOHOL — irritante mucoso, retrasa cicatrización. Objetivo: <14 unidades/semana en hombres, <7 en mujeres; si consumo excesivo, derivar para deshabituación",
+        "Manejo del ESTRÉS y comorbilidad psiquiátrica: el estrés crónico empeora síntomas y reduce adherencia; TCC, mindfulness, ISRS si depresión concomitante",
+        "Educación nutricional: NO existe 'dieta de úlcera' restrictiva (mito clásico) — evitar SOLO alimentos que el paciente identifica que le causan síntomas. Comer despacio, masticar bien, fraccionar comidas (5-6/día), evitar comidas copiosas antes de dormir (reflujo)",
+        "Evitar irritantes mucosos: alcohol, tabaco, café excesivo, picantes (solo si causan síntomas individuales)",
+        "Si CAFÉ o té causan dispepsia: reducir, no eliminar (sin evidencia de causar úlcera per se)",
+        "Si REFLUJO asociado: medidas posturales (elevar cabecera 15-20 cm, no acostarse hasta 2-3h post-comida), reducción de peso si IMC >27, evitar comidas grasas/picantes/cítricos antes de dormir",
+        "Educación al paciente sobre RETEST de H. pylori — falla de adherencia al retest es causa frecuente de recidiva no documentada",
+        "Plan ante SIGNOS DE ALARMA (consulta urgente): hematemesis, melena, dolor abdominal severo súbito (perforación), vómitos persistentes (obstrucción), pérdida de peso involuntaria (cáncer)",
+        "Seguimiento estructurado: úlcera duodenal sin complicaciones — control clínico a las 6-8 sem post-erradicación + retest H. pylori; úlcera GÁSTRICA — EDA OBLIGATORIA de control a las 6-12 sem para confirmar cicatrización y descartar carcinoma ulcerado"
       ],
       "quirurgico": [
-        "Cirugia urgente en perforación (sutura de perforación)",
-        "Cirugia en hemorragia masiva refractaria a endoscopia",
-        "Vagotomia + piloroplastia (en desuso con IBPs)"
+        "Cirugía URGENTE en PERFORACIÓN: emergencia vital con peritonitis. Técnica de elección — sutura simple + parche de epiplon (Graham patch) por LAPAROSCOPIA (menor dolor, menor estancia vs abierta). Boey score predice mortalidad (shock + comorbilidad severa + perforación >24h — alta mortalidad). Triple antibioticoterapia perioperatoria. EDA + erradicación H. pylori en post-recuperación",
+        "Cirugía URGENTE en HEMORRAGIA MASIVA refractaria a endoscopia (Forrest Ia/Ib persistente tras 2 EDA con hemostasia dual + IBP IV): primera opción ARTERIOGRAFÍA + EMBOLIZACIÓN de arteria gastroduodenal (radiología intervencionista) — menor morbilidad que cirugía. Si falla o no disponible: cirugía con sutura del vaso sangrante ± vagotomía",
+        "Cirugía en OBSTRUCCIÓN PILÓRICA por úlcera crónica refractaria a tratamiento médico + dilatación endoscópica: PILOROPLASTIA o GASTROYEYUNOSTOMÍA (Roux-Y); valorar gastrectomía parcial Billroth I/II si compromiso extenso",
+        "Cirugía en SOSPECHA DE MALIGNIDAD: úlcera gástrica que no cicatriza tras 12 sem con IBP + biopsias negativas + persiste sospecha → resección quirúrgica con estudio histopatológico definitivo (gastrectomía parcial o total según localización y extensión)",
+        "Vagotomía altamente selectiva (HSV) o vagotomía troncular + piloroplastia / antrectomía: en DESUSO con era IBP. Indicación residual: úlcera duodenal refractaria a tratamiento médico óptimo (raro hoy) o complicación recidivante",
+        "Cirugía en Síndrome de ZOLLINGER-ELLISON: resección de gastrinoma cuando localizado y resecable (cirugía duodeno-pancreática, enucleación). Tratamiento médico paliativo con IBP a dosis altas si irresecable o metastásico (>80% supervivencia 5a)",
+        "Cirugía LAPAROSCÓPICA preferida sobre abierta en TODAS las indicaciones electivas y en urgencia si paciente estable: menor dolor, menor estancia, menor morbilidad, mejor cosmesis",
+        "Manejo POST-OPERATORIO: NGT 24-48h, reintroducción gradual de líquidos → dieta blanda, IBP postoperatorio, profilaxis TVP, fisioterapia respiratoria, soporte nutricional si gastrectomía amplia (suplementación B12 indefinida, evaluación dumping syndrome)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -8700,7 +8839,15 @@
       "pat_hemorragia_digestiva",
       "pat_cirrosis"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "ACG Clinical Guideline: Treatment of Helicobacter pylori Infection (Chey WD et al, Am J Gastroenterol 2024)",
+      "Maastricht VI/Florence consensus on the management of Helicobacter pylori infection (Malfertheiner P et al, Gut 2022;71:1724-1762)",
+      "Vonoprazán para erradicación de H. pylori — ensayos pivotales: Chey WD et al PHALCON-HP (Gastroenterology 2022;163:608-619); aprobación FDA Voquezna Triple/Dual Pak (2022)",
+      "AGA Clinical Practice Update on Optimal Care of the Postcholecystectomy Patient (no aplicable). ACG/SGS Clinical Practice Guideline: Treatment of Peptic Ulcer Disease (Mössner J et al, 2024 update)",
+      "Manejo perforación: WSES Guidelines on perforated peptic ulcer (Tarasconi A et al, World J Emerg Surg 2020;15:3) — Graham patch laparoscópico + Boey score. NSAID-associated ulcer management: ACG Clinical Guideline (Lanza FL et al, updated 2021); Misoprostol prevención (Silverstein NEJM 1995 — clásico)"
+    ]
   },
   {
     "id": "pat_cirrosis",

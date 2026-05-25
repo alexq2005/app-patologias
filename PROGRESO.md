@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-05-24 — Sesion 46: Revisión clínica de pat_ulcera_peptica a ACG 2024 + Maastricht VI/Florence 2022 + vonoprazán FDA 2022 + WSES perforación 2020
+
+### Resumen
+Octava iteración del tercer lote. La entry `pat_ulcera_peptica` tenía base mínima (3 pruebas, 4 objetivos generales, 3 fármacos — triple OAC obsoleta como primera línea, sin vonoprazán, sin cuádruple con bismuto, sin esquemas de rescate). Cambios paradigmáticos no contemplados: clasificación incompleta (sin Forrest endoscópico, sin Johnson IV-V, sin lesiones de Cameron, sin Cushing/Curling); pruebas sin test rápido ureasa intraendoscópico, sin antígeno fecal moderno, sin gastrina/Zollinger-Ellison, sin protocolo de anamnesis estructurada de AINEs; objetivos sin estratificación por resistencia local a claritromicina (Maastricht VI/Florence 2022), sin retest obligatorio post-tratamiento, sin manejo dual AAS+IBP en cardiopatía, sin EDA de control 6-12 sem en UG; farmacológico SIN vonoprazán P-CAB (FDA 2022 — supresión ácida superior), SIN cuádruple con bismuto como PRIMERA LÍNEA (estándar Maastricht VI donde resistencia ≥15%), sin esquemas de rescate (levofloxacino-amoxi-IBP, rifabutina-amoxi-IBP), sin pantoprazol preferido vs clopidogrel, sin misoprostol detallado; noFarmacológico mínimo (sin desmitificar dieta de úlcera, sin cesación tabáquica integrada, sin retest H. pylori, sin signos de alarma estructurados); quirúrgico vago (sin Graham patch laparoscópico WSES 2020, sin Boey score, sin arteriografía + embolización como primera opción antes de cirugía, sin manejo Zollinger-Ellison).
+
+Cross-check: ACG H. pylori 2024 (Chey Am J Gastro), Maastricht VI/Florence 2022 (Malfertheiner Gut), vonoprazán PHALCON-HP (Chey Gastro 2022), aprobación FDA Voquezna 2022, WSES Perforated Peptic Ulcer 2020 (Tarasconi WJES), ACG/SGS Peptic Ulcer Disease 2024 (Mössner), misoprostol Silverstein NEJM 1995, Villanueva NEJM 2013 (transfusión restrictiva). 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_ulcera_peptica (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (5→9) | Localización detallada UD/UG + Johnson I-V completo + etiologías Zollinger-Ellison/Cushing/Curling/eosinofílica + lesiones de Cameron + Forrest endoscópico Ia-III |
+| `pruebas` (2→6) | EDA con biopsias múltiples + cromoendoscopia + retest H. pylori NO INVASIVO (aliento, antígeno fecal, NO serología) + métodos INVASIVOS (test rápido ureasa, histología Giemsa, cultivo + antibiograma) + gastrina sérica + secretina test Zollinger-Ellison + laboratorio + anamnesis estructurada AINEs |
+| `objetivos` (4→12) | Aliviar dolor con IBP + ERRADICAR H. pylori (cura definitiva) + selección por resistencia local <15% vs ≥15% + cicatrización con EDA control 6-12 sem en UG + RETEST OBLIGATORIO + manejo AINE/AAS dual con cardiología + profilaxis primaria + HDA con Forrest + perforación Graham + obstrucción dilatación + Zollinger-Ellison + educación |
+| `farmacologico` (3→7) | IBP (omeprazol/pantoprazol/esomeprazol) con pantoprazol preferido vs clopidogrel + VONOPRAZÁN P-CAB (Voquezna FDA 2022) + CUÁDRUPLE CON BISMUTO como PRIMERA LÍNEA Maastricht VI (Pylera) + triple OAC solo si resistencia <15% + esquemas de rescate (levofloxacino, rifabutina con cultivo + antibiograma) + misoprostol con contraindicaciones embarazo + sucralfato con rol limitado actual |
+| `noFarmacologico` (4→13) | Suspensión AINE + AAS coordinado cardiología + cesación tabáquica + reducción alcohol + manejo estrés + DESMITIFICAR dieta de úlcera + educación retest + signos de alarma + seguimiento estructurado UG con EDA control |
+| `quirurgico` (3→8) | Graham patch LAPAROSCÓPICO WSES 2020 + Boey score perforación + ARTERIOGRAFÍA + embolización primera opción HDA refractaria + piloroplastia/gastroyeyunostomía obstrucción + sospecha malignidad resección + vagotomía en desuso + Zollinger-Ellison resección/IBP paliativo + laparoscopia preferida + manejo postoperatorio con B12/dumping |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: ACG H. pylori 2024 + Maastricht VI/Florence 2022 + vonoprazán PHALCON-HP + ACG/SGS PUD 2024 + WSES perforación 2020 + misoprostol Silverstein NEJM 1995 |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`: vigentes
+- `fisiopatologia`: vigente (desequilibrio agresivos/protectores correcto)
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **29 frescas** (era 28; +pat_ulcera_peptica), 122 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (2 restantes)
+pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 45: Revisión clínica de pat_eii a ECCO 2022/2024 + ACG 2024 + STRIDE-II + Montreal + biológicos 2020-2024
 
 ### Resumen
