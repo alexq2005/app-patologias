@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-05-24 — Sesion 45: Revisión clínica de pat_eii a ECCO 2022/2024 + ACG 2024 + STRIDE-II + Montreal + biológicos 2020-2024
+
+### Resumen
+Séptima iteración del tercer lote. La entry `pat_eii` tenía base aceptable (anti-TNF ya presente, AZA, mesalazina, corticoides) PERO faltaba TODO el arsenal moderno 2020-2024 que **cuadriplicó las opciones terapéuticas**: clasificación primitiva sin Montreal (CU E1-E3+S0-S3, Crohn A+L+B+p — críticos para decisiones), sin Mayo/UCEIS/CDAI/HBI/SES-CD, sin criterios Oxford día 3 para ASUC, sin STRIDE-II treat-to-target (calprotectina objetivos seriados <100-250 → cicatrización mucosa); pruebas sin RM enterografía/pélvica (estándar Crohn), sin ecografía intestinal IUS (biomarcador emergente), sin cribado pre-biológico OBLIGATORIO ni coprocultivo + C. difficile + CMV; objetivos generales sin estratificación por mal pronóstico ni top-down vs step-up; farmacológico SIN vedolizumab (gut-selectivo), ustekinumab (anti-IL-12/23), risankizumab/mirikizumab/guselkumab (anti-IL-23 p19 — 2022-2024), tofacitinib/upadacitinib (JAK), ozanimod/etrasimod (S1P), ciclosporina IV (rescate ASUC), TDM de anti-TNF, biosimilares; noFarmacológico mínimo (sin unidad multidisciplinar, sin EEN pediátrica, sin cribado neoplásico con cromoendoscopia desde 8-10 años, sin vacunación detallada, sin manejo CEP); quirúrgico vago (sin IPAA con técnica 2-3 tiempos, sin estricturoplastia, sin manejo perianal con setón, sin TIMING perioperatorio biológicos, sin FMT/trasplante intestinal).
+
+Cross-check: ECCO 2022/2024 (Raine JCC), ACG 2024 (Singh + Lichtenstein Am J Gastro), STRIDE-II (Turner Gastro 2021), Travis Oxford (Gut 1996/1998), CONSTRUCT (Williams Lancet 2016), SONIC (Colombel NEJM 2010), ACT-1/2 (Rutgeerts NEJM 2005), GEMINI (Feagan/Sandborn NEJM 2013), UNITI (Feagan NEJM 2016), ADVANCE/MOTIVATE (D'Haens Lancet 2022 — risankizumab), LUCENT (D'Haens NEJM 2023 — mirikizumab), QUASAR (Rubin Gastro 2024 — guselkumab), OCTAVE (Sandborn NEJM 2017 — tofacitinib), U-ACHIEVE (Danese Lancet 2022 — upadacitinib), True North (Sandborn NEJM 2021 — ozanimod), ELEVATE (Sandborn Lancet 2023 — etrasimod), STARDUST IUS (Colombel Lancet 2020), SCENIC (Laine Gastro 2015). 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_eii (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (4→9) | Montreal CU (E1-E3 + S0-S3 Truelove-Witts) + Montreal Crohn (A+L+B+p) + Mayo Score + UCEIS + CDAI/HBI/SES-CD + Criterios Oxford día 3 ASUC + Crohn perianal simple vs compleja + STRIDE-II treat-to-target con cicatrización mucosa como meta |
+| `pruebas` (3→6) | Ileocolonoscopia con biopsias múltiples + cromoendoscopia + calprotectina con cortes STRIDE-II + RM ENTEROGRAFÍA/pélvica (estándar Crohn) + ECOGRAFÍA INTESTINAL IUS (STARDUST) + laboratorio completo con cribado pre-biológico OBLIGATORIO + coprocultivo + C. difficile + CMV |
+| `objetivos` (3→12) | Treat-to-target STRIDE-II + estratificación con factores mal pronóstico + top-down vs step-up + inducción CU por extensión + inducción Crohn con budesonida MMX/EEN + mantenimiento + ASUC con criterios Oxford día 3 → rescate o colectomía + cribado pre-biológico + selección biológico por perfil + TDM anti-TNF + Crohn perianal con RM+setón+infliximab + cribado neoplásico cromoendoscopia |
+| `farmacologico` (4→7) | Mesalazina detallada con quimioprevención + corticoides MMX/budesonida con plan retirada + AZA/6-MP/MTX con TPMT/NUDT15 y riesgo linfoma + anti-TNF expandido con biosimilares y TDM + VEDOLIZUMAB+USTEKINUMAB+RISANKIZUMAB/MIRIKIZUMAB/GUSELKUMAB anti-IL-23 + JAK (tofacitinib/upadacitinib) con Black Box + S1P (ozanimod/etrasimod) con titulación + CICLOSPORINA IV rescate ASUC |
+| `noFarmacologico` (4→13) | Unidad multidisciplinar EII + soporte nutricional + EEN pediátrica + dieta personalizada + cesación tabáquica en Crohn + manejo estrés/depresión + evitar AINEs + cribado osteoporosis + extraintestinales + cribado cáncer anual cromoendoscopia + anticoncepción + vacunación completa + educación al paciente |
+| `quirurgico` (2→11) | CU indicaciones detalladas + IPAA 2-3 tiempos vs Brooke ileostomía + Crohn indicaciones + resección segmentaria con minimal-intestinal-resection + ESTRICTUROPLASTIA + drenaje percutáneo absceso + perianal con SETÓN + laparoscopia preferida + TIMING perioperatorio biológicos + FMT investigacional + trasplante intestinal experimental |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: ECCO 2022/2024 + ACG 2024 + STRIDE-II + ensayos pivotales SONIC/ACT/GEMINI/UNITI/ADVANCE/LUCENT/QUASAR/OCTAVE/U-ACHIEVE/True North/ELEVATE + ASUC Travis/CONSTRUCT + cribado SCENIC/STARDUST |
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`: vigentes
+- `fisiopatologia`: vigente
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **28 frescas** (era 27; +pat_eii), 123 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (3 restantes)
+pat_ulcera_peptica → pat_hipotiroidismo → pat_hipertiroidismo
+
+---
+
 ## 2026-05-24 — Sesion 44: Revisión clínica de pat_hemorragia_digestiva a Baveno VII + AGA 2021 + ESGE 2021/2024 + BSG 2019 + Villanueva + preemptive TIPS
 
 ### Resumen
