@@ -12432,23 +12432,59 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por causa y severidad",
+      "nombre": "Por mecanismo (producción vs destrucción) + etiología + severidad bioquímica + contextos especiales",
       "tipos": [
         {
-          "nombre": "Enfermedad de Graves",
-          "descripcion": "Anticuerpos TRAb estimulantes. Bocio difuso, exoftalmos, mixedema pretibial"
+          "nombre": "Enfermedad de GRAVES (Basedow) — autoinmune, la causa más frecuente (60-80%)",
+          "descripcion": "Anticuerpos TRAb (antirreceptor TSH) ESTIMULANTES — sensibilidad 95-99%. Mujer 30-50 años. Bocio difuso, exoftalmos (oftalmopatía 30-50%), mixedema pretibial (3-5%), acropaquia. Captación AUMENTADA difusa en gammagrafía. Asociado a otras autoinmunidades (DM1, vitíligo, Addison, anemia perniciosa)"
         },
         {
-          "nombre": "Bocio multinodular tóxico",
-          "descripcion": "Nodulos autonomos, comun en adultos mayores"
+          "nombre": "Bocio multinodular tóxico (Plummer) — autonomía nodular múltiple",
+          "descripcion": "Múltiples nódulos autónomos productores. Mayor en >50 años, mujeres, zonas con déficit de yodo. Bocio nodular palpable. Captación HETEROGÉNEA en gammagrafía (parches calientes). TRAb negativo. Hipertiroidismo más insidioso, síntomas cardiovasculares (FA frecuente) sin clínica oftálmica"
         },
         {
-          "nombre": "Adenoma tóxico solitario",
-          "descripcion": "Nodulo autonomo unico hiperfuncionante"
+          "nombre": "Adenoma tóxico solitario (Goetsch)",
+          "descripcion": "Nódulo autónomo único hiperfuncionante. Captación FOCAL caliente con supresión del resto del parénquima. TRAb negativo. Tratamiento de elección: radioyodo o cirugía (segmento)"
         },
         {
-          "nombre": "Tormenta tiroidea",
-          "descripcion": "Hipertiroidismo extremo con fallo multiorganico. Mortalidad 20-30%."
+          "nombre": "Tiroiditis SUBAGUDA de De Quervain (granulomatosa)",
+          "descripcion": "Inflamación dolorosa post-viral con destrucción glandular → liberación pasiva de hormonas. Dolor cervical irradiado a oído, VSG/PCR muy elevadas, fase TIROTÓXICA 1-3 meses → HIPOTIROIDEA → recuperación en 80%. Captación BAJA en gammagrafía. Tratamiento: AINEs o corticoides + β-bloqueantes (NO antitiroideos — no hay producción excesiva)"
+        },
+        {
+          "nombre": "Tiroiditis SILENTE (linfocítica indolora) y POSTPARTO",
+          "descripcion": "Inflamación autoinmune indolora. Postparto en 5-10% de mujeres en primer año. Fase TIROTÓXICA 1-3 meses → HIPOTIROIDEA → recuperación 80% / hipotiroidismo permanente 20-30%. Captación BAJA. Anti-TPO+ frecuentes. Tratamiento sintomático con β-bloqueante (NO antitiroideos)"
+        },
+        {
+          "nombre": "Tiroiditis inducida por AMIODARONA (AIT tipo 1 vs tipo 2)",
+          "descripcion": "TIPO 1: Jod-Basedow — exceso de yodo de amiodarona desencadena hiperproducción en glándula previamente predispuesta (BMNT, Graves subclínica). Tratamiento: ANTITIROIDEOS + perclorato potasio. TIPO 2: tiroiditis destructiva directa — captación nula, ratio T3:T4 normal/bajo. Tratamiento: CORTICOIDES. Ecografía Doppler distingue (hipervascular en T1, hipovascular en T2). Decisión de suspender amiodarona junto con cardiología"
+        },
+        {
+          "nombre": "Hipertiroidismo inducido por INMUNOTERAPIA (checkpoint inhibitors)",
+          "descripcion": "Endocrinopatía emergente con pembrolizumab, nivolumab, ipilimumab (5-10%). Presentación más común: tiroiditis destructiva con fase TIROTÓXICA transitoria → HIPOTIROIDEA permanente. Captación baja. Manejo: β-bloqueante en fase tirotóxica, levotiroxina tras hipotiroidismo. NO suspender inmunoterapia (no contraindicación)"
+        },
+        {
+          "nombre": "Hipertiroidismo FACTITIA (Munchhausen tiroideo)",
+          "descripcion": "Consumo subrepticio de levotiroxina exógena. TSH suprimida + T4L alta + TIROGLOBULINA BAJA (suprimida — clave diagnóstica vs Graves donde está elevada). Captación gammagráfica baja. Frecuente en personal sanitario, trastornos alimentarios. Manejo: psiquiátrico + suspensión"
+        },
+        {
+          "nombre": "Hipertiroidismo SUBCLÍNICO (TSH suprimida + T4L/T3L normales)",
+          "descripcion": "Estratificar: TSH 0.1-0.4 (grado 1, leve) vs TSH <0.1 (grado 2, severo). Riesgo de FA, osteoporosis, fracturas, mortalidad CV. TRATAR siempre TSH <0.1 si >65 años, cardiopatía, osteoporosis, planificación embarazo. Tratar selectivamente TSH 0.1-0.4 si síntomas o alto riesgo CV"
+        },
+        {
+          "nombre": "Hipertiroidismo GESTACIONAL TRANSITORIO (hCG-mediado)",
+          "descripcion": "1-3% embarazos. Por estímulo de receptor TSH por hCG en hiperemesis gravídica, embarazo gemelar, mola hidatiforme. TSH suprimida en 1er trim + T4L levemente elevada SIN TRAb, sin bocio, sin oftalmopatía. Se resuelve hacia 2do trim. NO requiere antitiroideos (solo β-bloqueante si síntomas severos). NO confundir con Graves en embarazo (requiere PTU)"
+        },
+        {
+          "nombre": "Hipertiroidismo APÁTICO del anciano",
+          "descripcion": "Presentación atípica en >65 años: SIN síntomas adrenérgicos clásicos. Domina FIBRILACIÓN AURICULAR, PÉRDIDA DE PESO, ANOREXIA, APATÍA, DEPRESIÓN, debilidad muscular. Cribar TSH en todo adulto mayor con FA de novo, pérdida peso inexplicada o depresión refractaria"
+        },
+        {
+          "nombre": "TORMENTA TIROIDEA — Burch-Wartofsky score ≥45 = alta probabilidad",
+          "descripcion": "EMERGENCIA con mortalidad 20-30%. Criterios Burch-Wartofsky: termorregulación (puntuación por T°), SNC (agitación → coma), cardiovascular (taquicardia, IC, FA), gastrointestinal-hepático (vómitos, diarrea, ictericia), precipitante (cirugía, infección, IAM, TEP, DKA, parto, descontinuación de antitiroideo). Score >45 alta probabilidad / 25-44 inminente / <25 improbable. Manejo en UCI con tratamiento multimodal SIMULTÁNEO (NO secuencial)"
+        },
+        {
+          "nombre": "OFTALMOPATÍA DE GRAVES (Graves Orbitopathy, GO) — EUGOGO classification",
+          "descripcion": "Inflamación autoinmune de tejido retroocular. Clasificación EUGOGO por ACTIVIDAD (Clinical Activity Score CAS 0-7) y SEVERIDAD (leve / moderada-severa / muy severa con neuropatía óptica o úlcera corneal). Empeora con tabaquismo (RR 7x), radioyodo (transitorio, prevenible con corticoides). Tratamiento: cesación tabáquica + selenio (leve) → corticoides pulsos IV (moderada-severa activa) → TEPROTUMUMAB (FDA 2020) → descompresión orbitaria (urgente si neuropatía óptica)"
         }
       ]
     },
@@ -12468,62 +12504,211 @@
       ],
       "pruebas": [
         {
-          "nombre": "TSH suprimida + T4 libre y T3 libre elevadas",
-          "descripcion": "TSH < 0.1 con T4L y T3L elevadas confirma hipertiroidismo manifiesto",
-          "valoresReferencia": "TSH < 0.1 mUI/L; T4L > 1.8 ng/dL; T3L > 4 pg/mL",
+          "nombre": "TSH suprimida + T4 libre + T3 libre — primera línea diagnóstica",
+          "descripcion": "ALGORITMO: TSH inicial (cribado). Si suprimida → T4L + T3L. PATRONES: TSH baja + T4L/T3L ELEVADAS = manifiesto (tratar). TSH baja + T4L/T3L NORMALES = subclínico (estratificar grado 1 vs 2). TSH baja + T3L alta + T4L normal = T3 tirotoxicosis (10% Graves, adenoma tóxico). TSH ALTA + T4L alta = poco frecuente (TSHoma hipofisario, resistencia hormona). En tormenta tiroidea no esperar laboratorio para iniciar tratamiento — Burch-Wartofsky clínico",
+          "valoresReferencia": "TSH <0.1 mUI/L confirma supresión. T4L >1.8 ng/dL. T3L >4.4 pg/mL. Ratio T3/T4 >20 sugiere Graves o adenoma; <20 sugiere tiroiditis destructiva. En embarazo: rangos específicos por trimestre",
           "cuidadosEnfermeria": [
-            "No requiere ayuno",
-            "Resultado orienta causa y tratamiento"
+            "NO requiere ayuno",
+            "Documentar todas las medicaciones (amiodarona, contraste yodado reciente, biotina >5 mg/d interfiere)",
+            "En sospecha de tormenta tiroidea: extraer pero NO esperar resultado para iniciar tratamiento empírico",
+            "Si patrón discordante (TSH normal con T4L alta): descartar TSHoma con RM hipofisaria, resistencia a hormonas tiroideas, interferencia analítica"
           ]
         },
         {
-          "nombre": "Anticuerpos TRAb (Ac anti-receptor de TSH)",
-          "descripcion": "Confirman enfermedad de Graves; positivos en > 95% de casos",
+          "nombre": "Anticuerpos TRAb (anti-receptor TSH) — confirma Graves",
+          "descripcion": "Sensibilidad 95-99% y especificidad >99% para enfermedad de Graves. Permite diferenciar Graves de otras causas (BMNT, adenoma, tiroiditis donde TRAb es negativo). En EMBARAZO: cuantificar TRAb en 2do trim — si título >3x normal, riesgo de hipertiroidismo FETAL/NEONATAL por paso transplacentario. Útil también como predictor de remisión con antitiroideos (TRAb negativo a los 12-18 meses sugiere remisión sostenida tras suspender)",
+          "valoresReferencia": "TRAb negativo <1.75-2.0 UI/L (varía por laboratorio). Títulos altos predicen mayor severidad de Graves y oftalmopatía",
           "cuidadosEnfermeria": [
-            "Muestra venosa estandar",
-            "Su negativización indica remisión con tratamiento antitiroideos"
+            "Muestra venosa estándar",
+            "Cuantificar al diagnóstico de Graves + repetir cada 6-12 meses durante tratamiento + obligatorio en EMBARAZO 2do trimestre",
+            "Negativización tras 12-18 meses con antitiroideos = candidato a suspender (probabilidad de remisión 50-60%)",
+            "Si TRAb elevado en embarazada: derivar a alto riesgo + ecografías fetales seriadas (tiroides fetal, FC, crecimiento)"
+          ]
+        },
+        {
+          "nombre": "Gammagrafía tiroidea con Tc99-pertecnetato o I-123 (con captación 24h)",
+          "descripcion": "DIFERENCIA HIPERTIROIDISMO POR PRODUCCIÓN (alta captación — tratar con antitiroideos/RAI) vs DESTRUCTIVO (baja captación — tratar con corticoide/AINE + β-bloqueante, NO antitiroideos). Patrones: GRAVES = captación difusa AUMENTADA homogénea; BMNT = captación HETEROGÉNEA en parches; ADENOMA TÓXICO = nódulo FOCAL caliente con supresión del resto; TIROIDITIS (subaguda, silente, postparto, factitia, AIT tipo 2) = captación NULA/BAJA. Útil también para localizar tejido tiroideo ectópico/residual",
+          "cuidadosEnfermeria": [
+            "Suspender T4 EXÓGENA ≥4 semanas antes (puede reducir captación); suspender T3 ≥2 semanas",
+            "EVITAR contraste yodado, amiodarona y suplementos con yodo ≥4-6 semanas previas (saturación impide captación)",
+            "EMBARAZO y LACTANCIA: CONTRAINDICACIÓN ABSOLUTA (I-123 y Tc99) — usar TRAb + ecografía Doppler como alternativa",
+            "Educar sobre dosis baja de radiación; hidratación post-procedimiento; evitar contacto cercano con embarazadas/niños 24h",
+            "Resultado interpretado por medicina nuclear + endocrinología en conjunto"
+          ]
+        },
+        {
+          "nombre": "Ecografía tiroidea con Doppler color",
+          "descripcion": "Útil cuando gammagrafía contraindicada (embarazo, lactancia) o no disponible. GRAVES: glándula aumentada, hipoecogénica, HIPERVASCULARIZADA con Doppler ('inferno tiroideo'). BMNT: bocio multinodular. AIT tipo 1 vs tipo 2: hipervascular vs hipovascular (distingue mecanismo en hipertiroidismo por amiodarona). NÓDULOS: caracterizar TIRADS 1-5 + decisión PAAF si TIRADS 4-5 o tamaño >1-1.5 cm",
+          "cuidadosEnfermeria": [
+            "Educar al paciente: técnica indolora, sin radiación, segura en embarazo",
+            "Coordinar con radiología/endocrino para interpretación TIRADS",
+            "Si nódulos sospechosos: PAAF guiada por ecografía",
+            "Documentar tamaño basal + ecogenicidad + vascularización Doppler para seguimiento"
+          ]
+        },
+        {
+          "nombre": "TIROGLOBULINA sérica (diferencial de hipertiroidismo facticia)",
+          "descripcion": "Útil cuando se sospecha consumo subrepticio de levotiroxina exógena (Munchhausen tiroideo, trastornos alimentarios, personal sanitario). PATRÓN CLAVE: hipertiroidismo facticia presenta TIROGLOBULINA BAJA (suprimida porque no hay producción endógena), mientras que Graves/BMNT/adenoma tienen tiroglobulina NORMAL O ELEVADA. Captación gammagráfica baja confirma",
+          "cuidadosEnfermeria": [
+            "Solicitar cuando: hipertiroidismo sin TRAb + sin bocio + sin oftalmopatía + captación baja",
+            "Considerar contexto psiquiátrico — manejo coordinado con psiquiatría y endocrinología",
+            "Tiroglobulina también útil en seguimiento de cáncer de tiroides tras tiroidectomía total (no es contexto de este caso)"
+          ]
+        },
+        {
+          "nombre": "Laboratorio complementario + evaluación cardiológica + DEXA en alto riesgo",
+          "descripcion": "Hipertiroidismo causa: hipercalcemia leve, fosfatasa alcalina elevada (acelera recambio óseo), hiperglucemia, elevación transaminasas. ECG obligatorio (FA presente en 10-25% de adultos con hipertiroidismo, especialmente >60a). Holter si palpitaciones intermitentes. Ecocardiograma si IC sospechosa. DEXA si >65 años o mujer postmenopáusica (osteoporosis tirotóxica). Cribado de comorbilidades autoinmunes en Graves",
+          "valoresReferencia": "Calcio total ligeramente elevado (8.5-11). FA: cribar TSH siempre en FA de novo. T-score DEXA <-2.5 osteoporosis",
+          "cuidadosEnfermeria": [
+            "ECG al diagnóstico + ante palpitaciones; documentar ritmo basal (FA puede ser primera manifestación)",
+            "Anticoagulación en FA según CHA2DS2-VASc — el hipertiroidismo es factor protrombótico per se",
+            "Si DEXA con osteoporosis: tratar hipertiroidismo + suplementar Ca + vit D + bifosfonatos según indicación",
+            "Cribar comorbilidades autoinmunes en Graves: anti-transglutaminasa (celiaquía), HbA1c + anti-GAD (DM1), cortisol (Addison), vitíligo, alopecia"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Controlar el exceso de hormona tiroidea",
-        "Tratar la causa (especialmente en Graves)",
-        "Prevenir tormenta tiroidea"
+        "Diferenciar PRIMERO entre hipertiroidismo POR PRODUCCIÓN (Graves, BMNT, adenoma tóxico — captación alta, requiere antitiroideos o ablación) vs DESTRUCTIVO (tiroiditis, AIT tipo 2, checkpoint — captación baja, manejo sintomático sin antitiroideos)",
+        "En Graves: SHARED DECISION-MAKING entre las 3 opciones de la ATA 2016 según preferencia del paciente, comorbilidad, planificación reproductiva, presencia de oftalmopatía y tamaño del bocio: ANTITIROIDEOS 12-18 meses (preferida en mayoría — remisión 30-50%); RADIOYODO I-131 (alta eficacia pero causa hipotiroidismo permanente, contraindicado embarazo/lactancia/oftalmopatía activa); TIROIDECTOMÍA total (en bocio grande/compresivo, oftalmopatía severa, embarazo con intolerancia a antitiroideos, nódulo sospechoso, deseo de evitar antitiroideos prolongados)",
+        "Control sintomático inmediato con BETABLOQUEANTE no selectivo (propranolol 40-160 mg/d divididos — también bloquea conversión T4→T3 a dosis altas) mientras antitiroideos hacen efecto (6-8 semanas para eutiroidismo bioquímico). Alternativas si asma/EPOC: atenolol, metoprolol, diltiazem",
+        "En GESTACIÓN: PTU en 1er TRIMESTRE (metimazol asociado a aplasia cutis y embriopatía rara pero documentada) → CAMBIAR a metimazol en 2do TRIMESTRE (PTU asociado a hepatotoxicidad fulminante). Dosis mínima eficaz manteniendo T4L en límite superior normal (evita hipotiroidismo fetal). NO usar RADIOYODO en embarazo. Cirugía si necesaria en 2do trimestre",
+        "En TORMENTA TIROIDEA (Burch-Wartofsky ≥45): tratamiento MULTIMODAL SIMULTÁNEO en UCI — NO secuencial: 1) PTU 200 mg c/4h oral o por SNG (bloquea síntesis Y conversión T4→T3); 2) Yoduro Lugol/SSKI 1h DESPUÉS de PTU (evita Jod-Basedow); 3) Hidrocortisona 100 mg IV c/8h (bloquea conversión, cubre insuf adrenal coexistente); 4) Propranolol 1-2 mg IV o 60-80 mg c/4h oral; 5) Colestiramina 4 g c/6h (interrumpe ciclo enterohepático); 6) Antipiréticos NO AAS (desplaza T4 de unión proteica — usar paracetamol); 7) Calentamiento físico activo; 8) Tratar precipitante (infección, IAM, TEP, DKA, parto); 9) Plasmaféresis si refractario",
+        "Manejo de OFTALMOPATÍA DE GRAVES según EUGOGO: LEVE (CAS <3, severidad leve) — lubricantes + cesación tabáquica + SELENIO 200 μg/d x 6 meses (Marcocci NEJM 2011); MODERADA-SEVERA ACTIVA — METILPREDNISOLONA pulsos IV (4.5 g totales en 12 sem según EUGOGO 2021) o TEPROTUMUMAB (FDA 2020 — reduce proptosis 2.5 mm, OPTIC trial); muy severa con NEUROPATÍA ÓPTICA / úlcera corneal — DESCOMPRESIÓN ORBITARIA URGENTE",
+        "Manejo del HIPERTIROIDISMO POR AMIODARONA: distinguir AIT tipo 1 (predispuesto, hipervascular ecografía, captación baja o presente) vs AIT tipo 2 (destructivo, hipovascular). TIPO 1: antitiroideos + perclorato de potasio. TIPO 2: corticoides. Decisión de SUSPENDER AMIODARONA junto con CARDIOLOGÍA — frecuentemente NO se puede suspender (FA, IC) → tratar mientras se continúa. AIT mixto: tratar con ambos",
+        "Hipertiroidismo SUBCLÍNICO: tratar TSH <0.1 SIEMPRE en >65 años, cardiopatía (FA, IC), osteoporosis, planificación de embarazo. TSH 0.1-0.4 → individualizar según síntomas, edad, riesgo CV/óseo",
+        "Profilaxis y manejo de FIBRILACIÓN AURICULAR asociada: cribar TSH en TODA FA de novo. β-bloqueante para control FC (también de hipertiroidismo). Anticoagulación según CHA2DS2-VASc (hipertiroidismo es protrombótico). Cardioversión electiva tras eutiroidismo bioquímico (mayor probabilidad de mantener ritmo sinusal)",
+        "Manejo PRE-OPERATORIO de tiroidectomía: lograr EUTIROIDISMO con antitiroideos 4-8 semanas antes + β-bloqueante + LUGOL o SSKI 10 días pre-op (efecto Wolff-Chaikoff — reduce vascularización glandular, sangrado). Si urgente y no eutiroidismo: añadir hidrocortisona + esmolol IV",
+        "Cribado y manejo de COMPLICACIONES ÓSEAS: DEXA en >65 años o mujer postmenopáusica; tratar hipertiroidismo + suplementar Ca + vit D; bifosfonatos si T-score <-2.5 o fractura por fragilidad. Recuperación parcial de masa ósea tras eutiroidismo",
+        "Educación al paciente sobre tratamiento prolongado, signos de hipotiroidismo iatrogénico (ganancia peso, fatiga, frío), signos de tormenta tiroidea (fiebre, palpitaciones, agitación, vómitos — emergencia), evitar yodo (mariscos, kelp, contrastes), cesación tabáquica obligatoria si oftalmopatía, anticoncepción si en tratamiento con metimazol o PTU"
       ],
       "farmacologico": [
         {
-          "nombre": "Metimazol / Propiltiouracilo (PTU)",
-          "grupo": "Antitiroideos - frenadores de la sintesis de hormonas tiroideas",
-          "mecanismo": "Inhiben la peroxidasa tiroidea, bloqueando la organificación del yodo y la sintesis de T3/T4. PTU ademas bloquea la conversion periférica de T4 a T3",
-          "dosis": "Metimazol: 10-40 mg/dia. PTU: 100-400 mg c/8h",
+          "nombre": "METIMAZOL / TIAMAZOL (MMI) — primera línea Graves NO embarazo",
+          "grupo": "Antitiroideo — inhibidor síntesis hormonal (PRIMERA línea ATA 2016 en hipertiroidismo por producción excepto 1er trimestre embarazo)",
+          "mecanismo": "Inhibe peroxidasa tiroidea (TPO), bloqueando la organificación del yodo y acoplamiento de yodotironinas. NO bloquea conversión T4→T3. Vida media 6-8h, dosis única diaria a moderada dosis. Inicio de efecto 1-2 semanas, eutiroidismo en 6-8 semanas",
+          "dosis": "INDUCCIÓN: 15-30 mg/d (leve), 30-40 mg/d (moderado), 40-60 mg/d (severo) en 1-3 dosis. MANTENIMIENTO: 5-15 mg/d. Duración: 12-18 meses en Graves; vigilar remisión con TRAb",
           "cuidadosEnfermeria": [
-            "Agranulocitosis: vigilar fiebre y faringitis (suspender y hemograma urgente)",
-            "Función hepática: hepatotoxicidad especialmente con PTU",
-            "Erupción cutanea: efecto adverso frecuente",
-            "PTU es el de elección en el primer trimestre del embarazo"
+            "AGRANULOCITOSIS (efecto adverso más grave, 0.1-0.3%): FIEBRE + faringitis = suspender y solicitar hemograma URGENTE — neutropenia <500 confirma; suspender definitivamente",
+            "Educar al paciente: cualquier fiebre, dolor de garganta, ulceración bucal = SUSPENDER + URGENCIAS para hemograma. Tarjeta de identificación de paciente con antitiroideo",
+            "HEPATOTOXICIDAD COLESTÁSICA (1%) — transaminasas + bilirrubina al inicio + cada 3-6 meses; suspender si transaminasas >3x normal o ictericia",
+            "Erupción cutánea, urticaria (5-10%) — antihistamínico si leve; suspender si severa o vasculitis",
+            "Vasculitis ANCA+ (rara) — síndrome pulmón-riñón",
+            "EMBARAZO 1er trimestre: CONTRAINDICADO (aplasia cutis, embriopatía rara — atresia esofágica, agenesia coanal) — usar PTU. Cambiar a metimazol en 2do-3er trimestre (PTU hepatotóxico)",
+            "Lactancia: SEGURO a dosis <20 mg/d (no concentra en leche significativamente)",
+            "Anticoncepción durante el tratamiento (no para evitar embarazo en sí, sino para planificar cambio a PTU si embarazo)"
           ]
         },
         {
-          "nombre": "Propranolol",
-          "grupo": "Betabloqueante - control sintomático",
-          "mecanismo": "Reduce los efectos simpaticos del exceso de hormona tiroidea: taquicardia, temblor, ansiedad",
-          "dosis": "10-40 mg c/6-8h VO",
+          "nombre": "PROPILTIOURACILO (PTU) — 1er trimestre embarazo + tormenta tiroidea",
+          "grupo": "Antitiroideo — bloquea síntesis Y conversión T4→T3 (acción dual)",
+          "mecanismo": "Inhibe TPO (síntesis) Y la 5'-desyodasa tipo 1 (bloquea conversión periférica T4→T3). Vida media corta 1-2h, requiere 3 dosis/día. Útil en tormenta tiroidea (bloqueo dual) y en 1er trimestre embarazo",
+          "dosis": "INDUCCIÓN: 100-200 mg c/8h VO. TORMENTA TIROIDEA: 200 mg c/4h oral o SNG/rectal (no IV disponible). MANTENIMIENTO: 50-150 mg/d. RATIO equivalencia PTU:MMI ≈ 20:1 (50 mg PTU ≈ 2.5 mg MMI)",
           "cuidadosEnfermeria": [
-            "Controlar FC antes de administrar",
-            "Alivio sintomático rápido mientras los antitiroideos hacen efecto (6-8 semanas)",
-            "No usar en asmaticos"
+            "HEPATOTOXICIDAD FULMINANTE (riesgo mayor que MMI, 0.1-0.5% — necrosis hepática aguda mortal): NO usar de mantenimiento prolongado. Indicaciones LIMITADAS: 1er trimestre embarazo, tormenta tiroidea, alergia/intolerancia a MMI, hipertiroidismo apático severo con conversión periférica predominante",
+            "Transaminasas + bilirrubina basal + cada 2-4 semanas durante los primeros 6 meses",
+            "Agranulocitosis: igual que MMI — fiebre/faringitis = suspender + hemograma",
+            "EMBARAZO: PTU en 1er trimestre — cambio a MMI desde semana 14-16 (final 1er trim)",
+            "Vasculitis ANCA+ más frecuente que con MMI (incluso síndrome pulmón-riñón)",
+            "FDA Black Box Warning sobre hepatotoxicidad (2010) — no usar como primera línea fuera de indicaciones específicas"
+          ]
+        },
+        {
+          "nombre": "BETABLOQUEANTES: Propranolol, Atenolol, Metoprolol, Esmolol IV",
+          "grupo": "Control sintomático del exceso adrenérgico tiroideo + adyuvante en tormenta",
+          "mecanismo": "Bloqueo β-adrenérgico — reduce taquicardia, temblor, ansiedad, sudoración. PROPRANOLOL a DOSIS ALTAS (>160 mg/d) además inhibe conversión periférica T4→T3 (ventaja en tormenta tiroidea)",
+          "dosis": "Propranolol 10-40 mg c/6-8h VO (hasta 240-320 mg/d en tormenta). Atenolol 25-100 mg/d (cardioselectivo, útil en asma leve). Metoprolol 25-200 mg/d. ESMOLOL IV en tormenta: bolo 250-500 μg/kg + infusión 50-200 μg/kg/min (vida media 9 min, fácil titulación)",
+          "cuidadosEnfermeria": [
+            "Controlar FC + TA antes de cada dosis — objetivo FC 60-90 en reposo",
+            "Alivio sintomático RÁPIDO (horas) mientras antitiroideos hacen efecto (semanas)",
+            "Asma/EPOC moderado-severo: preferir atenolol o metoprolol cardioselectivo (no propranolol); alternativa diltiazem o verapamilo si broncoespasmo",
+            "Diabetes: enmascara hipoglucemia — educar al paciente sobre síntomas autonómicos",
+            "Suspensión gradual al lograr eutiroidismo bioquímico",
+            "EVITAR en IC descompensada (puede empeorar contractilidad)"
+          ]
+        },
+        {
+          "nombre": "YODURO POTÁSICO (Lugol, SSKI) — tormenta tiroidea + pre-tiroidectomía",
+          "grupo": "Yoduro inorgánico — efecto Wolff-Chaikoff (inhibición aguda de síntesis y liberación hormonal)",
+          "mecanismo": "A dosis FARMACOLÓGICAS (>1 mg/d) — paradoja Wolff-Chaikoff: inhibe organificación del yodo, liberación de hormona preformada y reduce vascularización glandular (útil pre-quirúrgico). A dosis fisiológicas (<150 μg/d) — sustrato para síntesis",
+          "dosis": "TORMENTA TIROIDEA: Lugol 5-10 gotas c/8h o SSKI 5 gotas c/8h. PRE-TIROIDECTOMÍA: Lugol 5 gotas c/8h x 10 días pre-op (reduce vascularización y sangrado intraoperatorio)",
+          "cuidadosEnfermeria": [
+            "EN TORMENTA TIROIDEA: administrar Lugol 1h DESPUÉS de PTU/MMI (sino bloqueo de organificación con yodo intracelular = mayor síntesis = Jod-Basedow)",
+            "Diluir en leche o zumo (sabor metálico desagradable)",
+            "Vigilar reacción a yodo (yododermia, edema angioneurótico — raras)",
+            "NO en sospecha de tirotoxicosis por amiodarona TIPO 1 (predispuesto a Jod-Basedow)",
+            "NO en alergia a yodo",
+            "Pre-tiroidectomía: completar curso completo 10 días"
+          ]
+        },
+        {
+          "nombre": "GLUCOCORTICOIDES (hidrocortisona, metilprednisolona, dexametasona)",
+          "grupo": "Adyuvante en tormenta tiroidea + tratamiento oftalmopatía moderada-severa + AIT tipo 2",
+          "mecanismo": "En tormenta: inhiben conversión periférica T4→T3, cubren posible insuf adrenal coexistente, antiinflamatorios. En oftalmopatía: antiinflamatorios + inmunomoduladores",
+          "dosis": "TORMENTA: hidrocortisona 100 mg IV c/8h o dexametasona 2 mg c/6h. OFTALMOPATÍA MODERADA-SEVERA ACTIVA: metilprednisolona pulsos IV 500 mg/sem x 6 sem → 250 mg/sem x 6 sem (total 4.5 g — protocolo EUGOGO 2021). AIT tipo 2: prednisona 0.5-0.7 mg/kg/d x 1-3 meses",
+          "cuidadosEnfermeria": [
+            "Vigilar hiperglucemia, HTA, edemas, hipokalemia, infección, dispepsia",
+            "Protección gástrica con IBP",
+            "Suplementar Ca + vit D, considerar bifosfonato si uso prolongado",
+            "Pulsos IV altos: monitorizar TA, glucemia, ECG durante infusión",
+            "Cribado y tratamiento de TB latente si uso prolongado",
+            "No suspender abruptamente tras uso prolongado (taper)"
+          ]
+        },
+        {
+          "nombre": "TEPROTUMUMAB (Tepezza) — anti-IGF-1R para OFTALMOPATÍA DE GRAVES",
+          "grupo": "Anticuerpo monoclonal — PRIMER fármaco específico para oftalmopatía activa moderada-severa (FDA 2020)",
+          "mecanismo": "Bloquea receptor de IGF-1 (factor de crecimiento similar a insulina tipo 1), reduciendo activación de fibroblastos orbitarios responsables del edema y proliferación retroocular. OPTIC trial NEJM 2020: reduce proptosis 2.5 mm (vs 0.2 placebo) y diplopía a 24 sem",
+          "dosis": "10 mg/kg IV en infusión 1ª dosis → 20 mg/kg c/3 semanas x 7 dosis adicionales (8 dosis totales en 21 semanas)",
+          "cuidadosEnfermeria": [
+            "Cribado pre-inicio: hiperglucemia (riesgo DESCOMPENSACIÓN DIABÉTICA con efecto IGF-1), HBV, embarazo (categoría D — anticoncepción obligatoria + 6 meses post-última dosis)",
+            "Reacciones infusionales (4%) — premedicación con antihistamínico + corticoide en infusión 1-2",
+            "Hiperglucemia (10%) — vigilar glucemia capilar; si diabetes, optimizar control antes de iniciar",
+            "Hipoacusia (10%, puede ser permanente) — audiometría basal + reevaluar si síntomas",
+            "Amenorrea + alteración menstrual",
+            "Calambres musculares + alopecia + náuseas",
+            "Coste muy elevado (~300,000 USD por curso) — acceso limitado a centros especializados"
+          ]
+        },
+        {
+          "nombre": "COLESTIRAMINA — adyuvante en tormenta tiroidea + hipertiroidismo refractario",
+          "grupo": "Quelante intestinal — interrumpe ciclo enterohepático de hormonas tiroideas",
+          "mecanismo": "Secuestra T4/T3 conjugadas en intestino, impidiendo su reabsorción. Acelera eliminación de hormonas tiroideas circulantes",
+          "dosis": "4 g c/6h VO (16 g/d). En tormenta: hasta 4 g c/4h",
+          "cuidadosEnfermeria": [
+            "Administrar 1-4h SEPARADO de otros fármacos (interfiere absorción de muchos: warfarina, levotiroxina, digoxina, AINEs)",
+            "Estreñimiento, dispepsia, flatulencia frecuentes",
+            "Acidosis metabólica hiperclorémica con uso prolongado",
+            "Útil como complemento (no monoterapia) en hipertiroidismo severo o tormenta"
           ]
         }
       ],
       "noFarmacologico": [
-        "Restricción de actividad en fase aguda",
-        "Evitar yodo excesivo en dieta (mariscos, sal yodada en exceso)"
+        "Restricción de actividad física intensa en fase aguda (riesgo de exacerbación cardiovascular, FA, IC); reanudar gradualmente al lograr eutiroidismo",
+        "Reposo nocturno + adecuada hidratación + ambiente fresco",
+        "Restricción dietética de YODO: evitar mariscos, kelp, sal yodada en exceso, suplementos con yodo, multivitamínicos con yodo. NO contrastes yodados ni amiodarona (precipitan Jod-Basedow)",
+        "Dieta hipercalórica (3500-4000 kcal/d) + alta en proteínas durante fase hipermetabólica para compensar pérdida de peso; reducir tras eutiroidismo",
+        "CESACIÓN TABÁQUICA OBLIGATORIA en Graves — fumar AUMENTA 7x el riesgo y la severidad de oftalmopatía; intervención breve + sustitutos de nicotina + bupropión/vareniclina",
+        "Manejo de OFTALMOPATÍA LEVE: lubricantes oftálmicos (lágrimas artificiales, gel nocturno), gafas oscuras, elevación de cabecera, prismas si diplopía leve, oclusión ocular nocturna si lagoftalmos. Selenio 200 μg/d x 6 meses (Marcocci NEJM 2011)",
+        "Apoyo psicológico — síntomas ansiosos, irritabilidad, insomnio pueden persistir hasta eutiroidismo; ISRS si componente depresivo coexistente (NO benzodiacepinas crónicas)",
+        "Cribado FAMILIAR de autoinmunidad tiroidea (Graves, Hashimoto) en familiares de 1er grado: TSH anual + anti-TPO/TRAb si síntomas",
+        "Cribado de COMORBILIDADES AUTOINMUNES: celiaquía (anti-transglutaminasa), DM1 (HbA1c, anti-GAD), Addison (cortisol, ACTH), vitíligo, alopecia areata, anemia perniciosa",
+        "Anticoagulación oral en FA secundaria a hipertiroidismo (CHA2DS2-VASc): cardioversión electiva tras eutiroidismo (mayor probabilidad de mantener ritmo sinusal)",
+        "Soporte nutricional + suplementación con Ca + vit D + bifosfonato si DEXA con osteoporosis tirotóxica",
+        "Educación al paciente: signos de tormenta tiroidea (fiebre + palpitaciones + agitación + vómitos + diarrea + alteración consciencia = URGENCIAS); signos de agranulocitosis con antitiroideos (fiebre + faringitis = suspender + URGENCIAS); signos de hipotiroidismo iatrogénico (ganancia peso, fatiga, frío); anticoncepción durante tratamiento",
+        "Planificación reproductiva: embarazo solo tras eutiroidismo estable ≥3-6 meses; coordinación pre-concepcional con endocrinología y obstetricia para plan de PTU 1er trim → MMI 2do-3er trim",
+        "Cribado universal de TSH en mayores de 60 años con FA de novo, pérdida de peso inexplicada, depresión refractaria o cribado pre-concepcional"
       ],
       "quirurgico": [
-        "Tiroidectomia total o subtotal: si bocio grande, sospecha de malignidad, embarazo 2do trimestre",
-        "Iodo radioactivo (I131): de elección en adultos con Graves o bocio multinodular tóxico (destrucción selectiva del tejido tiroideo)"
+        "TIROIDECTOMÍA TOTAL preferida sobre subtotal (ATA 2016) — menor recurrencia, menor riesgo de re-intervención. Indicaciones: bocio grande compresivo (síntomas traqueales, esofágicos), oftalmopatía severa coexistente (donde radioyodo puede empeorarla), nódulo sospechoso de malignidad en glándula, embarazo con intolerancia a antitiroideos (preferir 2do trimestre), deseo del paciente de evitar tratamiento prolongado, contraindicación a radioyodo (oftalmopatía activa severa, hijo en casa requiriendo cuidado cercano)",
+        "Preparación PRE-QUIRÚRGICA OBLIGATORIA — lograr EUTIROIDISMO 4-8 sem antes con antitiroideos + β-bloqueante + LUGOL/SSKI 10 días pre-op (reduce vascularización tiroidea y sangrado intraoperatorio). Si cirugía urgente sin eutiroidismo: añadir hidrocortisona 100 mg IV + esmolol IV titulado",
+        "Cuidados POSTOPERATORIOS: vigilar HEMATOMA cervical (compresión vía aérea — urgencia, retirar suturas in situ + intubación); HIPOCALCEMIA por hipoparatiroidismo (Ca + PTH a las 12-24h, Trousseau y Chvostek, suplementar Ca + vit D activa — calcitriol si Ca <8 mg/dL); LESIÓN RECURRENCIAL (disfonía, laringoscopia + foniatría si persistente); TORMENTA TIROIDEA postoperatoria (raro si bien preparado); HIPOTIROIDISMO postquirúrgico universal — iniciar LT4 1.6 μg/kg/d desde día siguiente, control TSH a las 6 sem",
+        "RADIOYODO (I-131) — alternativa de PRIMERA línea ATA 2016 en Graves del adulto + BMNT + adenoma tóxico. Destrucción selectiva por radiación β. Eficacia 80-90% con dosis única (puede requerir 2da). RESULTA en HIPOTIROIDISMO permanente (objetivo terapéutico, no efecto adverso) — LT4 indefinida posterior",
+        "CONTRAINDICACIONES radioyodo: EMBARAZO y LACTANCIA (categoría X — anticoncepción 6-12 meses post-tratamiento), niños <5 años, oftalmopatía activa moderada-severa (puede empeorarla — coadministrar corticoide profiláctico si oftalmopatía leve), sospecha de malignidad tiroidea (cirugía),deseo de evitar ablación",
+        "Cuidados ENFERMERÍA radioyodo: aislamiento 2-7 días según dosis (radiación residual); ducharse frecuente, descargar inodoro 2x; evitar contacto cercano con embarazadas/niños/mascotas (distancia >2 m, 1 sem); utensilios y ropa de cama separados; reducir secreciones (chicle ácido para estimular salivación, vaciar vejiga frecuente)",
+        "DESCOMPRESIÓN ORBITARIA: urgente si NEUROPATÍA ÓPTICA TIROIDEA (riesgo amaurosis) o ulceración corneal por proptosis severa. Electiva tras teprotumumab/corticoides en oftalmopatía residual estable. Puede combinarse con cirugía de estrabismo y palpebroplastia en fase inactiva",
+        "ABLACIÓN POR RADIOFRECUENCIA / etanol percutáneo: alternativa emergente para nódulos tóxicos solitarios sin necesidad de cirugía o radioyodo (no estándar universal)"
       ]
     },
     "cuidadosEnfermeria": {
@@ -12645,7 +12830,15 @@
       "pat_hipotiroidismo",
       "pat_fa"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "American Thyroid Association (ATA) Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis (Ross DS et al, Thyroid 2016;26:1343-1421) — y actualizaciones ETA 2018-2024",
+      "ATA Guidelines for the Diagnosis and Management of Thyroid Disease During Pregnancy and the Postpartum (Alexander EK et al, Thyroid 2017;27:315-389) — PTU 1er trim → MMI 2do-3er trim",
+      "TEPROTUMUMAB para oftalmopatía de Graves — ensayos pivotales: OPTIC (Douglas RS et al, NEJM 2020;382:341-352); OPTIC-X extension (Douglas Ophthalmology 2022); aprobación FDA 2020. EUGOGO 2021 European Group on Graves' Orbitopathy guidelines (Bartalena Eur J Endocrinol)",
+      "Tormenta tiroidea — Burch-Wartofsky Point Scale (Burch HB y Wartofsky L, Endocrinol Metab Clin North Am 1993;22:263-277); Japan Thyroid Association criteria (Akamizu T et al, Thyroid 2012;22:661). Selenio en oftalmopatía leve (Marcocci C et al, NEJM 2011;364:1920-1931)",
+      "Amiodarone-induced thyrotoxicosis (AIT) tipo 1 vs 2 (Bogazzi F et al, J Clin Endocrinol Metab 2010) — distinción por Doppler color y manejo diferencial. Checkpoint inhibitor endocrinopathies (Chang LS et al, Endocr Rev 2019;40:17-65)"
+    ]
   },
   {
     "id": "pat_cetoacidosis",
