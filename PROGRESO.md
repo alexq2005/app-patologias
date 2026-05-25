@@ -4,6 +4,52 @@
 
 ---
 
+## 2026-05-24 — Sesion 47: Revisión clínica de pat_hipotiroidismo a ATA 2014/2017 + TRUST NEJM 2017 + checkpoint immunotherapy + síndrome poliglandular 🎯 MILESTONE 30/151 (20%)
+
+### Resumen
+Novena iteración del tercer lote. La entry `pat_hipotiroidismo` era especialmente mínima (3 clasif, 2 pruebas, 3 objetivos, 1 fármaco — solo levotiroxina genérica, 2 noFarm, 0 quirúrgico). Esta revisión llega al hito **30/151 entries con cobertura clínica moderna (20%)**. Gaps detectados: clasificación primitiva (sin distinción primario/central, sin subclínico leve vs severo TSH 4-10 vs >10, sin embarazo, sin tiroiditis postparto, sin congénito, sin iatrogénico por checkpoint inhibitors); pruebas sin descartar insuficiencia adrenal previa a LT4 (orden crítico — síndrome poliglandular), sin biotina interferencia, sin cribado embarazo/neonatal, sin perfil lipídico revertible; objetivos genéricos sin rango específico por contexto (joven vs >70 vs embarazo vs cáncer), sin TRUST trial (no sobre-tratar subclínico leve en ancianos), sin manejo de coma mixedematoso paso a paso, sin escalada en embarazo 25-30% pre-TSH; farmacológico SIN formulaciones líquido/gel cápsula (Tirosint para malabsorción), sin combinación LT4+LT3 con criterios estrictos ATA 2014, sin tiroides desecada NO recomendada, sin hidrocortisona previa en coma mixedematoso/central; noFarmacológico mínimo (sin desmitificar dietas, sin marca consistente, sin cribado autoinmune asociado, sin selenio sin evidencia, sin manejo síntomas persistentes); quirúrgico vacío (sin indicaciones para bocio/nódulos, sin cuidados postoperatorios).
+
+Cross-check: ATA 2014 (Jonklaas Thyroid), ATA 2017 embarazo (Alexander Thyroid), TRUST NEJM 2017 (Stott — no tratar subclínico leve >65a sin indicación), ETA 2014 yodo (Lazarus), Bolk Arch Intern Med 2010 (toma nocturna), checkpoint endocrinopathies (Chang Endocr Rev 2019), Bornstein 2016 (insuf adrenal). 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_hipotiroidismo (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (3→10) | Primario vs CENTRAL + subclínico LEVE (TSH 4-10) vs SEVERO (>10) + clínico manifiesto + coma mixedematoso + EMBARAZO con rangos específicos + tiroiditis POSTPARTO + congénito con cribado neonatal + iatrogénico por CHECKPOINT INHIBITORS (5-10% pembrolizumab/nivolumab) |
+| `pruebas` (2→6) | TSH+T4L con patrones (primario/central/sick euthyroid) + biotina interferencia + anti-TPO/anti-Tg con cribado PGA + CORTISOL BASAL OBLIGATORIO antes LT4 central + ecografía selectiva con TIRADS + laboratorio completo (lípidos NO tratar hasta eutiroideo) + cribado embarazo/neonatal con escalada pre-TSH |
+| `objetivos` (3→12) | Rangos específicos por contexto (joven 0.5-2.5, >70a 4-6, embarazo <2.5/3.0, cáncer <0.1) + estratificación subclínico + DESCARTAR insuf adrenal + dosing por edad/cardiopatía + toma correcta + monitoreo 6-8 sem + EVITAR sobre-tratamiento (TRUST) + coma mixedematoso paso a paso + embarazo escalada 25-30% pre-TSH + cribado PGA + checkpoint + educación adherencia |
+| `farmacologico` (1→4) | LT4 expandido con formulaciones COMPRIMIDO/LÍQUIDO/GEL cápsula (Tirosint) + biotina interferencia + cambios de marca + LT4+LT3 NO RUTINARIO (ATA 2014, criterios estrictos polimorfismo DIO2) + tiroides desecada NO RECOMENDADA + HIDROCORTISONA previa en coma mixedematoso/central |
+| `noFarmacologico` (2→13) | Educación toma + interacciones medicamentosas/dietéticas + misma marca + DESMITIFICAR dietas + yodo SIN exceso + selenio sin evidencia + cesación tabáquica + cribado PGA + cribado familiar + síntomas persistentes diferenciales + ejercicio + apoyo psicológico + embarazo pre-concepción |
+| `quirurgico` (0→4) | Tiroidectomía SOLO para bocio compresivo/nódulos TIRADS 4-5/sospecha linfoma MALT + tiroidectomía CAUSA hipotiroidismo (no es tratamiento) + cuidados postoperatorios (hematoma, hipocalcemia, lesión recurrencial) + trasplante en investigación |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: ATA 2014 + ATA 2017 embarazo + TRUST NEJM 2017 + ETA 2014 yodo + checkpoint endocrinopathies + Bornstein 2016 PGA |
+
+### 🎯 MILESTONE: 30/151 entries (20%) con cobertura clínica moderna
+Distribución por sistema:
+- **Cardiovascular** (8): pat_icc, pat_hta, pat_iam, pat_fa, pat_angina, pat_eap, pat_endocarditis, pat_tep
+- **Endocrino** (4): pat_dm2, pat_dm1, pat_cetoacidosis, pat_hipotiroidismo (← nueva)
+- **Respiratorio** (6): pat_epoc, pat_asma, pat_neumonia, pat_neumotorax, pat_tuberculosis, pat_ira
+- **Neurológico** (5): pat_acv, pat_meningitis, pat_epilepsia, pat_parkinson, pat_alzheimer
+- **Digestivo** (7): pat_cirrosis, pat_pancreatitis, pat_apendicitis, pat_obstrucción_intestinal, pat_hemorragia_digestiva, pat_eii, pat_ulcera_peptica
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`: vigentes (etiologías cubiertas)
+- `fisiopatologia`: vigente
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **30 frescas** 🎯 (era 29; +pat_hipotiroidismo), 121 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximos pasos del tercer lote (1 restante)
+pat_hipertiroidismo (ATA 2016 + 2024 updates; metimazol vs PTU; manejo Graves/oftalmopatía)
+
+---
+
 ## 2026-05-24 — Sesion 46: Revisión clínica de pat_ulcera_peptica a ACG 2024 + Maastricht VI/Florence 2022 + vonoprazán FDA 2022 + WSES perforación 2020
 
 ### Resumen
