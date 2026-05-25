@@ -9566,23 +9566,43 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Tipos y extension",
+      "nombre": "Clasificación de Montreal (CU + Crohn) + severidad clínica + endoscópica + STRIDE-II",
       "tipos": [
         {
-          "nombre": "Colitis Ulcerosa proctitis",
-          "descripcion": "Limitada al recto. Síntomas leves, sangrado rectal"
+          "nombre": "Colitis Ulcerosa — Montreal E (Extensión)",
+          "descripcion": "E1 PROCTITIS (limitada al recto, hasta unión rectosigmoidea); E2 COLITIS IZQUIERDA o distal (hasta ángulo esplénico); E3 COLITIS EXTENSA / PANCOLITIS (más allá del ángulo esplénico hasta ciego). La extensión guía la vía de administración (tópica + oral en E1, oral + topical en E2, oral + biológico en E3 extensa)"
         },
         {
-          "nombre": "CU extensa o pancolitis",
-          "descripcion": "Más alla del angulo esplenico. Síntomas sistemicos frecuentes"
+          "nombre": "Colitis Ulcerosa — Montreal S (Severidad clínica de Truelove-Witts)",
+          "descripcion": "S0 REMISIÓN (asintomática); S1 LEVE (≤4 deposiciones/d sin sangre o con sangre escasa, sin signos sistémicos, parámetros normales); S2 MODERADA (>4 deposiciones/d con signos mínimos de toxicidad); S3 SEVERA (≥6 deposiciones sanguinolentas/d + signos sistémicos: T >37.5°C, FC >90, Hb <10.5, VSG >30, PCR >30) = ASUC (Acute Severe UC) — emergencia médica que requiere hospitalización"
         },
         {
-          "nombre": "Crohn ileocólico",
-          "descripcion": "Localización más frecuente (45%): ileon terminal + colon derecho"
+          "nombre": "Crohn — Montreal A (Age) + L (Location) + B (Behavior)",
+          "descripcion": "EDAD diagnóstico: A1 <17 años, A2 17-40, A3 >40. LOCALIZACIÓN: L1 ileal terminal, L2 colónica, L3 ileocolónica, L4 tracto digestivo alto. CONDUCTA: B1 no estenosante/no penetrante (inflamatoria), B2 ESTENOSANTE, B3 PENETRANTE (fistulizante). Modificador 'p' si enfermedad perianal asociada. Predice progresión: fenotipos B2/B3 son más agresivos"
         },
         {
-          "nombre": "Crohn fistulizante",
-          "descripcion": "Fistulas entre asas, perianales, enterovaginales. Fenotipo agresivo"
+          "nombre": "Mayo Score (CU) — actividad clínica + endoscópica",
+          "descripcion": "0-12 puntos: frecuencia deposiciones (0-3) + sangrado rectal (0-3) + endoscopia (0-3) + valoración global médico (0-3). REMISIÓN: <2 + ningún subscore >1; LEVE: 2-5; MODERADA: 6-10; SEVERA: 11-12. Mayo endoscópico ≤1 = cicatrización mucosa (meta STRIDE-II)"
+        },
+        {
+          "nombre": "UCEIS (Ulcerative Colitis Endoscopic Index of Severity)",
+          "descripcion": "Score endoscópico moderno (Travis 2012): patrón vascular (0-2) + sangrado (0-3) + erosiones/úlceras (0-3). Total 0-8. UCEIS ≥7 predice colectomía en ASUC. Reemplaza Mayo endoscópico en muchos ensayos"
+        },
+        {
+          "nombre": "CDAI (Crohn's Disease Activity Index) + HBI (Harvey-Bradshaw)",
+          "descripcion": "CDAI 0-600: ítems clínicos + Hto + peso. Remisión <150, leve 150-220, moderada 221-450, severa >450. HBI versión simplificada 5 ítems (uso clínico): remisión <5, leve 5-7, moderada 8-16, severa >16. SES-CD (Simple Endoscopic Score for Crohn) para endoscopia: 0-56"
+        },
+        {
+          "nombre": "Criterios de Oxford día 3 — predictor falla esteroides en ASUC",
+          "descripcion": "Tras 3 días de metilprednisolona IV en ASUC: si >8 deposiciones/d O 3-8 deposiciones + PCR >45 mg/L = 85% probabilidad de fracaso → DECISIÓN INMEDIATA: terapia de rescate (infliximab 5-10 mg/kg o ciclosporina IV 2 mg/kg/d) o colectomía. NO esperar más días sin escalar"
+        },
+        {
+          "nombre": "Crohn perianal (clasificación AGA/ECCO)",
+          "descripcion": "Simple (única, baja, sin abscesos ni estenosis) vs Compleja (alta, múltiple, con absceso, estenosis o conexión a otros órganos). Compleja requiere RM pélvica + drenaje quirúrgico + setón + biológico (infliximab evidencia clase A). Hasta 30% de Crohn con afectación perianal"
+        },
+        {
+          "nombre": "Objetivos STRIDE-II (Selecting Therapeutic Targets in IBD) 2021",
+          "descripcion": "Objetivos jerárquicos del tratamiento: 1) RESPUESTA CLÍNICA (semanas), 2) REMISIÓN CLÍNICA (3 meses) — calprotectina <250 + PCR normal, 3) NORMALIZACIÓN BIOMARCADORES (6 meses) — calprotectina <100-150, 4) CICATRIZACIÓN MUCOSA endoscópica (12 meses) — Mayo endoscópico 0-1 / SES-CD ≤2 / UCEIS ≤1, 5) Restauración calidad de vida + cicatrización histológica (largo plazo). Treat-to-target con monitoreo seriado"
         }
       ]
     },
@@ -9601,97 +9621,212 @@
       ],
       "pruebas": [
         {
-          "nombre": "Colonoscopia con biopsias",
-          "descripcion": "Standard de oro diagnóstico y de extension. Características endoscópicas e histologicas diferencia Crohn de CU",
+          "nombre": "Ileocolonoscopia con biopsias múltiples (gold standard diagnóstico)",
+          "descripcion": "Estudio de elección al diagnóstico. Diferenciación CU vs Crohn por: distribución (continua desde recto en CU vs salteada en Crohn), profundidad (mucosa en CU vs transmural en Crohn), úlceras (superficiales en CU vs aftoides/serpiginosas/lineares + adoquinado en Crohn), afectación de íleon (no en CU vs frecuente en Crohn), granulomas no caseificantes (50% Crohn, no en CU), fístulas/abscesos/estenosis (Crohn). Biopsias mínimas: ≥2 de 5 segmentos (recto, sigmoides, descendente, transverso, ascendente/ciego) + íleon terminal",
           "cuidadosEnfermeria": [
-            "Preparación con polietilenglicol el dia previo",
-            "Ayuno 8h previo",
-            "Acceso venoso para sedación",
-            "Anestesia rectal si dolor perianal en Crohn"
+            "Preparación con polietilenglicol (PEG) 4 L el día previo + 1 L mañana del procedimiento (dosis dividida — mejor calidad)",
+            "Dieta líquida sin residuos 24-48h previas",
+            "Ayuno 6h sólidos / 2h líquidos claros antes",
+            "Acceso venoso para sedación con propofol (anestesia)",
+            "En Crohn perianal: anestesia local + ANALGESIA pre-procedimiento; valorar RM pélvica antes para mapear",
+            "Cromoendoscopia con índigo carmín o NBI: técnica de elección para cribado neoplásico en EII >8-10 años de evolución (Lichtenstein ACG 2018, ECCO 2024)"
           ]
         },
         {
-          "nombre": "Calprotectina fecal",
-          "descripcion": "Marcador de inflamación intestinal; útil para monitorizar actividad y predecir recaidas",
-          "valoresReferencia": "< 50 mcg/g = remisión; 50-200 = gris; > 200 mcg/g = inflamación activa",
+          "nombre": "Calprotectina fecal (biomarcador clave STRIDE-II)",
+          "descripcion": "Proteína liberada por neutrófilos durante inflamación intestinal. Útil para: cribado de EII (vs SII funcional), monitorización de actividad, predicción de recaída precoz (eleva 2-3 meses antes de síntomas), evaluación de respuesta a tratamiento. PUNTOS DE CORTE STRIDE-II: <100 μg/g objetivo a 6 meses (cicatrización profunda); <250 μg/g objetivo a 3 meses (remisión). >250 sugiere inflamación activa con buena especificidad",
+          "valoresReferencia": "<50 μg/g: normal, no inflamación. 50-100: zona gris baja. 100-250: zona gris alta (probable actividad leve). 250-500: actividad moderada. >500: actividad severa. NOTA: usar con clínica, no aisladamente — falsos positivos en AINEs, IBP, infección, neoplasia",
           "cuidadosEnfermeria": [
-            "Muestra de heces fresca",
-            "No requiere preparación especial"
+            "Muestra de heces espontánea (no diarrea acuosa — diluye marcador)",
+            "Suspender AINEs ≥1 sem si posible (pueden elevar)",
+            "Refrigerar si demora >24h al laboratorio",
+            "Educar al paciente: medición seriada cada 3-6 meses para guiar treat-to-target (no como prueba única)"
           ]
         },
         {
-          "nombre": "PCR y VSG",
-          "descripcion": "Marcadores de inflamación sistémica; correlacionan con actividad de la enfermedad",
+          "nombre": "RM enterografía / TC enterografía + RM pélvica (Crohn)",
+          "descripcion": "RM ENTEROGRAFÍA: estudio de elección para EVALUAR INTESTINO DELGADO en Crohn (sin radiación, repetible) — afectación, estenosis (Behavior B2), fístulas, abscesos, actividad inflamatoria (edema, realce). TC enterografía si RM no disponible o agudo. RM PÉLVICA: estudio de elección en enfermedad PERIANAL para clasificación (simple vs compleja), planificación quirúrgica y monitoreo de respuesta",
           "cuidadosEnfermeria": [
-            "Junto a hemograma y albumina para evaluar actividad y estado nutricional"
+            "Preparación con manitol o PEG oral 1-2 L en 60 min para distensión intestinal (RM/TC enterografía)",
+            "Contraindicación gadolinio: eGFR <30 (riesgo fibrosis sistémica nefrogénica)",
+            "Embarazo: RM sin gadolinio preferida; TC contraindicada relativa",
+            "Educar sobre claustrofobia, ruidos del equipo; duración 30-45 min"
+          ]
+        },
+        {
+          "nombre": "Ecografía intestinal (Bowel Ultrasound, IUS) — biomarcador emergente",
+          "descripcion": "Técnica no invasiva, sin radiación, en cabecera. Mide: grosor de pared (>3 mm patológico), hiperemia con Doppler color, pérdida de estratificación, complicaciones (estenosis, abscesos). Validada para monitorización de actividad y respuesta a tratamiento en CU y Crohn (TRUST trial 2018, STARDUST 2020). Alternativa a colonoscopia para seguimiento — reduce procedimientos invasivos",
+          "cuidadosEnfermeria": [
+            "Ayuno 6-8h para mejor visualización del intestino delgado",
+            "Educar al paciente sobre la técnica como alternativa al seguimiento endoscópico",
+            "Operador-dependiente: realizar en centros con experiencia en IUS para EII"
+          ]
+        },
+        {
+          "nombre": "Laboratorio + nutricionales: hemograma, PCR/VSG, función hepática, albúmina, ferritina, B12, vitamina D, ácido fólico, calcio",
+          "descripcion": "PCR (aguda) y VSG (subaguda) correlacionan con actividad. Anemia ferropénica frecuente (sangrado + malabsorción). Anemia megaloblástica por déficit B12/folato (especialmente Crohn ileal). Hipoalbuminemia en enfermedad activa o ASUC (predictor falla esteroides). Deficiencia de vitamina D común — corregir. ASCA (Crohn) y p-ANCA (CU) solo apoyan diagnóstico, no son rutinarios",
+          "valoresReferencia": "Hb <10.5 en ASUC = criterio Truelove-Witts severo. Albúmina <30 g/L predice falla esteroides. PCR >45 mg/L día 3 ASUC + ≥3 deposiciones = criterio Oxford. Ferritina <30 en hombre / <15 en mujer = déficit",
+          "cuidadosEnfermeria": [
+            "Solicitar al diagnóstico: HC + PCR + VSG + bioquímica completa + albúmina + ferritina + B12 + ácido fólico + vitamina D + calcio + magnesio + lipasa + perfil tiroideo",
+            "Cribado pre-biológico (OBLIGATORIO antes anti-TNF/IL/JAK): Mantoux/IGRA (TB latente), HBsAg + AntiHBc + AntiHBs, AntiHCV, HIV, varicela IgG, citomegalovirus IgG, neumococo, gripe, COVID-19",
+            "Suplementar deficiencias antes de iniciar tratamiento intensivo"
+          ]
+        },
+        {
+          "nombre": "Coprocultivo + Clostridioides difficile + parásitos (DESCARTAR infección)",
+          "descripcion": "OBLIGATORIO al inicio de cada brote — la sobreinfección por C. difficile o CMV puede mimetizar brote de EII y empeora pronóstico si no tratada. CMV especialmente en ASUC corticodependiente o refractaria — biopsias rectales con inmunohistoquímica/PCR. Coprocultivo para Salmonella, Shigella, Campylobacter, Yersinia, E. coli O157 (estos imitan EII)",
+          "cuidadosEnfermeria": [
+            "Recogida correcta: muestra fresca; PCR para C. difficile (más sensible que toxina); biopsia rectal con inmunohistoquímica/PCR para CMV si ASUC refractaria",
+            "Si C. difficile +: tratar con vancomicina oral o fidaxomicina (NO metronidazol oral — inferior)",
+            "Si CMV +: ganciclovir/valganciclovir, retirar/reducir inmunosupresor temporalmente",
+            "Coordinar con microbiología — informar contexto EII (cambia interpretación)"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Inducir y mantener la remisión clínica y endoscópica",
-        "Prevenir complicaciones y cirugia",
-        "Mejorar la calidad de vida"
+        "Treat-to-target STRIDE-II (Turner Gastro 2021): respuesta clínica (semanas) → remisión clínica (3 meses) → normalización biomarcadores calprotectina <100-250 (6 meses) → CICATRIZACIÓN MUCOSA endoscópica (12 meses) → cicatrización histológica y calidad de vida (largo plazo)",
+        "Estratificar por SEVERIDAD + FACTORES DE MAL PRONÓSTICO (edad joven al diagnóstico, enfermedad extensa/penetrante/perianal, dependencia esteroides, afectación profunda) — los pacientes de alto riesgo se benefician de TOP-DOWN (biológico precoz) sobre STEP-UP (escalada tradicional)",
+        "INDUCCIÓN de remisión en CU según extensión y severidad: PROCTITIS (E1): mesalazina rectal (supositorios 1 g/d) + oral si extensión. COLITIS IZQUIERDA (E2): mesalazina rectal (enema 4 g/d) + oral 2-4.8 g/d. EXTENSA (E3): mesalazina oral 4-4.8 g/d ± rectal. Si no respuesta: corticoides tópicos (budesonida MMX 9 mg/d — minimal sistémico) o sistémicos (prednisona 40-60 mg/d). Si moderada-severa sin respuesta a corticoides: biológico inmediato",
+        "INDUCCIÓN de remisión en CROHN según localización/severidad: leve ileal/cecal: BUDESONIDA 9 mg/d (preferida sobre prednisona — menos efectos sistémicos en esa localización). Moderada-severa: prednisona 40-60 mg/d (corto plazo) o biológico precoz si factores de mal pronóstico. EEN (Exclusive Enteral Nutrition) en pediatría como inducción de primera línea",
+        "MANTENIMIENTO en CU: mesalazina (oral + tópica si E1-E2) si respuesta a 5-ASA. Si corticodependencia o brote moderado-grave: AZA/6-MP, anti-TNF, vedolizumab, ustekinumab, anti-IL-23, JAK o S1P. NO usar corticoides como mantenimiento (corticodependencia/refractariedad)",
+        "MANTENIMIENTO en CROHN: AZA/6-MP, metotrexato (alternativa en Crohn), o BIOLÓGICO. NO usar corticoides como mantenimiento. EVITAR mesalazina (poca evidencia en Crohn)",
+        "Acute Severe UC (ASUC) — criterios Truelove-Witts: hospitalización + reanimación + metilprednisolona IV 60 mg/d. Criterios de OXFORD día 3 (PCR>45 + 3-8 deposiciones o >8 deposiciones): TERAPIA DE RESCATE inmediata (infliximab 5-10 mg/kg O ciclosporina IV 2 mg/kg/d) o COLECTOMÍA. NO esperar más días — mortalidad aumenta con cada día de retraso",
+        "Cribado PRE-BIOLÓGICO obligatorio antes de anti-TNF/anti-IL/JAK: Mantoux + IGRA (TB latente — tratar con isoniazida 9 meses si +), VHB (vacunar si no inmune), VHC (tratar si activo), HIV, varicela (vacunar si no inmune ≥4 sem antes), neumococo + gripe + COVID-19 + meningococo conjugado anuales. Mujeres: cribado VPH/citología anual",
+        "Selección de BIOLÓGICO según perfil del paciente: anti-TNF (infliximab, adalimumab) — eficaz pero riesgo infeccioso y reactivación TB; VEDOLIZUMAB — gut-selectivo (preferido en ancianos, infecciones recurrentes); USTEKINUMAB anti-IL-12/23 — buen perfil seguridad en Crohn; RISANKIZUMAB / MIRIKIZUMAB / GUSELKUMAB anti-IL-23 — nuevos, alta eficacia (FDA 2022-2024); TOFACITINIB / UPADACITINIB JAK — rápido inicio, útil ASUC (oral, sin TDM); OZANIMOD / ETRASIMOD S1P — oral, buena tolerancia",
+        "Therapeutic Drug Monitoring (TDM) de anti-TNF: medir niveles + anticuerpos anti-fármaco si pérdida de respuesta secundaria. Niveles diana: infliximab >5-7 μg/mL (>10 si fistulizante); adalimumab >5-7 μg/mL. Si nivel bajo + sin anticuerpos: optimizar dosis. Si nivel bajo + anticuerpos altos: cambiar de fármaco. Reduce switches innecesarios",
+        "Manejo de Crohn PERIANAL complejo: RM pélvica + drenaje quirúrgico de absceso + colocación de SETÓN para drenaje continuo + INFLIXIMAB (evidencia clase A — ACCENT II). Mantener setón hasta respuesta clínica + cicatrización RM. Curación completa difícil — meta = control de drenaje y calidad de vida",
+        "CRIBADO DE NEOPLASIA en EII de larga evolución: cromoendoscopia + biopsia DESDE 8 AÑOS de CU extensa o 10 años de izquierda; ANUAL o c/2 años según riesgo (PSC = anual desde diagnóstico). Colangiografía/elastografía hepática anual en PSC asociada"
       ],
       "farmacologico": [
         {
-          "nombre": "Mesalazina (5-ASA)",
-          "grupo": "Aminosalicilato - primera linea en CU leve-moderada",
-          "mecanismo": "Antiinflamatorio topico intestinal que inhibe la 5-lipoxigenasa y la producción de leucotrienos en la mucosa colonica",
-          "dosis": "2-4 g/dia VO + supositorio rectal 1 g/noche en proctitis",
+          "nombre": "Mesalazina (5-ASA) — oral y tópica — primera línea CU LEVE-MODERADA",
+          "grupo": "Aminosalicilato — eficacia probada en CU; poca o nula en Crohn (no recomendado en ECCO 2024)",
+          "mecanismo": "Antiinflamatorio tópico intestinal: inhibe ciclooxigenasa, lipoxigenasa, producción de leucotrienos y radicales libres en mucosa colónica. Acción local sin absorción sistémica significativa según formulación",
+          "dosis": "INDUCCIÓN: oral 4-4.8 g/d + tópica (enema 4 g/d si CU izquierda o supositorio 1 g/d si proctitis). MANTENIMIENTO: oral 2-2.4 g/d ± tópica intermitente. Formulaciones: Pentasa (libera todo el intestino), Asacol/Lialda MMX (libera en colon — preferida CU), Salofalk (variable)",
           "cuidadosEnfermeria": [
-            "Formas orales con cubierta entérica: no triturar",
-            "Recordar la importancia de las formas rectales para proctitis",
-            "Vigilar nefrotoxicidad con uso prolongado: creatinina anual"
+            "Formas orales con cubierta entérica: NO triturar, NO partir (alterar la liberación retardada)",
+            "Recordar la importancia de las formas RECTALES para proctitis y CU izquierda — más eficaces que la sola oral en distal",
+            "Vigilar nefrotoxicidad con uso prolongado: creatinina cada 6-12 meses (nefritis intersticial 1-2%)",
+            "Efectos adversos: cefalea, dispepsia, exacerbación paradójica de colitis (raro), pancreatitis",
+            "Pacientes con buena adherencia a mesalazina tienen menor riesgo de cáncer colorrectal en CU (efecto quimiopreventivo)"
           ]
         },
         {
-          "nombre": "Prednisona",
-          "grupo": "Corticoide sistémico - inducción de remisión en brote moderado-grave",
-          "mecanismo": "Potente antiinflamatorio que reduce rápida y eficazmente la inflamación intestinal activa",
-          "dosis": "40-60 mg/dia VO, reducción gradual 5 mg/semana",
+          "nombre": "Corticoides: budesonida MMX, beclometasona, prednisona, metilprednisolona IV — INDUCCIÓN solamente",
+          "grupo": "Glucocorticoides — eficaz para inducción rápida; NUNCA para mantenimiento (corticodependencia 20-30%)",
+          "mecanismo": "Potente antiinflamatorio por inhibición de NF-kB y reducción de citoquinas proinflamatorias. Budesonida tiene primer paso hepático masivo (90%) — escasos efectos sistémicos; ideal para Crohn ileal/cecal y CU izquierda",
+          "dosis": "BUDESONIDA: 9 mg/d oral en Crohn ileal/cecal (Entocort) o CU izquierda (Cortiment MMX), 4-8 semanas. PREDNISONA: 40-60 mg/d oral en EII moderada-severa, reducir 5-10 mg/sem. METILPREDNISOLONA IV: 60 mg/d en ASUC, ≤7 días (si no respuesta → rescate o cirugía)",
           "cuidadosEnfermeria": [
-            "No para mantenimiento (corticodependencia)",
-            "Protección gástrica con IBP",
-            "Suplementar calcio y vitamina D",
-            "Monitorizar glucemia, PA, densidad osea a largo plazo"
+            "RECORDAR: corticoides solo para INDUCCIÓN, máximo 12 semanas (corticodependencia, osteoporosis, supresión adrenal)",
+            "Protección gástrica con IBP rutinaria",
+            "Suplementar calcio 1000-1200 mg/d + vitamina D 800-1000 UI/d desde inicio + considerar bifosfonato si >3 meses",
+            "Monitorizar glucemia (hiperglucemia esteroidea), PA, densidad ósea anual",
+            "Inmunizaciones VIVAS contraindicadas durante curso (sarampión, varicela, BCG, fiebre amarilla)",
+            "Plan de retirada gradual + plan B si recidiva durante taper (escalar mantenimiento — no volver al corticoide)"
           ]
         },
         {
-          "nombre": "Azatioprina / 6-Mercaptopurina",
-          "grupo": "Inmunosupresor - mantenimiento de remisión",
-          "mecanismo": "Inhibe la proliferación de linfocitos T y B, reduciendo la respuesta inmune inflamatoria",
-          "dosis": "Azatioprina 2-2.5 mg/kg/dia VO",
+          "nombre": "Inmunomoduladores: Azatioprina (AZA), 6-Mercaptopurina (6-MP), Metotrexato (MTX)",
+          "grupo": "Inmunosupresores convencionales — MANTENIMIENTO en EII corticodependiente o ahorradores de corticoide",
+          "mecanismo": "AZA/6-MP: inhiben proliferación de linfocitos T y B vía bloqueo de síntesis de purinas. MTX: antagonista del folato, inhibe síntesis ADN en células inflamatorias (más eficaz en Crohn que CU)",
+          "dosis": "AZA 2-2.5 mg/kg/d VO (ajustar por TPMT/NUDT15 genotipo si disponible — riesgo mielotoxicidad severa). 6-MP 1-1.5 mg/kg/d. MTX 25 mg/sem IM/SC en inducción Crohn → 15 mg/sem mantenimiento + ácido fólico 5 mg 24h post-dosis",
           "cuidadosEnfermeria": [
-            "Hemograma semanal en el primer mes, luego mensual (leucopenia)",
-            "Hepatotoxicidad: transaminasas mensuales inicialmente",
-            "Inicio de efecto lento (3-4 meses)",
-            "Fotosensibilidad"
+            "PRE-TRATAMIENTO: TPMT (tiopurina metiltransferasa) — actividad baja contraindica AZA; NUDT15 (especialmente en asiáticos) — variantes contraindican",
+            "Hemograma SEMANAL primer mes, luego MENSUAL primer año, luego cada 3 meses (leucopenia, anemia, trombopenia)",
+            "Hepatotoxicidad: transaminasas/GGT mensuales primeros 3 meses, luego cada 3 meses",
+            "Inicio de efecto LENTO: 3-4 meses para AZA — durante esa ventana mantener otra terapia (corticoide o biológico)",
+            "RIESGO LINFOMA (NHL, linfoma hepatoesplénico T) — informar al paciente; riesgo absoluto bajo pero presente",
+            "Fotosensibilidad: SPF 50+ obligatorio, ropa cubriente, cribado dermatológico anual (riesgo cáncer cutáneo no melanoma)",
+            "MTX: ácido fólico 5 mg el día siguiente a la dosis (NO mismo día), evitar alcohol, anticoncepción estricta (teratógeno)",
+            "Vacunaciones: NO vivas; gripe + neumococo + COVID-19 anuales"
           ]
         },
         {
-          "nombre": "Infliximab / Adalimumab (anti-TNF)",
-          "grupo": "Biológico - anti-TNF alfa - EII moderada/grave refractaria",
-          "mecanismo": "Anticuerpo monoclonal que bloquea el TNF-alfa, principal citoquina proinflamatoria en EII",
-          "dosis": "Infliximab: 5 mg/kg IV semanas 0, 2, 6, luego cada 8 semanas",
+          "nombre": "Anti-TNF: Infliximab, Adalimumab, Golimumab (solo CU), Certolizumab (solo Crohn)",
+          "grupo": "Biológico anti-TNFα — EII moderada-severa, fistulizante, ASUC rescate",
+          "mecanismo": "Anticuerpo monoclonal IgG (infliximab quimérico; adalimumab, golimumab humanos; certolizumab fragmento Fab pegilado). Neutraliza TNFα soluble y de membrana, induce apoptosis de células inflamatorias. Disponibles BIOSIMILARES (CT-P13/Inflectra, SB2/Flixabi) con coste reducido",
+          "dosis": "INFLIXIMAB: 5 mg/kg IV semanas 0, 2, 6 → mantenimiento c/8 sem (escalar a 10 mg/kg o c/4-6 sem si pérdida respuesta). ADALIMUMAB: 160 mg SC semana 0 → 80 mg semana 2 → 40 mg c/2 sem mantenimiento. CERTOLIZUMAB: 400 mg SC sem 0, 2, 4 → c/4 sem. GOLIMUMAB: 200 mg SC sem 0 → 100 mg sem 2 → 100 mg c/4 sem (solo CU)",
           "cuidadosEnfermeria": [
-            "Descartar tuberculosis latente ANTES de iniciar (IGRA/Mantoux)",
-            "Vacunas al dia antes de iniciar biologicos",
-            "Vigilar infecciones oportunistas durante tratamiento",
-            "Reacción infusional con infliximab: premedicar y monitorizar PA/FC durante infusion"
+            "CRIBADO PRE-INICIO OBLIGATORIO: Mantoux + IGRA (tratar TB latente con isoniazida 9 meses si +), VHB serología (vacunar/tratar), VHC, HIV, varicela IgG, vacunación al día (neumococo + gripe + COVID + meningococo conjugado)",
+            "Reacciones INFUSIONALES con infliximab (5-10%): premedicar con paracetamol + antihistamínico ± corticoide si historia; monitorizar TA/FC/SpO2 cada 30 min durante infusión 2-4h",
+            "Reacciones LOCALES con SC: rotar sitios, frío local pre-inyección",
+            "Vigilar INFECCIONES OPORTUNISTAS: TB reactivada, neumonía, varicela, herpes zóster, infecciones fúngicas. Suspender en infección activa hasta resolución",
+            "Vigilar neoplasia (linfoma, melanoma, cáncer piel no melanoma); embarazo: anti-TNF SEGUROS en embarazo (certolizumab no cruza placenta — preferido en último trimestre)",
+            "TDM (Therapeutic Drug Monitoring): medir nivel + anticuerpos si pérdida respuesta secundaria — guía decisión de optimizar dosis vs cambiar de fármaco",
+            "Educación: tarjeta de portador biológico, evitar contacto con personas con varicela/zóster activos, urgencia ante fiebre persistente o síntomas neumonía"
+          ]
+        },
+        {
+          "nombre": "Biológicos no anti-TNF: Vedolizumab (anti-integrina α4β7), Ustekinumab (anti-IL-12/23), Risankizumab/Mirikizumab/Guselkumab (anti-IL-23 p19)",
+          "grupo": "Biológicos modernos — segunda línea o primera en perfiles específicos",
+          "mecanismo": "VEDOLIZUMAB (Entyvio): bloquea integrina α4β7 — impide migración de linfocitos al intestino. GUT-SELECTIVO (sin efectos sistémicos importantes). Excelente perfil de seguridad. USTEKINUMAB (Stelara): bloquea subunidad p40 común de IL-12/IL-23. Inicio rápido, segura. ANTI-IL-23 p19 (más selectivos): risankizumab (Skyrizi — FDA 2022 Crohn, 2024 UC), mirikizumab (Omvoh — FDA 2023 UC), guselkumab (Tremfya — 2024 UC + Crohn) — eficacia superior con seguridad mejorada",
+          "dosis": "VEDOLIZUMAB: 300 mg IV sem 0, 2, 6 → c/8 sem (puede escalar c/4 sem). USTEKINUMAB: induc 6 mg/kg IV → 90 mg SC c/8 sem (c/4 sem si pérdida respuesta). RISANKIZUMAB: induc 600 mg IV sem 0/4/8 → 360 mg SC c/8 sem (Crohn) / 180-360 mg SC c/8 sem (UC). MIRIKIZUMAB: induc 300 mg IV c/4 sem x3 → 200 mg SC c/4 sem",
+          "cuidadosEnfermeria": [
+            "Cribado pre-inicio simplificado vs anti-TNF: TB latente sigue siendo obligatorio; menor riesgo de TB que anti-TNF",
+            "VEDOLIZUMAB: preferido en ancianos, comorbilidad, infecciones recurrentes, neoplasia previa — perfil de seguridad superior; útil si fallo anti-TNF; menor eficacia en ASUC severa por inicio lento",
+            "USTEKINUMAB: muy buen perfil de seguridad incluso en embarazo y largo plazo; eficaz en Crohn refractario",
+            "ANTI-IL-23 (risankizumab, mirikizumab, guselkumab): combinación de alta eficacia + seguridad — emergiendo como primera línea biológica en muchos casos",
+            "Reacciones infusionales/inyección locales bajas (<5%)",
+            "Monitorizar respuesta a 12-16 semanas con calprotectina + endoscopia"
+          ]
+        },
+        {
+          "nombre": "Pequeñas moléculas orales: JAK inhibidores (Tofacitinib, Upadacitinib) y S1P moduladores (Ozanimod, Etrasimod)",
+          "grupo": "Tratamiento ORAL — inicio rápido (días-semanas), sin TDM, ideal en ASUC y pacientes que prefieren no inyectables",
+          "mecanismo": "JAK INHIBIDORES: bloquean Janus-kinasas (JAK1, JAK2, JAK3, TYK2) → inhiben señalización de múltiples citoquinas. S1P MODULADORES: secuestran linfocitos en ganglios linfáticos vía agonismo de receptor S1P (esfingosina-1-fosfato)",
+          "dosis": "TOFACITINIB (Xeljanz, CU): induc 10 mg c/12h x 8 sem → manten 5 mg c/12h (10 mg si pérdida respuesta). UPADACITINIB (Rinvoq, CU + Crohn): induc 45 mg/d x 8 sem → manten 15-30 mg/d. OZANIMOD (Zeposia, CU): 0.92 mg/d (con titulación inicial). ETRASIMOD (Velsipity, CU 2023): 2 mg/d",
+          "cuidadosEnfermeria": [
+            "JAK INHIBIDORES — Black Box Warning FDA (datos de tofacitinib en AR vs anti-TNF): MAYOR riesgo cardiovascular (IAM, ACV), trombosis (TEP, TVP), neoplasia (especialmente pulmón, linfoma) y MORTALIDAD en >50 años con factores de riesgo cardiovascular. Usar tras fracaso de al menos un anti-TNF en >50 años con riesgo CV",
+            "Cribado pre-JAK: tuberculosis, hepatitis, lípidos (pueden elevarse), riesgo trombótico, neoplasia previa",
+            "Monitorizar: hemograma c/3 meses (linfopenia), perfil lipídico c/3 meses, función hepática, riesgo HERPES ZÓSTER aumentado (vacunar con Shingrix antes de iniciar si >50 años o inmunosupresión adicional)",
+            "S1P MODULADORES: bradicardia transitoria en primera dosis (titulación inicial obligatoria, ECG basal); contraindicado bloqueo AV 2º/3º, IAM/ACV/IC reciente; riesgo edema macular (oftalmología si diabetes, uveítis); evitar embarazo",
+            "Ventaja operativa: oral, inicio rápido (CU mejora en 1-3 sem), útil en ASUC como rescate (upadacitinib 45 mg)"
+          ]
+        },
+        {
+          "nombre": "Ciclosporina IV — RESCATE en ASUC corticorrefractaria",
+          "grupo": "Inhibidor calcineurina — alternativa a infliximab en ASUC día 3 falla corticoide (criterios Oxford)",
+          "mecanismo": "Inhibe calcineurina, bloquea activación de linfocitos T y producción de IL-2. Inicio rápido (3-5 días) — útil en ASUC. Coste menor que infliximab",
+          "dosis": "2 mg/kg/d IV en infusión continua, ajustar por nivel sanguíneo objetivo 250-350 ng/mL. Duración ≤7 días → step-down a oral si respuesta + iniciar AZA/6-MP como mantenimiento",
+          "cuidadosEnfermeria": [
+            "Monitorizar NIVELES sanguíneos diarios + función renal (creatinina, ClCr) — nefrotoxicidad dosis-dependiente",
+            "Vigilar HTA, hipomagnesemia, hipokalemia, hiperglucemia, temblor, parestesias",
+            "Profilaxis con cotrimoxazol contra Pneumocystis jirovecii durante triple inmunosupresión (corticoide + ciclosporina + tiopurina)",
+            "INTERACCIONES extensas (CYP3A4): macrólidos, antifúngicos azoles, calcioantagonistas, estatinas",
+            "Si respuesta: step-down a ciclosporina oral 4-8 mg/kg/d + iniciar AZA + retirar ciclosporina en 3-6 meses (transición). Si no respuesta a 7 días: cirugía",
+            "ALTERNATIVA equivalente: infliximab 5-10 mg/kg IV — elección según experiencia local, contraindicaciones, embarazo"
           ]
         }
       ],
       "noFarmacologico": [
-        "Soporte nutricional enteral (especialmente en Crohn activo)",
-        "Dieta baja en residuos en actividad para CU",
-        "Manejo del estres psicologico",
-        "No fumar (perjudica en Crohn)"
+        "Manejo en UNIDAD MULTIDISCIPLINAR DE EII: gastroenterólogo + enfermería especializada EII + nutricionista + cirujano colorrectal + psicólogo + reumatólogo si manifestaciones extraintestinales. Asociado a mejores outcomes y reducción de cirugía urgente",
+        "Soporte nutricional precoz: corregir desnutrición (presente en 30-80% EII activa), déficits de hierro/B12/vitamina D/calcio/zinc/folato. Suplementación de hierro IV preferida sobre oral si EII activa (oral empeora síntomas, mala absorción)",
+        "EEN (Exclusive Enteral Nutrition) en Crohn pediátrico ACTIVO: dieta líquida polimérica completa 6-8 semanas como inducción de remisión — eficacia comparable a corticoides sin efectos adversos (ECCO/ESPGHAN); en adultos opción si rechaza corticoides",
+        "Dieta personalizada según actividad y localización: en BROTE — dieta baja en residuos, evitar lácteos si intolerancia 2ria, fraccionar comidas. En REMISIÓN — dieta variada equilibrada, aumentar fibra progresivamente. Mediterránea o CDED (Crohn Disease Exclusion Diet — evidencia emergente pediátrica)",
+        "NO FUMAR: el tabaco EMPEORA Crohn (acelera progresión, fistulización, recurrencia post-quirúrgica) y PROTEGE en CU (raro caso donde se desaconseja dejar bruscamente sin alternativa); intervención de cesación tabáquica obligatoria en Crohn",
+        "Manejo del ESTRÉS y depresión: comorbilidad psiquiátrica en 30-40% (depresión, ansiedad). Empeora calidad de vida y respuesta a tratamiento. TCC (terapia cognitivo-conductual), mindfulness, hipnoterapia con evidencia en EII; grupos de apoyo (ACCU España, Crohn's & Colitis Foundation)",
+        "Evitar AINEs: pueden desencadenar brotes (NAINEs preferidos si imprescindibles). Si necesario analgésico crónico: paracetamol + tramadol. Tratar dolor con manejo multimodal evitando opioides crónicos",
+        "Cribado de osteoporosis: DEXA cada 1-2 años (especialmente si esteroides ≥3 meses); suplementar Ca + vitamina D rutinariamente; bifosfonatos si T-score <-2.5 o fractura por fragilidad",
+        "Cribado de complicaciones extraintestinales: artropatía periférica/axial (espondiloartritis), eritema nodoso, pioderma gangrenoso, uveítis/escleritis (oftalmología si síntomas), CEP (colangitis esclerosante primaria — RM hepática + ALP), eritema nodoso, estomatitis",
+        "Cribado de cáncer ANUAL/BIANUAL en CU >8-10 años extensa o Crohn colónico con cromoendoscopia + biopsia dirigida; si CEP asociada → ANUAL desde el diagnóstico de CEP",
+        "Anticoncepción adecuada: combinados orales pueden empeorar Crohn (controversial); preferir DIU, anticonceptivos solo gestágeno o métodos de barrera. Planificación de embarazo en remisión sostenida ≥3-6 meses",
+        "Vacunación al día: gripe anual + neumococo + COVID-19 + meningococo conjugado + VPH si <26 años + triple vírica/varicela ANTES de iniciar biológicos (vacunas vivas contraindicadas durante inmunosupresión)",
+        "Educación al paciente: signos de alarma (dolor abdominal severo, fiebre, vómitos, sangrado masivo, megacolon — distensión + toxicidad), uso correcto de la medicación (mesalazina rectal, autoinyectables), plan ante brote, evitar automedicación con AINEs, importancia del seguimiento aunque esté asintomático"
       ],
       "quirurgico": [
-        "Colectomia total curativa en CU refractaria o cancer de colon",
-        "Resección intestinal en Crohn: estenosis, fistulas internas, perforaciones"
+        "INDICACIONES en CU: 1) ASUC corticorrefractaria sin respuesta a rescate biológico (day 7); 2) megacolon tóxico; 3) perforación; 4) sangrado masivo refractario; 5) displasia/cáncer; 6) refractariedad o intolerancia farmacológica con afectación calidad de vida; 7) retardo crecimiento en pediatría",
+        "Cirugía CURATIVA en CU: PROCTOCOLECTOMÍA RESTAURADORA con RESERVORIO ILEOANAL en J (IPAA — pouch) en 2-3 tiempos según urgencia. Tiempo 1: colectomía subtotal con ileostomía terminal (en urgencia, ASUC). Tiempo 2: proctectomía + reservorio en J + ileostomía protectora. Tiempo 3: cierre de ileostomía. Calidad de vida buena post-IPAA pero riesgo pouchitis (50% a 5 años)",
+        "Alternativa CU: proctocolectomía total + ileostomía terminal definitiva (Brooke) — más simple, sin riesgo de pouchitis, pero estoma permanente. Preferida en ancianos, mala continencia previa, cáncer rectal bajo",
+        "INDICACIONES en Crohn: 1) estenosis sintomática refractaria a tratamiento médico; 2) fístulas complicadas (enterocutáneas, enterovesicales, enterovaginales); 3) absceso intraabdominal con falla del drenaje percutáneo; 4) perforación; 5) sangrado masivo; 6) displasia/cáncer; 7) refractariedad farmacológica; 8) retardo crecimiento en pediatría",
+        "Cirugía en CROHN: RESECCIÓN INTESTINAL SEGMENTARIA con anastomosis (preferida sobre extensa — preservar longitud intestinal — minimal-intestinal-resection principle). ESTRICTUROPLASTIA en estenosis fibróticas múltiples cortas (alternativa a resección — preserva intestino). NO ES CURATIVA — recurrencia 30-50% a 5 años en sitio anastomótico → ileocolonoscopia 6-12 meses post-cirugía + tratamiento médico preventivo (anti-TNF o ileostomía pre-cirugía discontinua)",
+        "DRENAJE PERCUTÁNEO guiado por imagen para abscesos intraabdominales en Crohn — primera línea antes de cirugía; permite estabilización y cirugía electiva diferida con anastomosis primaria (vs urgente con ostomía protectora)",
+        "Crohn PERIANAL: drenaje quirúrgico de abscesos urgente + colocación de SETÓN de drenaje crónico (sin sección esfinteriana — preserva continencia) + biológico (infliximab evidencia clase A). Fistulotomía si fístula muy baja sin afectación esfintérica. NO hacer fistulotomía agresiva si fístulas altas/complejas (riesgo incontinencia)",
+        "Cirugía LAPAROSCÓPICA preferida sobre abierta: menor dolor, menor estancia, menor adherencias futuras, mejor cosmesis. Conversión si peritonitis difusa, asas masivamente dilatadas, plastrones inflamatorios densos",
+        "Manejo PERIOPERATORIO de biológicos: TIMING de cirugía y biológicos controversial — pre-quirúrgico OK 4-8 sem desde última dosis para anti-TNF en cirugía urgente; vedolizumab/ustekinumab posible mayor seguridad (menos infecciones postop); resucitación nutricional preoperatoria (NPT si Crohn complicada con desnutrición severa)",
+        "Trasplante de microbiota fecal (FMT): nivel investigacional para CU activa; estándar para C. difficile recurrente en EII (ECCO 2024 recomienda)",
+        "Trasplante intestinal: opción experimental en Crohn con síndrome de intestino corto extremo dependiente de NPT con complicaciones"
       ]
     },
     "cuidadosEnfermeria": {
@@ -9814,7 +9949,15 @@
       "pat_hemorragia_digestiva",
       "pat_anemia_ferropenica"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-05-24",
+    "fuentes": [
+      "ECCO Guidelines on Therapeutics in Ulcerative Colitis and Crohn's Disease (Raine T et al, J Crohns Colitis 2022/2024 updates); ACG Clinical Guideline Ulcerative Colitis in Adults (Singh S et al, Am J Gastroenterol 2024) y Crohn's Disease in Adults (Lichtenstein 2018, update 2024)",
+      "STRIDE-II: Selecting Therapeutic Targets in IBD — international consensus on treat-to-target (Turner D et al, Gastroenterology 2021;160:1570-1583)",
+      "Ensayos pivotales biológicos: SONIC infliximab+AZA Crohn (Colombel NEJM 2010); ACT-1/ACT-2 infliximab CU (Rutgeerts NEJM 2005); GEMINI vedolizumab (Feagan/Sandborn NEJM 2013); UNITI ustekinumab Crohn (Feagan NEJM 2016); ADVANCE/MOTIVATE risankizumab Crohn (D'Haens Lancet 2022); LUCENT mirikizumab CU (D'Haens NEJM 2023); QUASAR guselkumab CU (Rubin Gastro 2024); OCTAVE tofacitinib CU (Sandborn NEJM 2017); U-ACHIEVE upadacitinib CU (Danese Lancet 2022); True North ozanimod CU (Sandborn NEJM 2021); ELEVATE etrasimod CU (Sandborn Lancet 2023)",
+      "Manejo ASUC: Travis criteria (Travis Gut 1996), Oxford day-3 (Travis Gut 1998), CONSTRUCT cyclosporine vs infliximab (Williams Lancet 2016)",
+      "Cribado neoplásico EII: SCENIC consensus on dysplasia surveillance (Laine Gastroenterology 2015); ECCO topical review 2024 — cromoendoscopia con índigo carmín o NBI desde 8-10 años de CU extensa o 10 años Crohn colónico. Ecografía intestinal STARDUST trial (Colombel Lancet 2020)"
+    ]
   },
   {
     "id": "pat_hemorragia_digestiva",
