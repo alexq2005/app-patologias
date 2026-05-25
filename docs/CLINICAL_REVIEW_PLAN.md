@@ -115,8 +115,21 @@ Digestivo (2): pat_cirrosis, pat_pancreatitis
 | 6 | `pat_hemorragia_digestiva` | Hemorragia Digestiva | Baveno VII + AGA 2021 + ESGE 2021/2024 + BSG 2019 + Villanueva NEJM 2013 + preemptive TIPS | ✅ `8de5532` |
 | 7 | `pat_eii` | Enfermedad Inflamatoria Intestinal | ECCO 2022/2024 + ACG 2024 + STRIDE-II + Montreal + biológicos 2020-2024 (anti-IL-23, JAK, S1P) | ✅ `f9e7e10` |
 | 8 | `pat_ulcera_peptica` | Úlcera Péptica | ACG 2024 + Maastricht VI/Florence 2022 + vonoprazán FDA 2022 + WSES perforación 2020 | ✅ `9124402` |
-| 9 | `pat_hipotiroidismo` | Hipotiroidismo | ATA 2014 + 2017 embarazo + TRUST NEJM 2017 + checkpoint immunotherapy + síndrome poliglandular | ✅ `pendiente commit` |
-| 10 | `pat_hipertiroidismo` | Hipertiroidismo / Graves | ATA 2016 + 2024 updates; metimazol vs PTU | pendiente |
+| 9 | `pat_hipotiroidismo` | Hipotiroidismo | ATA 2014 + 2017 embarazo + TRUST NEJM 2017 + checkpoint immunotherapy + síndrome poliglandular | ✅ `90fc108` |
+| 10 | `pat_hipertiroidismo` | Hipertiroidismo / Graves | ATA 2016 + 2017 embarazo + teprotumumab OPTIC NEJM 2020 + EUGOGO 2021 + Burch-Wartofsky tormenta | ✅ `pendiente commit` |
+
+---
+
+## 🎯 Milestone: TERCER LOTE COMPLETO (31/151 entries revisadas, 20.5%)
+
+Tercer lote completado en sesiones 39-48 (24 mayo 2026):
+- **Respiratorio crítico** (1): pat_ira (Global Definition ARDS 2023)
+- **Neurológico crónico** (2): pat_parkinson (MDS 2015 + αSyn-SAA), pat_alzheimer (NIA-AA 2024 + lecanemab/donanemab)
+- **Quirúrgico abdominal** (2): pat_apendicitis (WSES 2020 + CODA), pat_obstrucción_intestinal (WSES Bologna 2024 + Gastrografin)
+- **Digestivo médico** (3): pat_hemorragia_digestiva (Baveno VII + Villanueva + preemptive TIPS), pat_eii (ECCO 2024 + biológicos 2020-2024), pat_ulcera_peptica (Maastricht VI + vonoprazán)
+- **Endocrino** (2): pat_hipotiroidismo (ATA 2014/2017 + TRUST), pat_hipertiroidismo (ATA 2016 + teprotumumab + tormenta tiroidea)
+
+Total acumulado de 3 lotes: 31/151 (20.5%) — cobertura de las patologías de mayor prevalencia hospitalaria en adulto medico-quirúrgico, con guidelines 2022-2025.
 
 **Total: 21/151 entries (~14% de la base)** con `revisadoEn` y `fuentes` completos. Cobertura amplia de las patologías más prevalentes en enfermería médico-quirúrgica de adultos.
 

@@ -4,6 +4,59 @@
 
 ---
 
+## 2026-05-24 — Sesion 48: Revisión clínica de pat_hipertiroidismo a ATA 2016 + teprotumumab OPTIC NEJM 2020 + EUGOGO 2021 + Burch-Wartofsky 🎯 MILESTONE 3er LOTE COMPLETO (31/151)
+
+### Resumen
+Décima y última iteración del tercer lote. La entry `pat_hipertiroidismo` era esquemática (4 clasif, 2 pruebas, 3 objetivos, 2 fármacos, 2 noFarm, 2 quirúrgico). Esta revisión CIERRA el tercer lote priorizado completo, alcanzando 31/151 (20.5%). Gaps detectados: clasificación sin distinción producción/destructivo (clave para gammagrafía y elección terapéutica), sin tiroiditis subaguda/silente/postparto, sin AIT tipo 1 vs 2 (amiodarona), sin checkpoint inhibitors, sin facticia, sin subclínico estratificado, sin gestacional transitorio hCG-mediado, sin apático del anciano, sin Burch-Wartofsky tormenta, sin EUGOGO oftalmopatía; pruebas sin gammagrafía (la prueba clave para diferenciar producción vs destructivo), sin tiroglobulina diferencial facticia, sin TRAb cuantitativo en embarazo, sin ecografía Doppler distinción AIT, sin DEXA tirotóxica; objetivos genéricos sin shared decision-making ATA 2016 (antitiroideos vs RAI vs cirugía), sin protocolo PTU 1er trim → MMI 2do-3er trim, sin tormenta tiroidea multimodal simultánea, sin oftalmopatía EUGOGO escalonada, sin AIT tipo 1 vs 2 diferencial; farmacológico SIN TEPROTUMUMAB (cambio paradigmático oftalmopatía 2020), SIN Lugol/SSKI con timing post-PTU para evitar Jod-Basedow, SIN glucocorticoides (tormenta + oftalmopatía + AIT tipo 2), SIN colestiramina (interrumpe ciclo enterohepático en tormenta); noFarmacológico mínimo (sin cesación tabáquica obligatoria en oftalmopatía con RR 7x, sin selenio EUGOGO, sin lubricantes oftálmicos); quirúrgico vago (sin preparación pre-quirúrgica detallada con Lugol 10 días, sin cuidados postoperatorios hipocalcemia/recurrencial, sin contraindicaciones RAI específicas, sin teprotumumab vs descompresión, sin ablación percutánea).
+
+Cross-check: ATA 2016 (Ross Thyroid), ATA 2017 embarazo (Alexander Thyroid), OPTIC trial teprotumumab (Douglas NEJM 2020), EUGOGO 2021 (Bartalena Eur J Endocrinol), Burch-Wartofsky 1993 + Japan TA 2012, Marcocci NEJM 2011 selenio, Bogazzi JCEM 2010 AIT tipo 1 vs 2, checkpoint endocrinopathies Chang Endocr Rev 2019. 7 secciones editadas quirúrgicamente.
+
+### Cambios en pat_hipertiroidismo (`src/data/pathologies.json`)
+
+| Sección | Cambio |
+|---------|--------|
+| `clasificacion` (4→13) | Producción (Graves, BMNT, adenoma) vs DESTRUCTIVO (tiroiditis subaguda/silente/postparto, AIT tipo 1 vs 2, checkpoint, facticia) + subclínico estratificado grado 1 vs 2 + gestacional transitorio hCG + apático del anciano + TORMENTA con Burch-Wartofsky + OFTALMOPATÍA EUGOGO con CAS + severidad |
+| `pruebas` (2→6) | TSH+T4L+T3L con patrones + biotina interferencia + TRAb cuantitativo con seguimiento + monitorización TRAb embarazo (paso transplacentario fetal) + GAMMAGRAFÍA (Tc99/I-123) DIFERENCIA producción vs destructivo (CLAVE terapéutica) + ECOGRAFÍA Doppler distinción AIT + TIROGLOBULINA diferencial facticia + laboratorio + ECG/DEXA |
+| `objetivos` (3→12) | Diferenciar producción vs destructivo + shared decision-making ATA 2016 (antitiroideos 12-18m vs RAI vs cirugía) + control sintomático β-bloqueante + PTU 1er trim → MMI 2do-3er trim embarazo + TORMENTA TIROIDEA multimodal SIMULTÁNEA UCI (PTU+Lugol+corticoide+β-bloq+colestiramina+antipirético no AAS+enfriar+precipitante+plasmaféresis) + OFTALMOPATÍA EUGOGO escalonado (selenio→corticoides→teprotumumab→descompresión) + AIT tipo 1 vs 2 + subclínico + FA + pre-op + DEXA + educación |
+| `farmacologico` (2→7) | MMI primera línea (no embarazo) con agranulocitosis/hepatotoxicidad detalladas + PTU 1er trim embarazo y tormenta con FDA Black Box hepatotoxicidad + β-bloqueantes (propranolol bloquea conversión a dosis altas + esmolol IV tormenta) + LUGOL/SSKI 1h POST-PTU en tormenta + pre-op 10 días + GLUCOCORTICOIDES tormenta y oftalmopatía y AIT tipo 2 + TEPROTUMUMAB anti-IGF-1R FDA 2020 (cambio paradigmático oftalmopatía — OPTIC NEJM) + COLESTIRAMINA adyuvante tormenta |
+| `noFarmacologico` (2→14) | Restricción actividad + reposo + restricción yodo + dieta hipercalórica + CESACIÓN TABÁQUICA OBLIGATORIA (RR 7x oftalmopatía) + lubricantes oftálmicos + apoyo psicológico + cribado familiar + cribado PGA + anticoagulación FA + soporte óseo + educación tormenta/agranulocitosis/hipotiroidismo + planificación reproductiva + cribado universal >60a |
+| `quirurgico` (2→8) | Tiroidectomía TOTAL preferida ATA 2016 con indicaciones específicas + preparación PRE-QUIRÚRGICA OBLIGATORIA (eutiroidismo + Lugol 10d) + cuidados postoperatorios (hematoma, hipocalcemia, recurrencial, hipotiroidismo) + RADIOYODO con contraindicaciones específicas + cuidados radioyodo (aislamiento, secreciones) + DESCOMPRESIÓN ORBITARIA urgente vs electiva + ABLACIÓN POR RADIOFRECUENCIA emergente |
+| `revisadoEn` | `"2026-05-24"` |
+| `fuentes` | 5 entradas: ATA 2016 + ATA 2017 embarazo + OPTIC NEJM 2020 teprotumumab + Burch-Wartofsky tormenta + Bogazzi AIT/checkpoint endocrinopathies |
+
+### 🎯 MILESTONE 3er LOTE COMPLETO — 31/151 entries (20.5%)
+Distribución por sistema tras 3 lotes:
+- **Cardiovascular** (8): pat_icc, pat_hta, pat_iam, pat_fa, pat_angina, pat_eap, pat_endocarditis, pat_tep
+- **Endocrino** (5): pat_dm2, pat_dm1, pat_cetoacidosis, pat_hipotiroidismo, pat_hipertiroidismo (← nueva)
+- **Respiratorio** (6): pat_epoc, pat_asma, pat_neumonia, pat_neumotorax, pat_tuberculosis, pat_ira
+- **Neurológico** (5): pat_acv, pat_meningitis, pat_epilepsia, pat_parkinson, pat_alzheimer
+- **Digestivo** (7): pat_cirrosis, pat_pancreatitis, pat_apendicitis, pat_obstrucción_intestinal, pat_hemorragia_digestiva, pat_eii, pat_ulcera_peptica
+
+### Tercer lote 10/10 completado en sesiones 39-48 (un mismo día — 2026-05-24)
+Patologías de mayor prevalencia hospitalaria en adulto medico-quirúrgico, todas con guidelines 2022-2025 verificables.
+
+### Lo que NO se tocó (decisión deliberada)
+- `definicion`, `epidemiologia`, `factoresRiesgo`: vigentes (Graves + BMNT cubiertos)
+- `fisiopatologia`: vigente (TRAb estimulación y exceso de T3/T4 correctos)
+- `signosYSintomas`, `anamnesis`, `examenFisico`: vigentes
+- `cuidadosEnfermeria`, `NANDA/NIC/NOC`, `complicaciones`, `criteriosAlarma`: vigentes
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → OK: 151 patologías, 0 huérfanos
+- `node scripts/check-stale.js` → **31 frescas** 🎯 (era 30; +pat_hipertiroidismo), 120 sin fecha
+- `npx tsc --noEmit` → 0 errors
+- `npm test` → 60/60 passing
+- Total entries: 151, IDs únicos: 151
+
+### Próximas decisiones del usuario
+3 lotes completos (top-30 priorizadas). Opciones para sesiones futuras:
+- **CUARTO LOTE** priorizado (10 más): pat_irc, pat_ira_renal, pat_pielonefritis, pat_litiasis_renal, pat_glomerulonefritis, pat_hepatitis_viral, pat_colitis_isquemica, pat_diverticulitis, pat_cancer_colon, pat_artritis_reumatoide
+- **Rebuildeo APK/AAB v1.0.0 con contenido revisado** (versionCode 5) para Play Store
+- **Visual smoke test** en emulador de las entries revisadas (verificar renderizado)
+- **Otros temas** no clínicos del backlog (OTA hosting, Sentry DSN, branch protection)
+
+---
+
 ## 2026-05-24 — Sesion 47: Revisión clínica de pat_hipotiroidismo a ATA 2014/2017 + TRUST NEJM 2017 + checkpoint immunotherapy + síndrome poliglandular 🎯 MILESTONE 30/151 (20%)
 
 ### Resumen
