@@ -12,7 +12,11 @@ export const TRIAL_DAYS = 15;
 const DAY_MS = 1000 * 60 * 60 * 24;
 
 /**
- * Días de trial restantes (clamp a 0, nunca negativo).
+ * Días de trial restantes (clamp a [0, trialDays]).
+ * - null → trial no iniciado → trial completo.
+ * - NaN/±Infinity (storage corrupto) → 0 (fail-closed). Antes `!NaN` era truthy
+ *   y devolvía trial completo PARA SIEMPRE — trial perpetuo gratis.
+ * - Clamp superior: retroceder el reloj del dispositivo no extiende el trial.
  * @param now epoch ms actual — inyectable para tests (NO usar Date.now() acá)
  */
 export function computeTrialDaysLeft(
@@ -20,10 +24,11 @@ export function computeTrialDaysLeft(
   now: number,
   trialDays: number = TRIAL_DAYS,
 ): number {
-  if (!trialStartDate) return trialDays;
+  if (trialStartDate === null) return trialDays;
+  if (!Number.isFinite(trialStartDate)) return 0;
   const elapsed = now - trialStartDate;
   const remaining = trialDays - Math.floor(elapsed / DAY_MS);
-  return Math.max(0, remaining);
+  return Math.max(0, Math.min(trialDays, remaining));
 }
 
 export interface PremiumFlags {

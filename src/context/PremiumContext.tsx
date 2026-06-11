@@ -17,6 +17,7 @@ import {
   computeTrialDaysLeft,
   computeIsPremium,
   computeTrialExpired,
+  TRIAL_DAYS,
 } from '../utils/premiumLogic';
 
 // IS_FREE=true means free/restricted flavor, IS_FREE=false means premium/full flavor
@@ -26,7 +27,6 @@ const IS_PREMIUM_BUILD: boolean = !(
 
 const TRIAL_START_KEY = '@patologias_trial_start';
 const SUBSCRIPTION_KEY = '@patologias_subscription';
-const TRIAL_DAYS = 15;
 
 // Google Play subscription product ID — configure in Play Console
 export const SUBSCRIPTION_SKU = 'patologias_premium_monthly';
@@ -68,9 +68,12 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       checkActivation(),
     ])
       .then(([trialRaw, subRaw, activated]) => {
-        // Trial start
-        if (trialRaw) {
-          setTrialStartDate(parseInt(trialRaw, 10));
+        // Trial start — re-inicializar si falta O si el valor persistido está
+        // corrupto (parseInt → NaN). Storage corrupto REINICIA el trial; no
+        // regala trial perpetuo (antes NaN → 15 días para siempre).
+        const parsed = trialRaw ? parseInt(trialRaw, 10) : NaN;
+        if (Number.isFinite(parsed)) {
+          setTrialStartDate(parsed);
         } else {
           const now = Date.now();
           setTrialStartDate(now);
