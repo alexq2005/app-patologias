@@ -45,7 +45,11 @@ import { useNotesContext } from '../context/NotesContext';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { useRecentPathologies } from '../hooks/useRecentPathologies';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
-import { BODY_SYSTEM_COLORS, BODY_SYSTEM_ICONS, type ThemeColors } from '../utils/colors';
+import {
+  BODY_SYSTEM_COLORS,
+  BODY_SYSTEM_ICONS,
+  type ThemeColors,
+} from '../utils/colors';
 import { getConditionImage } from '../utils/conditionImages';
 import { neuCard, neuCardSubtle, neuElevated } from '../utils/neumorphism';
 import { CollapsibleSection } from '../components/CollapsibleSection';
@@ -80,7 +84,11 @@ function BulletList({
       {items.map((item, index) => (
         <View
           key={index}
-          style={{ flexDirection: 'row', marginBottom: spacing(4), alignItems: 'flex-start' }}
+          style={{
+            flexDirection: 'row',
+            marginBottom: spacing(4),
+            alignItems: 'flex-start',
+          }}
         >
           <Text
             style={{
@@ -118,10 +126,23 @@ interface SubSectionProps {
   rs: ResponsiveScale;
 }
 
-function SubSection({ label, icon, iconColor, children, colors: _colors, rs }: SubSectionProps) {
+function SubSection({
+  label,
+  icon,
+  iconColor,
+  children,
+  colors: _colors,
+  rs,
+}: SubSectionProps) {
   return (
     <View style={{ marginTop: rs.space(12) }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(6),
+        }}
+      >
         {icon ? (
           <MaterialCommunityIcons
             name={icon}
@@ -169,7 +190,13 @@ function DrugCard({ drug, colors, rs, systemColor }: DrugCardProps) {
         },
       ]}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(4) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(4),
+        }}
+      >
         <MaterialCommunityIcons
           name="pill"
           size={rs.font(14)}
@@ -177,7 +204,12 @@ function DrugCard({ drug, colors, rs, systemColor }: DrugCardProps) {
           style={{ marginRight: rs.space(6) }}
         />
         <Text
-          style={{ fontSize: rs.font(14), fontWeight: '700', color: colors.text, flex: 1 }}
+          style={{
+            fontSize: rs.font(14),
+            fontWeight: '700',
+            color: colors.text,
+            flex: 1,
+          }}
         >
           {drug.nombre}
         </Text>
@@ -221,7 +253,13 @@ function DrugCard({ drug, colors, rs, systemColor }: DrugCardProps) {
             color={systemColor}
             style={{ marginRight: rs.space(4) }}
           />
-          <Text style={{ fontSize: rs.font(12), color: systemColor, fontWeight: '600' }}>
+          <Text
+            style={{
+              fontSize: rs.font(12),
+              color: systemColor,
+              fontWeight: '600',
+            }}
+          >
             {drug.dosis}
           </Text>
         </View>
@@ -261,7 +299,12 @@ interface DiagnosticTestCardProps {
   systemColor: string;
 }
 
-function DiagnosticTestCard({ test, colors, rs, systemColor }: DiagnosticTestCardProps) {
+function DiagnosticTestCard({
+  test,
+  colors,
+  rs,
+  systemColor,
+}: DiagnosticTestCardProps) {
   return (
     <View
       style={{
@@ -274,7 +317,13 @@ function DiagnosticTestCard({ test, colors, rs, systemColor }: DiagnosticTestCar
         elevation: 1,
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(4) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(4),
+        }}
+      >
         <MaterialCommunityIcons
           name="test-tube"
           size={rs.font(14)}
@@ -282,7 +331,12 @@ function DiagnosticTestCard({ test, colors, rs, systemColor }: DiagnosticTestCar
           style={{ marginRight: rs.space(6) }}
         />
         <Text
-          style={{ fontSize: rs.font(14), fontWeight: '700', color: colors.text, flex: 1 }}
+          style={{
+            fontSize: rs.font(14),
+            fontWeight: '700',
+            color: colors.text,
+            flex: 1,
+          }}
         >
           {test.nombre}
         </Text>
@@ -318,7 +372,13 @@ function DiagnosticTestCard({ test, colors, rs, systemColor }: DiagnosticTestCar
           >
             Valores de Referencia
           </Text>
-          <Text style={{ fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 }}>
+          <Text
+            style={{
+              fontSize: rs.font(12),
+              color: colors.textSecondary,
+              marginTop: 2,
+            }}
+          >
             {test.valoresReferencia}
           </Text>
         </View>
@@ -370,7 +430,13 @@ function NandaCard({ nanda, colors, rs }: NandaCardProps) {
         elevation: 1,
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(4) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(4),
+        }}
+      >
         <View
           style={{
             backgroundColor: colors.primary + '20',
@@ -380,12 +446,23 @@ function NandaCard({ nanda, colors, rs }: NandaCardProps) {
             marginRight: rs.space(8),
           }}
         >
-          <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: colors.primary }}>
+          <Text
+            style={{
+              fontSize: rs.font(10),
+              fontWeight: '800',
+              color: colors.primary,
+            }}
+          >
             {nanda.codigo}
           </Text>
         </View>
         <Text
-          style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text, flex: 1 }}
+          style={{
+            fontSize: rs.font(13),
+            fontWeight: '700',
+            color: colors.text,
+            flex: 1,
+          }}
         >
           {nanda.nombre}
         </Text>
@@ -472,7 +549,13 @@ function NicCard({ nic, colors, rs }: NicCardProps) {
         elevation: 1,
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(6),
+        }}
+      >
         <View
           style={{
             backgroundColor: colors.secondary + '20',
@@ -482,12 +565,23 @@ function NicCard({ nic, colors, rs }: NicCardProps) {
             marginRight: rs.space(8),
           }}
         >
-          <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: colors.secondary }}>
+          <Text
+            style={{
+              fontSize: rs.font(10),
+              fontWeight: '800',
+              color: colors.secondary,
+            }}
+          >
             {nic.codigo}
           </Text>
         </View>
         <Text
-          style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text, flex: 1 }}
+          style={{
+            fontSize: rs.font(13),
+            fontWeight: '700',
+            color: colors.text,
+            flex: 1,
+          }}
         >
           {nic.nombre}
         </Text>
@@ -525,7 +619,13 @@ function NocCard({ noc, colors, rs }: NocCardProps) {
         elevation: 1,
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(4) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(4),
+        }}
+      >
         <View
           style={{
             backgroundColor: colors.success + '20',
@@ -535,12 +635,23 @@ function NocCard({ noc, colors, rs }: NocCardProps) {
             marginRight: rs.space(8),
           }}
         >
-          <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: colors.success }}>
+          <Text
+            style={{
+              fontSize: rs.font(10),
+              fontWeight: '800',
+              color: colors.success,
+            }}
+          >
             {noc.codigo}
           </Text>
         </View>
         <Text
-          style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text, flex: 1 }}
+          style={{
+            fontSize: rs.font(13),
+            fontWeight: '700',
+            color: colors.text,
+            flex: 1,
+          }}
         >
           {noc.nombre}
         </Text>
@@ -556,7 +667,13 @@ function NocCard({ noc, colors, rs }: NocCardProps) {
             alignSelf: 'flex-start',
           }}
         >
-          <Text style={{ fontSize: rs.font(11), color: colors.success, fontWeight: '600' }}>
+          <Text
+            style={{
+              fontSize: rs.font(11),
+              color: colors.success,
+              fontWeight: '600',
+            }}
+          >
             Escala: {noc.escala}
           </Text>
         </View>
@@ -733,7 +850,13 @@ function NotesModal({
                 alignItems: 'center',
               }}
             >
-              <Text style={{ fontSize: rs.font(14), fontWeight: '600', color: colors.textSecondary }}>
+              <Text
+                style={{
+                  fontSize: rs.font(14),
+                  fontWeight: '600',
+                  color: colors.textSecondary,
+                }}
+              >
                 Cancelar
               </Text>
             </TouchableOpacity>
@@ -747,7 +870,13 @@ function NotesModal({
                 alignItems: 'center',
               }}
             >
-              <Text style={{ fontSize: rs.font(14), fontWeight: '700', color: '#FFFFFF' }}>
+              <Text
+                style={{
+                  fontSize: rs.font(14),
+                  fontWeight: '700',
+                  color: '#FFFFFF',
+                }}
+              >
                 Guardar Nota
               </Text>
             </TouchableOpacity>
@@ -791,7 +920,8 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   );
 
   const systemIcon = useMemo(
-    () => (pathology ? BODY_SYSTEM_ICONS[pathology.bodySystemId] : 'help-circle'),
+    () =>
+      pathology ? BODY_SYSTEM_ICONS[pathology.bodySystemId] : 'help-circle',
     [pathology],
   );
 
@@ -817,18 +947,31 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
       headerTintColor: '#FFFFFF',
       headerTitleStyle: { fontWeight: '700' as const, fontSize: 16 },
       headerRight: () => (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginRight: 4 }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 4,
+            marginRight: 4,
+          }}
+        >
           <TouchableOpacity
             onPress={handleShare}
             style={{ padding: 8 }}
             accessibilityLabel="Compartir patología"
           >
-            <MaterialCommunityIcons name="share-variant" size={22} color="#FFFFFF" />
+            <MaterialCommunityIcons
+              name="share-variant"
+              size={22}
+              color="#FFFFFF"
+            />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => toggleFavorite(pathologyId)}
             style={{ padding: 8 }}
-            accessibilityLabel={favorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            accessibilityLabel={
+              favorite ? 'Quitar de favoritos' : 'Agregar a favoritos'
+            }
           >
             <MaterialCommunityIcons
               name={favorite ? 'heart' : 'heart-outline'}
@@ -839,7 +982,15 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         </View>
       ),
     });
-  }, [navigation, displayName, systemColor, pathologyId, isFavorite, toggleFavorite, handleShare]);
+  }, [
+    navigation,
+    displayName,
+    systemColor,
+    pathologyId,
+    isFavorite,
+    toggleFavorite,
+    handleShare,
+  ]);
 
   // Styles
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
@@ -848,33 +999,48 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   const navigateToRelated = useCallback(
     (relId: string) => {
       const related = getPathologyById(relId);
-      navigation.push('PathologyDetail', { pathologyId: relId, pathologyName: related?.nombre });
+      navigation.push('PathologyDetail', {
+        pathologyId: relId,
+        pathologyName: related?.nombre,
+      });
     },
     [navigation, getPathologyById],
   );
 
   const scrollRef = useRef<ScrollView>(null);
-  const sectionQuickNav = useMemo(() => [
-    { key: 'fisio', label: 'Fisiopatología', icon: 'dna' },
-    { key: 'signos', label: 'Signos', icon: 'stethoscope' },
-    { key: 'dx', label: 'Diagnóstico', icon: 'clipboard-pulse-outline' },
-    { key: 'tx', label: 'Tratamiento', icon: 'medical-bag' },
-    { key: 'enf', label: 'Enfermería', icon: 'heart-pulse' },
-    { key: 'nanda', label: 'NANDA', icon: 'format-list-group' },
-    { key: 'alarma', label: 'Alarma', icon: 'alarm-light-outline' },
-  ], []);
+  const sectionQuickNav = useMemo(
+    () => [
+      { key: 'fisio', label: 'Fisiopatología', icon: 'dna' },
+      { key: 'signos', label: 'Signos', icon: 'stethoscope' },
+      { key: 'dx', label: 'Diagnóstico', icon: 'clipboard-pulse-outline' },
+      { key: 'tx', label: 'Tratamiento', icon: 'medical-bag' },
+      { key: 'enf', label: 'Enfermería', icon: 'heart-pulse' },
+      { key: 'nanda', label: 'NANDA', icon: 'format-list-group' },
+      { key: 'alarma', label: 'Alarma', icon: 'alarm-light-outline' },
+    ],
+    [],
+  );
 
   // ── Loading / Not found ────────────────────────────────────
   if (!pathology) {
     return (
       <View style={styles.notFoundContainer}>
-        <MaterialCommunityIcons name="file-alert-outline" size={rs.font(56)} color={colors.textLight} />
+        <MaterialCommunityIcons
+          name="file-alert-outline"
+          size={rs.font(56)}
+          color={colors.textLight}
+        />
         <Text style={styles.notFoundTitle}>Patologia no encontrada</Text>
         <Text style={styles.notFoundSubtitle}>
           No se encontro informacion para el ID: {pathologyId}
         </Text>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={[styles.backButtonText, { color: colors.primary }]}>Volver</Text>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <Text style={[styles.backButtonText, { color: colors.primary }]}>
+            Volver
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -885,7 +1051,8 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
     pathology.clasificacion && pathology.clasificacion.tipos.length > 0,
   );
   const hasQuirurgico = Boolean(
-    pathology.tratamientoMedico.quirurgico && pathology.tratamientoMedico.quirurgico.length > 0,
+    pathology.tratamientoMedico.quirurgico &&
+      pathology.tratamientoMedico.quirurgico.length > 0,
   );
   const hasRelated = Boolean(
     pathology.relatedPathologyIds && pathology.relatedPathologyIds.length > 0,
@@ -920,9 +1087,17 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
           <EmergencyBadge level={pathology.emergencyLevel} />
           {/* System pill */}
           <View
-            style={[styles.systemPill, { borderColor: systemColor + '40', backgroundColor: systemColor + '12' }]}
+            style={[
+              styles.systemPill,
+              {
+                borderColor: systemColor + '40',
+                backgroundColor: systemColor + '12',
+              },
+            ]}
           >
-            <View style={[styles.systemDot, { backgroundColor: systemColor }]} />
+            <View
+              style={[styles.systemDot, { backgroundColor: systemColor }]}
+            />
             <MaterialCommunityIcons
               name={systemIcon}
               size={rs.font(12)}
@@ -943,7 +1118,9 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
           onPress={() => {
             const url = pathology.videoUrl
               ? pathology.videoUrl
-              : `https://www.youtube.com/results?search_query=enfermeria+${encodeURIComponent(pathology.nombre)}`;
+              : `https://www.youtube.com/results?search_query=enfermeria+${encodeURIComponent(
+                  pathology.nombre,
+                )}`;
             Linking.openURL(url);
           }}
           style={{
@@ -960,22 +1137,47 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
             gap: rs.space(10),
           }}
         >
-          <View style={{
-            width: 36, height: 36, borderRadius: 10,
-            backgroundColor: '#FF0000',
-            alignItems: 'center', justifyContent: 'center',
-          }}>
+          <View
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: 10,
+              backgroundColor: '#FF0000',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <MaterialCommunityIcons name="play" size={20} color="#fff" />
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
-              {pathology.videoUrl ? 'Ver video explicativo' : 'Buscar videos en YouTube'}
+            <Text
+              style={{
+                fontSize: rs.font(13),
+                fontWeight: '700',
+                color: colors.text,
+              }}
+            >
+              {pathology.videoUrl
+                ? 'Ver video explicativo'
+                : 'Buscar videos en YouTube'}
             </Text>
-            <Text style={{ fontSize: rs.font(11), color: colors.textSecondary, marginTop: 1 }}>
-              {pathology.videoUrl ? 'Video seleccionado para esta patología' : `"${pathology.nombre}" enfermería`}
+            <Text
+              style={{
+                fontSize: rs.font(11),
+                color: colors.textSecondary,
+                marginTop: 1,
+              }}
+            >
+              {pathology.videoUrl
+                ? 'Video seleccionado para esta patología'
+                : `"${pathology.nombre}" enfermería`}
             </Text>
           </View>
-          <MaterialCommunityIcons name="open-in-new" size={16} color={colors.textLight} />
+          <MaterialCommunityIcons
+            name="open-in-new"
+            size={16}
+            color={colors.textLight}
+          />
         </TouchableOpacity>
 
         {/* ── Quick Section Nav ── */}
@@ -984,17 +1186,29 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.quickNavRow}
         >
-          {sectionQuickNav.map((sec) => (
+          {sectionQuickNav.map(sec => (
             <TouchableOpacity
               key={sec.key}
-              style={[styles.quickNavChip, { borderColor: systemColor + '40', backgroundColor: systemColor + '10' }]}
+              style={[
+                styles.quickNavChip,
+                {
+                  borderColor: systemColor + '40',
+                  backgroundColor: systemColor + '10',
+                },
+              ]}
               activeOpacity={0.7}
               onPress={() => {
                 // Scroll is a nice-to-have, the chips serve as a visual index
               }}
             >
-              <MaterialCommunityIcons name={sec.icon} size={rs.font(12)} color={systemColor} />
-              <Text style={[styles.quickNavLabel, { color: systemColor }]}>{sec.label}</Text>
+              <MaterialCommunityIcons
+                name={sec.icon}
+                size={rs.font(12)}
+                color={systemColor}
+              />
+              <Text style={[styles.quickNavLabel, { color: systemColor }]}>
+                {sec.label}
+              </Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -1008,7 +1222,9 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
               color={systemColor}
               style={{ marginRight: rs.space(6) }}
             />
-            <Text style={[styles.sectionTitle, { color: systemColor }]}>Definicion</Text>
+            <Text style={[styles.sectionTitle, { color: systemColor }]}>
+              Definicion
+            </Text>
           </View>
           <Text style={styles.definitionText}>{pathology.definicion}</Text>
 
@@ -1029,7 +1245,13 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         {/* ── Note indicator (if exists) ── */}
         {hasNote ? (
           <TouchableOpacity
-            style={[styles.noteIndicator, { borderColor: colors.noteBorder, backgroundColor: colors.noteBackground }]}
+            style={[
+              styles.noteIndicator,
+              {
+                borderColor: colors.noteBorder,
+                backgroundColor: colors.noteBackground,
+              },
+            ]}
             onPress={() => setNotesModalVisible(true)}
             activeOpacity={0.8}
           >
@@ -1042,7 +1264,11 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
             <Text style={[styles.noteIndicatorText, { color: colors.warning }]}>
               Tienes una nota en esta patologia
             </Text>
-            <MaterialCommunityIcons name="pencil" size={rs.font(13)} color={colors.warning} />
+            <MaterialCommunityIcons
+              name="pencil"
+              size={rs.font(13)}
+              color={colors.warning}
+            />
           </TouchableOpacity>
         ) : null}
 
@@ -1090,7 +1316,8 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
           accentColor={colors.error}
           initiallyOpen
           badge={String(
-            pathology.signosYSintomas.signos.length + pathology.signosYSintomas.sintomas.length,
+            pathology.signosYSintomas.signos.length +
+              pathology.signosYSintomas.sintomas.length,
           )}
         >
           {pathology.signosYSintomas.signos.length > 0 ? (
@@ -1144,9 +1371,14 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
             {pathology.clasificacion!.tipos.map((tipo, idx) => (
               <View
                 key={idx}
-                style={[styles.clasificacionItem, { borderLeftColor: systemColor }]}
+                style={[
+                  styles.clasificacionItem,
+                  { borderLeftColor: systemColor },
+                ]}
               >
-                <Text style={[styles.clasificacionNombre, { color: systemColor }]}>
+                <Text
+                  style={[styles.clasificacionNombre, { color: systemColor }]}
+                >
                   {tipo.nombre}
                 </Text>
                 <Text style={styles.clasificacionDesc}>{tipo.descripcion}</Text>
@@ -1308,7 +1540,12 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         {/* ═══════════════════════════════════════════════════
             7. CUIDADOS DE ENFERMERIA — KEY SECTION (open)
         ═══════════════════════════════════════════════════ */}
-        <View style={[styles.nursingWrapper, { borderColor: colors.nursing + '50' }]}>
+        <View
+          style={[
+            styles.nursingWrapper,
+            { borderColor: colors.nursing + '50' },
+          ]}
+        >
           <CollapsibleSection
             title="Cuidados de Enfermeria"
             icon="heart-pulse"
@@ -1392,9 +1629,9 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         {/* ═══════════════════════════════════════════════════
             8. NANDA-NIC-NOC
         ═══════════════════════════════════════════════════ */}
-        {(pathology.npiNanda.length > 0 ||
-          pathology.npiNic.length > 0 ||
-          pathology.npiNoc.length > 0) ? (
+        {pathology.npiNanda.length > 0 ||
+        pathology.npiNic.length > 0 ||
+        pathology.npiNoc.length > 0 ? (
           <CollapsibleSection
             title="NANDA · NIC · NOC"
             icon="format-list-group"
@@ -1471,7 +1708,9 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
             10. CRITERIOS DE ALARMA (red-highlighted)
         ═══════════════════════════════════════════════════ */}
         {pathology.criteriosAlarma.length > 0 ? (
-          <View style={[styles.alarmWrapper, { borderColor: colors.error + '40' }]}>
+          <View
+            style={[styles.alarmWrapper, { borderColor: colors.error + '40' }]}
+          >
             <CollapsibleSection
               title="Criterios de Alarma"
               icon="alarm-light-outline"
@@ -1543,7 +1782,9 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
                     color={systemColor}
                     style={{ marginRight: rs.space(4) }}
                   />
-                  <Text style={[styles.relatedPillText, { color: systemColor }]}>
+                  <Text
+                    style={[styles.relatedPillText, { color: systemColor }]}
+                  >
                     {getPathologyById(relId)?.nombre ?? relId}
                   </Text>
                 </TouchableOpacity>
@@ -1553,16 +1794,24 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         ) : null}
 
         {/* Clinical disclaimer footnote — visible en cada detalle */}
-        <View style={[styles.disclaimerFootnote, { borderColor: colors.border, backgroundColor: colors.surface }]}>
+        <View
+          style={[
+            styles.disclaimerFootnote,
+            { borderColor: colors.border, backgroundColor: colors.surface },
+          ]}
+        >
           <MaterialCommunityIcons
             name="information-outline"
             size={rs.font(14)}
             color={colors.textLight}
             style={{ marginTop: 1 }}
           />
-          <Text style={[styles.disclaimerFootnoteText, { color: colors.textLight }]}>
-            Información de referencia educativa. Verificá guías institucionales actualizadas
-            antes de cualquier decisión clínica. Ver Acerca de para fecha de última revisión.
+          <Text
+            style={[styles.disclaimerFootnoteText, { color: colors.textLight }]}
+          >
+            Información de referencia educativa. Verificá guías institucionales
+            actualizadas antes de cualquier decisión clínica. Ver Acerca de para
+            fecha de última revisión.
           </Text>
         </View>
 

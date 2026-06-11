@@ -13,7 +13,10 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
@@ -71,7 +74,9 @@ export function SearchScreen() {
     ({ item }: { item: SearchResult }) => (
       <PathologyCard
         pathology={item.pathology}
-        onPress={() => handlePathologyPress(item.pathology.id, item.pathology.isPremium)}
+        onPress={() =>
+          handlePathologyPress(item.pathology.id, item.pathology.isPremium)
+        }
         isFavorite={isFavorite(item.pathology.id)}
         onToggleFavorite={() => toggleFavorite(item.pathology.id)}
         isPremiumLocked={item.pathology.isPremium && !isPremium}
@@ -85,13 +90,20 @@ export function SearchScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={[
+          styles.header,
+          { paddingTop: insets.top + rs.space(SPACING.lg) },
+        ]}
       >
         <Text style={styles.headerTitle}>Buscar Patologias</Text>
         <Text style={styles.headerSubtitle}>
@@ -114,7 +126,9 @@ export function SearchScreen() {
           <View style={styles.historyHeader}>
             <Text style={styles.historyTitle}>Búsquedas recientes</Text>
             <TouchableOpacity onPress={clearHistory}>
-              <Text style={[styles.historyClear, { color: colors.primary }]}>Limpiar</Text>
+              <Text style={[styles.historyClear, { color: colors.primary }]}>
+                Limpiar
+              </Text>
             </TouchableOpacity>
           </View>
           {history.map(h => (
@@ -123,10 +137,23 @@ export function SearchScreen() {
               style={styles.historyRow}
               onPress={() => handleHistoryPress(h.query)}
             >
-              <MaterialCommunityIcons name="history" size={16} color={colors.textLight} />
-              <Text style={styles.historyText} numberOfLines={1}>{h.query}</Text>
-              <TouchableOpacity onPress={() => removeSearch(h.query)} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-                <MaterialCommunityIcons name="close" size={16} color={colors.textLight} />
+              <MaterialCommunityIcons
+                name="history"
+                size={16}
+                color={colors.textLight}
+              />
+              <Text style={styles.historyText} numberOfLines={1}>
+                {h.query}
+              </Text>
+              <TouchableOpacity
+                onPress={() => removeSearch(h.query)}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              >
+                <MaterialCommunityIcons
+                  name="close"
+                  size={16}
+                  color={colors.textLight}
+                />
               </TouchableOpacity>
             </TouchableOpacity>
           ))}
@@ -135,15 +162,27 @@ export function SearchScreen() {
 
       {showEmpty && (
         <View style={styles.emptyState}>
-          <View style={{
-            width: 72, height: 72, borderRadius: 36,
-            backgroundColor: colors.textLight + '15', alignItems: 'center', justifyContent: 'center',
-            marginBottom: 12,
-          }}>
-            <MaterialCommunityIcons name="text-search" size={32} color={colors.textSecondary} />
+          <View
+            style={{
+              width: 72,
+              height: 72,
+              borderRadius: 36,
+              backgroundColor: colors.textLight + '15',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: 12,
+            }}
+          >
+            <MaterialCommunityIcons
+              name="text-search"
+              size={32}
+              color={colors.textSecondary}
+            />
           </View>
           <Text style={styles.emptyTitle}>Sin resultados</Text>
-          <Text style={styles.emptyText}>No se encontraron patologías para "{query}"</Text>
+          <Text style={styles.emptyText}>
+            No se encontraron patologías para "{query}"
+          </Text>
         </View>
       )}
 
@@ -152,7 +191,10 @@ export function SearchScreen() {
           data={results}
           renderItem={renderResult}
           keyExtractor={item => item.pathology.id}
-          contentContainerStyle={[styles.listContent, { paddingBottom: insets.bottom + rs.space(80) }]}
+          contentContainerStyle={[
+            styles.listContent,
+            { paddingBottom: insets.bottom + rs.space(80) },
+          ]}
           showsVerticalScrollIndicator={false}
           onScroll={handleScroll}
           scrollEventThrottle={16}

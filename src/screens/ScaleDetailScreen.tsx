@@ -50,10 +50,7 @@ function findInterpretation(
   );
 }
 
-function scorePercent(
-  score: number,
-  rangoTotal: [number, number],
-): number {
+function scorePercent(score: number, rangoTotal: [number, number]): number {
   const [min, max] = rangoTotal;
   if (max === min) return 0;
   const clamped = Math.min(Math.max(score, min), max);
@@ -197,17 +194,22 @@ function ScoreDisplay({
       {/* Score number */}
       <View style={styles.scoreRow}>
         <View style={styles.scoreNumberWrap}>
-          <Text style={[styles.scoreNumber, { color: accentColor }]}>{score}</Text>
-          <Text style={styles.scoreRange}>
-            /{rangoTotal[1]}
+          <Text style={[styles.scoreNumber, { color: accentColor }]}>
+            {score}
           </Text>
+          <Text style={styles.scoreRange}>/{rangoTotal[1]}</Text>
         </View>
         <View style={styles.scoreRight}>
           <Text style={styles.scoreProgressLabel}>
             {answeredCount}/{totalCount} criterios
           </Text>
           {isComplete && (
-            <View style={[styles.completeBadge, { backgroundColor: accentColor + '18' }]}>
+            <View
+              style={[
+                styles.completeBadge,
+                { backgroundColor: accentColor + '18' },
+              ]}
+            >
               <MaterialCommunityIcons
                 name="check-circle"
                 size={14}
@@ -235,7 +237,10 @@ function ScoreDisplay({
                 styles.progressBarSegment,
                 {
                   left: `${segStart * 100}%` as any,
-                  width: `${Math.min(segWidth * 100, 100 - segStart * 100)}%` as any,
+                  width: `${Math.min(
+                    segWidth * 100,
+                    100 - segStart * 100,
+                  )}%` as any,
                   backgroundColor: interp.color + '55',
                 },
               ]}
@@ -246,7 +251,10 @@ function ScoreDisplay({
         <View
           style={[
             styles.progressMarker,
-            { left: `${Math.min(percent * 100, 98)}%` as any, backgroundColor: accentColor },
+            {
+              left: `${Math.min(percent * 100, 98)}%` as any,
+              backgroundColor: accentColor,
+            },
           ]}
         />
       </View>
@@ -262,17 +270,25 @@ function ScoreDisplay({
         <View
           style={[
             styles.interpretationBanner,
-            { backgroundColor: accentColor + '18', borderColor: accentColor + '40' },
+            {
+              backgroundColor: accentColor + '18',
+              borderColor: accentColor + '40',
+            },
           ]}
         >
           <View
-            style={[styles.interpretationColorBar, { backgroundColor: accentColor }]}
+            style={[
+              styles.interpretationColorBar,
+              { backgroundColor: accentColor },
+            ]}
           />
           <View style={styles.interpretationContent}>
             <Text style={[styles.interpretationLabel, { color: accentColor }]}>
               {interpretation.label}
             </Text>
-            <Text style={styles.interpretationDesc}>{interpretation.descripcion}</Text>
+            <Text style={styles.interpretationDesc}>
+              {interpretation.descripcion}
+            </Text>
           </View>
         </View>
       )}
@@ -313,15 +329,12 @@ export function ScaleDetailScreen({ route, navigation }: Props) {
   }, [scale, navigation, colors, rs]);
 
   const accentColor = scale
-    ? (SCALE_COLORS[scale.categoria] ?? colors.primary)
+    ? SCALE_COLORS[scale.categoria] ?? colors.primary
     : colors.primary;
 
-  const handleSelect = useCallback(
-    (componentIndex: number, value: number) => {
-      setSelections(prev => ({ ...prev, [componentIndex]: value }));
-    },
-    [],
-  );
+  const handleSelect = useCallback((componentIndex: number, value: number) => {
+    setSelections(prev => ({ ...prev, [componentIndex]: value }));
+  }, []);
 
   const handleReset = useCallback(() => {
     setSelections({});
@@ -351,7 +364,9 @@ export function ScaleDetailScreen({ route, navigation }: Props) {
   }
 
   return (
-    <View style={[styles.container, { paddingTop: StatusBar.currentHeight ?? 0 }]}>
+    <View
+      style={[styles.container, { paddingTop: StatusBar.currentHeight ?? 0 }]}
+    >
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
@@ -383,9 +398,7 @@ export function ScaleDetailScreen({ route, navigation }: Props) {
                   { backgroundColor: accentColor + '15' },
                 ]}
               >
-                <Text
-                  style={[styles.categoriaText, { color: accentColor }]}
-                >
+                <Text style={[styles.categoriaText, { color: accentColor }]}>
                   {scale.categoria.replace(/_/g, ' ')}
                 </Text>
               </View>

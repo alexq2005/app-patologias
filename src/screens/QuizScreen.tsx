@@ -115,7 +115,9 @@ function SystemChip({
         <Image
           source={getSystemImage(systemId)}
           style={{
-            width: 30, height: 30, borderRadius: 15,
+            width: 30,
+            height: 30,
+            borderRadius: 15,
             marginRight: rs.space(8),
             borderWidth: selected ? 1.5 : 0,
             borderColor: chipColor,
@@ -123,12 +125,19 @@ function SystemChip({
           resizeMode="cover"
         />
       ) : icon ? (
-        <View style={{
-          width: 30, height: 30, borderRadius: 15,
-          backgroundColor: selected ? chipColor + '20' : colors.primary + '12',
-          alignItems: 'center', justifyContent: 'center',
-          marginRight: rs.space(8),
-        }}>
+        <View
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 15,
+            backgroundColor: selected
+              ? chipColor + '20'
+              : colors.primary + '12',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: rs.space(8),
+          }}
+        >
           <MaterialCommunityIcons
             name={icon}
             size={16}
@@ -270,9 +279,7 @@ function ResultCard({ result, colors, rs }: ResultCardProps) {
             marginBottom: rs.space(2),
           }}
         >
-          {result.category === 'Todos'
-            ? 'Todos los sistemas'
-            : result.category}
+          {result.category === 'Todos' ? 'Todos los sistemas' : result.category}
         </Text>
         <Text
           style={{
@@ -311,9 +318,8 @@ export function QuizScreen({ navigation }: Props) {
 
   const { opacity, translateY } = useFadeIn(380, 60);
 
-  const [selectedCategory, setSelectedCategory] = React.useState<
-    BodySystemId | null
-  >(null);
+  const [selectedCategory, setSelectedCategory] =
+    React.useState<BodySystemId | null>(null);
   const [questionCount, setQuestionCount] = React.useState<number>(10);
 
   const handleStart = useCallback(() => {
@@ -402,10 +408,7 @@ export function QuizScreen({ navigation }: Props) {
               ))}
             </View>
 
-            <TouchableOpacity
-              onPress={handleStart}
-              activeOpacity={0.8}
-            >
+            <TouchableOpacity onPress={handleStart} activeOpacity={0.8}>
               <LinearGradient
                 colors={[colors.gradientStart, colors.gradientEnd]}
                 start={{ x: 0, y: 0 }}
@@ -427,7 +430,16 @@ export function QuizScreen({ navigation }: Props) {
           {totalSessions > 0 && (
             <View style={styles.statsRow}>
               <View style={[neuCardSubtle(colors), styles.statCard]}>
-                <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: colors.quiz + '15', alignItems: 'center', justifyContent: 'center' }}>
+                <View
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 12,
+                    backgroundColor: colors.quiz + '15',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
                   <MaterialCommunityIcons
                     name="trophy-outline"
                     size={22}
@@ -438,7 +450,16 @@ export function QuizScreen({ navigation }: Props) {
                 <Text style={styles.statLabel}>Promedio</Text>
               </View>
               <View style={[neuCardSubtle(colors), styles.statCard]}>
-                <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: colors.quiz + '15', alignItems: 'center', justifyContent: 'center' }}>
+                <View
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 12,
+                    backgroundColor: colors.quiz + '15',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
                   <MaterialCommunityIcons
                     name="lightning-bolt-outline"
                     size={22}
@@ -470,12 +491,22 @@ export function QuizScreen({ navigation }: Props) {
 
           {results.length === 0 && (
             <View style={styles.emptyState}>
-              <View style={{
-                width: 72, height: 72, borderRadius: 22,
-                backgroundColor: colors.primary + '12', alignItems: 'center', justifyContent: 'center',
-                marginBottom: 12,
-              }}>
-                <MaterialCommunityIcons name="head-lightbulb-outline" size={34} color={colors.primary} />
+              <View
+                style={{
+                  width: 72,
+                  height: 72,
+                  borderRadius: 22,
+                  backgroundColor: colors.primary + '12',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 12,
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="head-lightbulb-outline"
+                  size={34}
+                  color={colors.primary}
+                />
               </View>
               <Text style={styles.emptyText}>
                 Completá tu primer test para ver tu historial

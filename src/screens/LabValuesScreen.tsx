@@ -2,12 +2,7 @@
 // LabValuesScreen — reference lab values with ranges and nursing implications
 // ============================================================
 
-import React, {
-  useState,
-  useMemo,
-  useCallback,
-  useLayoutEffect,
-} from 'react';
+import React, { useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import {
   View,
   Text,
@@ -21,7 +16,12 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import type { RootStackParamList, LabValue, LabCategory, LabRange } from '../types';
+import type {
+  RootStackParamList,
+  LabValue,
+  LabCategory,
+  LabRange,
+} from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { usePathologyData } from '../hooks/usePathologyData';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
@@ -62,14 +62,35 @@ interface RangeRowProps {
 
 function RangeRow({ label, range, colors, rs }: RangeRowProps) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(4) }}>
-      <Text style={{ fontSize: rs.font(12), color: colors.textLight, width: rs.space(100) }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: rs.space(4),
+      }}
+    >
+      <Text
+        style={{
+          fontSize: rs.font(12),
+          color: colors.textLight,
+          width: rs.space(100),
+        }}
+      >
         {label}
       </Text>
-      <Text style={{ fontSize: rs.font(13), fontWeight: '600', color: colors.text }}>
+      <Text
+        style={{ fontSize: rs.font(13), fontWeight: '600', color: colors.text }}
+      >
         {range.min} – {range.max}
-        <Text style={{ fontSize: rs.font(11), fontWeight: '400', color: colors.textSecondary }}>
-          {' '}{range.unidad}
+        <Text
+          style={{
+            fontSize: rs.font(11),
+            fontWeight: '400',
+            color: colors.textSecondary,
+          }}
+        >
+          {' '}
+          {range.unidad}
         </Text>
       </Text>
     </View>
@@ -87,40 +108,78 @@ function LabCard({ item, colors, rs }: LabCardProps) {
   const catColor = LAB_COLORS[item.categoria] ?? colors.primary;
 
   return (
-    <View style={[neuCard(colors), { marginHorizontal: rs.space(SPACING.lg), marginBottom: rs.space(SPACING.md), padding: rs.space(SPACING.lg) }]}>
+    <View
+      style={[
+        neuCard(colors),
+        {
+          marginHorizontal: rs.space(SPACING.lg),
+          marginBottom: rs.space(SPACING.md),
+          padding: rs.space(SPACING.lg),
+        },
+      ]}
+    >
       {/* Header row */}
-      <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: rs.space(SPACING.sm) }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          marginBottom: rs.space(SPACING.sm),
+        }}
+      >
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: rs.font(16), fontWeight: '700', color: colors.text, marginBottom: rs.space(2) }}>
+          <Text
+            style={{
+              fontSize: rs.font(16),
+              fontWeight: '700',
+              color: colors.text,
+              marginBottom: rs.space(2),
+            }}
+          >
             {item.nombre}
           </Text>
           {/* Category pill */}
-          <View style={{
-            alignSelf: 'flex-start',
-            backgroundColor: catColor + '18',
-            borderRadius: RADIUS.pill,
-            paddingHorizontal: rs.space(SPACING.sm),
-            paddingVertical: rs.space(2),
-            borderWidth: 1,
-            borderColor: catColor + '40',
-          }}>
-            <Text style={{ fontSize: rs.font(11), fontWeight: '600', color: catColor }}>
+          <View
+            style={{
+              alignSelf: 'flex-start',
+              backgroundColor: catColor + '18',
+              borderRadius: RADIUS.pill,
+              paddingHorizontal: rs.space(SPACING.sm),
+              paddingVertical: rs.space(2),
+              borderWidth: 1,
+              borderColor: catColor + '40',
+            }}
+          >
+            <Text
+              style={{
+                fontSize: rs.font(11),
+                fontWeight: '600',
+                color: catColor,
+              }}
+            >
               {CATEGORY_LABELS[item.categoria]}
             </Text>
           </View>
         </View>
         {/* Abbreviation badge */}
-        <View style={{
-          backgroundColor: catColor + '15',
-          borderRadius: RADIUS.sm,
-          paddingHorizontal: rs.space(SPACING.sm),
-          paddingVertical: rs.space(4),
-          borderWidth: 1,
-          borderColor: catColor + '35',
-          minWidth: rs.space(52),
-          alignItems: 'center',
-        }}>
-          <Text style={{ fontSize: rs.font(13), fontWeight: '800', color: catColor }}>
+        <View
+          style={{
+            backgroundColor: catColor + '15',
+            borderRadius: RADIUS.sm,
+            paddingHorizontal: rs.space(SPACING.sm),
+            paddingVertical: rs.space(4),
+            borderWidth: 1,
+            borderColor: catColor + '35',
+            minWidth: rs.space(52),
+            alignItems: 'center',
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(13),
+              fontWeight: '800',
+              color: catColor,
+            }}
+          >
             {item.abreviatura}
           </Text>
         </View>
@@ -128,99 +187,183 @@ function LabCard({ item, colors, rs }: LabCardProps) {
 
       {/* Ranges */}
       <View style={{ marginBottom: rs.space(SPACING.sm) }}>
-        <Text style={{ fontSize: rs.font(12), fontWeight: '700', color: colors.textSecondary, marginBottom: rs.space(6), textTransform: 'uppercase', letterSpacing: 0.5 }}>
+        <Text
+          style={{
+            fontSize: rs.font(12),
+            fontWeight: '700',
+            color: colors.textSecondary,
+            marginBottom: rs.space(6),
+            textTransform: 'uppercase',
+            letterSpacing: 0.5,
+          }}
+        >
           Rangos de Referencia
         </Text>
         {item.rangos.adulto && (
-          <RangeRow label="Adulto" range={item.rangos.adulto} colors={colors} rs={rs} />
+          <RangeRow
+            label="Adulto"
+            range={item.rangos.adulto}
+            colors={colors}
+            rs={rs}
+          />
         )}
         {item.rangos.adultoHombre && (
-          <RangeRow label="Hombre" range={item.rangos.adultoHombre} colors={colors} rs={rs} />
+          <RangeRow
+            label="Hombre"
+            range={item.rangos.adultoHombre}
+            colors={colors}
+            rs={rs}
+          />
         )}
         {item.rangos.adultoMujer && (
-          <RangeRow label="Mujer" range={item.rangos.adultoMujer} colors={colors} rs={rs} />
+          <RangeRow
+            label="Mujer"
+            range={item.rangos.adultoMujer}
+            colors={colors}
+            rs={rs}
+          />
         )}
         {item.rangos.pediatrico && (
-          <RangeRow label="Pediátrico" range={item.rangos.pediatrico} colors={colors} rs={rs} />
+          <RangeRow
+            label="Pediátrico"
+            range={item.rangos.pediatrico}
+            colors={colors}
+            rs={rs}
+          />
         )}
       </View>
 
       {/* Significado alto / bajo */}
       {item.significadoAlto ? (
-        <View style={{
-          backgroundColor: colors.error + '10',
-          borderLeftWidth: 3,
-          borderLeftColor: colors.error,
-          borderRadius: RADIUS.xs,
-          padding: rs.space(SPACING.sm),
-          marginBottom: rs.space(6),
-        }}>
-          <Text style={{ fontSize: rs.font(11), fontWeight: '700', color: colors.error, marginBottom: rs.space(2) }}>
+        <View
+          style={{
+            backgroundColor: colors.error + '10',
+            borderLeftWidth: 3,
+            borderLeftColor: colors.error,
+            borderRadius: RADIUS.xs,
+            padding: rs.space(SPACING.sm),
+            marginBottom: rs.space(6),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(11),
+              fontWeight: '700',
+              color: colors.error,
+              marginBottom: rs.space(2),
+            }}
+          >
             ELEVADO
           </Text>
-          <Text style={{ fontSize: rs.font(12), color: colors.text, lineHeight: 18 }}>
+          <Text
+            style={{
+              fontSize: rs.font(12),
+              color: colors.text,
+              lineHeight: 18,
+            }}
+          >
             {item.significadoAlto}
           </Text>
         </View>
       ) : null}
 
       {item.significadoBajo ? (
-        <View style={{
-          backgroundColor: colors.info + '10',
-          borderLeftWidth: 3,
-          borderLeftColor: colors.info,
-          borderRadius: RADIUS.xs,
-          padding: rs.space(SPACING.sm),
-          marginBottom: rs.space(SPACING.sm),
-        }}>
-          <Text style={{ fontSize: rs.font(11), fontWeight: '700', color: colors.info, marginBottom: rs.space(2) }}>
+        <View
+          style={{
+            backgroundColor: colors.info + '10',
+            borderLeftWidth: 3,
+            borderLeftColor: colors.info,
+            borderRadius: RADIUS.xs,
+            padding: rs.space(SPACING.sm),
+            marginBottom: rs.space(SPACING.sm),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(11),
+              fontWeight: '700',
+              color: colors.info,
+              marginBottom: rs.space(2),
+            }}
+          >
             BAJO
           </Text>
-          <Text style={{ fontSize: rs.font(12), color: colors.text, lineHeight: 18 }}>
+          <Text
+            style={{
+              fontSize: rs.font(12),
+              color: colors.text,
+              lineHeight: 18,
+            }}
+          >
             {item.significadoBajo}
           </Text>
         </View>
       ) : null}
 
       {/* Nursing implications — collapsible */}
-      {item.implicacionesEnfermeria && item.implicacionesEnfermeria.length > 0 && (
-        <TouchableOpacity
-          onPress={() => setExpanded(prev => !prev)}
-          activeOpacity={0.7}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingVertical: rs.space(SPACING.sm),
-            borderTopWidth: 0.5,
-            borderTopColor: colors.border,
-            marginTop: rs.space(4),
-          }}
-        >
-          <MaterialCommunityIcons
-            name="stethoscope"
-            size={16}
-            color={colors.nursing}
-            style={{ marginRight: rs.space(6) }}
-          />
-          <Text style={{ flex: 1, fontSize: rs.font(13), fontWeight: '600', color: colors.nursing }}>
-            Implicaciones de Enfermería
-          </Text>
-          <MaterialCommunityIcons
-            name={expanded ? 'chevron-up' : 'chevron-down'}
-            size={18}
-            color={colors.textSecondary}
-          />
-        </TouchableOpacity>
-      )}
+      {item.implicacionesEnfermeria &&
+        item.implicacionesEnfermeria.length > 0 && (
+          <TouchableOpacity
+            onPress={() => setExpanded(prev => !prev)}
+            activeOpacity={0.7}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingVertical: rs.space(SPACING.sm),
+              borderTopWidth: 0.5,
+              borderTopColor: colors.border,
+              marginTop: rs.space(4),
+            }}
+          >
+            <MaterialCommunityIcons
+              name="stethoscope"
+              size={16}
+              color={colors.nursing}
+              style={{ marginRight: rs.space(6) }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                fontSize: rs.font(13),
+                fontWeight: '600',
+                color: colors.nursing,
+              }}
+            >
+              Implicaciones de Enfermería
+            </Text>
+            <MaterialCommunityIcons
+              name={expanded ? 'chevron-up' : 'chevron-down'}
+              size={18}
+              color={colors.textSecondary}
+            />
+          </TouchableOpacity>
+        )}
 
       {expanded && (
         <View style={{ marginTop: rs.space(4) }}>
           {item.implicacionesEnfermeria.map((imp, idx) => (
-            <View key={idx} style={{ flexDirection: 'row', marginBottom: rs.space(6) }}>
-              <Text style={{ fontSize: rs.font(12), color: colors.nursing, marginRight: rs.space(6), marginTop: 2 }}>
+            <View
+              key={idx}
+              style={{ flexDirection: 'row', marginBottom: rs.space(6) }}
+            >
+              <Text
+                style={{
+                  fontSize: rs.font(12),
+                  color: colors.nursing,
+                  marginRight: rs.space(6),
+                  marginTop: 2,
+                }}
+              >
                 •
               </Text>
-              <Text style={{ flex: 1, fontSize: rs.font(13), color: colors.text, lineHeight: 19 }}>
+              <Text
+                style={{
+                  flex: 1,
+                  fontSize: rs.font(13),
+                  color: colors.text,
+                  lineHeight: 19,
+                }}
+              >
                 {imp}
               </Text>
             </View>
@@ -243,7 +386,9 @@ export function LabValuesScreen({ navigation }: Props) {
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
 
   const [query, setQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<LabCategory | 'todos'>('todos');
+  const [activeCategory, setActiveCategory] = useState<LabCategory | 'todos'>(
+    'todos',
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({ title: 'Valores de Laboratorio' });
@@ -299,7 +444,10 @@ export function LabValuesScreen({ navigation }: Props) {
         >
           {categories.map(cat => {
             const isActive = activeCategory === cat;
-            const catColor = cat === 'todos' ? colors.primary : (LAB_COLORS[cat] ?? colors.primary);
+            const catColor =
+              cat === 'todos'
+                ? colors.primary
+                : LAB_COLORS[cat] ?? colors.primary;
             return (
               <TouchableOpacity
                 key={cat}
@@ -309,7 +457,10 @@ export function LabValuesScreen({ navigation }: Props) {
                   styles.chip,
                   isActive
                     ? { backgroundColor: catColor, borderColor: catColor }
-                    : { backgroundColor: colors.neuSurface, borderColor: colors.border },
+                    : {
+                        backgroundColor: colors.neuSurface,
+                        borderColor: colors.border,
+                      },
                 ]}
               >
                 <Text
@@ -318,7 +469,9 @@ export function LabValuesScreen({ navigation }: Props) {
                     { color: isActive ? '#FFFFFF' : colors.textSecondary },
                   ]}
                 >
-                  {cat === 'todos' ? 'Todos' : CATEGORY_LABELS[cat as LabCategory]}
+                  {cat === 'todos'
+                    ? 'Todos'
+                    : CATEGORY_LABELS[cat as LabCategory]}
                 </Text>
               </TouchableOpacity>
             );
@@ -336,7 +489,10 @@ export function LabValuesScreen({ navigation }: Props) {
   return (
     <PremiumGate feature="Valores de Laboratorio">
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={colors.background}
+        />
         <FlatList
           data={filtered}
           renderItem={renderItem}
@@ -352,7 +508,11 @@ export function LabValuesScreen({ navigation }: Props) {
           removeClippedSubviews={false}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
-              <MaterialCommunityIcons name="flask-empty-outline" size={48} color={colors.textLight} />
+              <MaterialCommunityIcons
+                name="flask-empty-outline"
+                size={48}
+                color={colors.textLight}
+              />
               <Text style={styles.emptyText}>No se encontraron valores</Text>
             </View>
           }

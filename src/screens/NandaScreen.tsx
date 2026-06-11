@@ -3,12 +3,7 @@
 // Aggregates all unique NANDA diagnoses from all pathologies
 // ============================================================
 
-import React, {
-  useState,
-  useMemo,
-  useCallback,
-  useLayoutEffect,
-} from 'react';
+import React, { useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import {
   View,
   Text,
@@ -64,11 +59,32 @@ function BulletList({ items, color, colors, rs }: BulletListProps) {
   return (
     <View>
       {items.map((item, idx) => (
-        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: rs.space(4) }}>
-          <Text style={{ fontSize: rs.font(13), color, marginRight: rs.space(6), marginTop: 1 }}>
+        <View
+          key={idx}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            marginBottom: rs.space(4),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(13),
+              color,
+              marginRight: rs.space(6),
+              marginTop: 1,
+            }}
+          >
             •
           </Text>
-          <Text style={{ flex: 1, fontSize: rs.font(13), color: colors.text, lineHeight: 19 }}>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: rs.font(13),
+              color: colors.text,
+              lineHeight: 19,
+            }}
+          >
             {item}
           </Text>
         </View>
@@ -85,41 +101,93 @@ interface NicCardProps {
 
 function NicCard({ nic, colors, rs }: NicCardProps) {
   return (
-    <View style={{
-      backgroundColor: colors.secondary + '0D',
-      borderRadius: RADIUS.sm,
-      padding: rs.space(SPACING.md),
-      borderWidth: 1,
-      borderColor: colors.secondary + '25',
-      marginBottom: rs.space(SPACING.sm),
-      borderLeftWidth: 3,
-      borderLeftColor: colors.secondary,
-    }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(SPACING.sm), gap: rs.space(SPACING.sm) }}>
-        <View style={{
-          backgroundColor: colors.secondary + '20',
-          borderRadius: RADIUS.xs,
-          paddingHorizontal: rs.space(6),
-          paddingVertical: rs.space(2),
-        }}>
-          <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: colors.secondary }}>
+    <View
+      style={{
+        backgroundColor: colors.secondary + '0D',
+        borderRadius: RADIUS.sm,
+        padding: rs.space(SPACING.md),
+        borderWidth: 1,
+        borderColor: colors.secondary + '25',
+        marginBottom: rs.space(SPACING.sm),
+        borderLeftWidth: 3,
+        borderLeftColor: colors.secondary,
+      }}
+    >
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(SPACING.sm),
+          gap: rs.space(SPACING.sm),
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: colors.secondary + '20',
+            borderRadius: RADIUS.xs,
+            paddingHorizontal: rs.space(6),
+            paddingVertical: rs.space(2),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(10),
+              fontWeight: '800',
+              color: colors.secondary,
+            }}
+          >
             {nic.codigo}
           </Text>
         </View>
-        <Text style={{ flex: 1, fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+        <Text
+          style={{
+            flex: 1,
+            fontSize: rs.font(13),
+            fontWeight: '700',
+            color: colors.text,
+          }}
+        >
           {nic.nombre}
         </Text>
       </View>
       {nic.actividades.slice(0, 3).map((act, i) => (
-        <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: rs.space(3) }}>
-          <Text style={{ fontSize: rs.font(11), color: colors.secondary, marginRight: rs.space(5) }}>–</Text>
-          <Text style={{ flex: 1, fontSize: rs.font(12), color: colors.textSecondary, lineHeight: 17 }}>
+        <View
+          key={i}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            marginBottom: rs.space(3),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(11),
+              color: colors.secondary,
+              marginRight: rs.space(5),
+            }}
+          >
+            –
+          </Text>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: rs.font(12),
+              color: colors.textSecondary,
+              lineHeight: 17,
+            }}
+          >
             {act}
           </Text>
         </View>
       ))}
       {nic.actividades.length > 3 && (
-        <Text style={{ fontSize: rs.font(11), color: colors.textLight, marginTop: rs.space(2) }}>
+        <Text
+          style={{
+            fontSize: rs.font(11),
+            color: colors.textLight,
+            marginTop: rs.space(2),
+          }}
+        >
           +{nic.actividades.length - 3} actividades más
         </Text>
       )}
@@ -135,46 +203,105 @@ interface NocCardProps {
 
 function NocCard({ noc, colors, rs }: NocCardProps) {
   return (
-    <View style={{
-      backgroundColor: colors.info + '0D',
-      borderRadius: RADIUS.sm,
-      padding: rs.space(SPACING.md),
-      borderWidth: 1,
-      borderColor: colors.info + '25',
-      marginBottom: rs.space(SPACING.sm),
-      borderLeftWidth: 3,
-      borderLeftColor: colors.info,
-    }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(SPACING.sm), gap: rs.space(SPACING.sm) }}>
-        <View style={{
-          backgroundColor: colors.info + '20',
-          borderRadius: RADIUS.xs,
-          paddingHorizontal: rs.space(6),
-          paddingVertical: rs.space(2),
-        }}>
-          <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: colors.info }}>
+    <View
+      style={{
+        backgroundColor: colors.info + '0D',
+        borderRadius: RADIUS.sm,
+        padding: rs.space(SPACING.md),
+        borderWidth: 1,
+        borderColor: colors.info + '25',
+        marginBottom: rs.space(SPACING.sm),
+        borderLeftWidth: 3,
+        borderLeftColor: colors.info,
+      }}
+    >
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginBottom: rs.space(SPACING.sm),
+          gap: rs.space(SPACING.sm),
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: colors.info + '20',
+            borderRadius: RADIUS.xs,
+            paddingHorizontal: rs.space(6),
+            paddingVertical: rs.space(2),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(10),
+              fontWeight: '800',
+              color: colors.info,
+            }}
+          >
             {noc.codigo}
           </Text>
         </View>
-        <Text style={{ flex: 1, fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+        <Text
+          style={{
+            flex: 1,
+            fontSize: rs.font(13),
+            fontWeight: '700',
+            color: colors.text,
+          }}
+        >
           {noc.nombre}
         </Text>
       </View>
       {noc.escala && (
-        <Text style={{ fontSize: rs.font(11), color: colors.textSecondary, marginBottom: rs.space(4), fontStyle: 'italic' }}>
+        <Text
+          style={{
+            fontSize: rs.font(11),
+            color: colors.textSecondary,
+            marginBottom: rs.space(4),
+            fontStyle: 'italic',
+          }}
+        >
           Escala: {noc.escala}
         </Text>
       )}
       {noc.indicadores.slice(0, 3).map((ind, i) => (
-        <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: rs.space(3) }}>
-          <Text style={{ fontSize: rs.font(11), color: colors.info, marginRight: rs.space(5) }}>–</Text>
-          <Text style={{ flex: 1, fontSize: rs.font(12), color: colors.textSecondary, lineHeight: 17 }}>
+        <View
+          key={i}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            marginBottom: rs.space(3),
+          }}
+        >
+          <Text
+            style={{
+              fontSize: rs.font(11),
+              color: colors.info,
+              marginRight: rs.space(5),
+            }}
+          >
+            –
+          </Text>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: rs.font(12),
+              color: colors.textSecondary,
+              lineHeight: 17,
+            }}
+          >
             {ind}
           </Text>
         </View>
       ))}
       {noc.indicadores.length > 3 && (
-        <Text style={{ fontSize: rs.font(11), color: colors.textLight, marginTop: rs.space(2) }}>
+        <Text
+          style={{
+            fontSize: rs.font(11),
+            color: colors.textLight,
+            marginTop: rs.space(2),
+          }}
+        >
           +{noc.indicadores.length - 3} indicadores más
         </Text>
       )}
@@ -193,11 +320,16 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
   const { nanda, nics, nocs, pathologyNames } = entry;
 
   return (
-    <View style={[neuCard(colors), {
-      marginHorizontal: rs.space(SPACING.lg),
-      marginBottom: rs.space(SPACING.md),
-      overflow: 'visible',
-    }]}>
+    <View
+      style={[
+        neuCard(colors),
+        {
+          marginHorizontal: rs.space(SPACING.lg),
+          marginBottom: rs.space(SPACING.md),
+          overflow: 'visible',
+        },
+      ]}
+    >
       {/* Header — always visible */}
       <TouchableOpacity
         onPress={() => setExpanded(prev => !prev)}
@@ -205,22 +337,44 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
         style={{ padding: rs.space(SPACING.lg) }}
       >
         {/* Code badge + nombre */}
-        <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: rs.space(SPACING.sm) }}>
-          <View style={{
-            backgroundColor: colors.primary + '18',
-            borderRadius: RADIUS.sm,
-            paddingHorizontal: rs.space(SPACING.sm),
-            paddingVertical: rs.space(3),
-            marginRight: rs.space(SPACING.sm),
-            borderWidth: 1,
-            borderColor: colors.primary + '35',
-            flexShrink: 0,
-          }}>
-            <Text style={{ fontSize: rs.font(12), fontWeight: '800', color: colors.primary }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            marginBottom: rs.space(SPACING.sm),
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: colors.primary + '18',
+              borderRadius: RADIUS.sm,
+              paddingHorizontal: rs.space(SPACING.sm),
+              paddingVertical: rs.space(3),
+              marginRight: rs.space(SPACING.sm),
+              borderWidth: 1,
+              borderColor: colors.primary + '35',
+              flexShrink: 0,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: rs.font(12),
+                fontWeight: '800',
+                color: colors.primary,
+              }}
+            >
               {nanda.codigo}
             </Text>
           </View>
-          <Text style={{ flex: 1, fontSize: rs.font(15), fontWeight: '700', color: colors.text, lineHeight: 21 }}>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: rs.font(15),
+              fontWeight: '700',
+              color: colors.text,
+              lineHeight: 21,
+            }}
+          >
             {nanda.nombre}
           </Text>
         </View>
@@ -228,34 +382,55 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
         {/* Definicion */}
         <Text
           numberOfLines={expanded ? undefined : 2}
-          style={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: 19, marginBottom: rs.space(SPACING.sm) }}
+          style={{
+            fontSize: rs.font(13),
+            color: colors.textSecondary,
+            lineHeight: 19,
+            marginBottom: rs.space(SPACING.sm),
+          }}
         >
           {nanda.definicion}
         </Text>
 
         {/* Related pathologies */}
         {pathologyNames.length > 0 && (
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(4), marginBottom: rs.space(SPACING.sm) }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              gap: rs.space(4),
+              marginBottom: rs.space(SPACING.sm),
+            }}
+          >
             {pathologyNames.slice(0, 3).map((name, i) => (
-              <View key={i} style={{
-                backgroundColor: colors.border,
-                borderRadius: RADIUS.pill,
-                paddingHorizontal: rs.space(SPACING.sm),
-                paddingVertical: rs.space(2),
-              }}>
-                <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>
+              <View
+                key={i}
+                style={{
+                  backgroundColor: colors.border,
+                  borderRadius: RADIUS.pill,
+                  paddingHorizontal: rs.space(SPACING.sm),
+                  paddingVertical: rs.space(2),
+                }}
+              >
+                <Text
+                  style={{ fontSize: rs.font(11), color: colors.textSecondary }}
+                >
                   {name}
                 </Text>
               </View>
             ))}
             {pathologyNames.length > 3 && (
-              <View style={{
-                backgroundColor: colors.border,
-                borderRadius: RADIUS.pill,
-                paddingHorizontal: rs.space(SPACING.sm),
-                paddingVertical: rs.space(2),
-              }}>
-                <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>
+              <View
+                style={{
+                  backgroundColor: colors.border,
+                  borderRadius: RADIUS.pill,
+                  paddingHorizontal: rs.space(SPACING.sm),
+                  paddingVertical: rs.space(2),
+                }}
+              >
+                <Text
+                  style={{ fontSize: rs.font(11), color: colors.textSecondary }}
+                >
                   +{pathologyNames.length - 3} más
                 </Text>
               </View>
@@ -264,28 +439,84 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
         )}
 
         {/* Expand toggle */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(SPACING.lg) }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: rs.space(SPACING.lg),
+            }}
+          >
             {nanda.caracteristicasDefinitorias.length > 0 && (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(4) }}>
-                <MaterialCommunityIcons name="format-list-bulleted" size={13} color={colors.textLight} />
-                <Text style={{ fontSize: rs.font(11), color: colors.textLight }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: rs.space(4),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="format-list-bulleted"
+                  size={13}
+                  color={colors.textLight}
+                />
+                <Text
+                  style={{ fontSize: rs.font(11), color: colors.textLight }}
+                >
                   {nanda.caracteristicasDefinitorias.length} características
                 </Text>
               </View>
             )}
             {nics.length > 0 && (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(4) }}>
-                <MaterialCommunityIcons name="clipboard-pulse-outline" size={13} color={colors.secondary} />
-                <Text style={{ fontSize: rs.font(11), color: colors.secondary, fontWeight: '600' }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: rs.space(4),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="clipboard-pulse-outline"
+                  size={13}
+                  color={colors.secondary}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(11),
+                    color: colors.secondary,
+                    fontWeight: '600',
+                  }}
+                >
                   {nics.length} NIC
                 </Text>
               </View>
             )}
             {nocs.length > 0 && (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(4) }}>
-                <MaterialCommunityIcons name="chart-line" size={13} color={colors.info} />
-                <Text style={{ fontSize: rs.font(11), color: colors.info, fontWeight: '600' }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: rs.space(4),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="chart-line"
+                  size={13}
+                  color={colors.info}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(11),
+                    color: colors.info,
+                    fontWeight: '600',
+                  }}
+                >
                   {nocs.length} NOC
                 </Text>
               </View>
@@ -301,19 +532,38 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
 
       {/* Expanded content */}
       {expanded && (
-        <View style={{
-          borderTopWidth: 0.5,
-          borderTopColor: colors.border,
-          paddingHorizontal: rs.space(SPACING.lg),
-          paddingBottom: rs.space(SPACING.lg),
-          paddingTop: rs.space(SPACING.md),
-        }}>
+        <View
+          style={{
+            borderTopWidth: 0.5,
+            borderTopColor: colors.border,
+            paddingHorizontal: rs.space(SPACING.lg),
+            paddingBottom: rs.space(SPACING.lg),
+            paddingTop: rs.space(SPACING.md),
+          }}
+        >
           {/* Caracteristicas Definitorias */}
           {nanda.caracteristicasDefinitorias.length > 0 && (
             <View style={{ marginBottom: rs.space(SPACING.lg) }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(SPACING.sm), gap: rs.space(6) }}>
-                <MaterialCommunityIcons name="format-list-bulleted" size={15} color={colors.primary} />
-                <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginBottom: rs.space(SPACING.sm),
+                  gap: rs.space(6),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="format-list-bulleted"
+                  size={15}
+                  color={colors.primary}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    fontWeight: '700',
+                    color: colors.text,
+                  }}
+                >
                   Características Definitorias
                 </Text>
               </View>
@@ -329,9 +579,26 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
           {/* Factores Relacionados */}
           {nanda.factoresRelacionados.length > 0 && (
             <View style={{ marginBottom: rs.space(SPACING.lg) }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(SPACING.sm), gap: rs.space(6) }}>
-                <MaterialCommunityIcons name="link-variant" size={15} color={colors.warning} />
-                <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginBottom: rs.space(SPACING.sm),
+                  gap: rs.space(6),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="link-variant"
+                  size={15}
+                  color={colors.warning}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    fontWeight: '700',
+                    color: colors.text,
+                  }}
+                >
                   Factores Relacionados
                 </Text>
               </View>
@@ -347,9 +614,26 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
           {/* NIC Interventions */}
           {nics.length > 0 && (
             <View style={{ marginBottom: rs.space(SPACING.md) }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(SPACING.sm), gap: rs.space(6) }}>
-                <MaterialCommunityIcons name="clipboard-pulse-outline" size={15} color={colors.secondary} />
-                <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginBottom: rs.space(SPACING.sm),
+                  gap: rs.space(6),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="clipboard-pulse-outline"
+                  size={15}
+                  color={colors.secondary}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    fontWeight: '700',
+                    color: colors.text,
+                  }}
+                >
                   Intervenciones NIC
                 </Text>
               </View>
@@ -362,9 +646,26 @@ function NandaCard({ entry, colors, rs }: NandaCardProps) {
           {/* NOC Results */}
           {nocs.length > 0 && (
             <View>
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(SPACING.sm), gap: rs.space(6) }}>
-                <MaterialCommunityIcons name="chart-line" size={15} color={colors.info} />
-                <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginBottom: rs.space(SPACING.sm),
+                  gap: rs.space(6),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="chart-line"
+                  size={15}
+                  color={colors.info}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    fontWeight: '700',
+                    color: colors.text,
+                  }}
+                >
                   Resultados NOC
                 </Text>
               </View>
@@ -443,7 +744,9 @@ export function NandaScreen({ navigation }: Props) {
         entry.nanda.codigo.toLowerCase().includes(q) ||
         entry.nanda.nombre.toLowerCase().includes(q) ||
         entry.nanda.definicion.toLowerCase().includes(q) ||
-        entry.nanda.caracteristicasDefinitorias.some(c => c.toLowerCase().includes(q)) ||
+        entry.nanda.caracteristicasDefinitorias.some(c =>
+          c.toLowerCase().includes(q),
+        ) ||
         entry.nanda.factoresRelacionados.some(f => f.toLowerCase().includes(q)),
     );
   }, [nandaEntries, query]);
@@ -477,7 +780,10 @@ export function NandaScreen({ navigation }: Props) {
   return (
     <PremiumGate feature="NANDA-NIC-NOC">
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={colors.background}
+        />
         <FlatList
           data={filtered}
           renderItem={renderItem}
@@ -493,8 +799,14 @@ export function NandaScreen({ navigation }: Props) {
           removeClippedSubviews={false}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
-              <MaterialCommunityIcons name="clipboard-text-search-outline" size={48} color={colors.textLight} />
-              <Text style={styles.emptyText}>No se encontraron diagnósticos</Text>
+              <MaterialCommunityIcons
+                name="clipboard-text-search-outline"
+                size={48}
+                color={colors.textLight}
+              />
+              <Text style={styles.emptyText}>
+                No se encontraron diagnósticos
+              </Text>
             </View>
           }
         />
