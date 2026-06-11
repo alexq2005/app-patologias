@@ -26,6 +26,7 @@ import {
   Share,
   Alert,
   Linking,
+  type LayoutChangeEvent,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -51,6 +52,7 @@ import {
   type ThemeColors,
 } from '../utils/colors';
 import { getConditionImage } from '../utils/conditionImages';
+import { getReviewInfo, formatReviewDate } from '../utils/reviewInfo';
 import { neuCard, neuCardSubtle, neuElevated } from '../utils/neumorphism';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { EmergencyBadge } from '../components/EmergencyBadge';
@@ -86,7 +88,7 @@ function BulletList({
           key={index}
           style={{
             flexDirection: 'row',
-            marginBottom: spacing(4),
+            marginBottom: spacing(6),
             alignItems: 'flex-start',
           }}
         >
@@ -1008,18 +1010,59 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
   );
 
   const scrollRef = useRef<ScrollView>(null);
-  const sectionQuickNav = useMemo(
-    () => [
+
+  // Posiciones Y de cada sección (relativas al content del ScrollView).
+  // onLayout re-dispara cuando un colapsable cambia de altura, así que
+  // las anclas se mantienen actualizadas.
+  const sectionPositions = useRef<Record<string, number>>({});
+
+  const onSectionLayout = useCallback(
+    (key: string) => (e: LayoutChangeEvent) => {
+      sectionPositions.current[key] = e.nativeEvent.layout.y;
+    },
+    [],
+  );
+
+  const scrollToSection = useCallback((key: string) => {
+    const y = sectionPositions.current[key];
+    if (y != null) {
+      scrollRef.current?.scrollTo({ y: Math.max(y - 8, 0), animated: true });
+    }
+  }, []);
+
+  // Chips de navegación — solo secciones que existen en esta patología
+  const sectionQuickNav = useMemo(() => {
+    if (!pathology) return [];
+    const items = [
       { key: 'fisio', label: 'Fisiopatología', icon: 'dna' },
       { key: 'signos', label: 'Signos', icon: 'stethoscope' },
       { key: 'dx', label: 'Diagnóstico', icon: 'clipboard-pulse-outline' },
       { key: 'tx', label: 'Tratamiento', icon: 'medical-bag' },
       { key: 'enf', label: 'Enfermería', icon: 'heart-pulse' },
-      { key: 'nanda', label: 'NANDA', icon: 'format-list-group' },
-      { key: 'alarma', label: 'Alarma', icon: 'alarm-light-outline' },
-    ],
-    [],
-  );
+    ];
+    if (
+      pathology.npiNanda.length > 0 ||
+      pathology.npiNic.length > 0 ||
+      pathology.npiNoc.length > 0
+    ) {
+      items.push({ key: 'nanda', label: 'NANDA', icon: 'format-list-group' });
+    }
+    if (pathology.criteriosAlarma.length > 0) {
+      items.push({
+        key: 'alarma',
+        label: 'Alarma',
+        icon: 'alarm-light-outline',
+      });
+    }
+    return items;
+  }, [pathology]);
+
+  // Metadata de revisión clínica (revisadoEn vive en el JSON bundleado,
+  // no en SQLite — ver src/utils/reviewInfo.ts)
+  const reviewedLabel = useMemo(() => {
+    const info = getReviewInfo(pathologyId);
+    return info?.revisadoEn ? formatReviewDate(info.revisadoEn) : null;
+  }, [pathologyId]);
 
   // ── Loading / Not found ────────────────────────────────────
   if (!pathology) {
@@ -1110,6 +1153,30 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
                 .replace(/\b\w/g, c => c.toUpperCase())}
             </Text>
           </View>
+          {/* Badge de revisión clínica — diferenciador de calidad */}
+          {reviewedLabel ? (
+            <View
+              style={[
+                styles.reviewBadge,
+                {
+                  borderColor: colors.success + '40',
+                  backgroundColor: colors.success + '12',
+                },
+              ]}
+              accessible
+              accessibilityLabel={`Contenido revisado clínicamente en ${reviewedLabel}`}
+            >
+              <MaterialCommunityIcons
+                name="check-decagram"
+                size={rs.font(12)}
+                color={colors.success}
+                style={styles.reviewBadgeIcon}
+              />
+              <Text style={[styles.reviewBadgeText, { color: colors.success }]}>
+                Revisado {reviewedLabel}
+              </Text>
+            </View>
+          ) : null}
         </View>
 
         {/* ── Video button ── */}
@@ -1197,9 +1264,10 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
                 },
               ]}
               activeOpacity={0.7}
-              onPress={() => {
-                // Scroll is a nice-to-have, the chips serve as a visual index
-              }}
+              onPress={() => scrollToSection(sec.key)}
+              accessibilityRole="button"
+              accessibilityLabel={`Ir a sección ${sec.label}`}
+              hitSlop={{ top: 8, bottom: 8, left: 2, right: 2 }}
             >
               <MaterialCommunityIcons
                 name={sec.icon}
@@ -1296,67 +1364,71 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         {/* ═══════════════════════════════════════════════════
             2. FISIOPATOLOGIA (open by default — key section)
         ═══════════════════════════════════════════════════ */}
-        <CollapsibleSection
-          title="Fisiopatología"
-          icon="dna"
-          accentColor={systemColor}
-          initiallyOpen
-        >
-          <Text style={[styles.bodyText, { color: colors.textSecondary }]}>
-            {pathology.fisiopatologia}
-          </Text>
-        </CollapsibleSection>
+        <View onLayout={onSectionLayout('fisio')}>
+          <CollapsibleSection
+            title="Fisiopatología"
+            icon="dna"
+            accentColor={systemColor}
+            initiallyOpen
+          >
+            <Text style={[styles.bodyText, { color: colors.textSecondary }]}>
+              {pathology.fisiopatologia}
+            </Text>
+          </CollapsibleSection>
+        </View>
 
         {/* ═══════════════════════════════════════════════════
             3. SIGNOS Y SINTOMAS (open by default)
         ═══════════════════════════════════════════════════ */}
-        <CollapsibleSection
-          title="Signos y Sintomas"
-          icon="stethoscope"
-          accentColor={colors.error}
-          initiallyOpen
-          badge={String(
-            pathology.signosYSintomas.signos.length +
-              pathology.signosYSintomas.sintomas.length,
-          )}
-        >
-          {pathology.signosYSintomas.signos.length > 0 ? (
-            <SubSection
-              label="Signos"
-              icon="eye-outline"
-              iconColor={colors.error}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.signosYSintomas.signos}
-                bulletColor={colors.error}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-                bulletChar="◆"
-              />
-            </SubSection>
-          ) : null}
-          {pathology.signosYSintomas.sintomas.length > 0 ? (
-            <SubSection
-              label="Sintomas"
-              icon="comment-text-outline"
-              iconColor={colors.warning}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.signosYSintomas.sintomas}
-                bulletColor={colors.warning}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-                bulletChar="◇"
-              />
-            </SubSection>
-          ) : null}
-        </CollapsibleSection>
+        <View onLayout={onSectionLayout('signos')}>
+          <CollapsibleSection
+            title="Signos y Sintomas"
+            icon="stethoscope"
+            accentColor={colors.error}
+            initiallyOpen
+            badge={String(
+              pathology.signosYSintomas.signos.length +
+                pathology.signosYSintomas.sintomas.length,
+            )}
+          >
+            {pathology.signosYSintomas.signos.length > 0 ? (
+              <SubSection
+                label="Signos"
+                icon="eye-outline"
+                iconColor={colors.error}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.signosYSintomas.signos}
+                  bulletColor={colors.error}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
+                  bulletChar="◆"
+                />
+              </SubSection>
+            ) : null}
+            {pathology.signosYSintomas.sintomas.length > 0 ? (
+              <SubSection
+                label="Sintomas"
+                icon="comment-text-outline"
+                iconColor={colors.warning}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.signosYSintomas.sintomas}
+                  bulletColor={colors.warning}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
+                  bulletChar="◇"
+                />
+              </SubSection>
+            ) : null}
+          </CollapsibleSection>
+        </View>
 
         {/* ═══════════════════════════════════════════════════
             4. CLASIFICACION (if exists)
@@ -1390,157 +1462,168 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         {/* ═══════════════════════════════════════════════════
             5. DIAGNOSTICO
         ═══════════════════════════════════════════════════ */}
-        <CollapsibleSection
-          title="Diagnostico"
-          icon="clipboard-pulse-outline"
-          accentColor={colors.info}
-          initiallyOpen={false}
-        >
-          {pathology.diagnostico.anamnesis.length > 0 ? (
-            <SubSection
-              label="Anamnesis"
-              icon="account-voice"
-              iconColor={colors.info}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.diagnostico.anamnesis}
-                bulletColor={colors.info}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-              />
-            </SubSection>
-          ) : null}
-
-          {pathology.diagnostico.examenFisico.length > 0 ? (
-            <SubSection
-              label="Examen Fisico"
-              icon="human"
-              iconColor={colors.info}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.diagnostico.examenFisico}
-                bulletColor={colors.info}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-              />
-            </SubSection>
-          ) : null}
-
-          {pathology.diagnostico.pruebas.length > 0 ? (
-            <SubSection
-              label="Pruebas Diagnosticas"
-              icon="test-tube"
-              iconColor={colors.info}
-              colors={colors}
-              rs={rs}
-            >
-              {pathology.diagnostico.pruebas.map((test, idx) => (
-                <DiagnosticTestCard
-                  key={idx}
-                  test={test}
-                  colors={colors}
-                  rs={rs}
-                  systemColor={systemColor}
+        <View onLayout={onSectionLayout('dx')}>
+          <CollapsibleSection
+            title="Diagnostico"
+            icon="clipboard-pulse-outline"
+            accentColor={colors.info}
+            initiallyOpen={false}
+          >
+            {pathology.diagnostico.anamnesis.length > 0 ? (
+              <SubSection
+                label="Anamnesis"
+                icon="account-voice"
+                iconColor={colors.info}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.diagnostico.anamnesis}
+                  bulletColor={colors.info}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
                 />
-              ))}
-            </SubSection>
-          ) : null}
-        </CollapsibleSection>
+              </SubSection>
+            ) : null}
+
+            {pathology.diagnostico.examenFisico.length > 0 ? (
+              <SubSection
+                label="Examen Fisico"
+                icon="human"
+                iconColor={colors.info}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.diagnostico.examenFisico}
+                  bulletColor={colors.info}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
+                />
+              </SubSection>
+            ) : null}
+
+            {pathology.diagnostico.pruebas.length > 0 ? (
+              <SubSection
+                label="Pruebas Diagnosticas"
+                icon="test-tube"
+                iconColor={colors.info}
+                colors={colors}
+                rs={rs}
+              >
+                {pathology.diagnostico.pruebas.map((test, idx) => (
+                  <DiagnosticTestCard
+                    key={idx}
+                    test={test}
+                    colors={colors}
+                    rs={rs}
+                    systemColor={systemColor}
+                  />
+                ))}
+              </SubSection>
+            ) : null}
+          </CollapsibleSection>
+        </View>
 
         {/* ═══════════════════════════════════════════════════
-            6. TRATAMIENTO MEDICO
+            6. TRATAMIENTO MEDICO — acción clínica (destacada)
         ═══════════════════════════════════════════════════ */}
-        <CollapsibleSection
-          title="Tratamiento Medico"
-          icon="medical-bag"
-          accentColor={colors.secondary}
-          initiallyOpen={false}
+        <View
+          onLayout={onSectionLayout('tx')}
+          style={[
+            styles.treatmentWrapper,
+            { borderColor: colors.secondary + '45' },
+          ]}
         >
-          {pathology.tratamientoMedico.objetivos.length > 0 ? (
-            <SubSection
-              label="Objetivos Terapeuticos"
-              icon="target"
-              iconColor={colors.secondary}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.tratamientoMedico.objetivos}
-                bulletColor={colors.secondary}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-              />
-            </SubSection>
-          ) : null}
-
-          {pathology.tratamientoMedico.farmacologico.length > 0 ? (
-            <SubSection
-              label="Farmacologico"
-              icon="pill"
-              iconColor={systemColor}
-              colors={colors}
-              rs={rs}
-            >
-              {pathology.tratamientoMedico.farmacologico.map((drug, idx) => (
-                <DrugCard
-                  key={idx}
-                  drug={drug}
-                  colors={colors}
-                  rs={rs}
-                  systemColor={systemColor}
+          <CollapsibleSection
+            title="Tratamiento Medico"
+            icon="medical-bag"
+            accentColor={colors.secondary}
+            initiallyOpen={false}
+          >
+            {pathology.tratamientoMedico.objetivos.length > 0 ? (
+              <SubSection
+                label="Objetivos Terapeuticos"
+                icon="target"
+                iconColor={colors.secondary}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.tratamientoMedico.objetivos}
+                  bulletColor={colors.secondary}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
                 />
-              ))}
-            </SubSection>
-          ) : null}
+              </SubSection>
+            ) : null}
 
-          {pathology.tratamientoMedico.noFarmacologico.length > 0 ? (
-            <SubSection
-              label="No Farmacologico"
-              icon="heart-plus-outline"
-              iconColor={colors.secondary}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.tratamientoMedico.noFarmacologico}
-                bulletColor={colors.secondary}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-              />
-            </SubSection>
-          ) : null}
+            {pathology.tratamientoMedico.farmacologico.length > 0 ? (
+              <SubSection
+                label="Farmacologico"
+                icon="pill"
+                iconColor={systemColor}
+                colors={colors}
+                rs={rs}
+              >
+                {pathology.tratamientoMedico.farmacologico.map((drug, idx) => (
+                  <DrugCard
+                    key={idx}
+                    drug={drug}
+                    colors={colors}
+                    rs={rs}
+                    systemColor={systemColor}
+                  />
+                ))}
+              </SubSection>
+            ) : null}
 
-          {hasQuirurgico ? (
-            <SubSection
-              label="Quirurgico"
-              icon="knife"
-              iconColor={colors.error}
-              colors={colors}
-              rs={rs}
-            >
-              <BulletList
-                items={pathology.tratamientoMedico.quirurgico!}
-                bulletColor={colors.error}
-                textColor={colors.textSecondary}
-                fontSize={rs.font(13)}
-                spacing={rs.space}
-              />
-            </SubSection>
-          ) : null}
-        </CollapsibleSection>
+            {pathology.tratamientoMedico.noFarmacologico.length > 0 ? (
+              <SubSection
+                label="No Farmacologico"
+                icon="heart-plus-outline"
+                iconColor={colors.secondary}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.tratamientoMedico.noFarmacologico}
+                  bulletColor={colors.secondary}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
+                />
+              </SubSection>
+            ) : null}
+
+            {hasQuirurgico ? (
+              <SubSection
+                label="Quirurgico"
+                icon="knife"
+                iconColor={colors.error}
+                colors={colors}
+                rs={rs}
+              >
+                <BulletList
+                  items={pathology.tratamientoMedico.quirurgico!}
+                  bulletColor={colors.error}
+                  textColor={colors.textSecondary}
+                  fontSize={rs.font(13)}
+                  spacing={rs.space}
+                />
+              </SubSection>
+            ) : null}
+          </CollapsibleSection>
+        </View>
 
         {/* ═══════════════════════════════════════════════════
             7. CUIDADOS DE ENFERMERIA — KEY SECTION (open)
         ═══════════════════════════════════════════════════ */}
         <View
+          onLayout={onSectionLayout('enf')}
           style={[
             styles.nursingWrapper,
             { borderColor: colors.nursing + '50' },
@@ -1632,54 +1715,56 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         {pathology.npiNanda.length > 0 ||
         pathology.npiNic.length > 0 ||
         pathology.npiNoc.length > 0 ? (
-          <CollapsibleSection
-            title="NANDA · NIC · NOC"
-            icon="format-list-group"
-            accentColor={colors.primary}
-            initiallyOpen={false}
-          >
-            {pathology.npiNanda.length > 0 ? (
-              <SubSection
-                label={`NANDA — Diagnosticos (${pathology.npiNanda.length})`}
-                icon="clipboard-list-outline"
-                iconColor={colors.primary}
-                colors={colors}
-                rs={rs}
-              >
-                {pathology.npiNanda.map((n, idx) => (
-                  <NandaCard key={idx} nanda={n} colors={colors} rs={rs} />
-                ))}
-              </SubSection>
-            ) : null}
+          <View onLayout={onSectionLayout('nanda')}>
+            <CollapsibleSection
+              title="NANDA · NIC · NOC"
+              icon="format-list-group"
+              accentColor={colors.primary}
+              initiallyOpen={false}
+            >
+              {pathology.npiNanda.length > 0 ? (
+                <SubSection
+                  label={`NANDA — Diagnosticos (${pathology.npiNanda.length})`}
+                  icon="clipboard-list-outline"
+                  iconColor={colors.primary}
+                  colors={colors}
+                  rs={rs}
+                >
+                  {pathology.npiNanda.map((n, idx) => (
+                    <NandaCard key={idx} nanda={n} colors={colors} rs={rs} />
+                  ))}
+                </SubSection>
+              ) : null}
 
-            {pathology.npiNic.length > 0 ? (
-              <SubSection
-                label={`NIC — Intervenciones (${pathology.npiNic.length})`}
-                icon="clipboard-check-outline"
-                iconColor={colors.secondary}
-                colors={colors}
-                rs={rs}
-              >
-                {pathology.npiNic.map((n, idx) => (
-                  <NicCard key={idx} nic={n} colors={colors} rs={rs} />
-                ))}
-              </SubSection>
-            ) : null}
+              {pathology.npiNic.length > 0 ? (
+                <SubSection
+                  label={`NIC — Intervenciones (${pathology.npiNic.length})`}
+                  icon="clipboard-check-outline"
+                  iconColor={colors.secondary}
+                  colors={colors}
+                  rs={rs}
+                >
+                  {pathology.npiNic.map((n, idx) => (
+                    <NicCard key={idx} nic={n} colors={colors} rs={rs} />
+                  ))}
+                </SubSection>
+              ) : null}
 
-            {pathology.npiNoc.length > 0 ? (
-              <SubSection
-                label={`NOC — Resultados (${pathology.npiNoc.length})`}
-                icon="chart-line"
-                iconColor={colors.success}
-                colors={colors}
-                rs={rs}
-              >
-                {pathology.npiNoc.map((n, idx) => (
-                  <NocCard key={idx} noc={n} colors={colors} rs={rs} />
-                ))}
-              </SubSection>
-            ) : null}
-          </CollapsibleSection>
+              {pathology.npiNoc.length > 0 ? (
+                <SubSection
+                  label={`NOC — Resultados (${pathology.npiNoc.length})`}
+                  icon="chart-line"
+                  iconColor={colors.success}
+                  colors={colors}
+                  rs={rs}
+                >
+                  {pathology.npiNoc.map((n, idx) => (
+                    <NocCard key={idx} noc={n} colors={colors} rs={rs} />
+                  ))}
+                </SubSection>
+              ) : null}
+            </CollapsibleSection>
+          </View>
         ) : null}
 
         {/* ═══════════════════════════════════════════════════
@@ -1709,6 +1794,7 @@ export function PathologyDetailScreen({ navigation, route }: Props) {
         ═══════════════════════════════════════════════════ */}
         {pathology.criteriosAlarma.length > 0 ? (
           <View
+            onLayout={onSectionLayout('alarma')}
             style={[styles.alarmWrapper, { borderColor: colors.error + '40' }]}
           >
             <CollapsibleSection
@@ -1980,6 +2066,22 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       fontWeight: '600',
       letterSpacing: 0.2,
     },
+    reviewBadge: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderRadius: 50,
+      borderWidth: 1,
+      paddingHorizontal: rs.space(10),
+      paddingVertical: rs.space(4),
+    },
+    reviewBadgeIcon: {
+      marginRight: rs.space(4),
+    },
+    reviewBadgeText: {
+      fontSize: rs.font(11),
+      fontWeight: '700',
+      letterSpacing: 0.2,
+    },
 
     // Definition card
     definitionCard: {
@@ -1998,9 +2100,9 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       letterSpacing: 0.2,
     },
     definitionText: {
-      fontSize: rs.font(14),
+      fontSize: rs.font(15),
       color: colors.textSecondary,
-      lineHeight: rs.font(22),
+      lineHeight: rs.font(23),
     },
     epidemioContainer: {
       flexDirection: 'row',
@@ -2035,10 +2137,10 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       fontWeight: '600',
     },
 
-    // Body text (fisiopatologia, etc)
+    // Body text (fisiopatologia, etc) — lectura larga: ~1.6 de interlineado
     bodyText: {
-      fontSize: rs.font(13),
-      lineHeight: rs.font(21),
+      fontSize: rs.font(14),
+      lineHeight: rs.font(22),
     },
 
     // Clasificacion
@@ -2058,6 +2160,17 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       lineHeight: rs.font(20),
     },
 
+    // Action-section wrappers — destacan las secciones de acción clínica
+    // (tratamiento, cuidados, alarma) sobre las teóricas
+    treatmentWrapper: {
+      borderWidth: 1.5,
+      borderRadius: 22,
+      marginHorizontal: rs.space(12),
+      marginVertical: rs.space(4),
+      overflow: 'hidden',
+      backgroundColor: colors.secondary + '08',
+    },
+
     // Nursing highlight wrapper
     nursingWrapper: {
       borderWidth: 2,
@@ -2065,6 +2178,7 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       marginHorizontal: rs.space(12),
       marginVertical: rs.space(4),
       overflow: 'hidden',
+      backgroundColor: colors.nursing + '08',
     },
 
     // Alarm criteria wrapper
@@ -2074,6 +2188,7 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       marginHorizontal: rs.space(12),
       marginVertical: rs.space(4),
       overflow: 'hidden',
+      backgroundColor: colors.error + '06',
     },
     alarmCard: {
       flexDirection: 'row',

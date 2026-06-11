@@ -127,8 +127,9 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
     },
     title: {
       fontSize: rs.font(15),
-      fontWeight: '600',
+      fontWeight: '700',
       color: colors.text,
+      letterSpacing: 0.1,
       flex: 1,
     },
     badge: {
