@@ -104,3 +104,6 @@ Thumbs.db
 *.swp
 .vscode/
 *.log
+
+# Claude Code local session config
+.claude/
