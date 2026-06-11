@@ -10,6 +10,7 @@ import {
   StyleSheet,
   StatusBar,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -170,23 +171,54 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
 
   // ── Empty state ───────────────────────────────────────────
 
+  const isFiltering = searchQuery.trim().length > 0;
+
   const ListEmpty = useMemo(
     () => (
       <View style={styles.emptyContainer}>
-        <MaterialCommunityIcons
-          name="magnify-remove-outline"
-          size={rs.font(56)}
-          color={colors.textLight}
-        />
-        <Text style={styles.emptyTitle}>Sin resultados</Text>
-        <Text style={styles.emptySubtitle}>
-          {searchQuery.trim()
-            ? `No se encontraron patologías que coincidan con "${searchQuery.trim()}"`
-            : 'No hay patologías en este sistema'}
+        <View
+          style={[
+            styles.emptyIconWrap,
+            { backgroundColor: systemColor + '14' },
+          ]}
+        >
+          <MaterialCommunityIcons
+            name={
+              isFiltering ? 'magnify-remove-outline' : 'folder-open-outline'
+            }
+            size={rs.font(36)}
+            color={systemColor}
+          />
+        </View>
+        <Text style={styles.emptyTitle}>
+          {isFiltering ? 'Sin resultados' : 'Sistema sin patologías'}
         </Text>
+        <Text style={styles.emptySubtitle}>
+          {isFiltering
+            ? `No se encontraron patologías que coincidan con "${searchQuery.trim()}"`
+            : 'Todavía no hay patologías cargadas en este sistema'}
+        </Text>
+        {isFiltering ? (
+          <TouchableOpacity
+            onPress={handleClearSearch}
+            style={[styles.emptyCta, { borderColor: systemColor + '60' }]}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Limpiar búsqueda"
+          >
+            <MaterialCommunityIcons
+              name="backspace-outline"
+              size={16}
+              color={systemColor}
+            />
+            <Text style={[styles.emptyCtaText, { color: systemColor }]}>
+              Limpiar búsqueda
+            </Text>
+          </TouchableOpacity>
+        ) : null}
       </View>
     ),
-    [searchQuery, colors, rs, styles],
+    [searchQuery, isFiltering, systemColor, handleClearSearch, rs, styles],
   );
 
   // ── Render ────────────────────────────────────────────────
@@ -264,8 +296,29 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: rs.space(40),
-      paddingTop: rs.space(80),
+      paddingTop: rs.space(60),
       gap: rs.space(12),
+    },
+    emptyIconWrap: {
+      width: rs.space(72),
+      height: rs.space(72),
+      borderRadius: rs.space(36),
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    emptyCta: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: rs.space(6),
+      borderWidth: 1.5,
+      borderRadius: 50,
+      paddingHorizontal: rs.space(16),
+      paddingVertical: rs.space(8),
+      marginTop: rs.space(4),
+    },
+    emptyCtaText: {
+      fontSize: rs.font(13),
+      fontWeight: '600',
     },
     emptyTitle: {
       fontSize: rs.font(18),

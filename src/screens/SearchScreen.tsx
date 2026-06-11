@@ -39,6 +39,17 @@ type NavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>
 >;
 
+// Términos clínicos genéricos con matches amplios — punto de partida
+// para el estado inicial sin query
+const SUGGESTED_QUERIES = [
+  'disnea',
+  'fiebre',
+  'dolor torácico',
+  'edema',
+  'cefalea',
+  'vómitos',
+];
+
 export function SearchScreen() {
   const { colors } = useTheme();
   const { isPremium } = usePremium();
@@ -160,18 +171,53 @@ export function SearchScreen() {
         </View>
       )}
 
+      {/* Sugerencias de búsqueda — estado inicial útil */}
+      {query.length === 0 && (
+        <View style={styles.suggestSection}>
+          <Text style={styles.suggestTitle}>
+            {history.length > 0
+              ? 'Sugerencias'
+              : 'Probá buscar por signo o síntoma'}
+          </Text>
+          <View style={styles.suggestChips}>
+            {SUGGESTED_QUERIES.map(s => (
+              <TouchableOpacity
+                key={s}
+                style={[
+                  styles.suggestChip,
+                  {
+                    borderColor: colors.primary + '35',
+                    backgroundColor: colors.primary + '10',
+                  },
+                ]}
+                onPress={() => setQuery(s)}
+                activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={`Buscar ${s}`}
+              >
+                <MaterialCommunityIcons
+                  name="magnify"
+                  size={13}
+                  color={colors.primary}
+                />
+                <Text
+                  style={[styles.suggestChipText, { color: colors.primary }]}
+                >
+                  {s}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      )}
+
       {showEmpty && (
         <View style={styles.emptyState}>
           <View
-            style={{
-              width: 72,
-              height: 72,
-              borderRadius: 36,
-              backgroundColor: colors.textLight + '15',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 12,
-            }}
+            style={[
+              styles.emptyIconWrap,
+              { backgroundColor: colors.textLight + '15' },
+            ]}
           >
             <MaterialCommunityIcons
               name="text-search"
@@ -183,6 +229,25 @@ export function SearchScreen() {
           <Text style={styles.emptyText}>
             No se encontraron patologías para "{query}"
           </Text>
+          <Text style={styles.emptyHint}>
+            Revisá la ortografía o probá con un término más corto
+          </Text>
+          <TouchableOpacity
+            onPress={clearSearch}
+            style={[styles.clearCta, { borderColor: colors.primary + '50' }]}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Limpiar búsqueda"
+          >
+            <MaterialCommunityIcons
+              name="backspace-outline"
+              size={16}
+              color={colors.primary}
+            />
+            <Text style={[styles.clearCtaText, { color: colors.primary }]}>
+              Limpiar búsqueda
+            </Text>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -265,6 +330,14 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       paddingHorizontal: rs.space(SPACING.xxxl),
       gap: rs.space(SPACING.sm),
     },
+    emptyIconWrap: {
+      width: 72,
+      height: 72,
+      borderRadius: 36,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: rs.space(SPACING.md),
+    },
     emptyTitle: {
       fontSize: rs.font(18),
       fontWeight: '700',
@@ -274,5 +347,52 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       fontSize: rs.font(14),
       color: colors.textSecondary,
       textAlign: 'center',
+    },
+    emptyHint: {
+      fontSize: rs.font(12),
+      color: colors.textLight,
+      textAlign: 'center',
+    },
+    clearCta: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: rs.space(6),
+      borderWidth: 1.5,
+      borderRadius: 50,
+      paddingHorizontal: rs.space(SPACING.lg),
+      paddingVertical: rs.space(SPACING.sm),
+      marginTop: rs.space(SPACING.md),
+    },
+    clearCtaText: {
+      fontSize: rs.font(13),
+      fontWeight: '600',
+    },
+    suggestSection: {
+      paddingHorizontal: rs.space(SPACING.lg),
+      paddingTop: rs.space(SPACING.md),
+    },
+    suggestTitle: {
+      fontSize: rs.font(14),
+      fontWeight: '700',
+      color: colors.text,
+      marginBottom: rs.space(SPACING.sm),
+    },
+    suggestChips: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: rs.space(SPACING.sm),
+    },
+    suggestChip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: rs.space(4),
+      borderWidth: 1,
+      borderRadius: 50,
+      paddingHorizontal: rs.space(SPACING.md),
+      paddingVertical: rs.space(SPACING.sm),
+    },
+    suggestChipText: {
+      fontSize: rs.font(13),
+      fontWeight: '600',
     },
   });
