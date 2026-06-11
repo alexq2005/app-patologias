@@ -36,8 +36,18 @@ function useFadeIn(duration = 400, delay = 0) {
 
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
-      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
     ]).start();
   }, [opacity, translateY, duration, delay]);
 
@@ -71,12 +81,15 @@ export function AllFavoritesScreen({ navigation }: Props) {
       .filter((p): p is Pathology => p !== undefined);
   }, [favorites, getPathologyById]);
 
-  const handlePress = useCallback((pathology: Pathology) => {
-    navigation.navigate('PathologyDetail', {
-      pathologyId: pathology.id,
-      pathologyName: pathology.nombre,
-    });
-  }, [navigation]);
+  const handlePress = useCallback(
+    (pathology: Pathology) => {
+      navigation.navigate('PathologyDetail', {
+        pathologyId: pathology.id,
+        pathologyName: pathology.nombre,
+      });
+    },
+    [navigation],
+  );
 
   const keyExtractor = useCallback((item: Pathology) => item.id, []);
 
@@ -98,12 +111,22 @@ export function AllFavoritesScreen({ navigation }: Props) {
 
   const renderEmpty = () => (
     <View style={styles.emptyContainer}>
-      <View style={{
-        width: rs.space(80), height: rs.space(80), borderRadius: rs.space(40),
-        backgroundColor: colors.primary + '12', alignItems: 'center', justifyContent: 'center',
-        marginBottom: rs.space(16),
-      }}>
-        <MaterialCommunityIcons name="heart-plus-outline" size={rs.font(36)} color={colors.primary} />
+      <View
+        style={{
+          width: rs.space(80),
+          height: rs.space(80),
+          borderRadius: rs.space(40),
+          backgroundColor: colors.primary + '12',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: rs.space(16),
+        }}
+      >
+        <MaterialCommunityIcons
+          name="heart-plus-outline"
+          size={rs.font(36)}
+          color={colors.primary}
+        />
       </View>
       <Text style={styles.emptyTitle}>Guardá tus patologías</Text>
       <Text style={styles.emptySubtitle}>
@@ -114,27 +137,40 @@ export function AllFavoritesScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {/* Header */}
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={[
+          styles.header,
+          { paddingTop: insets.top + rs.space(SPACING.lg) },
+        ]}
       >
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color={colors.gradientText} />
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={rs.font(22)}
+            color={colors.gradientText}
+          />
         </TouchableOpacity>
         <Animated.View style={{ opacity, transform: [{ translateY }] }}>
           <Text style={styles.headerTitle}>Mis Favoritos</Text>
           <Text style={styles.headerSubtitle}>
             {favoritePathologies.length}{' '}
-            {favoritePathologies.length === 1 ? 'patología guardada' : 'patologías guardadas'}
+            {favoritePathologies.length === 1
+              ? 'patología guardada'
+              : 'patologías guardadas'}
           </Text>
         </Animated.View>
       </LinearGradient>

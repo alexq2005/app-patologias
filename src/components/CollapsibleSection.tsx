@@ -1,5 +1,14 @@
 import React, { useState, useMemo, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, Animated } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+  Animated,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
@@ -7,7 +16,10 @@ import { neuCardSubtle } from '../utils/neumorphism';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 // Enable LayoutAnimation on Android
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
@@ -62,7 +74,14 @@ export function CollapsibleSection({
         accessibilityState={{ expanded: isOpen }}
       >
         <View style={styles.titleRow}>
-          {icon ? <MaterialCommunityIcons name={icon} size={18} color={accent} style={{ marginRight: 8 }} /> : null}
+          {icon ? (
+            <MaterialCommunityIcons
+              name={icon}
+              size={18}
+              color={accent}
+              style={{ marginRight: 8 }}
+            />
+          ) : null}
           <Text style={styles.title}>{title}</Text>
           {badge ? (
             <View style={[styles.badge, { backgroundColor: accent + '20' }]}>
@@ -70,7 +89,11 @@ export function CollapsibleSection({
             </View>
           ) : null}
         </View>
-        <Animated.Text style={[styles.chevron, { transform: [{ rotate: chevronRotate }] }]}>▼</Animated.Text>
+        <Animated.Text
+          style={[styles.chevron, { transform: [{ rotate: chevronRotate }] }]}
+        >
+          ▼
+        </Animated.Text>
       </TouchableOpacity>
 
       {isOpen && <View style={styles.content}>{children}</View>}
@@ -78,52 +101,53 @@ export function CollapsibleSection({
   );
 }
 
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
-  container: {
-    marginHorizontal: rs.space(16),
-    marginVertical: 4,
-    ...neuCardSubtle(colors),
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: rs.space(14),
-    borderLeftWidth: 4,
-    borderTopLeftRadius: 16,
-  },
-  titleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  icon: {
-    fontSize: rs.font(18),
-    marginRight: rs.space(8),
-  },
-  title: {
-    fontSize: rs.font(15),
-    fontWeight: '600',
-    color: colors.text,
-    flex: 1,
-  },
-  badge: {
-    paddingHorizontal: rs.space(8),
-    paddingVertical: 2,
-    borderRadius: 10,
-    marginLeft: rs.space(8),
-  },
-  badgeText: {
-    fontSize: rs.font(11),
-    fontWeight: '700',
-  },
-  chevron: {
-    fontSize: rs.font(12),
-    color: colors.textLight,
-    marginLeft: rs.space(8),
-  },
-  content: {
-    paddingHorizontal: rs.space(14),
-    paddingBottom: rs.space(14),
-  },
-});
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
+  StyleSheet.create({
+    container: {
+      marginHorizontal: rs.space(16),
+      marginVertical: 4,
+      ...neuCardSubtle(colors),
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: rs.space(14),
+      borderLeftWidth: 4,
+      borderTopLeftRadius: 16,
+    },
+    titleRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      flex: 1,
+    },
+    icon: {
+      fontSize: rs.font(18),
+      marginRight: rs.space(8),
+    },
+    title: {
+      fontSize: rs.font(15),
+      fontWeight: '600',
+      color: colors.text,
+      flex: 1,
+    },
+    badge: {
+      paddingHorizontal: rs.space(8),
+      paddingVertical: 2,
+      borderRadius: 10,
+      marginLeft: rs.space(8),
+    },
+    badgeText: {
+      fontSize: rs.font(11),
+      fontWeight: '700',
+    },
+    chevron: {
+      fontSize: rs.font(12),
+      color: colors.textLight,
+      marginLeft: rs.space(8),
+    },
+    content: {
+      paddingHorizontal: rs.space(14),
+      paddingBottom: rs.space(14),
+    },
+  });

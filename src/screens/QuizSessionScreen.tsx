@@ -25,7 +25,12 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import type { RootStackParamList, QuizSession, QuizResult, BodySystemId } from '../types';
+import type {
+  RootStackParamList,
+  QuizSession,
+  QuizResult,
+  BodySystemId,
+} from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { useQuiz } from '../hooks/useQuiz';
@@ -77,12 +82,20 @@ function ProgressBar({ current, total, colors, rs }: ProgressBarProps) {
         }}
       >
         <Text
-          style={{ fontSize: rs.font(12), color: colors.textSecondary, fontWeight: '600' }}
+          style={{
+            fontSize: rs.font(12),
+            color: colors.textSecondary,
+            fontWeight: '600',
+          }}
         >
           Pregunta {current} de {total}
         </Text>
         <Text
-          style={{ fontSize: rs.font(12), color: colors.primary, fontWeight: '700' }}
+          style={{
+            fontSize: rs.font(12),
+            color: colors.primary,
+            fontWeight: '700',
+          }}
         >
           {Math.round(pct)}%
         </Text>
@@ -189,11 +202,12 @@ function OptionButton({
           width: rs.space(28),
           height: rs.space(28),
           borderRadius: rs.space(14),
-          backgroundColor: hasAnswered && isCorrect
-            ? colors.quizCorrect + '25'
-            : hasAnswered && isSelected
-            ? colors.quizWrong + '20'
-            : colors.primary + '15',
+          backgroundColor:
+            hasAnswered && isCorrect
+              ? colors.quizCorrect + '25'
+              : hasAnswered && isSelected
+              ? colors.quizWrong + '20'
+              : colors.primary + '15',
           alignItems: 'center',
           justifyContent: 'center',
           marginRight: rs.space(SPACING.sm),
@@ -204,11 +218,12 @@ function OptionButton({
           style={{
             fontSize: rs.font(12),
             fontWeight: '800',
-            color: hasAnswered && isCorrect
-              ? colors.quizCorrect
-              : hasAnswered && isSelected
-              ? colors.quizWrong
-              : colors.primary,
+            color:
+              hasAnswered && isCorrect
+                ? colors.quizCorrect
+                : hasAnswered && isSelected
+                ? colors.quizWrong
+                : colors.primary,
           }}
         >
           {letterLabels[index]}
@@ -253,7 +268,15 @@ interface SummaryProps {
   insets: { bottom: number };
 }
 
-function SummaryScreen({ session, category, onBack, onNavigateToPathology, colors, rs, insets }: SummaryProps) {
+function SummaryScreen({
+  session,
+  category,
+  onBack,
+  onNavigateToPathology,
+  colors,
+  rs,
+  insets,
+}: SummaryProps) {
   const totalQ = session.questions.length;
   const correct = session.answers.reduce<number>((acc, ans, idx) => {
     return ans === session.questions[idx].correctIndex ? acc + 1 : acc;
@@ -263,11 +286,19 @@ function SummaryScreen({ session, category, onBack, onNavigateToPathology, color
   const scoreColor =
     pct >= 80 ? colors.success : pct >= 60 ? colors.warning : colors.error;
   const scoreIcon =
-    pct >= 80 ? 'trophy-outline' : pct >= 60 ? 'star-half-full' : 'emoticon-sad-outline';
+    pct >= 80
+      ? 'trophy-outline'
+      : pct >= 60
+      ? 'star-half-full'
+      : 'emoticon-sad-outline';
 
   // Collect wrong answers for review
   const wrongQuestions = session.questions
-    .map((q, idx) => ({ question: q, userAnswer: session.answers[idx], index: idx }))
+    .map((q, idx) => ({
+      question: q,
+      userAnswer: session.answers[idx],
+      index: idx,
+    }))
     .filter(item => item.userAnswer !== item.question.correctIndex);
 
   const [showReview, setShowReview] = useState(false);
@@ -363,42 +394,100 @@ function SummaryScreen({ session, category, onBack, onNavigateToPathology, color
       </Text>
 
       {/* Stats cards */}
-      <View style={{ flexDirection: 'row', gap: rs.space(SPACING.sm), marginBottom: rs.space(SPACING.xxl), width: '100%' }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          gap: rs.space(SPACING.sm),
+          marginBottom: rs.space(SPACING.xxl),
+          width: '100%',
+        }}
+      >
         <View
           style={[
             neuCardSubtle(colors),
-            { flex: 1, alignItems: 'center', paddingVertical: rs.space(SPACING.md) },
+            {
+              flex: 1,
+              alignItems: 'center',
+              paddingVertical: rs.space(SPACING.md),
+            },
           ]}
         >
-          <MaterialCommunityIcons name="check-circle-outline" size={20} color={colors.success} />
-          <Text style={{ fontSize: rs.font(20), fontWeight: '800', color: colors.text, marginTop: rs.space(4) }}>
+          <MaterialCommunityIcons
+            name="check-circle-outline"
+            size={20}
+            color={colors.success}
+          />
+          <Text
+            style={{
+              fontSize: rs.font(20),
+              fontWeight: '800',
+              color: colors.text,
+              marginTop: rs.space(4),
+            }}
+          >
             {correct}
           </Text>
-          <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>Correctas</Text>
+          <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>
+            Correctas
+          </Text>
         </View>
         <View
           style={[
             neuCardSubtle(colors),
-            { flex: 1, alignItems: 'center', paddingVertical: rs.space(SPACING.md) },
+            {
+              flex: 1,
+              alignItems: 'center',
+              paddingVertical: rs.space(SPACING.md),
+            },
           ]}
         >
-          <MaterialCommunityIcons name="close-circle-outline" size={20} color={colors.error} />
-          <Text style={{ fontSize: rs.font(20), fontWeight: '800', color: colors.text, marginTop: rs.space(4) }}>
+          <MaterialCommunityIcons
+            name="close-circle-outline"
+            size={20}
+            color={colors.error}
+          />
+          <Text
+            style={{
+              fontSize: rs.font(20),
+              fontWeight: '800',
+              color: colors.text,
+              marginTop: rs.space(4),
+            }}
+          >
             {totalQ - correct}
           </Text>
-          <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>Incorrectas</Text>
+          <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>
+            Incorrectas
+          </Text>
         </View>
         <View
           style={[
             neuCardSubtle(colors),
-            { flex: 1, alignItems: 'center', paddingVertical: rs.space(SPACING.md) },
+            {
+              flex: 1,
+              alignItems: 'center',
+              paddingVertical: rs.space(SPACING.md),
+            },
           ]}
         >
-          <MaterialCommunityIcons name="help-circle-outline" size={20} color={colors.quiz} />
-          <Text style={{ fontSize: rs.font(20), fontWeight: '800', color: colors.text, marginTop: rs.space(4) }}>
+          <MaterialCommunityIcons
+            name="help-circle-outline"
+            size={20}
+            color={colors.quiz}
+          />
+          <Text
+            style={{
+              fontSize: rs.font(20),
+              fontWeight: '800',
+              color: colors.text,
+              marginTop: rs.space(4),
+            }}
+          >
             {totalQ}
           </Text>
-          <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>Total</Text>
+          <Text style={{ fontSize: rs.font(11), color: colors.textSecondary }}>
+            Total
+          </Text>
         </View>
       </View>
 
@@ -415,8 +504,18 @@ function SummaryScreen({ session, category, onBack, onNavigateToPathology, color
           marginBottom: rs.space(SPACING.lg),
         }}
       >
-        <MaterialCommunityIcons name="view-grid-outline" size={16} color={colors.primary} />
-        <Text style={{ fontSize: rs.font(13), fontWeight: '600', color: colors.primary }}>
+        <MaterialCommunityIcons
+          name="view-grid-outline"
+          size={16}
+          color={colors.primary}
+        />
+        <Text
+          style={{
+            fontSize: rs.font(13),
+            fontWeight: '600',
+            color: colors.primary,
+          }}
+        >
           {category === 'Todos' ? 'Todos los sistemas' : category}
         </Text>
       </View>
@@ -445,145 +544,285 @@ function SummaryScreen({ session, category, onBack, onNavigateToPathology, color
               size={20}
               color={colors.error}
             />
-            <Text style={{ fontSize: rs.font(14), fontWeight: '700', color: colors.error }}>
-              {showReview ? 'Ocultar revisión' : `Revisar ${wrongQuestions.length} error${wrongQuestions.length > 1 ? 'es' : ''} — ¡Aprende!`}
+            <Text
+              style={{
+                fontSize: rs.font(14),
+                fontWeight: '700',
+                color: colors.error,
+              }}
+            >
+              {showReview
+                ? 'Ocultar revisión'
+                : `Revisar ${wrongQuestions.length} error${
+                    wrongQuestions.length > 1 ? 'es' : ''
+                  } — ¡Aprende!`}
             </Text>
           </TouchableOpacity>
 
-          {showReview && wrongQuestions.map((item, _wIdx) => (
-            <View
-              key={item.question.id}
-              style={[
-                neuCardSubtle(colors),
-                {
-                  marginTop: rs.space(SPACING.md),
-                  padding: rs.space(SPACING.md),
-                  borderLeftWidth: 3,
-                  borderLeftColor: colors.error + '60',
-                },
-              ]}
-            >
-              {/* Question number + type */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(6), marginBottom: rs.space(6) }}>
-                <View style={{
-                  backgroundColor: colors.error + '18',
-                  borderRadius: 12,
-                  width: 24, height: 24,
-                  alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <Text style={{ fontSize: rs.font(11), fontWeight: '800', color: colors.error }}>
-                    {item.index + 1}
-                  </Text>
-                </View>
-                <Text style={{ fontSize: rs.font(11), fontWeight: '600', color: colors.textSecondary }}>
-                  {item.question.type.charAt(0).toUpperCase() + item.question.type.slice(1)} — {item.question.pathologyName}
-                </Text>
-              </View>
-
-              {/* Question text */}
-              <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text, marginBottom: rs.space(8), lineHeight: 19 }}>
-                {item.question.questionText}
-              </Text>
-
-              {/* What you answered vs correct */}
-              <View style={{
-                backgroundColor: colors.quizWrong + '10',
-                borderRadius: 8,
-                padding: rs.space(8),
-                marginBottom: rs.space(6),
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                gap: rs.space(6),
-              }}>
-                <MaterialCommunityIcons name="close-circle" size={15} color={colors.quizWrong} style={{ marginTop: 2 }} />
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: rs.font(10), fontWeight: '600', color: colors.quizWrong }}>Tu respuesta:</Text>
-                  <Text style={{ fontSize: rs.font(12), color: colors.text }}>
-                    {item.userAnswer != null ? item.question.options[item.userAnswer] : 'Sin respuesta'}
-                  </Text>
-                </View>
-              </View>
-
-              <View style={{
-                backgroundColor: colors.quizCorrect + '10',
-                borderRadius: 8,
-                padding: rs.space(8),
-                marginBottom: rs.space(8),
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                gap: rs.space(6),
-              }}>
-                <MaterialCommunityIcons name="check-circle" size={15} color={colors.quizCorrect} style={{ marginTop: 2 }} />
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: rs.font(10), fontWeight: '600', color: colors.quizCorrect }}>Respuesta correcta:</Text>
-                  <Text style={{ fontSize: rs.font(12), fontWeight: '700', color: colors.text }}>
-                    {item.question.options[item.question.correctIndex]}
-                  </Text>
-                </View>
-              </View>
-
-              {/* Explanation */}
-              <Text style={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: 18, marginBottom: rs.space(6) }}>
-                {item.question.explanation}
-              </Text>
-
-              {/* Clinical pearl in review */}
-              {item.question.clinicalPearl && (
-                <View style={{
-                  backgroundColor: colors.primary + '08',
-                  borderRadius: 8,
-                  padding: rs.space(8),
-                  marginBottom: rs.space(6),
-                  flexDirection: 'row',
-                  gap: rs.space(6),
-                }}>
-                  <MaterialCommunityIcons name="lightbulb-outline" size={14} color={colors.primary} style={{ marginTop: 1 }} />
-                  <Text style={{ flex: 1, fontSize: rs.font(11), color: colors.primary, lineHeight: 16 }}>
-                    {item.question.clinicalPearl}
-                  </Text>
-                </View>
-              )}
-
-              {/* Go to pathology */}
-              <TouchableOpacity
-                onPress={() => onNavigateToPathology(item.question.pathologyId)}
-                activeOpacity={0.7}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: rs.space(4),
-                  paddingVertical: rs.space(6),
-                }}
+          {showReview &&
+            wrongQuestions.map((item, _wIdx) => (
+              <View
+                key={item.question.id}
+                style={[
+                  neuCardSubtle(colors),
+                  {
+                    marginTop: rs.space(SPACING.md),
+                    padding: rs.space(SPACING.md),
+                    borderLeftWidth: 3,
+                    borderLeftColor: colors.error + '60',
+                  },
+                ]}
               >
-                <MaterialCommunityIcons name="book-open-variant" size={14} color={colors.primary} />
-                <Text style={{ fontSize: rs.font(12), fontWeight: '600', color: colors.primary }}>
-                  Estudiar {item.question.pathologyName}
+                {/* Question number + type */}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: rs.space(6),
+                    marginBottom: rs.space(6),
+                  }}
+                >
+                  <View
+                    style={{
+                      backgroundColor: colors.error + '18',
+                      borderRadius: 12,
+                      width: 24,
+                      height: 24,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: rs.font(11),
+                        fontWeight: '800',
+                        color: colors.error,
+                      }}
+                    >
+                      {item.index + 1}
+                    </Text>
+                  </View>
+                  <Text
+                    style={{
+                      fontSize: rs.font(11),
+                      fontWeight: '600',
+                      color: colors.textSecondary,
+                    }}
+                  >
+                    {item.question.type.charAt(0).toUpperCase() +
+                      item.question.type.slice(1)}{' '}
+                    — {item.question.pathologyName}
+                  </Text>
+                </View>
+
+                {/* Question text */}
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    fontWeight: '700',
+                    color: colors.text,
+                    marginBottom: rs.space(8),
+                    lineHeight: 19,
+                  }}
+                >
+                  {item.question.questionText}
                 </Text>
-              </TouchableOpacity>
-            </View>
-          ))}
+
+                {/* What you answered vs correct */}
+                <View
+                  style={{
+                    backgroundColor: colors.quizWrong + '10',
+                    borderRadius: 8,
+                    padding: rs.space(8),
+                    marginBottom: rs.space(6),
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
+                    gap: rs.space(6),
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="close-circle"
+                    size={15}
+                    color={colors.quizWrong}
+                    style={{ marginTop: 2 }}
+                  />
+                  <View style={{ flex: 1 }}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(10),
+                        fontWeight: '600',
+                        color: colors.quizWrong,
+                      }}
+                    >
+                      Tu respuesta:
+                    </Text>
+                    <Text style={{ fontSize: rs.font(12), color: colors.text }}>
+                      {item.userAnswer != null
+                        ? item.question.options[item.userAnswer]
+                        : 'Sin respuesta'}
+                    </Text>
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    backgroundColor: colors.quizCorrect + '10',
+                    borderRadius: 8,
+                    padding: rs.space(8),
+                    marginBottom: rs.space(8),
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
+                    gap: rs.space(6),
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="check-circle"
+                    size={15}
+                    color={colors.quizCorrect}
+                    style={{ marginTop: 2 }}
+                  />
+                  <View style={{ flex: 1 }}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(10),
+                        fontWeight: '600',
+                        color: colors.quizCorrect,
+                      }}
+                    >
+                      Respuesta correcta:
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: rs.font(12),
+                        fontWeight: '700',
+                        color: colors.text,
+                      }}
+                    >
+                      {item.question.options[item.question.correctIndex]}
+                    </Text>
+                  </View>
+                </View>
+
+                {/* Explanation */}
+                <Text
+                  style={{
+                    fontSize: rs.font(12),
+                    color: colors.textSecondary,
+                    lineHeight: 18,
+                    marginBottom: rs.space(6),
+                  }}
+                >
+                  {item.question.explanation}
+                </Text>
+
+                {/* Clinical pearl in review */}
+                {item.question.clinicalPearl && (
+                  <View
+                    style={{
+                      backgroundColor: colors.primary + '08',
+                      borderRadius: 8,
+                      padding: rs.space(8),
+                      marginBottom: rs.space(6),
+                      flexDirection: 'row',
+                      gap: rs.space(6),
+                    }}
+                  >
+                    <MaterialCommunityIcons
+                      name="lightbulb-outline"
+                      size={14}
+                      color={colors.primary}
+                      style={{ marginTop: 1 }}
+                    />
+                    <Text
+                      style={{
+                        flex: 1,
+                        fontSize: rs.font(11),
+                        color: colors.primary,
+                        lineHeight: 16,
+                      }}
+                    >
+                      {item.question.clinicalPearl}
+                    </Text>
+                  </View>
+                )}
+
+                {/* Go to pathology */}
+                <TouchableOpacity
+                  onPress={() =>
+                    onNavigateToPathology(item.question.pathologyId)
+                  }
+                  activeOpacity={0.7}
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: rs.space(4),
+                    paddingVertical: rs.space(6),
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="book-open-variant"
+                    size={14}
+                    color={colors.primary}
+                  />
+                  <Text
+                    style={{
+                      fontSize: rs.font(12),
+                      fontWeight: '600',
+                      color: colors.primary,
+                    }}
+                  >
+                    Estudiar {item.question.pathologyName}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ))}
         </View>
       )}
 
       {/* Motivational message based on score */}
-      <View style={[
-        neuCardSubtle(colors),
-        {
-          width: '100%',
-          padding: rs.space(SPACING.md),
-          marginBottom: rs.space(SPACING.lg),
-          borderLeftWidth: 3,
-          borderLeftColor: scoreColor,
-        },
-      ]}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(6), marginBottom: rs.space(4) }}>
-          <MaterialCommunityIcons name="lightbulb-on-outline" size={16} color={scoreColor} />
-          <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: scoreColor }}>
+      <View
+        style={[
+          neuCardSubtle(colors),
+          {
+            width: '100%',
+            padding: rs.space(SPACING.md),
+            marginBottom: rs.space(SPACING.lg),
+            borderLeftWidth: 3,
+            borderLeftColor: scoreColor,
+          },
+        ]}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: rs.space(6),
+            marginBottom: rs.space(4),
+          }}
+        >
+          <MaterialCommunityIcons
+            name="lightbulb-on-outline"
+            size={16}
+            color={scoreColor}
+          />
+          <Text
+            style={{
+              fontSize: rs.font(13),
+              fontWeight: '700',
+              color: scoreColor,
+            }}
+          >
             Consejo de estudio
           </Text>
         </View>
-        <Text style={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: 18 }}>
+        <Text
+          style={{
+            fontSize: rs.font(12),
+            color: colors.textSecondary,
+            lineHeight: 18,
+          }}
+        >
           {pct >= 80
             ? 'Dominas bien este tema. Intenta aumentar la dificultad eligiendo otro sistema corporal o mezclando todos los sistemas para un desafío mayor.'
             : pct >= 60
@@ -617,7 +856,9 @@ function SummaryScreen({ session, category, onBack, onNavigateToPathology, color
           color="#FFFFFF"
           style={{ marginRight: rs.space(SPACING.sm) }}
         />
-        <Text style={{ fontSize: rs.font(16), fontWeight: '700', color: '#FFFFFF' }}>
+        <Text
+          style={{ fontSize: rs.font(16), fontWeight: '700', color: '#FFFFFF' }}
+        >
           Volver al inicio
         </Text>
       </TouchableOpacity>
@@ -665,7 +906,11 @@ export function QuizSessionScreen({ navigation, route }: Props) {
       '¿Estás seguro? Se perderá tu progreso actual.',
       [
         { text: 'Continuar test', style: 'cancel' },
-        { text: 'Salir', style: 'destructive', onPress: () => navigation.goBack() },
+        {
+          text: 'Salir',
+          style: 'destructive',
+          onPress: () => navigation.goBack(),
+        },
       ],
     );
   }, [navigation]);
@@ -676,13 +921,25 @@ export function QuizSessionScreen({ navigation, route }: Props) {
         ? undefined
         : () => (
             <TouchableOpacity onPress={confirmExit} style={{ padding: 8 }}>
-              <MaterialCommunityIcons name="close" size={24} color={colors.text} />
+              <MaterialCommunityIcons
+                name="close"
+                size={24}
+                color={colors.text}
+              />
             </TouchableOpacity>
           ),
       gestureEnabled: false,
-      title: showSummary ? 'Resultado' : `Pregunta ${(session?.currentIndex ?? 0) + 1}`,
+      title: showSummary
+        ? 'Resultado'
+        : `Pregunta ${(session?.currentIndex ?? 0) + 1}`,
     });
-  }, [navigation, showSummary, session?.currentIndex, confirmExit, colors.text]);
+  }, [
+    navigation,
+    showSummary,
+    session?.currentIndex,
+    confirmExit,
+    colors.text,
+  ]);
 
   // Android hardware back button — confirm exit during quiz
   useEffect(() => {
@@ -733,7 +990,9 @@ export function QuizSessionScreen({ navigation, route }: Props) {
       // Compute result
       const totalQ = updatedSession.questions.length;
       const correct = updatedSession.answers.reduce<number>((acc, ans, idx) => {
-        return ans === updatedSession.questions[idx].correctIndex ? acc + 1 : acc;
+        return ans === updatedSession.questions[idx].correctIndex
+          ? acc + 1
+          : acc;
       }, 0);
       const pct = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
 
@@ -751,7 +1010,10 @@ export function QuizSessionScreen({ navigation, route }: Props) {
         saveResult(result);
       }
 
-      setSession({ ...updatedSession, currentIndex: updatedSession.currentIndex });
+      setSession({
+        ...updatedSession,
+        currentIndex: updatedSession.currentIndex,
+      });
       setShowSummary(true);
     } else {
       setSession({
@@ -770,9 +1032,26 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
   if (!session) {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' }}>
-        <MaterialCommunityIcons name="loading" size={40} color={colors.primary} />
-        <Text style={{ marginTop: 12, fontSize: rs.font(14), color: colors.textSecondary }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: colors.background,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <MaterialCommunityIcons
+          name="loading"
+          size={40}
+          color={colors.primary}
+        />
+        <Text
+          style={{
+            marginTop: 12,
+            fontSize: rs.font(14),
+            color: colors.textSecondary,
+          }}
+        >
           Generando preguntas...
         </Text>
       </View>
@@ -781,9 +1060,28 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
   if (session.questions.length === 0) {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center', paddingHorizontal: rs.space(SPACING.xxxl) }}>
-        <MaterialCommunityIcons name="alert-circle-outline" size={48} color={colors.textLight} />
-        <Text style={{ fontSize: rs.font(16), color: colors.textSecondary, textAlign: 'center', marginTop: rs.space(SPACING.md) }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: colors.background,
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingHorizontal: rs.space(SPACING.xxxl),
+        }}
+      >
+        <MaterialCommunityIcons
+          name="alert-circle-outline"
+          size={48}
+          color={colors.textLight}
+        />
+        <Text
+          style={{
+            fontSize: rs.font(16),
+            color: colors.textSecondary,
+            textAlign: 'center',
+            marginTop: rs.space(SPACING.md),
+          }}
+        >
           No se pudieron generar preguntas para esta seleccion.
         </Text>
         <TouchableOpacity
@@ -796,7 +1094,15 @@ export function QuizSessionScreen({ navigation, route }: Props) {
           }}
           onPress={handleBack}
         >
-          <Text style={{ fontSize: rs.font(15), fontWeight: '700', color: '#FFFFFF' }}>Volver</Text>
+          <Text
+            style={{
+              fontSize: rs.font(15),
+              fontWeight: '700',
+              color: '#FFFFFF',
+            }}
+          >
+            Volver
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -807,12 +1113,19 @@ export function QuizSessionScreen({ navigation, route }: Props) {
   if (showSummary) {
     return (
       <View style={{ flex: 1, backgroundColor: colors.background }}>
-        <StatusBar barStyle={colors.background === '#0F172A' ? 'light-content' : 'dark-content'} backgroundColor={colors.background} />
+        <StatusBar
+          barStyle={
+            colors.background === '#0F172A' ? 'light-content' : 'dark-content'
+          }
+          backgroundColor={colors.background}
+        />
         <SummaryScreen
           session={session}
           category={categoryLabel}
           onBack={handleBack}
-          onNavigateToPathology={(pathologyId) => navigation.navigate('PathologyDetail', { pathologyId })}
+          onNavigateToPathology={pathologyId =>
+            navigation.navigate('PathologyDetail', { pathologyId })
+          }
           colors={colors}
           rs={rs}
           insets={insets}
@@ -831,7 +1144,12 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={colors.background === '#0F172A' ? 'light-content' : 'dark-content'} backgroundColor={colors.background} />
+      <StatusBar
+        barStyle={
+          colors.background === '#0F172A' ? 'light-content' : 'dark-content'
+        }
+        backgroundColor={colors.background}
+      />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -855,10 +1173,17 @@ export function QuizSessionScreen({ navigation, route }: Props) {
           <View
             style={[
               styles.typeBadge,
-              { backgroundColor: colors.quiz + '18', borderColor: colors.quiz + '35' },
+              {
+                backgroundColor: colors.quiz + '18',
+                borderColor: colors.quiz + '35',
+              },
             ]}
           >
-            <MaterialCommunityIcons name="brain" size={12} color={colors.quiz} />
+            <MaterialCommunityIcons
+              name="brain"
+              size={12}
+              color={colors.quiz}
+            />
             <Text style={[styles.typeBadgeText, { color: colors.quiz }]}>
               {currentQ.type.charAt(0).toUpperCase() + currentQ.type.slice(1)}
             </Text>
@@ -866,7 +1191,10 @@ export function QuizSessionScreen({ navigation, route }: Props) {
           <View
             style={[
               styles.typeBadge,
-              { backgroundColor: colors.primary + '12', borderColor: colors.primary + '25' },
+              {
+                backgroundColor: colors.primary + '12',
+                borderColor: colors.primary + '25',
+              },
             ]}
           >
             <Text style={[styles.typeBadgeText, { color: colors.primary }]}>
@@ -876,12 +1204,7 @@ export function QuizSessionScreen({ navigation, route }: Props) {
         </View>
 
         {/* Question card */}
-        <View
-          style={[
-            neuCard(colors),
-            styles.questionCard,
-          ]}
-        >
+        <View style={[neuCard(colors), styles.questionCard]}>
           <Text style={styles.questionText}>{currentQ.questionText}</Text>
         </View>
 
@@ -911,7 +1234,9 @@ export function QuizSessionScreen({ navigation, route }: Props) {
                 styles.explanationCard,
                 {
                   borderLeftWidth: 3,
-                  borderLeftColor: isCorrect ? colors.quizCorrect : colors.quizWrong,
+                  borderLeftColor: isCorrect
+                    ? colors.quizCorrect
+                    : colors.quizWrong,
                 },
               ]}
             >
@@ -924,7 +1249,9 @@ export function QuizSessionScreen({ navigation, route }: Props) {
                 <Text
                   style={[
                     styles.explanationTitle,
-                    { color: isCorrect ? colors.quizCorrect : colors.quizWrong },
+                    {
+                      color: isCorrect ? colors.quizCorrect : colors.quizWrong,
+                    },
                   ]}
                 >
                   {isCorrect ? '¡Correcto!' : 'Respuesta incorrecta'}
@@ -933,21 +1260,41 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
               {/* Show correct answer when wrong */}
               {!isCorrect && (
-                <View style={{
-                  flexDirection: 'row',
-                  alignItems: 'flex-start',
-                  backgroundColor: colors.quizCorrect + '12',
-                  borderRadius: 10,
-                  padding: rs.space(10),
-                  marginBottom: rs.space(8),
-                  gap: rs.space(6),
-                }}>
-                  <MaterialCommunityIcons name="check-circle" size={16} color={colors.quizCorrect} style={{ marginTop: 2 }} />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
+                    backgroundColor: colors.quizCorrect + '12',
+                    borderRadius: 10,
+                    padding: rs.space(10),
+                    marginBottom: rs.space(8),
+                    gap: rs.space(6),
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="check-circle"
+                    size={16}
+                    color={colors.quizCorrect}
+                    style={{ marginTop: 2 }}
+                  />
                   <View style={{ flex: 1 }}>
-                    <Text style={{ fontSize: rs.font(11), fontWeight: '600', color: colors.quizCorrect, marginBottom: 2 }}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(11),
+                        fontWeight: '600',
+                        color: colors.quizCorrect,
+                        marginBottom: 2,
+                      }}
+                    >
                       Respuesta correcta:
                     </Text>
-                    <Text style={{ fontSize: rs.font(13), fontWeight: '700', color: colors.text }}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(13),
+                        fontWeight: '700',
+                        color: colors.text,
+                      }}
+                    >
                       {currentQ.options[currentQ.correctIndex]}
                     </Text>
                   </View>
@@ -960,18 +1307,43 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
             {/* Clinical pearl — brief definition */}
             {currentQ.clinicalPearl && (
-              <View style={[
-                neuCardSubtle(colors),
-                styles.explanationCard,
-                { borderLeftWidth: 3, borderLeftColor: colors.primary },
-              ]}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6), gap: rs.space(6) }}>
-                  <MaterialCommunityIcons name="lightbulb-outline" size={16} color={colors.primary} />
-                  <Text style={{ fontSize: rs.font(12), fontWeight: '800', color: colors.primary }}>
+              <View
+                style={[
+                  neuCardSubtle(colors),
+                  styles.explanationCard,
+                  { borderLeftWidth: 3, borderLeftColor: colors.primary },
+                ]}
+              >
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginBottom: rs.space(6),
+                    gap: rs.space(6),
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="lightbulb-outline"
+                    size={16}
+                    color={colors.primary}
+                  />
+                  <Text
+                    style={{
+                      fontSize: rs.font(12),
+                      fontWeight: '800',
+                      color: colors.primary,
+                    }}
+                  >
                     ¿Sabías que...?
                   </Text>
                 </View>
-                <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: 19 }}>
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    color: colors.textSecondary,
+                    lineHeight: 19,
+                  }}
+                >
                   {currentQ.clinicalPearl}
                 </Text>
               </View>
@@ -979,18 +1351,46 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
             {/* Key fact — memorable learning point */}
             {currentQ.keyFact && (
-              <View style={[
-                neuCardSubtle(colors),
-                styles.explanationCard,
-                { borderLeftWidth: 3, borderLeftColor: colors.warning || '#F59E0B' },
-              ]}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6), gap: rs.space(6) }}>
-                  <MaterialCommunityIcons name="bookmark-outline" size={16} color={colors.warning || '#F59E0B'} />
-                  <Text style={{ fontSize: rs.font(12), fontWeight: '800', color: colors.warning || '#F59E0B' }}>
+              <View
+                style={[
+                  neuCardSubtle(colors),
+                  styles.explanationCard,
+                  {
+                    borderLeftWidth: 3,
+                    borderLeftColor: colors.warning || '#F59E0B',
+                  },
+                ]}
+              >
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginBottom: rs.space(6),
+                    gap: rs.space(6),
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="bookmark-outline"
+                    size={16}
+                    color={colors.warning || '#F59E0B'}
+                  />
+                  <Text
+                    style={{
+                      fontSize: rs.font(12),
+                      fontWeight: '800',
+                      color: colors.warning || '#F59E0B',
+                    }}
+                  >
                     Dato clave
                   </Text>
                 </View>
-                <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: 19 }}>
+                <Text
+                  style={{
+                    fontSize: rs.font(13),
+                    color: colors.textSecondary,
+                    lineHeight: 19,
+                  }}
+                >
                   {currentQ.keyFact}
                 </Text>
               </View>
@@ -998,7 +1398,11 @@ export function QuizSessionScreen({ navigation, route }: Props) {
 
             {/* Link to pathology detail */}
             <TouchableOpacity
-              onPress={() => navigation.navigate('PathologyDetail', { pathologyId: currentQ.pathologyId })}
+              onPress={() =>
+                navigation.navigate('PathologyDetail', {
+                  pathologyId: currentQ.pathologyId,
+                })
+              }
               activeOpacity={0.7}
               style={[
                 neuCardSubtle(colors),
@@ -1013,11 +1417,25 @@ export function QuizSessionScreen({ navigation, route }: Props) {
                 },
               ]}
             >
-              <MaterialCommunityIcons name="book-open-variant" size={16} color={colors.primary} />
-              <Text style={{ fontSize: rs.font(13), fontWeight: '600', color: colors.primary }}>
+              <MaterialCommunityIcons
+                name="book-open-variant"
+                size={16}
+                color={colors.primary}
+              />
+              <Text
+                style={{
+                  fontSize: rs.font(13),
+                  fontWeight: '600',
+                  color: colors.primary,
+                }}
+              >
                 Ver patología completa: {currentQ.pathologyName}
               </Text>
-              <MaterialCommunityIcons name="chevron-right" size={16} color={colors.primary} />
+              <MaterialCommunityIcons
+                name="chevron-right"
+                size={16}
+                color={colors.primary}
+              />
             </TouchableOpacity>
           </Animated.View>
         )}

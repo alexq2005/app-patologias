@@ -37,8 +37,18 @@ function useFadeIn(duration = 400, delay = 0) {
 
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
-      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
     ]).start();
   }, [opacity, translateY, duration, delay]);
 
@@ -64,12 +74,23 @@ interface NoteCardProps {
   rs: ResponsiveScale;
 }
 
-function NoteCard({ note, pathologyName, onPress, onDelete, colors, rs }: NoteCardProps) {
+function NoteCard({
+  note,
+  pathologyName,
+  onPress,
+  onDelete,
+  colors,
+  rs,
+}: NoteCardProps) {
   const styles = createStyles(colors, rs);
 
   const formatDate = (ts: number): string => {
     const d = new Date(ts);
-    return d.toLocaleDateString('es-AR', { day: '2-digit', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString('es-AR', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
   };
 
   return (
@@ -80,10 +101,16 @@ function NoteCard({ note, pathologyName, onPress, onDelete, colors, rs }: NoteCa
     >
       <View style={styles.noteTop}>
         <View style={styles.noteIconWrap}>
-          <MaterialCommunityIcons name="note-text" size={rs.font(16)} color={colors.primary} />
+          <MaterialCommunityIcons
+            name="note-text"
+            size={rs.font(16)}
+            color={colors.primary}
+          />
         </View>
         <View style={styles.noteMeta}>
-          <Text style={styles.noteName} numberOfLines={1}>{pathologyName}</Text>
+          <Text style={styles.noteName} numberOfLines={1}>
+            {pathologyName}
+          </Text>
           <Text style={styles.noteDate}>{formatDate(note.updatedAt)}</Text>
         </View>
         <TouchableOpacity
@@ -92,7 +119,11 @@ function NoteCard({ note, pathologyName, onPress, onDelete, colors, rs }: NoteCa
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
           activeOpacity={0.7}
         >
-          <MaterialCommunityIcons name="trash-can-outline" size={rs.font(17)} color={colors.error} />
+          <MaterialCommunityIcons
+            name="trash-can-outline"
+            size={rs.font(17)}
+            color={colors.error}
+          />
         </TouchableOpacity>
       </View>
       <Text style={styles.notePreview} numberOfLines={3}>
@@ -121,26 +152,31 @@ export function AllNotesScreen({ navigation }: Props) {
     return [...notes].sort((a, b) => b.updatedAt - a.updatedAt);
   }, [notes]);
 
-  const handlePress = useCallback((note: PathologyNote) => {
-    navigation.navigate('PathologyDetail', { pathologyId: note.pathologyId });
-  }, [navigation]);
+  const handlePress = useCallback(
+    (note: PathologyNote) => {
+      navigation.navigate('PathologyDetail', { pathologyId: note.pathologyId });
+    },
+    [navigation],
+  );
 
-  const handleDelete = useCallback((note: PathologyNote, pathologyName: string) => {
-    Alert.alert(
-      'Eliminar nota',
-      `¿Eliminar la nota de "${pathologyName}"?`,
-      [
+  const handleDelete = useCallback(
+    (note: PathologyNote, pathologyName: string) => {
+      Alert.alert('Eliminar nota', `¿Eliminar la nota de "${pathologyName}"?`, [
         { text: 'Cancelar', style: 'cancel' },
         {
           text: 'Eliminar',
           style: 'destructive',
           onPress: () => deleteNote(note.pathologyId),
         },
-      ],
-    );
-  }, [deleteNote]);
+      ]);
+    },
+    [deleteNote],
+  );
 
-  const keyExtractor = useCallback((item: PathologyNote) => item.pathologyId, []);
+  const keyExtractor = useCallback(
+    (item: PathologyNote) => item.pathologyId,
+    [],
+  );
 
   const renderItem = useCallback(
     ({ item }: { item: PathologyNote }) => {
@@ -162,12 +198,22 @@ export function AllNotesScreen({ navigation }: Props) {
 
   const renderEmpty = () => (
     <View style={styles.emptyContainer}>
-      <View style={{
-        width: rs.space(80), height: rs.space(80), borderRadius: rs.space(40),
-        backgroundColor: colors.primary + '12', alignItems: 'center', justifyContent: 'center',
-        marginBottom: rs.space(16),
-      }}>
-        <MaterialCommunityIcons name="note-edit-outline" size={rs.font(36)} color={colors.primary} />
+      <View
+        style={{
+          width: rs.space(80),
+          height: rs.space(80),
+          borderRadius: rs.space(40),
+          backgroundColor: colors.primary + '12',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: rs.space(16),
+        }}
+      >
+        <MaterialCommunityIcons
+          name="note-edit-outline"
+          size={rs.font(36)}
+          color={colors.primary}
+        />
       </View>
       <Text style={styles.emptyTitle}>Tus apuntes personales</Text>
       <Text style={styles.emptySubtitle}>
@@ -178,21 +224,32 @@ export function AllNotesScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {/* Header */}
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={[
+          styles.header,
+          { paddingTop: insets.top + rs.space(SPACING.lg) },
+        ]}
       >
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color={colors.gradientText} />
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={rs.font(22)}
+            color={colors.gradientText}
+          />
         </TouchableOpacity>
         <Animated.View style={{ opacity, transform: [{ translateY }] }}>
           <Text style={styles.headerTitle}>Mis Notas</Text>

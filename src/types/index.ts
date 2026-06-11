@@ -163,9 +163,15 @@ export interface ClinicalScale {
 // --- Lab Values ---
 
 export type LabCategory =
-  | 'hematologia' | 'bioquimica' | 'coagulacion'
-  | 'hepatico' | 'renal' | 'cardiaco'
-  | 'endocrino' | 'orina' | 'gasometria';
+  | 'hematologia'
+  | 'bioquimica'
+  | 'coagulacion'
+  | 'hepatico'
+  | 'renal'
+  | 'cardiaco'
+  | 'endocrino'
+  | 'orina'
+  | 'gasometria';
 
 export interface LabRange {
   min: number;
@@ -193,9 +199,15 @@ export interface LabValue {
 // --- Emergency Protocols ---
 
 export type ProtocolCategory =
-  | 'cardiaco' | 'respiratorio' | 'neurologico'
-  | 'metabolico' | 'sepsis' | 'trauma'
-  | 'obstetrico' | 'pediatrico' | 'otro';
+  | 'cardiaco'
+  | 'respiratorio'
+  | 'neurologico'
+  | 'metabolico'
+  | 'sepsis'
+  | 'trauma'
+  | 'obstetrico'
+  | 'pediatrico'
+  | 'otro';
 
 export type ProtocolPriority = 'critico' | 'urgente' | 'emergente';
 
@@ -231,9 +243,14 @@ export interface EmergencyProtocol {
 // --- Quiz ---
 
 export type QuizQuestionType =
-  | 'fisiopatologia' | 'signosSintomas' | 'diagnostico'
-  | 'tratamiento' | 'cuidadosEnfermeria' | 'nanda'
-  | 'complicaciones' | 'emergencia';
+  | 'fisiopatologia'
+  | 'signosSintomas'
+  | 'diagnostico'
+  | 'tratamiento'
+  | 'cuidadosEnfermeria'
+  | 'nanda'
+  | 'complicaciones'
+  | 'emergencia';
 
 export interface QuizQuestion {
   id: string;

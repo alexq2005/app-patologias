@@ -45,18 +45,58 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 // Section components
 // ─────────────────────────────────────────────
 
-function SectionHeader({ title, icon, colors, rs }: {
-  title: string; icon: string; colors: ThemeColors; rs: ResponsiveScale;
+function SectionHeader({
+  title,
+  icon,
+  colors,
+  rs,
+}: {
+  title: string;
+  icon: string;
+  colors: ThemeColors;
+  rs: ResponsiveScale;
 }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(8), marginBottom: rs.space(SPACING.sm), marginTop: rs.space(SPACING.lg) }}>
-      <MaterialCommunityIcons name={icon} size={rs.font(18)} color={colors.primary} />
-      <Text style={{ fontSize: rs.font(14), fontWeight: '700', color: colors.primary, textTransform: 'uppercase', letterSpacing: 0.8 }}>{title}</Text>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: rs.space(8),
+        marginBottom: rs.space(SPACING.sm),
+        marginTop: rs.space(SPACING.lg),
+      }}
+    >
+      <MaterialCommunityIcons
+        name={icon}
+        size={rs.font(18)}
+        color={colors.primary}
+      />
+      <Text
+        style={{
+          fontSize: rs.font(14),
+          fontWeight: '700',
+          color: colors.primary,
+          textTransform: 'uppercase',
+          letterSpacing: 0.8,
+        }}
+      >
+        {title}
+      </Text>
     </View>
   );
 }
 
-function SettingRow({ icon, label, subtitle, onPress, color, destructive, trailing, colors, rs }: {
+function SettingRow({
+  icon,
+  label,
+  subtitle,
+  onPress,
+  color,
+  destructive,
+  trailing,
+  colors,
+  rs,
+}: {
   icon: string;
   label: string;
   subtitle?: string;
@@ -67,24 +107,73 @@ function SettingRow({ icon, label, subtitle, onPress, color, destructive, traili
   colors: ThemeColors;
   rs: ResponsiveScale;
 }) {
-  const iconColor = destructive ? colors.error : (color || colors.text);
+  const iconColor = destructive ? colors.error : color || colors.text;
   const labelColor = destructive ? colors.error : colors.text;
 
   return (
     <TouchableOpacity
-      style={[neuCard(colors), { flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(14), paddingHorizontal: rs.space(SPACING.md), marginBottom: rs.space(SPACING.xs), gap: rs.space(12) }]}
+      style={[
+        neuCard(colors),
+        {
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingVertical: rs.space(14),
+          paddingHorizontal: rs.space(SPACING.md),
+          marginBottom: rs.space(SPACING.xs),
+          gap: rs.space(12),
+        },
+      ]}
       onPress={onPress}
       activeOpacity={onPress ? 0.7 : 1}
       disabled={!onPress}
     >
-      <View style={{ width: rs.space(36), height: rs.space(36), borderRadius: RADIUS.sm, backgroundColor: (destructive ? colors.error : (color || colors.primary)) + '14', alignItems: 'center', justifyContent: 'center' }}>
-        <MaterialCommunityIcons name={icon} size={rs.font(20)} color={iconColor} />
+      <View
+        style={{
+          width: rs.space(36),
+          height: rs.space(36),
+          borderRadius: RADIUS.sm,
+          backgroundColor:
+            (destructive ? colors.error : color || colors.primary) + '14',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <MaterialCommunityIcons
+          name={icon}
+          size={rs.font(20)}
+          color={iconColor}
+        />
       </View>
       <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: rs.font(15), fontWeight: '600', color: labelColor }}>{label}</Text>
-        {subtitle && <Text style={{ fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 }}>{subtitle}</Text>}
+        <Text
+          style={{
+            fontSize: rs.font(15),
+            fontWeight: '600',
+            color: labelColor,
+          }}
+        >
+          {label}
+        </Text>
+        {subtitle && (
+          <Text
+            style={{
+              fontSize: rs.font(12),
+              color: colors.textSecondary,
+              marginTop: 2,
+            }}
+          >
+            {subtitle}
+          </Text>
+        )}
       </View>
-      {trailing || (onPress && <MaterialCommunityIcons name="chevron-right" size={rs.font(20)} color={colors.textLight} />)}
+      {trailing ||
+        (onPress && (
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={rs.font(20)}
+            color={colors.textLight}
+          />
+        ))}
     </TouchableOpacity>
   );
 }
@@ -95,8 +184,16 @@ function SettingRow({ icon, label, subtitle, onPress, color, destructive, traili
 
 type ThemeMode = 'light' | 'dark' | 'system';
 
-function ThemeChips({ current, onChange, colors, rs }: {
-  current: ThemeMode; onChange: (m: ThemeMode) => void; colors: ThemeColors; rs: ResponsiveScale;
+function ThemeChips({
+  current,
+  onChange,
+  colors,
+  rs,
+}: {
+  current: ThemeMode;
+  onChange: (m: ThemeMode) => void;
+  colors: ThemeColors;
+  rs: ResponsiveScale;
 }) {
   const modes: { mode: ThemeMode; label: string; icon: string }[] = [
     { mode: 'light', label: 'Claro', icon: 'white-balance-sunny' },
@@ -105,7 +202,17 @@ function ThemeChips({ current, onChange, colors, rs }: {
   ];
 
   return (
-    <View style={[neuCard(colors), { flexDirection: 'row', padding: rs.space(4), marginBottom: rs.space(SPACING.xs), gap: rs.space(4) }]}>
+    <View
+      style={[
+        neuCard(colors),
+        {
+          flexDirection: 'row',
+          padding: rs.space(4),
+          marginBottom: rs.space(SPACING.xs),
+          gap: rs.space(4),
+        },
+      ]}
+    >
       {modes.map(m => {
         const active = current === m.mode;
         return (
@@ -124,8 +231,18 @@ function ThemeChips({ current, onChange, colors, rs }: {
             onPress={() => onChange(m.mode)}
             activeOpacity={0.7}
           >
-            <MaterialCommunityIcons name={m.icon} size={rs.font(16)} color={active ? colors.primary : colors.textSecondary} />
-            <Text style={{ fontSize: rs.font(13), fontWeight: active ? '700' : '500', color: active ? colors.primary : colors.textSecondary }}>
+            <MaterialCommunityIcons
+              name={m.icon}
+              size={rs.font(16)}
+              color={active ? colors.primary : colors.textSecondary}
+            />
+            <Text
+              style={{
+                fontSize: rs.font(13),
+                fontWeight: active ? '700' : '500',
+                color: active ? colors.primary : colors.textSecondary,
+              }}
+            >
               {m.label}
             </Text>
           </TouchableOpacity>
@@ -180,7 +297,10 @@ export function SettingsScreen() {
       if (result.status === 'updated') {
         Alert.alert('Datos actualizados', `Versión nueva: v${result.to}`);
       } else if (result.status === 'no-update') {
-        Alert.alert('Sin cambios', 'Tu app ya tiene la última versión disponible.');
+        Alert.alert(
+          'Sin cambios',
+          'Tu app ya tiene la última versión disponible.',
+        );
       } else if (result.status === 'error') {
         Alert.alert('No se pudo actualizar', result.reason);
       }
@@ -202,7 +322,9 @@ export function SettingsScreen() {
     if (isCodeActivated) return;
     tapCountRef.current += 1;
     if (tapTimerRef.current) clearTimeout(tapTimerRef.current);
-    tapTimerRef.current = setTimeout(() => { tapCountRef.current = 0; }, 2000);
+    tapTimerRef.current = setTimeout(() => {
+      tapCountRef.current = 0;
+    }, 2000);
     if (tapCountRef.current >= 5) {
       tapCountRef.current = 0;
       setUnlockCode('');
@@ -216,18 +338,24 @@ export function SettingsScreen() {
     if (success) {
       setShowUnlockModal(false);
       setUnlockCode('');
-      Alert.alert('Premium activado', 'Todas las patologías han sido desbloqueadas.');
+      Alert.alert(
+        'Premium activado',
+        'Todas las patologías han sido desbloqueadas.',
+      );
     } else {
       setUnlockError(true);
     }
   }, [unlockCode, activateWithCode]);
 
-  const confirmAction = useCallback((title: string, message: string, action: () => void) => {
-    Alert.alert(title, message, [
-      { text: 'Cancelar', style: 'cancel' },
-      { text: 'Eliminar', style: 'destructive', onPress: action },
-    ]);
-  }, []);
+  const confirmAction = useCallback(
+    (title: string, message: string, action: () => void) => {
+      Alert.alert(title, message, [
+        { text: 'Cancelar', style: 'cancel' },
+        { text: 'Eliminar', style: 'destructive', onPress: action },
+      ]);
+    },
+    [],
+  );
 
   const handleClearSearchHistory = useCallback(() => {
     confirmAction(
@@ -293,7 +421,10 @@ export function SettingsScreen() {
             clearRecent();
             clearQuizResults();
             AsyncStorage.removeItem('@patologias_onboarding_complete');
-            Alert.alert('Datos eliminados', 'Todos los datos de usuario han sido borrados.');
+            Alert.alert(
+              'Datos eliminados',
+              'Todos los datos de usuario han sido borrados.',
+            );
           },
         },
       ],
@@ -302,49 +433,124 @@ export function SettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + rs.space(40) }]}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingBottom: insets.bottom + rs.space(40) },
+        ]}
       >
         {/* ── Apariencia ─────────────────────── */}
-        <SectionHeader title="Apariencia" icon="palette-outline" colors={colors} rs={rs} />
-        <ThemeChips current={themeMode} onChange={setThemeMode} colors={colors} rs={rs} />
+        <SectionHeader
+          title="Apariencia"
+          icon="palette-outline"
+          colors={colors}
+          rs={rs}
+        />
+        <ThemeChips
+          current={themeMode}
+          onChange={setThemeMode}
+          colors={colors}
+          rs={rs}
+        />
 
         {/* ── Estadisticas ─────────────────────── */}
-        <SectionHeader title="Tus datos" icon="database-outline" colors={colors} rs={rs} />
-        <View style={[neuCard(colors), { padding: rs.space(SPACING.md), marginBottom: rs.space(SPACING.xs), gap: rs.space(SPACING.sm) }]}>
-          <StatRow icon="book-open-page-variant" label="Patologias" value={`${pathologies.length}`} colors={colors} rs={rs} />
-          <StatRow icon="heart" label="Favoritos" value={`${favoriteCount}`} colors={colors} rs={rs} />
-          <StatRow icon="note-text" label="Notas" value={`${noteCount}`} colors={colors} rs={rs} />
-          <StatRow icon="head-question" label="Quizzes completados" value={`${totalSessions}`} colors={colors} rs={rs} />
-          <StatRow icon="magnify" label="Búsquedas guardadas" value={`${history.length}`} colors={colors} rs={rs} />
-          <StatRow icon="clock-outline" label="Recientes" value={`${recent.length}`} colors={colors} rs={rs} />
+        <SectionHeader
+          title="Tus datos"
+          icon="database-outline"
+          colors={colors}
+          rs={rs}
+        />
+        <View
+          style={[
+            neuCard(colors),
+            {
+              padding: rs.space(SPACING.md),
+              marginBottom: rs.space(SPACING.xs),
+              gap: rs.space(SPACING.sm),
+            },
+          ]}
+        >
+          <StatRow
+            icon="book-open-page-variant"
+            label="Patologias"
+            value={`${pathologies.length}`}
+            colors={colors}
+            rs={rs}
+          />
+          <StatRow
+            icon="heart"
+            label="Favoritos"
+            value={`${favoriteCount}`}
+            colors={colors}
+            rs={rs}
+          />
+          <StatRow
+            icon="note-text"
+            label="Notas"
+            value={`${noteCount}`}
+            colors={colors}
+            rs={rs}
+          />
+          <StatRow
+            icon="head-question"
+            label="Quizzes completados"
+            value={`${totalSessions}`}
+            colors={colors}
+            rs={rs}
+          />
+          <StatRow
+            icon="magnify"
+            label="Búsquedas guardadas"
+            value={`${history.length}`}
+            colors={colors}
+            rs={rs}
+          />
+          <StatRow
+            icon="clock-outline"
+            label="Recientes"
+            value={`${recent.length}`}
+            colors={colors}
+            rs={rs}
+          />
         </View>
 
         {/* ── Limpiar datos ────────────────────── */}
-        <SectionHeader title="Gestionar datos" icon="broom" colors={colors} rs={rs} />
+        <SectionHeader
+          title="Gestionar datos"
+          icon="broom"
+          colors={colors}
+          rs={rs}
+        />
         <SettingRow
           icon="magnify-close"
           label="Limpiar historial de búsqueda"
           subtitle={`${history.length} busquedas`}
           onPress={history.length > 0 ? handleClearSearchHistory : undefined}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="clock-remove-outline"
           label="Limpiar recientes"
           subtitle={`${recent.length} patologias`}
           onPress={recent.length > 0 ? handleClearRecent : undefined}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="head-remove-outline"
           label="Limpiar historial de quiz"
           subtitle={`${totalSessions} sesiones`}
           onPress={totalSessions > 0 ? handleClearQuizHistory : undefined}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="heart-remove-outline"
@@ -352,57 +558,75 @@ export function SettingsScreen() {
           subtitle={`${favoriteCount} favoritos`}
           onPress={favoriteCount > 0 ? handleClearFavorites : undefined}
           destructive={favoriteCount > 0}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="restart"
           label="Resetear bienvenida"
           subtitle="Volver a mostrar el onboarding"
           onPress={handleResetOnboarding}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
 
         {/* ── Zona de peligro ────────────────── */}
-        <SectionHeader title="Zona de peligro" icon="alert-circle-outline" colors={colors} rs={rs} />
+        <SectionHeader
+          title="Zona de peligro"
+          icon="alert-circle-outline"
+          colors={colors}
+          rs={rs}
+        />
         <SettingRow
           icon="delete-forever-outline"
           label="Borrar todos los datos"
           subtitle="Favoritos, notas, historial, quiz, onboarding"
           onPress={handleClearAll}
           destructive
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
 
         {/* ── Acerca de ─────────────────────── */}
-        <SectionHeader title="Informacion" icon="information-outline" colors={colors} rs={rs} />
+        <SectionHeader
+          title="Informacion"
+          icon="information-outline"
+          colors={colors}
+          rs={rs}
+        />
         <SettingRow
           icon="information-outline"
           label="Acerca de"
           onPress={() => navigation.navigate('AboutScreen')}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="shield-lock-outline"
           label="Política de Privacidad"
           onPress={() => navigation.navigate('PrivacyPolicy')}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="file-document-outline"
           label="Terminos de Uso"
           onPress={() => navigation.navigate('Terms')}
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="database-outline"
           label="Datos clínicos"
           subtitle={syncing ? 'Buscando actualizaciones…' : dataSubtitle}
           onPress={otaEnabled ? handleSyncNow : undefined}
-          trailing={syncing
-            ? <ActivityIndicator size="small" color={colors.primary} />
-            : undefined
+          trailing={
+            syncing ? (
+              <ActivityIndicator size="small" color={colors.primary} />
+            ) : undefined
           }
-          colors={colors} rs={rs}
+          colors={colors}
+          rs={rs}
         />
         <SettingRow
           icon="tag-outline"
@@ -410,10 +634,16 @@ export function SettingsScreen() {
           subtitle={isCodeActivated ? `${APP_VERSION} · Premium` : APP_VERSION}
           onPress={handleVersionTap}
           color={isCodeActivated ? '#10B981' : undefined}
-          colors={colors} rs={rs}
-          trailing={isCodeActivated
-            ? <MaterialCommunityIcons name="check-decagram" size={rs.font(20)} color="#10B981" />
-            : undefined
+          colors={colors}
+          rs={rs}
+          trailing={
+            isCodeActivated ? (
+              <MaterialCommunityIcons
+                name="check-decagram"
+                size={rs.font(20)}
+                color="#10B981"
+              />
+            ) : undefined
           }
         />
       </ScrollView>
@@ -425,38 +655,69 @@ export function SettingsScreen() {
         animationType="fade"
         onRequestClose={() => setShowUnlockModal(false)}
       >
-        <View style={{
-          flex: 1, backgroundColor: 'rgba(0,0,0,0.55)',
-          justifyContent: 'center', alignItems: 'center',
-          paddingHorizontal: rs.space(32),
-        }}>
-          <View style={{
-            width: '100%',
-            backgroundColor: colors.cardBackground,
-            borderRadius: 24,
-            padding: rs.space(24),
-            elevation: 10,
-          }}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.55)',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingHorizontal: rs.space(32),
+          }}
+        >
+          <View
+            style={{
+              width: '100%',
+              backgroundColor: colors.cardBackground,
+              borderRadius: 24,
+              padding: rs.space(24),
+              elevation: 10,
+            }}
+          >
             <View style={{ alignItems: 'center', marginBottom: rs.space(20) }}>
-              <View style={{
-                width: 56, height: 56, borderRadius: 18,
-                backgroundColor: colors.primary + '15',
-                alignItems: 'center', justifyContent: 'center',
-                marginBottom: rs.space(12),
-              }}>
-                <MaterialCommunityIcons name="lock-open-variant-outline" size={28} color={colors.primary} />
+              <View
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 18,
+                  backgroundColor: colors.primary + '15',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: rs.space(12),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="lock-open-variant-outline"
+                  size={28}
+                  color={colors.primary}
+                />
               </View>
-              <Text style={{ fontSize: rs.font(18), fontWeight: '800', color: colors.text }}>
+              <Text
+                style={{
+                  fontSize: rs.font(18),
+                  fontWeight: '800',
+                  color: colors.text,
+                }}
+              >
                 Desbloquear Premium
               </Text>
-              <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, textAlign: 'center', marginTop: rs.space(4) }}>
+              <Text
+                style={{
+                  fontSize: rs.font(13),
+                  color: colors.textSecondary,
+                  textAlign: 'center',
+                  marginTop: rs.space(4),
+                }}
+              >
                 Ingresa el codigo de activacion
               </Text>
             </View>
 
             <TextInput
               value={unlockCode}
-              onChangeText={(t) => { setUnlockCode(t); setUnlockError(false); }}
+              onChangeText={t => {
+                setUnlockCode(t);
+                setUnlockError(false);
+              }}
               placeholder="Codigo de activacion"
               placeholderTextColor={colors.textLight}
               secureTextEntry
@@ -474,7 +735,14 @@ export function SettingsScreen() {
               }}
             />
             {unlockError && (
-              <Text style={{ fontSize: rs.font(12), color: colors.error, marginBottom: rs.space(12), marginLeft: rs.space(4) }}>
+              <Text
+                style={{
+                  fontSize: rs.font(12),
+                  color: colors.error,
+                  marginBottom: rs.space(12),
+                  marginLeft: rs.space(4),
+                }}
+              >
                 Codigo incorrecto. Intenta de nuevo.
               </Text>
             )}
@@ -490,7 +758,13 @@ export function SettingsScreen() {
                 marginBottom: rs.space(10),
               }}
             >
-              <Text style={{ fontSize: rs.font(15), fontWeight: '700', color: '#fff' }}>
+              <Text
+                style={{
+                  fontSize: rs.font(15),
+                  fontWeight: '700',
+                  color: '#fff',
+                }}
+              >
                 Activar
               </Text>
             </TouchableOpacity>
@@ -500,7 +774,13 @@ export function SettingsScreen() {
               activeOpacity={0.7}
               style={{ alignItems: 'center', paddingVertical: rs.space(8) }}
             >
-              <Text style={{ fontSize: rs.font(14), color: colors.textSecondary, fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: rs.font(14),
+                  color: colors.textSecondary,
+                  fontWeight: '600',
+                }}
+              >
                 Cancelar
               </Text>
             </TouchableOpacity>
@@ -515,14 +795,38 @@ export function SettingsScreen() {
 // Stat row inside the stats card
 // ─────────────────────────────────────────────
 
-function StatRow({ icon, label, value, colors, rs }: {
-  icon: string; label: string; value: string; colors: ThemeColors; rs: ResponsiveScale;
+function StatRow({
+  icon,
+  label,
+  value,
+  colors,
+  rs,
+}: {
+  icon: string;
+  label: string;
+  value: string;
+  colors: ThemeColors;
+  rs: ResponsiveScale;
 }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(10) }}>
-      <MaterialCommunityIcons name={icon} size={rs.font(18)} color={colors.primary} />
-      <Text style={{ flex: 1, fontSize: rs.font(14), color: colors.textSecondary }}>{label}</Text>
-      <Text style={{ fontSize: rs.font(14), fontWeight: '700', color: colors.text }}>{value}</Text>
+    <View
+      style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(10) }}
+    >
+      <MaterialCommunityIcons
+        name={icon}
+        size={rs.font(18)}
+        color={colors.primary}
+      />
+      <Text
+        style={{ flex: 1, fontSize: rs.font(14), color: colors.textSecondary }}
+      >
+        {label}
+      </Text>
+      <Text
+        style={{ fontSize: rs.font(14), fontWeight: '700', color: colors.text }}
+      >
+        {value}
+      </Text>
     </View>
   );
 }

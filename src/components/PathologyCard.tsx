@@ -103,30 +103,32 @@ export function PathologyCard({
             style={styles.thumbnail}
             resizeMode="cover"
           />
-          <View style={[styles.thumbnailOverlay, { backgroundColor: systemColor + '40' }]} />
+          <View
+            style={[
+              styles.thumbnailOverlay,
+              { backgroundColor: systemColor + '40' },
+            ]}
+          />
         </View>
 
         {/* Card body */}
         <View style={styles.body}>
-
           {/* Top row: name + favorite */}
           <View style={styles.topRow}>
-            <Text
-              style={styles.name}
-              numberOfLines={2}
-              ellipsizeMode="tail"
-            >
+            <Text style={styles.name} numberOfLines={2} ellipsizeMode="tail">
               {pathology.nombre}
             </Text>
             <TouchableWithoutFeedback
-              onPress={(e) => {
+              onPress={e => {
                 // Prevent triggering the card press
                 e.stopPropagation?.();
                 onToggleFavorite();
               }}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               accessibilityRole="button"
-              accessibilityLabel={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+              accessibilityLabel={
+                isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'
+              }
             >
               <View style={styles.heartWrapper}>
                 <MaterialCommunityIcons

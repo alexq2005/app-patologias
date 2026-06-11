@@ -34,7 +34,6 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SystemPathologies'>;
 
 // ── Helpers ───────────────────────────────────────────────────
 
-
 function matchesQuery(pathology: Pathology, query: string): boolean {
   if (!query) return true;
   const q = normalizeText(query);
@@ -73,10 +72,7 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
   // All pathologies for this system, sorted: free first, then premium
   const allPathologies = useMemo(() => {
     const raw = getPathologiesBySystem(systemId);
-    return [
-      ...raw.filter(p => !p.isPremium),
-      ...raw.filter(p => p.isPremium),
-    ];
+    return [...raw.filter(p => !p.isPremium), ...raw.filter(p => p.isPremium)];
   }, [getPathologiesBySystem, systemId]);
 
   // Filtered list based on search query
@@ -93,7 +89,10 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
       if (isLocked) {
         navigation.navigate('PremiumScreen');
       } else {
-        navigation.navigate('PathologyDetail', { pathologyId: pathology.id, pathologyName: pathology.nombre });
+        navigation.navigate('PathologyDetail', {
+          pathologyId: pathology.id,
+          pathologyName: pathology.nombre,
+        });
       }
     },
     [navigation, isPremium],
@@ -157,8 +156,16 @@ export function SystemPathologiesScreen({ navigation, route }: Props) {
         </View>
       </View>
     ),
-     
-    [searchQuery, filteredPathologies.length, systemColor, systemId, systemName, styles, handleClearSearch],
+
+    [
+      searchQuery,
+      filteredPathologies.length,
+      systemColor,
+      systemId,
+      systemName,
+      styles,
+      handleClearSearch,
+    ],
   );
 
   // ── Empty state ───────────────────────────────────────────
