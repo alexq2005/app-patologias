@@ -25,7 +25,7 @@
 - SQLite via op-sqlite, FlashList, EncryptedStorage premium
 - Buscador tolerante a tildes y variantes ortográficas (k↔c)
 - Disclaimer clínico visible en About + footnote en cada patología
-- 60 unit tests, 4 jobs CI bloqueantes + 1 informativo
+- 82 unit tests, 4 jobs CI bloqueantes + 1 informativo
 - Infraestructura OTA lista (off por default — se activa en v1.1)
 
 **Pre-launch checklist**:
