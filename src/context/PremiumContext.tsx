@@ -19,6 +19,7 @@ import {
   computeTrialExpired,
   TRIAL_DAYS,
 } from '../utils/premiumLogic';
+import { captureError } from '../config/sentry';
 
 // IS_FREE=true means free/restricted flavor, IS_FREE=false means premium/full flavor
 const IS_PREMIUM_BUILD: boolean = !(
@@ -77,15 +78,23 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
         } else {
           const now = Date.now();
           setTrialStartDate(now);
-          EncryptedStorage.setItem(TRIAL_START_KEY, now.toString()).catch(
-            () => {},
+          EncryptedStorage.setItem(TRIAL_START_KEY, now.toString()).catch(e =>
+            captureError(e, {
+              scope: 'PremiumContext',
+              action: 'persistTrialStart',
+            }),
           );
         }
         if (subRaw === 'true') setIsSubscribed(true);
         if (activated) setIsCodeActivated(true);
         setLoaded(true);
       })
-      .catch(() => setLoaded(true));
+      .catch(e => {
+        // Si EncryptedStorage falla acá se pierden sub + trial silenciosamente:
+        // dejar rastro en Sentry (no-op hasta configurar DSN) y no bloquear la UI.
+        captureError(e, { scope: 'PremiumContext', action: 'init' });
+        setLoaded(true);
+      });
   }, []);
 
   // ── Derived state ─────────────────────────
@@ -107,7 +116,12 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   // ── Actions ───────────────────────────────
   const activateSubscription = useCallback(() => {
     setIsSubscribed(true);
-    EncryptedStorage.setItem(SUBSCRIPTION_KEY, 'true').catch(() => {});
+    EncryptedStorage.setItem(SUBSCRIPTION_KEY, 'true').catch(e =>
+      captureError(e, {
+        scope: 'PremiumContext',
+        action: 'persistSubscription',
+      }),
+    );
   }, []);
 
   const restoreSubscription = useCallback(async (): Promise<boolean> => {
