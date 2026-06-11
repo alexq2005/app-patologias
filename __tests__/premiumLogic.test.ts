@@ -39,6 +39,28 @@ describe('computeTrialDaysLeft (15 días)', () => {
   });
 });
 
+describe('computeTrialDaysLeft — storage corrupto y clock rollback (fix 2026-06-10)', () => {
+  it('NaN (storage corrupto) → 0, NUNCA trial perpetuo', () => {
+    // Regresión: antes `!NaN` era truthy → devolvía 15 días para siempre.
+    expect(computeTrialDaysLeft(NaN, START)).toBe(0);
+  });
+  it('Infinity → 0 (fail-closed)', () => {
+    expect(computeTrialDaysLeft(Infinity, START)).toBe(0);
+  });
+  it('-Infinity → 0 (fail-closed)', () => {
+    expect(computeTrialDaysLeft(-Infinity, START)).toBe(0);
+  });
+  it('clock rollback 30 días → clamp exacto a TRIAL_DAYS (sin clamp daría 45)', () => {
+    expect(computeTrialDaysLeft(START, START - 30 * DAY)).toBe(TRIAL_DAYS);
+  });
+  it('clock rollback 1 día → clamp a 15, no 16', () => {
+    expect(computeTrialDaysLeft(START, START - 1 * DAY)).toBe(15);
+  });
+  it('clock rollback con duración custom → clamp al custom, no a TRIAL_DAYS', () => {
+    expect(computeTrialDaysLeft(START, START - 10 * DAY, 5)).toBe(5);
+  });
+});
+
 describe('computeIsPremium', () => {
   const base = {
     isPremiumBuild: false,
