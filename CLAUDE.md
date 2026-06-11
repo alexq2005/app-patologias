@@ -90,7 +90,7 @@ adb install -g android/app/build/outputs/apk/free/release/app-free-release.apk
 ## CI / Quality Gates
 
 `.github/workflows/ci.yml` corre 4 jobs bloqueantes + 1 informativo en cada PR/push a main:
-1. **test** — `npm test --watchAll=false --ci` (60 tests)
+1. **test** — `npm test --watchAll=false --ci` (82 tests)
 2. **lint** — `npm run lint` (0 errors; 524 inline-styles warnings deferidas)
 3. **typecheck** — `npx tsc --noEmit` (0 errors)
 4. **data** — `node scripts/check-orphans.js` (0 refs huérfanas en `relatedPathologyIds`)

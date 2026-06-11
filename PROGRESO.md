@@ -4,6 +4,41 @@
 
 ---
 
+## 2026-06-10 — Sesion 49: Hardening premium/trial (storage corrupto, clock rollback, catches silenciosos, activateSubscription) + limpieza root 🔒 REVENUE-CRITICAL
+
+### Resumen
+Sesión de fixes sobre la lógica premium/trial detectados por auditoría previa. Tres bugs revenue-critical corregidos y una bomba latente eliminada: (1) storage corrupto (`trialStartDate = NaN`) regalaba trial perpetuo porque `!NaN` es truthy y `computeTrialDaysLeft` devolvía los 15 días completos para siempre; (2) retroceder el reloj del dispositivo extendía el trial más allá de 15 días (sin clamp superior); (3) catches silenciosos en el init y la persistencia de `PremiumContext` — si EncryptedStorage fallaba se perdían suscripción+trial sin dejar rastro; (4) `activateSubscription()` seteaba premium persistente sin validar ningún pago (0 callers en src/ — eliminado del contexto). Bonus: 68 PNGs huérfanos (~41.5 MB) borrados del root y `.claude/` agregado a `.gitignore`. Complementa el commit `b152e9a` de hoy mismo que extrajo la lógica pura a `src/utils/premiumLogic.ts` con su suite de tests.
+
+### Commits de la sesión
+
+| Commit | Tipo | Descripción |
+|--------|------|-------------|
+| `f4980a7` | fix | Storage corrupto ya no regala trial perpetuo + clamp clock rollback. `computeTrialDaysLeft`: NaN/±Infinity → 0 (fail-closed); clamp `Math.min(trialDays, remaining)`. `PremiumContext`: `parseInt` no finito → re-inicializa trial con `Date.now()` y re-persiste. `TRIAL_DAYS` local eliminado (importa el de `premiumLogic.ts`). +6 tests NaN/Infinity/clock-rollback |
+| `99f5d6d` | fix | Catches silenciosos en código de dinero → `captureError(e, {scope, action})` de Sentry (init + persistencia trial/sub). No-op hasta configurar DSN, pero el rastro queda cableado |
+| `790b2cc` | fix | `activateSubscription()` eliminado (seteaba `isSubscribed=true` persistente sin validar pago; grep confirmó 0 callers). `purchaseSubscription` y `restoreSubscription` intactos |
+| `eb116bb` | chore | 68 PNGs huérfanos del root eliminados (~41.5 MB, ninguno trackeado — verificado con `git ls-files`; los 32 de `android/.../res/` intactos) + `.claude/` en `.gitignore` |
+| (docs) | docs | CHANGELOG (sección Unreleased 2026-06-10), esta entrada, conteo de tests 60→82 en README/CLAUDE.md/ROADMAP |
+
+### Lo que NO se tocó (decisión deliberada)
+- `purchaseSubscription` — TODO de Play Billing documentado, queda como está
+- DSN de Sentry — pendiente decisión del usuario (captureError sigue no-op)
+- Feature flags — todos `false` intencional
+- `src/data/pathologies.json` — dataset crítico, intacto
+
+### Verificaciones (CI gates)
+- `npx tsc --noEmit` → 0 errors
+- `npm test -- --ci` → **82/82 passing** (era 76 al inicio de sesión; 60 en Sesion 48 — la suite premiumLogic de `b152e9a` sumó 16 y esta sesión 6 más)
+- `npx eslint .` → 0 errors
+- `node scripts/check-orphans.js` → 0 huérfanos
+- `git status` → limpio
+
+### Pendientes (sin cambios)
+- Push de los commits (NO se pusheó por pedido explícito)
+- Rebuild AAB v1.0.1 con contenido clínico + estos fixes (versionCode 5)
+- Cuarto lote de revisión clínica / OTA hosting / Sentry DSN / branch protection
+
+---
+
 ## 2026-05-24 — Sesion 48: Revisión clínica de pat_hipertiroidismo a ATA 2016 + teprotumumab OPTIC NEJM 2020 + EUGOGO 2021 + Burch-Wartofsky 🎯 MILESTONE 3er LOTE COMPLETO (31/151)
 
 ### Resumen

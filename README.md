@@ -39,7 +39,7 @@ Aplicación móvil de referencia clínica para profesionales y estudiantes de en
 | @shopify/flash-list | 2.x | Listas masivas con recycling y 60 FPS |
 | react-native-linear-gradient | 2.x | Gradientes UI |
 | react-native-vector-icons | 10.x | MaterialCommunityIcons (tabs, badges) |
-| Jest | 29.x | Testing unitario (60 tests) |
+| Jest | 29.x | Testing unitario (82 tests) |
 
 ## Estructura del Proyecto
 
@@ -70,7 +70,7 @@ src/
 scripts/
 ├── check-orphans.js    # Audit de relatedPathologyIds — corre en CI
 ├── enrich_nanda.js, fix_tildes.js, add_patho_*.py
-__tests__/              # 60 tests (App, useQuiz, contentSync, useDataInfo, miSuite, search)
+__tests__/              # 82 tests (App, useQuiz, contentSync, useDataInfo, miSuite, search, premiumLogic)
 .github/workflows/ci.yml  # 4 jobs: test, lint, typecheck, data integrity
 ```
 
@@ -96,7 +96,7 @@ npm install
 
 ### Verificación rápida pre-PR
 ```bash
-npm test -- --watchAll=false   # 60 tests
+npm test -- --watchAll=false   # 82 tests
 npx tsc --noEmit               # 0 errores
 npm run lint                   # 0 errores (524 warnings inline-styles diferidas)
 npm run check:orphans          # 0 refs huérfanas en relatedPathologyIds

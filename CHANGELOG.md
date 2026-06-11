@@ -2,6 +2,30 @@
 
 > **Nota de versionado**: las entradas `[2.0.0]`, `[2.0.1]`, `[Unreleased]` listadas debajo corresponden al **versionado interno de desarrollo** (jamás publicado a Play Store). Para alinear con el lanzamiento público del ecosistema, todo el trabajo acumulado se compila como **v1.0.0 — Public ecosystem launch**. Las entradas internas se conservan como referencia histórica del proceso de construcción.
 
+## [Unreleased] — 2026-06-10 (Hardening premium/trial + limpieza de repo)
+
+Fixes revenue-critical en la lógica premium/trial detectados por auditoría, observabilidad en código de dinero y limpieza del root. Sin nuevo AAB.
+
+### Fixed
+- **Trial perpetuo por storage corrupto**: `computeTrialDaysLeft` con `trialStartDate = NaN` devolvía 15 días PARA SIEMPRE (`!NaN` es truthy → entraba al branch "trial no iniciado"). Ahora NaN/±Infinity → 0 días (fail-closed) y `PremiumContext` re-inicializa el trial con `Date.now()` + re-persiste si el valor guardado no es finito — el trial se reinicia, no se regala perpetuo
+- **Clock rollback extendía el trial**: retroceder el reloj del dispositivo daba más de 15 días restantes. Clamp superior `Math.min(trialDays, remaining)` — nunca más de `TRIAL_DAYS`
+- **Catches silenciosos en código de dinero**: el init de `PremiumContext` (`.catch(() => setLoaded(true))` — si EncryptedStorage fallaba se perdían sub+trial sin rastro) y la persistencia de trial/sub (`.catch(() => {})`) ahora reportan vía `captureError(e, {scope, action})` de Sentry (no-op hasta configurar DSN, pero el rastro queda cableado)
+
+### Removed
+- **`activateSubscription()` eliminado de `PremiumContext`** (bomba latente): seteaba `isSubscribed=true` persistente sin validar ningún pago. Verificado con grep: 0 callers en `src/`. `purchaseSubscription` (TODO Play Billing) y `restoreSubscription` quedan intactos
+
+### Changed
+- `TRIAL_DAYS = 15` duplicado en `PremiumContext` eliminado — única fuente de verdad: `src/utils/premiumLogic.ts`
+
+### Tests
+- Suite nueva `__tests__/premiumLogic.test.ts` (lógica pura extraída a `src/utils/premiumLogic.ts` para testearla sin React/nativo) + 6 casos nuevos de hoy: NaN/Infinity/clock-rollback con clamp exacto. **Total: 82 tests** (era 60 en v1.0.0)
+
+### Chore
+- **68 PNGs huérfanos eliminados del root** (~41.5 MB): ninguno trackeado (gitignored por `/*.png`) ni referenciado por docs. Los 32 PNGs trackeados de `android/.../res/` quedan intactos
+- `.claude/` agregado a `.gitignore`
+
+---
+
 ## [Unreleased] — 2026-05-24 (Clinical content milestone + repo público)
 
 Trabajo entre el 21 y el 24 de mayo de 2026 — sin nuevo AAB todavía, pero entrega significativa de contenido clínico que justifica próxima versión (probablemente v1.0.1 o v1.1.0).
