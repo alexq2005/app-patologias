@@ -45,7 +45,6 @@ interface PremiumContextType {
   trialExpired: boolean;
   isSubscribed: boolean;
   purchasing: boolean;
-  activateSubscription: () => void;
   restoreSubscription: () => Promise<boolean>;
   purchaseSubscription: () => Promise<void>;
   activateWithCode: (code: string) => Promise<boolean>;
@@ -114,16 +113,6 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   const isPremium = computeIsPremium(_flags);
 
   // ── Actions ───────────────────────────────
-  const activateSubscription = useCallback(() => {
-    setIsSubscribed(true);
-    EncryptedStorage.setItem(SUBSCRIPTION_KEY, 'true').catch(e =>
-      captureError(e, {
-        scope: 'PremiumContext',
-        action: 'persistSubscription',
-      }),
-    );
-  }, []);
-
   const restoreSubscription = useCallback(async (): Promise<boolean> => {
     // TODO: Validate with Google Play Billing API when published
     const val = await EncryptedStorage.getItem(SUBSCRIPTION_KEY);
@@ -173,7 +162,6 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       trialExpired,
       isSubscribed,
       purchasing,
-      activateSubscription,
       restoreSubscription,
       purchaseSubscription,
       activateWithCode,
@@ -188,7 +176,6 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       trialExpired,
       isSubscribed,
       purchasing,
-      activateSubscription,
       restoreSubscription,
       purchaseSubscription,
       activateWithCode,
