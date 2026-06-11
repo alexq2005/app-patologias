@@ -23,6 +23,7 @@ import {
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type {
@@ -179,6 +180,9 @@ function OptionButton({
     <TouchableOpacity
       onPress={() => !hasAnswered && onPress(index)}
       activeOpacity={hasAnswered ? 1 : 0.7}
+      accessibilityRole="button"
+      accessibilityLabel={`Opción ${letterLabels[index]}: ${label}`}
+      accessibilityState={{ disabled: hasAnswered, selected: isSelected }}
       style={[
         neuCard(colors),
         {
@@ -236,7 +240,7 @@ function OptionButton({
           fontSize: rs.font(14),
           color: textColor,
           fontWeight: hasAnswered && isCorrect ? '700' : '500',
-          lineHeight: 20,
+          lineHeight: rs.font(21),
         }}
       >
         {label}
@@ -262,6 +266,7 @@ interface SummaryProps {
   session: QuizSession;
   category: string;
   onBack: () => void;
+  onRetry: () => void;
   onNavigateToPathology: (pathologyId: string) => void;
   colors: ThemeColors;
   rs: ResponsiveScale;
@@ -272,11 +277,13 @@ function SummaryScreen({
   session,
   category,
   onBack,
+  onRetry,
   onNavigateToPathology,
   colors,
   rs,
   insets,
 }: SummaryProps) {
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const totalQ = session.questions.length;
   const correct = session.answers.reduce<number>((acc, ans, idx) => {
     return ans === session.questions[idx].correctIndex ? acc + 1 : acc;
@@ -831,33 +838,42 @@ function SummaryScreen({
         </Text>
       </View>
 
+      {/* CTAs: repetir (primario, gradiente) + volver (secundario) */}
       <TouchableOpacity
-        style={{
-          backgroundColor: colors.primary,
-          borderRadius: RADIUS.lg,
-          paddingVertical: rs.space(SPACING.md),
-          paddingHorizontal: rs.space(SPACING.xxxl),
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          elevation: 4,
-          shadowColor: colors.primary,
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.3,
-          shadowRadius: 4,
-          width: '100%',
-        }}
+        style={styles.summaryCtaPrimaryWrap}
+        onPress={onRetry}
+        activeOpacity={0.85}
+        accessibilityRole="button"
+        accessibilityLabel="Repetir test con la misma configuración"
+      >
+        <LinearGradient
+          colors={[colors.gradientStart, colors.gradientEnd]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.summaryCtaPrimary}
+        >
+          <MaterialCommunityIcons name="restart" size={20} color="#FFFFFF" />
+          <Text style={styles.summaryCtaPrimaryText}>Repetir test</Text>
+        </LinearGradient>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[styles.summaryCtaSecondary, { borderColor: colors.border }]}
         onPress={onBack}
-        activeOpacity={0.8}
+        activeOpacity={0.7}
+        accessibilityRole="button"
+        accessibilityLabel="Volver al inicio"
       >
         <MaterialCommunityIcons
           name="home-outline"
-          size={20}
-          color="#FFFFFF"
-          style={{ marginRight: rs.space(SPACING.sm) }}
+          size={18}
+          color={colors.textSecondary}
         />
         <Text
-          style={{ fontSize: rs.font(16), fontWeight: '700', color: '#FFFFFF' }}
+          style={[
+            styles.summaryCtaSecondaryText,
+            { color: colors.textSecondary },
+          ]}
         >
           Volver al inicio
         </Text>
@@ -1028,6 +1044,19 @@ export function QuizSessionScreen({ navigation, route }: Props) {
     navigation.goBack();
   }, [navigation]);
 
+  // Repetir test: regenera preguntas con la misma configuración
+  const handleRetry = useCallback(() => {
+    resultSaved.current = false;
+    setSelectedIndex(null);
+    setShowSummary(false);
+    setSession(
+      generateQuiz({
+        category: category as BodySystemId | undefined,
+        questionCount,
+      }),
+    );
+  }, [generateQuiz, category, questionCount]);
+
   // ── Loading / empty state ─────────────────────────────────────
 
   if (!session) {
@@ -1123,6 +1152,7 @@ export function QuizSessionScreen({ navigation, route }: Props) {
           session={session}
           category={categoryLabel}
           onBack={handleBack}
+          onRetry={handleRetry}
           onNavigateToPathology={pathologyId =>
             navigation.navigate('PathologyDetail', { pathologyId })
           }
@@ -1444,25 +1474,37 @@ export function QuizSessionScreen({ navigation, route }: Props) {
         {hasAnswered && (
           <Animated.View style={{ opacity: feedbackOpacity }}>
             <TouchableOpacity
-              style={styles.nextButton}
+              style={styles.nextButtonWrap}
               onPress={handleNext}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={
+                session.currentIndex >= session.questions.length - 1
+                  ? 'Ver resultado del test'
+                  : 'Siguiente pregunta'
+              }
             >
-              <Text style={styles.nextButtonText}>
-                {session.currentIndex >= session.questions.length - 1
-                  ? 'Ver resultado'
-                  : 'Siguiente pregunta'}
-              </Text>
-              <MaterialCommunityIcons
-                name={
-                  session.currentIndex >= session.questions.length - 1
-                    ? 'flag-checkered'
-                    : 'arrow-right'
-                }
-                size={20}
-                color="#FFFFFF"
-                style={{ marginLeft: rs.space(SPACING.sm) }}
-              />
+              <LinearGradient
+                colors={[colors.gradientStart, colors.gradientEnd]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.nextButton}
+              >
+                <Text style={styles.nextButtonText}>
+                  {session.currentIndex >= session.questions.length - 1
+                    ? 'Ver resultado'
+                    : 'Siguiente pregunta'}
+                </Text>
+                <MaterialCommunityIcons
+                  name={
+                    session.currentIndex >= session.questions.length - 1
+                      ? 'flag-checkered'
+                      : 'arrow-right'
+                  }
+                  size={20}
+                  color="#FFFFFF"
+                />
+              </LinearGradient>
             </TouchableOpacity>
           </Animated.View>
         )}
@@ -1538,17 +1580,19 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       color: colors.textSecondary,
       lineHeight: 19,
     },
+    nextButtonWrap: {
+      marginHorizontal: rs.space(SPACING.lg),
+    },
     nextButton: {
-      backgroundColor: '#6D28D9',
       borderRadius: RADIUS.lg,
       paddingVertical: rs.space(SPACING.md),
       paddingHorizontal: rs.space(SPACING.xxl),
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      marginHorizontal: rs.space(SPACING.lg),
+      gap: rs.space(SPACING.sm),
       elevation: 4,
-      shadowColor: '#6D28D9',
+      shadowColor: colors.primary,
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.3,
       shadowRadius: 4,
@@ -1557,5 +1601,43 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       fontSize: rs.font(15),
       fontWeight: '700',
       color: '#FFFFFF',
+    },
+    // Summary CTAs
+    summaryCtaPrimaryWrap: {
+      width: '100%',
+    },
+    summaryCtaPrimary: {
+      borderRadius: RADIUS.lg,
+      paddingVertical: rs.space(SPACING.md),
+      paddingHorizontal: rs.space(SPACING.xxl),
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: rs.space(SPACING.sm),
+      elevation: 5,
+      shadowColor: colors.primary,
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.35,
+      shadowRadius: 6,
+    },
+    summaryCtaPrimaryText: {
+      fontSize: rs.font(16),
+      fontWeight: '700',
+      color: '#FFFFFF',
+    },
+    summaryCtaSecondary: {
+      width: '100%',
+      marginTop: rs.space(SPACING.sm),
+      borderRadius: RADIUS.lg,
+      borderWidth: 1.5,
+      paddingVertical: rs.space(SPACING.md),
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: rs.space(SPACING.sm),
+    },
+    summaryCtaSecondaryText: {
+      fontSize: rs.font(15),
+      fontWeight: '600',
     },
   });
