@@ -4,6 +4,36 @@
 
 ---
 
+## 2026-06-11 — Sesion 50: Revisión clínica CUARTO LOTE (bloque renal+) — 5 entries alineadas a KDIGO/EAU
+
+### Resumen
+Cuarto lote de revisión clínica de contenido (workflow validado en 31 entries previas). Se revisaron y alinearon a guidelines actuales las 5 patologías del bloque renal/urinario: `pat_irc`, `pat_ira_renal`, `pat_pielonefritis`, `pat_litiasis`, `pat_glomerulonefritis`. Cada entry recibió ~7 ediciones quirúrgicas (clasificación → pruebas → objetivos → farmacológico → noFarmacológico → quirúrgico → `revisadoEn`+`fuentes`). Conteo de `revisadoEn` subió de 31 a 36/151 (23.8%). Hallazgo: el id `pat_litiasis_renal` del plan no existe; el id real es `pat_litiasis`.
+
+### Cambios paradigmáticos incorporados
+- **pat_irc** (KDIGO CKD 2024): estadificación CGA con mapa de calor (TFG G1-G5 + albuminuria A1-A3); 4 pilares de nefroprotección (IECA/ARA-II, SGLT2i, finerenona, estatina); SGLT2i (DAPA-CKD/EMPA-KIDNEY) iniciar con TFG ≥ 20; finerenona (FIDELIO/FIGARO) en diabéticos con TFG > 25 y K+ normal; cistatina C confirmatoria; objetivo PAS < 120.
+- **pat_ira_renal** (KDIGO AKI 2012 + STARRT-AKI): estadio 3 incluye inicio de TRR; índices urinarios (FeNa) prerrenal vs NTA; bundle completo de hiperpotasemia (calcio → insulina+glucosa/salbutamol → quelantes/diálisis); STARRT-AKI: inicio acelerado de TRR no mejora mortalidad.
+- **pat_pielonefritis** (EAU Urological Infections 2024): restricción de fluoroquinolonas por resistencias; carbapenem/piperacilina-tazobactam para ESBL/grave; uro-TC en no respondedores; sección quirúrgica nueva (descompresión del riñón obstruido infectado = emergencia); no nitrofurantoína/fosfomicina.
+- **pat_litiasis** (EAU Urolithiasis 2024 / AUA): terapia expulsiva médica con alfabloqueante en cálculos 5-10 mm con criterios de suspensión; alcalinización urinaria (citrato) para ácido úrico; análisis de composición del cálculo; descompresión urgente del riñón obstruido infectado.
+- **pat_glomerulonefritis** (KDIGO GN 2021 + update IgA 2024): clasificación por patrón clínico (GNRP pauci-inmune/inmunocomplejos/anti-MBG); inducción ANCA con ciclofosfamida O rituximab (RAVE/RITUXVAS); anti-PLA2R en membranosa; soporte KDIGO con bloqueo SRAA +/- SGLT2i; plasmaféresis en anti-MBG/ANCA grave; profilaxis PJP.
+
+### Commits de la sesión
+| Commit | Tipo | Descripción |
+|--------|------|-------------|
+| `df122a8` | content | pat_irc — KDIGO 2024 CKD (CGA staging, SGLT2i DAPA-CKD/EMPA-KIDNEY, finerenona FIDELIO/FIGARO) |
+| `f1eb031` | content | pat_ira_renal — KDIGO AKI 2012 staging + hyperkalemia bundle + STARRT-AKI timing |
+| `e00604d` | content | pat_pielonefritis — EAU 2024 urological infections (FQ stewardship, ESBL/carbapenem, source control) |
+| `b25c45e` | content | pat_litiasis — EAU urolithiasis 2024 / AUA (MET 5-10mm, urgent decompression, stone analysis) |
+| (pendiente) | content | pat_glomerulonefritis — KDIGO GN 2021 + ANCA (ciclofosfamida/rituximab, plasmaféresis) + docs |
+
+### Verificaciones (CI gates)
+- `node scripts/check-orphans.js` → 151 patologías, 0 huérfanas
+- `npx tsc --noEmit` → 0 errors
+- `npm test -- --ci` → **82/82 passing** (baseline mantenido)
+- `revisadoEn` count: 31 → 36/151 (23.8%)
+- JSON parsea, 151 entries intactas
+
+---
+
 ## 2026-06-10 — Sesion 49: Hardening premium/trial (storage corrupto, clock rollback, catches silenciosos, activateSubscription) + limpieza root 🔒 REVENUE-CRITICAL
 
 ### Resumen

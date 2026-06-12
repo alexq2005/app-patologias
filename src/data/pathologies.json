@@ -14936,19 +14936,27 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por sindrome clínico",
+      "nombre": "Clasificación por patron/sindrome clínico (marco KDIGO 2021 de enfermedades glomerulares)",
       "tipos": [
         {
           "nombre": "Sindrome nefritico agudo",
-          "descripcion": "Hematuria, proteinuria < 3.5 g, HTA, oliguria, ARA. GN post-estreptococica, lupica"
+          "descripcion": "Hematuria, proteinuria < 3.5 g, HTA, oliguria, IRA. GN postinfecciosa, lupica"
         },
         {
-          "nombre": "GNRP (Rápida Progresion)",
-          "descripcion": "IRA severa en dias/semanas con proliferación extracapilar. ANCA, anti-MBG, pauci-inmune"
+          "nombre": "GNRP (glomerulonefritis rapidamente progresiva)",
+          "descripcion": "IRA severa en dias/semanas con proliferación extracapilar (semilunas). Tres patrones: pauci-inmune asociada a ANCA, por inmunocomplejos (lupica) y anti-MBG. Emergencia: tratar sin demora"
         },
         {
           "nombre": "Nefropatia IgA (Berger)",
-          "descripcion": "Hematuria episodica post-infección, adultos jovenes. Progresion variable"
+          "descripcion": "GN primaria mas frecuente. Hematuria episodica sinfaringitica en adultos jovenes. KDIGO 2021/2024: optimizar soporte (IECA/ARA-II, SGLT2i) y estratificar riesgo antes de inmunosupresion"
+        },
+        {
+          "nombre": "Sindrome nefrotico (GN membranosa, MCD, FSGS)",
+          "descripcion": "Proteinuria > 3.5 g/dia, hipoalbuminemia, edema. La nefropatia membranosa primaria se asocia a anticuerpos anti-PLA2R"
+        },
+        {
+          "nombre": "GN anti-MBG (sindrome de Goodpasture)",
+          "descripcion": "Anticuerpos contra la membrana basal glomerular y alveolar; GNRP con hemorragia pulmonar. Requiere plasmaferesis urgente"
         }
       ]
     },
@@ -14973,39 +14981,62 @@
           ]
         },
         {
-          "nombre": "Complemento C3 y C4, ANCA, anti-DNA, anti-MBG",
-          "descripcion": "Estudios inmunologicos para identificar la causa de la GN",
+          "nombre": "Panel inmunologico (C3/C4, ANCA, anti-DNA/ANA, anti-MBG, anti-PLA2R)",
+          "descripcion": "Estudios serologicos que identifican la causa de la GN: ANCA (vasculitis pauci-inmune), anti-DNA/complemento bajo (lupica), anti-MBG (Goodpasture), anti-PLA2R (membranosa primaria). KDIGO 2021 integra la serologia en la decision terapeutica",
           "cuidadosEnfermeria": [
             "Muestra venosa estandar",
-            "Orientan el diagnóstico diferencial y el tratamiento específico"
+            "Orientan el diagnóstico diferencial y el tratamiento específico (a veces evitan o anticipan la biopsia)"
+          ]
+        },
+        {
+          "nombre": "Cuantificacion de proteinuria (cociente proteina/creatinina o albumina/creatinina)",
+          "descripcion": "Cuantifica la proteinuria, marcador de actividad y predictor de progresion. KDIGO prioriza el cociente en muestra puntual sobre la recoleccion de 24h",
+          "valoresReferencia": "Rango nefrotico: > 3.5 g/dia (o cociente proteina/creatinina > 3.5 g/g)",
+          "cuidadosEnfermeria": [
+            "Primera orina de la mañana para el cociente",
+            "Registrar para seguimiento de la respuesta al tratamiento"
           ]
         },
         {
           "nombre": "Biopsia renal",
-          "descripcion": "Definitiva para clasificar la GN y guiar el tratamiento",
+          "descripcion": "Definitiva para clasificar la GN, valorar actividad/cronicidad y guiar la inmunosupresion (KDIGO 2021)",
           "cuidadosEnfermeria": [
-            "Reposo absoluto post-biopsia",
-            "Monitorizar hematuria post-biopsia"
+            "Verificar coagulacion y suspender antiagregantes/anticoagulantes segun protocolo antes del procedimiento",
+            "Reposo absoluto post-biopsia (4-6h) y control de signos vitales",
+            "Monitorizar hematuria, dolor lumbar y signos de sangrado post-biopsia"
           ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Tratar la causa o suprimir el proceso autoinmune",
-        "Proteger la función renal residual",
-        "Control de HTA y proteinuria"
+        "Inducir y mantener la remision suprimiendo el proceso autoinmune segun el patron (ANCA, lupica, anti-MBG)",
+        "Terapia de soporte KDIGO 2021 en toda GN: bloqueo del SRAA (IECA/ARA-II), control de PA y reduccion de proteinuria",
+        "Proteger la función renal residual y enlentecer la progresion a IRC",
+        "Prevenir y manejar las complicaciones de la inmunosupresion (infecciones, profilaxis)"
       ],
       "farmacologico": [
         {
-          "nombre": "Prednisona + Ciclofosfamida",
-          "grupo": "Corticoide + inmunosupresor - GNRP activa, vasculitis ANCA",
-          "mecanismo": "Inmunosupresion intensa para frenar la destrucción glomerular",
-          "dosis": "Prednisona 1 mg/kg/dia + Ciclofosfamida 2 mg/kg/dia o pulsos IV",
+          "nombre": "Glucocorticoides + Ciclofosfamida o Rituximab (induccion en ANCA/GNRP)",
+          "grupo": "Inmunosupresion de induccion - vasculitis ANCA y GNRP activa",
+          "mecanismo": "KDIGO 2021: induccion de la vasculitis ANCA con glucocorticoides asociados a ciclofosfamida O rituximab (anti-CD20, deplecion de linfocitos B); ambos equivalentes, el rituximab preferido en jovenes, recaidas y para preservar fertilidad",
+          "dosis": "Prednisona 1 mg/kg/dia en descenso + Ciclofosfamida (oral 2 mg/kg/dia o pulsos IV) o Rituximab 375 mg/m2/semana x4 (o 1 g x2)",
           "cuidadosEnfermeria": [
-            "Cistitis hemorrágica con ciclofosfamida: hiperhidratación y MESNA",
-            "Riesgo de infecciones oportunistas",
-            "Monitorizar hemograma por leucopenia"
+            "Ciclofosfamida: cistitis hemorragica (hiperhidratacion y MESNA), leucopenia (controlar hemograma), riesgo de infertilidad",
+            "Rituximab: vigilar reacciones infusionales (premedicar); cribar VHB antes de iniciar (riesgo de reactivacion)",
+            "Profilaxis de Pneumocystis jirovecii (cotrimoxazol) durante la induccion",
+            "Riesgo elevado de infecciones oportunistas: educar en signos de alarma"
+          ]
+        },
+        {
+          "nombre": "Bloqueo del SRAA +/- SGLT2i (terapia de soporte KDIGO)",
+          "grupo": "Nefroproteccion - reduccion de proteinuria en toda GN",
+          "mecanismo": "Los IECA/ARA-II reducen la presion intraglomerular y la proteinuria; KDIGO 2024 incorpora SGLT2i como soporte en GN proteinuricas (p. ej. nefropatia IgA) para enlentecer la progresion",
+          "dosis": "IECA/ARA-II a dosis maxima tolerada; SGLT2i (dapagliflozina 10 mg/dia) en GN proteinurica con TFG >= 20",
+          "cuidadosEnfermeria": [
+            "Monitorizar creatinina y potasio tras iniciar IECA/ARA-II",
+            "Reduccion sostenida de la proteinuria es el objetivo terapeutico de soporte",
+            "Combinar con control estricto de PA y restriccion de sodio"
           ]
         },
         {
@@ -15020,10 +15051,16 @@
         }
       ],
       "noFarmacologico": [
-        "Restricción de proteinas, sodio y potasio segun función renal",
-        "Control estricto de la PA (IECA/ARA-II como primera linea)"
+        "Restricción de sodio (< 2 g/dia) y de potasio/proteinas segun función renal",
+        "Control estricto de la PA (IECA/ARA-II como primera linea; objetivo guiado por KDIGO)",
+        "Plasmaferesis (recambio plasmatico) en GN anti-MBG (Goodpasture) y en vasculitis ANCA con creatinina muy elevada o hemorragia alveolar",
+        "Profilaxis de infecciones oportunistas (cotrimoxazol para Pneumocystis) durante la inmunosupresion intensa",
+        "Vacunacion al dia antes de inmunosupresion programada (evitar vacunas vivas durante el tratamiento)"
       ],
-      "quirurgico": []
+      "quirurgico": [
+        "Acceso para plasmaferesis y, en IRA grave, para terapia renal sustitutiva (cateter de dialisis)",
+        "Trasplante renal en GN evolucionada a IRC estadio 5 (diferir hasta remision de la enfermedad de base)"
+      ]
     },
     "cuidadosEnfermeria": {
       "valoracion": [
@@ -15138,7 +15175,14 @@
       "pat_lupus",
       "pat_sindrome_nefrotico"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-06-11",
+    "fuentes": [
+      "KDIGO 2021 Clinical Practice Guideline for the Management of Glomerular Diseases",
+      "KDIGO 2024 Update - IgA Nephropathy / IgA Vasculitis",
+      "KDIGO 2021 - vasculitis asociada a ANCA: induccion con ciclofosfamida o rituximab",
+      "RAVE / RITUXVAS (rituximab en vasculitis ANCA)"
+    ]
   },
   {
     "id": "pat_fractura_cadera",

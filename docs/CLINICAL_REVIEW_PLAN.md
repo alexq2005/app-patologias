@@ -134,3 +134,29 @@ Total acumulado de 3 lotes: 31/151 (20.5%) — cobertura de las patologías de m
 **Total: 21/151 entries (~14% de la base)** con `revisadoEn` y `fuentes` completos. Cobertura amplia de las patologías más prevalentes en enfermería médico-quirúrgica de adultos.
 
 (actualizar esta tabla en cada sesión clínica nueva)
+
+---
+
+## Cuarto lote priorizado — bloque renal+ (2026-06-11)
+
+5 entries del sistema renal/urinario, núcleo de los cuidados nefrológicos de enfermería.
+
+| Prioridad | ID | Patología | Guideline objetivo | Estado |
+|---|---|---|---|---|
+| 1 | `pat_irc` | Insuficiencia Renal Crónica | KDIGO CKD 2024 + SGLT2i (DAPA-CKD/EMPA-KIDNEY) + finerenona (FIDELIO/FIGARO) | ✅ `df122a8` |
+| 2 | `pat_ira_renal` | Insuficiencia Renal Aguda | KDIGO AKI 2012 staging + bundle hiperpotasemia + STARRT-AKI timing TRR | ✅ `f1eb031` |
+| 3 | `pat_pielonefritis` | Pielonefritis Aguda | EAU Urological Infections 2024 + IDSA (stewardship FQ, ESBL/carbapenem, control de foco) | ✅ `e00604d` |
+| 4 | `pat_litiasis` | Litiasis Renal | EAU Urolithiasis 2024 / AUA (MET 5-10 mm, descompresión urgente, análisis de cálculo) | ✅ `b25c45e` |
+| 5 | `pat_glomerulonefritis` | Glomerulonefritis | KDIGO GN 2021 + update IgA 2024 + ANCA (ciclofosfamida/rituximab, plasmaféresis) | ✅ `pendiente commit` |
+
+> Nota: `pat_litiasis_renal` del plan original no existe; el id real es `pat_litiasis`.
+
+---
+
+## 🎯 Milestone: CUARTO LOTE COMPLETO (36/151 entries revisadas, 23.8%)
+
+Bloque renal/urinario alineado a KDIGO y EAU 2021-2024:
+- **Renal médico** (3): pat_irc (KDIGO CKD 2024 + 4 pilares de nefroprotección), pat_ira_renal (KDIGO AKI + STARRT-AKI), pat_glomerulonefritis (KDIGO GN 2021 + ANCA/rituximab)
+- **Urológico** (2): pat_pielonefritis (EAU 2024 + restricción FQ + control de foco), pat_litiasis (EAU urolithiasis 2024 + MET + descompresión urgente)
+
+Cambios paradigmáticos incorporados: SGLT2i y finerenona como pilares de nefroprotección en IRC; mapa de calor CGA (TFG + albuminuria); bundle completo de hiperpotasemia y timing no-acelerado de TRR (STARRT-AKI); stewardship antibiótico y cobertura ESBL en pielonefritis; terapia expulsiva médica 5-10 mm y descompresión del riñón obstruido infectado como emergencia; inducción ANCA con ciclofosfamida o rituximab y soporte KDIGO con bloqueo del SRAA +/- SGLT2i.
