@@ -13498,11 +13498,11 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Estadios KDIGO segun TFG",
+      "nombre": "Estadificacion KDIGO 2024 (CGA: Causa + categoria de TFG G1-G5 + categoria de albuminuria A1-A3)",
       "tipos": [
         {
           "nombre": "G1 - Normal o alta",
-          "descripcion": "TFG >= 90 con marcadores de lesión renal. Sin síntomas"
+          "descripcion": "TFG >= 90 con marcadores de lesión renal (albuminuria, alteraciones del sedimento, imagen). Sin síntomas"
         },
         {
           "nombre": "G2 - Ligeramente reducida",
@@ -13510,15 +13510,19 @@
         },
         {
           "nombre": "G3a/b - Moderadamente reducida",
-          "descripcion": "TFG 30-59. Inicio de complicaciones metabolicas"
+          "descripcion": "TFG 30-59 (G3a 45-59; G3b 30-44). Inicio de complicaciones metabolicas y mayor riesgo cardiovascular"
         },
         {
           "nombre": "G4 - Gravemente reducida",
-          "descripcion": "TFG 15-29. Preparación para terapia renal sustitutiva"
+          "descripcion": "TFG 15-29. Preparación para terapia renal sustitutiva y derivacion a nefrologia"
         },
         {
           "nombre": "G5 - Fallo renal (estadio 5)",
           "descripcion": "TFG < 15. Diálisis o trasplante necesarios"
+        },
+        {
+          "nombre": "Categorias de albuminuria (A1-A3)",
+          "descripcion": "A1 < 30 mg/g (normal-leve); A2 30-300 mg/g (moderada); A3 > 300 mg/g (grave). KDIGO 2024 combina TFG y albuminuria en un mapa de calor de riesgo (verde-amarillo-naranja-rojo) que guia la intensidad del tratamiento y la frecuencia de control"
         }
       ]
     },
@@ -13537,21 +13541,23 @@
       ],
       "pruebas": [
         {
-          "nombre": "Creatinina serica y calculo de TFG (CKD-EPI)",
-          "descripcion": "TFG estimada por la formula CKD-EPI a partir de creatinina, edad y sexo",
+          "nombre": "Creatinina serica y calculo de TFG (CKD-EPI 2021)",
+          "descripcion": "TFG estimada por la ecuacion CKD-EPI 2021 a partir de creatinina, edad y sexo (KDIGO 2024 recomienda la formula sin coeficiente racial). Confirmar con eGFR basada en cistatina C (eGFRcr-cys) cuando se requiera precision diagnostica o decisiones terapeuticas",
           "valoresReferencia": "TFG > 90 = normal; 60-89 = leve reducción; 30-59 = moderada; < 30 = grave; < 15 = fallo renal",
           "cuidadosEnfermeria": [
             "No requiere ayuno especial",
-            "La creatinina sola no refleja bien la TFG en ancianos o caquecticos"
+            "La creatinina sola no refleja bien la TFG en ancianos, caquecticos o con masa muscular alterada",
+            "La cistatina C es menos dependiente de la masa muscular y refina la estadificacion (KDIGO 2024)"
           ]
         },
         {
-          "nombre": "Relación albumina/creatinina en orina",
-          "descripcion": "Marcador de lesión glomerular (albuminuria). Se usa junto a la TFG para estadificar IRC",
-          "valoresReferencia": "< 30 mg/g = normal; 30-300 = microalbuminuria (A2); > 300 = macroalbuminuria (A3)",
+          "nombre": "Relación albumina/creatinina en orina (ACR)",
+          "descripcion": "Marcador de lesión glomerular (albuminuria). Se usa junto a la TFG para estadificar IRC y predecir riesgo (categorias A1-A3). KDIGO 2024 lo prioriza sobre la tira reactiva y recomienda confirmar resultados anormales con una segunda muestra",
+          "valoresReferencia": "< 30 mg/g = A1 (normal-leve); 30-300 = A2 (moderada); > 300 = A3 (grave)",
           "cuidadosEnfermeria": [
             "Primera orina de la mañana (muestra puntual)",
-            "Evitar después de ejercicio intenso o infección urinaria (eleva falsamente)"
+            "Evitar después de ejercicio intenso, fiebre o infección urinaria (eleva falsamente)",
+            "Confirmar albuminuria persistente con repeticion antes de etiquetar IRC"
           ]
         },
         {
@@ -13567,9 +13573,11 @@
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Frenar la progresion de la IRC",
-        "Tratar complicaciones (anemia, HTA, HPT2)",
-        "Preparación para terapia renal sustitutiva"
+        "Frenar la progresion de la IRC con los 4 pilares de nefroproteccion KDIGO 2024: IECA/ARA-II a dosis maxima tolerada, SGLT2i, MRA no esteroideo (finerenona en diabeticos) y estatina",
+        "Reducir la albuminuria (objetivo clave de nefroproteccion y predictor de progresion)",
+        "Tratar complicaciones (anemia, HTA, HPT2, acidosis, hiperpotasemia)",
+        "Reducir el riesgo cardiovascular (principal causa de muerte en IRC)",
+        "Preparación para terapia renal sustitutiva en estadios avanzados"
       ],
       "farmacologico": [
         {
@@ -13581,6 +13589,30 @@
             "Monitorizar creatinina y potasio tras inicio (aumento de creatinina < 30% es aceptable)",
             "Hiperpotasemia: contraindicado con K+ > 5.5",
             "Suspender si hiperpotasemia o caida de TFG > 30% en 4 semanas"
+          ]
+        },
+        {
+          "nombre": "Inhibidores SGLT2 (Dapagliflozina, Empagliflozina)",
+          "grupo": "Nefroprotectores - pilar KDIGO 2024 en IRC con y sin diabetes",
+          "mecanismo": "Reducen la hiperfiltracion glomerular al bloquear la reabsorcion de sodio-glucosa en el tubulo proximal (feedback tubuloglomerular). Enlentecen la progresion de la IRC y reducen eventos cardiovasculares y mortalidad (DAPA-CKD, EMPA-KIDNEY)",
+          "dosis": "Dapagliflozina 10 mg/dia VO; Empagliflozina 10 mg/dia VO. KDIGO 2024: iniciar con TFG >= 20 mL/min y continuar aunque la TFG baje despues",
+          "cuidadosEnfermeria": [
+            "Caida inicial reversible de la TFG (dip) en las primeras semanas: esperable, no suspender",
+            "Riesgo de infecciones genitales por hongos: educar en higiene genital",
+            "Cetoacidosis euglucemica (rara): vigilar nauseas, dolor abdominal con glucemia normal; suspender en ayuno prolongado/cirugia (sick-day rule)",
+            "Vigilar deplecion de volumen si se combina con diureticos"
+          ]
+        },
+        {
+          "nombre": "Finerenona (MRA no esteroideo)",
+          "grupo": "Antagonista no esteroideo del receptor mineralocorticoide - nefroproteccion en IRC diabetica",
+          "mecanismo": "Bloquea la inflamacion y fibrosis mediada por el receptor mineralocorticoide; reduce progresion renal y eventos cardiovasculares en IRC con diabetes tipo 2 (FIDELIO-DKD, FIGARO-DKD)",
+          "dosis": "10-20 mg/dia VO segun TFG y potasio. KDIGO 2024: indicada en diabeticos con TFG > 25 mL/min, K+ normal y albuminuria persistente (> 30 mg/g) pese a IECA/ARA-II a dosis maxima tolerada",
+          "cuidadosEnfermeria": [
+            "Hiperpotasemia es el efecto adverso principal: medir K+ basal, a las 4 semanas y periodicamente",
+            "No iniciar si K+ > 5.0 mEq/L; pausar y reevaluar si K+ > 5.5",
+            "Menor riesgo de hiperpotasemia si se asocia a SGLT2i",
+            "No combinar con MRA esteroideos (espironolactona) ni con suplementos de potasio"
           ]
         },
         {
@@ -13618,16 +13650,18 @@
         }
       ],
       "noFarmacologico": [
-        "Dieta hipoprotéica moderada (0.6-0.8 g/kg/dia en no dialiticos)",
-        "Restricción de potasio y fosforo segun niveles",
-        "Restricción de sodio < 2 g/dia si HTA o edemas",
-        "Control estricto de HTA (PA < 130/80)",
-        "Control glucemico optimo en diabeticos",
+        "Dieta proteica moderada (0.8 g/kg/dia en no dialiticos; evitar ingestas altas > 1.3 g/kg)",
+        "Restricción de potasio y fosforo segun niveles (individualizar; evitar restricciones excesivas que comprometan la nutricion)",
+        "Restricción de sodio < 2 g/dia (< 5 g de sal) si HTA o edemas",
+        "Control estricto de PA: KDIGO 2024 sugiere PA sistolica objetivo < 120 mmHg medida con tecnica estandarizada (si se tolera)",
+        "Control glucemico optimo en diabeticos (HbA1c individualizada)",
+        "Actividad fisica regular y cese del tabaquismo",
         "Acceso vascular: preservar venas del brazo no dominante para futuras fistulas"
       ],
       "quirurgico": [
-        "Fistula arteriovenosa (FAV) para hemodialisis (crear cuando TFG < 25 mL/min)",
-        "Trasplante renal: mejor tratamiento para calidad de vida y supervivencia en IRC G5"
+        "Fistula arteriovenosa (FAV) para hemodialisis: planificar con antelacion (referir cuando TFG ~ 15-20 mL/min o segun trayectoria de progresion) para permitir maduracion antes de iniciar dialisis",
+        "Cateter de dialisis peritoneal como alternativa de acceso",
+        "Trasplante renal: mejor tratamiento para calidad de vida y supervivencia en IRC G5; considerar trasplante preventivo (pre-dialisis) en candidatos adecuados"
       ]
     },
     "cuidadosEnfermeria": {
@@ -13766,7 +13800,17 @@
       "pat_hta",
       "pat_icc"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-06-11",
+    "fuentes": [
+      "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of CKD",
+      "DAPA-CKD (dapagliflozina en ERC, NEJM 2020)",
+      "EMPA-KIDNEY (empagliflozina en ERC, NEJM 2023)",
+      "FIDELIO-DKD (finerenona en ERC diabetica, NEJM 2020)",
+      "FIGARO-DKD (finerenona, NEJM 2021)",
+      "KDIGO 2012 Anemia in CKD",
+      "KDIGO 2017 CKD-MBD Update"
+    ]
   },
   {
     "id": "pat_ira_renal",
