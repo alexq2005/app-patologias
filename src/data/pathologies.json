@@ -13846,7 +13846,7 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Estadificación KDIGO (Cr + diuresis)",
+      "nombre": "Estadificación KDIGO AKI 2012 (creatinina y/o diuresis; usar el criterio que asigne mayor estadio)",
       "tipos": [
         {
           "nombre": "IRA estadio 1",
@@ -13858,7 +13858,7 @@
         },
         {
           "nombre": "IRA estadio 3",
-          "descripcion": "Cr > 3x basal o > 4 mg/dL; diuresis < 0.3 mL/kg/h por > 24h o anuria > 12h"
+          "descripcion": "Cr > 3x basal o >= 4 mg/dL; diuresis < 0.3 mL/kg/h por >= 24h o anuria >= 12h; o inicio de terapia renal sustitutiva (cualquier estadio previo)"
         }
       ]
     },
@@ -13899,14 +13899,24 @@
             "ECG inmediato si K+ > 5.5",
             "Gluconato calcico IV INMEDIATO si K+ > 6.5 con cambios ECG"
           ]
+        },
+        {
+          "nombre": "Sedimento urinario e indices urinarios (FeNa)",
+          "descripcion": "Diferencia el mecanismo: prerrenal (sedimento limpio, FeNa < 1%, Na urinario < 20) vs necrosis tubular aguda (cilindros granulosos pardos, FeNa > 2%). KDIGO recomienda el examen del sedimento en toda IRA de causa no aclarada",
+          "valoresReferencia": "FeNa < 1% = prerrenal; FeNa > 2% = NTA (la FeNa pierde valor si recibe diureticos: usar FeUrea < 35% prerrenal)",
+          "cuidadosEnfermeria": [
+            "Recoger orina antes de administrar diureticos (alteran la FeNa)",
+            "Muestra de orina fresca para sedimento (procesar en < 1h)"
+          ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Tratar la causa",
-        "Mantener perfusión renal y diuresis",
-        "Corregir complicaciones metabolicas urgentes"
+        "Tratar la causa y aplicar el bundle de cuidado KDIGO: suspender nefrotoxicos, optimizar volemia y hemodinamia, evitar hiperglucemia y monitorizar creatinina/diuresis",
+        "Mantener perfusión renal y presion arterial media adecuada (evitar tanto hipovolemia como sobrecarga)",
+        "Corregir complicaciones metabolicas urgentes (hiperpotasemia, acidosis, sobrecarga)",
+        "Decidir oportunamente la terapia renal sustitutiva segun indicaciones emergentes (no de forma acelerada rutinaria, STARRT-AKI)"
       ],
       "farmacologico": [
         {
@@ -13930,16 +13940,40 @@
             "Efecto temporal: luego usar medidas que bajan el K+",
             "No mezclar con bicarbonato (precipita)"
           ]
+        },
+        {
+          "nombre": "Insulina + glucosa IV (desplazamiento intracelular de K+)",
+          "grupo": "Manejo de hiperpotasemia - segundo paso tras el calcio",
+          "mecanismo": "La insulina introduce el potasio a la celula; la glucosa previene la hipoglucemia. Reduce el K+ serico en 30-60 min (~0.5-1 mEq/L)",
+          "dosis": "10 UI de insulina rapida IV + 25 g de glucosa (50 mL de dextrosa al 50%); asociar salbutamol nebulizado",
+          "cuidadosEnfermeria": [
+            "Vigilar glucemia capilar a los 30-60 min y hasta 4-6h (riesgo de hipoglucemia tardia)",
+            "El salbutamol nebulizado (10-20 mg) suma efecto desplazador",
+            "Son medidas temporales: no eliminan el potasio del cuerpo"
+          ]
+        },
+        {
+          "nombre": "Quelantes de potasio / dialisis (eliminacion del K+)",
+          "grupo": "Manejo de hiperpotasemia - eliminacion efectiva",
+          "mecanismo": "Los quelantes intercambian potasio en el intestino para excretarlo; la dialisis lo elimina de forma definitiva (medida de eleccion si IRA grave o refractaria)",
+          "dosis": "Patiromer o ciclosilicato de sodio-zirconio VO; dialisis urgente si hiperpotasemia refractaria",
+          "cuidadosEnfermeria": [
+            "Los quelantes actuan en horas, no son utiles en la emergencia inmediata",
+            "Preparar acceso vascular y coordinar con nefrologia ante K+ refractario",
+            "Revaluar K+ tras cada intervencion"
+          ]
         }
       ],
       "noFarmacologico": [
-        "Restaurar la perfusión renal (fluidos IV en prerrenal, corregir IC)",
-        "Suspender todos los nefrotoxicos",
+        "Restaurar la perfusión renal con cristaloides balanceados (fluidos IV en prerrenal, corregir IC); evitar almidones (hidroxietilalmidon) por nefrotoxicidad",
+        "Suspender todos los nefrotoxicos (AINEs, aminoglucosidos, contraste no imprescindible)",
         "Ajustar dosis de todos los medicamentos a la TFG actual",
-        "Diálisis si: hiperpotasemia refractaria, acidosis grave, sobrecarga hidrica refractaria, uremia sintomatica"
+        "Terapia renal sustitutiva ante indicaciones emergentes: hiperpotasemia refractaria, acidosis grave, sobrecarga hidrica refractaria, uremia sintomatica",
+        "STARRT-AKI (NEJM 2020): el inicio acelerado/rutinario de TRR no mejora la mortalidad frente a la estrategia estandar guiada por indicaciones; no apresurar la dialisis sin indicacion clara"
       ],
       "quirurgico": [
-        "Desobstrucción urgente en IRA posrenal (sonda vesical, nefrostomia percutanea, ureteroscopia)"
+        "Desobstrucción urgente en IRA posrenal (sonda vesical, nefrostomia percutanea, ureteroscopia)",
+        "Cateter venoso central de dialisis (yugular interna preferente) para TRR urgente"
       ]
     },
     "cuidadosEnfermeria": {
@@ -14063,7 +14097,14 @@
       "pat_irc",
       "pat_sepsis"
     ],
-    "isPremium": false
+    "isPremium": false,
+    "revisadoEn": "2026-06-11",
+    "fuentes": [
+      "KDIGO 2012 Clinical Practice Guideline for Acute Kidney Injury",
+      "STARRT-AKI (timing de TRR en IRA, NEJM 2020)",
+      "AKIKI / IDEAL-ICU (estrategia de inicio de dialisis en IRA)",
+      "KDIGO criterios de estadificacion AKI (creatinina y diuresis)"
+    ]
   },
   {
     "id": "pat_itu",
