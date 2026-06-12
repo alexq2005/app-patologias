@@ -34822,11 +34822,11 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por severidad clínica",
+      "nombre": "Clasificación EAU 2024 por factores complicantes y severidad clínica",
       "tipos": [
         {
           "nombre": "Pielonefritis no complicada",
-          "descripcion": "Mujer no embarazada, sin anomalias estructurales ni funcionales del tracto urinario, sin comorbilidades graves. Tratamiento ambulatorio posible."
+          "descripcion": "Mujer no embarazada, premenopausica, sin anomalias estructurales ni funcionales del tracto urinario, sin comorbilidades graves. Tratamiento ambulatorio posible si tolera via oral y no hay criterios de sepsis."
         },
         {
           "nombre": "Pielonefritis complicada",
@@ -34921,13 +34921,24 @@
             "Coordinar traslado al servicio de imagen",
             "Registrar resultado en historia clínica para seguimiento"
           ]
+        },
+        {
+          "nombre": "Tomografia computada con contraste (uro-TC)",
+          "descripcion": "Indicada cuando no hay mejoria a las 48-72h, en sospecha de absceso renal/perinefritico, pielonefritis enfisematosa u obstruccion (EAU 2024). Define el foco para drenaje",
+          "valoresReferencia": "Ausencia de colecciones, gas o dilatacion obstructiva",
+          "cuidadosEnfermeria": [
+            "Verificar función renal y alergia al contraste yodado antes del estudio",
+            "Asegurar hidratacion adecuada para reducir nefrotoxicidad por contraste",
+            "Confirmar ayuno segun protocolo del servicio de imagen"
+          ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Erradicar el microorganismo causal",
-        "Prevenir complicaciones (absceso, sepsis, insuficiencia renal)",
+        "Erradicar el microorganismo causal con uso racional de antibioticos (desescalar segun urocultivo y acortar el ciclo, EAU 2024)",
+        "Control del foco: drenar/descomprimir de urgencia un riñón obstruido e infectado",
+        "Prevenir complicaciones (absceso, sepsis/urosepsis, insuficiencia renal)",
         "Aliviar síntomas y fiebre",
         "Tratar patología subyacente (obstrucción, litiasis)",
         "Prevenir recurrencias"
@@ -34947,16 +34958,28 @@
           ]
         },
         {
-          "nombre": "Ciprofloxacina",
-          "grupo": "Fluoroquinolona",
+          "nombre": "Ciprofloxacina / Levofloxacina",
+          "grupo": "Fluoroquinolona (opcion oral solo si resistencia local de E. coli < 10%)",
           "mecanismo": "Inhibe la ADN girasa y topoisomerasa IV bacteriana, impidiendo la replicación del ADN bacteriano. Excelente penetración en tejido renal",
-          "dosis": "500 mg VO cada 12 horas o 400 mg IV cada 12 horas; duración 7-10 dias en no complicada",
+          "dosis": "Ciprofloxacina 500 mg VO c/12h o 400 mg IV c/12h; Levofloxacina 750 mg/dia; duración 5-7 dias en no complicada",
           "cuidadosEnfermeria": [
+            "EAU 2024 restringe las fluoroquinolonas por resistencias crecientes y reacciones adversas graves: usar solo si el germen es sensible o resistencia local baja",
             "No administrar junto a antiácidos, suplementos de calcio, magnesio o hierro (reducen absorción)",
-            "Vigilar tendinitis y riesgo de rotura tendinosa (suspender si dolor tendinoso)",
-            "Advertir fotosensibilidad: proteger de exposición solar durante tratamiento",
-            "Monitorizar QT en pacientes con antecedentes cardiacos o que toman otros farmacos que prolongan QT",
+            "Vigilar tendinitis y riesgo de rotura tendinosa, neuropatia y disglucemia (suspender si aparecen)",
+            "Advertir fotosensibilidad y monitorizar QT en pacientes de riesgo",
             "Ajustar dosis si ClCr < 30 mL/min"
+          ]
+        },
+        {
+          "nombre": "Piperacilina-tazobactam / Carbapenem (ertapenem, meropenem)",
+          "grupo": "Betalactamico de amplio espectro - pielonefritis grave o riesgo de ESBL",
+          "mecanismo": "Inhiben la sintesis de la pared bacteriana con cobertura ampliada; el carbapenem es de eleccion ante enterobacterias productoras de BLEE (ESBL)",
+          "dosis": "Piperacilina-tazobactam 4.5 g IV c/6-8h; Ertapenem 1 g IV c/24h; Meropenem 1 g IV c/8h. Desescalar segun antibiograma",
+          "cuidadosEnfermeria": [
+            "Indicado en urosepsis, pielonefritis complicada o antecedente de infeccion por germen ESBL/multirresistente",
+            "Verificar alergia a betalactamicos antes de la primera dosis",
+            "Respetar tiempos de infusion (la infusion extendida optimiza la eficacia)",
+            "Reevaluar a las 48-72h con cultivo para desescalar y reducir presion de resistencia"
           ]
         },
         {
@@ -34979,7 +35002,14 @@
         "Calor local en zona lumbar para alivio del dolor",
         "Balance hidrico estricto (ingresos/egresos)",
         "Mantenimiento de via urinaria permeable (sondaje si obstrucción)",
+        "Switch IV a oral una vez afebril y con tolerancia oral, guiado por el antibiograma (terapia secuencial)",
+        "No usar nitrofurantoina ni fosfomicina en pielonefritis: no alcanzan concentraciones tisulares renales adecuadas",
         "Dieta blanda con adecuada hidratación oral al tolerar"
+      ],
+      "quirurgico": [
+        "Descompresion urgente del riñón obstruido e infectado (pionefrosis): cateter doble J o nefrostomia percutanea; es una emergencia urologica",
+        "Drenaje percutaneo de absceso renal o perinefritico > 3-5 cm que no responde a antibioticos",
+        "Nefrectomia en pielonefritis enfisematosa grave sin respuesta o en pielonefritis xantogranulomatosa"
       ]
     },
     "cuidadosEnfermeria": {
@@ -35157,7 +35187,14 @@
       "pat_dm2",
       "pat_vejiga_neurogenica"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-06-11",
+    "fuentes": [
+      "EAU Guidelines on Urological Infections 2024",
+      "IDSA Guidelines for Acute Uncomplicated Pyelonephritis",
+      "EAU 2024 - restriccion de fluoroquinolonas y resistencia antimicrobiana",
+      "EAU 2024 - control de foco y descompresion del riñon obstruido infectado"
+    ]
   },
   {
     "id": "pat_vejiga_neurogenica",
