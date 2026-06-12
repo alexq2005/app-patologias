@@ -14395,7 +14395,7 @@
       ]
     },
     "clasificacion": {
-      "nombre": "Clasificación por composición",
+      "nombre": "Clasificación por composición y por tamaño/localización (EAU 2024)",
       "tipos": [
         {
           "nombre": "Oxalato calcico (70-80%)",
@@ -14403,15 +14403,19 @@
         },
         {
           "nombre": "Ácido urico (5-10%)",
-          "descripcion": "Radiotransparente (no visible en Rx). Orina acida. Gota, diabetes, obesidad"
+          "descripcion": "Radiotransparente (no visible en Rx). Orina acida. Gota, diabetes, obesidad. Unico tipo susceptible de disolucion con alcalinizacion urinaria"
         },
         {
           "nombre": "Estruvita (fosfato amoniomagnesico) (5-15%)",
-          "descripcion": "Infección por germenes ureasa positivos (Proteus, Klebsiella). Calculos coraliformes"
+          "descripcion": "Infección por germenes ureasa positivos (Proteus, Klebsiella). Calculos coraliformes; requieren extraccion completa"
         },
         {
           "nombre": "Cistina (1%)",
           "descripcion": "Cistinuria hereditaria. Inicio en la infancia"
+        },
+        {
+          "nombre": "Tamaño y probabilidad de expulsion espontanea (EAU 2024)",
+          "descripcion": "< 5 mm: alta probabilidad de paso espontaneo (manejo conservador). 5-10 mm: candidato a terapia expulsiva con alfabloqueante. > 10 mm: baja probabilidad de expulsion, suele requerir intervencion activa"
         }
       ]
     },
@@ -14445,14 +14449,33 @@
             "Técnica aseptica de recogida",
             "Urocultivo ANTES de antibioticos si hay sospecha de infección"
           ]
+        },
+        {
+          "nombre": "Hemograma, creatinina y electrolitos",
+          "descripcion": "Evalua leucocitosis (infeccion), función renal e injuria renal aguda por obstruccion. EAU recomienda valorar función renal en todo colico complicado",
+          "valoresReferencia": "Creatinina 0.6-1.2 mg/dL; leucocitos 4.500-11.000/mcL",
+          "cuidadosEnfermeria": [
+            "Extraer en el episodio agudo para detectar IRA obstructiva",
+            "Alertar si leucocitosis con fiebre (obstruccion infectada)"
+          ]
+        },
+        {
+          "nombre": "Análisis de composición del calculo expulsado",
+          "descripcion": "EAU 2024 recomienda analizar la composición de todo calculo (primer episodio incluido) para guiar la prevencion de recurrencias y el estudio metabolico",
+          "valoresReferencia": "Identifica oxalato calcico, acido urico, estruvita, cistina, fosfato",
+          "cuidadosEnfermeria": [
+            "Filtrar toda la orina con tamiz hasta recuperar el calculo",
+            "Enviar el calculo seco al laboratorio (no en formol)"
+          ]
         }
       ]
     },
     "tratamientoMedico": {
       "objetivos": [
-        "Alivio del dolor",
-        "Expulsion del calculo o extracción si no expulsa",
-        "Prevenir recurrencias"
+        "Alivio del dolor (AINEs como primera linea)",
+        "Descomprimir de urgencia el riñón obstruido e infectado o el colico refractario (emergencia urologica)",
+        "Expulsion del calculo (terapia expulsiva si 5-10 mm) o extracción activa si no expulsa",
+        "Estudio metabolico y prevencion de recurrencias guiada por la composicion del calculo"
       ],
       "farmacologico": [
         {
@@ -14467,26 +14490,41 @@
           ]
         },
         {
-          "nombre": "Tamsulosina",
+          "nombre": "Tamsulosina (terapia expulsiva medica, MET)",
           "grupo": "Alfabloqueante - expulsion del calculo ureteral distal",
           "mecanismo": "Relaja el músculo liso del ureter distal, facilitando el paso espontaneo del calculo",
           "dosis": "0.4 mg/dia VO hasta expulsion del calculo",
           "cuidadosEnfermeria": [
-            "Hipotensión ortostática: tomar acostado la primera dosis",
-            "Usar para calculos uretrales < 10 mm",
-            "Advertir sobre posible hipotensión al levantarse"
+            "EAU 2024: MET indicada en calculos ureterales distales de 5-10 mm en pacientes informados, si no esta indicada la extraccion activa",
+            "Suspender la MET si aparece infeccion, dolor refractario o deterioro de la función renal",
+            "Hipotensión ortostática: tomar acostado la primera dosis y advertir al incorporarse",
+            "Uso off-label en muchos paises: documentar consentimiento informado"
+          ]
+        },
+        {
+          "nombre": "Citrato potasico / Bicarbonato (alcalinizacion urinaria)",
+          "grupo": "Alcalinizante urinario - disolucion de calculos de acido urico y prevencion",
+          "mecanismo": "Eleva el pH urinario, disolviendo los calculos de acido urico y reduciendo la recurrencia de calculos calcicos al inhibir la cristalizacion",
+          "dosis": "Citrato potasico 30-60 mEq/dia VO; ajustar a pH urinario objetivo 6.5-7.0",
+          "cuidadosEnfermeria": [
+            "Educar en automonitoreo del pH urinario con tiras reactivas",
+            "Vigilar hiperpotasemia si hay insuficiencia renal o uso de IECA/ARA-II",
+            "Solo los calculos de acido urico son disolubles farmacologicamente"
           ]
         }
       ],
       "noFarmacologico": [
-        "Hidratación abundante (facilita expulsion)",
+        "Hidratación abundante para una diuresis objetivo > 2-2.5 L/dia (principal medida de prevencion de recurrencias, EAU 2024)",
         "Filtración de la orina para recuperar el calculo (análisis de composición)",
-        "Calor local en el flanco para alivio del dolor"
+        "Prevencion dietetica segun composicion: reducir sal y proteina animal; ingesta normal de calcio (no restringir); limitar oxalato en oxalato calcico; reducir purinas en acido urico",
+        "Calor local en el flanco para alivio del dolor",
+        "Derivacion urologica urgente ante: fiebre con obstruccion (riñon obstruido infectado), anuria, riñon unico obstruido o dolor refractario al tratamiento"
       ],
       "quirurgico": [
-        "Litotricia extracorporea por ondas de choque (LEOC): calculos < 2 cm renal o ureter proximal",
-        "Ureteroscopia con laser (Holmium): calculos ureterales",
-        "Nefrolitotomia percutanea: calculos renales grandes > 2 cm o coraliformes"
+        "Descompresion urgente del riñon obstruido e infectado (nefrostomia percutanea o cateter doble J): emergencia urologica; postergar el tratamiento definitivo del calculo hasta resolver la sepsis (EAU 2024)",
+        "Litotricia extracorporea por ondas de choque (LEOC): calculos renales/ureterales < 2 cm (< 20 mm)",
+        "Ureteroscopia con laser (Holmium/RIRS): calculos ureterales y renales; alternativa a LEOC con altas tasas de exito",
+        "Nefrolitotomia percutanea (NLP): calculos renales grandes > 2 cm o coraliformes"
       ]
     },
     "cuidadosEnfermeria": {
@@ -14604,7 +14642,14 @@
       "pat_itu",
       "pat_ira_renal"
     ],
-    "isPremium": true
+    "isPremium": true,
+    "revisadoEn": "2026-06-11",
+    "fuentes": [
+      "EAU Guidelines on Urolithiasis 2024",
+      "AUA Surgical Management of Stones Guideline",
+      "EAU 2024 - terapia expulsiva medica (MET) con alfabloqueantes en calculos 5-10 mm",
+      "EAU 2024 - descompresion urgente del riñon obstruido e infectado"
+    ]
   },
   {
     "id": "pat_sindrome_nefrotico",
