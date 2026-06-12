@@ -7,6 +7,7 @@
 Fixes revenue-critical en la lógica premium/trial detectados por auditoría, observabilidad en código de dinero y limpieza del root. Sin nuevo AAB.
 
 ### Fixed
+- **Activación premium case-insensitive** (2026-06-12): el código distinguía mayúsculas/minúsculas, pero el input fuerza `autoCapitalize="characters"` → tipearlo daba mayúsculas y fallaba. Ahora `validateActivationCode` normaliza con `trim().toLowerCase()` (nueva `normalizeActivationCode`) y el `ACTIVATION_HASH` se computa en minúsculas → funciona en cualquier capitalización. 8 tests nuevos (`__tests__/activation.test.ts`). Mismo código que la app Curso (comparten `ACTIVATION_HASH`)
 - **Trial perpetuo por storage corrupto**: `computeTrialDaysLeft` con `trialStartDate = NaN` devolvía 15 días PARA SIEMPRE (`!NaN` es truthy → entraba al branch "trial no iniciado"). Ahora NaN/±Infinity → 0 días (fail-closed) y `PremiumContext` re-inicializa el trial con `Date.now()` + re-persiste si el valor guardado no es finito — el trial se reinicia, no se regala perpetuo
 - **Clock rollback extendía el trial**: retroceder el reloj del dispositivo daba más de 15 días restantes. Clamp superior `Math.min(trialDays, remaining)` — nunca más de `TRIAL_DAYS`
 - **Catches silenciosos en código de dinero**: el init de `PremiumContext` (`.catch(() => setLoaded(true))` — si EncryptedStorage fallaba se perdían sub+trial sin rastro) y la persistencia de trial/sub (`.catch(() => {})`) ahora reportan vía `captureError(e, {scope, action})` de Sentry (no-op hasta configurar DSN, pero el rastro queda cableado)
